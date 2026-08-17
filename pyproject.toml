@@ -1,0 +1,19 @@
+[project]
+name = "dgca"
+version = "0.1.0"
+description = "معمارية إدراكية ذات روابط ديناميكية"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest", "ruff"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint.isort]
+known-first-party = ["dgca"]
