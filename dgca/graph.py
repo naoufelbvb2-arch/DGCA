@@ -163,6 +163,19 @@ class CognitiveGraph:
     prediction_pool: dict[str, float] = field(default_factory=dict)       # بركة التنبؤ
     prediction_sources: dict[str, list[str]] = field(default_factory=dict) # مصادر التوقع
     hypotheses: list[dict] = field(default_factory=list)                   # مستودع الفرضيات القياسية المعزولة (RFC-07)
+    _assembly_manager: Any = field(default=None, repr=False)
+
+    @property
+    def assembly_manager(self) -> Any:
+        """محرك التجمعات المحلية للقانون 14 (RFC-11)."""
+        if self._assembly_manager is None:
+            from .assembly import AssemblyManager
+            self._assembly_manager = AssemblyManager(self)
+        return self._assembly_manager
+
+    @assembly_manager.setter
+    def assembly_manager(self, mgr: Any) -> None:
+        self._assembly_manager = mgr
 
     @property
     def concepts(self) -> dict[str, Node]:
@@ -238,6 +251,10 @@ class CognitiveGraph:
         self.edges.pop((a, b), None)
         self.out_adj.get(a, {}).pop(b, None)
         self.in_adj.get(b, {}).pop(a, None)
+        if self._assembly_manager is not None:
+            affected = list(self._assembly_manager.edge_to_assemblies.get((a, b), set()))
+            for aid in affected:
+                self._assembly_manager.commit_sanitation(aid, {(a, b)})
 
     # الاسم العام الصريح للربط والفك
     link = _link
@@ -1142,6 +1159,20 @@ class CognitiveGraph:
 
         x_data = {k: list(v) for k, v in self.X.items()}
 
+        assemblies_data = []
+        if self._assembly_manager is not None:
+            for versions in self._assembly_manager.assemblies.values():
+                for asm in versions:
+                    assemblies_data.append({
+                        "assembly_id": asm.assembly_id,
+                        "version": asm.version,
+                        "member_edges": [list(e) for e in asm.member_edges],
+                        "origin_signature": asm.origin_signature,
+                        "predecessor_version": asm.predecessor_version,
+                        "parent_assemblies": list(asm.parent_assemblies),
+                        "is_retired": asm.is_retired,
+                    })
+
         return {
             "version": "1.0",
             "t": self.t,
@@ -1155,6 +1186,7 @@ class CognitiveGraph:
             "X": x_data,
             "nodes": nodes_data,
             "edges": edges_data,
+            "assemblies": assemblies_data,
         }
 
     @classmethod
@@ -1216,6 +1248,23 @@ class CognitiveGraph:
             g.edges[(e.src, e.dst)] = e
             g.out_adj.setdefault(e.src, {})[e.dst] = e
             g.in_adj.setdefault(e.dst, {})[e.src] = e
+
+        if data.get("assemblies"):
+            from .assembly import AssemblyManager, StructuralAssembly
+            mgr = AssemblyManager(g)
+            for adata in data["assemblies"]:
+                asm = StructuralAssembly(
+                    assembly_id=adata["assembly_id"],
+                    version=adata["version"],
+                    member_edges=frozenset((pair[0], pair[1]) for pair in adata["member_edges"]),
+                    origin_signature=adata["origin_signature"],
+                    predecessor_version=adata.get("predecessor_version"),
+                    parent_assemblies=tuple(adata.get("parent_assemblies", ())),
+                    is_retired=adata.get("is_retired", False),
+                )
+                mgr.assemblies.setdefault(asm.assembly_id, []).append(asm)
+            mgr.rebuild_indexes()
+            g.assembly_manager = mgr
 
         return g
 

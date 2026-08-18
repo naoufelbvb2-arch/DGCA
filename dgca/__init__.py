@@ -5,6 +5,16 @@ from .analogy import (
     AnalogyResult,
     CandidateInference,
 )
+from .assembly import (
+    ActiveAssembly,
+    AssemblyManager,
+    AssemblyObservability,
+    AssemblyPolicy,
+    FormationCandidate,
+    StructuralAssembly,
+    canonical_assembly_id,
+    law14_behavioral_signature,
+)
 from .audio import (
     AudioFeatures,
     AudioSegment,
@@ -37,9 +47,13 @@ __all__ = [
     "QUANTITY",
     "TEXT",
     "VISION",
+    "ActiveAssembly",
     "AnalogicalMapping",
     "AnalogicalReasoningEngine",
     "AnalogyResult",
+    "AssemblyManager",
+    "AssemblyObservability",
+    "AssemblyPolicy",
     "AudioFeatures",
     "AudioSegment",
     "AudioSensoryPipeline",
@@ -51,6 +65,7 @@ __all__ = [
     "Edge",
     "EnglishTextPipeline",
     "Episode",
+    "FormationCandidate",
     "LeanCARFAC",
     "LinearizationEngine",
     "MasterSymbolicEncoder",
@@ -59,8 +74,10 @@ __all__ = [
     "ResponsePacket",
     "SensoryEpisode",
     "SpatialRelation",
+    "StructuralAssembly",
     "VisionSensoryPipeline",
     "VisualObject",
+    "canonical_assembly_id",
     "causal_strength",
     "compare_quantities",
     "compose_relations",
@@ -68,6 +85,7 @@ __all__ = [
     "encode_number",
     "feed",
     "init_quantity_backbone",
+    "law14_behavioral_signature",
 ]
 
 
