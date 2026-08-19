@@ -164,6 +164,7 @@ class CognitiveGraph:
     prediction_sources: dict[str, list[str]] = field(default_factory=dict) # مصادر التوقع
     hypotheses: list[dict] = field(default_factory=list)                   # مستودع الفرضيات القياسية المعزولة (RFC-07)
     _assembly_manager: Any = field(default=None, repr=False)
+    _representation_engine: Any = field(default=None, repr=False)
 
     @property
     def assembly_manager(self) -> Any:
@@ -176,6 +177,18 @@ class CognitiveGraph:
     @assembly_manager.setter
     def assembly_manager(self, mgr: Any) -> None:
         self._assembly_manager = mgr
+
+    @property
+    def representation_engine(self) -> Any:
+        """محرك التمثيل المعرفي الموزع المتناثر وإيصالات الربط المؤقت (RFC-12)."""
+        if self._representation_engine is None:
+            from .representation import RepresentationEngine
+            self._representation_engine = RepresentationEngine(self)
+        return self._representation_engine
+
+    @representation_engine.setter
+    def representation_engine(self, engine: Any) -> None:
+        self._representation_engine = engine
 
     @property
     def concepts(self) -> dict[str, Node]:
@@ -195,8 +208,11 @@ class CognitiveGraph:
         if n is None:
             n = Node(nid, region, is_concept=is_concept, is_intrinsic=is_intrinsic)
             self.nodes[nid] = n
-        elif is_intrinsic:
-            n.is_intrinsic = True
+        else:
+            if is_concept:
+                n.is_concept = True
+            if is_intrinsic:
+                n.is_intrinsic = True
         return n
 
     # ── قراءة الروابط

@@ -38,6 +38,17 @@ from .graph import CognitiveGraph, Edge, Node
 from .linearizer import LinearizationEngine, ResponsePacket
 from .numbers import QUANTITY, compare_quantities, init_quantity_backbone
 from .reasoning import compose_relations, deep_infer
+from .representation import (
+    ContextualFacetView,
+    ParticipationReceipt,
+    RepresentationEngine,
+    RepresentationObservability,
+    RepresentationView,
+    ScopeView,
+    SparseDistributedCognitiveRepresentation,
+    TransientBindingReceipt,
+    rfc12_behavioral_signature,
+)
 from .vision import SpatialRelation, VisionSensoryPipeline, VisualObject
 
 __version__ = "0.1.0"
@@ -62,6 +73,7 @@ __all__ = [
     "CodeSensoryPipeline",
     "CognitiveAgent",
     "CognitiveGraph",
+    "ContextualFacetView",
     "Edge",
     "EnglishTextPipeline",
     "Episode",
@@ -70,11 +82,18 @@ __all__ = [
     "LinearizationEngine",
     "MasterSymbolicEncoder",
     "Node",
+    "ParticipationReceipt",
     "QuantityNormalizer",
+    "RepresentationEngine",
+    "RepresentationObservability",
+    "RepresentationView",
     "ResponsePacket",
+    "ScopeView",
     "SensoryEpisode",
+    "SparseDistributedCognitiveRepresentation",
     "SpatialRelation",
     "StructuralAssembly",
+    "TransientBindingReceipt",
     "VisionSensoryPipeline",
     "VisualObject",
     "canonical_assembly_id",
@@ -86,6 +105,7 @@ __all__ = [
     "feed",
     "init_quantity_backbone",
     "law14_behavioral_signature",
+    "rfc12_behavioral_signature",
 ]
 
 
