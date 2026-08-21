@@ -165,6 +165,7 @@ class CognitiveGraph:
     hypotheses: list[dict] = field(default_factory=list)                   # مستودع الفرضيات القياسية المعزولة (RFC-07)
     _assembly_manager: Any = field(default=None, repr=False)
     _representation_engine: Any = field(default=None, repr=False)
+    _completion_engine: Any = field(default=None, repr=False)
 
     @property
     def assembly_manager(self) -> Any:
@@ -189,6 +190,18 @@ class CognitiveGraph:
     @representation_engine.setter
     def representation_engine(self, engine: Any) -> None:
         self._representation_engine = engine
+
+    @property
+    def completion_engine(self) -> Any:
+        """محرك استكمال وفصل الأنماط والقانون 15 (RFC-13)."""
+        if self._completion_engine is None:
+            from .completion import PatternCompletionEngine
+            self._completion_engine = PatternCompletionEngine(self)
+        return self._completion_engine
+
+    @completion_engine.setter
+    def completion_engine(self, engine: Any) -> None:
+        self._completion_engine = engine
 
     @property
     def concepts(self) -> dict[str, Node]:
@@ -760,6 +773,10 @@ class CognitiveGraph:
                     self.X.setdefault(eb.dst, set()).add(ea.dst)
                     for dst in (ea.dst, eb.dst):
                         pending += [s for s in self.in_adj.get(dst, ()) if s not in seen]
+
+    def add_contradiction(self, a: str, b: str) -> None:
+        """ق4 — تسجيل تناقض صريح متبادل بين عقدتين في مصفوفة التناقض X."""
+        self._link_contradiction(a, b)
 
     def _link_contradiction(self, a: str, b: str) -> None:
         """ق4 — تسجيل تناقض صريح متبادل بين عقدتين في مصفوفة التناقض X."""

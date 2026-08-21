@@ -22,6 +22,16 @@ from .audio import (
     LeanCARFAC,
 )
 from .causality import causal_strength
+from .completion import (
+    CompetitiveAlternativeSet,
+    CompletionObservability,
+    PatternCandidate,
+    PatternCompletionEngine,
+    ReinstatementProposal,
+    SettlingEpoch,
+    SettlingOutcomeView,
+    rfc13_behavioral_signature,
+)
 from .config import AUDIO, TEXT, VISION
 from .encoder import (
     CodeEncoder,
@@ -73,6 +83,8 @@ __all__ = [
     "CodeSensoryPipeline",
     "CognitiveAgent",
     "CognitiveGraph",
+    "CompetitiveAlternativeSet",
+    "CompletionObservability",
     "ContextualFacetView",
     "Edge",
     "EnglishTextPipeline",
@@ -83,13 +95,18 @@ __all__ = [
     "MasterSymbolicEncoder",
     "Node",
     "ParticipationReceipt",
+    "PatternCandidate",
+    "PatternCompletionEngine",
     "QuantityNormalizer",
+    "ReinstatementProposal",
     "RepresentationEngine",
     "RepresentationObservability",
     "RepresentationView",
     "ResponsePacket",
     "ScopeView",
     "SensoryEpisode",
+    "SettlingEpoch",
+    "SettlingOutcomeView",
     "SparseDistributedCognitiveRepresentation",
     "SpatialRelation",
     "StructuralAssembly",
@@ -106,6 +123,7 @@ __all__ = [
     "init_quantity_backbone",
     "law14_behavioral_signature",
     "rfc12_behavioral_signature",
+    "rfc13_behavioral_signature",
 ]
 
 
