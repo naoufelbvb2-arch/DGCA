@@ -167,6 +167,7 @@ class CognitiveGraph:
     _representation_engine: Any = field(default=None, repr=False)
     _completion_engine: Any = field(default=None, repr=False)
     _generation_engine: Any = field(default=None, repr=False)
+    _recurrent_engine: Any = field(default=None, repr=False)
 
     @property
     def assembly_manager(self) -> Any:
@@ -215,6 +216,18 @@ class CognitiveGraph:
     @generation_engine.setter
     def generation_engine(self, engine: Any) -> None:
         self._generation_engine = engine
+
+    @property
+    def recurrent_engine(self) -> Any:
+        """محرك التوليد التنبؤي التكراري والاستمرار عبر اللقطات والقانون 17 (RFC-15)."""
+        if self._recurrent_engine is None:
+            from .recurrent import PredictiveRecurrentGenerativeEngine
+            self._recurrent_engine = PredictiveRecurrentGenerativeEngine(self)
+        return self._recurrent_engine
+
+    @recurrent_engine.setter
+    def recurrent_engine(self, engine: Any) -> None:
+        self._recurrent_engine = engine
 
     @property
     def concepts(self) -> dict[str, Node]:
