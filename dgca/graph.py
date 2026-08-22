@@ -166,6 +166,7 @@ class CognitiveGraph:
     _assembly_manager: Any = field(default=None, repr=False)
     _representation_engine: Any = field(default=None, repr=False)
     _completion_engine: Any = field(default=None, repr=False)
+    _generation_engine: Any = field(default=None, repr=False)
 
     @property
     def assembly_manager(self) -> Any:
@@ -202,6 +203,18 @@ class CognitiveGraph:
     @completion_engine.setter
     def completion_engine(self, engine: Any) -> None:
         self._completion_engine = engine
+
+    @property
+    def generation_engine(self) -> Any:
+        """محرك الديناميكيات التوليدية الهرمية والتحويل التسلسلي النحوي والقانون 16 (RFC-14)."""
+        if self._generation_engine is None:
+            from .generation import HierarchicalGenerativeEngine
+            self._generation_engine = HierarchicalGenerativeEngine(self)
+        return self._generation_engine
+
+    @generation_engine.setter
+    def generation_engine(self, engine: Any) -> None:
+        self._generation_engine = engine
 
     @property
     def concepts(self) -> dict[str, Node]:
