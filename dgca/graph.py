@@ -168,6 +168,7 @@ class CognitiveGraph:
     _completion_engine: Any = field(default=None, repr=False)
     _generation_engine: Any = field(default=None, repr=False)
     _recurrent_engine: Any = field(default=None, repr=False)
+    _loop_engine: Any = field(default=None, repr=False)
 
     @property
     def assembly_manager(self) -> Any:
@@ -228,6 +229,18 @@ class CognitiveGraph:
     @recurrent_engine.setter
     def recurrent_engine(self, engine: Any) -> None:
         self._recurrent_engine = engine
+
+    @property
+    def loop_engine(self) -> Any:
+        """محرك التنسيق المعرفي التوليدي الموحد وحلقة البيئة والمهمة (RFC-16)."""
+        if self._loop_engine is None:
+            from .loop import UnifiedGenerativeCognitiveLoopEngine
+            self._loop_engine = UnifiedGenerativeCognitiveLoopEngine(self)
+        return self._loop_engine
+
+    @loop_engine.setter
+    def loop_engine(self, engine: Any) -> None:
+        self._loop_engine = engine
 
     @property
     def concepts(self) -> dict[str, Node]:
