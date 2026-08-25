@@ -78,17 +78,21 @@ def test_agent_quantity_comparison():
 
 
 def test_agent_silent_ticks_and_gc():
-    """التحقق من تمرير التكات الزمنية والتآكل والموت الخلوي للعقد اللحظية."""
+    """التحقق من تمرير التكات الزمنية التشغيلية (RFC-09: تقدم زمني حيادي) والتقاعد عند انتهاء النطاق."""
     agent = CognitiveAgent()
     # إضافة عقد لحظية
     agent.graph.node("inst:tmp_1", region="vision")
     agent.graph.node("inst:tmp_2", region="vision")
     agent.graph.link("inst:tmp_1", "inst:tmp_2", W=0.30, kind="assoc")
 
-    # تمرير تكات زمنية صامتة
+    # تمرير تكات زمنية صامتة (لا تلغي المعرفة)
     res = agent.step_time(ticks=8)
     assert res["ticks"] == 8
-    assert res["pruned_nodes"] >= 2
+    assert res["pruned_nodes"] == 0
+    assert "inst:tmp_1" in agent.graph.nodes
+
+    # إحالة الكيانات العابرة للتقاعد عند انتهاء النطاق (RFC-01 / RFC-06)
+    agent.graph.retire_transient_scope()
     assert "inst:tmp_1" not in agent.graph.nodes
 
 
@@ -97,8 +101,8 @@ def test_agent_node_inspection():
     agent = CognitiveAgent()
     agent.perceive_text("Cats chase mice")
 
-    info = agent.inspect_node("text:cats")
-    assert info["nid"] == "text:cats"
+    info = agent.inspect_node("text:cat")
+    assert info["nid"] == "text:cat"
     assert info["region"] == "text"
     assert "out_edges" in info
     assert "in_edges" in info
@@ -108,7 +112,7 @@ def test_agent_node_inspection():
 
 
 def test_full_regression_and_signature():
-    """التحقق من عدم الانحدار وثبات البصمة السلوكية المرجعية الحتمية c4b2549940a49789."""
+    """التحقق من عدم الانحدار وثبات البصمة السلوكية المرجعية الحتمية 915119d40643cb97."""
     g = build_reference_graph()
     sig = behavioral_signature(g)
-    assert sig == "c4b2549940a49789"
+    assert sig == "915119d40643cb97"

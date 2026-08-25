@@ -1,0 +1,14 @@
+{
+  "L3F-G01_baseline_integrity": true,
+  "L3F-G02_instrumentation_transparency": true,
+  "L3F-G03_runtime_owner_map": true,
+  "L3F-G04_creation_visibility": true,
+  "L3F-G05_lifecycle_attribution": true,
+  "L3F-G06_gap_integrity": true,
+  "L3F-G07_re_exposure_integrity": true,
+  "L3F-G08_protection_stratification": true,
+  "L3F-G09_raw_evidence_preservation": true,
+  "L3F-G10_frozen_architecture": true,
+  "L3F-G11_upstream_conservation": true,
+  "L3F-G12_final_causal_accounting": true
+}

@@ -1,0 +1,70 @@
+{
+  "total": 16,
+  "passed": 16,
+  "gates": [
+    {
+      "gate": "L3A-G01",
+      "status": "PASSED"
+    },
+    {
+      "gate": "L3A-G02",
+      "status": "PASSED"
+    },
+    {
+      "gate": "L3A-G03",
+      "status": "PASSED"
+    },
+    {
+      "gate": "L3A-G04",
+      "status": "PASSED"
+    },
+    {
+      "gate": "L3A-G05",
+      "status": "PASSED"
+    },
+    {
+      "gate": "L3A-G06",
+      "status": "PASSED"
+    },
+    {
+      "gate": "L3A-G07",
+      "status": "PASSED"
+    },
+    {
+      "gate": "L3A-G08",
+      "status": "PASSED"
+    },
+    {
+      "gate": "L3A-G09",
+      "status": "PASSED"
+    },
+    {
+      "gate": "L3A-G10",
+      "status": "PASSED"
+    },
+    {
+      "gate": "L3A-G11",
+      "status": "PASSED"
+    },
+    {
+      "gate": "L3A-G12",
+      "status": "PASSED"
+    },
+    {
+      "gate": "L3A-G13",
+      "status": "PASSED"
+    },
+    {
+      "gate": "L3A-G14",
+      "status": "PASSED"
+    },
+    {
+      "gate": "L3A-G15",
+      "status": "PASSED"
+    },
+    {
+      "gate": "L3A-G16",
+      "status": "PASSED"
+    }
+  ]
+}

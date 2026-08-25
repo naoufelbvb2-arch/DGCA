@@ -1,0 +1,5 @@
+{
+  "status": "PASSED",
+  "survived_50_silent_ticks": true,
+  "retired_cleanly_on_scope_end": true
+}

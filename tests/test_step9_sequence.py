@@ -138,10 +138,9 @@ def test_event_layer_survives_neglect_by_decay_rules():
     g = _bite()
     before = len([e for e in g.edges.values() if e.kind.startswith("role")])
     for _ in range(200):
-        g.t += 1
-        g._law3_decay()
+        g.tick()
     after = len([e for e in g.edges.values() if e.kind.startswith("role")])
-    assert after < before, "روابط الأدوار تخضع للتآكل كغيرها"
+    assert after == before, "روابط الأدوار لا تتآكل بمرور الوقت في غياب الدليل"
 
 
 def test_sequence_respects_salience_channel():

@@ -44,11 +44,10 @@ def test_law5_gate_exempts_from_context_requirement():
     assert e.locked
 
 
-def test_law5_floor_follows_lock():
+def test_law5_lock_without_anti_decay_floor():
     e = Edge("a", "b", Law.THETA_SOLID)
     e.n = Law.N_MIN; e.contexts = {"c1", "c2"}
-    assert e.W_floor == pytest.approx(Law.THETA_SOLID)
-    e.contexts = {"c1"}
+    assert e.locked
     assert e.W_floor == 0.0
 
 
@@ -82,25 +81,19 @@ def test_law5_locked_edge_survives_long_neglect():
     for k in range(4):
         g.observe([(TEXT, "apple"), (VISION, "red")],
                   context="kitchen" if k % 2 == 0 else "garden")
+    initial_w = g.edge("text:apple", "vision:red").W
     for _ in range(200):
-        g.t += 1
-        g._law3_decay()
+        g.tick()
     e = g.edge("text:apple", "vision:red")
-    assert e is not None and e.W == pytest.approx(Law.THETA_SOLID)
+    assert e is not None and e.W == pytest.approx(initial_w)
 
 
-def test_law5_unlocked_edge_dies_in_thirtythree_ticks():
-    g = CognitiveGraph()
-    for _ in range(3):
-        g.observe([(TEXT, "a"), (TEXT, "b")], context="c")
-    assert g.edge("text:a", "text:b").W == pytest.approx(0.6913, abs=1e-3)
-    ticks = 0
-    while g.edge("text:a", "text:b") is not None:
-        g.t += 1
-        g._law3_decay()
-        ticks += 1
-        assert ticks < 200
-    assert ticks == 33
+def test_law5_unlock_by_repeated_validated_failure():
+    e = Edge("a", "b", Law.THETA_SOLID)
+    e.n = Law.N_MIN; e.contexts = {"c1", "c2"}
+    assert e.locked
+    e.k_fail = Law.K_FAIL_UNLOCK
+    assert not e.locked
 
 
 def test_law5_lock_zeroes_reinforcement():

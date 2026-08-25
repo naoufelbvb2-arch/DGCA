@@ -1,0 +1,86 @@
+{
+  "total": 20,
+  "verified": 20,
+  "invariants": [
+    {
+      "id": "L3A-INV-001",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "L3A-INV-002",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "L3A-INV-003",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "L3A-INV-004",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "L3A-INV-005",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "L3A-INV-006",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "L3A-INV-007",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "L3A-INV-008",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "L3A-INV-009",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "L3A-INV-010",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "L3A-INV-011",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "L3A-INV-012",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "L3A-INV-013",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "L3A-INV-014",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "L3A-INV-015",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "L3A-INV-016",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "L3A-INV-017",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "L3A-INV-018",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "L3A-INV-019",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "L3A-INV-020",
+      "status": "VERIFIED"
+    }
+  ]
+}

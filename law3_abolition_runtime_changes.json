@@ -1,0 +1,23 @@
+{
+  "modified_files": [
+    "dgca/config.py",
+    "dgca/graph.py",
+    "dgca/agent.py",
+    "dgca/signature.py"
+  ],
+  "abolished_mechanisms": [
+    "law3_decay",
+    "LAMBDA_DECAY",
+    "LAMBDA_TRANSIENT",
+    "THETA_PRUNE",
+    "LAMBDA_SAL",
+    "THETA_PROTECT",
+    "W_floor_anti_decay_floor"
+  ],
+  "reassigned_mechanisms": [
+    "O(1) local orphan GC in _unlink",
+    "scope-driven transient retirement",
+    "disappointment bound max(0.0, W - delta)",
+    "RFC-09 clock neutral step_time"
+  ]
+}

@@ -95,9 +95,8 @@ def test_visual_instance_law5_immunity_and_gc():
             assert e.W_floor == 0.0
             assert not e.locked
 
-    # تمرير 8 تكات صامتة للموت الخلوي
-    for _ in range(8):
-        graph.tick()
+    # إحالة الكيانات البصرية العابرة للتقاعد عند انتهاء المشهد (RFC-06 Scene Scope End)
+    graph.retire_transient_scope()
 
     active_inst = [nid for nid in graph.nodes if "inst:vis_tmp" in nid]
     assert len(active_inst) == 0
@@ -164,7 +163,7 @@ def test_spatial_event_linearization():
 
 
 def test_full_regression_and_signature():
-    """التحقق من عدم الانحدار وثبات البصمة السلوكية المرجعية الحتمية c4b2549940a49789."""
+    """التحقق من عدم الانحدار وثبات البصمة السلوكية المرجعية الحتمية 915119d40643cb97."""
     g = build_reference_graph()
     sig = behavioral_signature(g)
-    assert sig == "c4b2549940a49789"
+    assert sig == "915119d40643cb97"

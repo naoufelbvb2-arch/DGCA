@@ -100,9 +100,8 @@ def test_audio_instance_transient_gc():
             assert e.W_floor == 0.0
             assert not e.locked
 
-    # تمرير 8 تكات صامتة للموت الخلوي
-    for _ in range(8):
-        graph.tick()
+    # إحالة الكيانات الصوتية العابرة للتقاعد عند انتهاء النطاق (Scope Retirement)
+    graph.retire_transient_scope()
 
     active_aud = [nid for nid in graph.nodes if "inst:aud_" in nid]
     assert len(active_aud) == 0
@@ -138,7 +137,7 @@ def test_audio_modality_budget_clamping():
 
 
 def test_full_regression_and_signature():
-    """التحقق من عدم الانحدار وثبات البصمة السلوكية المرجعية الحتمية c4b2549940a49789."""
+    """التحقق من عدم الانحدار وثبات البصمة السلوكية المرجعية الحتمية 915119d40643cb97."""
     g = build_reference_graph()
     sig = behavioral_signature(g)
-    assert sig == "c4b2549940a49789"
+    assert sig == "915119d40643cb97"

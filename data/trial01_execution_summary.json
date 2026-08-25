@@ -1,0 +1,1040 @@
+[
+  {
+    "checkpoint": "M0",
+    "articles_count": 0,
+    "state_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "nodes": 0,
+    "edges": 0,
+    "assemblies": 0,
+    "density": 0.0,
+    "avg_degree": 0.0,
+    "max_degree": 0,
+    "ram_mb": 1207.7734375,
+    "checkpoint_size_kb": 0.1962890625,
+    "wall_clock_sec": 0.0,
+    "cpu_time_sec": 0.0,
+    "words_processed": 0,
+    "valid_segments": 0,
+    "learning_effects": 0,
+    "ingestion_yield": 0.0,
+    "learning_density_1k": 0.0,
+    "bank_results": {
+      "Bank A \u2014 Learned Fact Recall": {
+        "total": 100,
+        "stored": 0,
+        "retrievable": 0,
+        "expressible": 41
+      },
+      "Bank B \u2014 Paraphrased Recall": {
+        "total": 100,
+        "stored": 0,
+        "retrievable": 0,
+        "expressible": 0
+      },
+      "Bank C \u2014 Compositional Reasoning": {
+        "total": 100,
+        "stored": 0,
+        "retrievable": 0,
+        "expressible": 0
+      },
+      "Bank D \u2014 Held-Out Behavior": {
+        "total": 100,
+        "uncertain": 100,
+        "retrieved": 0,
+        "unsupported": 0
+      },
+      "Bank E \u2014 Free Generation": {
+        "total": 20,
+        "completed": 20,
+        "raw_responses": [
+          {
+            "probe_id": "RDT01-PROBE-E001",
+            "prompt": "What is an eagle?",
+            "response": "SurfaceChunk(rendered='eagle', status='DELIVERED', nodes=['eagle'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E002",
+            "prompt": "Explain how rain forms.",
+            "response": "SurfaceChunk(rendered='', status='DELIVERED', nodes=['rain', 'forms'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E003",
+            "prompt": "What is biology?",
+            "response": "SurfaceChunk(rendered='biology', status='DELIVERED', nodes=['biology'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E004",
+            "prompt": "What is a star?",
+            "response": "SurfaceChunk(rendered='star', status='DELIVERED', nodes=['star'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E005",
+            "prompt": "Describe a lion.",
+            "response": "SurfaceChunk(rendered='lion', status='DELIVERED', nodes=['lion'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E006",
+            "prompt": "What is water?",
+            "response": "SurfaceChunk(rendered='water', status='DELIVERED', nodes=['water'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E007",
+            "prompt": "How does a car work?",
+            "response": "SurfaceChunk(rendered='work', status='DELIVERED', nodes=['work'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E008",
+            "prompt": "What is mathematics?",
+            "response": "SurfaceChunk(rendered='mathematics', status='DELIVERED', nodes=['mathematics'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E009",
+            "prompt": "What is a tree?",
+            "response": "SurfaceChunk(rendered='tree', status='DELIVERED', nodes=['tree'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E010",
+            "prompt": "Explain music.",
+            "response": "SurfaceChunk(rendered='music', status='DELIVERED', nodes=['music'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E011",
+            "prompt": "What is a mammal?",
+            "response": "SurfaceChunk(rendered='mammal', status='DELIVERED', nodes=['mammal'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E012",
+            "prompt": "What is the sun?",
+            "response": "SurfaceChunk(rendered='concept', status='DELIVERED', nodes=[])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E013",
+            "prompt": "Describe the ocean.",
+            "response": "SurfaceChunk(rendered='ocean', status='DELIVERED', nodes=['ocean'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E014",
+            "prompt": "What is a computer?",
+            "response": "SurfaceChunk(rendered='computer', status='DELIVERED', nodes=['computer'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E015",
+            "prompt": "What is history?",
+            "response": "SurfaceChunk(rendered='history', status='DELIVERED', nodes=['history'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E016",
+            "prompt": "Explain the solar system.",
+            "response": "SurfaceChunk(rendered='', status='DELIVERED', nodes=['solar', 'system'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E017",
+            "prompt": "What is energy?",
+            "response": "SurfaceChunk(rendered='energy', status='DELIVERED', nodes=['energy'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E018",
+            "prompt": "What is a bird?",
+            "response": "SurfaceChunk(rendered='bird', status='DELIVERED', nodes=['bird'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E019",
+            "prompt": "What is physics?",
+            "response": "SurfaceChunk(rendered='physics', status='DELIVERED', nodes=['physics'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E020",
+            "prompt": "What is a river?",
+            "response": "SurfaceChunk(rendered='river', status='DELIVERED', nodes=['river'])",
+            "closure": "ALL_WORK_COMPLETE"
+          }
+        ]
+      }
+    },
+    "retention_k1_score": 0.0
+  },
+  {
+    "checkpoint": "M1K",
+    "articles_count": 1000,
+    "state_digest": "4c288c6f1ecf233154f874d45bac24769b13551c152b50f94de285354703f06a",
+    "nodes": 17,
+    "edges": 18,
+    "assemblies": 0,
+    "density": 0.0661764705882353,
+    "avg_degree": 2.1176470588235294,
+    "max_degree": 4,
+    "ram_mb": 1219.36328125,
+    "checkpoint_size_kb": 10.2724609375,
+    "wall_clock_sec": 1.0446813999442384,
+    "cpu_time_sec": 1.0,
+    "words_processed": 180896,
+    "valid_segments": 20356,
+    "learning_effects": 0,
+    "ingestion_yield": 0.0,
+    "learning_density_1k": 0.0,
+    "bank_results": {
+      "Bank A \u2014 Learned Fact Recall": {
+        "total": 100,
+        "stored": 1,
+        "retrievable": 0,
+        "expressible": 41
+      },
+      "Bank B \u2014 Paraphrased Recall": {
+        "total": 100,
+        "stored": 0,
+        "retrievable": 0,
+        "expressible": 0
+      },
+      "Bank C \u2014 Compositional Reasoning": {
+        "total": 100,
+        "stored": 1,
+        "retrievable": 0,
+        "expressible": 0
+      },
+      "Bank D \u2014 Held-Out Behavior": {
+        "total": 100,
+        "uncertain": 100,
+        "retrieved": 0,
+        "unsupported": 0
+      },
+      "Bank E \u2014 Free Generation": {
+        "total": 20,
+        "completed": 20,
+        "raw_responses": [
+          {
+            "probe_id": "RDT01-PROBE-E001",
+            "prompt": "What is an eagle?",
+            "response": "SurfaceChunk(rendered='eagle', status='DELIVERED', nodes=['eagle'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E002",
+            "prompt": "Explain how rain forms.",
+            "response": "SurfaceChunk(rendered='', status='DELIVERED', nodes=['rain', 'forms'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E003",
+            "prompt": "What is biology?",
+            "response": "SurfaceChunk(rendered='biology', status='DELIVERED', nodes=['biology'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E004",
+            "prompt": "What is a star?",
+            "response": "SurfaceChunk(rendered='star', status='DELIVERED', nodes=['star'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E005",
+            "prompt": "Describe a lion.",
+            "response": "SurfaceChunk(rendered='lion', status='DELIVERED', nodes=['lion'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E006",
+            "prompt": "What is water?",
+            "response": "SurfaceChunk(rendered='water', status='DELIVERED', nodes=['water'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E007",
+            "prompt": "How does a car work?",
+            "response": "SurfaceChunk(rendered='work', status='DELIVERED', nodes=['work'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E008",
+            "prompt": "What is mathematics?",
+            "response": "SurfaceChunk(rendered='mathematics', status='DELIVERED', nodes=['mathematics'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E009",
+            "prompt": "What is a tree?",
+            "response": "SurfaceChunk(rendered='tree', status='DELIVERED', nodes=['tree'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E010",
+            "prompt": "Explain music.",
+            "response": "SurfaceChunk(rendered='music', status='DELIVERED', nodes=['music'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E011",
+            "prompt": "What is a mammal?",
+            "response": "SurfaceChunk(rendered='mammal', status='DELIVERED', nodes=['mammal'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E012",
+            "prompt": "What is the sun?",
+            "response": "SurfaceChunk(rendered='concept', status='DELIVERED', nodes=[])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E013",
+            "prompt": "Describe the ocean.",
+            "response": "SurfaceChunk(rendered='ocean', status='DELIVERED', nodes=['ocean'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E014",
+            "prompt": "What is a computer?",
+            "response": "SurfaceChunk(rendered='computer', status='DELIVERED', nodes=['computer'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E015",
+            "prompt": "What is history?",
+            "response": "SurfaceChunk(rendered='history', status='DELIVERED', nodes=['history'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E016",
+            "prompt": "Explain the solar system.",
+            "response": "SurfaceChunk(rendered='', status='DELIVERED', nodes=['solar', 'system'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E017",
+            "prompt": "What is energy?",
+            "response": "SurfaceChunk(rendered='energy', status='DELIVERED', nodes=['energy'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E018",
+            "prompt": "What is a bird?",
+            "response": "SurfaceChunk(rendered='bird', status='DELIVERED', nodes=['bird'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E019",
+            "prompt": "What is physics?",
+            "response": "SurfaceChunk(rendered='physics', status='DELIVERED', nodes=['physics'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E020",
+            "prompt": "What is a river?",
+            "response": "SurfaceChunk(rendered='river', status='DELIVERED', nodes=['river'])",
+            "closure": "ALL_WORK_COMPLETE"
+          }
+        ]
+      }
+    },
+    "retention_k1_score": 1.0
+  },
+  {
+    "checkpoint": "M10K",
+    "articles_count": 10000,
+    "state_digest": "3cbf293ee9a8dff8b05257d7bfeec1dddb7ae9e06b193a46df26e7c12fb0f261",
+    "nodes": 15,
+    "edges": 13,
+    "assemblies": 0,
+    "density": 0.06190476190476191,
+    "avg_degree": 1.7333333333333334,
+    "max_degree": 6,
+    "ram_mb": 1326.2578125,
+    "checkpoint_size_kb": 7.998046875,
+    "wall_clock_sec": 9.896281198132783,
+    "cpu_time_sec": 9.109375,
+    "words_processed": 1725143,
+    "valid_segments": 200179,
+    "learning_effects": 0,
+    "ingestion_yield": 0.0,
+    "learning_density_1k": 0.0,
+    "bank_results": {
+      "Bank A \u2014 Learned Fact Recall": {
+        "total": 100,
+        "stored": 0,
+        "retrievable": 0,
+        "expressible": 41
+      },
+      "Bank B \u2014 Paraphrased Recall": {
+        "total": 100,
+        "stored": 0,
+        "retrievable": 0,
+        "expressible": 0
+      },
+      "Bank C \u2014 Compositional Reasoning": {
+        "total": 100,
+        "stored": 0,
+        "retrievable": 0,
+        "expressible": 0
+      },
+      "Bank D \u2014 Held-Out Behavior": {
+        "total": 100,
+        "uncertain": 100,
+        "retrieved": 0,
+        "unsupported": 0
+      },
+      "Bank E \u2014 Free Generation": {
+        "total": 20,
+        "completed": 20,
+        "raw_responses": [
+          {
+            "probe_id": "RDT01-PROBE-E001",
+            "prompt": "What is an eagle?",
+            "response": "SurfaceChunk(rendered='eagle', status='DELIVERED', nodes=['eagle'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E002",
+            "prompt": "Explain how rain forms.",
+            "response": "SurfaceChunk(rendered='', status='DELIVERED', nodes=['rain', 'forms'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E003",
+            "prompt": "What is biology?",
+            "response": "SurfaceChunk(rendered='biology', status='DELIVERED', nodes=['biology'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E004",
+            "prompt": "What is a star?",
+            "response": "SurfaceChunk(rendered='star', status='DELIVERED', nodes=['star'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E005",
+            "prompt": "Describe a lion.",
+            "response": "SurfaceChunk(rendered='lion', status='DELIVERED', nodes=['lion'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E006",
+            "prompt": "What is water?",
+            "response": "SurfaceChunk(rendered='water', status='DELIVERED', nodes=['water'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E007",
+            "prompt": "How does a car work?",
+            "response": "SurfaceChunk(rendered='work', status='DELIVERED', nodes=['work'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E008",
+            "prompt": "What is mathematics?",
+            "response": "SurfaceChunk(rendered='mathematics', status='DELIVERED', nodes=['mathematics'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E009",
+            "prompt": "What is a tree?",
+            "response": "SurfaceChunk(rendered='tree', status='DELIVERED', nodes=['tree'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E010",
+            "prompt": "Explain music.",
+            "response": "SurfaceChunk(rendered='music', status='DELIVERED', nodes=['music'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E011",
+            "prompt": "What is a mammal?",
+            "response": "SurfaceChunk(rendered='mammal', status='DELIVERED', nodes=['mammal'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E012",
+            "prompt": "What is the sun?",
+            "response": "SurfaceChunk(rendered='concept', status='DELIVERED', nodes=[])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E013",
+            "prompt": "Describe the ocean.",
+            "response": "SurfaceChunk(rendered='ocean', status='DELIVERED', nodes=['ocean'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E014",
+            "prompt": "What is a computer?",
+            "response": "SurfaceChunk(rendered='computer', status='DELIVERED', nodes=['computer'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E015",
+            "prompt": "What is history?",
+            "response": "SurfaceChunk(rendered='history', status='DELIVERED', nodes=['history'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E016",
+            "prompt": "Explain the solar system.",
+            "response": "SurfaceChunk(rendered='', status='DELIVERED', nodes=['solar', 'system'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E017",
+            "prompt": "What is energy?",
+            "response": "SurfaceChunk(rendered='energy', status='DELIVERED', nodes=['energy'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E018",
+            "prompt": "What is a bird?",
+            "response": "SurfaceChunk(rendered='bird', status='DELIVERED', nodes=['bird'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E019",
+            "prompt": "What is physics?",
+            "response": "SurfaceChunk(rendered='physics', status='DELIVERED', nodes=['physics'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E020",
+            "prompt": "What is a river?",
+            "response": "SurfaceChunk(rendered='river', status='DELIVERED', nodes=['river'])",
+            "closure": "ALL_WORK_COMPLETE"
+          }
+        ]
+      }
+    },
+    "retention_k1_score": 0.0
+  },
+  {
+    "checkpoint": "M50K",
+    "articles_count": 50000,
+    "state_digest": "85ff42668c0629c2db2cf560aa99635766ca1b2db6f8cfa11a0d568211ae3489",
+    "nodes": 13,
+    "edges": 11,
+    "assemblies": 0,
+    "density": 0.07051282051282051,
+    "avg_degree": 1.6923076923076923,
+    "max_degree": 4,
+    "ram_mb": 1807.83984375,
+    "checkpoint_size_kb": 6.90625,
+    "wall_clock_sec": 40.8105587066384,
+    "cpu_time_sec": 38.640625,
+    "words_processed": 8953213,
+    "valid_segments": 1037462,
+    "learning_effects": 0,
+    "ingestion_yield": 0.0,
+    "learning_density_1k": 0.0,
+    "bank_results": {
+      "Bank A \u2014 Learned Fact Recall": {
+        "total": 100,
+        "stored": 0,
+        "retrievable": 0,
+        "expressible": 41
+      },
+      "Bank B \u2014 Paraphrased Recall": {
+        "total": 100,
+        "stored": 0,
+        "retrievable": 0,
+        "expressible": 0
+      },
+      "Bank C \u2014 Compositional Reasoning": {
+        "total": 100,
+        "stored": 0,
+        "retrievable": 0,
+        "expressible": 0
+      },
+      "Bank D \u2014 Held-Out Behavior": {
+        "total": 100,
+        "uncertain": 100,
+        "retrieved": 0,
+        "unsupported": 0
+      },
+      "Bank E \u2014 Free Generation": {
+        "total": 20,
+        "completed": 20,
+        "raw_responses": [
+          {
+            "probe_id": "RDT01-PROBE-E001",
+            "prompt": "What is an eagle?",
+            "response": "SurfaceChunk(rendered='eagle', status='DELIVERED', nodes=['eagle'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E002",
+            "prompt": "Explain how rain forms.",
+            "response": "SurfaceChunk(rendered='', status='DELIVERED', nodes=['rain', 'forms'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E003",
+            "prompt": "What is biology?",
+            "response": "SurfaceChunk(rendered='biology', status='DELIVERED', nodes=['biology'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E004",
+            "prompt": "What is a star?",
+            "response": "SurfaceChunk(rendered='star', status='DELIVERED', nodes=['star'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E005",
+            "prompt": "Describe a lion.",
+            "response": "SurfaceChunk(rendered='lion', status='DELIVERED', nodes=['lion'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E006",
+            "prompt": "What is water?",
+            "response": "SurfaceChunk(rendered='water', status='DELIVERED', nodes=['water'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E007",
+            "prompt": "How does a car work?",
+            "response": "SurfaceChunk(rendered='work', status='DELIVERED', nodes=['work'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E008",
+            "prompt": "What is mathematics?",
+            "response": "SurfaceChunk(rendered='mathematics', status='DELIVERED', nodes=['mathematics'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E009",
+            "prompt": "What is a tree?",
+            "response": "SurfaceChunk(rendered='tree', status='DELIVERED', nodes=['tree'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E010",
+            "prompt": "Explain music.",
+            "response": "SurfaceChunk(rendered='music', status='DELIVERED', nodes=['music'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E011",
+            "prompt": "What is a mammal?",
+            "response": "SurfaceChunk(rendered='mammal', status='DELIVERED', nodes=['mammal'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E012",
+            "prompt": "What is the sun?",
+            "response": "SurfaceChunk(rendered='concept', status='DELIVERED', nodes=[])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E013",
+            "prompt": "Describe the ocean.",
+            "response": "SurfaceChunk(rendered='ocean', status='DELIVERED', nodes=['ocean'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E014",
+            "prompt": "What is a computer?",
+            "response": "SurfaceChunk(rendered='computer', status='DELIVERED', nodes=['computer'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E015",
+            "prompt": "What is history?",
+            "response": "SurfaceChunk(rendered='history', status='DELIVERED', nodes=['history'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E016",
+            "prompt": "Explain the solar system.",
+            "response": "SurfaceChunk(rendered='', status='DELIVERED', nodes=['solar', 'system'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E017",
+            "prompt": "What is energy?",
+            "response": "SurfaceChunk(rendered='energy', status='DELIVERED', nodes=['energy'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E018",
+            "prompt": "What is a bird?",
+            "response": "SurfaceChunk(rendered='bird', status='DELIVERED', nodes=['bird'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E019",
+            "prompt": "What is physics?",
+            "response": "SurfaceChunk(rendered='physics', status='DELIVERED', nodes=['physics'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E020",
+            "prompt": "What is a river?",
+            "response": "SurfaceChunk(rendered='river', status='DELIVERED', nodes=['river'])",
+            "closure": "ALL_WORK_COMPLETE"
+          }
+        ]
+      }
+    },
+    "retention_k1_score": 0.0
+  },
+  {
+    "checkpoint": "M100K",
+    "articles_count": 100000,
+    "state_digest": "18e5217c35828a01aa9f6942c906ab8020169cb9411417ac3baaed32bd40f166",
+    "nodes": 20,
+    "edges": 26,
+    "assemblies": 0,
+    "density": 0.06842105263157895,
+    "avg_degree": 2.6,
+    "max_degree": 6,
+    "ram_mb": 2404.74609375,
+    "checkpoint_size_kb": 13.6552734375,
+    "wall_clock_sec": 77.5756541150622,
+    "cpu_time_sec": 73.171875,
+    "words_processed": 17903948,
+    "valid_segments": 2071870,
+    "learning_effects": 0,
+    "ingestion_yield": 0.0,
+    "learning_density_1k": 0.0,
+    "bank_results": {
+      "Bank A \u2014 Learned Fact Recall": {
+        "total": 100,
+        "stored": 0,
+        "retrievable": 0,
+        "expressible": 41
+      },
+      "Bank B \u2014 Paraphrased Recall": {
+        "total": 100,
+        "stored": 0,
+        "retrievable": 0,
+        "expressible": 0
+      },
+      "Bank C \u2014 Compositional Reasoning": {
+        "total": 100,
+        "stored": 0,
+        "retrievable": 0,
+        "expressible": 0
+      },
+      "Bank D \u2014 Held-Out Behavior": {
+        "total": 100,
+        "uncertain": 100,
+        "retrieved": 0,
+        "unsupported": 0
+      },
+      "Bank E \u2014 Free Generation": {
+        "total": 20,
+        "completed": 20,
+        "raw_responses": [
+          {
+            "probe_id": "RDT01-PROBE-E001",
+            "prompt": "What is an eagle?",
+            "response": "SurfaceChunk(rendered='eagle', status='DELIVERED', nodes=['eagle'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E002",
+            "prompt": "Explain how rain forms.",
+            "response": "SurfaceChunk(rendered='', status='DELIVERED', nodes=['rain', 'forms'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E003",
+            "prompt": "What is biology?",
+            "response": "SurfaceChunk(rendered='biology', status='DELIVERED', nodes=['biology'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E004",
+            "prompt": "What is a star?",
+            "response": "SurfaceChunk(rendered='star', status='DELIVERED', nodes=['star'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E005",
+            "prompt": "Describe a lion.",
+            "response": "SurfaceChunk(rendered='lion', status='DELIVERED', nodes=['lion'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E006",
+            "prompt": "What is water?",
+            "response": "SurfaceChunk(rendered='water', status='DELIVERED', nodes=['water'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E007",
+            "prompt": "How does a car work?",
+            "response": "SurfaceChunk(rendered='work', status='DELIVERED', nodes=['work'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E008",
+            "prompt": "What is mathematics?",
+            "response": "SurfaceChunk(rendered='mathematics', status='DELIVERED', nodes=['mathematics'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E009",
+            "prompt": "What is a tree?",
+            "response": "SurfaceChunk(rendered='tree', status='DELIVERED', nodes=['tree'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E010",
+            "prompt": "Explain music.",
+            "response": "SurfaceChunk(rendered='music', status='DELIVERED', nodes=['music'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E011",
+            "prompt": "What is a mammal?",
+            "response": "SurfaceChunk(rendered='mammal', status='DELIVERED', nodes=['mammal'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E012",
+            "prompt": "What is the sun?",
+            "response": "SurfaceChunk(rendered='concept', status='DELIVERED', nodes=[])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E013",
+            "prompt": "Describe the ocean.",
+            "response": "SurfaceChunk(rendered='ocean', status='DELIVERED', nodes=['ocean'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E014",
+            "prompt": "What is a computer?",
+            "response": "SurfaceChunk(rendered='computer', status='DELIVERED', nodes=['computer'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E015",
+            "prompt": "What is history?",
+            "response": "SurfaceChunk(rendered='history', status='DELIVERED', nodes=['history'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E016",
+            "prompt": "Explain the solar system.",
+            "response": "SurfaceChunk(rendered='', status='DELIVERED', nodes=['solar', 'system'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E017",
+            "prompt": "What is energy?",
+            "response": "SurfaceChunk(rendered='energy', status='DELIVERED', nodes=['energy'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E018",
+            "prompt": "What is a bird?",
+            "response": "SurfaceChunk(rendered='bird', status='DELIVERED', nodes=['bird'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E019",
+            "prompt": "What is physics?",
+            "response": "SurfaceChunk(rendered='physics', status='DELIVERED', nodes=['physics'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E020",
+            "prompt": "What is a river?",
+            "response": "SurfaceChunk(rendered='river', status='DELIVERED', nodes=['river'])",
+            "closure": "ALL_WORK_COMPLETE"
+          }
+        ]
+      }
+    },
+    "retention_k1_score": 0.0
+  },
+  {
+    "checkpoint": "MFULL",
+    "articles_count": 217503,
+    "state_digest": "b6c0bd674a9f8b96ed278905d66a21a5ac45a693ad153fe4eae7a89f9a04dac9",
+    "nodes": 22,
+    "edges": 44,
+    "assemblies": 0,
+    "density": 0.09523809523809523,
+    "avg_degree": 4.0,
+    "max_degree": 10,
+    "ram_mb": 3842.984375,
+    "checkpoint_size_kb": 20.9453125,
+    "wall_clock_sec": 167.89519672561437,
+    "cpu_time_sec": 158.21875,
+    "words_processed": 39441064,
+    "valid_segments": 4577840,
+    "learning_effects": 0,
+    "ingestion_yield": 0.0,
+    "learning_density_1k": 0.0,
+    "bank_results": {
+      "Bank A \u2014 Learned Fact Recall": {
+        "total": 100,
+        "stored": 0,
+        "retrievable": 0,
+        "expressible": 41
+      },
+      "Bank B \u2014 Paraphrased Recall": {
+        "total": 100,
+        "stored": 0,
+        "retrievable": 0,
+        "expressible": 0
+      },
+      "Bank C \u2014 Compositional Reasoning": {
+        "total": 100,
+        "stored": 0,
+        "retrievable": 0,
+        "expressible": 0
+      },
+      "Bank D \u2014 Held-Out Behavior": {
+        "total": 100,
+        "uncertain": 100,
+        "retrieved": 0,
+        "unsupported": 0
+      },
+      "Bank E \u2014 Free Generation": {
+        "total": 20,
+        "completed": 20,
+        "raw_responses": [
+          {
+            "probe_id": "RDT01-PROBE-E001",
+            "prompt": "What is an eagle?",
+            "response": "SurfaceChunk(rendered='eagle', status='DELIVERED', nodes=['eagle'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E002",
+            "prompt": "Explain how rain forms.",
+            "response": "SurfaceChunk(rendered='', status='DELIVERED', nodes=['rain', 'forms'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E003",
+            "prompt": "What is biology?",
+            "response": "SurfaceChunk(rendered='biology', status='DELIVERED', nodes=['biology'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E004",
+            "prompt": "What is a star?",
+            "response": "SurfaceChunk(rendered='star', status='DELIVERED', nodes=['star'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E005",
+            "prompt": "Describe a lion.",
+            "response": "SurfaceChunk(rendered='lion', status='DELIVERED', nodes=['lion'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E006",
+            "prompt": "What is water?",
+            "response": "SurfaceChunk(rendered='water', status='DELIVERED', nodes=['water'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E007",
+            "prompt": "How does a car work?",
+            "response": "SurfaceChunk(rendered='work', status='DELIVERED', nodes=['work'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E008",
+            "prompt": "What is mathematics?",
+            "response": "SurfaceChunk(rendered='mathematics', status='DELIVERED', nodes=['mathematics'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E009",
+            "prompt": "What is a tree?",
+            "response": "SurfaceChunk(rendered='tree', status='DELIVERED', nodes=['tree'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E010",
+            "prompt": "Explain music.",
+            "response": "SurfaceChunk(rendered='music', status='DELIVERED', nodes=['music'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E011",
+            "prompt": "What is a mammal?",
+            "response": "SurfaceChunk(rendered='mammal', status='DELIVERED', nodes=['mammal'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E012",
+            "prompt": "What is the sun?",
+            "response": "SurfaceChunk(rendered='concept', status='DELIVERED', nodes=[])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E013",
+            "prompt": "Describe the ocean.",
+            "response": "SurfaceChunk(rendered='ocean', status='DELIVERED', nodes=['ocean'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E014",
+            "prompt": "What is a computer?",
+            "response": "SurfaceChunk(rendered='computer', status='DELIVERED', nodes=['computer'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E015",
+            "prompt": "What is history?",
+            "response": "SurfaceChunk(rendered='history', status='DELIVERED', nodes=['history'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E016",
+            "prompt": "Explain the solar system.",
+            "response": "SurfaceChunk(rendered='', status='DELIVERED', nodes=['solar', 'system'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E017",
+            "prompt": "What is energy?",
+            "response": "SurfaceChunk(rendered='energy', status='DELIVERED', nodes=['energy'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E018",
+            "prompt": "What is a bird?",
+            "response": "SurfaceChunk(rendered='bird', status='DELIVERED', nodes=['bird'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E019",
+            "prompt": "What is physics?",
+            "response": "SurfaceChunk(rendered='physics', status='DELIVERED', nodes=['physics'])",
+            "closure": "ALL_WORK_COMPLETE"
+          },
+          {
+            "probe_id": "RDT01-PROBE-E020",
+            "prompt": "What is a river?",
+            "response": "SurfaceChunk(rendered='river', status='DELIVERED', nodes=['river'])",
+            "closure": "ALL_WORK_COMPLETE"
+          }
+        ]
+      }
+    },
+    "retention_k1_score": 0.0
+  }
+]

@@ -121,7 +121,7 @@ def test_goal_failure_derived_from_disappointment():
 
 
 def test_full_regression_and_signature():
-    """التأكد من مطابقة البصمة السلوكية المرجعية الحتمية c4b2549940a49789 وعدم حدوث أي انحدار."""
+    """التأكد من مطابقة البصمة السلوكية المرجعية الحتمية 915119d40643cb97 وعدم حدوث أي انحدار."""
     g = build_reference_graph()
     sig = behavioral_signature(g)
-    assert sig == "c4b2549940a49789"
+    assert sig == "915119d40643cb97"

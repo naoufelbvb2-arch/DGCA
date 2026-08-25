@@ -1,0 +1,102 @@
+[
+  {
+    "id": "PF1-01",
+    "text": "A falcon is a bird.",
+    "type": "copular_definition"
+  },
+  {
+    "id": "PF1-02",
+    "text": "The apple is red.",
+    "type": "property_adjective"
+  },
+  {
+    "id": "PF1-03",
+    "text": "Falcons hunt small animals.",
+    "type": "active_svo"
+  },
+  {
+    "id": "PF1-04",
+    "text": "Birds have feathers.",
+    "type": "possession"
+  },
+  {
+    "id": "PF1-05",
+    "text": "The book is on the desk.",
+    "type": "preposition_location"
+  },
+  {
+    "id": "PF1-06",
+    "text": "Mars has two moons.",
+    "type": "quantity_binding"
+  },
+  {
+    "id": "PF1-07",
+    "text": "Alexander Graham Bell invented the telephone.",
+    "type": "proper_name_svo"
+  },
+  {
+    "id": "PF1-08",
+    "text": "The mouse was chased by the black cat.",
+    "type": "passive_voice"
+  },
+  {
+    "id": "PF1-09",
+    "text": "A lion is a large cat that lives in Africa.",
+    "type": "relative_clause"
+  },
+  {
+    "id": "PF1-10",
+    "text": "Photosynthesis converts light energy into chemical energy.",
+    "type": "same_head_multi_role"
+  },
+  {
+    "id": "PF1-11",
+    "text": "Water freezes at zero degrees Celsius.",
+    "type": "numeric_condition"
+  },
+  {
+    "id": "PF1-12",
+    "text": "New York City is in the United States.",
+    "type": "proper_name_relation"
+  },
+  {
+    "id": "PF1-13",
+    "text": "Birds have feathers and lay eggs.",
+    "type": "coordinated_predicates"
+  },
+  {
+    "id": "PF1-14",
+    "text": "The sun is bright.",
+    "type": "copular_property"
+  },
+  {
+    "id": "PF1-15",
+    "text": "The cat is in the garden.",
+    "type": "prepositional_svo"
+  },
+  {
+    "id": "PF1-16",
+    "text": "Bees make honey.",
+    "type": "active_svo"
+  },
+  {
+    "id": "PF1-17",
+    "text": "Spiders build webs.",
+    "type": "active_svo"
+  },
+  {
+    "id": "PF1-18",
+    "text": "The Earth orbits the Sun.",
+    "type": "active_svo"
+  },
+  {
+    "id": "PF1-19",
+    "text": "The table has four legs.",
+    "type": "quantity_binding"
+  },
+  {
+    "id": "PF1-20",
+    "text": "Mars is not a star.",
+    "type": "explicit_negation"
+  }
+]

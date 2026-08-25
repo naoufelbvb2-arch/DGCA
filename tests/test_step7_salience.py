@@ -6,7 +6,7 @@ from itertools import pairwise
 
 import pytest
 
-from dgca.config import TEXT, VISION, Law
+from dgca.config import TEXT, VISION
 from dgca.graph import CognitiveGraph
 
 
@@ -27,14 +27,14 @@ def test_novelty_alone_is_not_salient():
 
 
 def test_neutral_novelty_is_forgotten():
+    """تحت إلغاء القانون 3: لا تتآكل المعرفة بالصمت بل تصمد، وتنقضي عبر فك الإسناد الصريح."""
     g = CognitiveGraph()
     g.observe([(TEXT, "chair"), (TEXT, "blue")], context="room")
-    ticks = 0
-    while g.edge("text:chair", "text:blue") is not None:
-        _rest(g, 1)
-        ticks += 1
-        assert ticks < 200
-    assert ticks == 16
+    for _ in range(200):
+        g.tick()
+    assert g.edge("text:chair", "text:blue") is not None
+    g.unlink("text:chair", "text:blue")
+    assert g.edge("text:chair", "text:blue") is None
 
 
 def test_harm_tags_from_a_single_observation():
@@ -43,7 +43,7 @@ def test_harm_tags_from_a_single_observation():
     e = g.edge("text:apple", "text:seeds")
     assert e.S == pytest.approx(1.0, abs=1e-3)
     assert e.tagged and e.valence == pytest.approx(-0.9)
-    assert e.W_floor == pytest.approx(Law.THETA_PROTECT, abs=1e-3)
+    assert e.W_floor == 0.0
 
 
 def test_only_affect_accelerates_learning():
@@ -66,7 +66,7 @@ def test_harm_is_weighted_above_reward():
 
 
 def test_tagging_does_not_grant_locking():
-    """البروز يمنع النسيان، ولا يمنح القفل."""
+    """البروز انفعالي ولا يمنح القفل."""
     g = CognitiveGraph()
     g.observe([(TEXT, "apple"), (TEXT, "seeds")], context="medical", valence=-0.9)
     e = g.edge("text:apple", "text:seeds")
@@ -74,26 +74,15 @@ def test_tagging_does_not_grant_locking():
     assert e.n == 1 and len(e.contexts) == 1
 
 
-def test_tagged_memory_survives_long_neglect():
+def test_tagged_memory_weight_unchanged_by_unrelated_ticks():
     g = CognitiveGraph()
     g.observe([(TEXT, "apple"), (TEXT, "seeds")], context="medical", valence=-0.9)
+    initial_w = g.edge("text:apple", "text:seeds").W
     _rest(g, 150)
     e = g.edge("text:apple", "text:seeds")
     assert e is not None
-    assert e.W == pytest.approx(0.3238, abs=1e-3)
-    assert e.S == pytest.approx(0.925, abs=1e-3)
-
-
-def test_salience_fades_so_nothing_is_hoarded_forever():
-    g = CognitiveGraph()
-    g.observe([(TEXT, "apple"), (TEXT, "seeds")], context="medical", valence=-0.9)
-    _rest(g, 150)
-    ticks = 0
-    while g.edge("text:apple", "text:seeds") is not None:
-        _rest(g, 1)
-        ticks += 1
-        assert ticks < 3000
-    assert ticks == 1565
+    assert e.W == pytest.approx(initial_w)
+    assert e.S == pytest.approx(1.0, abs=1e-3)
 
 
 # ─────────────────── ق12 — الحالة الداخلية

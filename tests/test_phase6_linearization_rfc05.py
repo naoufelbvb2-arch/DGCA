@@ -69,7 +69,7 @@ def test_mental_overlay_zero_graph_mutation():
         engine.generate(seeds=["vision:red"], target="text:apple")
 
     sig_after = behavioral_signature(g)
-    assert sig_before == sig_after == "c4b2549940a49789"
+    assert sig_before == sig_after == "915119d40643cb97"
 
 
 def test_linearize_numerical_comparison():
@@ -119,7 +119,7 @@ def test_transitive_reasoning_explanation():
 
 
 def test_full_regression_and_signature():
-    """التأكد من عدم حدوث أي انحدار وثبات البصمة السلوكية المرجعية الحتمية c4b2549940a49789."""
+    """التأكد من عدم حدوث أي انحدار وثبات البصمة السلوكية المرجعية الحتمية 915119d40643cb97."""
     g = build_reference_graph()
     sig = behavioral_signature(g)
-    assert sig == "c4b2549940a49789"
+    assert sig == "915119d40643cb97"

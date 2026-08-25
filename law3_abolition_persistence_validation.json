@@ -1,0 +1,26 @@
+{
+  "status": "FAILED",
+  "tick_validations": {
+    "ticks_1": {
+      "drift_count": 0,
+      "status": "PASSED"
+    },
+    "ticks_16": {
+      "drift_count": 0,
+      "status": "PASSED"
+    },
+    "ticks_128": {
+      "drift_count": 0,
+      "status": "PASSED"
+    },
+    "ticks_1000": {
+      "drift_count": 0,
+      "status": "PASSED"
+    }
+  },
+  "recurrence_reinforcement": {
+    "initial_w": 0.37,
+    "reinforced_w": 0.0,
+    "is_reinforced": false
+  }
+}

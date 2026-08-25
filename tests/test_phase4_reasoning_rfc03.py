@@ -137,11 +137,11 @@ def test_simulation_mode_zero_side_effects():
     deep_infer(g, ["vision:red"], target="text:sweet", mode="simulation")
 
     sig_after = behavioral_signature(g)
-    assert sig_before == sig_after == "c4b2549940a49789"
+    assert sig_before == sig_after == "915119d40643cb97"
 
 
 def test_full_regression_and_signature():
-    """التأكد من عدم حدوث أي انحدار وثبات البصمة المرجعية c4b2549940a49789."""
+    """التأكد من عدم حدوث أي انحدار وثبات البصمة المرجعية 915119d40643cb97."""
     g = build_reference_graph()
     sig = behavioral_signature(g)
-    assert sig == "c4b2549940a49789"
+    assert sig == "915119d40643cb97"

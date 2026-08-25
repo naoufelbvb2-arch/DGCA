@@ -1,0 +1,20 @@
+{"case_id": "PF1-01", "raw_sentence": "A falcon is a bird.", "expected_symbols_count": 2, "materialized_symbols_count": 2, "nodes_created": 2, "edges_created": 2, "episodes_count": 1}
+{"case_id": "PF1-02", "raw_sentence": "The apple is red.", "expected_symbols_count": 2, "materialized_symbols_count": 2, "nodes_created": 2, "edges_created": 2, "episodes_count": 1}
+{"case_id": "PF1-03", "raw_sentence": "Falcons hunt small animals.", "expected_symbols_count": 4, "materialized_symbols_count": 4, "nodes_created": 5, "edges_created": 14, "episodes_count": 2}
+{"case_id": "PF1-04", "raw_sentence": "Birds have feathers.", "expected_symbols_count": 3, "materialized_symbols_count": 3, "nodes_created": 4, "edges_created": 12, "episodes_count": 1}
+{"case_id": "PF1-05", "raw_sentence": "The book is on the desk.", "expected_symbols_count": 3, "materialized_symbols_count": 3, "nodes_created": 4, "edges_created": 12, "episodes_count": 1}
+{"case_id": "PF1-06", "raw_sentence": "Mars has two moons.", "expected_symbols_count": 5, "materialized_symbols_count": 5, "nodes_created": 6, "edges_created": 18, "episodes_count": 2}
+{"case_id": "PF1-07", "raw_sentence": "Alexander Graham Bell invented the telephone.", "expected_symbols_count": 3, "materialized_symbols_count": 3, "nodes_created": 4, "edges_created": 12, "episodes_count": 1}
+{"case_id": "PF1-08", "raw_sentence": "The mouse was chased by the black cat.", "expected_symbols_count": 4, "materialized_symbols_count": 4, "nodes_created": 5, "edges_created": 14, "episodes_count": 2}
+{"case_id": "PF1-09", "raw_sentence": "A lion is a large cat that lives in Africa.", "expected_symbols_count": 6, "materialized_symbols_count": 6, "nodes_created": 7, "edges_created": 24, "episodes_count": 3}
+{"case_id": "PF1-10", "raw_sentence": "Photosynthesis converts light energy into chemical energy.", "expected_symbols_count": 8, "materialized_symbols_count": 8, "nodes_created": 9, "edges_created": 40, "episodes_count": 3}
+{"case_id": "PF1-11", "raw_sentence": "Water freezes at zero degrees Celsius.", "expected_symbols_count": 7, "materialized_symbols_count": 7, "nodes_created": 8, "edges_created": 32, "episodes_count": 2}
+{"case_id": "PF1-12", "raw_sentence": "New York City is in the United States.", "expected_symbols_count": 3, "materialized_symbols_count": 3, "nodes_created": 4, "edges_created": 12, "episodes_count": 1}
+{"case_id": "PF1-13", "raw_sentence": "Birds have feathers and lay eggs.", "expected_symbols_count": 5, "materialized_symbols_count": 5, "nodes_created": 7, "edges_created": 24, "episodes_count": 2}
+{"case_id": "PF1-14", "raw_sentence": "The sun is bright.", "expected_symbols_count": 2, "materialized_symbols_count": 2, "nodes_created": 2, "edges_created": 2, "episodes_count": 1}
+{"case_id": "PF1-15", "raw_sentence": "The cat is in the garden.", "expected_symbols_count": 3, "materialized_symbols_count": 3, "nodes_created": 4, "edges_created": 12, "episodes_count": 1}
+{"case_id": "PF1-16", "raw_sentence": "Bees make honey.", "expected_symbols_count": 3, "materialized_symbols_count": 3, "nodes_created": 4, "edges_created": 12, "episodes_count": 1}
+{"case_id": "PF1-17", "raw_sentence": "Spiders build webs.", "expected_symbols_count": 3, "materialized_symbols_count": 3, "nodes_created": 4, "edges_created": 12, "episodes_count": 1}
+{"case_id": "PF1-18", "raw_sentence": "The Earth orbits the Sun.", "expected_symbols_count": 3, "materialized_symbols_count": 3, "nodes_created": 4, "edges_created": 12, "episodes_count": 1}
+{"case_id": "PF1-19", "raw_sentence": "The table has four legs.", "expected_symbols_count": 5, "materialized_symbols_count": 5, "nodes_created": 6, "edges_created": 18, "episodes_count": 2}
+{"case_id": "PF1-20", "raw_sentence": "Mars is not a star.", "expected_symbols_count": 0, "materialized_symbols_count": 0, "nodes_created": 0, "edges_created": 0, "episodes_count": 1}

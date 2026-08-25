@@ -123,18 +123,7 @@ class Edge:
 
     @property
     def W_floor(self) -> float:
-        """θ_solid للمقفل، وθ_protect·S للموسوم غير المقفل، وإلا 0.
-
-        أرضية متدرجة: الصدمة تدوم أطول بكثير من المعرفة العادية، لكنها ليست
-        أبدية — الأرضية تتبع S وهو يتلاشى، فلا يُخزَّن الانفعال العابر إلى الأبد.
-        تُستثنى عقد الحالات العابرة (inst:) من أرضية الحماية لتتآكل وتخضع للموت الخلوي.
-        """
-        if _is_instance(self.src) or _is_instance(self.dst):
-            return 0.0
-        if self.locked:
-            return Law.THETA_SOLID
-        if self.tagged:
-            return Law.THETA_PROTECT * self.S
+        """أرضية التآكل ملغاة بإلغاء القانون 3. تعيد 0.0 دوماً."""
         return 0.0
 
 
@@ -311,18 +300,31 @@ class CognitiveGraph:
         self.in_adj.setdefault(e.dst, {})[e.src] = e
 
     def _unlink(self, a: str, b: str) -> None:
-        """يحذف من الثلاثة بلا شرط. آمن على رابط غير موجود.
-
-        الحذف غير مشروط عمداً: خروج مبكر عند غياب المفتاح من edges يجعل الفهرس
-        يفقد ضمانته تحت أي حالة اتساق جزئي، وهي بالضبط ما تحرسه هذه الدالة.
-        """
+        """يحذف من الثلاثة بلا شرط. آمن على رابط غير موجود."""
+        existed = (a, b) in self.edges
         self.edges.pop((a, b), None)
         self.out_adj.get(a, {}).pop(b, None)
         self.in_adj.get(b, {}).pop(a, None)
-        if self._assembly_manager is not None:
-            affected = list(self._assembly_manager.edge_to_assemblies.get((a, b), set()))
-            for aid in affected:
-                self._assembly_manager.commit_sanitation(aid, {(a, b)})
+        if existed:
+            if self._assembly_manager is not None:
+                affected = list(self._assembly_manager.edge_to_assemblies.get((a, b), set()))
+                for aid in affected:
+                    self._assembly_manager.commit_sanitation(aid, {(a, b)})
+            # RFC-10: Local Orphan Reclamation after lawful edge removal
+            for endpoint in (a, b):
+                self._reclaim_local_orphan(endpoint)
+
+    def _reclaim_local_orphan(self, nid: str) -> None:
+        """RFC-10 Local Orphan Reclamation: Reclaims endpoint if operationally orphaned after edge removal."""
+        n = self.nodes.get(nid)
+        if n is None or n.is_intrinsic:
+            return
+        if (
+            not self.out_adj.get(nid)
+            and not self.in_adj.get(nid)
+            and (not n.is_concept or nid.startswith(("ev:", "inst:")) or ":inst:" in nid)
+        ):
+            self._remove_node(nid)
 
     # الاسم العام الصريح للربط والفك
     link = _link
@@ -436,47 +438,21 @@ class CognitiveGraph:
             e.contexts.add(context)
             e.ctx_hits[context] = e.ctx_hits.get(context, 0) + 1
 
-    # ── ق3 — التآكل والتقليم الذاتي
+    # ── ق3 — ملغى ومحجوز (LAW 3 — ABOLISHED / RESERVED)
     def _law3_decay(self) -> None:
-        """W_ij(t+1) = max(W_floor, W_ij(t) − λ_decay)،  ثم W_ij ≤ θ_prune ⟹ حذف الرابط.
-
-        طرح خطي لا ضرب. الأرضية تأتي من ق5 وق8. روابط هذه التكة معفاة، ومعها
-        وسمها: S يتلاشى بـ λ_S وهو أبطأ بألف مرة من λ_decay.
+        """LAW 3 — ABOLISHED / RESERVED (Tombstone).
+        No runtime weight decay, salience decay, universal low-weight pruning, or global orphan scanning.
         """
-        now, lam, lam_s, prune = self.t, Law.LAMBDA_DECAY, Law.LAMBDA_SAL, Law.THETA_PRUNE
-        doomed = []
-        for e in self.edges.values():
-            if e.is_intrinsic:
-                continue        # الروابط الجوهرية دائمة معفاة من التآكل
-            if e.kind in ("sim", "cat"):
-                continue        # المشتقّات تُعاد حسابها في ق9، فلا تتآكل ولا تُقلَّم
-            if e.t_last_update == now:
-                continue
-            s = e.S - lam_s
-            e.S = max(0.0, s)
-            decay_rate = Law.LAMBDA_TRANSIENT if (_is_instance(e.src) or _is_instance(e.dst)) else lam
-            w = e.W - decay_rate
-            floor = e.W_floor
-            e.W = max(floor, w)
-            if e.W <= prune:
-                doomed.append((e.src, e.dst))
-        for a, b in doomed:
-            self._unlink(a, b)
-        for n in self.nodes.values():
-            n.relax()
-            if n.region == HUB:
-                n.U = max(0.0, n.U - Law.LAMBDA_U)
-        # تقليم العقد المعزولة (Orphan Nodes GC): العقد غير الجوهرية ذات الدرجة صفر والتنشيط صفر
-        orphans = [
-            nid for nid, n in self.nodes.items()
-            if not n.is_intrinsic
-            and n.A == 0.0
-            and not self.out_adj.get(nid)
-            and not self.in_adj.get(nid)
-            and (not n.is_concept or nid.startswith("ev:"))
-        ]
-        for nid in orphans:
-            self._remove_node(nid)
+
+    def retire_transient_scope(self, context: str | None = None) -> int:
+        """RFC-01 / RFC-06: Explicit scope-driven retirement of transient inst:* instances."""
+        doomed_edges = []
+        for (u, v), e in list(self.edges.items()):
+            if (_is_instance(u) or _is_instance(v)) and (context is None or context in e.contexts):
+                doomed_edges.append((u, v))
+        for u, v in doomed_edges:
+            self._unlink(u, v)
+        return len(doomed_edges)
 
     # ── ق9 — التعميم والتجريد
     def _neighborhood(self, nid: str) -> dict[str, float]:
@@ -881,7 +857,6 @@ class CognitiveGraph:
             self._law10_capacity()
         self._law4_autogate([n for n in seeds if n.nid in self.nodes])
         self._law9_generalize(active)
-        self._law3_decay()
         if self.enable_prediction:
             self._compute_predictions()
 
@@ -1091,7 +1066,6 @@ class CognitiveGraph:
             self._law10_capacity()
         self._law4_autogate([n for n in seeds if n.nid in self.nodes])
         self._law9_generalize(active)
-        self._law3_decay()
         if self.enable_prediction:
             self._compute_predictions()
 
@@ -1135,7 +1109,7 @@ class CognitiveGraph:
                     if e is not None and not e.is_intrinsic:
                         attenuation = (1.0 - 0.8) if e.locked else 1.0
                         delta = decay_delta * attenuation
-                        e.W = max(e.W_floor, e.W - delta)
+                        e.W = max(0.0, e.W - delta)
                         e.k_fail += 1
                 if self.goal is not None:
                     target_matches = self.goal == dst or dst.endswith(f":{self.goal}")

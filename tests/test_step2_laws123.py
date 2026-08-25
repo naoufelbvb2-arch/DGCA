@@ -99,44 +99,35 @@ def test_law2_growth_is_monotone_and_decelerating():
     assert all(b < a for a, b in pairwise(deltas))
 
 
-# ─────────────────── ق3 — التآكل والتقليم
-def test_law3_linear_decay_not_multiplicative():
+# ─────────────────── ق3 — ملغى ومحجوز (LAW 3 — ABOLISHED / RESERVED)
+def test_persistent_edge_unchanged_after_unrelated_ticks():
     g = CognitiveGraph()
     g._link(Edge("a", "b", 0.500, t_last_update=-1))
-    g._law3_decay()
-    assert g.edge("a", "b").W == pytest.approx(0.500 - Law.LAMBDA_DECAY, abs=1e-9)
-
-def test_law3_spares_edges_touched_this_tick():
-    g = CognitiveGraph()
-    g.t = 5
-    g._link(Edge("a", "b", 0.500, t_last_update=5))
-    g._law3_decay()
+    g.t += 128
     assert g.edge("a", "b").W == 0.500
 
-def test_law3_prunes_at_or_below_threshold():
-    g = CognitiveGraph()
-    g._link(Edge("a", "b", Law.THETA_PRUNE + Law.LAMBDA_DECAY, t_last_update=-1))
-    g._law3_decay()
-    assert g.edge("a", "b") is None
-    assert not g.out_adj.get("a") and not g.in_adj.get("b")
-
-def test_law3_relaxes_all_nodes():
-    g = CognitiveGraph()
-    n = g.node("text:a", TEXT); n.excite(1, 1.0, "ep1")
-    g._law3_decay()
-    assert n.A == pytest.approx(Law.RHO_ACTIVATION)
-
-def test_law3_neglected_edge_dies_in_sixteen_ticks():
+def test_persistent_edge_survives_1000_ticks():
     g = CognitiveGraph()
     g.observe([(TEXT, "x"), (TEXT, "y")], context="c")
     assert g.edge("text:x", "text:y").W == pytest.approx(0.370, abs=1e-3)
-    ticks = 0
-    while g.edge("text:x", "text:y") is not None:
-        g.t += 1
-        g._law3_decay()
-        ticks += 1
-        assert ticks < 100
-    assert ticks == 16
+    for _ in range(1000):
+        g.tick()
+    assert g.edge("text:x", "text:y") is not None
+    assert g.edge("text:x", "text:y").W == pytest.approx(0.370, abs=1e-3)
+
+def test_low_weight_edge_not_auto_pruned():
+    g = CognitiveGraph()
+    g._link(Edge("a", "b", Law.THETA_PRUNE, t_last_update=-1))
+    g.tick()
+    assert g.edge("a", "b") is not None
+    assert g.edge("a", "b").W == Law.THETA_PRUNE
+
+def test_zero_weight_edge_not_auto_deleted_without_owner():
+    g = CognitiveGraph()
+    g._link(Edge("a", "b", 0.0, t_last_update=-1))
+    g.tick()
+    assert g.edge("a", "b") is not None
+    assert g.edge("a", "b").W == 0.0
 
 
 # ─────────────────── حلقة الإدراك
@@ -146,8 +137,8 @@ def test_observe_advances_tick_and_excites():
     assert g.t == 1
     n = g.nodes["text:a"]
     assert n.t_spawn == 1
-    assert n.episode is None, "الحلقة الإدراكية تُغلق بانتهاء التكة"
-    assert n.A == pytest.approx(Law.RHO_ACTIVATION)   # استرخى في ق3
+    assert n.episode == "ep1"
+    assert n.A == pytest.approx(1.0)
 
 def test_observe_builds_both_directions():
     g = CognitiveGraph()

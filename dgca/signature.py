@@ -38,10 +38,9 @@ def build_reference_graph() -> CognitiveGraph:
         for signals, ctx in SCENARIO:
             g.observe(signals, context=ctx)
         g.observe_sequence(SEQUENCE, context="kitchen")
-    # فترة صمت: تكات تآكل بلا إدراك
+    # فترة صمت تشغيلية صامتة (RFC-09: تقدم زمني حيادي)
     for _ in range(_SILENCE_TICKS):
-        g.t += 1
-        g._law3_decay()
+        g.tick()
     return g
 
 

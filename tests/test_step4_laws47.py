@@ -67,14 +67,14 @@ def test_law4_activation_never_exceeds_cmax():
 
 # ─────────────────── ق7 — الاستدلال الانبثاقي
 def test_law7_reaches_associates_from_a_single_seed():
-    """الأرقام محسوبة بعد دخول عدم تناظر الدور (ق2-ب) في الخطوة 5."""
+    """الأرقام محسوبة بعد دخول عدم تناظر الدور (ق2-ب) وإلغاء التآكل (ق3)."""
     r = _trained().infer(["vision:red"])
     ranked = dict(r["ranked"])
     assert set(ranked) == {"hub:apple", "text:apple", "text:sweet", "audio:crunch"}
-    assert ranked["hub:apple"] == pytest.approx(0.356, abs=1e-3)
-    assert ranked["text:apple"] == pytest.approx(0.313, abs=1e-3)
-    assert ranked["text:sweet"] == pytest.approx(0.178, abs=1e-3)
-    assert ranked["audio:crunch"] == pytest.approx(0.169, abs=1e-3)
+    assert ranked["hub:apple"] == pytest.approx(0.358, abs=1e-3)
+    assert ranked["text:apple"] == pytest.approx(0.288, abs=1e-3)
+    assert ranked["audio:crunch"] == pytest.approx(0.195, abs=1e-3)
+    assert ranked["text:sweet"] == pytest.approx(0.165, abs=1e-3)
     assert r["answer"] == "hub:apple", "المفهوم يجمع الأنماط فيسبقها"
 
 
@@ -95,7 +95,7 @@ def test_law7_multiple_seeds_converge_superadditively():
     g = _trained()
     one = dict(g.infer(["vision:red"])["ranked"])["text:apple"]
     two = dict(g.infer(["vision:red", "audio:crunch"])["ranked"])["text:apple"]
-    assert two == pytest.approx(0.602, abs=1e-3)
+    assert two == pytest.approx(0.58, abs=1e-3)
     assert two > one
 
 

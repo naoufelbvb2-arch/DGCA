@@ -1,0 +1,31 @@
+{
+  "dataset_snapshot_id": "wikimedia/wikipedia/20231101.simple",
+  "dataset_sha256": "31bded16768a47c286becd292079122f5d7d4397a17b87d4250a00ccd581e6f0",
+  "total_rows": 241787,
+  "train_count": 217503,
+  "heldout_count": 24284,
+  "train_article_ids_sample": [
+    "595949",
+    "775420",
+    "736192",
+    "76812",
+    "521036",
+    "316497",
+    "689749",
+    "154537",
+    "772940",
+    "774419"
+  ],
+  "heldout_article_ids_sample": [
+    "2",
+    "14",
+    "17",
+    "18",
+    "39",
+    "56",
+    "74",
+    "100",
+    "101",
+    "103"
+  ]
+}

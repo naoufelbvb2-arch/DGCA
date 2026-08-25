@@ -98,9 +98,8 @@ def test_utility_accumulates_and_decays():
     assert g.nodes["hub:apple"].U > 0
     before = g.nodes["hub:apple"].U
     for _ in range(50):
-        g.t += 1
-        g._law3_decay()
-    assert g.nodes["hub:apple"].U < before
+        g.tick()
+    assert g.nodes["hub:apple"].U == pytest.approx(before)
 
 
 def test_members_are_capped():

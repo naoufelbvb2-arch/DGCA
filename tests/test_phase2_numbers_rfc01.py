@@ -93,8 +93,8 @@ def test_multilingual_number_grounding_generalization():
 
 
 def test_transient_instance_count_binding_decay():
-    """ربط كمية بحالة عابرة (inst:apple_1)، والتأكد من أنها لا تُقفل دائماً بق5،
-    وتتآكل وتُحذف بنظافة عبر تقليم العقد المعزولة بق3 دون التأثير على الكيانات الراسخة."""
+    """ربط كمية بحالة عابرة (inst:apple_1)، والتأكد من استبعادها من القفل،
+    ثم إحالتها للتقاعد عند انتهاء نطاقها (RFC-01) دون التأثير على الكيانات الراسخة."""
     g = CognitiveGraph()
     init_quantity_backbone(g)
 
@@ -114,8 +114,8 @@ def test_transient_instance_count_binding_decay():
     # التأكد من استثناء روابط الحالات العابرة من القفل الدائم
     assert e_inst.locked is False
 
-    # ترك الحالة العابرة تتآكل بالصمت
-    _rest(g, 50)
+    # إحالة الكيانات العابرة للتقاعد عند انتهاء النطاق التشغيلي (RFC-01 Scope Retirement)
+    g.retire_transient_scope()
 
     # التحقق من حذف العقدة العابرة وروابطها بالكامل
     assert g.edge(inst_nid, f"{QUANTITY}:5") is None
@@ -153,4 +153,4 @@ def test_regression_and_signature():
     """التأكد من أن إضافة المرحلة الثانية لم تغير السلوك المرجعي ولا البصمة المرجعية الحتمية."""
     g = build_reference_graph()
     sig = behavioral_signature(g)
-    assert sig == "c4b2549940a49789", f"Behavioral signature drift detected: {sig}"
+    assert sig == "915119d40643cb97", f"Behavioral signature drift detected: {sig}"

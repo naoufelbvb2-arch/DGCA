@@ -107,7 +107,7 @@ class CognitiveAgent:
         return verdict
 
     def step_time(self, ticks: int = 1) -> dict[str, int]:
-        """تمرير تكات زمنية صامتة لتفعيل التآكل والموت الخلوي."""
+        """تمرير تكات زمنية تشغيلية صامتة (RFC-09: تقدم زمني حيادي لا يغيّر المعرفة)."""
         nodes_before = len(self.graph.nodes)
         for _ in range(ticks):
             self.graph.tick()

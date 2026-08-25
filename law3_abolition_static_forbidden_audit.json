@@ -1,0 +1,88 @@
+{
+  "status": "PASSED",
+  "total_checks": 16,
+  "passed_checks": 16,
+  "failed_checks": 0,
+  "checks": [
+    {
+      "id": "NO_LAMBDA_DECAY_RUNTIME_CONSUMPTION",
+      "passed": true,
+      "detail": "No active LAMBDA_DECAY weight subtraction in graph runtime."
+    },
+    {
+      "id": "NO_LAMBDA_TRANSIENT_RUNTIME_CONSUMPTION",
+      "passed": true,
+      "detail": "No active LAMBDA_TRANSIENT weight subtraction in graph runtime."
+    },
+    {
+      "id": "NO_THETA_PRUNE_AUTO_DELETION",
+      "passed": true,
+      "detail": "No automatic THETA_PRUNE edge deletion loop."
+    },
+    {
+      "id": "NO_LAMBDA_SAL_RUNTIME_CONSUMPTION",
+      "passed": true,
+      "detail": "No active LAMBDA_SAL salience decay subtraction."
+    },
+    {
+      "id": "NO_THETA_PROTECT_FLOOR",
+      "passed": true,
+      "detail": "No THETA_PROTECT floor blocking."
+    },
+    {
+      "id": "NO_AGE_BASED_LAZY_DECAY",
+      "passed": true,
+      "detail": "No age-based lazy decay formula."
+    },
+    {
+      "id": "NO_UNIVERSAL_LOW_WEIGHT_PRUNING",
+      "passed": true,
+      "detail": "No graph-wide low-weight edge pruning loop."
+    },
+    {
+      "id": "NO_GLOBAL_ORPHAN_SWEEP",
+      "passed": true,
+      "detail": "No global graph orphan sweep loop."
+    },
+    {
+      "id": "NO_W_FLOOR_DECAY_BLOCKING",
+      "passed": true,
+      "detail": "Edge.W_floor returns 0.0 anti-decay floor."
+    },
+    {
+      "id": "NO_LAW3_DECAY_INVOCATION",
+      "passed": true,
+      "detail": "_law3_decay() is a tombstone pass with zero weight change."
+    },
+    {
+      "id": "NO_LAW3_DECAY_IN_OBSERVE",
+      "passed": true,
+      "detail": "observe() does not call _law3_decay()."
+    },
+    {
+      "id": "NO_LAW3_DECAY_IN_OBSERVE_SEQUENCE",
+      "passed": true,
+      "detail": "observe_sequence() does not call _law3_decay()."
+    },
+    {
+      "id": "NO_MEMORY_DECAY_IN_STEP_TIME",
+      "passed": true,
+      "detail": "step_time() is clock neutral."
+    },
+    {
+      "id": "NO_AUTOMATIC_NODE_DELETION_IN_TICK",
+      "passed": true,
+      "detail": "g.tick() advances operational time without node deletion."
+    },
+    {
+      "id": "LOCAL_ORPHAN_GC_O1_SCOPED",
+      "passed": true,
+      "detail": "_unlink performs local O(1) orphan endpoint check."
+    },
+    {
+      "id": "TRANS_SCOPE_RETIREMENT_EXPLICIT",
+      "passed": true,
+      "detail": "retire_transient_scope() handles explicit scope retirement."
+    }
+  ]
+}

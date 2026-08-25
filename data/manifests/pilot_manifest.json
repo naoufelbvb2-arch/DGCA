@@ -1,0 +1,606 @@
+{
+  "dataset_snapshot_id": "wikimedia/wikipedia/20231101.simple",
+  "pilot_count": 100,
+  "articles": [
+    {
+      "id": "207357",
+      "title": "Clyde Tombaugh",
+      "row_index": 54573,
+      "pilot_hash": "000016a3e00ab8e49f8bf2220103ea33e7f6c120c6e498d2267bd0a48c49f2fd"
+    },
+    {
+      "id": "309545",
+      "title": "Connectivity",
+      "row_index": 72586,
+      "pilot_hash": "000081c1217a12f41261de736a8a106057f69846bf5a0892dff68bd53185a34e"
+    },
+    {
+      "id": "672522",
+      "title": "Bottmingen",
+      "row_index": 141242,
+      "pilot_hash": "0000b2ad0a562e56ea1c58d7abe1843a477cdaa797675dee04386383385c1911"
+    },
+    {
+      "id": "235446",
+      "title": "Henry Wadsworth Longfellow",
+      "row_index": 58481,
+      "pilot_hash": "0000d0af4a18f9cd24a6f138d1d480e1b59492dc72d66f6f976f123392d71e47"
+    },
+    {
+      "id": "602489",
+      "title": "Lauw",
+      "row_index": 128709,
+      "pilot_hash": "0000d80aea18fff4d2d90d821b964fe76f96d8b062a775716df167ec4774447e"
+    },
+    {
+      "id": "792324",
+      "title": "Alhama de Murcia",
+      "row_index": 172786,
+      "pilot_hash": "000108115b48e82e683dae786934ce8b834504305deaf55e280c703d573c3e2d"
+    },
+    {
+      "id": "56416",
+      "title": "Fraction (mathematics)",
+      "row_index": 14974,
+      "pilot_hash": "000185a0ef22b049c1ce14d45a202ce8dd9095ba7c9d334b3f183a2353d3a9e9"
+    },
+    {
+      "id": "173018",
+      "title": "Luxembourg national football team",
+      "row_index": 48545,
+      "pilot_hash": "0001ab91283fe0986890acb21ffc9ab96d0fae97f37fe7a0489c99915829304b"
+    },
+    {
+      "id": "520524",
+      "title": "The Taste",
+      "row_index": 115456,
+      "pilot_hash": "0001b498aa92241ecd163a9195b0cc0f530b30912319cd3f6c2dc6ebe0e2d875"
+    },
+    {
+      "id": "768812",
+      "title": "Penfield, New York",
+      "row_index": 165583,
+      "pilot_hash": "00028cc697a9f700ddfe60d7ad9e73d9c1869e6f7833bafdb883374ed91055c5"
+    },
+    {
+      "id": "138941",
+      "title": "Ford S-Max",
+      "row_index": 35107,
+      "pilot_hash": "0002d609272e3723b88e5084d4da8a5e218d33045c1f899de1253f4a184f2206"
+    },
+    {
+      "id": "773824",
+      "title": "The Black Swan (movie)",
+      "row_index": 167271,
+      "pilot_hash": "00030c56f17563a7e1adda55615b5428d7836dd8aa60d0ec259dde36e3bfb775"
+    },
+    {
+      "id": "362960",
+      "title": "Burgess Meredith",
+      "row_index": 83751,
+      "pilot_hash": "0003114ee3224bef033831c8b077e91598d659bc08b975835edeac308163b13d"
+    },
+    {
+      "id": "1010247",
+      "title": "The Bandit of Zhobe",
+      "row_index": 229515,
+      "pilot_hash": "0003f65eb786fa62ad28d906ca0455584e0f9353ae1ccc8c9b8a737bec3cf244"
+    },
+    {
+      "id": "897656",
+      "title": "A Virgin Among the Living Dead",
+      "row_index": 201877,
+      "pilot_hash": "0004076d5f0332bbcfaff41c76ff9f70075d5fbf03c114a2f0f4cf5147a95de6"
+    },
+    {
+      "id": "645801",
+      "title": "Fiorentino",
+      "row_index": 134988,
+      "pilot_hash": "00041ad392576d009ac92acc25272987f9f815eb055ee0cd9c58bb14ec10aae4"
+    },
+    {
+      "id": "957961",
+      "title": "Head of the Commonwealth",
+      "row_index": 217901,
+      "pilot_hash": "0004742654656b7dd686500f25f793b9825ae8bb27c483c4881a0b9cfe26423f"
+    },
+    {
+      "id": "648009",
+      "title": "Langdon Park DLR station",
+      "row_index": 135589,
+      "pilot_hash": "00048a4669a4d5e262c38f79e8ed93227a59d7fe5924b350bf6f64adf46191a2"
+    },
+    {
+      "id": "547741",
+      "title": "Pteraspid",
+      "row_index": 119788,
+      "pilot_hash": "00049b11e24c71a209cf5b1277bb364713a65f8c4281217fbbd084c6df0e9ff7"
+    },
+    {
+      "id": "615047",
+      "title": "Bicycle path",
+      "row_index": 130584,
+      "pilot_hash": "0004e74c9e5bb971886d47a8b001125d823478c120d967acdacd2a360356d50b"
+    },
+    {
+      "id": "875375",
+      "title": "Venezuelan Chamber of Deputies",
+      "row_index": 196099,
+      "pilot_hash": "00055b3eff6e84eba44d7e76f9d532b3d526be83087a1e45793550b4f619d0dd"
+    },
+    {
+      "id": "301072",
+      "title": "But I'm a Cheerleader",
+      "row_index": 71015,
+      "pilot_hash": "000568305304c949876b06e19d443214944f8d5cb57c65b0314bdd10c4f4a122"
+    },
+    {
+      "id": "721370",
+      "title": "A Fish Called Wanda",
+      "row_index": 151105,
+      "pilot_hash": "00057a6e7283848c2510a15860380d024fac6030cbee3da47b4ed7c4617f42e6"
+    },
+    {
+      "id": "715207",
+      "title": "Scoliosis",
+      "row_index": 149774,
+      "pilot_hash": "00063f0ab70daa640b2d6a789c05cfc9d08bb9a245a09656714e70082be70489"
+    },
+    {
+      "id": "221609",
+      "title": "Colorful puffleg",
+      "row_index": 57034,
+      "pilot_hash": "0006a8cbad928c726fa11ad71a6d96d984f84fe5804f498a9ba65fff41481895"
+    },
+    {
+      "id": "92771",
+      "title": "G\u00f6sgen District",
+      "row_index": 24055,
+      "pilot_hash": "0006cc00129c4090aab0bea37ba441c20234d2192b810ffdf4c63410313c5397"
+    },
+    {
+      "id": "920881",
+      "title": "2013\u201314 FC Augsburg season",
+      "row_index": 207615,
+      "pilot_hash": "0006d8e42c5cbc05d0d9577ac48d2d4820691a324df6e3b5ab74b66dd932e27a"
+    },
+    {
+      "id": "455046",
+      "title": "David Bradley (actor)",
+      "row_index": 104276,
+      "pilot_hash": "0007cba14ce236e12d671ed86ac554a68e4415f5483161d0c82f32ce89dc0d42"
+    },
+    {
+      "id": "628589",
+      "title": "Supercharger",
+      "row_index": 132526,
+      "pilot_hash": "0007d080b9f07504588585a08f15956207b2e9708ba5479851a8b35e3e99567f"
+    },
+    {
+      "id": "515585",
+      "title": "Janet Jackson (album)",
+      "row_index": 114777,
+      "pilot_hash": "00083bcc7bb3ed94523a71e43fba71891d575740941c4aa7c83e2b0181a2800b"
+    },
+    {
+      "id": "730670",
+      "title": "Frederica of Hanover",
+      "row_index": 153248,
+      "pilot_hash": "00084a84dca41c1a0da05e93087072cf2782e2486c6d008ab9761c50b85b251e"
+    },
+    {
+      "id": "190042",
+      "title": "The Shins",
+      "row_index": 51559,
+      "pilot_hash": "00087a9828062edd162c0c2b143cbd6bbc34ff443cd75458a92853a77351b616"
+    },
+    {
+      "id": "905990",
+      "title": "Aled Roberts",
+      "row_index": 204023,
+      "pilot_hash": "00087f4fb78a4aa235e947f4b1bdaf07f33114f661859c1679255ac50fc8e513"
+    },
+    {
+      "id": "861783",
+      "title": "Robbie Cooke",
+      "row_index": 192846,
+      "pilot_hash": "0008a325d043bab98d6acdfac90958961db0499d7b4681cb923dc0ff6d53b580"
+    },
+    {
+      "id": "1027387",
+      "title": "Villeneuve-la-Comtesse",
+      "row_index": 233330,
+      "pilot_hash": "00090c86f657652b60c6435c5a123bd5c69df6ed10b18f0f80fca22337df8ff0"
+    },
+    {
+      "id": "264850",
+      "title": "The Lesser Polish Way of Saint James",
+      "row_index": 63672,
+      "pilot_hash": "00091ddd17bfa34cba92309212c12d8544e1b844c9be9ae0485c2e6d1ff06d5e"
+    },
+    {
+      "id": "119536",
+      "title": "Bhalwal Tehsil",
+      "row_index": 30232,
+      "pilot_hash": "00097851c3c37620f1f6de40340aba6986a1e3613e980840f020de071d4a1aba"
+    },
+    {
+      "id": "888660",
+      "title": "Thoughts on the Education of Daughters",
+      "row_index": 199202,
+      "pilot_hash": "0009a04782e21750a52114cef4fa23a1629596ebde5489b13a024526ab65f301"
+    },
+    {
+      "id": "582963",
+      "title": "Bennie G. Adkins",
+      "row_index": 124521,
+      "pilot_hash": "000a34213956246b697201bc1c127fa8e079a2717adb79a47ddb6b676d332a8c"
+    },
+    {
+      "id": "446540",
+      "title": "Kingdom of Sardinia",
+      "row_index": 102182,
+      "pilot_hash": "000a585531240f04db4c8c65564756efa9994f81445da037d3591557b5d53168"
+    },
+    {
+      "id": "364285",
+      "title": "Sixto Gonz\u00e1lez",
+      "row_index": 84017,
+      "pilot_hash": "000a79528c8ce766673b827e9c5725219703c1af33be4b6d90014475035f30c4"
+    },
+    {
+      "id": "753926",
+      "title": "Your Ticket Is No Longer Valid",
+      "row_index": 159797,
+      "pilot_hash": "000a7bd318acd7a419274ccbb6be7bbaead0823a9d61973bf863db784b833d2f"
+    },
+    {
+      "id": "763013",
+      "title": "Arzano, Finist\u00e8re",
+      "row_index": 163197,
+      "pilot_hash": "000a9b6309f222a07b5bd2e4fa874a859e13f43d5c52ae64f73f7d3f67a6fd24"
+    },
+    {
+      "id": "366478",
+      "title": "Sikkim National Party",
+      "row_index": 84434,
+      "pilot_hash": "000b1a590c570d28cb0d2a92e2e1254ffb3b49d5c6f8b59929630e533e2ca31d"
+    },
+    {
+      "id": "844288",
+      "title": "Qizhang metro station",
+      "row_index": 188114,
+      "pilot_hash": "000b2c675d157658a3aec886ef9c2488696209635b5bc81f5ccd13f315c7432f"
+    },
+    {
+      "id": "375565",
+      "title": "J\u00e4\u00e4sj\u00e4rvi",
+      "row_index": 86047,
+      "pilot_hash": "000be35f92bc0ef9edd023f9fe3ea10da159957e2108286b53da9ec81dcb1ebe"
+    },
+    {
+      "id": "938552",
+      "title": "Harry Reid International Airport",
+      "row_index": 212303,
+      "pilot_hash": "000bfd389f0f313388fa6b9bbfcaad7e3b5dc9cb40e67757df905ebca99594ba"
+    },
+    {
+      "id": "177734",
+      "title": "Neofelis",
+      "row_index": 49251,
+      "pilot_hash": "000d2799cb67e532dcc5ceb0f0983745e63675dbd9119aef7edbfec630c03910"
+    },
+    {
+      "id": "438566",
+      "title": "Plamen Oresharski",
+      "row_index": 100388,
+      "pilot_hash": "000d4d47ef0da7f7b2113d814419fdfe6a53d746ecf04baeeb0fcd053cdd7663"
+    },
+    {
+      "id": "153024",
+      "title": "Toph Beifong",
+      "row_index": 40393,
+      "pilot_hash": "000d65bfb11f2d60e2ee9c5155fcaf5d9dd3b3d127b78138f59ed04baa70c4c1"
+    },
+    {
+      "id": "712955",
+      "title": "Ellsworth, Kansas",
+      "row_index": 149173,
+      "pilot_hash": "000d97f4542ac3e28ec077682f0f0fc40f4f8fc8553a8bdea209f43ce4b52f2f"
+    },
+    {
+      "id": "947419",
+      "title": "Adobe Lightroom",
+      "row_index": 215675,
+      "pilot_hash": "000e4f17ffe9e19a2d01235ea5416c6d126373e9c98b1ff9ebd75c7e09583a0d"
+    },
+    {
+      "id": "601180",
+      "title": "Viva Pi\u00f1ata",
+      "row_index": 128528,
+      "pilot_hash": "000e61327fd7378bc9975d0fd621f675a33fdf5071241bef78cab066043a599b"
+    },
+    {
+      "id": "484407",
+      "title": "Borisav Jovi\u0107",
+      "row_index": 111463,
+      "pilot_hash": "000f09eaa97415ad5d1cd975e2fabec994061bdc06a166c6f87c8230322dc681"
+    },
+    {
+      "id": "649267",
+      "title": "The Litterbug",
+      "row_index": 135890,
+      "pilot_hash": "000fc759533651659158db87a7f38b187f267e3c265d72a8a6efe51e9ab0b2b3"
+    },
+    {
+      "id": "70881",
+      "title": "Masala",
+      "row_index": 18869,
+      "pilot_hash": "000fd00456987c82a29d378dc6f492d99e0f4ae6353a3222af9509ce085796d7"
+    },
+    {
+      "id": "823479",
+      "title": "Vi\u00e2pres-le-Petit",
+      "row_index": 181871,
+      "pilot_hash": "00101de8e77b75a9d9b433e835723f77221a2973253fa19098aeb74171ffb580"
+    },
+    {
+      "id": "724599",
+      "title": "Panola County, Mississippi",
+      "row_index": 151748,
+      "pilot_hash": "00102f425d944df24b6be0dd999c586d1be20d897874120117f2855f87502494"
+    },
+    {
+      "id": "972069",
+      "title": "Colleret",
+      "row_index": 221242,
+      "pilot_hash": "00108280a423cac3752ca5a6dd9c14c9cb8714fbe62a4f6090bf89c229a67f11"
+    },
+    {
+      "id": "329430",
+      "title": "The Blood of Jesus",
+      "row_index": 76296,
+      "pilot_hash": "0010c3bbbfa428faa29112f82e6ec83f97c42358365fe921129cb71dce3b3e3f"
+    },
+    {
+      "id": "796895",
+      "title": "Reema Harrysingh-Carmona",
+      "row_index": 174466,
+      "pilot_hash": "0011358db743ce79c73b4978bbe6ad8ac794aded53fa04d06017901bb509ae01"
+    },
+    {
+      "id": "271806",
+      "title": "John F. Kennedy Jr.",
+      "row_index": 64864,
+      "pilot_hash": "00114571fe98993d0c06943add281650ab242ca66bd830f35be7237fccfe49b3"
+    },
+    {
+      "id": "649508",
+      "title": "Esslingen",
+      "row_index": 135967,
+      "pilot_hash": "0012067f3ff4fcf866c2c488f3e57bdb32cf54da6435fed89746cfa9cba55893"
+    },
+    {
+      "id": "37691",
+      "title": "Thor",
+      "row_index": 10584,
+      "pilot_hash": "00125f9c47ce497ab25832a7028b03ff317c378ba1bd923c8867dcf80790c80b"
+    },
+    {
+      "id": "429425",
+      "title": "Samoa Joe",
+      "row_index": 98476,
+      "pilot_hash": "00127fb12cc698979f395fcfe9f94a7841451962daf6559526f49dc7312977f8"
+    },
+    {
+      "id": "167810",
+      "title": "Parlophone Records",
+      "row_index": 47530,
+      "pilot_hash": "0012879318ba38b99b4991998917d4fbf81fb0bd58773d773daebd667179da6e"
+    },
+    {
+      "id": "921048",
+      "title": "Garibaldi Alves",
+      "row_index": 207670,
+      "pilot_hash": "00128ab97ffc4c5c0f776d042d89ecd6409edd9cf7a469d878566ddcdaad5765"
+    },
+    {
+      "id": "125335",
+      "title": "Robbery",
+      "row_index": 31889,
+      "pilot_hash": "0012a05a2e564dddbd9766133f637538e0687b7353644ca16e61b2202c8aa857"
+    },
+    {
+      "id": "1043130",
+      "title": "Volcanic gas",
+      "row_index": 238141,
+      "pilot_hash": "001320d29b534a8ce28d5be26c928b37fbd5a78e50b9d52cdce50426eb95c96d"
+    },
+    {
+      "id": "801186",
+      "title": "Caprino Alendy",
+      "row_index": 175850,
+      "pilot_hash": "00134a64b2836188461a51b791fd27e89d9f5bbf074623a7c0b34cc62b418670"
+    },
+    {
+      "id": "783315",
+      "title": "Lenawee County, Michigan",
+      "row_index": 169881,
+      "pilot_hash": "0013a424344d4b7951b5270fa2a38e9470096a702b24d5e7dcf23835c2e56247"
+    },
+    {
+      "id": "153688",
+      "title": "Rozoy-Bellevalle",
+      "row_index": 41042,
+      "pilot_hash": "0013ec4b1dd94ac327801efd5db25642027dc0789e29bbca99eec720f405f0df"
+    },
+    {
+      "id": "234775",
+      "title": "Be (disambiguation)",
+      "row_index": 58414,
+      "pilot_hash": "0014d4ef4435b300f73bbfa41ede3450a7f8ec44073d06e008e05ea7ed7dde79"
+    },
+    {
+      "id": "970915",
+      "title": "Landn\u00e1mab\u00f3k",
+      "row_index": 220804,
+      "pilot_hash": "001517dcb350d103245ee1b1c71ce55bde281df618ed94efab53c37e31b7602f"
+    },
+    {
+      "id": "32267",
+      "title": "Apple pie",
+      "row_index": 9441,
+      "pilot_hash": "00156b7be273adcd66e2354f4dad5da933d35e084913016ef74874e4abba6bc7"
+    },
+    {
+      "id": "679823",
+      "title": "Cameron, Texas",
+      "row_index": 142585,
+      "pilot_hash": "0015775bc0cfde9ce32165dc954f6565037d203dbd25ca804a424d8d42ca1940"
+    },
+    {
+      "id": "935808",
+      "title": "Grace Potter",
+      "row_index": 211614,
+      "pilot_hash": "0015859367d9b74daf6c34b85b49af9f6dbb56b3d3f6c4a3e66e14a229014c2f"
+    },
+    {
+      "id": "895784",
+      "title": "Markt Taschendorf",
+      "row_index": 201301,
+      "pilot_hash": "001682251c3b5e4b3e0030183db885f30b6694ddc2b872fd8b1a27ab3b3a9dbb"
+    },
+    {
+      "id": "10084",
+      "title": "November 25",
+      "row_index": 3376,
+      "pilot_hash": "0016c6f54de78ea7c47a64eb1d9dab454725a77c8f67194dd83b2b1000cbccf3"
+    },
+    {
+      "id": "1031720",
+      "title": "Sadia Iqbal",
+      "row_index": 234840,
+      "pilot_hash": "0016e91f5a82f56cafe7ef1ee06e7aadc6de19b8aecf4a08a385abf3f4bd3a81"
+    },
+    {
+      "id": "1049866",
+      "title": "1949-50 Austrian football championship",
+      "row_index": 239733,
+      "pilot_hash": "0016fca4f549eff80d3b1b9eaa235747da65c182c24b11109ba634f60c270bda"
+    },
+    {
+      "id": "374101",
+      "title": "Martin H. Kennelly",
+      "row_index": 85793,
+      "pilot_hash": "00174a73164f391465b359d9bdb4a640277fc31aeecb419a8ea21d1463b31c72"
+    },
+    {
+      "id": "724220",
+      "title": "Jim Simons",
+      "row_index": 151672,
+      "pilot_hash": "0017db3655dba751abacc72569a3c92b111ccbe898dfc9285684a7c6f3fccc8a"
+    },
+    {
+      "id": "278678",
+      "title": "Kraken",
+      "row_index": 66127,
+      "pilot_hash": "00180617e6142102560132e5469645a098e00f92fc2ca44a87f9a1afab1bf21f"
+    },
+    {
+      "id": "231158",
+      "title": "Penalty shoot-out",
+      "row_index": 57976,
+      "pilot_hash": "00180c8aba1e5b377b81c03e9916c44665c3ff34f557ce9dfd92d084fad8b280"
+    },
+    {
+      "id": "613120",
+      "title": "Lee Hi",
+      "row_index": 130183,
+      "pilot_hash": "0018383863fe88919b1875553254f97bef79ec1cbf1d62a12d34e749d6e10e0b"
+    },
+    {
+      "id": "284517",
+      "title": "Maureen O'Hara",
+      "row_index": 67369,
+      "pilot_hash": "0018660b72c9374f377131e364138badd5377d86dd4b3a2602ed5bdbf727ee03"
+    },
+    {
+      "id": "836221",
+      "title": "Sendling",
+      "row_index": 185500,
+      "pilot_hash": "001868c405bd6fca3063b429515aa8abff390b944454c014e0572860eac9ea20"
+    },
+    {
+      "id": "959740",
+      "title": "Jean Bock",
+      "row_index": 218209,
+      "pilot_hash": "0018bde0672a6b235cfb1692381ab837e7617d85de23e5943c35d7cb094e6236"
+    },
+    {
+      "id": "868295",
+      "title": "Louis Danziger",
+      "row_index": 194419,
+      "pilot_hash": "0018c6e3acceaca5e089d933be35fcafd6f4a79b559b351f282bdc8ddb9b9dd6"
+    },
+    {
+      "id": "831009",
+      "title": "Electorate of Bavaria",
+      "row_index": 184053,
+      "pilot_hash": "00199b6fb078c83b5690c051a0b4b1c70cdcd87bea28b1a42c0e968efe5e2f21"
+    },
+    {
+      "id": "332363",
+      "title": "Koei",
+      "row_index": 76960,
+      "pilot_hash": "0019ce923310962ca9b1d5ed818c86bc7131a231d3173685828371f7bfbd6042"
+    },
+    {
+      "id": "331346",
+      "title": "Wolf Vostell",
+      "row_index": 76775,
+      "pilot_hash": "001a9d48803678e4176358751264711799d8e131cb9d5da5f898bdc2dd9f27bf"
+    },
+    {
+      "id": "246607",
+      "title": "Daichi Matsuyama",
+      "row_index": 60529,
+      "pilot_hash": "001aeb4492d59f785ccad4bb4a171e8545fd80f94dd614699515b19c6f6415d2"
+    },
+    {
+      "id": "265980",
+      "title": "Six Feet Under",
+      "row_index": 63864,
+      "pilot_hash": "001b0f2a0ba018cbf2d23622e27aa7466c5a96fc9204cfdbb3c17fa00accd5d0"
+    },
+    {
+      "id": "435095",
+      "title": "Computation",
+      "row_index": 99781,
+      "pilot_hash": "001bacd82f7e892883a7ff20dd1bdecc0ba66b86f46589caafc5f563ae7656af"
+    },
+    {
+      "id": "984871",
+      "title": "Wee Willie Winkie",
+      "row_index": 224566,
+      "pilot_hash": "001c2fe23dfcf1c6ff3b680f24b461b7a7122044ceb52de8877c7a5eb7f1b179"
+    },
+    {
+      "id": "748041",
+      "title": "Kweneng District",
+      "row_index": 157407,
+      "pilot_hash": "001cd15f408253a7707e0e6616e92e45c6a3d4f8add8dabea8f1bd7f0fd29544"
+    },
+    {
+      "id": "10516",
+      "title": "Sir Mix-A-Lot",
+      "row_index": 3503,
+      "pilot_hash": "001ce669eb6a592774d987a56025fbe505881bfcdd0b15a7325111fcfa711a07"
+    },
+    {
+      "id": "987930",
+      "title": "Saint-Saulve",
+      "row_index": 225465,
+      "pilot_hash": "001d05614e06af8c82f934dfc8ab9503c55885ecd16c8fd44cce420aea091ed8"
+    }
+  ]
+}

@@ -6,7 +6,6 @@
 """
 import ast
 import math
-import re
 from dataclasses import dataclass, field
 from typing import ClassVar, Literal
 
@@ -138,15 +137,11 @@ class QuantityNormalizer:
 
 # ─────────────────────────────────────────────────── خط معالجة النصوص الطبيعية (EnglishTextPipeline)
 class EnglishTextPipeline:
-    """خط معالجة النصوص الطبيعية الإنجليزية وفق قواعد RFC-04:
-    - عقد الرأس أولاً (Head-First Contract).
-    - حفظ الفاعل الدلالي الحقيقي عند البناء للمجهول (Passive Voice Agent Preservation).
-    - إسقاط الغراء النحوي (Contrast Gating).
-    - توجيه النفي الصريح لمجموعات التناقض X دون روابط موجبة.
-    - تقطيع الجمل متعددة الأرقام إلى حلقات ميكروية معزولة (Micro-Episodes).
-    """
+    """خط معالجة النصوص الطبيعية الإنجليزية وفق معمارية English Encoder v2."""
 
     def __init__(self):
+        from dgca.encoding.english import EnglishEncoderV2
+        self._v2_encoder = EnglishEncoderV2()
         self.normalizer = QuantityNormalizer()
 
     def process(self, text: str, context: str | None = None) -> list[SensoryEpisode]:
@@ -154,164 +149,24 @@ class EnglishTextPipeline:
         if not cleaned:
             return []
 
-        # 1. فحص النفي الصريح (Explicit Negation)
-        # مثال: "A dog is not a cat", "Birds are not mammals", "No cat is a dog"
-        neg_match = re.search(
-            r"\b(?:(a|an|the)\s+)?([a-zA-Z_]+)\s+(?:is|are|was|were)\s+(?:not|never|no)\s+(?:(a|an|the)\s+)?([a-zA-Z_]+)\b",
-            cleaned,
-            re.IGNORECASE,
-        )
-        if neg_match:
-            src_ent = neg_match.group(2).lower()
-            dst_ent = neg_match.group(4).lower()
-            return [
-                SensoryEpisode(
-                    kind="simultaneous",
-                    context=context,
-                    contradictions=[(f"text:{src_ent}", f"text:{dst_ent}")],
-                )
-            ]
+        res = self._v2_encoder.analyze(cleaned, source_ref=context or "")
+        if res.episodes:
+            return list(res.episodes)
 
-        # 2. فحص الجمل متعددة الأرقام والكيانات (Multi-Entity Quantified)
-        # مثال: "3 cats ate 2 fish", "2 dogs saw 5 birds"
-        multi_num_match = re.search(
-            r"\b(\d+)\s+([a-zA-Z_]+)\s+([a-zA-Z_]+)\s+(\d+)\s+([a-zA-Z_]+)\b",
-            cleaned,
-            re.IGNORECASE,
-        )
-        if multi_num_match:
-            n1_str, e1_raw, action, n2_str, e2_raw = multi_num_match.groups()
-            e1 = e1_raw.rstrip("s").lower() if e1_raw.lower().endswith("s") and len(e1_raw) > 3 else e1_raw.lower()
-            e2 = e2_raw.rstrip("s").lower() if e2_raw.lower().endswith("s") and len(e2_raw) > 3 else e2_raw.lower()
+        # Standalone descriptive noun phrase fallback (e.g. "The small black dog")
+        from dgca.encoding.english.emitter import _emit_np_episodes
+        from dgca.encoding.english.noun_phrases import parse_noun_phrase
+        from dgca.encoding.english.tokenize import tokenize
 
-            inst1 = QuantityNormalizer.get_instance_id(e1)
-            inst2 = QuantityNormalizer.get_instance_id(e2)
+        toks = tokenize(cleaned)
+        np_view, _ = parse_noun_phrase(toks)
+        if np_view is not None:
+            eps = _emit_np_episodes(np_view, context=context)
+            if eps:
+                return eps
+            return [SensoryEpisode(kind="simultaneous", context=context, signals=[(TEXT, np_view.head_lemma)])]
 
-            q1 = QuantityNormalizer.normalize(n1_str)
-            q2 = QuantityNormalizer.normalize(n2_str)
-
-            sig1 = [(TEXT, inst1), q1 if q1 else (QUANTITY, n1_str), (TEXT, e1)]
-            sig2 = [(TEXT, inst2), q2 if q2 else (QUANTITY, n2_str), (TEXT, e2)]
-
-            ep1 = SensoryEpisode(kind="simultaneous", context=context, signals=sig1)
-            ep2 = SensoryEpisode(kind="simultaneous", context=context, signals=sig2)
-            ep3 = SensoryEpisode(
-                kind="sequence",
-                context=context,
-                steps=[[(TEXT, inst1)], [(TEXT, action.lower())], [(TEXT, inst2)]],
-            )
-            return [ep1, ep2, ep3]
-
-        # 3. فحص البناء للمجهول (Passive Voice Agent Preservation)
-        # مثال: "The man was bitten by the dog", "The fish was eaten by a black cat"
-        passive_match = re.search(
-            r"\b(?:the|a|an)?\s*([a-zA-Z_]+)\s+(?:was|were|is|are|been|being)\s+([a-zA-Z_]+)\s+by\s+(?:the|a|an)?\s*([a-zA-Z_\s]+)\b",
-            cleaned,
-            re.IGNORECASE,
-        )
-        if passive_match:
-            patient = passive_match.group(1).lower().strip()
-            action = passive_match.group(2).lower().strip()
-            agent_phrase = passive_match.group(3).lower().strip()
-            agent_tokens = [w for w in re.split(r"\s+", agent_phrase) if w and w not in STOPWORDS]
-            agent_head = agent_tokens[-1] if agent_tokens else "agent"
-
-            # الفاعل الحقيقي dog هو الرأس في الموضع 0
-            steps = [[(TEXT, agent_head)], [(TEXT, action)], [(TEXT, patient)]]
-            return [SensoryEpisode(kind="sequence", context=context, steps=steps)]
-
-        # 4. فحص الأرقام الاسمية والكميات المفردة
-        # مثال: "Flight 404", "5 apples", "I saw 5 apples"
-        quant_match = re.search(
-            r"\b(?:saw|have|ate|contains|got)?\s*(\d+)\s+([a-zA-Z_]+)\b",
-            cleaned,
-            re.IGNORECASE,
-        )
-        if quant_match:
-            n_str, entity_raw = quant_match.groups()
-            prev_m = re.search(r"([a-zA-Z_]+)\s+" + n_str, cleaned, re.IGNORECASE)
-            prev_token = prev_m.group(1) if prev_m else None
-            norm = QuantityNormalizer.normalize(n_str, prev_token)
-            entity = entity_raw.lower()
-            if norm and norm[0] == QUANTITY:
-                inst = QuantityNormalizer.get_instance_id(entity.rstrip("s"))
-                return [
-                    SensoryEpisode(
-                        kind="simultaneous",
-                        context=context,
-                        signals=[(TEXT, inst), norm, (TEXT, entity.rstrip("s"))],
-                    )
-                ]
-            if norm and norm[0] == TEXT:
-                return [
-                    SensoryEpisode(
-                        kind="simultaneous",
-                        context=context,
-                        signals=[(TEXT, norm[1]), (TEXT, entity)],
-                    )
-                ]
-
-        # 5. فحص جمل الفاعل والحدث والمفعول (Active SVO Action) وجمل الصفات المقترنة
-        words = [w for w in re.findall(r"[a-zA-Z0-9_]+", cleaned) if w.lower() not in STOPWORDS]
-        if not words:
-            return []
-
-        # فحص تسميات مثل Flight 404
-        if len(words) == 2 and words[0].lower() in LABEL_PREFIXES and words[1].isdigit():
-            return [
-                SensoryEpisode(
-                    kind="simultaneous",
-                    context=context,
-                    signals=[(TEXT, f"{words[0].lower()}_{words[1]}")],
-                )
-            ]
-
-        # فحص جمل الفعل المتعدي الصريح: "The cat chased the mouse", "The dog bit the man"
-        has_copula = bool(re.search(r"\b(is|are|was|were|am|and)\b", cleaned, re.IGNORECASE))
-        action_verbs = {
-            "chased", "chase", "chases",
-            "bit", "bite", "bites", "bitten",
-            "ate", "eat", "eats", "eaten",
-            "saw", "see", "sees", "seen",
-            "hit", "hits",
-            "caught", "catch", "catches",
-            "pushed", "push", "pushes",
-            "pulled", "pull", "pulls",
-            "killed", "kill", "kills",
-            "loved", "love", "loves",
-            "built", "build", "builds",
-            "held", "hold", "holds",
-            "drank", "drink", "drinks",
-            "found", "find", "finds",
-            "took", "take", "takes",
-            "drove", "drive", "drives",
-        }
-        if len(words) == 3 and not has_copula and (words[1].lower() in action_verbs or words[1].lower().endswith("ed")):
-            agent, action, patient = words
-            return [
-                SensoryEpisode(
-                    kind="sequence",
-                    context=context,
-                    steps=[[(TEXT, agent.lower())], [(TEXT, action.lower())], [(TEXT, patient.lower())]],
-                )
-            ]
-
-        # إذا كانت جملة إسناد صفات: "Apples are sweet and red"
-        if has_copula and len(words) >= 2:
-            head = words[0].rstrip("s").lower() if words[0].lower().endswith("s") and len(words[0]) > 3 else words[0].lower()
-            attrs = [w.lower() for w in words[1:]]
-            signals = [(TEXT, head)] + [(TEXT, attr) for attr in attrs]
-            return [SensoryEpisode(kind="simultaneous", context=context, signals=signals)]
-
-        # إذا كانت عبارة اسمية وصفية (Descriptive Noun Chunk): Head أولاً دائماً
-        # مثال: "The small black dog" -> [("text", "dog"), ("text", "small"), ("text", "black")]
-        if len(words) >= 2:
-            head = words[-1].lower()
-            attrs = [w.lower() for w in words[:-1]]
-            signals = [(TEXT, head)] + [(TEXT, attr) for attr in attrs]
-            return [SensoryEpisode(kind="simultaneous", context=context, signals=signals)]
-
-        return [SensoryEpisode(kind="simultaneous", context=context, signals=[(TEXT, words[0].lower())])]
+        return []
 
 
 # ─────────────────────────────────────────────────── خط معالجة الكود الهرمي (CodeSensoryPipeline)

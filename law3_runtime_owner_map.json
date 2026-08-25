@@ -1,0 +1,77 @@
+{
+  "trial_id": "Law-3 Persistence Forensics Trial 01",
+  "within_tick_execution_order": [
+    {
+      "order": 1,
+      "stage": "Linguistic Encoding",
+      "function": "dgca.encoding.english.encoder.EnglishEncoderV2.analyze",
+      "description": "Compiles raw text into pure SensoryEpisodes without graph mutation or Law 3 interaction."
+    },
+    {
+      "order": 2,
+      "stage": "Episode Ingress",
+      "function": "dgca.encoder.MasterSymbolicEncoder.feed_to_graph",
+      "description": "Routes simultaneous and sequence episodes to CognitiveGraph."
+    },
+    {
+      "order": 3,
+      "stage": "Node Materialization & Excitation",
+      "function": "dgca.graph.CognitiveGraph.node / Node.excite",
+      "description": "Materializes addressable region:symbol nodes and sets initial activation."
+    },
+    {
+      "order": 4,
+      "stage": "Law 1 Edge Creation",
+      "function": "dgca.graph.CognitiveGraph._law1_create",
+      "description": "Creates directed Edge if A_i * A_j >= THETA_CREATION (0.30) and valid origin."
+    },
+    {
+      "order": 5,
+      "stage": "Law 2 Reinforcement & Law 8 Salience",
+      "function": "dgca.graph.CognitiveGraph._law2_reinforce",
+      "description": "Updates edge weight, computes salience S, tags structural edges, increments n_ij, updates contexts."
+    },
+    {
+      "order": 6,
+      "stage": "Event Role Hub Structuring",
+      "function": "dgca.graph.CognitiveGraph.observe_sequence",
+      "description": "Creates event hub node ev:... and role0/role1/role2 incident edges."
+    },
+    {
+      "order": 7,
+      "stage": "Law 5 Consolidation State",
+      "function": "dgca.graph.Edge.locked & Edge.W_floor",
+      "description": "Derives lock state when W >= 0.75 and n >= 3 and |C| >= 2. Sets floor."
+    },
+    {
+      "order": 8,
+      "stage": "Law 10 Concept Merging & Capacity",
+      "function": "dgca.graph.CognitiveGraph._spawn_concept / _law10_merge",
+      "description": "Forms concept nodes and prunes concept capacity."
+    },
+    {
+      "order": 9,
+      "stage": "Law 4 Autogating & Law 9 Generalization",
+      "function": "dgca.graph.CognitiveGraph._law4_autogate / _law9_generalize",
+      "description": "Enforces energy conservation and computes similarity edges."
+    },
+    {
+      "order": 10,
+      "stage": "Law 3 Decay & Edge Pruning",
+      "function": "dgca.graph.CognitiveGraph._law3_decay",
+      "description": "Applies W_ij - lambda_decay (0.020) and unlinks edges with W <= THETA_PRUNE (0.05)."
+    },
+    {
+      "order": 11,
+      "stage": "Law 3 Cellular Death (Orphan GC)",
+      "function": "dgca.graph.CognitiveGraph._law3_decay (orphan loop)",
+      "description": "Deletes non-intrinsic nodes with in_degree=0, out_degree=0, and A=0."
+    },
+    {
+      "order": 12,
+      "stage": "Law 13 Prediction Settlement",
+      "function": "dgca.graph.CognitiveGraph._compute_predictions",
+      "description": "Computes forward predictions across fwd edges."
+    }
+  ]
+}
