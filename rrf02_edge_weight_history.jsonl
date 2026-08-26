@@ -1,0 +1,9 @@
+{"ProbeID": "PROBE_01", "TrueConcept": "apple", "WinnerConcept": "car", "TrueSupport": 0.04511123963614069, "WinnerSupport": 0.18229043986717797}
+{"ProbeID": "PROBE_03", "TrueConcept": "banana", "WinnerConcept": "bottle", "TrueSupport": 0.0838159022868123, "WinnerSupport": 0.2382705758359121}
+{"ProbeID": "PROBE_04", "TrueConcept": "ball", "WinnerConcept": "car", "TrueSupport": 0.11432121075541996, "WinnerSupport": 0.1807985237354364}
+{"ProbeID": "PROBE_05", "TrueConcept": "ball", "WinnerConcept": "bird", "TrueSupport": 0.14829605330345116, "WinnerSupport": 0.20603431410219986}
+{"ProbeID": "PROBE_07", "TrueConcept": "cup", "WinnerConcept": "car", "TrueSupport": 0.177786292679719, "WinnerSupport": 0.18229043986717797}
+{"ProbeID": "PROBE_10", "TrueConcept": "car", "WinnerConcept": "bottle", "TrueSupport": 0.03422740230745455, "WinnerSupport": 0.218933169803451}
+{"ProbeID": "PROBE_16", "TrueConcept": "cat", "WinnerConcept": "banana", "TrueSupport": 0.042252278826667905, "WinnerSupport": 0.17288295238048024}
+{"ProbeID": "PROBE_18", "TrueConcept": "dog", "WinnerConcept": "banana", "TrueSupport": 0.0733637595772684, "WinnerSupport": 0.17288295238048024}
+{"ProbeID": "PROBE_19", "TrueConcept": "dog", "WinnerConcept": "car", "TrueSupport": 0.09430509945749917, "WinnerSupport": 0.18229043986717797}

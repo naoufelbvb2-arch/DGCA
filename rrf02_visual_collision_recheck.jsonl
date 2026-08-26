@@ -1,0 +1,9 @@
+{"ProbeID": "PROBE_01", "TrueConcept": "apple", "WinnerConcept": "car", "IsVisualCollision": false}
+{"ProbeID": "PROBE_03", "TrueConcept": "banana", "WinnerConcept": "bottle", "IsVisualCollision": false}
+{"ProbeID": "PROBE_04", "TrueConcept": "ball", "WinnerConcept": "car", "IsVisualCollision": false}
+{"ProbeID": "PROBE_05", "TrueConcept": "ball", "WinnerConcept": "bird", "IsVisualCollision": false}
+{"ProbeID": "PROBE_07", "TrueConcept": "cup", "WinnerConcept": "car", "IsVisualCollision": false}
+{"ProbeID": "PROBE_10", "TrueConcept": "car", "WinnerConcept": "bottle", "IsVisualCollision": false}
+{"ProbeID": "PROBE_16", "TrueConcept": "cat", "WinnerConcept": "banana", "IsVisualCollision": false}
+{"ProbeID": "PROBE_18", "TrueConcept": "dog", "WinnerConcept": "banana", "IsVisualCollision": false}
+{"ProbeID": "PROBE_19", "TrueConcept": "dog", "WinnerConcept": "car", "IsVisualCollision": false}

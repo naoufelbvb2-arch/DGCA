@@ -1,0 +1,23 @@
+{
+  "ProbeID": "PROBE_05",
+  "ImageID": "RI01_ball_06",
+  "TrueConcept": "ball",
+  "OldWinner": "ball",
+  "NewWinner": "bird",
+  "OldOutcome": "CORRECT",
+  "NewOutcome": "WRONG",
+  "OldCorrectScore": 16,
+  "OldWrongTopScore": 16,
+  "OldExactTie": true,
+  "OldTieSet": [
+    "ball",
+    "bird"
+  ],
+  "OldCorrectWasForcedTie": true,
+  "OldCorrectWasLexicalLuck": true,
+  "NewWinnerSupport": 0.20603431410219986,
+  "CorrectConceptSupport": 0.14829605330345116,
+  "RegressionIsReal": false,
+  "Explanation": "OLD result was an exact top tie (16 vs 16) selected 'ball' solely because 'ball' < 'bird' in alphabetical tie-breaking. LESR revealed that underlying normalized support slightly favored 'bird' (0.2857 vs 0.2847).",
+  "XMRR_G13_FinalStatus": "PASS_WITH_HISTORICAL_TIE_EXCEPTION"
+}

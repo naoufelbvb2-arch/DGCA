@@ -1,0 +1,9 @@
+{"ProbeID": "PROBE_01", "TrueConcept": "apple", "WinnerConcept": "car", "GenericDominanceRatio": 4.040909567936961}
+{"ProbeID": "PROBE_03", "TrueConcept": "banana", "WinnerConcept": "bottle", "GenericDominanceRatio": 2.842784833605519}
+{"ProbeID": "PROBE_04", "TrueConcept": "ball", "WinnerConcept": "car", "GenericDominanceRatio": 1.5814958793800629}
+{"ProbeID": "PROBE_05", "TrueConcept": "ball", "WinnerConcept": "bird", "GenericDominanceRatio": 1.3893445544407148}
+{"ProbeID": "PROBE_07", "TrueConcept": "cup", "WinnerConcept": "car", "GenericDominanceRatio": 1.0253346144945672}
+{"ProbeID": "PROBE_10", "TrueConcept": "car", "WinnerConcept": "bottle", "GenericDominanceRatio": 6.396429616154904}
+{"ProbeID": "PROBE_16", "TrueConcept": "cat", "WinnerConcept": "banana", "GenericDominanceRatio": 4.091683506342943}
+{"ProbeID": "PROBE_18", "TrueConcept": "dog", "WinnerConcept": "banana", "GenericDominanceRatio": 2.3565170784138445}
+{"ProbeID": "PROBE_19", "TrueConcept": "dog", "WinnerConcept": "car", "GenericDominanceRatio": 1.9329860306157833}
