@@ -1,0 +1,50 @@
+{
+  "RI01-B-G01": {
+    "name": "Clean B0",
+    "status": "PASSED"
+  },
+  "RI01-B-G02": {
+    "name": "Independent Encoder Paths",
+    "status": "PASSED"
+  },
+  "RI01-B-G03": {
+    "name": "No Manual Edge Injection",
+    "status": "PASSED"
+  },
+  "RI01-B-G04": {
+    "name": "Cross-Modal Formation",
+    "status": "PASSED"
+  },
+  "RI01-B-G05": {
+    "name": "Cross-Modal Reinforcement",
+    "status": "PASSED"
+  },
+  "RI01-B-G06": {
+    "name": "Held-Out Image Retrieval",
+    "status": "PASSED"
+  },
+  "RI01-B-G07": {
+    "name": "Reverse Retrieval",
+    "status": "PASSED"
+  },
+  "RI01-B-G08": {
+    "name": "No Semantic Leakage",
+    "status": "PASSED"
+  },
+  "RI01-B-G09": {
+    "name": "Evaluation Isolation",
+    "status": "PASSED"
+  },
+  "RI01-B-G10": {
+    "name": "No Hidden Forgetting",
+    "status": "PASSED"
+  },
+  "RI01-B-G11": {
+    "name": "Grounding Diagnostics Complete",
+    "status": "PASSED"
+  },
+  "RI01-B-G12": {
+    "name": "Phase-B Scientific Classification Complete",
+    "status": "PASSED"
+  }
+}

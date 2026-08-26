@@ -1,0 +1,802 @@
+[
+  {
+    "ImageID": "RI01_apple_00",
+    "ConceptLabel_EvaluationOnly": "apple",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/apple/RI01_apple_00.png",
+    "FileSHA256": "af329e6bb2ba2f89c5b01c3c0f770e182d0f00a03d47b28f6695772173613d53",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_apple_01",
+    "ConceptLabel_EvaluationOnly": "apple",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/apple/RI01_apple_01.png",
+    "FileSHA256": "4e159378bade73fa9dabd6396c8934e1e3d78a6ff285a53b0bdffe68b0a7c250",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_apple_02",
+    "ConceptLabel_EvaluationOnly": "apple",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/apple/RI01_apple_02.png",
+    "FileSHA256": "a5819d39776d30e302085b9983880f0ebb0f390544a0fcf160a85e129a45b3dd",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_apple_03",
+    "ConceptLabel_EvaluationOnly": "apple",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/apple/RI01_apple_03.png",
+    "FileSHA256": "3c717ccdba23a4f55c2bf8a63614020d83a37d53cde536f98af8de913bef4e4f",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_apple_04",
+    "ConceptLabel_EvaluationOnly": "apple",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/apple/RI01_apple_04.png",
+    "FileSHA256": "db50f7e798cd6a5a82e2cface5742fd13f530d3bdc4b8f9e1611a83a92d1985f",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_banana_00",
+    "ConceptLabel_EvaluationOnly": "banana",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/banana/RI01_banana_00.png",
+    "FileSHA256": "70532824f098c74698559739cc73084882afefb91bc2828f7ea4f8cda0687db0",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_banana_01",
+    "ConceptLabel_EvaluationOnly": "banana",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/banana/RI01_banana_01.png",
+    "FileSHA256": "576cb1262a904b22bf75f97f62fad1f23b6fac4fca9fb32fa21b59138ab1a039",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_banana_02",
+    "ConceptLabel_EvaluationOnly": "banana",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/banana/RI01_banana_02.png",
+    "FileSHA256": "4a6ca1ccc61ab74a56b339860aa0b3ca493ee791bdefa9b345f06940ba224870",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_banana_03",
+    "ConceptLabel_EvaluationOnly": "banana",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/banana/RI01_banana_03.png",
+    "FileSHA256": "f7903f24bd5d3c0ede8a5db1537da807ac3b508fcfee1ed1a493c1e7d4375a51",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_banana_04",
+    "ConceptLabel_EvaluationOnly": "banana",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/banana/RI01_banana_04.png",
+    "FileSHA256": "369c3a46840fbcaae91e11da1c134158736582caaa53a992389daf75a2d7f62b",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_ball_00",
+    "ConceptLabel_EvaluationOnly": "ball",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/ball/RI01_ball_00.png",
+    "FileSHA256": "8db6167967f5201544ae7b36109cb6e6eeb1f4eb872a4c0480dcda474725397c",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_ball_01",
+    "ConceptLabel_EvaluationOnly": "ball",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/ball/RI01_ball_01.png",
+    "FileSHA256": "94e2e132e4657796e61454604f71d09cf8a7bc7399c1e3d6842365b214d069aa",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_ball_02",
+    "ConceptLabel_EvaluationOnly": "ball",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/ball/RI01_ball_02.png",
+    "FileSHA256": "92978dc5deb631087fc239523d056e5d231578aeb275517a29863956586d0d1d",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_ball_03",
+    "ConceptLabel_EvaluationOnly": "ball",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/ball/RI01_ball_03.png",
+    "FileSHA256": "a2591f7444dba762ff575eb21621684bcac4182763834e64127a35e5e2ebad01",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_ball_04",
+    "ConceptLabel_EvaluationOnly": "ball",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/ball/RI01_ball_04.png",
+    "FileSHA256": "c5ef9d53ba49096132c2c7f178c6b39347a3409c053c1d9be621821d22d7ef4a",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_cup_00",
+    "ConceptLabel_EvaluationOnly": "cup",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/cup/RI01_cup_00.png",
+    "FileSHA256": "1c9dadf273bce93e8e9fd4b8c59b9ff7bdd8314ca3a34f1b0817c922de5c8b20",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_cup_01",
+    "ConceptLabel_EvaluationOnly": "cup",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/cup/RI01_cup_01.png",
+    "FileSHA256": "7dd30f85d934081c17dd8f5e134d4ca099916bd59002760b69403675a74ebfd8",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_cup_02",
+    "ConceptLabel_EvaluationOnly": "cup",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/cup/RI01_cup_02.png",
+    "FileSHA256": "700737cbca47b4d4d6349d382b9c9fd0f2203b3851ad8618b6f89b2c2aef0286",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_cup_03",
+    "ConceptLabel_EvaluationOnly": "cup",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/cup/RI01_cup_03.png",
+    "FileSHA256": "7df319ce78314b40efbf0bad4c6c2e8cd2b5a3e659df05449598a7f88e58b442",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_cup_04",
+    "ConceptLabel_EvaluationOnly": "cup",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/cup/RI01_cup_04.png",
+    "FileSHA256": "8b5efb73fe933eb755dc88396a06e1666d804be697ac7384df462977fe0c68d7",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_bottle_00",
+    "ConceptLabel_EvaluationOnly": "bottle",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/bottle/RI01_bottle_00.png",
+    "FileSHA256": "77410c92837c01b5d200a716f70023f42c7af22fe9f60d090904d88f530e159c",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_bottle_01",
+    "ConceptLabel_EvaluationOnly": "bottle",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/bottle/RI01_bottle_01.png",
+    "FileSHA256": "8f5f76cf510d465a0cbe7cf9e6c0949b71112c321ba961a83eb157b130c10cdd",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_bottle_02",
+    "ConceptLabel_EvaluationOnly": "bottle",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/bottle/RI01_bottle_02.png",
+    "FileSHA256": "a6d4e7799fcfc0dac25fad50ec2174625fcaadd1e9874c398f5cd1e4cdd3ab0b",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_bottle_03",
+    "ConceptLabel_EvaluationOnly": "bottle",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/bottle/RI01_bottle_03.png",
+    "FileSHA256": "065cf8a7360945331601f353fc2fe1f609b3dc80de0f1ae80fce0e4f8fcd30f4",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_bottle_04",
+    "ConceptLabel_EvaluationOnly": "bottle",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/bottle/RI01_bottle_04.png",
+    "FileSHA256": "6c8d46e1d37073560e6ba19a311d7917f990eb7559488e5b694db55edaf7a213",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_car_00",
+    "ConceptLabel_EvaluationOnly": "car",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/car/RI01_car_00.png",
+    "FileSHA256": "b8780fd5cd1773da22e8f9d262160c18cf697d9438b4a17bd1ae9d4672278d74",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_car_01",
+    "ConceptLabel_EvaluationOnly": "car",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/car/RI01_car_01.png",
+    "FileSHA256": "d0e98343d6d366a474911c983721ab79a3a04b75b4786e75fe572a0a9b063163",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_car_02",
+    "ConceptLabel_EvaluationOnly": "car",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/car/RI01_car_02.png",
+    "FileSHA256": "97a76af58d43ab7ebe33a7ad94df1b9992c6e06741cad68644464086a7022762",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_car_03",
+    "ConceptLabel_EvaluationOnly": "car",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/car/RI01_car_03.png",
+    "FileSHA256": "073c19dec57cfb528f9e170cd92433ca7c5fa6a3f82ab64ade74574c93ea7832",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_car_04",
+    "ConceptLabel_EvaluationOnly": "car",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/car/RI01_car_04.png",
+    "FileSHA256": "c33b6e6a54900c2b7f7b77bbd8a9404290fac42020ff299e6d7625ef45173b05",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_tree_00",
+    "ConceptLabel_EvaluationOnly": "tree",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/tree/RI01_tree_00.png",
+    "FileSHA256": "520bf8b52a678d9e6eb8c9174bece416611067bb1e9ce1a48709fbaf77f25f19",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_tree_01",
+    "ConceptLabel_EvaluationOnly": "tree",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/tree/RI01_tree_01.png",
+    "FileSHA256": "beafd1f7158dbc6e60cf2b9952a3f54d564218d99286bb6174159fdc967ed5fe",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_tree_02",
+    "ConceptLabel_EvaluationOnly": "tree",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/tree/RI01_tree_02.png",
+    "FileSHA256": "b7e5f4dc65a3e978acee55f1fbf01858f5b98bffc5a6628d698682793ae50a9b",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_tree_03",
+    "ConceptLabel_EvaluationOnly": "tree",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/tree/RI01_tree_03.png",
+    "FileSHA256": "a93f236a2b9959d9706f697a5210d236eb92d95e3b6699aeb51a6df02b4efcd4",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_tree_04",
+    "ConceptLabel_EvaluationOnly": "tree",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/tree/RI01_tree_04.png",
+    "FileSHA256": "c3072f33e253d40c68ffb48e3ff1b98340a76e6c344560517832be569ff5f300",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_bird_00",
+    "ConceptLabel_EvaluationOnly": "bird",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/bird/RI01_bird_00.png",
+    "FileSHA256": "080f6c50a229b4328109e19c959d71e60eae6fd6fec8840d6986356c7ea27103",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_bird_01",
+    "ConceptLabel_EvaluationOnly": "bird",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/bird/RI01_bird_01.png",
+    "FileSHA256": "5e9b643bfa206cdc874eb2645f815c1d617ea363b4c40955daabdffc5d597ac5",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_bird_02",
+    "ConceptLabel_EvaluationOnly": "bird",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/bird/RI01_bird_02.png",
+    "FileSHA256": "845e8ed927ff3618ea905dae853abd10d53535c573f478048eed4435d2ae3850",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_bird_03",
+    "ConceptLabel_EvaluationOnly": "bird",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/bird/RI01_bird_03.png",
+    "FileSHA256": "3dbf4f0c01c7770630190b705bbdbd876fec50ebe2cf4773dda806a663e2130a",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_bird_04",
+    "ConceptLabel_EvaluationOnly": "bird",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/bird/RI01_bird_04.png",
+    "FileSHA256": "2aec18a4881c0e9622724915e4d72a0f388792fe9cf2fac3999a8021ad4dc85b",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_cat_00",
+    "ConceptLabel_EvaluationOnly": "cat",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/cat/RI01_cat_00.png",
+    "FileSHA256": "f3907eeab1cdfba4b5b93df1d34cf2996e4c17eba3eff7ddf9b50dabcc30b362",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_cat_01",
+    "ConceptLabel_EvaluationOnly": "cat",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/cat/RI01_cat_01.png",
+    "FileSHA256": "522f13819f89826cc745a871e9ebbaa23d5c7453200c9f7a8b85e3bc369a5b84",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_cat_02",
+    "ConceptLabel_EvaluationOnly": "cat",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/cat/RI01_cat_02.png",
+    "FileSHA256": "8e51e1b3f68ec4928b27a1b87d9f5a8f45ef3490d560172276eb550764ca7e46",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_cat_03",
+    "ConceptLabel_EvaluationOnly": "cat",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/cat/RI01_cat_03.png",
+    "FileSHA256": "632f13dfe9a0be13ab0f5099be38901959c99b107334b24e358babbfe470de90",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_cat_04",
+    "ConceptLabel_EvaluationOnly": "cat",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/cat/RI01_cat_04.png",
+    "FileSHA256": "73e30db03793189af7e2c34d1f97204afaf6aa7cf371ba99976761a1096e5a08",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_dog_00",
+    "ConceptLabel_EvaluationOnly": "dog",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/dog/RI01_dog_00.png",
+    "FileSHA256": "04144c0b06ec3f709c31e393f85709aa67311fd30b9da20653c46f8ba61628be",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_dog_01",
+    "ConceptLabel_EvaluationOnly": "dog",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/dog/RI01_dog_01.png",
+    "FileSHA256": "508239a566a4dfce50a74053bb26a752315ecb19230c819e53b15107c7ae706c",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_dog_02",
+    "ConceptLabel_EvaluationOnly": "dog",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/dog/RI01_dog_02.png",
+    "FileSHA256": "c4f36e8cca9f7190cf2458c2acc56039121906104a7803cbc745449545dcd524",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_dog_03",
+    "ConceptLabel_EvaluationOnly": "dog",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/dog/RI01_dog_03.png",
+    "FileSHA256": "165bdd055f405327e6dde1ec4a0984d251c4e997725398c06190e7b78769556f",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  },
+  {
+    "ImageID": "RI01_dog_04",
+    "ConceptLabel_EvaluationOnly": "dog",
+    "SourceType": "REAL_PHOTOGRAPH_SAMPLE",
+    "SourceURI_or_LocalProvenance": "local://dataset/ri01/dog/RI01_dog_04.png",
+    "FileSHA256": "542cccc0022377233206946200dfb4f4b0fd041afc95be614d2e9094a0de4d57",
+    "Width": 200,
+    "Height": 200,
+    "Format": "PNG",
+    "ExposureRole": "PHASE_A_EXPOSURE",
+    "VariationTags": [
+      "color_var",
+      "scale_var",
+      "bg_var"
+    ]
+  }
+]

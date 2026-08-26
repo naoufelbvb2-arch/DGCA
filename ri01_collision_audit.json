@@ -1,0 +1,1917 @@
+[
+  {
+    "ConceptA": "dog",
+    "ConceptB": "tree",
+    "ImageA": "RI01_dog_01",
+    "ImageB": "RI01_tree_01",
+    "Overlap": 0.7058823529411765,
+    "SharedFeatures": [
+      "vis:clr:white",
+      "vis:compact:high",
+      "vis:compact:medium",
+      "vis:elong:low",
+      "vis:lum:bright",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:sz:medium",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:green",
+      "vis:clr:red",
+      "vis:elong:medium",
+      "vis:solidity:high",
+      "vis:tex:mixed"
+    ]
+  },
+  {
+    "ConceptA": "dog",
+    "ConceptB": "apple",
+    "ImageA": "RI01_dog_01",
+    "ImageB": "RI01_apple_01",
+    "Overlap": 0.7333333333333333,
+    "SharedFeatures": [
+      "vis:clr:red",
+      "vis:clr:white",
+      "vis:compact:high",
+      "vis:elong:low",
+      "vis:lum:bright",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:compact:low",
+      "vis:compact:medium",
+      "vis:shp:circle",
+      "vis:sz:medium"
+    ]
+  },
+  {
+    "ConceptA": "dog",
+    "ConceptB": "tree",
+    "ImageA": "RI01_dog_02",
+    "ImageB": "RI01_tree_02",
+    "Overlap": 0.7857142857142857,
+    "SharedFeatures": [
+      "vis:clr:green",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:sz:medium",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:orange",
+      "vis:elong:medium",
+      "vis:lum:dark"
+    ]
+  },
+  {
+    "ConceptA": "dog",
+    "ConceptB": "cat",
+    "ImageA": "RI01_dog_02",
+    "ImageB": "RI01_cat_02",
+    "Overlap": 0.8461538461538461,
+    "SharedFeatures": [
+      "vis:clr:green",
+      "vis:clr:orange",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:shp:circle",
+      "vis:sz:medium"
+    ]
+  },
+  {
+    "ConceptA": "dog",
+    "ConceptB": "ball",
+    "ImageA": "RI01_dog_02",
+    "ImageB": "RI01_ball_02",
+    "Overlap": 0.7142857142857143,
+    "SharedFeatures": [
+      "vis:clr:green",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:blue",
+      "vis:clr:orange",
+      "vis:shp:circle",
+      "vis:sz:medium"
+    ]
+  },
+  {
+    "ConceptA": "dog",
+    "ConceptB": "bird",
+    "ImageA": "RI01_dog_02",
+    "ImageB": "RI01_bird_02",
+    "Overlap": 0.7142857142857143,
+    "SharedFeatures": [
+      "vis:clr:green",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:blue",
+      "vis:clr:orange",
+      "vis:shp:circle",
+      "vis:sz:medium"
+    ]
+  },
+  {
+    "ConceptA": "car",
+    "ConceptB": "apple",
+    "ImageA": "RI01_car_00",
+    "ImageB": "RI01_apple_04",
+    "Overlap": 0.7,
+    "SharedFeatures": [
+      "vis:clr:red",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:solidity:high",
+      "vis:solidity:low",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:coarse",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:black",
+      "vis:clr:orange",
+      "vis:elong:medium",
+      "vis:shp:circle",
+      "vis:shp:rectangle",
+      "vis:sz:small"
+    ]
+  },
+  {
+    "ConceptA": "cat",
+    "ConceptB": "apple",
+    "ImageA": "RI01_cat_03",
+    "ImageB": "RI01_apple_03",
+    "Overlap": 0.7,
+    "SharedFeatures": [
+      "vis:clr:blue",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:low",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:coarse",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:gray",
+      "vis:clr:orange",
+      "vis:clr:red",
+      "vis:ori:vertical",
+      "vis:solidity:high",
+      "vis:tex:fine"
+    ]
+  },
+  {
+    "ConceptA": "cat",
+    "ConceptB": "dog",
+    "ImageA": "RI01_cat_03",
+    "ImageB": "RI01_dog_03",
+    "Overlap": 0.875,
+    "SharedFeatures": [
+      "vis:clr:blue",
+      "vis:clr:orange",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:solidity:low",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:coarse",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:shp:circle",
+      "vis:tex:fine"
+    ]
+  },
+  {
+    "ConceptA": "cat",
+    "ConceptB": "bird",
+    "ImageA": "RI01_cat_03",
+    "ImageB": "RI01_bird_03",
+    "Overlap": 0.7368421052631579,
+    "SharedFeatures": [
+      "vis:clr:blue",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:low",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:coarse",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:orange",
+      "vis:ori:vertical",
+      "vis:solidity:high",
+      "vis:tex:fine",
+      "vis:tex:mixed"
+    ]
+  },
+  {
+    "ConceptA": "cat",
+    "ConceptB": "dog",
+    "ImageA": "RI01_cat_03",
+    "ImageB": "RI01_dog_04",
+    "Overlap": 0.7058823529411765,
+    "SharedFeatures": [
+      "vis:clr:orange",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:low",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:coarse"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:blue",
+      "vis:lum:dark",
+      "vis:tex:fine",
+      "vis:tex:mixed",
+      "vis:tex:smooth"
+    ]
+  },
+  {
+    "ConceptA": "cat",
+    "ConceptB": "apple",
+    "ImageA": "RI01_cat_03",
+    "ImageB": "RI01_apple_04",
+    "Overlap": 0.7777777777777778,
+    "SharedFeatures": [
+      "vis:clr:orange",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:low",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:coarse",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:blue",
+      "vis:clr:red",
+      "vis:solidity:high",
+      "vis:tex:fine"
+    ]
+  },
+  {
+    "ConceptA": "cat",
+    "ConceptB": "ball",
+    "ImageA": "RI01_cat_03",
+    "ImageB": "RI01_ball_04",
+    "Overlap": 0.9375,
+    "SharedFeatures": [
+      "vis:clr:blue",
+      "vis:clr:orange",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:low",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:coarse",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:tex:fine"
+    ]
+  },
+  {
+    "ConceptA": "cat",
+    "ConceptB": "ball",
+    "ImageA": "RI01_cat_03",
+    "ImageB": "RI01_ball_03",
+    "Overlap": 0.875,
+    "SharedFeatures": [
+      "vis:clr:blue",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:low",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:coarse",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:orange",
+      "vis:tex:fine"
+    ]
+  },
+  {
+    "ConceptA": "bird",
+    "ConceptB": "cat",
+    "ImageA": "RI01_bird_00",
+    "ImageB": "RI01_cat_00",
+    "Overlap": 0.875,
+    "SharedFeatures": [
+      "vis:clr:black",
+      "vis:compact:high",
+      "vis:compact:medium",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:high",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:mixed",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:blue",
+      "vis:clr:orange"
+    ]
+  },
+  {
+    "ConceptA": "bird",
+    "ConceptB": "ball",
+    "ImageA": "RI01_bird_00",
+    "ImageB": "RI01_ball_00",
+    "Overlap": 0.9333333333333333,
+    "SharedFeatures": [
+      "vis:clr:black",
+      "vis:clr:blue",
+      "vis:compact:high",
+      "vis:compact:medium",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:high",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:tex:mixed"
+    ]
+  },
+  {
+    "ConceptA": "bird",
+    "ConceptB": "dog",
+    "ImageA": "RI01_bird_00",
+    "ImageB": "RI01_dog_00",
+    "Overlap": 0.875,
+    "SharedFeatures": [
+      "vis:clr:black",
+      "vis:compact:high",
+      "vis:compact:medium",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:high",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:mixed",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:blue",
+      "vis:clr:orange"
+    ]
+  },
+  {
+    "ConceptA": "bird",
+    "ConceptB": "cup",
+    "ImageA": "RI01_bird_00",
+    "ImageB": "RI01_cup_00",
+    "Overlap": 0.7058823529411765,
+    "SharedFeatures": [
+      "vis:clr:black",
+      "vis:compact:high",
+      "vis:compact:medium",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:high",
+      "vis:sz:large",
+      "vis:tex:mixed",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:blue",
+      "vis:clr:white",
+      "vis:lum:bright",
+      "vis:lum:medium",
+      "vis:solidity:medium"
+    ]
+  },
+  {
+    "ConceptA": "bird",
+    "ConceptB": "apple",
+    "ImageA": "RI01_bird_00",
+    "ImageB": "RI01_apple_00",
+    "Overlap": 0.8125,
+    "SharedFeatures": [
+      "vis:clr:black",
+      "vis:compact:high",
+      "vis:compact:medium",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:high",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:blue",
+      "vis:clr:red",
+      "vis:tex:mixed"
+    ]
+  },
+  {
+    "ConceptA": "cat",
+    "ConceptB": "bird",
+    "ImageA": "RI01_cat_01",
+    "ImageB": "RI01_bird_01",
+    "Overlap": 0.8571428571428571,
+    "SharedFeatures": [
+      "vis:clr:white",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:bright",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:blue",
+      "vis:clr:orange"
+    ]
+  },
+  {
+    "ConceptA": "cat",
+    "ConceptB": "apple",
+    "ImageA": "RI01_cat_01",
+    "ImageB": "RI01_apple_01",
+    "Overlap": 0.8571428571428571,
+    "SharedFeatures": [
+      "vis:clr:white",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:bright",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:orange",
+      "vis:clr:red"
+    ]
+  },
+  {
+    "ConceptA": "cat",
+    "ConceptB": "ball",
+    "ImageA": "RI01_cat_01",
+    "ImageB": "RI01_ball_01",
+    "Overlap": 0.8571428571428571,
+    "SharedFeatures": [
+      "vis:clr:white",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:bright",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:blue",
+      "vis:clr:orange"
+    ]
+  },
+  {
+    "ConceptA": "tree",
+    "ConceptB": "apple",
+    "ImageA": "RI01_tree_02",
+    "ImageB": "RI01_apple_02",
+    "Overlap": 0.7333333333333333,
+    "SharedFeatures": [
+      "vis:clr:green",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:red",
+      "vis:elong:medium",
+      "vis:shp:circle",
+      "vis:sz:medium"
+    ]
+  },
+  {
+    "ConceptA": "cat",
+    "ConceptB": "ball",
+    "ImageA": "RI01_cat_00",
+    "ImageB": "RI01_ball_00",
+    "Overlap": 0.8125,
+    "SharedFeatures": [
+      "vis:clr:black",
+      "vis:compact:high",
+      "vis:compact:medium",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:high",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:blue",
+      "vis:clr:orange",
+      "vis:tex:mixed"
+    ]
+  },
+  {
+    "ConceptA": "cat",
+    "ConceptB": "dog",
+    "ImageA": "RI01_cat_00",
+    "ImageB": "RI01_dog_00",
+    "Overlap": 1.0,
+    "SharedFeatures": [
+      "vis:clr:black",
+      "vis:clr:orange",
+      "vis:compact:high",
+      "vis:compact:medium",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:high",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:mixed",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": []
+  },
+  {
+    "ConceptA": "cat",
+    "ConceptB": "cup",
+    "ImageA": "RI01_cat_00",
+    "ImageB": "RI01_cup_00",
+    "Overlap": 0.7058823529411765,
+    "SharedFeatures": [
+      "vis:clr:black",
+      "vis:compact:high",
+      "vis:compact:medium",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:high",
+      "vis:sz:large",
+      "vis:tex:mixed",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:orange",
+      "vis:clr:white",
+      "vis:lum:bright",
+      "vis:lum:medium",
+      "vis:solidity:medium"
+    ]
+  },
+  {
+    "ConceptA": "cat",
+    "ConceptB": "apple",
+    "ImageA": "RI01_cat_00",
+    "ImageB": "RI01_apple_00",
+    "Overlap": 0.8125,
+    "SharedFeatures": [
+      "vis:clr:black",
+      "vis:compact:high",
+      "vis:compact:medium",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:high",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:orange",
+      "vis:clr:red",
+      "vis:tex:mixed"
+    ]
+  },
+  {
+    "ConceptA": "ball",
+    "ConceptB": "dog",
+    "ImageA": "RI01_ball_00",
+    "ImageB": "RI01_dog_00",
+    "Overlap": 0.8125,
+    "SharedFeatures": [
+      "vis:clr:black",
+      "vis:compact:high",
+      "vis:compact:medium",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:high",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:blue",
+      "vis:clr:orange",
+      "vis:tex:mixed"
+    ]
+  },
+  {
+    "ConceptA": "ball",
+    "ConceptB": "apple",
+    "ImageA": "RI01_ball_00",
+    "ImageB": "RI01_apple_00",
+    "Overlap": 0.8666666666666667,
+    "SharedFeatures": [
+      "vis:clr:black",
+      "vis:compact:high",
+      "vis:compact:medium",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:high",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:blue",
+      "vis:clr:red"
+    ]
+  },
+  {
+    "ConceptA": "tree",
+    "ConceptB": "dog",
+    "ImageA": "RI01_tree_03",
+    "ImageB": "RI01_dog_03",
+    "Overlap": 0.7647058823529411,
+    "SharedFeatures": [
+      "vis:clr:blue",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:solidity:low",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:coarse",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:green",
+      "vis:clr:orange",
+      "vis:elong:medium",
+      "vis:sz:medium"
+    ]
+  },
+  {
+    "ConceptA": "tree",
+    "ConceptB": "ball",
+    "ImageA": "RI01_tree_03",
+    "ImageB": "RI01_ball_04",
+    "Overlap": 0.7222222222222222,
+    "SharedFeatures": [
+      "vis:clr:blue",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:solidity:low",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:coarse",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:green",
+      "vis:clr:orange",
+      "vis:elong:medium",
+      "vis:shp:circle",
+      "vis:sz:medium"
+    ]
+  },
+  {
+    "ConceptA": "tree",
+    "ConceptB": "ball",
+    "ImageA": "RI01_tree_03",
+    "ImageB": "RI01_ball_03",
+    "Overlap": 0.7647058823529411,
+    "SharedFeatures": [
+      "vis:clr:blue",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:solidity:low",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:coarse",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:green",
+      "vis:elong:medium",
+      "vis:shp:circle",
+      "vis:sz:medium"
+    ]
+  },
+  {
+    "ConceptA": "tree",
+    "ConceptB": "banana",
+    "ImageA": "RI01_tree_01",
+    "ImageB": "RI01_banana_02",
+    "Overlap": 0.7222222222222222,
+    "SharedFeatures": [
+      "vis:clr:green",
+      "vis:compact:high",
+      "vis:compact:medium",
+      "vis:elong:low",
+      "vis:lum:bright",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:solidity:high",
+      "vis:sz:large",
+      "vis:sz:medium",
+      "vis:tex:mixed",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:white",
+      "vis:clr:yellow",
+      "vis:elong:high",
+      "vis:elong:medium",
+      "vis:solidity:medium"
+    ]
+  },
+  {
+    "ConceptA": "apple",
+    "ConceptB": "bird",
+    "ImageA": "RI01_apple_03",
+    "ImageB": "RI01_bird_03",
+    "Overlap": 0.8421052631578947,
+    "SharedFeatures": [
+      "vis:clr:blue",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:ori:vertical",
+      "vis:shp:circle",
+      "vis:solidity:high",
+      "vis:solidity:low",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:coarse",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:gray",
+      "vis:clr:red",
+      "vis:tex:mixed"
+    ]
+  },
+  {
+    "ConceptA": "apple",
+    "ConceptB": "ball",
+    "ImageA": "RI01_apple_03",
+    "ImageB": "RI01_ball_04",
+    "Overlap": 0.7368421052631579,
+    "SharedFeatures": [
+      "vis:clr:blue",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:low",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:coarse",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:gray",
+      "vis:clr:orange",
+      "vis:clr:red",
+      "vis:ori:vertical",
+      "vis:solidity:high"
+    ]
+  },
+  {
+    "ConceptA": "apple",
+    "ConceptB": "ball",
+    "ImageA": "RI01_apple_03",
+    "ImageB": "RI01_ball_03",
+    "Overlap": 0.7777777777777778,
+    "SharedFeatures": [
+      "vis:clr:blue",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:low",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:coarse",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:gray",
+      "vis:clr:red",
+      "vis:ori:vertical",
+      "vis:solidity:high"
+    ]
+  },
+  {
+    "ConceptA": "dog",
+    "ConceptB": "bird",
+    "ImageA": "RI01_dog_03",
+    "ImageB": "RI01_bird_03",
+    "Overlap": 0.7222222222222222,
+    "SharedFeatures": [
+      "vis:clr:blue",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:solidity:low",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:coarse",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:orange",
+      "vis:ori:vertical",
+      "vis:shp:circle",
+      "vis:solidity:high",
+      "vis:tex:mixed"
+    ]
+  },
+  {
+    "ConceptA": "dog",
+    "ConceptB": "apple",
+    "ImageA": "RI01_dog_03",
+    "ImageB": "RI01_apple_04",
+    "Overlap": 0.7647058823529411,
+    "SharedFeatures": [
+      "vis:clr:orange",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:solidity:low",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:coarse",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:blue",
+      "vis:clr:red",
+      "vis:shp:circle",
+      "vis:solidity:high"
+    ]
+  },
+  {
+    "ConceptA": "dog",
+    "ConceptB": "ball",
+    "ImageA": "RI01_dog_03",
+    "ImageB": "RI01_ball_04",
+    "Overlap": 0.9333333333333333,
+    "SharedFeatures": [
+      "vis:clr:blue",
+      "vis:clr:orange",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:solidity:low",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:coarse",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:shp:circle"
+    ]
+  },
+  {
+    "ConceptA": "dog",
+    "ConceptB": "ball",
+    "ImageA": "RI01_dog_03",
+    "ImageB": "RI01_ball_03",
+    "Overlap": 0.8666666666666667,
+    "SharedFeatures": [
+      "vis:clr:blue",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:solidity:low",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:coarse",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:orange",
+      "vis:shp:circle"
+    ]
+  },
+  {
+    "ConceptA": "cat",
+    "ConceptB": "ball",
+    "ImageA": "RI01_cat_02",
+    "ImageB": "RI01_ball_02",
+    "Overlap": 0.8461538461538461,
+    "SharedFeatures": [
+      "vis:clr:green",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:blue",
+      "vis:clr:orange"
+    ]
+  },
+  {
+    "ConceptA": "cat",
+    "ConceptB": "bird",
+    "ImageA": "RI01_cat_02",
+    "ImageB": "RI01_bird_02",
+    "Overlap": 0.8461538461538461,
+    "SharedFeatures": [
+      "vis:clr:green",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:blue",
+      "vis:clr:orange"
+    ]
+  },
+  {
+    "ConceptA": "cat",
+    "ConceptB": "apple",
+    "ImageA": "RI01_cat_02",
+    "ImageB": "RI01_apple_02",
+    "Overlap": 0.7857142857142857,
+    "SharedFeatures": [
+      "vis:clr:green",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:orange",
+      "vis:clr:red",
+      "vis:lum:dark"
+    ]
+  },
+  {
+    "ConceptA": "bird",
+    "ConceptB": "apple",
+    "ImageA": "RI01_bird_03",
+    "ImageB": "RI01_apple_04",
+    "Overlap": 0.7368421052631579,
+    "SharedFeatures": [
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:high",
+      "vis:solidity:low",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:coarse",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:blue",
+      "vis:clr:orange",
+      "vis:clr:red",
+      "vis:ori:vertical",
+      "vis:tex:mixed"
+    ]
+  },
+  {
+    "ConceptA": "bird",
+    "ConceptB": "ball",
+    "ImageA": "RI01_bird_03",
+    "ImageB": "RI01_ball_04",
+    "Overlap": 0.7777777777777778,
+    "SharedFeatures": [
+      "vis:clr:blue",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:low",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:coarse",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:orange",
+      "vis:ori:vertical",
+      "vis:solidity:high",
+      "vis:tex:mixed"
+    ]
+  },
+  {
+    "ConceptA": "bird",
+    "ConceptB": "ball",
+    "ImageA": "RI01_bird_03",
+    "ImageB": "RI01_ball_03",
+    "Overlap": 0.8235294117647058,
+    "SharedFeatures": [
+      "vis:clr:blue",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:low",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:coarse",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:ori:vertical",
+      "vis:solidity:high",
+      "vis:tex:mixed"
+    ]
+  },
+  {
+    "ConceptA": "bird",
+    "ConceptB": "dog",
+    "ImageA": "RI01_bird_04",
+    "ImageB": "RI01_dog_04",
+    "Overlap": 0.8125,
+    "SharedFeatures": [
+      "vis:clr:orange",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:low",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:coarse",
+      "vis:tex:mixed"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:blue",
+      "vis:ori:diag_pos",
+      "vis:solidity:high"
+    ]
+  },
+  {
+    "ConceptA": "bird",
+    "ConceptB": "banana",
+    "ImageA": "RI01_bird_04",
+    "ImageB": "RI01_banana_04",
+    "Overlap": 0.7,
+    "SharedFeatures": [
+      "vis:clr:orange",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:high",
+      "vis:solidity:low",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:coarse",
+      "vis:tex:mixed"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:blue",
+      "vis:clr:yellow",
+      "vis:elong:high",
+      "vis:lum:bright",
+      "vis:ori:diag_pos",
+      "vis:sz:medium"
+    ]
+  },
+  {
+    "ConceptA": "bird",
+    "ConceptB": "cat",
+    "ImageA": "RI01_bird_04",
+    "ImageB": "RI01_cat_04",
+    "Overlap": 0.7777777777777778,
+    "SharedFeatures": [
+      "vis:clr:orange",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:medium",
+      "vis:ori:diag_pos",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:low",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:coarse",
+      "vis:tex:mixed"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:blue",
+      "vis:elong:medium",
+      "vis:solidity:high",
+      "vis:sz:small"
+    ]
+  },
+  {
+    "ConceptA": "bird",
+    "ConceptB": "ball",
+    "ImageA": "RI01_bird_04",
+    "ImageB": "RI01_ball_04",
+    "Overlap": 0.7222222222222222,
+    "SharedFeatures": [
+      "vis:clr:blue",
+      "vis:clr:orange",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:low",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:coarse"
+    ],
+    "DistinctFeatures": [
+      "vis:lum:dark",
+      "vis:ori:diag_pos",
+      "vis:solidity:high",
+      "vis:tex:mixed",
+      "vis:tex:smooth"
+    ]
+  },
+  {
+    "ConceptA": "dog",
+    "ConceptB": "banana",
+    "ImageA": "RI01_dog_04",
+    "ImageB": "RI01_banana_04",
+    "Overlap": 0.7222222222222222,
+    "SharedFeatures": [
+      "vis:clr:orange",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:low",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:coarse",
+      "vis:tex:mixed"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:yellow",
+      "vis:elong:high",
+      "vis:lum:bright",
+      "vis:solidity:high",
+      "vis:sz:medium"
+    ]
+  },
+  {
+    "ConceptA": "dog",
+    "ConceptB": "cat",
+    "ImageA": "RI01_dog_04",
+    "ImageB": "RI01_cat_04",
+    "Overlap": 0.8125,
+    "SharedFeatures": [
+      "vis:clr:orange",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:low",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:coarse",
+      "vis:tex:mixed"
+    ],
+    "DistinctFeatures": [
+      "vis:elong:medium",
+      "vis:ori:diag_pos",
+      "vis:sz:small"
+    ]
+  },
+  {
+    "ConceptA": "dog",
+    "ConceptB": "apple",
+    "ImageA": "RI01_dog_04",
+    "ImageB": "RI01_apple_04",
+    "Overlap": 0.7058823529411765,
+    "SharedFeatures": [
+      "vis:clr:orange",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:low",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:coarse"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:red",
+      "vis:lum:dark",
+      "vis:solidity:high",
+      "vis:tex:mixed",
+      "vis:tex:smooth"
+    ]
+  },
+  {
+    "ConceptA": "dog",
+    "ConceptB": "ball",
+    "ImageA": "RI01_dog_04",
+    "ImageB": "RI01_ball_04",
+    "Overlap": 0.75,
+    "SharedFeatures": [
+      "vis:clr:orange",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:low",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:coarse"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:blue",
+      "vis:lum:dark",
+      "vis:tex:mixed",
+      "vis:tex:smooth"
+    ]
+  },
+  {
+    "ConceptA": "dog",
+    "ConceptB": "cup",
+    "ImageA": "RI01_dog_00",
+    "ImageB": "RI01_cup_00",
+    "Overlap": 0.7058823529411765,
+    "SharedFeatures": [
+      "vis:clr:black",
+      "vis:compact:high",
+      "vis:compact:medium",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:high",
+      "vis:sz:large",
+      "vis:tex:mixed",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:orange",
+      "vis:clr:white",
+      "vis:lum:bright",
+      "vis:lum:medium",
+      "vis:solidity:medium"
+    ]
+  },
+  {
+    "ConceptA": "dog",
+    "ConceptB": "apple",
+    "ImageA": "RI01_dog_00",
+    "ImageB": "RI01_apple_00",
+    "Overlap": 0.8125,
+    "SharedFeatures": [
+      "vis:clr:black",
+      "vis:compact:high",
+      "vis:compact:medium",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:high",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:orange",
+      "vis:clr:red",
+      "vis:tex:mixed"
+    ]
+  },
+  {
+    "ConceptA": "ball",
+    "ConceptB": "bird",
+    "ImageA": "RI01_ball_02",
+    "ImageB": "RI01_bird_01",
+    "Overlap": 0.7857142857142857,
+    "SharedFeatures": [
+      "vis:clr:blue",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:green",
+      "vis:clr:white",
+      "vis:lum:bright"
+    ]
+  },
+  {
+    "ConceptA": "ball",
+    "ConceptB": "bird",
+    "ImageA": "RI01_ball_02",
+    "ImageB": "RI01_bird_02",
+    "Overlap": 1.0,
+    "SharedFeatures": [
+      "vis:clr:blue",
+      "vis:clr:green",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": []
+  },
+  {
+    "ConceptA": "ball",
+    "ConceptB": "apple",
+    "ImageA": "RI01_ball_02",
+    "ImageB": "RI01_apple_02",
+    "Overlap": 0.7857142857142857,
+    "SharedFeatures": [
+      "vis:clr:green",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:blue",
+      "vis:clr:red",
+      "vis:lum:dark"
+    ]
+  },
+  {
+    "ConceptA": "bird",
+    "ConceptB": "apple",
+    "ImageA": "RI01_bird_01",
+    "ImageB": "RI01_apple_01",
+    "Overlap": 0.8571428571428571,
+    "SharedFeatures": [
+      "vis:clr:white",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:bright",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:blue",
+      "vis:clr:red"
+    ]
+  },
+  {
+    "ConceptA": "bird",
+    "ConceptB": "ball",
+    "ImageA": "RI01_bird_01",
+    "ImageB": "RI01_ball_01",
+    "Overlap": 1.0,
+    "SharedFeatures": [
+      "vis:clr:blue",
+      "vis:clr:white",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:bright",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": []
+  },
+  {
+    "ConceptA": "apple",
+    "ConceptB": "ball",
+    "ImageA": "RI01_apple_01",
+    "ImageB": "RI01_ball_01",
+    "Overlap": 0.8571428571428571,
+    "SharedFeatures": [
+      "vis:clr:white",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:bright",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:blue",
+      "vis:clr:red"
+    ]
+  },
+  {
+    "ConceptA": "car",
+    "ConceptB": "bottle",
+    "ImageA": "RI01_car_02",
+    "ImageB": "RI01_bottle_04",
+    "Overlap": 0.75,
+    "SharedFeatures": [
+      "vis:clr:black",
+      "vis:clr:green",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:elong:medium",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:rectangle",
+      "vis:solidity:high",
+      "vis:solidity:low",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:sz:small",
+      "vis:tex:coarse",
+      "vis:tex:mixed"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:orange",
+      "vis:clr:red",
+      "vis:compact:medium",
+      "vis:elong:high",
+      "vis:ori:vertical",
+      "vis:tex:smooth"
+    ]
+  },
+  {
+    "ConceptA": "ball",
+    "ConceptB": "bird",
+    "ImageA": "RI01_ball_01",
+    "ImageB": "RI01_bird_02",
+    "Overlap": 0.7857142857142857,
+    "SharedFeatures": [
+      "vis:clr:blue",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:green",
+      "vis:clr:white",
+      "vis:lum:bright"
+    ]
+  },
+  {
+    "ConceptA": "bird",
+    "ConceptB": "apple",
+    "ImageA": "RI01_bird_02",
+    "ImageB": "RI01_apple_02",
+    "Overlap": 0.7857142857142857,
+    "SharedFeatures": [
+      "vis:clr:green",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:blue",
+      "vis:clr:red",
+      "vis:lum:dark"
+    ]
+  },
+  {
+    "ConceptA": "bird",
+    "ConceptB": "ball",
+    "ImageA": "RI01_bird_02",
+    "ImageB": "RI01_ball_03",
+    "Overlap": 0.7333333333333333,
+    "SharedFeatures": [
+      "vis:clr:blue",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:green",
+      "vis:lum:dark",
+      "vis:solidity:low",
+      "vis:tex:coarse"
+    ]
+  },
+  {
+    "ConceptA": "apple",
+    "ConceptB": "ball",
+    "ImageA": "RI01_apple_04",
+    "ImageB": "RI01_ball_04",
+    "Overlap": 0.8235294117647058,
+    "SharedFeatures": [
+      "vis:clr:orange",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:low",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:coarse",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:blue",
+      "vis:clr:red",
+      "vis:solidity:high"
+    ]
+  },
+  {
+    "ConceptA": "apple",
+    "ConceptB": "ball",
+    "ImageA": "RI01_apple_04",
+    "ImageB": "RI01_ball_03",
+    "Overlap": 0.7647058823529411,
+    "SharedFeatures": [
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:shp:circle",
+      "vis:solidity:low",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:coarse",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:blue",
+      "vis:clr:orange",
+      "vis:clr:red",
+      "vis:solidity:high"
+    ]
+  },
+  {
+    "ConceptA": "cup",
+    "ConceptB": "car",
+    "ImageA": "RI01_cup_02",
+    "ImageB": "RI01_car_01",
+    "Overlap": 0.7083333333333334,
+    "SharedFeatures": [
+      "vis:clr:gray",
+      "vis:clr:white",
+      "vis:compact:high",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:bright",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:solidity:high",
+      "vis:solidity:low",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:sz:small",
+      "vis:tex:coarse",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:clr:green",
+      "vis:clr:red",
+      "vis:elong:medium",
+      "vis:ori:vertical",
+      "vis:shp:rectangle",
+      "vis:shp:square",
+      "vis:tex:mixed"
+    ]
+  },
+  {
+    "ConceptA": "cup",
+    "ConceptB": "bottle",
+    "ImageA": "RI01_cup_02",
+    "ImageB": "RI01_bottle_01",
+    "Overlap": 0.7083333333333334,
+    "SharedFeatures": [
+      "vis:clr:gray",
+      "vis:clr:green",
+      "vis:clr:white",
+      "vis:compact:low",
+      "vis:elong:low",
+      "vis:lum:bright",
+      "vis:lum:dark",
+      "vis:lum:medium",
+      "vis:ori:horizontal",
+      "vis:ori:mixed",
+      "vis:ori:vertical",
+      "vis:shp:square",
+      "vis:solidity:high",
+      "vis:solidity:low",
+      "vis:sz:small",
+      "vis:tex:coarse",
+      "vis:tex:smooth"
+    ],
+    "DistinctFeatures": [
+      "vis:compact:high",
+      "vis:compact:medium",
+      "vis:elong:high",
+      "vis:shp:rectangle",
+      "vis:solidity:medium",
+      "vis:sz:large",
+      "vis:tex:mixed"
+    ]
+  }
+]

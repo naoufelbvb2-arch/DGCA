@@ -1,0 +1,7 @@
+{
+  "TransientInstancesCreated": 385,
+  "TransientInstancesRetired": 5015,
+  "TransientInstancesAliveAfterScope": 0,
+  "PersistentKnowledgeLostByCleanup": 0,
+  "Status": "PASS"
+}

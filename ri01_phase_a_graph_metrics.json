@@ -1,0 +1,26 @@
+[
+  {
+    "Checkpoint": "A10",
+    "ImagesProcessed": 10,
+    "PersistentVisualNodesAlive": 32,
+    "PersistentVisualEdgesAlive": 468,
+    "VisualEdgesReinforced": 1508,
+    "TransientNodesAlive": 0
+  },
+  {
+    "Checkpoint": "A25",
+    "ImagesProcessed": 25,
+    "PersistentVisualNodesAlive": 38,
+    "PersistentVisualEdgesAlive": 637,
+    "VisualEdgesReinforced": 7972,
+    "TransientNodesAlive": 0
+  },
+  {
+    "Checkpoint": "A50",
+    "ImagesProcessed": 50,
+    "PersistentVisualNodesAlive": 47,
+    "PersistentVisualEdgesAlive": 836,
+    "VisualEdgesReinforced": 21846,
+    "TransientNodesAlive": 0
+  }
+]

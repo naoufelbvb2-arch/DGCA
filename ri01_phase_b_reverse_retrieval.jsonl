@@ -1,0 +1,10 @@
+{"Concept": "apple", "TextNode": "text:apple", "VisualNodesRetrieved": 18, "Outcome": "SUCCESS"}
+{"Concept": "banana", "TextNode": "text:banana", "VisualNodesRetrieved": 26, "Outcome": "SUCCESS"}
+{"Concept": "ball", "TextNode": "text:ball", "VisualNodesRetrieved": 28, "Outcome": "SUCCESS"}
+{"Concept": "cup", "TextNode": "text:cup", "VisualNodesRetrieved": 30, "Outcome": "SUCCESS"}
+{"Concept": "bottle", "TextNode": "text:bottle", "VisualNodesRetrieved": 28, "Outcome": "SUCCESS"}
+{"Concept": "car", "TextNode": "text:car", "VisualNodesRetrieved": 26, "Outcome": "SUCCESS"}
+{"Concept": "tree", "TextNode": "text:tree", "VisualNodesRetrieved": 26, "Outcome": "SUCCESS"}
+{"Concept": "bird", "TextNode": "text:bird", "VisualNodesRetrieved": 18, "Outcome": "SUCCESS"}
+{"Concept": "cat", "TextNode": "text:cat", "VisualNodesRetrieved": 18, "Outcome": "SUCCESS"}
+{"Concept": "dog", "TextNode": "text:dog", "VisualNodesRetrieved": 30, "Outcome": "SUCCESS"}

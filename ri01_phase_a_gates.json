@@ -1,0 +1,50 @@
+{
+  "RI01-A-G01": {
+    "name": "Dataset Frozen",
+    "status": "PASSED"
+  },
+  "RI01-A-G02": {
+    "name": "Semantic Firewall",
+    "status": "PASSED"
+  },
+  "RI01-A-G03": {
+    "name": "Real-Image Intake",
+    "status": "PASSED"
+  },
+  "RI01-A-G04": {
+    "name": "Determinism",
+    "status": "PASSED"
+  },
+  "RI01-A-G05": {
+    "name": "Persistent Visual Formation",
+    "status": "PASSED"
+  },
+  "RI01-A-G06": {
+    "name": "Visual Reinforcement",
+    "status": "PASSED"
+  },
+  "RI01-A-G07": {
+    "name": "Visual Persistence",
+    "status": "PASSED"
+  },
+  "RI01-A-G08": {
+    "name": "Transient Lifecycle",
+    "status": "PASSED"
+  },
+  "RI01-A-G09": {
+    "name": "Persistent Cleanup Isolation",
+    "status": "PASSED"
+  },
+  "RI01-A-G10": {
+    "name": "Held-Out Evaluation Isolation",
+    "status": "PASSED"
+  },
+  "RI01-A-G11": {
+    "name": "Representation Diagnostics Complete",
+    "status": "PASSED"
+  },
+  "RI01-A-G12": {
+    "name": "Phase-A Scientific Classification Complete",
+    "status": "PASSED"
+  }
+}
