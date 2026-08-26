@@ -1,0 +1,73 @@
+{
+  "vis:sz:large": {
+    "fanout": 6,
+    "concepts": [
+      "ball",
+      "banana",
+      "car",
+      "cup",
+      "dog",
+      "tree"
+    ]
+  },
+  "vis:lum:dark": {
+    "fanout": 5,
+    "concepts": [
+      "apple",
+      "banana",
+      "bottle",
+      "car",
+      "cup"
+    ]
+  },
+  "vis:compact:high": {
+    "fanout": 7,
+    "concepts": [
+      "apple",
+      "ball",
+      "bird",
+      "cat",
+      "cup",
+      "dog",
+      "tree"
+    ]
+  },
+  "vis:elong:low": {
+    "fanout": 10,
+    "concepts": [
+      "apple",
+      "ball",
+      "banana",
+      "bird",
+      "bottle",
+      "car",
+      "cat",
+      "cup",
+      "dog",
+      "tree"
+    ]
+  },
+  "vis:solidity:high": {
+    "fanout": 3,
+    "concepts": [
+      "banana",
+      "bottle",
+      "cup"
+    ]
+  },
+  "vis:tex:smooth": {
+    "fanout": 10,
+    "concepts": [
+      "apple",
+      "ball",
+      "banana",
+      "bird",
+      "bottle",
+      "car",
+      "cat",
+      "cup",
+      "dog",
+      "tree"
+    ]
+  }
+}

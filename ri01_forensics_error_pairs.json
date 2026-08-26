@@ -1,0 +1,72 @@
+[
+  {
+    "ProbeID": "PROBE_01",
+    "ImageID": "RI01_apple_06",
+    "TrueConcept": "apple",
+    "WrongWinner": "ball",
+    "Margin": 0
+  },
+  {
+    "ProbeID": "PROBE_03",
+    "ImageID": "RI01_banana_06",
+    "TrueConcept": "banana",
+    "WrongWinner": "bottle",
+    "Margin": 0
+  },
+  {
+    "ProbeID": "PROBE_04",
+    "ImageID": "RI01_ball_05",
+    "TrueConcept": "ball",
+    "WrongWinner": "car",
+    "Margin": 0
+  },
+  {
+    "ProbeID": "PROBE_07",
+    "ImageID": "RI01_cup_06",
+    "TrueConcept": "cup",
+    "WrongWinner": "ball",
+    "Margin": 0
+  },
+  {
+    "ProbeID": "PROBE_10",
+    "ImageID": "RI01_car_05",
+    "TrueConcept": "car",
+    "WrongWinner": "apple",
+    "Margin": 0
+  },
+  {
+    "ProbeID": "PROBE_14",
+    "ImageID": "RI01_bird_05",
+    "TrueConcept": "bird",
+    "WrongWinner": "ball",
+    "Margin": 0
+  },
+  {
+    "ProbeID": "PROBE_15",
+    "ImageID": "RI01_bird_06",
+    "TrueConcept": "bird",
+    "WrongWinner": "ball",
+    "Margin": 0
+  },
+  {
+    "ProbeID": "PROBE_16",
+    "ImageID": "RI01_cat_05",
+    "TrueConcept": "cat",
+    "WrongWinner": "cup",
+    "Margin": 2
+  },
+  {
+    "ProbeID": "PROBE_18",
+    "ImageID": "RI01_dog_05",
+    "TrueConcept": "dog",
+    "WrongWinner": "cup",
+    "Margin": 2
+  },
+  {
+    "ProbeID": "PROBE_19",
+    "ImageID": "RI01_dog_06",
+    "TrueConcept": "dog",
+    "WrongWinner": "ball",
+    "Margin": 0
+  }
+]
