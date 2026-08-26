@@ -978,6 +978,94 @@ class CognitiveGraph:
             "via_generalization": generalized,
         }
 
+    def query_cross_modal(
+        self,
+        query_signals: list[tuple[str, str]],
+        target_prefix: str = "text:",
+    ) -> dict:
+        """Local Evidence Share Ranking (LESR v1.0) for cross-modal retrieval.
+
+        Read-only retrieval path implementing Local Evidence Conservation and Exact-Top-Tie
+        Ambiguity semantics according to DGCA-Cross-Modal-Retrieval-Ranking-Repair-Formal-Architectural-Specification-v1.0.md.
+        """
+        # Deduplicate query evidence nodes within query scope
+        evidence_nodes = []
+        seen = set()
+        for mod, val in query_signals:
+            if val.startswith("inst:"):
+                continue
+            v_node = val if val.startswith(f"{mod}:") else f"{mod}:{val}"
+            if v_node in self.nodes and v_node not in seen:
+                seen.add(v_node)
+                evidence_nodes.append(v_node)
+
+        if not evidence_nodes:
+            return {
+                "outcome": "NO_RESULT",
+                "winner": None,
+                "scores": {},
+                "ranked": [],
+                "ambiguous_candidates": [],
+            }
+
+        # Calculate Local Evidence Share for each evidence source
+        q_share = 1.0 / len(evidence_nodes)
+        candidate_supports: dict[str, float] = {}
+        evidence_decompositions: dict[str, dict[str, float]] = {}
+
+        for f in evidence_nodes:
+            # Gather unique candidate neighbors and maximum edge weights (reciprocal deduplication)
+            candidate_weights: dict[str, float] = {}
+            for e in list(self.out_edges(f)) + list(self.in_edges(f)):
+                target = e.dst if e.src == f else e.src
+                if target.startswith(target_prefix):
+                    candidate_weights[target] = max(candidate_weights.get(target, 0.0), e.W)
+
+            Z_f = sum(candidate_weights.values())
+            if Z_f > 0.0:
+                for c, w in candidate_weights.items():
+                    rho_f_c = w / Z_f
+                    contrib = q_share * rho_f_c
+                    candidate_supports[c] = candidate_supports.get(c, 0.0) + contrib
+                    evidence_decompositions.setdefault(c, {})[f] = contrib
+
+        if not candidate_supports:
+            return {
+                "outcome": "NO_RESULT",
+                "winner": None,
+                "scores": {},
+                "ranked": [],
+                "ambiguous_candidates": [],
+            }
+
+        # Identify maximum support and check for exact top ties
+        max_score = max(candidate_supports.values())
+        top_candidates = [c for c, s in candidate_supports.items() if abs(s - max_score) < 1e-12]
+
+        ranked = sorted(
+            [{"concept": c.replace(target_prefix, ""), "score": s, "node": c} for c, s in candidate_supports.items()],
+            key=lambda x: (-x["score"], x["concept"]),
+        )
+
+        if len(top_candidates) == 1:
+            winner_node = top_candidates[0]
+            winner_concept = winner_node.replace(target_prefix, "")
+            outcome = "WINNER"
+            ambiguous_candidates = []
+        else:
+            winner_concept = None
+            outcome = "AMBIGUOUS"
+            ambiguous_candidates = sorted([c.replace(target_prefix, "") for c in top_candidates])
+
+        return {
+            "outcome": outcome,
+            "winner": winner_concept,
+            "scores": candidate_supports,
+            "ranked": ranked,
+            "ambiguous_candidates": ambiguous_candidates,
+            "evidence_decompositions": evidence_decompositions,
+        }
+
     # ── ق11 — التتابع الزمني والدور
     def observe_sequence(
         self,

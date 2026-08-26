@@ -1,0 +1,15 @@
+{
+  "OldCorrect": 10,
+  "OldWrong": 10,
+  "NewCorrect": 11,
+  "NewWrong": 9,
+  "NewAmbiguous": 0,
+  "WrongToCorrect": 2,
+  "WrongToAmbiguous": 0,
+  "WrongToWrong": 8,
+  "CorrectToCorrect": 9,
+  "CorrectToAmbiguous": 0,
+  "CorrectToWrong": 1,
+  "OldExactTies": 6,
+  "NewForcedTieWinners": 0
+}

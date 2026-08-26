@@ -1,0 +1,31 @@
+{
+  "Control_1_Unique_Feature": {
+    "outcome": "WINNER",
+    "winner": "apple",
+    "status": "PASS"
+  },
+  "Control_2_Equal_Generic_Tie": {
+    "outcome": "AMBIGUOUS",
+    "ambiguous": [
+      "apple",
+      "ball"
+    ],
+    "status": "PASS"
+  },
+  "Control_3_Unequal_Weights": {
+    "outcome": "WINNER",
+    "winner": "apple",
+    "status": "PASS"
+  },
+  "Control_4_Generic_Plus_Specific": {
+    "outcome": "WINNER",
+    "winner": "ball",
+    "status": "PASS"
+  },
+  "Control_5_Duplicate_Path_Invariance": {
+    "status": "PASS"
+  },
+  "Control_6_Reciprocal_Edge_Control": {
+    "status": "PASS"
+  }
+}

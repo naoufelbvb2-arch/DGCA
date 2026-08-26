@@ -1,0 +1,8 @@
+{
+  "cross_modal_ranking": "dgca/graph.py:query_cross_modal",
+  "candidate_discovery": "UNCHANGED",
+  "vision_encoder": "FROZEN",
+  "english_encoder": "FROZEN",
+  "learning_laws": "UNCHANGED",
+  "forced_tie_authority": "REMOVED"
+}
