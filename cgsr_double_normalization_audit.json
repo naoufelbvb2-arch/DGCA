@@ -1,0 +1,6 @@
+{
+  "IGSV_Sigma": "Local differential specificity across concept candidates per feature",
+  "Provenance_Budget": "Bounded evidence authority across correlated descriptors in same perceptual group",
+  "LESR_Support": "Local evidence share aggregation across candidates",
+  "NoDuplicateNormalization": true
+}

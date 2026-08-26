@@ -1,0 +1,47 @@
+{
+  "vis:clr": {
+    "EncoderFunction": "VisionEncoderV2.quantize_color",
+    "SourceMeasurement": "Mean RGB values across region mask",
+    "ProvenanceGroup": "color"
+  },
+  "vis:lum": {
+    "EncoderFunction": "VisionEncoderV2.quantize_luminance",
+    "SourceMeasurement": "Mean luminance across region mask",
+    "ProvenanceGroup": "luminance"
+  },
+  "vis:compact": {
+    "EncoderFunction": "VisionEncoderV2.measure_true_contour",
+    "SourceMeasurement": "Contour area / perimeter ratio",
+    "ProvenanceGroup": "geometry"
+  },
+  "vis:elong": {
+    "EncoderFunction": "VisionEncoderV2.measure_true_contour",
+    "SourceMeasurement": "Bounding box aspect ratio / major-minor axis",
+    "ProvenanceGroup": "geometry"
+  },
+  "vis:solidity": {
+    "EncoderFunction": "VisionEncoderV2.measure_true_contour",
+    "SourceMeasurement": "Region area / Convex hull area",
+    "ProvenanceGroup": "geometry"
+  },
+  "vis:shp": {
+    "EncoderFunction": "VisionEncoderV2.measure_true_contour",
+    "SourceMeasurement": "Quantized contour geometry classification",
+    "ProvenanceGroup": "geometry"
+  },
+  "vis:tex": {
+    "EncoderFunction": "VisionEncoderV2.extract_texture",
+    "SourceMeasurement": "Local binary pattern / gradient variance",
+    "ProvenanceGroup": "texture"
+  },
+  "vis:ori": {
+    "EncoderFunction": "VisionEncoderV2.extract_orientation",
+    "SourceMeasurement": "Principal axis angle",
+    "ProvenanceGroup": "orientation"
+  },
+  "vis:sz": {
+    "EncoderFunction": "VisionEncoderV2.extract_size",
+    "SourceMeasurement": "Region area ratio relative to frame",
+    "ProvenanceGroup": "size"
+  }
+}

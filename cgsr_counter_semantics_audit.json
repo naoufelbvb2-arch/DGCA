@@ -1,0 +1,22 @@
+{
+  "FieldName": "n",
+  "OwnerType": "Edge",
+  "InitializationSite": "Edge.__init__ (n=0)",
+  "IncrementSites": [
+    "dgca/graph.py:_law2_reinforce",
+    "dgca/graph.py:observe_sequence (role edges)"
+  ],
+  "IncrementCondition": "Called on every observation tick whenever valid origin pair (i, j) is reinforced",
+  "IndependentEpisodeAware": false,
+  "ReplayDeduplicated": false,
+  "RetryDeduplicated": false,
+  "TraversalSafe": true,
+  "RetrievalReadOnly": true,
+  "GenerationSafe": true,
+  "ReverseEdgeRelationship": "Separate counter per directional Edge object (src->dst and dst->src)",
+  "AuthorizedForIGSV": false,
+  "Reason": "e.n increments on every observation call without checking if episode was previously seen or replayed. It is not deduplicated against replay or re-grounding.",
+  "EvidenceReferences": [
+    "dgca/graph.py:435"
+  ]
+}

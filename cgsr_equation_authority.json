@@ -1,0 +1,7 @@
+{
+  "Sigma_Formula": "sigma(f, c) = n(f, c) / sum_{k in C_f} n(f, k)",
+  "Group_Budget_Formula": "sum_{f in F_P} q_{f|P} = 1.0",
+  "Group_Support_Formula": "G_P(c) = sum_{f in F_P} q_{f|P} * sigma(f, c)",
+  "Query_Support_Formula": "G(c|Q) = sum_{P in P_set} q_P * G_P(c)",
+  "DoubleNormalizationDuplicate": false
+}

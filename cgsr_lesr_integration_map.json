@@ -1,0 +1,4 @@
+{
+  "IntegrationPoint": "CognitiveGraph.query_cross_modal",
+  "Mechanism": "IGSV computes derived evidence support q_P * sigma(f, c) which replaces equal query share q_f in LESR candidate aggregation S(c|Q)"
+}

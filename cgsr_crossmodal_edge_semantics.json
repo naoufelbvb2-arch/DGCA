@@ -1,0 +1,7 @@
+{
+  "ForwardEdge": "vision_feature -> text:concept",
+  "ReverseEdge": "text:concept -> vision_feature",
+  "ReciprocalCreation": "Simultaneous creation during observe() in pool loop",
+  "SharedState": false,
+  "DeduplicationRequired": true
+}

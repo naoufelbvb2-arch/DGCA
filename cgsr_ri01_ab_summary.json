@@ -1,0 +1,14 @@
+{
+  "PreIGSVCorrect": 11,
+  "PreIGSVWrong": 9,
+  "PreIGSVAmbiguous": 0,
+  "PostIGSVCorrect": 12,
+  "PostIGSVWrong": 8,
+  "PostIGSVAmbiguous": 0,
+  "WrongToCorrect": 1,
+  "WrongToAmbiguous": 0,
+  "WrongToWrong": 8,
+  "CorrectToCorrect": 11,
+  "CorrectToAmbiguous": 0,
+  "CorrectToWrong": 0
+}

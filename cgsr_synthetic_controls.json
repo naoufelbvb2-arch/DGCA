@@ -1,0 +1,19 @@
+{
+  "Control_1_Unique_Specificity": {
+    "outcome": "WINNER",
+    "winner": "apple",
+    "status": "PASS"
+  },
+  "Control_2_Generic_Feature": {
+    "outcome": "AMBIGUOUS",
+    "status": "PASS"
+  },
+  "Control_3_Unequal_Recurrence": {
+    "outcome": "WINNER",
+    "winner": "apple",
+    "status": "PASS"
+  },
+  "Control_4_Replay_Invariance": {
+    "status": "PASS"
+  }
+}

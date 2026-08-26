@@ -982,11 +982,13 @@ class CognitiveGraph:
         self,
         query_signals: list[tuple[str, str]],
         target_prefix: str = "text:",
+        enable_igsv: bool = True,
     ) -> dict:
-        """Local Evidence Share Ranking (LESR v1.0) for cross-modal retrieval.
+        """Local Evidence Share Ranking (LESR v1.0) + IGSV v1.0 for cross-modal retrieval.
 
-        Read-only retrieval path implementing Local Evidence Conservation and Exact-Top-Tie
-        Ambiguity semantics according to DGCA-Cross-Modal-Retrieval-Ranking-Repair-Formal-Architectural-Specification-v1.0.md.
+        Read-only retrieval path implementing IGSV local differential specificity,
+        provenance evidence conservation, Local Evidence Conservation, and Exact-Top-Tie
+        Ambiguity semantics according to DGCA-Cross-Modal-Grounding-Specificity-Repair-Formal-Architectural-Specification-v1.0.md.
         """
         # Deduplicate query evidence nodes within query scope
         evidence_nodes = []
@@ -1008,26 +1010,73 @@ class CognitiveGraph:
                 "ambiguous_candidates": [],
             }
 
-        # Calculate Local Evidence Share for each evidence source
-        q_share = 1.0 / len(evidence_nodes)
-        candidate_supports: dict[str, float] = {}
-        evidence_decompositions: dict[str, dict[str, float]] = {}
+        # -----------------------------------------------------------------
+        # IGSV STAGE: PROVENANCE GROUPING & LOCAL DIFFERENTIAL SPECIFICITY
+        # -----------------------------------------------------------------
+        if enable_igsv:
+            # Map evidence nodes to derived provenance groups
+            provenance_groups: dict[str, list[str]] = {}
+            for f in evidence_nodes:
+                token = f.replace("vision:", "")
+                if token.startswith(("vis:compact:", "vis:elong:", "vis:solidity:", "vis:shp:")):
+                    group_key = "geometry"
+                elif token.startswith("vis:clr:"):
+                    group_key = "color"
+                elif token.startswith("vis:lum:"):
+                    group_key = "luminance"
+                elif token.startswith("vis:tex:"):
+                    group_key = "texture"
+                elif token.startswith("vis:ori:"):
+                    group_key = "orientation"
+                elif token.startswith("vis:sz:"):
+                    group_key = "size"
+                else:
+                    group_key = f"other_{token}"
+                provenance_groups.setdefault(group_key, []).append(f)
 
-        for f in evidence_nodes:
-            # Gather unique candidate neighbors and maximum edge weights (reciprocal deduplication)
-            candidate_weights: dict[str, float] = {}
-            for e in list(self.out_edges(f)) + list(self.in_edges(f)):
-                target = e.dst if e.src == f else e.src
-                if target.startswith(target_prefix):
-                    candidate_weights[target] = max(candidate_weights.get(target, 0.0), e.W)
+            q_group_share = 1.0 / len(provenance_groups)
+            candidate_supports: dict[str, float] = {}
+            evidence_decompositions: dict[str, dict[str, float]] = {}
 
-            Z_f = sum(candidate_weights.values())
-            if Z_f > 0.0:
-                for c, w in candidate_weights.items():
-                    rho_f_c = w / Z_f
-                    contrib = q_share * rho_f_c
-                    candidate_supports[c] = candidate_supports.get(c, 0.0) + contrib
-                    evidence_decompositions.setdefault(c, {})[f] = contrib
+            for group_key, f_list in provenance_groups.items():
+                q_within_group = 1.0 / len(f_list)
+                for f in f_list:
+                    # Calculate local differential specificity sigma(f, c) using independent episode recurrence (contexts)
+                    candidate_recurrence: dict[str, float] = {}
+                    for e in list(self.out_edges(f)) + list(self.in_edges(f)):
+                        target = e.dst if e.src == f else e.src
+                        if target.startswith(target_prefix):
+                            # len(e.contexts) represents idempotent independent episode recurrence
+                            rec = len(e.contexts) if len(e.contexts) > 0 else 1.0
+                            candidate_recurrence[target] = max(candidate_recurrence.get(target, 0.0), float(rec))
+
+                    N_f = sum(candidate_recurrence.values())
+                    if N_f > 0.0:
+                        for c, rec in candidate_recurrence.items():
+                            sigma_f_c = rec / N_f
+                            contrib = q_group_share * q_within_group * sigma_f_c
+                            candidate_supports[c] = candidate_supports.get(c, 0.0) + contrib
+                            evidence_decompositions.setdefault(c, {})[f] = contrib
+        else:
+            # Baseline LESR without IGSV
+            q_share = 1.0 / len(evidence_nodes)
+            candidate_supports: dict[str, float] = {}
+            evidence_decompositions: dict[str, dict[str, float]] = {}
+
+            for f in evidence_nodes:
+                candidate_weights: dict[str, float] = {}
+                for e in list(self.out_edges(f)) + list(self.in_edges(f)):
+                    target = e.dst if e.src == f else e.src
+                    if target.startswith(target_prefix):
+                        candidate_weights[target] = max(candidate_weights.get(target, 0.0), e.W)
+
+                Z_f = sum(candidate_weights.values())
+                if Z_f > 0.0:
+                    for c, w in candidate_weights.items():
+                        rho_f_c = w / Z_f
+                        contrib = q_share * rho_f_c
+                        candidate_supports[c] = candidate_supports.get(c, 0.0) + contrib
+                        evidence_decompositions.setdefault(c, {})[f] = contrib
 
         if not candidate_supports:
             return {
