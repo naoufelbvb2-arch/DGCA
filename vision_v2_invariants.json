@@ -1,0 +1,106 @@
+{
+  "total_invariants": 20,
+  "verified": 20,
+  "invariants": [
+    {
+      "id": "V2-INV-01",
+      "name": "Raw Pixels Are the Sensory Source",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "V2-INV-02",
+      "name": "Encoder Is Graph-Independent",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "V2-INV-03",
+      "name": "No Semantic Object Labels",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "V2-INV-04",
+      "name": "No Pretrained Learned Vision Model",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "V2-INV-05",
+      "name": "Region Is Not Semantic Object",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "V2-INV-06",
+      "name": "Deterministic IR",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "V2-INV-07",
+      "name": "Normalized Coordinates",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "V2-INV-08",
+      "name": "True Contour Evidence",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "V2-INV-09",
+      "name": "Bounded Feature Emission (B_visual <= 8)",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "V2-INV-10",
+      "name": "Bounded Spatial Topology",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "V2-INV-11",
+      "name": "No Paired-Text Injection",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "V2-INV-12",
+      "name": "No Focal Weight Privilege",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "V2-INV-13",
+      "name": "Visual Instance IDs Are Transient",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "V2-INV-14",
+      "name": "Feature Identities Are Reusable",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "V2-INV-15",
+      "name": "Scene Closure Retires Transients",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "V2-INV-16",
+      "name": "No Persistent Graph Mutation Inside Encoder",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "V2-INV-17",
+      "name": "Unsupported Ambiguity Fails Closed",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "V2-INV-18",
+      "name": "Static Image Scope Only",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "V2-INV-19",
+      "name": "No New Cognitive Primitive",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "V2-INV-20",
+      "name": "Cross-Modal Meaning Belongs to DGCA",
+      "status": "VERIFIED"
+    }
+  ]
+}

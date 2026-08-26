@@ -9,6 +9,7 @@ from dgca import EnglishTextPipeline, MasterSymbolicEncoder
 from dgca.graph import CognitiveGraph
 from dgca.signature import behavioral_signature, build_reference_graph
 
+
 def run_validations():
     pipeline = EnglishTextPipeline()
     encoder = MasterSymbolicEncoder()

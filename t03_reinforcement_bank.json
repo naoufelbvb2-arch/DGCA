@@ -1,0 +1,752 @@
+[
+  {
+    "relation_id": "RC_001",
+    "expected_relation": [
+      "text:hattstatt",
+      "text:concept"
+    ],
+    "source": "hattstatt",
+    "target": "concept",
+    "first_article": "595949",
+    "first_article_idx": 0,
+    "second_article": "176979",
+    "second_article_idx": 100,
+    "occurrences": [
+      {
+        "article_id": "595949",
+        "article_idx": 0,
+        "sentence": "Hattstatt is a concept."
+      },
+      {
+        "article_id": "176979",
+        "article_idx": 100,
+        "sentence": "Hattstatt is a concept."
+      }
+    ]
+  },
+  {
+    "relation_id": "RC_002",
+    "expected_relation": [
+      "text:montevideo_department",
+      "text:concept"
+    ],
+    "source": "montevideo_department",
+    "target": "concept",
+    "first_article": "775420",
+    "first_article_idx": 1,
+    "second_article": "730230",
+    "second_article_idx": 101,
+    "occurrences": [
+      {
+        "article_id": "775420",
+        "article_idx": 1,
+        "sentence": "Montevideo Department is a concept."
+      },
+      {
+        "article_id": "730230",
+        "article_idx": 101,
+        "sentence": "Montevideo Department is a concept."
+      }
+    ]
+  },
+  {
+    "relation_id": "RC_003",
+    "expected_relation": [
+      "text:terry_hands",
+      "text:concept"
+    ],
+    "source": "terry_hands",
+    "target": "concept",
+    "first_article": "736192",
+    "first_article_idx": 2,
+    "second_article": "792705",
+    "second_article_idx": 102,
+    "occurrences": [
+      {
+        "article_id": "736192",
+        "article_idx": 2,
+        "sentence": "Terry Hands is a concept."
+      },
+      {
+        "article_id": "792705",
+        "article_idx": 102,
+        "sentence": "Terry Hands is a concept."
+      }
+    ]
+  },
+  {
+    "relation_id": "RC_004",
+    "expected_relation": [
+      "text:history_of_the_peloponnesian_war",
+      "text:concept"
+    ],
+    "source": "history_of_the_peloponnesian_war",
+    "target": "concept",
+    "first_article": "76812",
+    "first_article_idx": 3,
+    "second_article": "1033858",
+    "second_article_idx": 103,
+    "occurrences": [
+      {
+        "article_id": "76812",
+        "article_idx": 3,
+        "sentence": "History of the Peloponnesian War is a concept."
+      },
+      {
+        "article_id": "1033858",
+        "article_idx": 103,
+        "sentence": "History of the Peloponnesian War is a concept."
+      }
+    ]
+  },
+  {
+    "relation_id": "RC_005",
+    "expected_relation": [
+      "text:nora_brockstedt",
+      "text:concept"
+    ],
+    "source": "nora_brockstedt",
+    "target": "concept",
+    "first_article": "521036",
+    "first_article_idx": 4,
+    "second_article": "1034832",
+    "second_article_idx": 104,
+    "occurrences": [
+      {
+        "article_id": "521036",
+        "article_idx": 4,
+        "sentence": "Nora Brockstedt is a concept."
+      },
+      {
+        "article_id": "1034832",
+        "article_idx": 104,
+        "sentence": "Nora Brockstedt is a concept."
+      }
+    ]
+  },
+  {
+    "relation_id": "RC_006",
+    "expected_relation": [
+      "text:myrtle_beach,_south_carolina",
+      "text:concept"
+    ],
+    "source": "myrtle_beach,_south_carolina",
+    "target": "concept",
+    "first_article": "316497",
+    "first_article_idx": 5,
+    "second_article": "178554",
+    "second_article_idx": 105,
+    "occurrences": [
+      {
+        "article_id": "316497",
+        "article_idx": 5,
+        "sentence": "Myrtle Beach, South Carolina is a concept."
+      },
+      {
+        "article_id": "178554",
+        "article_idx": 105,
+        "sentence": "Myrtle Beach, South Carolina is a concept."
+      }
+    ]
+  },
+  {
+    "relation_id": "RC_007",
+    "expected_relation": [
+      "text:lula",
+      "text:concept"
+    ],
+    "source": "lula",
+    "target": "concept",
+    "first_article": "689749",
+    "first_article_idx": 6,
+    "second_article": "382132",
+    "second_article_idx": 106,
+    "occurrences": [
+      {
+        "article_id": "689749",
+        "article_idx": 6,
+        "sentence": "Lula is a concept."
+      },
+      {
+        "article_id": "382132",
+        "article_idx": 106,
+        "sentence": "Lula is a concept."
+      }
+    ]
+  },
+  {
+    "relation_id": "RC_008",
+    "expected_relation": [
+      "text:mar\u0153uil",
+      "text:concept"
+    ],
+    "source": "mar\u0153uil",
+    "target": "concept",
+    "first_article": "154537",
+    "first_article_idx": 7,
+    "second_article": "907687",
+    "second_article_idx": 107,
+    "occurrences": [
+      {
+        "article_id": "154537",
+        "article_idx": 7,
+        "sentence": "Mar\u0153uil is a concept."
+      },
+      {
+        "article_id": "907687",
+        "article_idx": 107,
+        "sentence": "Mar\u0153uil is a concept."
+      }
+    ]
+  },
+  {
+    "relation_id": "RC_009",
+    "expected_relation": [
+      "text:covid-19_pandemic_in_mozambique",
+      "text:concept"
+    ],
+    "source": "covid-19_pandemic_in_mozambique",
+    "target": "concept",
+    "first_article": "772940",
+    "first_article_idx": 8,
+    "second_article": "379403",
+    "second_article_idx": 108,
+    "occurrences": [
+      {
+        "article_id": "772940",
+        "article_idx": 8,
+        "sentence": "COVID-19 pandemic in Mozambique is a concept."
+      },
+      {
+        "article_id": "379403",
+        "article_idx": 108,
+        "sentence": "COVID-19 pandemic in Mozambique is a concept."
+      }
+    ]
+  },
+  {
+    "relation_id": "RC_010",
+    "expected_relation": [
+      "text:san_dimas",
+      "text:concept"
+    ],
+    "source": "san_dimas",
+    "target": "concept",
+    "first_article": "774419",
+    "first_article_idx": 9,
+    "second_article": "727193",
+    "second_article_idx": 109,
+    "occurrences": [
+      {
+        "article_id": "774419",
+        "article_idx": 9,
+        "sentence": "San Dimas is a concept."
+      },
+      {
+        "article_id": "727193",
+        "article_idx": 109,
+        "sentence": "San Dimas is a concept."
+      }
+    ]
+  },
+  {
+    "relation_id": "RC_011",
+    "expected_relation": [
+      "text:eeva_ahtisaari",
+      "text:concept"
+    ],
+    "source": "eeva_ahtisaari",
+    "target": "concept",
+    "first_article": "874123",
+    "first_article_idx": 10,
+    "second_article": "179474",
+    "second_article_idx": 110,
+    "occurrences": [
+      {
+        "article_id": "874123",
+        "article_idx": 10,
+        "sentence": "Eeva Ahtisaari is a concept."
+      },
+      {
+        "article_id": "179474",
+        "article_idx": 110,
+        "sentence": "Eeva Ahtisaari is a concept."
+      }
+    ]
+  },
+  {
+    "relation_id": "RC_012",
+    "expected_relation": [
+      "text:antonis_georgiadis",
+      "text:concept"
+    ],
+    "source": "antonis_georgiadis",
+    "target": "concept",
+    "first_article": "803605",
+    "first_article_idx": 11,
+    "second_article": "1024088",
+    "second_article_idx": 111,
+    "occurrences": [
+      {
+        "article_id": "803605",
+        "article_idx": 11,
+        "sentence": "Antonis Georgiadis is a concept."
+      },
+      {
+        "article_id": "1024088",
+        "article_idx": 111,
+        "sentence": "Antonis Georgiadis is a concept."
+      }
+    ]
+  },
+  {
+    "relation_id": "RC_013",
+    "expected_relation": [
+      "text:rostislav_rybakov",
+      "text:concept"
+    ],
+    "source": "rostislav_rybakov",
+    "target": "concept",
+    "first_article": "707871",
+    "first_article_idx": 12,
+    "second_article": "894521",
+    "second_article_idx": 112,
+    "occurrences": [
+      {
+        "article_id": "707871",
+        "article_idx": 12,
+        "sentence": "Rostislav Rybakov is a concept."
+      },
+      {
+        "article_id": "894521",
+        "article_idx": 112,
+        "sentence": "Rostislav Rybakov is a concept."
+      }
+    ]
+  },
+  {
+    "relation_id": "RC_014",
+    "expected_relation": [
+      "text:war_of_devolution",
+      "text:concept"
+    ],
+    "source": "war_of_devolution",
+    "target": "concept",
+    "first_article": "729731",
+    "first_article_idx": 13,
+    "second_article": "396421",
+    "second_article_idx": 113,
+    "occurrences": [
+      {
+        "article_id": "729731",
+        "article_idx": 13,
+        "sentence": "War of Devolution is a concept."
+      },
+      {
+        "article_id": "396421",
+        "article_idx": 113,
+        "sentence": "War of Devolution is a concept."
+      }
+    ]
+  },
+  {
+    "relation_id": "RC_015",
+    "expected_relation": [
+      "text:milwaukee_deep",
+      "text:concept"
+    ],
+    "source": "milwaukee_deep",
+    "target": "concept",
+    "first_article": "904931",
+    "first_article_idx": 14,
+    "second_article": "823979",
+    "second_article_idx": 114,
+    "occurrences": [
+      {
+        "article_id": "904931",
+        "article_idx": 14,
+        "sentence": "Milwaukee Deep is a concept."
+      },
+      {
+        "article_id": "823979",
+        "article_idx": 114,
+        "sentence": "Milwaukee Deep is a concept."
+      }
+    ]
+  },
+  {
+    "relation_id": "RC_016",
+    "expected_relation": [
+      "text:john_hunter",
+      "text:concept"
+    ],
+    "source": "john_hunter",
+    "target": "concept",
+    "first_article": "113862",
+    "first_article_idx": 15,
+    "second_article": "591929",
+    "second_article_idx": 115,
+    "occurrences": [
+      {
+        "article_id": "113862",
+        "article_idx": 15,
+        "sentence": "John Hunter is a concept."
+      },
+      {
+        "article_id": "591929",
+        "article_idx": 115,
+        "sentence": "John Hunter is a concept."
+      }
+    ]
+  },
+  {
+    "relation_id": "RC_017",
+    "expected_relation": [
+      "text:iso_3166-2:pa",
+      "text:concept"
+    ],
+    "source": "iso_3166-2:pa",
+    "target": "concept",
+    "first_article": "569808",
+    "first_article_idx": 16,
+    "second_article": "25145",
+    "second_article_idx": 116,
+    "occurrences": [
+      {
+        "article_id": "569808",
+        "article_idx": 16,
+        "sentence": "ISO 3166-2:PA is a concept."
+      },
+      {
+        "article_id": "25145",
+        "article_idx": 116,
+        "sentence": "ISO 3166-2:PA is a concept."
+      }
+    ]
+  },
+  {
+    "relation_id": "RC_018",
+    "expected_relation": [
+      "text:lagnieu",
+      "text:concept"
+    ],
+    "source": "lagnieu",
+    "target": "concept",
+    "first_article": "150131",
+    "first_article_idx": 17,
+    "second_article": "896372",
+    "second_article_idx": 117,
+    "occurrences": [
+      {
+        "article_id": "150131",
+        "article_idx": 17,
+        "sentence": "Lagnieu is a concept."
+      },
+      {
+        "article_id": "896372",
+        "article_idx": 117,
+        "sentence": "Lagnieu is a concept."
+      }
+    ]
+  },
+  {
+    "relation_id": "RC_019",
+    "expected_relation": [
+      "text:khandi_alexander",
+      "text:concept"
+    ],
+    "source": "khandi_alexander",
+    "target": "concept",
+    "first_article": "65434",
+    "first_article_idx": 18,
+    "second_article": "840496",
+    "second_article_idx": 118,
+    "occurrences": [
+      {
+        "article_id": "65434",
+        "article_idx": 18,
+        "sentence": "Khandi Alexander is a concept."
+      },
+      {
+        "article_id": "840496",
+        "article_idx": 118,
+        "sentence": "Khandi Alexander is a concept."
+      }
+    ]
+  },
+  {
+    "relation_id": "RC_020",
+    "expected_relation": [
+      "text:all_the_right_moves_(onerepublic_song)",
+      "text:concept"
+    ],
+    "source": "all_the_right_moves_(onerepublic_song)",
+    "target": "concept",
+    "first_article": "1022150",
+    "first_article_idx": 19,
+    "second_article": "1037389",
+    "second_article_idx": 119,
+    "occurrences": [
+      {
+        "article_id": "1022150",
+        "article_idx": 19,
+        "sentence": "All the Right Moves (OneRepublic song) is a concept."
+      },
+      {
+        "article_id": "1037389",
+        "article_idx": 119,
+        "sentence": "All the Right Moves (OneRepublic song) is a concept."
+      }
+    ]
+  },
+  {
+    "relation_id": "RC_021",
+    "expected_relation": [
+      "text:african_bush_elephant",
+      "text:concept"
+    ],
+    "source": "african_bush_elephant",
+    "target": "concept",
+    "first_article": "136960",
+    "first_article_idx": 20,
+    "second_article": "744241",
+    "second_article_idx": 120,
+    "occurrences": [
+      {
+        "article_id": "136960",
+        "article_idx": 20,
+        "sentence": "African bush elephant is a concept."
+      },
+      {
+        "article_id": "744241",
+        "article_idx": 120,
+        "sentence": "African bush elephant is a concept."
+      }
+    ]
+  },
+  {
+    "relation_id": "RC_022",
+    "expected_relation": [
+      "text:sodium_tellurite",
+      "text:concept"
+    ],
+    "source": "sodium_tellurite",
+    "target": "concept",
+    "first_article": "267602",
+    "first_article_idx": 21,
+    "second_article": "979959",
+    "second_article_idx": 121,
+    "occurrences": [
+      {
+        "article_id": "267602",
+        "article_idx": 21,
+        "sentence": "Sodium tellurite is a concept."
+      },
+      {
+        "article_id": "979959",
+        "article_idx": 121,
+        "sentence": "Sodium tellurite is a concept."
+      }
+    ]
+  },
+  {
+    "relation_id": "RC_023",
+    "expected_relation": [
+      "text:westside,_iowa",
+      "text:concept"
+    ],
+    "source": "westside,_iowa",
+    "target": "concept",
+    "first_article": "656039",
+    "first_article_idx": 22,
+    "second_article": "819572",
+    "second_article_idx": 122,
+    "occurrences": [
+      {
+        "article_id": "656039",
+        "article_idx": 22,
+        "sentence": "Westside, Iowa is a concept."
+      },
+      {
+        "article_id": "819572",
+        "article_idx": 122,
+        "sentence": "Westside, Iowa is a concept."
+      }
+    ]
+  },
+  {
+    "relation_id": "RC_024",
+    "expected_relation": [
+      "text:tucker,_georgia",
+      "text:concept"
+    ],
+    "source": "tucker,_georgia",
+    "target": "concept",
+    "first_article": "927922",
+    "first_article_idx": 23,
+    "second_article": "646351",
+    "second_article_idx": 123,
+    "occurrences": [
+      {
+        "article_id": "927922",
+        "article_idx": 23,
+        "sentence": "Tucker, Georgia is a concept."
+      },
+      {
+        "article_id": "646351",
+        "article_idx": 123,
+        "sentence": "Tucker, Georgia is a concept."
+      }
+    ]
+  },
+  {
+    "relation_id": "RC_025",
+    "expected_relation": [
+      "text:forest_(disambiguation)",
+      "text:concept"
+    ],
+    "source": "forest_(disambiguation)",
+    "target": "concept",
+    "first_article": "414389",
+    "first_article_idx": 24,
+    "second_article": "785062",
+    "second_article_idx": 124,
+    "occurrences": [
+      {
+        "article_id": "414389",
+        "article_idx": 24,
+        "sentence": "Forest (disambiguation) is a concept."
+      },
+      {
+        "article_id": "785062",
+        "article_idx": 124,
+        "sentence": "Forest (disambiguation) is a concept."
+      }
+    ]
+  },
+  {
+    "relation_id": "RC_026",
+    "expected_relation": [
+      "text:coercion",
+      "text:concept"
+    ],
+    "source": "coercion",
+    "target": "concept",
+    "first_article": "935901",
+    "first_article_idx": 25,
+    "second_article": "295571",
+    "second_article_idx": 125,
+    "occurrences": [
+      {
+        "article_id": "935901",
+        "article_idx": 25,
+        "sentence": "Coercion is a concept."
+      },
+      {
+        "article_id": "295571",
+        "article_idx": 125,
+        "sentence": "Coercion is a concept."
+      }
+    ]
+  },
+  {
+    "relation_id": "RC_027",
+    "expected_relation": [
+      "text:wyrzysk",
+      "text:concept"
+    ],
+    "source": "wyrzysk",
+    "target": "concept",
+    "first_article": "190271",
+    "first_article_idx": 26,
+    "second_article": "1053132",
+    "second_article_idx": 126,
+    "occurrences": [
+      {
+        "article_id": "190271",
+        "article_idx": 26,
+        "sentence": "Wyrzysk is a concept."
+      },
+      {
+        "article_id": "1053132",
+        "article_idx": 126,
+        "sentence": "Wyrzysk is a concept."
+      }
+    ]
+  },
+  {
+    "relation_id": "RC_028",
+    "expected_relation": [
+      "text:radonvilliers",
+      "text:concept"
+    ],
+    "source": "radonvilliers",
+    "target": "concept",
+    "first_article": "779420",
+    "first_article_idx": 27,
+    "second_article": "242312",
+    "second_article_idx": 127,
+    "occurrences": [
+      {
+        "article_id": "779420",
+        "article_idx": 27,
+        "sentence": "Radonvilliers is a concept."
+      },
+      {
+        "article_id": "242312",
+        "article_idx": 127,
+        "sentence": "Radonvilliers is a concept."
+      }
+    ]
+  },
+  {
+    "relation_id": "RC_029",
+    "expected_relation": [
+      "text:francisco_toledo",
+      "text:concept"
+    ],
+    "source": "francisco_toledo",
+    "target": "concept",
+    "first_article": "711329",
+    "first_article_idx": 28,
+    "second_article": "706243",
+    "second_article_idx": 128,
+    "occurrences": [
+      {
+        "article_id": "711329",
+        "article_idx": 28,
+        "sentence": "Francisco Toledo is a concept."
+      },
+      {
+        "article_id": "706243",
+        "article_idx": 128,
+        "sentence": "Francisco Toledo is a concept."
+      }
+    ]
+  },
+  {
+    "relation_id": "RC_030",
+    "expected_relation": [
+      "text:terakado_seiken",
+      "text:concept"
+    ],
+    "source": "terakado_seiken",
+    "target": "concept",
+    "first_article": "887152",
+    "first_article_idx": 29,
+    "second_article": "764440",
+    "second_article_idx": 129,
+    "occurrences": [
+      {
+        "article_id": "887152",
+        "article_idx": 29,
+        "sentence": "Terakado Seiken is a concept."
+      },
+      {
+        "article_id": "764440",
+        "article_idx": 129,
+        "sentence": "Terakado Seiken is a concept."
+      }
+    ]
+  }
+]

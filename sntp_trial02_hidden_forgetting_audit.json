@@ -1,0 +1,56 @@
+{
+  "status": "PASSED",
+  "total_checks": 12,
+  "passed_checks": 12,
+  "failed_checks": 0,
+  "checks": [
+    {
+      "id": "NO_PASSIVE_WEIGHT_DECAY",
+      "passed": true
+    },
+    {
+      "id": "NO_PASSIVE_SALIENCE_DECAY",
+      "passed": true
+    },
+    {
+      "id": "NO_LOW_W_PRUNING",
+      "passed": true
+    },
+    {
+      "id": "NO_W_ZERO_AUTO_DELETION",
+      "passed": true
+    },
+    {
+      "id": "NO_LAST_UPDATE_AGE_DECAY",
+      "passed": true
+    },
+    {
+      "id": "NO_INACTIVITY_COUNTER",
+      "passed": true
+    },
+    {
+      "id": "NO_UNUSED_EPISODE_DELETION",
+      "passed": true
+    },
+    {
+      "id": "NO_ROLE_EDGE_INACTIVITY_DEATH",
+      "passed": true
+    },
+    {
+      "id": "NO_STEP_TIME_MEMORY_MUTATION",
+      "passed": true
+    },
+    {
+      "id": "NO_GLOBAL_FORGOTTEN_EDGE_SCAN",
+      "passed": true
+    },
+    {
+      "id": "NO_GLOBAL_ORPHAN_DEATH_SWEEP",
+      "passed": true
+    },
+    {
+      "id": "NO_HIDDEN_LAW3_COMPATIBILITY",
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "exercised": true,
+  "persistent_events_created": 21,
+  "persistent_events_alive_at_end": 21,
+  "role_edges_lost_to_inactivity": 0,
+  "status": "PASSED"
+}

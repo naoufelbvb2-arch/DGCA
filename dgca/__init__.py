@@ -115,7 +115,16 @@ from .representation import (
     TransientBindingReceipt,
     rfc12_behavioral_signature,
 )
-from .vision import SpatialRelation, VisionSensoryPipeline, VisualObject
+from .vision import (
+    PixelFrame,
+    SpatialRelation,
+    VisionEncoderV2,
+    VisionSensoryPipeline,
+    VisualFrameIR,
+    VisualObject,
+    VisualRegionIR,
+    VisualRelationIR,
+)
 
 __version__ = "0.1.0"
 
@@ -182,6 +191,7 @@ __all__ = [
     "ParticipationReceipt",
     "PatternCandidate",
     "PatternCompletionEngine",
+    "PixelFrame",
     "PrecedenceGraph",
     "PredictiveRecurrentGenerativeEngine",
     "QuantityNormalizer",
@@ -213,8 +223,12 @@ __all__ = [
     "UnifiedGenerativeCognitiveLoopEngine",
     "UnifiedLoopObservability",
     "UnifiedNoProgressSignature",
+    "VisionEncoderV2",
     "VisionSensoryPipeline",
+    "VisualFrameIR",
     "VisualObject",
+    "VisualRegionIR",
+    "VisualRelationIR",
     "WorkDependencyView",
     "canonical_assembly_id",
     "causal_strength",

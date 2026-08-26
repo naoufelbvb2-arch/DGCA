@@ -6,12 +6,11 @@ ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(ROOT))
 
 from dgca.graph import CognitiveGraph
-from dgca.config import Law
+
 
 def run_forbidden_audit():
     graph_code = (ROOT / "dgca" / "graph.py").read_text(encoding="utf-8")
     agent_code = (ROOT / "dgca" / "agent.py").read_text(encoding="utf-8")
-    config_code = (ROOT / "dgca" / "config.py").read_text(encoding="utf-8")
 
     checks = []
 

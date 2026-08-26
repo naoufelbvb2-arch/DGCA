@@ -1,0 +1,10 @@
+{
+  "component": "Vision Encoder v2",
+  "new_primitives": 0,
+  "new_laws": 0,
+  "persistent_schema_delta": 0,
+  "feature_budget": 8,
+  "coordinate_system": "NORMALIZED",
+  "region_formation": "DETERMINISTIC",
+  "true_contour_measurement": true
+}

@@ -1,0 +1,8 @@
+{
+  "instances_created": 1,
+  "instances_eligible_for_retirement": 1,
+  "instances_retired": 0,
+  "persistent_concepts_lost": 0,
+  "persistent_edges_lost": 0,
+  "status": "FAILED"
+}

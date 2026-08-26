@@ -1,0 +1,86 @@
+{
+  "total": 20,
+  "verified": 20,
+  "invariants": [
+    {
+      "id": "T03-INV-001",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "T03-INV-002",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "T03-INV-003",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "T03-INV-004",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "T03-INV-005",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "T03-INV-006",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "T03-INV-007",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "T03-INV-008",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "T03-INV-009",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "T03-INV-010",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "T03-INV-011",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "T03-INV-012",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "T03-INV-013",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "T03-INV-014",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "T03-INV-015",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "T03-INV-016",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "T03-INV-017",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "T03-INV-018",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "T03-INV-019",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "T03-INV-020",
+      "status": "VERIFIED"
+    }
+  ]
+}

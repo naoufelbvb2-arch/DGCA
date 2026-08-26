@@ -1,0 +1,70 @@
+{
+  "total": 16,
+  "verified": 16,
+  "invariants": [
+    {
+      "id": "SNTP-INV-001",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "SNTP-INV-002",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "SNTP-INV-003",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "SNTP-INV-004",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "SNTP-INV-005",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "SNTP-INV-006",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "SNTP-INV-007",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "SNTP-INV-008",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "SNTP-INV-009",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "SNTP-INV-010",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "SNTP-INV-011",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "SNTP-INV-012",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "SNTP-INV-013",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "SNTP-INV-014",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "SNTP-INV-015",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "SNTP-INV-016",
+      "status": "VERIFIED"
+    }
+  ]
+}

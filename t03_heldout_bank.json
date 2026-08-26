@@ -1,0 +1,702 @@
+[
+  {
+    "probe_id": "TD_001",
+    "heldout_article_id": "2",
+    "title": "August",
+    "question_or_cue": "What is August?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_002",
+    "heldout_article_id": "14",
+    "title": "Alanis Morissette",
+    "question_or_cue": "What is Alanis Morissette?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_003",
+    "heldout_article_id": "17",
+    "title": "Adobe Illustrator",
+    "question_or_cue": "What is Adobe Illustrator?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_004",
+    "heldout_article_id": "18",
+    "title": "Andouille",
+    "question_or_cue": "What is Andouille?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_005",
+    "heldout_article_id": "39",
+    "title": "Apple",
+    "question_or_cue": "What is Apple?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_006",
+    "heldout_article_id": "56",
+    "title": "Armenia",
+    "question_or_cue": "What is Armenia?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_007",
+    "heldout_article_id": "74",
+    "title": "Breakfast sausage",
+    "question_or_cue": "What is Breakfast sausage?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_008",
+    "heldout_article_id": "100",
+    "title": "Bubonic plague",
+    "question_or_cue": "What is Bubonic plague?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_009",
+    "heldout_article_id": "101",
+    "title": "Biology",
+    "question_or_cue": "What is Biology?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_010",
+    "heldout_article_id": "103",
+    "title": "Belgium",
+    "question_or_cue": "What is Belgium?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_011",
+    "heldout_article_id": "117",
+    "title": "Continent",
+    "question_or_cue": "What is Continent?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_012",
+    "heldout_article_id": "131",
+    "title": "Contact network",
+    "question_or_cue": "What is Contact network?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_013",
+    "heldout_article_id": "134",
+    "title": "Creativity",
+    "question_or_cue": "What is Creativity?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_014",
+    "heldout_article_id": "191",
+    "title": "Dutton's Speedwords",
+    "question_or_cue": "What is Dutton's Speedwords?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_015",
+    "heldout_article_id": "196",
+    "title": "Diarrhea",
+    "question_or_cue": "What is Diarrhea?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_016",
+    "heldout_article_id": "226",
+    "title": "Ethics",
+    "question_or_cue": "What is Ethics?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_017",
+    "heldout_article_id": "262",
+    "title": "February",
+    "question_or_cue": "What is February?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_018",
+    "heldout_article_id": "284",
+    "title": "Frying",
+    "question_or_cue": "What is Frying?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_019",
+    "heldout_article_id": "292",
+    "title": "Finland",
+    "question_or_cue": "What is Finland?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_020",
+    "heldout_article_id": "293",
+    "title": "Fruit",
+    "question_or_cue": "What is Fruit?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_021",
+    "heldout_article_id": "401",
+    "title": "June",
+    "question_or_cue": "What is June?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_022",
+    "heldout_article_id": "425",
+    "title": "Life",
+    "question_or_cue": "What is Life?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_023",
+    "heldout_article_id": "467",
+    "title": "Mathematics",
+    "question_or_cue": "What is Mathematics?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_024",
+    "heldout_article_id": "490",
+    "title": "Mechanistic paradigm",
+    "question_or_cue": "What is Mechanistic paradigm?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_025",
+    "heldout_article_id": "505",
+    "title": "Milky Way",
+    "question_or_cue": "What is Milky Way?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_026",
+    "heldout_article_id": "508",
+    "title": "Movement",
+    "question_or_cue": "What is Movement?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_027",
+    "heldout_article_id": "525",
+    "title": "Mammal",
+    "question_or_cue": "What is Mammal?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_028",
+    "heldout_article_id": "528",
+    "title": "Number",
+    "question_or_cue": "What is Number?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_029",
+    "heldout_article_id": "552",
+    "title": "Natural resource",
+    "question_or_cue": "What is Natural resource?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_030",
+    "heldout_article_id": "571",
+    "title": "1 (number)",
+    "question_or_cue": "What is 1 (number)?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_031",
+    "heldout_article_id": "573",
+    "title": "Oahu",
+    "question_or_cue": "What is Oahu?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_032",
+    "heldout_article_id": "575",
+    "title": "Open content",
+    "question_or_cue": "What is Open content?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_033",
+    "heldout_article_id": "577",
+    "title": "Orthography",
+    "question_or_cue": "What is Orthography?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_034",
+    "heldout_article_id": "620",
+    "title": "Program",
+    "question_or_cue": "What is Program?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_035",
+    "heldout_article_id": "630",
+    "title": "Prediction",
+    "question_or_cue": "What is Prediction?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_036",
+    "heldout_article_id": "666",
+    "title": "Regime",
+    "question_or_cue": "What is Regime?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_037",
+    "heldout_article_id": "676",
+    "title": "Right angle",
+    "question_or_cue": "What is Right angle?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_038",
+    "heldout_article_id": "690",
+    "title": "Suggestion",
+    "question_or_cue": "What is Suggestion?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_039",
+    "heldout_article_id": "708",
+    "title": "Salami",
+    "question_or_cue": "What is Salami?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_040",
+    "heldout_article_id": "769",
+    "title": "Spanish",
+    "question_or_cue": "What is Spanish?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_041",
+    "heldout_article_id": "805",
+    "title": "Soul",
+    "question_or_cue": "What is Soul?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_042",
+    "heldout_article_id": "833",
+    "title": "Taiwan",
+    "question_or_cue": "What is Taiwan?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_043",
+    "heldout_article_id": "892",
+    "title": "Vegetable oil",
+    "question_or_cue": "What is Vegetable oil?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_044",
+    "heldout_article_id": "895",
+    "title": "Volume",
+    "question_or_cue": "What is Volume?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_045",
+    "heldout_article_id": "908",
+    "title": "Website",
+    "question_or_cue": "What is Website?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_046",
+    "heldout_article_id": "935",
+    "title": "Wine",
+    "question_or_cue": "What is Wine?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_047",
+    "heldout_article_id": "944",
+    "title": "Year",
+    "question_or_cue": "What is Year?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_048",
+    "heldout_article_id": "1936",
+    "title": "Atlantic Ocean",
+    "question_or_cue": "What is Atlantic Ocean?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_049",
+    "heldout_article_id": "1970",
+    "title": "Climate",
+    "question_or_cue": "What is Climate?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_050",
+    "heldout_article_id": "1988",
+    "title": "Container",
+    "question_or_cue": "What is Container?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_051",
+    "heldout_article_id": "2081",
+    "title": "Earthquake",
+    "question_or_cue": "What is Earthquake?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_052",
+    "heldout_article_id": "2115",
+    "title": "Army",
+    "question_or_cue": "What is Army?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_053",
+    "heldout_article_id": "2136",
+    "title": "Sweden",
+    "question_or_cue": "What is Sweden?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_054",
+    "heldout_article_id": "2812",
+    "title": "Meteor shower",
+    "question_or_cue": "What is Meteor shower?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_055",
+    "heldout_article_id": "2815",
+    "title": "Cat",
+    "question_or_cue": "What is Cat?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_056",
+    "heldout_article_id": "2871",
+    "title": "Bavaria",
+    "question_or_cue": "What is Bavaria?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_057",
+    "heldout_article_id": "2891",
+    "title": "Solidarity",
+    "question_or_cue": "What is Solidarity?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_058",
+    "heldout_article_id": "2896",
+    "title": "1924",
+    "question_or_cue": "What is 1924?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_059",
+    "heldout_article_id": "2967",
+    "title": "Canton",
+    "question_or_cue": "What is Canton?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_060",
+    "heldout_article_id": "2977",
+    "title": "Neptune (disambiguation)",
+    "question_or_cue": "What is Neptune (disambiguation)?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_061",
+    "heldout_article_id": "3024",
+    "title": "DUI",
+    "question_or_cue": "What is DUI?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_062",
+    "heldout_article_id": "3033",
+    "title": "Leg",
+    "question_or_cue": "What is Leg?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_063",
+    "heldout_article_id": "3050",
+    "title": "Northern Ireland",
+    "question_or_cue": "What is Northern Ireland?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_064",
+    "heldout_article_id": "3064",
+    "title": "Arsenal F.C.",
+    "question_or_cue": "What is Arsenal F.C.?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_065",
+    "heldout_article_id": "3082",
+    "title": "Tottenham Hotspur F.C.",
+    "question_or_cue": "What is Tottenham Hotspur F.C.?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_066",
+    "heldout_article_id": "3097",
+    "title": "Ipswich Town F.C.",
+    "question_or_cue": "What is Ipswich Town F.C.?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_067",
+    "heldout_article_id": "3112",
+    "title": "Wimbledon F.C.",
+    "question_or_cue": "What is Wimbledon F.C.?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_068",
+    "heldout_article_id": "3196",
+    "title": "Game",
+    "question_or_cue": "What is Game?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_069",
+    "heldout_article_id": "3260",
+    "title": "Gold",
+    "question_or_cue": "What is Gold?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_070",
+    "heldout_article_id": "3299",
+    "title": "City of London",
+    "question_or_cue": "What is City of London?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_071",
+    "heldout_article_id": "3303",
+    "title": "London Borough of Southwark",
+    "question_or_cue": "What is London Borough of Southwark?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_072",
+    "heldout_article_id": "3305",
+    "title": "London Borough of Merton",
+    "question_or_cue": "What is London Borough of Merton?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_073",
+    "heldout_article_id": "3313",
+    "title": "Royal Borough of Greenwich",
+    "question_or_cue": "What is Royal Borough of Greenwich?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_074",
+    "heldout_article_id": "3333",
+    "title": "German",
+    "question_or_cue": "What is German?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_075",
+    "heldout_article_id": "3403",
+    "title": "British Columbia",
+    "question_or_cue": "What is British Columbia?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_076",
+    "heldout_article_id": "3407",
+    "title": "20th century",
+    "question_or_cue": "What is 20th century?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_077",
+    "heldout_article_id": "3463",
+    "title": "Netherlands",
+    "question_or_cue": "What is Netherlands?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_078",
+    "heldout_article_id": "3468",
+    "title": "Slovenia",
+    "question_or_cue": "What is Slovenia?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_079",
+    "heldout_article_id": "3471",
+    "title": "Denarius",
+    "question_or_cue": "What is Denarius?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_080",
+    "heldout_article_id": "3493",
+    "title": "Power network",
+    "question_or_cue": "What is Power network?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_081",
+    "heldout_article_id": "3494",
+    "title": "Citizenship",
+    "question_or_cue": "What is Citizenship?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_082",
+    "heldout_article_id": "3523",
+    "title": "Flea",
+    "question_or_cue": "What is Flea?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_083",
+    "heldout_article_id": "3539",
+    "title": "Day",
+    "question_or_cue": "What is Day?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_084",
+    "heldout_article_id": "3589",
+    "title": "Need",
+    "question_or_cue": "What is Need?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_085",
+    "heldout_article_id": "3604",
+    "title": "Unit",
+    "question_or_cue": "What is Unit?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_086",
+    "heldout_article_id": "3622",
+    "title": "Desktop environment",
+    "question_or_cue": "What is Desktop environment?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_087",
+    "heldout_article_id": "3637",
+    "title": "Arctic",
+    "question_or_cue": "What is Arctic?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_088",
+    "heldout_article_id": "3686",
+    "title": "Book",
+    "question_or_cue": "What is Book?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_089",
+    "heldout_article_id": "3693",
+    "title": "Nim",
+    "question_or_cue": "What is Nim?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_090",
+    "heldout_article_id": "3697",
+    "title": "Blue",
+    "question_or_cue": "What is Blue?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_091",
+    "heldout_article_id": "3752",
+    "title": "List of operating systems",
+    "question_or_cue": "What is List of operating systems?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_092",
+    "heldout_article_id": "3759",
+    "title": "Gross domestic product",
+    "question_or_cue": "What is Gross domestic product?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_093",
+    "heldout_article_id": "3811",
+    "title": "Pan",
+    "question_or_cue": "What is Pan?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_094",
+    "heldout_article_id": "3826",
+    "title": "Preposition",
+    "question_or_cue": "What is Preposition?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_095",
+    "heldout_article_id": "3847",
+    "title": "Para rubber tree",
+    "question_or_cue": "What is Para rubber tree?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_096",
+    "heldout_article_id": "3857",
+    "title": "Hacksaw",
+    "question_or_cue": "What is Hacksaw?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_097",
+    "heldout_article_id": "3872",
+    "title": "Alliteration",
+    "question_or_cue": "What is Alliteration?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_098",
+    "heldout_article_id": "3874",
+    "title": "Condensation",
+    "question_or_cue": "What is Condensation?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_099",
+    "heldout_article_id": "3875",
+    "title": "Precipitation",
+    "question_or_cue": "What is Precipitation?",
+    "equivalent_train_evidence_present": false
+  },
+  {
+    "probe_id": "TD_100",
+    "heldout_article_id": "3890",
+    "title": "Bolus",
+    "question_or_cue": "What is Bolus?",
+    "equivalent_train_evidence_present": false
+  }
+]

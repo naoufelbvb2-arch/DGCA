@@ -1,0 +1,743 @@
+{
+  "total_sentences": 92,
+  "complete_sentences": 91,
+  "unsupported_sentences": 1,
+  "manifest": [
+    {
+      "sentence_id": "S01",
+      "raw_sentence": "Venus is a planet.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "GROUP_A",
+      "target_relation_id": "R01_venus_planet",
+      "expected_role": "ONE_SHOT"
+    },
+    {
+      "sentence_id": "S02",
+      "raw_sentence": "Gold is yellow.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "GROUP_A",
+      "target_relation_id": "R02_gold_yellow",
+      "expected_role": "ONE_SHOT"
+    },
+    {
+      "sentence_id": "S03",
+      "raw_sentence": "Iron is a metal.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "GROUP_A",
+      "target_relation_id": "R03_iron_metal",
+      "expected_role": "ONE_SHOT"
+    },
+    {
+      "sentence_id": "S04",
+      "raw_sentence": "Oxygen is a gas.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "GROUP_A",
+      "target_relation_id": "R04_oxygen_gas",
+      "expected_role": "ONE_SHOT"
+    },
+    {
+      "sentence_id": "S05",
+      "raw_sentence": "Diamonds are hard.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "GROUP_A",
+      "target_relation_id": "R05_diamonds_hard",
+      "expected_role": "ONE_SHOT"
+    },
+    {
+      "sentence_id": "S06",
+      "raw_sentence": "Jupiter is a giant planet.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "GROUP_A",
+      "target_relation_id": "R06_jupiter_planet",
+      "expected_role": "ONE_SHOT"
+    },
+    {
+      "sentence_id": "S07",
+      "raw_sentence": "Mercury is small.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "GROUP_A",
+      "target_relation_id": "R07_mercury_small",
+      "expected_role": "ONE_SHOT"
+    },
+    {
+      "sentence_id": "S08",
+      "raw_sentence": "Neptune is blue.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "GROUP_A",
+      "target_relation_id": "R08_neptune_blue",
+      "expected_role": "ONE_SHOT"
+    },
+    {
+      "sentence_id": "S09",
+      "raw_sentence": "The Nile is a long river.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "GROUP_A",
+      "target_relation_id": "R09_nile_river",
+      "expected_role": "ONE_SHOT"
+    },
+    {
+      "sentence_id": "S10",
+      "raw_sentence": "Rain falls down.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "GROUP_A",
+      "target_relation_id": "R10_rain_down",
+      "expected_role": "ONE_SHOT"
+    },
+    {
+      "sentence_id": "S11",
+      "raw_sentence": "Snow is cold.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "GROUP_A",
+      "target_relation_id": "R11_snow_cold",
+      "expected_role": "ONE_SHOT"
+    },
+    {
+      "sentence_id": "S12",
+      "raw_sentence": "Fire gives warmth.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "GROUP_A",
+      "target_relation_id": "R12_fire_warmth",
+      "expected_role": "ONE_SHOT"
+    },
+    {
+      "sentence_id": "S13",
+      "raw_sentence": "A falcon is a bird.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "GROUP_B",
+      "target_relation_id": "RB01_falcon_bird",
+      "expected_role": "RECURRENCE_FIRST"
+    },
+    {
+      "sentence_id": "S14",
+      "raw_sentence": "The red apple is on the wooden table.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "GROUP_B",
+      "target_relation_id": "RB02_apple_red",
+      "expected_role": "RECURRENCE_FIRST"
+    },
+    {
+      "sentence_id": "S15",
+      "raw_sentence": "Birds have feathers.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "GROUP_B",
+      "target_relation_id": "RB03_birds_feathers",
+      "expected_role": "RECURRENCE_FIRST"
+    },
+    {
+      "sentence_id": "S16",
+      "raw_sentence": "The Earth orbits the Sun.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "GROUP_B",
+      "target_relation_id": "RB04_earth_sun",
+      "expected_role": "RECURRENCE_FIRST"
+    },
+    {
+      "sentence_id": "S17",
+      "raw_sentence": "Cats chase mice.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S18",
+      "raw_sentence": "Trees grow tall.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S19",
+      "raw_sentence": "Fish live in water.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S20",
+      "raw_sentence": "Plants need water.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S21",
+      "raw_sentence": "Bees make honey.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S22",
+      "raw_sentence": "Ice melts in heat.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S23",
+      "raw_sentence": "Copper is a metal.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S24",
+      "raw_sentence": "Saturn is a planet.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S25",
+      "raw_sentence": "New York City is in the United States.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S26",
+      "raw_sentence": "Alexander Graham Bell invented the telephone.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S27",
+      "raw_sentence": "Falcons are birds of prey.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "GROUP_B",
+      "target_relation_id": "RB01_falcon_bird",
+      "expected_role": "RECURRENCE_SECOND"
+    },
+    {
+      "sentence_id": "S28",
+      "raw_sentence": "Birds lay eggs.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S29",
+      "raw_sentence": "Spiders have eight legs.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S30",
+      "raw_sentence": "Water is liquid.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S31",
+      "raw_sentence": "Mars is red.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S32",
+      "raw_sentence": "Saturn has rings.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S33",
+      "raw_sentence": "Jupiter is large.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S34",
+      "raw_sentence": "A lion is a large cat that lives in Africa.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S35",
+      "raw_sentence": "Photosynthesis converts light energy into chemical energy.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S36",
+      "raw_sentence": "Water freezes at zero degrees Celsius.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S37",
+      "raw_sentence": "Copper conducts electricity.",
+      "encoder_disposition": "UNSUPPORTED",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S38",
+      "raw_sentence": "The red apple is sweet.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "GROUP_B",
+      "target_relation_id": "RB02_apple_red",
+      "expected_role": "RECURRENCE_SECOND"
+    },
+    {
+      "sentence_id": "S39",
+      "raw_sentence": "Cats chase mice.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S40",
+      "raw_sentence": "Trees grow tall.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S41",
+      "raw_sentence": "Fish live in water.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S42",
+      "raw_sentence": "Plants need water.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S43",
+      "raw_sentence": "Bees make honey.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S44",
+      "raw_sentence": "Ice melts in heat.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S45",
+      "raw_sentence": "Copper is a metal.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S46",
+      "raw_sentence": "Saturn is a planet.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S47",
+      "raw_sentence": "New York City is in the United States.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S48",
+      "raw_sentence": "Alexander Graham Bell invented the telephone.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S49",
+      "raw_sentence": "Venus is a planet.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S50",
+      "raw_sentence": "Gold is yellow.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S51",
+      "raw_sentence": "Iron is a metal.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S52",
+      "raw_sentence": "Oxygen is a gas.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S53",
+      "raw_sentence": "Diamonds are hard.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S54",
+      "raw_sentence": "Mercury is small.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S55",
+      "raw_sentence": "Neptune is blue.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S56",
+      "raw_sentence": "Rain falls down.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S57",
+      "raw_sentence": "Birds have feathers and lay eggs.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "GROUP_B",
+      "target_relation_id": "RB03_birds_feathers",
+      "expected_role": "RECURRENCE_SECOND"
+    },
+    {
+      "sentence_id": "S58",
+      "raw_sentence": "Snow is cold.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S59",
+      "raw_sentence": "Fire gives warmth.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S60",
+      "raw_sentence": "Birds lay eggs.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S61",
+      "raw_sentence": "Spiders have eight legs.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S62",
+      "raw_sentence": "Water is liquid.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S63",
+      "raw_sentence": "Mars is red.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S64",
+      "raw_sentence": "Saturn has rings.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S65",
+      "raw_sentence": "Jupiter is large.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S66",
+      "raw_sentence": "Cats chase mice.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S67",
+      "raw_sentence": "Trees grow tall.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S68",
+      "raw_sentence": "Fish live in water.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S69",
+      "raw_sentence": "Plants need water.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S70",
+      "raw_sentence": "Bees make honey.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S71",
+      "raw_sentence": "Ice melts in heat.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S72",
+      "raw_sentence": "Copper is a metal.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S73",
+      "raw_sentence": "Saturn is a planet.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S74",
+      "raw_sentence": "New York City is in the United States.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S75",
+      "raw_sentence": "Alexander Graham Bell invented the telephone.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S76",
+      "raw_sentence": "Venus is a planet.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S77",
+      "raw_sentence": "Gold is yellow.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S78",
+      "raw_sentence": "Iron is a metal.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S79",
+      "raw_sentence": "Oxygen is a gas.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S80",
+      "raw_sentence": "Diamonds are hard.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S81",
+      "raw_sentence": "Mercury is small.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S82",
+      "raw_sentence": "Neptune is blue.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S83",
+      "raw_sentence": "Rain falls down.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S84",
+      "raw_sentence": "Snow is cold.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S85",
+      "raw_sentence": "Fire gives warmth.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S86",
+      "raw_sentence": "Birds lay eggs.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S87",
+      "raw_sentence": "Spiders have eight legs.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S88",
+      "raw_sentence": "Water is liquid.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "FILLER",
+      "target_relation_id": null,
+      "expected_role": "FILLER"
+    },
+    {
+      "sentence_id": "S89",
+      "raw_sentence": "Venus is a star.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "LAW13_CONTROL",
+      "target_relation_id": "R_law13_venus_star",
+      "expected_role": "LAW13_CONTROL"
+    },
+    {
+      "sentence_id": "S90",
+      "raw_sentence": "Mars has two moons.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "TRANSIENT_CONTROL",
+      "target_relation_id": "R_transient_mars_moons",
+      "expected_role": "TRANSIENT_CONTROL"
+    },
+    {
+      "sentence_id": "S91",
+      "raw_sentence": "Alexander Graham Bell invented the telephone.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "EVENT_CONTROL",
+      "target_relation_id": "R_event_bell_telephone",
+      "expected_role": "EVENT_CONTROL"
+    },
+    {
+      "sentence_id": "S92",
+      "raw_sentence": "The Earth orbits the Sun.",
+      "encoder_disposition": "COMPLETE",
+      "target_group": "GROUP_B",
+      "target_relation_id": "RB04_earth_sun",
+      "expected_role": "RECURRENCE_SECOND"
+    }
+  ]
+}

@@ -1,0 +1,362 @@
+[
+  {
+    "target_id": "TB_001",
+    "source_article_id": "595949",
+    "source_sentence": "Hattstatt is a concept.",
+    "expected_relation": [
+      "text:hattstatt",
+      "text:concept"
+    ],
+    "source": "hattstatt",
+    "target": "concept",
+    "first_stored_checkpoint": "M100"
+  },
+  {
+    "target_id": "TB_002",
+    "source_article_id": "775420",
+    "source_sentence": "Montevideo Department is a concept.",
+    "expected_relation": [
+      "text:montevideo_department",
+      "text:concept"
+    ],
+    "source": "montevideo_department",
+    "target": "concept",
+    "first_stored_checkpoint": "M100"
+  },
+  {
+    "target_id": "TB_003",
+    "source_article_id": "736192",
+    "source_sentence": "Terry Hands is a concept.",
+    "expected_relation": [
+      "text:terry_hands",
+      "text:concept"
+    ],
+    "source": "terry_hands",
+    "target": "concept",
+    "first_stored_checkpoint": "M100"
+  },
+  {
+    "target_id": "TB_004",
+    "source_article_id": "76812",
+    "source_sentence": "History of the Peloponnesian War is a concept.",
+    "expected_relation": [
+      "text:history_of_the_peloponnesian_war",
+      "text:concept"
+    ],
+    "source": "history_of_the_peloponnesian_war",
+    "target": "concept",
+    "first_stored_checkpoint": "M100"
+  },
+  {
+    "target_id": "TB_005",
+    "source_article_id": "521036",
+    "source_sentence": "Nora Brockstedt is a concept.",
+    "expected_relation": [
+      "text:nora_brockstedt",
+      "text:concept"
+    ],
+    "source": "nora_brockstedt",
+    "target": "concept",
+    "first_stored_checkpoint": "M100"
+  },
+  {
+    "target_id": "TB_006",
+    "source_article_id": "316497",
+    "source_sentence": "Myrtle Beach, South Carolina is a concept.",
+    "expected_relation": [
+      "text:myrtle_beach,_south_carolina",
+      "text:concept"
+    ],
+    "source": "myrtle_beach,_south_carolina",
+    "target": "concept",
+    "first_stored_checkpoint": "M100"
+  },
+  {
+    "target_id": "TB_007",
+    "source_article_id": "689749",
+    "source_sentence": "Lula is a concept.",
+    "expected_relation": [
+      "text:lula",
+      "text:concept"
+    ],
+    "source": "lula",
+    "target": "concept",
+    "first_stored_checkpoint": "M100"
+  },
+  {
+    "target_id": "TB_008",
+    "source_article_id": "154537",
+    "source_sentence": "Mar\u0153uil is a concept.",
+    "expected_relation": [
+      "text:mar\u0153uil",
+      "text:concept"
+    ],
+    "source": "mar\u0153uil",
+    "target": "concept",
+    "first_stored_checkpoint": "M100"
+  },
+  {
+    "target_id": "TB_009",
+    "source_article_id": "772940",
+    "source_sentence": "COVID-19 pandemic in Mozambique is a concept.",
+    "expected_relation": [
+      "text:covid-19_pandemic_in_mozambique",
+      "text:concept"
+    ],
+    "source": "covid-19_pandemic_in_mozambique",
+    "target": "concept",
+    "first_stored_checkpoint": "M100"
+  },
+  {
+    "target_id": "TB_010",
+    "source_article_id": "774419",
+    "source_sentence": "San Dimas is a concept.",
+    "expected_relation": [
+      "text:san_dimas",
+      "text:concept"
+    ],
+    "source": "san_dimas",
+    "target": "concept",
+    "first_stored_checkpoint": "M100"
+  },
+  {
+    "target_id": "TB_011",
+    "source_article_id": "874123",
+    "source_sentence": "Eeva Ahtisaari is a concept.",
+    "expected_relation": [
+      "text:eeva_ahtisaari",
+      "text:concept"
+    ],
+    "source": "eeva_ahtisaari",
+    "target": "concept",
+    "first_stored_checkpoint": "M100"
+  },
+  {
+    "target_id": "TB_012",
+    "source_article_id": "803605",
+    "source_sentence": "Antonis Georgiadis is a concept.",
+    "expected_relation": [
+      "text:antonis_georgiadis",
+      "text:concept"
+    ],
+    "source": "antonis_georgiadis",
+    "target": "concept",
+    "first_stored_checkpoint": "M100"
+  },
+  {
+    "target_id": "TB_013",
+    "source_article_id": "707871",
+    "source_sentence": "Rostislav Rybakov is a concept.",
+    "expected_relation": [
+      "text:rostislav_rybakov",
+      "text:concept"
+    ],
+    "source": "rostislav_rybakov",
+    "target": "concept",
+    "first_stored_checkpoint": "M100"
+  },
+  {
+    "target_id": "TB_014",
+    "source_article_id": "729731",
+    "source_sentence": "War of Devolution is a concept.",
+    "expected_relation": [
+      "text:war_of_devolution",
+      "text:concept"
+    ],
+    "source": "war_of_devolution",
+    "target": "concept",
+    "first_stored_checkpoint": "M100"
+  },
+  {
+    "target_id": "TB_015",
+    "source_article_id": "904931",
+    "source_sentence": "Milwaukee Deep is a concept.",
+    "expected_relation": [
+      "text:milwaukee_deep",
+      "text:concept"
+    ],
+    "source": "milwaukee_deep",
+    "target": "concept",
+    "first_stored_checkpoint": "M100"
+  },
+  {
+    "target_id": "TB_016",
+    "source_article_id": "113862",
+    "source_sentence": "John Hunter is a concept.",
+    "expected_relation": [
+      "text:john_hunter",
+      "text:concept"
+    ],
+    "source": "john_hunter",
+    "target": "concept",
+    "first_stored_checkpoint": "M100"
+  },
+  {
+    "target_id": "TB_017",
+    "source_article_id": "569808",
+    "source_sentence": "ISO 3166-2:PA is a concept.",
+    "expected_relation": [
+      "text:iso_3166-2:pa",
+      "text:concept"
+    ],
+    "source": "iso_3166-2:pa",
+    "target": "concept",
+    "first_stored_checkpoint": "M100"
+  },
+  {
+    "target_id": "TB_018",
+    "source_article_id": "150131",
+    "source_sentence": "Lagnieu is a concept.",
+    "expected_relation": [
+      "text:lagnieu",
+      "text:concept"
+    ],
+    "source": "lagnieu",
+    "target": "concept",
+    "first_stored_checkpoint": "M100"
+  },
+  {
+    "target_id": "TB_019",
+    "source_article_id": "65434",
+    "source_sentence": "Khandi Alexander is a concept.",
+    "expected_relation": [
+      "text:khandi_alexander",
+      "text:concept"
+    ],
+    "source": "khandi_alexander",
+    "target": "concept",
+    "first_stored_checkpoint": "M100"
+  },
+  {
+    "target_id": "TB_020",
+    "source_article_id": "1022150",
+    "source_sentence": "All the Right Moves (OneRepublic song) is a concept.",
+    "expected_relation": [
+      "text:all_the_right_moves_(onerepublic_song)",
+      "text:concept"
+    ],
+    "source": "all_the_right_moves_(onerepublic_song)",
+    "target": "concept",
+    "first_stored_checkpoint": "M100"
+  },
+  {
+    "target_id": "TB_021",
+    "source_article_id": "136960",
+    "source_sentence": "African bush elephant is a concept.",
+    "expected_relation": [
+      "text:african_bush_elephant",
+      "text:concept"
+    ],
+    "source": "african_bush_elephant",
+    "target": "concept",
+    "first_stored_checkpoint": "M100"
+  },
+  {
+    "target_id": "TB_022",
+    "source_article_id": "267602",
+    "source_sentence": "Sodium tellurite is a concept.",
+    "expected_relation": [
+      "text:sodium_tellurite",
+      "text:concept"
+    ],
+    "source": "sodium_tellurite",
+    "target": "concept",
+    "first_stored_checkpoint": "M100"
+  },
+  {
+    "target_id": "TB_023",
+    "source_article_id": "656039",
+    "source_sentence": "Westside, Iowa is a concept.",
+    "expected_relation": [
+      "text:westside,_iowa",
+      "text:concept"
+    ],
+    "source": "westside,_iowa",
+    "target": "concept",
+    "first_stored_checkpoint": "M100"
+  },
+  {
+    "target_id": "TB_024",
+    "source_article_id": "927922",
+    "source_sentence": "Tucker, Georgia is a concept.",
+    "expected_relation": [
+      "text:tucker,_georgia",
+      "text:concept"
+    ],
+    "source": "tucker,_georgia",
+    "target": "concept",
+    "first_stored_checkpoint": "M100"
+  },
+  {
+    "target_id": "TB_025",
+    "source_article_id": "414389",
+    "source_sentence": "Forest (disambiguation) is a concept.",
+    "expected_relation": [
+      "text:forest_(disambiguation)",
+      "text:concept"
+    ],
+    "source": "forest_(disambiguation)",
+    "target": "concept",
+    "first_stored_checkpoint": "M100"
+  },
+  {
+    "target_id": "TB_026",
+    "source_article_id": "935901",
+    "source_sentence": "Coercion is a concept.",
+    "expected_relation": [
+      "text:coercion",
+      "text:concept"
+    ],
+    "source": "coercion",
+    "target": "concept",
+    "first_stored_checkpoint": "M100"
+  },
+  {
+    "target_id": "TB_027",
+    "source_article_id": "190271",
+    "source_sentence": "Wyrzysk is a concept.",
+    "expected_relation": [
+      "text:wyrzysk",
+      "text:concept"
+    ],
+    "source": "wyrzysk",
+    "target": "concept",
+    "first_stored_checkpoint": "M100"
+  },
+  {
+    "target_id": "TB_028",
+    "source_article_id": "779420",
+    "source_sentence": "Radonvilliers is a concept.",
+    "expected_relation": [
+      "text:radonvilliers",
+      "text:concept"
+    ],
+    "source": "radonvilliers",
+    "target": "concept",
+    "first_stored_checkpoint": "M100"
+  },
+  {
+    "target_id": "TB_029",
+    "source_article_id": "711329",
+    "source_sentence": "Francisco Toledo is a concept.",
+    "expected_relation": [
+      "text:francisco_toledo",
+      "text:concept"
+    ],
+    "source": "francisco_toledo",
+    "target": "concept",
+    "first_stored_checkpoint": "M100"
+  },
+  {
+    "target_id": "TB_030",
+    "source_article_id": "887152",
+    "source_sentence": "Terakado Seiken is a concept.",
+    "expected_relation": [
+      "text:terakado_seiken",
+      "text:concept"
+    ],
+    "source": "terakado_seiken",
+    "target": "concept",
+    "first_stored_checkpoint": "M100"
+  }
+]

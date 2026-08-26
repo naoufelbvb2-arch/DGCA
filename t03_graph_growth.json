@@ -1,0 +1,10 @@
+{
+  "node_growth_per_article_m100": 3.79,
+  "node_growth_per_article_m5k": 2.3858,
+  "edge_growth_per_article_m100": 12.76,
+  "edge_growth_per_article_m5k": 12.87,
+  "reinforcement_to_creation_ratio": 0.0,
+  "total_wall_time_seconds": 848.94,
+  "articles_per_second": 5.89,
+  "words_per_second": 953.43
+}

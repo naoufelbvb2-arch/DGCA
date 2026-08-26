@@ -1,0 +1,8 @@
+{
+  "dataset_snapshot_id": "wikimedia/wikipedia/20231101.simple",
+  "dataset_file": "data/simplewiki_20231101.parquet",
+  "dataset_size_bytes": 156885218,
+  "expected_sha256": "31bded16768a47c286becd292079122f5d7d4397a17b87d4250a00ccd581e6f0",
+  "computed_sha256": "31bded16768a47c286becd292079122f5d7d4397a17b87d4250a00ccd581e6f0",
+  "status": "MATCH"
+}

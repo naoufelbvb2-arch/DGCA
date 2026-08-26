@@ -1,0 +1,1302 @@
+[
+  {
+    "target_id": "TA_001",
+    "source_article_id": "595949",
+    "source_article_title": "Hattstatt",
+    "source_sentence": "Hattstatt is a concept.",
+    "first_eligible_checkpoint": "M100",
+    "expected_relation": [
+      "text:hattstatt",
+      "text:concept"
+    ],
+    "source": "hattstatt",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_002",
+    "source_article_id": "775420",
+    "source_article_title": "Montevideo Department",
+    "source_sentence": "Montevideo Department is a concept.",
+    "first_eligible_checkpoint": "M100",
+    "expected_relation": [
+      "text:montevideo_department",
+      "text:concept"
+    ],
+    "source": "montevideo_department",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_003",
+    "source_article_id": "736192",
+    "source_article_title": "Terry Hands",
+    "source_sentence": "Terry Hands is a concept.",
+    "first_eligible_checkpoint": "M100",
+    "expected_relation": [
+      "text:terry_hands",
+      "text:concept"
+    ],
+    "source": "terry_hands",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_004",
+    "source_article_id": "76812",
+    "source_article_title": "History of the Peloponnesian War",
+    "source_sentence": "History of the Peloponnesian War is a concept.",
+    "first_eligible_checkpoint": "M100",
+    "expected_relation": [
+      "text:history_of_the_peloponnesian_war",
+      "text:concept"
+    ],
+    "source": "history_of_the_peloponnesian_war",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_005",
+    "source_article_id": "521036",
+    "source_article_title": "Nora Brockstedt",
+    "source_sentence": "Nora Brockstedt is a concept.",
+    "first_eligible_checkpoint": "M100",
+    "expected_relation": [
+      "text:nora_brockstedt",
+      "text:concept"
+    ],
+    "source": "nora_brockstedt",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_006",
+    "source_article_id": "316497",
+    "source_article_title": "Myrtle Beach, South Carolina",
+    "source_sentence": "Myrtle Beach, South Carolina is a concept.",
+    "first_eligible_checkpoint": "M100",
+    "expected_relation": [
+      "text:myrtle_beach,_south_carolina",
+      "text:concept"
+    ],
+    "source": "myrtle_beach,_south_carolina",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_007",
+    "source_article_id": "689749",
+    "source_article_title": "Lula",
+    "source_sentence": "Lula is a concept.",
+    "first_eligible_checkpoint": "M100",
+    "expected_relation": [
+      "text:lula",
+      "text:concept"
+    ],
+    "source": "lula",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_008",
+    "source_article_id": "154537",
+    "source_article_title": "Mar\u0153uil",
+    "source_sentence": "Mar\u0153uil is a concept.",
+    "first_eligible_checkpoint": "M100",
+    "expected_relation": [
+      "text:mar\u0153uil",
+      "text:concept"
+    ],
+    "source": "mar\u0153uil",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_009",
+    "source_article_id": "772940",
+    "source_article_title": "COVID-19 pandemic in Mozambique",
+    "source_sentence": "COVID-19 pandemic in Mozambique is a concept.",
+    "first_eligible_checkpoint": "M100",
+    "expected_relation": [
+      "text:covid-19_pandemic_in_mozambique",
+      "text:concept"
+    ],
+    "source": "covid-19_pandemic_in_mozambique",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_010",
+    "source_article_id": "774419",
+    "source_article_title": "San Dimas",
+    "source_sentence": "San Dimas is a concept.",
+    "first_eligible_checkpoint": "M100",
+    "expected_relation": [
+      "text:san_dimas",
+      "text:concept"
+    ],
+    "source": "san_dimas",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_011",
+    "source_article_id": "874123",
+    "source_article_title": "Eeva Ahtisaari",
+    "source_sentence": "Eeva Ahtisaari is a concept.",
+    "first_eligible_checkpoint": "M100",
+    "expected_relation": [
+      "text:eeva_ahtisaari",
+      "text:concept"
+    ],
+    "source": "eeva_ahtisaari",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_012",
+    "source_article_id": "803605",
+    "source_article_title": "Antonis Georgiadis",
+    "source_sentence": "Antonis Georgiadis is a concept.",
+    "first_eligible_checkpoint": "M100",
+    "expected_relation": [
+      "text:antonis_georgiadis",
+      "text:concept"
+    ],
+    "source": "antonis_georgiadis",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_013",
+    "source_article_id": "707871",
+    "source_article_title": "Rostislav Rybakov",
+    "source_sentence": "Rostislav Rybakov is a concept.",
+    "first_eligible_checkpoint": "M100",
+    "expected_relation": [
+      "text:rostislav_rybakov",
+      "text:concept"
+    ],
+    "source": "rostislav_rybakov",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_014",
+    "source_article_id": "729731",
+    "source_article_title": "War of Devolution",
+    "source_sentence": "War of Devolution is a concept.",
+    "first_eligible_checkpoint": "M100",
+    "expected_relation": [
+      "text:war_of_devolution",
+      "text:concept"
+    ],
+    "source": "war_of_devolution",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_015",
+    "source_article_id": "904931",
+    "source_article_title": "Milwaukee Deep",
+    "source_sentence": "Milwaukee Deep is a concept.",
+    "first_eligible_checkpoint": "M100",
+    "expected_relation": [
+      "text:milwaukee_deep",
+      "text:concept"
+    ],
+    "source": "milwaukee_deep",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_016",
+    "source_article_id": "113862",
+    "source_article_title": "John Hunter",
+    "source_sentence": "John Hunter is a concept.",
+    "first_eligible_checkpoint": "M100",
+    "expected_relation": [
+      "text:john_hunter",
+      "text:concept"
+    ],
+    "source": "john_hunter",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_017",
+    "source_article_id": "569808",
+    "source_article_title": "ISO 3166-2:PA",
+    "source_sentence": "ISO 3166-2:PA is a concept.",
+    "first_eligible_checkpoint": "M100",
+    "expected_relation": [
+      "text:iso_3166-2:pa",
+      "text:concept"
+    ],
+    "source": "iso_3166-2:pa",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_018",
+    "source_article_id": "150131",
+    "source_article_title": "Lagnieu",
+    "source_sentence": "Lagnieu is a concept.",
+    "first_eligible_checkpoint": "M100",
+    "expected_relation": [
+      "text:lagnieu",
+      "text:concept"
+    ],
+    "source": "lagnieu",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_019",
+    "source_article_id": "65434",
+    "source_article_title": "Khandi Alexander",
+    "source_sentence": "Khandi Alexander is a concept.",
+    "first_eligible_checkpoint": "M100",
+    "expected_relation": [
+      "text:khandi_alexander",
+      "text:concept"
+    ],
+    "source": "khandi_alexander",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_020",
+    "source_article_id": "1022150",
+    "source_article_title": "All the Right Moves (OneRepublic song)",
+    "source_sentence": "All the Right Moves (OneRepublic song) is a concept.",
+    "first_eligible_checkpoint": "M100",
+    "expected_relation": [
+      "text:all_the_right_moves_(onerepublic_song)",
+      "text:concept"
+    ],
+    "source": "all_the_right_moves_(onerepublic_song)",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_021",
+    "source_article_id": "176979",
+    "source_article_title": "Ubuntu-restricted-extras",
+    "source_sentence": "Ubuntu-restricted-extras is a concept.",
+    "first_eligible_checkpoint": "M500",
+    "expected_relation": [
+      "text:ubuntu-restricted-extras",
+      "text:concept"
+    ],
+    "source": "ubuntu-restricted-extras",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_022",
+    "source_article_id": "730230",
+    "source_article_title": "Poets' Corner",
+    "source_sentence": "Poets' Corner is a concept.",
+    "first_eligible_checkpoint": "M500",
+    "expected_relation": [
+      "text:poets'_corner",
+      "text:concept"
+    ],
+    "source": "poets'_corner",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_023",
+    "source_article_id": "792705",
+    "source_article_title": "The Notebook",
+    "source_sentence": "The Notebook is a concept.",
+    "first_eligible_checkpoint": "M500",
+    "expected_relation": [
+      "text:the_notebook",
+      "text:concept"
+    ],
+    "source": "the_notebook",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_024",
+    "source_article_id": "1033858",
+    "source_article_title": "Hinterzarten",
+    "source_sentence": "Hinterzarten is a concept.",
+    "first_eligible_checkpoint": "M500",
+    "expected_relation": [
+      "text:hinterzarten",
+      "text:concept"
+    ],
+    "source": "hinterzarten",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_025",
+    "source_article_id": "1034832",
+    "source_article_title": "Chantelle Houghton",
+    "source_sentence": "Chantelle Houghton is a concept.",
+    "first_eligible_checkpoint": "M500",
+    "expected_relation": [
+      "text:chantelle_houghton",
+      "text:concept"
+    ],
+    "source": "chantelle_houghton",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_026",
+    "source_article_id": "178554",
+    "source_article_title": "Courtyard",
+    "source_sentence": "Courtyard is a concept.",
+    "first_eligible_checkpoint": "M500",
+    "expected_relation": [
+      "text:courtyard",
+      "text:concept"
+    ],
+    "source": "courtyard",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_027",
+    "source_article_id": "382132",
+    "source_article_title": "Dark Tranquillity",
+    "source_sentence": "Dark Tranquillity is a concept.",
+    "first_eligible_checkpoint": "M500",
+    "expected_relation": [
+      "text:dark_tranquillity",
+      "text:concept"
+    ],
+    "source": "dark_tranquillity",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_028",
+    "source_article_id": "907687",
+    "source_article_title": "Jean-Luc Brunel",
+    "source_sentence": "Jean-Luc Brunel is a concept.",
+    "first_eligible_checkpoint": "M500",
+    "expected_relation": [
+      "text:jean-luc_brunel",
+      "text:concept"
+    ],
+    "source": "jean-luc_brunel",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_029",
+    "source_article_id": "379403",
+    "source_article_title": "Clock King",
+    "source_sentence": "Clock King is a concept.",
+    "first_eligible_checkpoint": "M500",
+    "expected_relation": [
+      "text:clock_king",
+      "text:concept"
+    ],
+    "source": "clock_king",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_030",
+    "source_article_id": "727193",
+    "source_article_title": "Taki Theodoracopulos",
+    "source_sentence": "Taki Theodoracopulos is a concept.",
+    "first_eligible_checkpoint": "M500",
+    "expected_relation": [
+      "text:taki_theodoracopulos",
+      "text:concept"
+    ],
+    "source": "taki_theodoracopulos",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_031",
+    "source_article_id": "179474",
+    "source_article_title": "Amaral (footballer, born 1954)",
+    "source_sentence": "Amaral (footballer, born 1954) is a concept.",
+    "first_eligible_checkpoint": "M500",
+    "expected_relation": [
+      "text:amaral_(footballer,_born_1954)",
+      "text:concept"
+    ],
+    "source": "amaral_(footballer,_born_1954)",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_032",
+    "source_article_id": "1024088",
+    "source_article_title": "Pfaffenhoffen",
+    "source_sentence": "Pfaffenhoffen is a concept.",
+    "first_eligible_checkpoint": "M500",
+    "expected_relation": [
+      "text:pfaffenhoffen",
+      "text:concept"
+    ],
+    "source": "pfaffenhoffen",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_033",
+    "source_article_id": "894521",
+    "source_article_title": "Mitzi Gaynor",
+    "source_sentence": "Mitzi Gaynor is a concept.",
+    "first_eligible_checkpoint": "M500",
+    "expected_relation": [
+      "text:mitzi_gaynor",
+      "text:concept"
+    ],
+    "source": "mitzi_gaynor",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_034",
+    "source_article_id": "396421",
+    "source_article_title": "Brunhilde",
+    "source_sentence": "Brunhilde is a concept.",
+    "first_eligible_checkpoint": "M500",
+    "expected_relation": [
+      "text:brunhilde",
+      "text:concept"
+    ],
+    "source": "brunhilde",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_035",
+    "source_article_id": "823979",
+    "source_article_title": "Fillmore, Utah",
+    "source_sentence": "Fillmore, Utah is a concept.",
+    "first_eligible_checkpoint": "M500",
+    "expected_relation": [
+      "text:fillmore,_utah",
+      "text:concept"
+    ],
+    "source": "fillmore,_utah",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_036",
+    "source_article_id": "591929",
+    "source_article_title": "Middletown, Ohio",
+    "source_sentence": "Middletown, Ohio is a concept.",
+    "first_eligible_checkpoint": "M500",
+    "expected_relation": [
+      "text:middletown,_ohio",
+      "text:concept"
+    ],
+    "source": "middletown,_ohio",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_037",
+    "source_article_id": "25145",
+    "source_article_title": "Franz Ferdinand",
+    "source_sentence": "Franz Ferdinand is a concept.",
+    "first_eligible_checkpoint": "M500",
+    "expected_relation": [
+      "text:franz_ferdinand",
+      "text:concept"
+    ],
+    "source": "franz_ferdinand",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_038",
+    "source_article_id": "896372",
+    "source_article_title": "Child sex tourism",
+    "source_sentence": "Child sex tourism is a concept.",
+    "first_eligible_checkpoint": "M500",
+    "expected_relation": [
+      "text:child_sex_tourism",
+      "text:concept"
+    ],
+    "source": "child_sex_tourism",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_039",
+    "source_article_id": "840496",
+    "source_article_title": "Castelfranco Piandisc\u00f2",
+    "source_sentence": "Castelfranco Piandisc\u00f2 is a concept.",
+    "first_eligible_checkpoint": "M500",
+    "expected_relation": [
+      "text:castelfranco_piandisc\u00f2",
+      "text:concept"
+    ],
+    "source": "castelfranco_piandisc\u00f2",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_040",
+    "source_article_id": "1037389",
+    "source_article_title": "Buchenbach",
+    "source_sentence": "Buchenbach is a concept.",
+    "first_eligible_checkpoint": "M500",
+    "expected_relation": [
+      "text:buchenbach",
+      "text:concept"
+    ],
+    "source": "buchenbach",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_041",
+    "source_article_id": "287413",
+    "source_article_title": "Uranium-235",
+    "source_sentence": "Uranium-235 is a concept.",
+    "first_eligible_checkpoint": "M1K",
+    "expected_relation": [
+      "text:uranium-235",
+      "text:concept"
+    ],
+    "source": "uranium-235",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_042",
+    "source_article_id": "406598",
+    "source_article_title": "Brenda Holloway",
+    "source_sentence": "Brenda Holloway is a concept.",
+    "first_eligible_checkpoint": "M1K",
+    "expected_relation": [
+      "text:brenda_holloway",
+      "text:concept"
+    ],
+    "source": "brenda_holloway",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_043",
+    "source_article_id": "829928",
+    "source_article_title": "The Fifth Season (1997 movie)",
+    "source_sentence": "The Fifth Season (1997 movie) is a concept.",
+    "first_eligible_checkpoint": "M1K",
+    "expected_relation": [
+      "text:the_fifth_season_(1997_movie)",
+      "text:concept"
+    ],
+    "source": "the_fifth_season_(1997_movie)",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_044",
+    "source_article_id": "969222",
+    "source_article_title": "List of countries and territories where Russian is an official language",
+    "source_sentence": "List of countries and territories where Russian is an official language is a concept.",
+    "first_eligible_checkpoint": "M1K",
+    "expected_relation": [
+      "text:list_of_countries_and_territories_where_russian_is_an_official_language",
+      "text:concept"
+    ],
+    "source": "list_of_countries_and_territories_where_russian_is_an_official_language",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_045",
+    "source_article_id": "794762",
+    "source_article_title": "The Odd Couple II",
+    "source_sentence": "The Odd Couple II is a concept.",
+    "first_eligible_checkpoint": "M1K",
+    "expected_relation": [
+      "text:the_odd_couple_ii",
+      "text:concept"
+    ],
+    "source": "the_odd_couple_ii",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_046",
+    "source_article_id": "669243",
+    "source_article_title": "Randolph L. Braham",
+    "source_sentence": "Randolph L. Braham is a concept.",
+    "first_eligible_checkpoint": "M1K",
+    "expected_relation": [
+      "text:randolph_l._braham",
+      "text:concept"
+    ],
+    "source": "randolph_l._braham",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_047",
+    "source_article_id": "730272",
+    "source_article_title": "Douglas County, Wisconsin",
+    "source_sentence": "Douglas County, Wisconsin is a concept.",
+    "first_eligible_checkpoint": "M1K",
+    "expected_relation": [
+      "text:douglas_county,_wisconsin",
+      "text:concept"
+    ],
+    "source": "douglas_county,_wisconsin",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_048",
+    "source_article_id": "124438",
+    "source_article_title": "Pietroasa, Bihor",
+    "source_sentence": "Pietroasa, Bihor is a concept.",
+    "first_eligible_checkpoint": "M1K",
+    "expected_relation": [
+      "text:pietroasa,_bihor",
+      "text:concept"
+    ],
+    "source": "pietroasa,_bihor",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_049",
+    "source_article_id": "90790",
+    "source_article_title": "Jim Broadbent",
+    "source_sentence": "Jim Broadbent is a concept.",
+    "first_eligible_checkpoint": "M1K",
+    "expected_relation": [
+      "text:jim_broadbent",
+      "text:concept"
+    ],
+    "source": "jim_broadbent",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_050",
+    "source_article_id": "755846",
+    "source_article_title": "Dorothee Wilms",
+    "source_sentence": "Dorothee Wilms is a concept.",
+    "first_eligible_checkpoint": "M1K",
+    "expected_relation": [
+      "text:dorothee_wilms",
+      "text:concept"
+    ],
+    "source": "dorothee_wilms",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_051",
+    "source_article_id": "1014938",
+    "source_article_title": "Gries, Bas-Rhin",
+    "source_sentence": "Gries, Bas-Rhin is a concept.",
+    "first_eligible_checkpoint": "M1K",
+    "expected_relation": [
+      "text:gries,_bas-rhin",
+      "text:concept"
+    ],
+    "source": "gries,_bas-rhin",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_052",
+    "source_article_id": "280009",
+    "source_article_title": "Pretty Fly for a Rabbi",
+    "source_sentence": "Pretty Fly for a Rabbi is a concept.",
+    "first_eligible_checkpoint": "M1K",
+    "expected_relation": [
+      "text:pretty_fly_for_a_rabbi",
+      "text:concept"
+    ],
+    "source": "pretty_fly_for_a_rabbi",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_053",
+    "source_article_id": "548647",
+    "source_article_title": "Anne Holton",
+    "source_sentence": "Anne Holton is a concept.",
+    "first_eligible_checkpoint": "M1K",
+    "expected_relation": [
+      "text:anne_holton",
+      "text:concept"
+    ],
+    "source": "anne_holton",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_054",
+    "source_article_id": "311461",
+    "source_article_title": "North Borneo at the Olympics",
+    "source_sentence": "North Borneo at the Olympics is a concept.",
+    "first_eligible_checkpoint": "M1K",
+    "expected_relation": [
+      "text:north_borneo_at_the_olympics",
+      "text:concept"
+    ],
+    "source": "north_borneo_at_the_olympics",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_055",
+    "source_article_id": "921601",
+    "source_article_title": "Mutualism (economic theory)",
+    "source_sentence": "Mutualism (economic theory) is a concept.",
+    "first_eligible_checkpoint": "M1K",
+    "expected_relation": [
+      "text:mutualism_(economic_theory)",
+      "text:concept"
+    ],
+    "source": "mutualism_(economic_theory)",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_056",
+    "source_article_id": "508677",
+    "source_article_title": "Richard Shelby",
+    "source_sentence": "Richard Shelby is a concept.",
+    "first_eligible_checkpoint": "M1K",
+    "expected_relation": [
+      "text:richard_shelby",
+      "text:concept"
+    ],
+    "source": "richard_shelby",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_057",
+    "source_article_id": "36702",
+    "source_article_title": "Icebreaker",
+    "source_sentence": "Icebreaker is a concept.",
+    "first_eligible_checkpoint": "M1K",
+    "expected_relation": [
+      "text:icebreaker",
+      "text:concept"
+    ],
+    "source": "icebreaker",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_058",
+    "source_article_id": "383239",
+    "source_article_title": "The Power of Four",
+    "source_sentence": "The Power of Four is a concept.",
+    "first_eligible_checkpoint": "M1K",
+    "expected_relation": [
+      "text:the_power_of_four",
+      "text:concept"
+    ],
+    "source": "the_power_of_four",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_059",
+    "source_article_id": "728696",
+    "source_article_title": "La Chaux",
+    "source_sentence": "La Chaux is a concept.",
+    "first_eligible_checkpoint": "M1K",
+    "expected_relation": [
+      "text:la_chaux",
+      "text:concept"
+    ],
+    "source": "la_chaux",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_060",
+    "source_article_id": "419604",
+    "source_article_title": "Notre Dame Stadium",
+    "source_sentence": "Notre Dame Stadium is a concept.",
+    "first_eligible_checkpoint": "M1K",
+    "expected_relation": [
+      "text:notre_dame_stadium",
+      "text:concept"
+    ],
+    "source": "notre_dame_stadium",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_061",
+    "source_article_id": "593943",
+    "source_article_title": "List of largest stars",
+    "source_sentence": "List of largest stars is a concept.",
+    "first_eligible_checkpoint": "M2.5K",
+    "expected_relation": [
+      "text:list_of_largest_stars",
+      "text:concept"
+    ],
+    "source": "list_of_largest_stars",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_062",
+    "source_article_id": "732594",
+    "source_article_title": "Port Isabel, Texas",
+    "source_sentence": "Port Isabel, Texas is a concept.",
+    "first_eligible_checkpoint": "M2.5K",
+    "expected_relation": [
+      "text:port_isabel,_texas",
+      "text:concept"
+    ],
+    "source": "port_isabel,_texas",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_063",
+    "source_article_id": "1018081",
+    "source_article_title": "Hunspach",
+    "source_sentence": "Hunspach is a concept.",
+    "first_eligible_checkpoint": "M2.5K",
+    "expected_relation": [
+      "text:hunspach",
+      "text:concept"
+    ],
+    "source": "hunspach",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_064",
+    "source_article_id": "160210",
+    "source_article_title": "Saint-Ouen-le-Houx",
+    "source_sentence": "Saint-Ouen-le-Houx is a concept.",
+    "first_eligible_checkpoint": "M2.5K",
+    "expected_relation": [
+      "text:saint-ouen-le-houx",
+      "text:concept"
+    ],
+    "source": "saint-ouen-le-houx",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_065",
+    "source_article_id": "93411",
+    "source_article_title": "Kestenholz",
+    "source_sentence": "Kestenholz is a concept.",
+    "first_eligible_checkpoint": "M2.5K",
+    "expected_relation": [
+      "text:kestenholz",
+      "text:concept"
+    ],
+    "source": "kestenholz",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_066",
+    "source_article_id": "482770",
+    "source_article_title": "Le Titre",
+    "source_sentence": "Le Titre is a concept.",
+    "first_eligible_checkpoint": "M2.5K",
+    "expected_relation": [
+      "text:le_titre",
+      "text:concept"
+    ],
+    "source": "le_titre",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_067",
+    "source_article_id": "302267",
+    "source_article_title": "Carl Ferdinand Cori",
+    "source_sentence": "Carl Ferdinand Cori is a concept.",
+    "first_eligible_checkpoint": "M2.5K",
+    "expected_relation": [
+      "text:carl_ferdinand_cori",
+      "text:concept"
+    ],
+    "source": "carl_ferdinand_cori",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_068",
+    "source_article_id": "34079",
+    "source_article_title": "List of airlines",
+    "source_sentence": "List of airlines is a concept.",
+    "first_eligible_checkpoint": "M2.5K",
+    "expected_relation": [
+      "text:list_of_airlines",
+      "text:concept"
+    ],
+    "source": "list_of_airlines",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_069",
+    "source_article_id": "160814",
+    "source_article_title": "Wrexham & Shropshire",
+    "source_sentence": "Wrexham & Shropshire is a concept.",
+    "first_eligible_checkpoint": "M2.5K",
+    "expected_relation": [
+      "text:wrexham_&_shropshire",
+      "text:concept"
+    ],
+    "source": "wrexham_&_shropshire",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_070",
+    "source_article_id": "573470",
+    "source_article_title": "Ruth Westheimer",
+    "source_sentence": "Ruth Westheimer is a concept.",
+    "first_eligible_checkpoint": "M2.5K",
+    "expected_relation": [
+      "text:ruth_westheimer",
+      "text:concept"
+    ],
+    "source": "ruth_westheimer",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_071",
+    "source_article_id": "690874",
+    "source_article_title": "Bilal Hassani",
+    "source_sentence": "Bilal Hassani is a concept.",
+    "first_eligible_checkpoint": "M2.5K",
+    "expected_relation": [
+      "text:bilal_hassani",
+      "text:concept"
+    ],
+    "source": "bilal_hassani",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_072",
+    "source_article_id": "173807",
+    "source_article_title": "Grassland",
+    "source_sentence": "Grassland is a concept.",
+    "first_eligible_checkpoint": "M2.5K",
+    "expected_relation": [
+      "text:grassland",
+      "text:concept"
+    ],
+    "source": "grassland",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_073",
+    "source_article_id": "113964",
+    "source_article_title": "Kowloon",
+    "source_sentence": "Kowloon is a concept.",
+    "first_eligible_checkpoint": "M2.5K",
+    "expected_relation": [
+      "text:kowloon",
+      "text:concept"
+    ],
+    "source": "kowloon",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_074",
+    "source_article_id": "335059",
+    "source_article_title": "Proboscis",
+    "source_sentence": "Proboscis is a concept.",
+    "first_eligible_checkpoint": "M2.5K",
+    "expected_relation": [
+      "text:proboscis",
+      "text:concept"
+    ],
+    "source": "proboscis",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_075",
+    "source_article_id": "527818",
+    "source_article_title": "Teofil Codreanu",
+    "source_sentence": "Teofil Codreanu is a concept.",
+    "first_eligible_checkpoint": "M2.5K",
+    "expected_relation": [
+      "text:teofil_codreanu",
+      "text:concept"
+    ],
+    "source": "teofil_codreanu",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_076",
+    "source_article_id": "200443",
+    "source_article_title": "Yuki Inoue",
+    "source_sentence": "Yuki Inoue is a concept.",
+    "first_eligible_checkpoint": "M2.5K",
+    "expected_relation": [
+      "text:yuki_inoue",
+      "text:concept"
+    ],
+    "source": "yuki_inoue",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_077",
+    "source_article_id": "947070",
+    "source_article_title": "DZCE-TV",
+    "source_sentence": "DZCE-TV is a concept.",
+    "first_eligible_checkpoint": "M2.5K",
+    "expected_relation": [
+      "text:dzce-tv",
+      "text:concept"
+    ],
+    "source": "dzce-tv",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_078",
+    "source_article_id": "68732",
+    "source_article_title": "Gulf of Bothnia",
+    "source_sentence": "Gulf of Bothnia is a concept.",
+    "first_eligible_checkpoint": "M2.5K",
+    "expected_relation": [
+      "text:gulf_of_bothnia",
+      "text:concept"
+    ],
+    "source": "gulf_of_bothnia",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_079",
+    "source_article_id": "239374",
+    "source_article_title": "Hakan \u015e\u00fck\u00fcr",
+    "source_sentence": "Hakan \u015e\u00fck\u00fcr is a concept.",
+    "first_eligible_checkpoint": "M2.5K",
+    "expected_relation": [
+      "text:hakan_\u015f\u00fck\u00fcr",
+      "text:concept"
+    ],
+    "source": "hakan_\u015f\u00fck\u00fcr",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_080",
+    "source_article_id": "347435",
+    "source_article_title": "Artillery (band)",
+    "source_sentence": "Artillery (band) is a concept.",
+    "first_eligible_checkpoint": "M2.5K",
+    "expected_relation": [
+      "text:artillery_(band)",
+      "text:concept"
+    ],
+    "source": "artillery_(band)",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_081",
+    "source_article_id": "654457",
+    "source_article_title": "Opfenbach",
+    "source_sentence": "Opfenbach is a concept.",
+    "first_eligible_checkpoint": "M5K",
+    "expected_relation": [
+      "text:opfenbach",
+      "text:concept"
+    ],
+    "source": "opfenbach",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_082",
+    "source_article_id": "844612",
+    "source_article_title": "Fischbachau",
+    "source_sentence": "Fischbachau is a concept.",
+    "first_eligible_checkpoint": "M5K",
+    "expected_relation": [
+      "text:fischbachau",
+      "text:concept"
+    ],
+    "source": "fischbachau",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_083",
+    "source_article_id": "658818",
+    "source_article_title": "River North Point",
+    "source_sentence": "River North Point is a concept.",
+    "first_eligible_checkpoint": "M5K",
+    "expected_relation": [
+      "text:river_north_point",
+      "text:concept"
+    ],
+    "source": "river_north_point",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_084",
+    "source_article_id": "618056",
+    "source_article_title": "Carl Emil Christiansen",
+    "source_sentence": "Carl Emil Christiansen is a concept.",
+    "first_eligible_checkpoint": "M5K",
+    "expected_relation": [
+      "text:carl_emil_christiansen",
+      "text:concept"
+    ],
+    "source": "carl_emil_christiansen",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_085",
+    "source_article_id": "549457",
+    "source_article_title": "Etching",
+    "source_sentence": "Etching is a concept.",
+    "first_eligible_checkpoint": "M5K",
+    "expected_relation": [
+      "text:etching",
+      "text:concept"
+    ],
+    "source": "etching",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_086",
+    "source_article_id": "993153",
+    "source_article_title": "Lamp Six (Castiglioni)",
+    "source_sentence": "Lamp Six (Castiglioni) is a concept.",
+    "first_eligible_checkpoint": "M5K",
+    "expected_relation": [
+      "text:lamp_six_(castiglioni)",
+      "text:concept"
+    ],
+    "source": "lamp_six_(castiglioni)",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_087",
+    "source_article_id": "171575",
+    "source_article_title": "Fire and Ice (Warriors)",
+    "source_sentence": "Fire and Ice (Warriors) is a concept.",
+    "first_eligible_checkpoint": "M5K",
+    "expected_relation": [
+      "text:fire_and_ice_(warriors)",
+      "text:concept"
+    ],
+    "source": "fire_and_ice_(warriors)",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_088",
+    "source_article_id": "1007983",
+    "source_article_title": "Rabin Koirala",
+    "source_sentence": "Rabin Koirala is a concept.",
+    "first_eligible_checkpoint": "M5K",
+    "expected_relation": [
+      "text:rabin_koirala",
+      "text:concept"
+    ],
+    "source": "rabin_koirala",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_089",
+    "source_article_id": "271260",
+    "source_article_title": "Hydration",
+    "source_sentence": "Hydration is a concept.",
+    "first_eligible_checkpoint": "M5K",
+    "expected_relation": [
+      "text:hydration",
+      "text:concept"
+    ],
+    "source": "hydration",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_090",
+    "source_article_id": "607344",
+    "source_article_title": "Tobias Enverga",
+    "source_sentence": "Tobias Enverga is a concept.",
+    "first_eligible_checkpoint": "M5K",
+    "expected_relation": [
+      "text:tobias_enverga",
+      "text:concept"
+    ],
+    "source": "tobias_enverga",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_091",
+    "source_article_id": "736665",
+    "source_article_title": "Peter Hogg",
+    "source_sentence": "Peter Hogg is a concept.",
+    "first_eligible_checkpoint": "M5K",
+    "expected_relation": [
+      "text:peter_hogg",
+      "text:concept"
+    ],
+    "source": "peter_hogg",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_092",
+    "source_article_id": "412315",
+    "source_article_title": "John Amis",
+    "source_sentence": "John Amis is a concept.",
+    "first_eligible_checkpoint": "M5K",
+    "expected_relation": [
+      "text:john_amis",
+      "text:concept"
+    ],
+    "source": "john_amis",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_093",
+    "source_article_id": "864703",
+    "source_article_title": "Desire",
+    "source_sentence": "Desire is a concept.",
+    "first_eligible_checkpoint": "M5K",
+    "expected_relation": [
+      "text:desire",
+      "text:concept"
+    ],
+    "source": "desire",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_094",
+    "source_article_id": "768986",
+    "source_article_title": "Autoroute of the Sun",
+    "source_sentence": "Autoroute of the Sun is a concept.",
+    "first_eligible_checkpoint": "M5K",
+    "expected_relation": [
+      "text:autoroute_of_the_sun",
+      "text:concept"
+    ],
+    "source": "autoroute_of_the_sun",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_095",
+    "source_article_id": "898177",
+    "source_article_title": "Skippack Township, Montgomery County, Pennsylvania",
+    "source_sentence": "Skippack Township, Montgomery County, Pennsylvania is a concept.",
+    "first_eligible_checkpoint": "M5K",
+    "expected_relation": [
+      "text:skippack_township,_montgomery_county,_pennsylvania",
+      "text:concept"
+    ],
+    "source": "skippack_township,_montgomery_county,_pennsylvania",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_096",
+    "source_article_id": "19448",
+    "source_article_title": "Dr. Strangelove",
+    "source_sentence": "Dr. Strangelove is a concept.",
+    "first_eligible_checkpoint": "M5K",
+    "expected_relation": [
+      "text:dr._strangelove",
+      "text:concept"
+    ],
+    "source": "dr._strangelove",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_097",
+    "source_article_id": "332709",
+    "source_article_title": "Nagakute",
+    "source_sentence": "Nagakute is a concept.",
+    "first_eligible_checkpoint": "M5K",
+    "expected_relation": [
+      "text:nagakute",
+      "text:concept"
+    ],
+    "source": "nagakute",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_098",
+    "source_article_id": "937083",
+    "source_article_title": "Hugo Fern\u00e1ndez Faingold",
+    "source_sentence": "Hugo Fern\u00e1ndez Faingold is a concept.",
+    "first_eligible_checkpoint": "M5K",
+    "expected_relation": [
+      "text:hugo_fern\u00e1ndez_faingold",
+      "text:concept"
+    ],
+    "source": "hugo_fern\u00e1ndez_faingold",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_099",
+    "source_article_id": "873728",
+    "source_article_title": ".kkrieger",
+    "source_sentence": ".kkrieger is a concept.",
+    "first_eligible_checkpoint": "M5K",
+    "expected_relation": [
+      "text:.kkrieger",
+      "text:concept"
+    ],
+    "source": ".kkrieger",
+    "target": "concept"
+  },
+  {
+    "target_id": "TA_100",
+    "source_article_id": "209995",
+    "source_article_title": "Woodcut",
+    "source_sentence": "Woodcut is a concept.",
+    "first_eligible_checkpoint": "M5K",
+    "expected_relation": [
+      "text:woodcut",
+      "text:concept"
+    ],
+    "source": "woodcut",
+    "target": "concept"
+  }
+]

@@ -1,0 +1,54 @@
+{
+  "total": 12,
+  "passed": 12,
+  "gates": [
+    {
+      "gate": "SNTP-G01",
+      "status": "PASSED"
+    },
+    {
+      "gate": "SNTP-G02",
+      "status": "PASSED"
+    },
+    {
+      "gate": "SNTP-G03",
+      "status": "PASSED"
+    },
+    {
+      "gate": "SNTP-G04",
+      "status": "PASSED"
+    },
+    {
+      "gate": "SNTP-G05",
+      "status": "PASSED"
+    },
+    {
+      "gate": "SNTP-G06",
+      "status": "PASSED"
+    },
+    {
+      "gate": "SNTP-G07",
+      "status": "PASSED"
+    },
+    {
+      "gate": "SNTP-G08",
+      "status": "PASSED"
+    },
+    {
+      "gate": "SNTP-G09",
+      "status": "PASSED"
+    },
+    {
+      "gate": "SNTP-G10",
+      "status": "PASSED"
+    },
+    {
+      "gate": "SNTP-G11",
+      "status": "PASSED"
+    },
+    {
+      "gate": "SNTP-G12",
+      "status": "PASSED"
+    }
+  ]
+}

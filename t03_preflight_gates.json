@@ -1,0 +1,56 @@
+{
+  "total": 10,
+  "passed": 10,
+  "gates": [
+    {
+      "gate": "T03-PG01",
+      "name": "Dataset Hash",
+      "status": "PASSED"
+    },
+    {
+      "gate": "T03-PG02",
+      "name": "Split Integrity",
+      "status": "PASSED"
+    },
+    {
+      "gate": "T03-PG03",
+      "name": "Order Integrity",
+      "status": "PASSED"
+    },
+    {
+      "gate": "T03-PG04",
+      "name": "Baseline Signature",
+      "status": "PASSED"
+    },
+    {
+      "gate": "T03-PG05",
+      "name": "Encoder Frozen",
+      "status": "PASSED"
+    },
+    {
+      "gate": "T03-PG06",
+      "name": "Evaluation Isolation",
+      "status": "PASSED"
+    },
+    {
+      "gate": "T03-PG07",
+      "name": "Checkpoint Restore",
+      "status": "PASSED"
+    },
+    {
+      "gate": "T03-PG08",
+      "name": "Transient Cleanup",
+      "status": "PASSED"
+    },
+    {
+      "gate": "T03-PG09",
+      "name": "Hidden Forgetting",
+      "status": "PASSED"
+    },
+    {
+      "gate": "T03-PG10",
+      "name": "Telemetry Transparency",
+      "status": "PASSED"
+    }
+  ]
+}

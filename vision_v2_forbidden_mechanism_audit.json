@@ -1,0 +1,86 @@
+{
+  "total_checks": 16,
+  "passed": 16,
+  "checks": [
+    {
+      "id": "F01",
+      "name": "No semantic class labels from encoder",
+      "status": "PASSED"
+    },
+    {
+      "id": "F02",
+      "name": "No pretrained detector inference",
+      "status": "PASSED"
+    },
+    {
+      "id": "F03",
+      "name": "No pretrained image embeddings",
+      "status": "PASSED"
+    },
+    {
+      "id": "F04",
+      "name": "No text labels injected into region features (paired_text = 0)",
+      "status": "PASSED"
+    },
+    {
+      "id": "F05",
+      "name": "No raw-pixel spatial thresholds",
+      "status": "PASSED"
+    },
+    {
+      "id": "F06",
+      "name": "No area-derived fake perimeter",
+      "status": "PASSED"
+    },
+    {
+      "id": "F07",
+      "name": "No unbounded pairwise spatial graph",
+      "status": "PASSED"
+    },
+    {
+      "id": "F08",
+      "name": "No focal-object weight bonus (structural_weight = 0.0)",
+      "status": "PASSED"
+    },
+    {
+      "id": "F09",
+      "name": "No graph-state-dependent visual parsing",
+      "status": "PASSED"
+    },
+    {
+      "id": "F10",
+      "name": "No persistent encoder-owned memory",
+      "status": "PASSED"
+    },
+    {
+      "id": "F11",
+      "name": "No passive Law-3 visual decay",
+      "status": "PASSED"
+    },
+    {
+      "id": "F12",
+      "name": "No hidden video tracking inside v2.0",
+      "status": "PASSED"
+    },
+    {
+      "id": "F13",
+      "name": "No nondeterministic region ordering",
+      "status": "PASSED"
+    },
+    {
+      "id": "F14",
+      "name": "No semantic confidence scores",
+      "status": "PASSED"
+    },
+    {
+      "id": "F15",
+      "name": "No object-name lookup table",
+      "status": "PASSED"
+    },
+    {
+      "id": "F16",
+      "name": "No graph mutation during pure encoding",
+      "status": "PASSED"
+    }
+  ]
+}

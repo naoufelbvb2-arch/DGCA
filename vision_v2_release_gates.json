@@ -1,0 +1,86 @@
+{
+  "total_gates": 16,
+  "passed": 16,
+  "gates": [
+    {
+      "gate": "V2-G01",
+      "name": "Raw Pixel Intake",
+      "status": "PASSED"
+    },
+    {
+      "gate": "V2-G02",
+      "name": "Graph Independence",
+      "status": "PASSED"
+    },
+    {
+      "gate": "V2-G03",
+      "name": "Semantic Firewall",
+      "status": "PASSED"
+    },
+    {
+      "gate": "V2-G04",
+      "name": "Deterministic Region Formation",
+      "status": "PASSED"
+    },
+    {
+      "gate": "V2-G05",
+      "name": "True Geometry",
+      "status": "PASSED"
+    },
+    {
+      "gate": "V2-G06",
+      "name": "Bounded Sparse Features",
+      "status": "PASSED"
+    },
+    {
+      "gate": "V2-G07",
+      "name": "Resolution-Neutral Spatial Semantics",
+      "status": "PASSED"
+    },
+    {
+      "gate": "V2-G08",
+      "name": "No Paired-Text Injection",
+      "status": "PASSED"
+    },
+    {
+      "gate": "V2-G09",
+      "name": "No Focal Weight Privilege",
+      "status": "PASSED"
+    },
+    {
+      "gate": "V2-G10",
+      "name": "Explicit Transient Lifecycle",
+      "status": "PASSED"
+    },
+    {
+      "gate": "V2-G11",
+      "name": "Persistent Knowledge Preservation",
+      "status": "PASSED"
+    },
+    {
+      "gate": "V2-G12",
+      "name": "Real-Image Validation",
+      "status": "PASSED"
+    },
+    {
+      "gate": "V2-G13",
+      "name": "No Hidden Learned Vision Model",
+      "status": "PASSED"
+    },
+    {
+      "gate": "V2-G14",
+      "name": "Static Scope Integrity",
+      "status": "PASSED"
+    },
+    {
+      "gate": "V2-G15",
+      "name": "Full Repository Regression",
+      "status": "PASSED"
+    },
+    {
+      "gate": "V2-G16",
+      "name": "No New Primitive/Law",
+      "status": "PASSED"
+    }
+  ]
+}

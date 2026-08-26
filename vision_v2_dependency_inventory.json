@@ -1,0 +1,747 @@
+{
+  "total_files_audited": 85,
+  "inventory": [
+    {
+      "file": "bench.py",
+      "matched_keywords": [
+        "shape"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "dgca\\agent.py",
+      "matched_keywords": [
+        "near"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "dgca\\analogy.py",
+      "matched_keywords": [
+        "vision",
+        "vis:",
+        "shape",
+        "color",
+        "spatial",
+        "left_of",
+        "right_of",
+        "above",
+        "below",
+        "inside",
+        "on_top"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "dgca\\audio.py",
+      "matched_keywords": [
+        "paired_text",
+        "structural_weight",
+        "SensoryEpisode"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "dgca\\config.py",
+      "matched_keywords": [
+        "vision",
+        "decay"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "dgca\\encoder.py",
+      "matched_keywords": [
+        "paired_text",
+        "structural_weight",
+        "SensoryEpisode"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "dgca\\generation.py",
+      "matched_keywords": [
+        "near"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "dgca\\graph.py",
+      "matched_keywords": [
+        "vision",
+        "structural_weight",
+        "overlap",
+        "decay",
+        "retire_transient_scope"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "dgca\\linearizer.py",
+      "matched_keywords": [
+        "vision",
+        "shape",
+        "near"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "dgca\\loop.py",
+      "matched_keywords": [
+        "near"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "dgca\\reasoning.py",
+      "matched_keywords": [
+        "decay"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "dgca\\recurrent.py",
+      "matched_keywords": [
+        "near"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "dgca\\vision.py",
+      "matched_keywords": [
+        "vision",
+        "VisualObject",
+        "process_scene",
+        "paired_text",
+        "focal",
+        "structural_weight",
+        "vis:",
+        "shape",
+        "color",
+        "bbox",
+        "spatial",
+        "left_of",
+        "right_of",
+        "above",
+        "below",
+        "inside",
+        "on_top",
+        "SensoryEpisode"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "dgca\\__init__.py",
+      "matched_keywords": [
+        "vision",
+        "VisualObject",
+        "near",
+        "SensoryEpisode"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "dgca\\encoding\\english\\emitter.py",
+      "matched_keywords": [
+        "SensoryEpisode"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "dgca\\encoding\\english\\encoder.py",
+      "matched_keywords": [
+        "SensoryEpisode"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "dgca\\encoding\\english\\morphology.py",
+      "matched_keywords": [
+        "below",
+        "inside"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "dgca\\encoding\\english\\normalize.py",
+      "matched_keywords": [
+        "inside"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "dgca\\encoding\\english\\types.py",
+      "matched_keywords": [
+        "SensoryEpisode"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "scratch\\audit_conservation_digests.py",
+      "matched_keywords": [
+        "near"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "scratch\\audit_forbidden.py",
+      "matched_keywords": [
+        "on_top"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "scratch\\build_audit_report.py",
+      "matched_keywords": [
+        "near"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "scratch\\build_rfc14_audit_report.py",
+      "matched_keywords": [
+        "below",
+        "near",
+        "decay"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "scratch\\build_rfc14_report.py",
+      "matched_keywords": [
+        "inside",
+        "near"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "scratch\\generate_rfc14_matrix.py",
+      "matched_keywords": [
+        "near"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "scripts\\audit_rfc16_benchmarks.py",
+      "matched_keywords": [
+        "vision",
+        "near"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "scripts\\benchmark_abstract_reasoning.py",
+      "matched_keywords": [
+        "vision",
+        "VisualObject",
+        "process_scene",
+        "paired_text",
+        "structural_weight",
+        "vis:",
+        "spatial",
+        "left_of",
+        "right_of",
+        "inside"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "scripts\\benchmark_analogy.py",
+      "matched_keywords": [
+        "vis:",
+        "on_top"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "scripts\\benchmark_audio.py",
+      "matched_keywords": [
+        "vision",
+        "structural_weight",
+        "vis:",
+        "Law 3"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "scripts\\benchmark_corpus.py",
+      "matched_keywords": [
+        "Law 3",
+        "decay"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "scripts\\benchmark_rfc13_settling.py",
+      "matched_keywords": [
+        "near"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "scripts\\benchmark_rfc14_generation.py",
+      "matched_keywords": [
+        "near"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "scripts\\benchmark_rfc15_recurrent.py",
+      "matched_keywords": [
+        "inside",
+        "near"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "scripts\\benchmark_vision.py",
+      "matched_keywords": [
+        "vision",
+        "VisualObject",
+        "process_scene",
+        "paired_text",
+        "structural_weight",
+        "vis:",
+        "inst:vis",
+        "shape",
+        "color",
+        "bbox",
+        "spatial",
+        "on_top",
+        "near",
+        "Law 3"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "scripts\\build_law3_dependency_inventory.py",
+      "matched_keywords": [
+        "vision",
+        "lambda_transient",
+        "Law 3",
+        "decay"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "scripts\\demo_end_to_end_generation.py",
+      "matched_keywords": [
+        "near"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "scripts\\run_law3_forensics_trial01.py",
+      "matched_keywords": [
+        "structural_weight",
+        "Law 3",
+        "decay",
+        "SensoryEpisode"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "scripts\\run_law3_persistence_validations.py",
+      "matched_keywords": [
+        "vision",
+        "decay",
+        "retire_transient_scope"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "scripts\\run_law3_static_forbidden_audit.py",
+      "matched_keywords": [
+        "decay",
+        "retire_transient_scope"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "scripts\\run_sntp_trial02.py",
+      "matched_keywords": [
+        "Law 3",
+        "decay",
+        "retire_transient_scope"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "scripts\\run_trial03_master.py",
+      "matched_keywords": [
+        "Law 3"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "scripts\\test_real_multimodal.py",
+      "matched_keywords": [
+        "vision",
+        "VisualObject",
+        "process_scene",
+        "paired_text",
+        "focal",
+        "structural_weight",
+        "vis:",
+        "inst:vis",
+        "shape",
+        "color",
+        "bbox"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "scripts\\train_curated_corpus.py",
+      "matched_keywords": [
+        "structural_weight",
+        "color",
+        "Law 3"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "scripts\\verify_encoder_v2_audit.py",
+      "matched_keywords": [
+        "near",
+        "Law 3",
+        "decay"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "scripts\\verify_trial01_invariants.py",
+      "matched_keywords": [
+        "overlap"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_encoder_v2_canonical_c01_c15.py",
+      "matched_keywords": [
+        "spatial"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_encoder_v2_e2g_100.py",
+      "matched_keywords": [
+        "below"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_encoder_v2_e2h_simplewiki.py",
+      "matched_keywords": [
+        "Law 3"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_encoder_v2_invariants_01_24.py",
+      "matched_keywords": [
+        "Law 3",
+        "decay"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_encoder_v2_release_gates_g01_g10.py",
+      "matched_keywords": [
+        "spatial",
+        "Law 3"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_phase10_agent_rfc09.py",
+      "matched_keywords": [
+        "vision",
+        "near",
+        "retire_transient_scope"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_phase1_structural_fixes.py",
+      "matched_keywords": [
+        "structural_weight"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_phase2_numbers_rfc01.py",
+      "matched_keywords": [
+        "decay",
+        "retire_transient_scope"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_phase3_causality_rfc02.py",
+      "matched_keywords": [
+        "vision",
+        "decay"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_phase4_reasoning_rfc03.py",
+      "matched_keywords": [
+        "vision",
+        "near",
+        "decay"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_phase5_encoder_rfc04.py",
+      "matched_keywords": [
+        "structural_weight"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_phase6_linearization_rfc05.py",
+      "matched_keywords": [
+        "vision",
+        "near"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_phase7_vision_rfc06.py",
+      "matched_keywords": [
+        "vision",
+        "VisualObject",
+        "process_scene",
+        "paired_text",
+        "focal",
+        "structural_weight",
+        "vis:",
+        "inst:vis",
+        "shape",
+        "color",
+        "spatial",
+        "on_top",
+        "near",
+        "retire_transient_scope"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_phase8_analogy_rfc07.py",
+      "matched_keywords": [
+        "vis:",
+        "spatial",
+        "on_top"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_phase9_audio_rfc08.py",
+      "matched_keywords": [
+        "vision",
+        "structural_weight",
+        "vis:",
+        "retire_transient_scope"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_rfc11_acceptance_t001_t096.py",
+      "matched_keywords": [
+        "below",
+        "inside",
+        "overlap"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_rfc12_acceptance_t001_t060.py",
+      "matched_keywords": [
+        "shape",
+        "color",
+        "inside"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_rfc12_properties_p01_p08.py",
+      "matched_keywords": [
+        "spatial",
+        "inside"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_rfc13_acceptance_t001_t072.py",
+      "matched_keywords": [
+        "inside",
+        "overlap"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_rfc14_acceptance_t001_t088.py",
+      "matched_keywords": [
+        "near"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_rfc14_adversarial.py",
+      "matched_keywords": [
+        "near"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_rfc14_audit_conservation_atomicity.py",
+      "matched_keywords": [
+        "near"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_rfc14_properties_p01_p12.py",
+      "matched_keywords": [
+        "near"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_rfc15_acceptance_t001_t096.py",
+      "matched_keywords": [
+        "near"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_rfc15_audit_conservation_atomicity.py",
+      "matched_keywords": [
+        "near"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_rfc15_properties_p01_p16.py",
+      "matched_keywords": [
+        "near"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_rfc16_acceptance_t001_t084.py",
+      "matched_keywords": [
+        "near"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_rfc16_adversarial.py",
+      "matched_keywords": [
+        "vision",
+        "near"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_rfc16_audit_conservation_atomicity.py",
+      "matched_keywords": [
+        "near"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_rfc16_properties_p01_p16.py",
+      "matched_keywords": [
+        "near"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_step10_performance.py",
+      "matched_keywords": [
+        "shape",
+        "near"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_step1_datamodel.py",
+      "matched_keywords": [
+        "shape",
+        "decay"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_step2_laws123.py",
+      "matched_keywords": [
+        "vision",
+        "below"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_step3_laws56.py",
+      "matched_keywords": [
+        "vision",
+        "below",
+        "decay"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_step4_laws47.py",
+      "matched_keywords": [
+        "vision",
+        "shape",
+        "below",
+        "near"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_step5_gating.py",
+      "matched_keywords": [
+        "vision",
+        "shape"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_step6_concepts.py",
+      "matched_keywords": [
+        "vision",
+        "shape",
+        "decay"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_step7_salience.py",
+      "matched_keywords": [
+        "vision",
+        "above",
+        "decay"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_step8_generalization.py",
+      "matched_keywords": [
+        "vision"
+      ],
+      "classification": "UNAFFECTED"
+    },
+    {
+      "file": "tests\\test_step9_sequence.py",
+      "matched_keywords": [
+        "near",
+        "decay"
+      ],
+      "classification": "UNAFFECTED"
+    }
+  ]
+}

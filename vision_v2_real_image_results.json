@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "total_images_processed": 15,
+  "complete_count": 15,
+  "safe_partial_count": 0,
+  "unsupported_count": 0,
+  "categories_tested": [
+    "apple",
+    "ball",
+    "cup",
+    "car",
+    "bottle"
+  ],
+  "semantic_leakage": 0
+}

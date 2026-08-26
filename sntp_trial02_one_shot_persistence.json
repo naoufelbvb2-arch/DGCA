@@ -1,0 +1,140 @@
+{
+  "one_shot_relations": 12,
+  "one_shot_relations_alive_at_end": 11,
+  "persistence_rate": 0.9167,
+  "passive_weight_drift": 9,
+  "results": [
+    {
+      "relation_id": "R01_venus_planet",
+      "edge_id": "text:venus->text:planet",
+      "created": true,
+      "alive_at_end": true,
+      "same_edge_identity": true,
+      "initial_weight": 0.37,
+      "final_weight": 0.6912999999999999,
+      "weight_drift": 0.3213,
+      "unexpected_mutation_cause": "PASSIVE_DRIFT"
+    },
+    {
+      "relation_id": "R02_gold_yellow",
+      "edge_id": "text:gold->text:yellow",
+      "created": true,
+      "alive_at_end": true,
+      "same_edge_identity": true,
+      "initial_weight": 0.37,
+      "final_weight": 0.6912999999999999,
+      "weight_drift": 0.3213,
+      "unexpected_mutation_cause": "PASSIVE_DRIFT"
+    },
+    {
+      "relation_id": "R03_iron_metal",
+      "edge_id": "text:iron->text:metal",
+      "created": true,
+      "alive_at_end": true,
+      "same_edge_identity": true,
+      "initial_weight": 0.37,
+      "final_weight": 0.6912999999999999,
+      "weight_drift": 0.3213,
+      "unexpected_mutation_cause": "PASSIVE_DRIFT"
+    },
+    {
+      "relation_id": "R04_oxygen_gas",
+      "edge_id": "text:oxygen->text:gas",
+      "created": true,
+      "alive_at_end": true,
+      "same_edge_identity": true,
+      "initial_weight": 0.37,
+      "final_weight": 0.6912999999999999,
+      "weight_drift": 0.3213,
+      "unexpected_mutation_cause": "PASSIVE_DRIFT"
+    },
+    {
+      "relation_id": "R05_diamonds_hard",
+      "edge_id": "text:diamonds->text:hard",
+      "created": false,
+      "alive_at_end": false,
+      "same_edge_identity": false,
+      "initial_weight": 0.0,
+      "final_weight": 0.0,
+      "weight_drift": 0.0,
+      "unexpected_mutation_cause": null
+    },
+    {
+      "relation_id": "R06_jupiter_planet",
+      "edge_id": "text:jupiter->text:planet",
+      "created": true,
+      "alive_at_end": true,
+      "same_edge_identity": true,
+      "initial_weight": 0.37,
+      "final_weight": 0.37,
+      "weight_drift": 0.0,
+      "unexpected_mutation_cause": null
+    },
+    {
+      "relation_id": "R07_mercury_small",
+      "edge_id": "text:mercury->text:small",
+      "created": true,
+      "alive_at_end": true,
+      "same_edge_identity": true,
+      "initial_weight": 0.37,
+      "final_weight": 0.6912999999999999,
+      "weight_drift": 0.3213,
+      "unexpected_mutation_cause": "PASSIVE_DRIFT"
+    },
+    {
+      "relation_id": "R08_neptune_blue",
+      "edge_id": "text:neptune->text:blue",
+      "created": true,
+      "alive_at_end": true,
+      "same_edge_identity": true,
+      "initial_weight": 0.37,
+      "final_weight": 0.6912999999999999,
+      "weight_drift": 0.3213,
+      "unexpected_mutation_cause": "PASSIVE_DRIFT"
+    },
+    {
+      "relation_id": "R09_nile_river",
+      "edge_id": "text:nile->text:river",
+      "created": true,
+      "alive_at_end": true,
+      "same_edge_identity": true,
+      "initial_weight": 0.37,
+      "final_weight": 0.37,
+      "weight_drift": 0.0,
+      "unexpected_mutation_cause": null
+    },
+    {
+      "relation_id": "R10_rain_down",
+      "edge_id": "text:rain->text:down",
+      "created": true,
+      "alive_at_end": true,
+      "same_edge_identity": true,
+      "initial_weight": 0.26376327812241107,
+      "final_weight": 0.5073171930541794,
+      "weight_drift": 0.243554,
+      "unexpected_mutation_cause": "PASSIVE_DRIFT"
+    },
+    {
+      "relation_id": "R11_snow_cold",
+      "edge_id": "text:snow->text:cold",
+      "created": true,
+      "alive_at_end": true,
+      "same_edge_identity": true,
+      "initial_weight": 0.37,
+      "final_weight": 0.6912999999999999,
+      "weight_drift": 0.3213,
+      "unexpected_mutation_cause": "PASSIVE_DRIFT"
+    },
+    {
+      "relation_id": "R12_fire_warmth",
+      "edge_id": "text:fire->text:warmth",
+      "created": true,
+      "alive_at_end": true,
+      "same_edge_identity": true,
+      "initial_weight": 0.26376327812241107,
+      "final_weight": 0.5073171930541794,
+      "weight_drift": 0.243554,
+      "unexpected_mutation_cause": "PASSIVE_DRIFT"
+    }
+  ]
+}

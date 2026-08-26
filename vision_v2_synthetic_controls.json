@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "controls": [
+    {
+      "name": "Circle Mask Geometry",
+      "status": "PASS"
+    },
+    {
+      "name": "Rectangle Mask Geometry",
+      "status": "PASS"
+    },
+    {
+      "name": "Two Color Blocks Spatial Topology",
+      "status": "PASS"
+    },
+    {
+      "name": "Nested Regions Inside/Contains",
+      "status": "PASS"
+    },
+    {
+      "name": "Resolution Independence",
+      "status": "PASS"
+    }
+  ]
+}

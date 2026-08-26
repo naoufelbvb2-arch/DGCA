@@ -1,0 +1,12 @@
+{
+  "cases": 1,
+  "edge_id": "text:venus->text:star",
+  "weight_before_failure": 0.8,
+  "failure_event_id": "E_pred_venus_star",
+  "validated_failure": true,
+  "law13_invoked": true,
+  "delta_w": 0.064,
+  "weight_after_failure": 0.736,
+  "successful_corrections": 1,
+  "spurious_corrections": 0
+}

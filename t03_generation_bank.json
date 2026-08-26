@@ -1,0 +1,102 @@
+[
+  {
+    "prompt_id": "TE_001",
+    "prompt": "What is Venus?",
+    "target_concept": "venus"
+  },
+  {
+    "prompt_id": "TE_002",
+    "prompt": "What is Earth?",
+    "target_concept": "earth"
+  },
+  {
+    "prompt_id": "TE_003",
+    "prompt": "What is Mars?",
+    "target_concept": "mars"
+  },
+  {
+    "prompt_id": "TE_004",
+    "prompt": "What is Jupiter?",
+    "target_concept": "jupiter"
+  },
+  {
+    "prompt_id": "TE_005",
+    "prompt": "What is Saturn?",
+    "target_concept": "saturn"
+  },
+  {
+    "prompt_id": "TE_006",
+    "prompt": "What is Gold?",
+    "target_concept": "gold"
+  },
+  {
+    "prompt_id": "TE_007",
+    "prompt": "What is Iron?",
+    "target_concept": "iron"
+  },
+  {
+    "prompt_id": "TE_008",
+    "prompt": "What is Oxygen?",
+    "target_concept": "oxygen"
+  },
+  {
+    "prompt_id": "TE_009",
+    "prompt": "What is Water?",
+    "target_concept": "water"
+  },
+  {
+    "prompt_id": "TE_010",
+    "prompt": "What is Rain?",
+    "target_concept": "rain"
+  },
+  {
+    "prompt_id": "TE_011",
+    "prompt": "What is Snow?",
+    "target_concept": "snow"
+  },
+  {
+    "prompt_id": "TE_012",
+    "prompt": "What is Fire?",
+    "target_concept": "fire"
+  },
+  {
+    "prompt_id": "TE_013",
+    "prompt": "What is A falcon?",
+    "target_concept": "falcon"
+  },
+  {
+    "prompt_id": "TE_014",
+    "prompt": "What do Birds have?",
+    "target_concept": "bird"
+  },
+  {
+    "prompt_id": "TE_015",
+    "prompt": "What do Cats chase?",
+    "target_concept": "cat"
+  },
+  {
+    "prompt_id": "TE_016",
+    "prompt": "What do Bees make?",
+    "target_concept": "bee"
+  },
+  {
+    "prompt_id": "TE_017",
+    "prompt": "What is Copper?",
+    "target_concept": "copper"
+  },
+  {
+    "prompt_id": "TE_018",
+    "prompt": "What is The Nile?",
+    "target_concept": "nile"
+  },
+  {
+    "prompt_id": "TE_019",
+    "prompt": "What is New York City?",
+    "target_concept": "new_york_city"
+  },
+  {
+    "prompt_id": "TE_020",
+    "prompt": "Who is Alexander Graham Bell?",
+    "target_concept": "alexander_graham_bell"
+  }
+]
