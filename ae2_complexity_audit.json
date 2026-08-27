@@ -1,0 +1,6 @@
+{
+  "AlgorithmComplexity": "O(N * 24)",
+  "PerFrameCost": "O(24)",
+  "PerEventCost": "O(1)",
+  "Status": "LINEAR_COMPLEXITY_VERIFIED"
+}

@@ -1,0 +1,13 @@
+{
+  "ExistingSensoryEpisodeType": "SensoryEpisode(kind='simultaneous', context=..., signals=...)",
+  "ExistingSequenceMechanism": "CognitiveGraph.observe_sequence / deep_infer / recurrent continuation",
+  "ExistingTemporalMetadata": "start_time_s / end_time_s / frame_index in transient IR",
+  "ExistingScopeIdentity": "stream_scope_id passed from caller context",
+  "ProposedAudioV2Modules": [
+    "dgca/audio_v2.py"
+  ],
+  "PersistentSchemaDelta": 0,
+  "NewPrimitiveNecessity": false,
+  "NewLawNecessity": false,
+  "Reason": "AudioEncoderV2 compiles acoustic events into existing SensoryEpisode and CognitiveGraph sequence machinery without adding persistent primitives or laws."
+}

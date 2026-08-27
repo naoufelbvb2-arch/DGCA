@@ -1,0 +1,18 @@
+{
+  "P01_FrequencyMonotonicity": "PASS (24 channels strictly ascending)",
+  "P02_NyquistSafety": "PASS (f_high < 0.45*fs for 8k, 16k, 24k, 48k)",
+  "P03_CenterToneLiveness": "PASS (24/24 channels respond)",
+  "P04_Determinism": "PASS (repeated runs identical)",
+  "P05_ChunkEquivalence": "PASS (chunking preserves IR)",
+  "P06_ScopeIsolation": "PASS (stream states uncoupled)",
+  "P07_SilenceNonFabrication": "PASS (0 evidence emitted)",
+  "P08_TemporalPermutationDistinction": "PASS (A->B != B->A)",
+  "P09_EventBudget": "PASS (descriptors <= 8 per event)",
+  "P10_EventRateBound": "PASS (refractory 20ms respected)",
+  "P11_NoPersistentFrameState": "PASS (schema delta = 0)",
+  "P12_NoSemanticInput": "PASS (paired_text removed)",
+  "P13_PeriodicityConservation": "PASS (80-500Hz periodic signals mapped to P0..P5)",
+  "P14_AperiodicAbstention": "PASS (noise abstains from P-band)",
+  "P15_LongStreamBoundedMemory": "PASS (state bounded)",
+  "P16_InvalidInputAtomicity": "PASS (UNSUPPORTED returns no graph state)"
+}

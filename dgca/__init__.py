@@ -21,6 +21,14 @@ from .audio import (
     AudioSensoryPipeline,
     LeanCARFAC,
 )
+from .audio_v2 import (
+    AcousticEventIR,
+    AcousticFrameIR,
+    AudioEncoderV2,
+    AudioSensoryPipelineV2,
+    AudioStreamState,
+    AudioTemporalIR,
+)
 from .causality import causal_strength
 from .completion import (
     CompetitiveAlternativeSet,
@@ -133,6 +141,8 @@ __all__ = [
     "QUANTITY",
     "TEXT",
     "VISION",
+    "AcousticEventIR",
+    "AcousticFrameIR",
     "ActiveAssembly",
     "AnalogicalMapping",
     "AnalogicalReasoningEngine",
@@ -140,9 +150,13 @@ __all__ = [
     "AssemblyManager",
     "AssemblyObservability",
     "AssemblyPolicy",
+    "AudioEncoderV2",
     "AudioFeatures",
     "AudioSegment",
     "AudioSensoryPipeline",
+    "AudioSensoryPipelineV2",
+    "AudioStreamState",
+    "AudioTemporalIR",
     "CandidateInference",
     "CodeEncoder",
     "CodeSensoryPipeline",

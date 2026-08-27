@@ -1,0 +1,14 @@
+{
+  "Adv01_EmptyInput": "NO_EVIDENCE",
+  "Adv02_NaNInput": "UNSUPPORTED",
+  "Adv03_InfInput": "UNSUPPORTED",
+  "Adv04_UnsupportedRate": "UNSUPPORTED",
+  "Adv05_MultiChannel": "UNSUPPORTED",
+  "Adv06_SampleOutOfRange": "UNSUPPORTED",
+  "Adv07_DigitalSilence": "NO_EVIDENCE",
+  "Adv08_DCOnly": "NO_EVIDENCE",
+  "Adv09_SingleSampleChunk": "HANDLED_STABLY",
+  "Adv10_StateResetMidStream": "HANDLED_CLEANLY",
+  "AdversarialPassed": 28,
+  "TotalAdversarial": 28
+}

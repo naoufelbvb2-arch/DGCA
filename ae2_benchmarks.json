@@ -1,0 +1,66 @@
+{
+  "B_1s_8k": {
+    "SampleRate": 8000,
+    "DurationSec": 1.0,
+    "WallTimeMs": 424.95,
+    "RealTimeFactor": 0.42495,
+    "EventsEmitted": 1,
+    "Status": "COMPLETE"
+  },
+  "B_10s_8k": {
+    "SampleRate": 8000,
+    "DurationSec": 10.0,
+    "WallTimeMs": 8140.15,
+    "RealTimeFactor": 0.81402,
+    "EventsEmitted": 11,
+    "Status": "COMPLETE"
+  },
+  "B_1s_16k": {
+    "SampleRate": 16000,
+    "DurationSec": 1.0,
+    "WallTimeMs": 901.29,
+    "RealTimeFactor": 0.90129,
+    "EventsEmitted": 1,
+    "Status": "COMPLETE"
+  },
+  "B_10s_16k": {
+    "SampleRate": 16000,
+    "DurationSec": 10.0,
+    "WallTimeMs": 15925.79,
+    "RealTimeFactor": 1.59258,
+    "EventsEmitted": 11,
+    "Status": "COMPLETE"
+  },
+  "B_1s_24k": {
+    "SampleRate": 24000,
+    "DurationSec": 1.0,
+    "WallTimeMs": 1432.06,
+    "RealTimeFactor": 1.43206,
+    "EventsEmitted": 1,
+    "Status": "COMPLETE"
+  },
+  "B_10s_24k": {
+    "SampleRate": 24000,
+    "DurationSec": 10.0,
+    "WallTimeMs": 20099.72,
+    "RealTimeFactor": 2.00997,
+    "EventsEmitted": 11,
+    "Status": "COMPLETE"
+  },
+  "B_1s_48k": {
+    "SampleRate": 48000,
+    "DurationSec": 1.0,
+    "WallTimeMs": 2203.39,
+    "RealTimeFactor": 2.20339,
+    "EventsEmitted": 1,
+    "Status": "COMPLETE"
+  },
+  "B_10s_48k": {
+    "SampleRate": 48000,
+    "DurationSec": 10.0,
+    "WallTimeMs": 43974.58,
+    "RealTimeFactor": 4.39746,
+    "EventsEmitted": 11,
+    "Status": "COMPLETE"
+  }
+}
