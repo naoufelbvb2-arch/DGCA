@@ -25,7 +25,7 @@
 6. **Are $F_1 / F_2$ formants removed?**  
    **YES.** $F_1 / F_2$ band labels and binary `voiced/unvoiced` tokens are completely removed. Emitted acoustic descriptors are sparse ERB spectral peak bands (`aud:band:<0..23>`), periodicity pitch bands (`aud:periodicity:<P0..P5>`), and energy dynamics (`aud:energy:<RISING|STEADY|FALLING|PULSE>`).
 7. **Is sequence compilation reused without new primitives?**  
-   **YES.** Each `AcousticEventIR` compiles into existing `SensoryEpisode` structures. Order ($E_1 ightarrow E_2 \dots$) is preserved. $\Delta	ext{NewPrimitives} = 0$, $\Delta	ext{NewLaws} = 0$.
+   **YES.** Each `AcousticEventIR` compiles into existing `SensoryEpisode` structures. Order ($E_1 \rightarrow E_2 \dots$) is preserved. $\Delta\text{NewPrimitives} = 0$, $\Delta\text{NewLaws} = 0$.
 8. **Is `paired_text` accepted by the v2 API?**  
    **NO.** `paired_text` is completely removed from the v2 API (`NoPairedText = PASS`).
 9. **Does chunked processing equal one-shot processing?**  
