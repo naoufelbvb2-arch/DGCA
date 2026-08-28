@@ -1,0 +1,109 @@
+{
+  "total_concepts": 10,
+  "accepted_count": 10,
+  "collisions": 0,
+  "persistent_learning_created": 0,
+  "details": {
+    "C00": {
+      "word": "bird",
+      "signals": [
+        [
+          "text",
+          "bird"
+        ]
+      ],
+      "accepted": true
+    },
+    "C01": {
+      "word": "cat",
+      "signals": [
+        [
+          "text",
+          "cat"
+        ]
+      ],
+      "accepted": true
+    },
+    "C02": {
+      "word": "dog",
+      "signals": [
+        [
+          "text",
+          "dog"
+        ]
+      ],
+      "accepted": true
+    },
+    "C03": {
+      "word": "tree",
+      "signals": [
+        [
+          "text",
+          "tree"
+        ]
+      ],
+      "accepted": true
+    },
+    "C04": {
+      "word": "bed",
+      "signals": [
+        [
+          "text",
+          "bed"
+        ]
+      ],
+      "accepted": true
+    },
+    "C05": {
+      "word": "house",
+      "signals": [
+        [
+          "text",
+          "house"
+        ]
+      ],
+      "accepted": true
+    },
+    "C06": {
+      "word": "no",
+      "signals": [
+        [
+          "text",
+          "no"
+        ]
+      ],
+      "accepted": true
+    },
+    "C07": {
+      "word": "go",
+      "signals": [
+        [
+          "text",
+          "go"
+        ]
+      ],
+      "accepted": true
+    },
+    "C08": {
+      "word": "on",
+      "signals": [
+        [
+          "text",
+          "on"
+        ]
+      ],
+      "accepted": true
+    },
+    "C09": {
+      "word": "off",
+      "signals": [
+        [
+          "text",
+          "off"
+        ]
+      ],
+      "accepted": true
+    }
+  },
+  "status": "PASS"
+}

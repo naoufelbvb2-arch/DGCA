@@ -1,0 +1,22 @@
+{
+  "total_probes": 20,
+  "correct_count": 0,
+  "wrong_count": 19,
+  "no_retrieval_count": 0,
+  "ambiguous_count": 1,
+  "reachable_count": 20,
+  "concepts_with_ge_1_correct": 0,
+  "concept_correct_breakdown": {
+    "C00": 0,
+    "C01": 0,
+    "C02": 0,
+    "C03": 0,
+    "C04": 0,
+    "C05": 0,
+    "C06": 0,
+    "C07": 0,
+    "C08": 0,
+    "C09": 0
+  },
+  "g16_verdict": "FAIL"
+}

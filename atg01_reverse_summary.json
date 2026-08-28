@@ -1,0 +1,8 @@
+{
+  "total_probes": 10,
+  "own_audio_structure_count": 4,
+  "wrong_dominant_count": 0,
+  "no_retrieval_count": 0,
+  "ambiguous_count": 6,
+  "g17_verdict": "FAIL"
+}

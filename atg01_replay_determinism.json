@@ -1,0 +1,10 @@
+{
+  "b0_digest_match": true,
+  "checkpoint_g10_match": true,
+  "checkpoint_g20_match": true,
+  "checkpoint_g30_match": true,
+  "checkpoint_g40_match": true,
+  "heldout_outcome_matches": 20,
+  "heldout_match_rate": 1.0,
+  "verdict": "PASS"
+}

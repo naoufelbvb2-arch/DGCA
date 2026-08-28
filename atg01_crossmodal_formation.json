@@ -1,0 +1,56 @@
+{
+  "concepts_formed": 10,
+  "all_pass": true,
+  "details": {
+    "C00": {
+      "concept": "bird",
+      "cross_modal_edges_count": 32,
+      "formed": true
+    },
+    "C01": {
+      "concept": "cat",
+      "cross_modal_edges_count": 32,
+      "formed": true
+    },
+    "C02": {
+      "concept": "dog",
+      "cross_modal_edges_count": 32,
+      "formed": true
+    },
+    "C03": {
+      "concept": "tree",
+      "cross_modal_edges_count": 32,
+      "formed": true
+    },
+    "C04": {
+      "concept": "bed",
+      "cross_modal_edges_count": 32,
+      "formed": true
+    },
+    "C05": {
+      "concept": "house",
+      "cross_modal_edges_count": 28,
+      "formed": true
+    },
+    "C06": {
+      "concept": "no",
+      "cross_modal_edges_count": 42,
+      "formed": true
+    },
+    "C07": {
+      "concept": "go",
+      "cross_modal_edges_count": 32,
+      "formed": true
+    },
+    "C08": {
+      "concept": "on",
+      "cross_modal_edges_count": 34,
+      "formed": true
+    },
+    "C09": {
+      "concept": "off",
+      "cross_modal_edges_count": 34,
+      "formed": true
+    }
+  }
+}

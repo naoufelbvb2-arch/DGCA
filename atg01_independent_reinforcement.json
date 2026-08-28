@@ -1,0 +1,116 @@
+{
+  "concepts_reinforced_ge_2": 10,
+  "all_pass": true,
+  "details": {
+    "C00": {
+      "concept": "bird",
+      "independent_contexts_count": 4,
+      "reinforced_ge_2": true,
+      "contexts": [
+        "ATG01-GCTX-001",
+        "ATG01-GCTX-018",
+        "ATG01-GCTX-025",
+        "ATG01-GCTX-032"
+      ]
+    },
+    "C01": {
+      "concept": "cat",
+      "independent_contexts_count": 4,
+      "reinforced_ge_2": true,
+      "contexts": [
+        "ATG01-GCTX-002",
+        "ATG01-GCTX-019",
+        "ATG01-GCTX-026",
+        "ATG01-GCTX-033"
+      ]
+    },
+    "C02": {
+      "concept": "dog",
+      "independent_contexts_count": 4,
+      "reinforced_ge_2": true,
+      "contexts": [
+        "ATG01-GCTX-003",
+        "ATG01-GCTX-020",
+        "ATG01-GCTX-027",
+        "ATG01-GCTX-034"
+      ]
+    },
+    "C03": {
+      "concept": "tree",
+      "independent_contexts_count": 4,
+      "reinforced_ge_2": true,
+      "contexts": [
+        "ATG01-GCTX-004",
+        "ATG01-GCTX-011",
+        "ATG01-GCTX-028",
+        "ATG01-GCTX-035"
+      ]
+    },
+    "C04": {
+      "concept": "bed",
+      "independent_contexts_count": 4,
+      "reinforced_ge_2": true,
+      "contexts": [
+        "ATG01-GCTX-005",
+        "ATG01-GCTX-012",
+        "ATG01-GCTX-029",
+        "ATG01-GCTX-036"
+      ]
+    },
+    "C05": {
+      "concept": "house",
+      "independent_contexts_count": 4,
+      "reinforced_ge_2": true,
+      "contexts": [
+        "ATG01-GCTX-006",
+        "ATG01-GCTX-013",
+        "ATG01-GCTX-030",
+        "ATG01-GCTX-037"
+      ]
+    },
+    "C06": {
+      "concept": "no",
+      "independent_contexts_count": 4,
+      "reinforced_ge_2": true,
+      "contexts": [
+        "ATG01-GCTX-007",
+        "ATG01-GCTX-014",
+        "ATG01-GCTX-021",
+        "ATG01-GCTX-038"
+      ]
+    },
+    "C07": {
+      "concept": "go",
+      "independent_contexts_count": 4,
+      "reinforced_ge_2": true,
+      "contexts": [
+        "ATG01-GCTX-008",
+        "ATG01-GCTX-015",
+        "ATG01-GCTX-022",
+        "ATG01-GCTX-039"
+      ]
+    },
+    "C08": {
+      "concept": "on",
+      "independent_contexts_count": 4,
+      "reinforced_ge_2": true,
+      "contexts": [
+        "ATG01-GCTX-009",
+        "ATG01-GCTX-016",
+        "ATG01-GCTX-023",
+        "ATG01-GCTX-040"
+      ]
+    },
+    "C09": {
+      "concept": "off",
+      "independent_contexts_count": 4,
+      "reinforced_ge_2": true,
+      "contexts": [
+        "ATG01-GCTX-010",
+        "ATG01-GCTX-017",
+        "ATG01-GCTX-024",
+        "ATG01-GCTX-031"
+      ]
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "total_items_analyzed": 60,
+  "unique_digests": 58,
+  "exact_collisions_total": 2,
+  "same_concept_exact_collisions": 0,
+  "cross_concept_exact_collisions": 2,
+  "ordered_sequence_distinctions_preserved": true
+}

@@ -1,0 +1,9 @@
+{
+  "candidate_discovery": "CognitiveGraph.query_cross_modal",
+  "lesr_enabled": true,
+  "igsv_enabled": true,
+  "ranking_metric": "Local Evidence Share Ranking with Independent Episode Recurrence Specificity",
+  "exact_tie_rule": "AMBIGUOUS (abstention)",
+  "no_candidate_rule": "NO_RESULT -> NO_TEXT_CONCEPT_RETRIEVED",
+  "retrieval_stack_verdict": "AUDIO_RETRIEVAL_STACK_AUTHORIZED"
+}

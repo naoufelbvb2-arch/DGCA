@@ -1,0 +1,8 @@
+{
+  "total_probes": 10,
+  "forced_grounded_concept_count": 9,
+  "ambiguous_count": 1,
+  "no_text_concept_retrieved_count": 0,
+  "abstention_or_ambiguous_rate": 0.1,
+  "g18_verdict": "FAIL"
+}

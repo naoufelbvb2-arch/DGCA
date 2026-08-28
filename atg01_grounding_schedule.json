@@ -1,0 +1,362 @@
+[
+  {
+    "episode_number": 1,
+    "round": 1,
+    "concept_index": 0,
+    "concept_code": "C00",
+    "concept_word": "bird",
+    "grounding_context_id": "ATG01-GCTX-001",
+    "trial_id": "ATG01-G-C00-R1"
+  },
+  {
+    "episode_number": 2,
+    "round": 1,
+    "concept_index": 1,
+    "concept_code": "C01",
+    "concept_word": "cat",
+    "grounding_context_id": "ATG01-GCTX-002",
+    "trial_id": "ATG01-G-C01-R1"
+  },
+  {
+    "episode_number": 3,
+    "round": 1,
+    "concept_index": 2,
+    "concept_code": "C02",
+    "concept_word": "dog",
+    "grounding_context_id": "ATG01-GCTX-003",
+    "trial_id": "ATG01-G-C02-R1"
+  },
+  {
+    "episode_number": 4,
+    "round": 1,
+    "concept_index": 3,
+    "concept_code": "C03",
+    "concept_word": "tree",
+    "grounding_context_id": "ATG01-GCTX-004",
+    "trial_id": "ATG01-G-C03-R1"
+  },
+  {
+    "episode_number": 5,
+    "round": 1,
+    "concept_index": 4,
+    "concept_code": "C04",
+    "concept_word": "bed",
+    "grounding_context_id": "ATG01-GCTX-005",
+    "trial_id": "ATG01-G-C04-R1"
+  },
+  {
+    "episode_number": 6,
+    "round": 1,
+    "concept_index": 5,
+    "concept_code": "C05",
+    "concept_word": "house",
+    "grounding_context_id": "ATG01-GCTX-006",
+    "trial_id": "ATG01-G-C05-R1"
+  },
+  {
+    "episode_number": 7,
+    "round": 1,
+    "concept_index": 6,
+    "concept_code": "C06",
+    "concept_word": "no",
+    "grounding_context_id": "ATG01-GCTX-007",
+    "trial_id": "ATG01-G-C06-R1"
+  },
+  {
+    "episode_number": 8,
+    "round": 1,
+    "concept_index": 7,
+    "concept_code": "C07",
+    "concept_word": "go",
+    "grounding_context_id": "ATG01-GCTX-008",
+    "trial_id": "ATG01-G-C07-R1"
+  },
+  {
+    "episode_number": 9,
+    "round": 1,
+    "concept_index": 8,
+    "concept_code": "C08",
+    "concept_word": "on",
+    "grounding_context_id": "ATG01-GCTX-009",
+    "trial_id": "ATG01-G-C08-R1"
+  },
+  {
+    "episode_number": 10,
+    "round": 1,
+    "concept_index": 9,
+    "concept_code": "C09",
+    "concept_word": "off",
+    "grounding_context_id": "ATG01-GCTX-010",
+    "trial_id": "ATG01-G-C09-R1"
+  },
+  {
+    "episode_number": 11,
+    "round": 2,
+    "concept_index": 3,
+    "concept_code": "C03",
+    "concept_word": "tree",
+    "grounding_context_id": "ATG01-GCTX-011",
+    "trial_id": "ATG01-G-C03-R2"
+  },
+  {
+    "episode_number": 12,
+    "round": 2,
+    "concept_index": 4,
+    "concept_code": "C04",
+    "concept_word": "bed",
+    "grounding_context_id": "ATG01-GCTX-012",
+    "trial_id": "ATG01-G-C04-R2"
+  },
+  {
+    "episode_number": 13,
+    "round": 2,
+    "concept_index": 5,
+    "concept_code": "C05",
+    "concept_word": "house",
+    "grounding_context_id": "ATG01-GCTX-013",
+    "trial_id": "ATG01-G-C05-R2"
+  },
+  {
+    "episode_number": 14,
+    "round": 2,
+    "concept_index": 6,
+    "concept_code": "C06",
+    "concept_word": "no",
+    "grounding_context_id": "ATG01-GCTX-014",
+    "trial_id": "ATG01-G-C06-R2"
+  },
+  {
+    "episode_number": 15,
+    "round": 2,
+    "concept_index": 7,
+    "concept_code": "C07",
+    "concept_word": "go",
+    "grounding_context_id": "ATG01-GCTX-015",
+    "trial_id": "ATG01-G-C07-R2"
+  },
+  {
+    "episode_number": 16,
+    "round": 2,
+    "concept_index": 8,
+    "concept_code": "C08",
+    "concept_word": "on",
+    "grounding_context_id": "ATG01-GCTX-016",
+    "trial_id": "ATG01-G-C08-R2"
+  },
+  {
+    "episode_number": 17,
+    "round": 2,
+    "concept_index": 9,
+    "concept_code": "C09",
+    "concept_word": "off",
+    "grounding_context_id": "ATG01-GCTX-017",
+    "trial_id": "ATG01-G-C09-R2"
+  },
+  {
+    "episode_number": 18,
+    "round": 2,
+    "concept_index": 0,
+    "concept_code": "C00",
+    "concept_word": "bird",
+    "grounding_context_id": "ATG01-GCTX-018",
+    "trial_id": "ATG01-G-C00-R2"
+  },
+  {
+    "episode_number": 19,
+    "round": 2,
+    "concept_index": 1,
+    "concept_code": "C01",
+    "concept_word": "cat",
+    "grounding_context_id": "ATG01-GCTX-019",
+    "trial_id": "ATG01-G-C01-R2"
+  },
+  {
+    "episode_number": 20,
+    "round": 2,
+    "concept_index": 2,
+    "concept_code": "C02",
+    "concept_word": "dog",
+    "grounding_context_id": "ATG01-GCTX-020",
+    "trial_id": "ATG01-G-C02-R2"
+  },
+  {
+    "episode_number": 21,
+    "round": 3,
+    "concept_index": 6,
+    "concept_code": "C06",
+    "concept_word": "no",
+    "grounding_context_id": "ATG01-GCTX-021",
+    "trial_id": "ATG01-G-C06-R3"
+  },
+  {
+    "episode_number": 22,
+    "round": 3,
+    "concept_index": 7,
+    "concept_code": "C07",
+    "concept_word": "go",
+    "grounding_context_id": "ATG01-GCTX-022",
+    "trial_id": "ATG01-G-C07-R3"
+  },
+  {
+    "episode_number": 23,
+    "round": 3,
+    "concept_index": 8,
+    "concept_code": "C08",
+    "concept_word": "on",
+    "grounding_context_id": "ATG01-GCTX-023",
+    "trial_id": "ATG01-G-C08-R3"
+  },
+  {
+    "episode_number": 24,
+    "round": 3,
+    "concept_index": 9,
+    "concept_code": "C09",
+    "concept_word": "off",
+    "grounding_context_id": "ATG01-GCTX-024",
+    "trial_id": "ATG01-G-C09-R3"
+  },
+  {
+    "episode_number": 25,
+    "round": 3,
+    "concept_index": 0,
+    "concept_code": "C00",
+    "concept_word": "bird",
+    "grounding_context_id": "ATG01-GCTX-025",
+    "trial_id": "ATG01-G-C00-R3"
+  },
+  {
+    "episode_number": 26,
+    "round": 3,
+    "concept_index": 1,
+    "concept_code": "C01",
+    "concept_word": "cat",
+    "grounding_context_id": "ATG01-GCTX-026",
+    "trial_id": "ATG01-G-C01-R3"
+  },
+  {
+    "episode_number": 27,
+    "round": 3,
+    "concept_index": 2,
+    "concept_code": "C02",
+    "concept_word": "dog",
+    "grounding_context_id": "ATG01-GCTX-027",
+    "trial_id": "ATG01-G-C02-R3"
+  },
+  {
+    "episode_number": 28,
+    "round": 3,
+    "concept_index": 3,
+    "concept_code": "C03",
+    "concept_word": "tree",
+    "grounding_context_id": "ATG01-GCTX-028",
+    "trial_id": "ATG01-G-C03-R3"
+  },
+  {
+    "episode_number": 29,
+    "round": 3,
+    "concept_index": 4,
+    "concept_code": "C04",
+    "concept_word": "bed",
+    "grounding_context_id": "ATG01-GCTX-029",
+    "trial_id": "ATG01-G-C04-R3"
+  },
+  {
+    "episode_number": 30,
+    "round": 3,
+    "concept_index": 5,
+    "concept_code": "C05",
+    "concept_word": "house",
+    "grounding_context_id": "ATG01-GCTX-030",
+    "trial_id": "ATG01-G-C05-R3"
+  },
+  {
+    "episode_number": 31,
+    "round": 4,
+    "concept_index": 9,
+    "concept_code": "C09",
+    "concept_word": "off",
+    "grounding_context_id": "ATG01-GCTX-031",
+    "trial_id": "ATG01-G-C09-R4"
+  },
+  {
+    "episode_number": 32,
+    "round": 4,
+    "concept_index": 0,
+    "concept_code": "C00",
+    "concept_word": "bird",
+    "grounding_context_id": "ATG01-GCTX-032",
+    "trial_id": "ATG01-G-C00-R4"
+  },
+  {
+    "episode_number": 33,
+    "round": 4,
+    "concept_index": 1,
+    "concept_code": "C01",
+    "concept_word": "cat",
+    "grounding_context_id": "ATG01-GCTX-033",
+    "trial_id": "ATG01-G-C01-R4"
+  },
+  {
+    "episode_number": 34,
+    "round": 4,
+    "concept_index": 2,
+    "concept_code": "C02",
+    "concept_word": "dog",
+    "grounding_context_id": "ATG01-GCTX-034",
+    "trial_id": "ATG01-G-C02-R4"
+  },
+  {
+    "episode_number": 35,
+    "round": 4,
+    "concept_index": 3,
+    "concept_code": "C03",
+    "concept_word": "tree",
+    "grounding_context_id": "ATG01-GCTX-035",
+    "trial_id": "ATG01-G-C03-R4"
+  },
+  {
+    "episode_number": 36,
+    "round": 4,
+    "concept_index": 4,
+    "concept_code": "C04",
+    "concept_word": "bed",
+    "grounding_context_id": "ATG01-GCTX-036",
+    "trial_id": "ATG01-G-C04-R4"
+  },
+  {
+    "episode_number": 37,
+    "round": 4,
+    "concept_index": 5,
+    "concept_code": "C05",
+    "concept_word": "house",
+    "grounding_context_id": "ATG01-GCTX-037",
+    "trial_id": "ATG01-G-C05-R4"
+  },
+  {
+    "episode_number": 38,
+    "round": 4,
+    "concept_index": 6,
+    "concept_code": "C06",
+    "concept_word": "no",
+    "grounding_context_id": "ATG01-GCTX-038",
+    "trial_id": "ATG01-G-C06-R4"
+  },
+  {
+    "episode_number": 39,
+    "round": 4,
+    "concept_index": 7,
+    "concept_code": "C07",
+    "concept_word": "go",
+    "grounding_context_id": "ATG01-GCTX-039",
+    "trial_id": "ATG01-G-C07-R4"
+  },
+  {
+    "episode_number": 40,
+    "round": 4,
+    "concept_index": 8,
+    "concept_code": "C08",
+    "concept_word": "on",
+    "grounding_context_id": "ATG01-GCTX-040",
+    "trial_id": "ATG01-G-C08-R4"
+  }
+]

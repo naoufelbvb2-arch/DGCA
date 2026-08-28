@@ -1,0 +1,10 @@
+{
+  "audio_encoder_input_contains_word_label": false,
+  "audio_encoder_input_contains_folder_name": false,
+  "audio_encoder_input_contains_speaker_id": false,
+  "audio_encoder_input_contains_transcript": false,
+  "audio_encoder_input_contains_gold_class": false,
+  "audio_stream_scope_id_opaque": true,
+  "label_leakage_count": 0,
+  "status": "PASS"
+}

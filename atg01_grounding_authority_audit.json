@@ -1,0 +1,8 @@
+{
+  "grounding_mechanism": "DGCA Native Multi-Sensory Co-occurrence (SensoryEpisode / graph.observe)",
+  "grounding_unit": "WholePersistentAudioExperience + TextExperience + GroundingContextID",
+  "manual_edges_injected": 0,
+  "direct_label_assignment": 0,
+  "paired_text_in_audio_encoder": 0,
+  "status": "AUTHORIZED"
+}

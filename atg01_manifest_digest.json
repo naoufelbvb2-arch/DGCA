@@ -1,0 +1,8 @@
+{
+  "manifest_sha256": "41658084f09148e4c086c7b00eb626eaa13c65113c4c769a74be214c99a81ff7",
+  "total_items": 70,
+  "grounding_items": 40,
+  "heldout_items": 20,
+  "ood_items": 10,
+  "status": "FROZEN"
+}

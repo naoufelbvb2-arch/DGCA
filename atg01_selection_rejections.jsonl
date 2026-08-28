@@ -1,0 +1,2 @@
+{"role": "GROUNDING", "concept_code": "C09", "filename": "6d0ad764_nohash_0.wav", "speaker_id": "6d0ad764", "selection_hash": "0001ae887419672d40d6bfaa424807e5e27f81d874a61035eb7efedd655b5fc7", "rejection_reason": "speaker_already_used"}
+{"role": "HELDOUT", "concept_code": "C03", "filename": "c7124b73_nohash_0.wav", "speaker_id": "c7124b73", "selection_hash": "0031b7414e10b7664586cd7598b2de3467b73b9949fe31fd41828f1d12c12240", "rejection_reason": "speaker_already_used"}

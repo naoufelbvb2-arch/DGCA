@@ -1,0 +1,16 @@
+{"episode": 1, "acoustic_word": "bird", "permuted_text_word": "cat", "context_id": "ATG01-PCTX-001"}
+{"episode": 2, "acoustic_word": "cat", "permuted_text_word": "dog", "context_id": "ATG01-PCTX-002"}
+{"episode": 3, "acoustic_word": "dog", "permuted_text_word": "tree", "context_id": "ATG01-PCTX-003"}
+{"episode": 4, "acoustic_word": "tree", "permuted_text_word": "bird", "context_id": "ATG01-PCTX-004"}
+{"episode": 5, "acoustic_word": "bird", "permuted_text_word": "cat", "context_id": "ATG01-PCTX-005"}
+{"episode": 6, "acoustic_word": "cat", "permuted_text_word": "dog", "context_id": "ATG01-PCTX-006"}
+{"episode": 7, "acoustic_word": "dog", "permuted_text_word": "tree", "context_id": "ATG01-PCTX-007"}
+{"episode": 8, "acoustic_word": "tree", "permuted_text_word": "bird", "context_id": "ATG01-PCTX-008"}
+{"episode": 9, "acoustic_word": "bird", "permuted_text_word": "cat", "context_id": "ATG01-PCTX-009"}
+{"episode": 10, "acoustic_word": "cat", "permuted_text_word": "dog", "context_id": "ATG01-PCTX-010"}
+{"episode": 11, "acoustic_word": "dog", "permuted_text_word": "tree", "context_id": "ATG01-PCTX-011"}
+{"episode": 12, "acoustic_word": "tree", "permuted_text_word": "bird", "context_id": "ATG01-PCTX-012"}
+{"episode": 13, "acoustic_word": "bird", "permuted_text_word": "cat", "context_id": "ATG01-PCTX-013"}
+{"episode": 14, "acoustic_word": "cat", "permuted_text_word": "dog", "context_id": "ATG01-PCTX-014"}
+{"episode": 15, "acoustic_word": "dog", "permuted_text_word": "tree", "context_id": "ATG01-PCTX-015"}
+{"episode": 16, "acoustic_word": "tree", "permuted_text_word": "bird", "context_id": "ATG01-PCTX-016"}

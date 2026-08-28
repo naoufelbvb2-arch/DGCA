@@ -1,0 +1,14 @@
+{
+  "behavioral_digest": "abef5a931451bddb87c1492a928fc2d635f01ab89f22f066de1c58b63a65bddc",
+  "elements": {
+    "manifest_sha256": "41658084f09148e4c086c7b00eb626eaa13c65113c4c769a74be214c99a81ff7",
+    "b0_digest": "f5f601586348141cb59f4afc4fab6c1a56cf15d36b9b45c2bfbfcc92b9154bcc",
+    "g40_digest": "0fc67a5763767f2dd8f6d970d2d4589de488e8238bba61adc6e2d83b99f5dc99",
+    "heldout_correct": 0,
+    "heldout_wrong": 19,
+    "reverse_own_structure": 4,
+    "ood_forced": 9,
+    "permutation_correct": 2,
+    "replay_matches": 20
+  }
+}
