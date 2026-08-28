@@ -1,0 +1,42 @@
+[
+  {
+    "TestName": "test_lean_carfac_filterbank_frequencies",
+    "WhatItTests": "Greenwood frequency monotonicity and bounds",
+    "Status": "PASS"
+  },
+  {
+    "TestName": "test_ihc_rectification_and_agc_compression",
+    "WhatItTests": "Positive IHC output and fast/slow AGC noise suppression",
+    "Status": "PASS"
+  },
+  {
+    "TestName": "test_audio_formant_extraction_deterministic",
+    "WhatItTests": "Deterministic feature extraction on synthetic 300Hz tone",
+    "Status": "PASS"
+  },
+  {
+    "TestName": "test_audio_head_first_contract",
+    "WhatItTests": "inst:aud_* in position 0 of signals",
+    "Status": "PASS"
+  },
+  {
+    "TestName": "test_audio_instance_transient_gc",
+    "WhatItTests": "Transient audio node GC after scope retirement",
+    "Status": "PASS"
+  },
+  {
+    "TestName": "test_tri_modal_grounding_text_vision_audio",
+    "WhatItTests": "Tri-modal inference resonance (audio -> text + vision)",
+    "Status": "PASS"
+  },
+  {
+    "TestName": "test_audio_modality_budget_clamping",
+    "WhatItTests": "Audio signals clamped to head + 3 features",
+    "Status": "PASS"
+  },
+  {
+    "TestName": "test_full_regression_and_signature",
+    "WhatItTests": "Behavioral signature 915119d40643cb97",
+    "Status": "PASS"
+  }
+]

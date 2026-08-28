@@ -1,0 +1,7 @@
+{"Defect": "Temporal Information Collapse", "EarliestLossStage": "WHOLE_SEGMENT_AGGREGATION"}
+{"Defect": "Streaming State Loss", "EarliestLossStage": "FILTERBANK_AND_AGC_STATE_RESET"}
+{"Defect": "Silence Fail-Open", "EarliestLossStage": "F1_F2_SELECTION"}
+{"Defect": "Formant Overclaim", "EarliestLossStage": "F1_F2_SELECTION"}
+{"Defect": "Source Mixture Collapse", "EarliestLossStage": "SENSORY_EPISODE_PACKAGING_AND_GRAPH_BUDGET"}
+{"Defect": "Paired-Text Leakage", "EarliestLossStage": "SENSORY_EPISODE_PACKAGING"}
+{"Defect": "UID Call-Order Dependence", "EarliestLossStage": "SENSORY_EPISODE_PACKAGING"}

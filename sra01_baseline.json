@@ -1,0 +1,17 @@
+{
+  "git_commit_sha": "8c2c48f",
+  "audio_v2_present": true,
+  "historical_cognitive_signature": "915119d40643cb97",
+  "signature_status": "MATCH",
+  "supported_sample_rates": [
+    8000,
+    16000,
+    24000,
+    48000
+  ],
+  "num_channels": 24,
+  "constants_valid": true,
+  "paired_text_in_api": false,
+  "source_separation_code": false,
+  "verdict": "BASELINE_VERIFIED"
+}

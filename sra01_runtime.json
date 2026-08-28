@@ -1,0 +1,583 @@
+{
+  "total_audio_duration_s": 324.75,
+  "total_wall_time_s": 4407.55,
+  "overall_rtf": 13.572132,
+  "items": [
+    {
+      "trial_id": "SRA01-SP-001",
+      "branch": "SPEECH",
+      "sample_rate": 16000,
+      "duration_s": 4.285,
+      "wall_time_s": 1.948279,
+      "rtf": 0.454674,
+      "event_count": 5
+    },
+    {
+      "trial_id": "SRA01-SP-002",
+      "branch": "SPEECH",
+      "sample_rate": 16000,
+      "duration_s": 6.95,
+      "wall_time_s": 4.058472,
+      "rtf": 0.583953,
+      "event_count": 7
+    },
+    {
+      "trial_id": "SRA01-SP-003",
+      "branch": "SPEECH",
+      "sample_rate": 16000,
+      "duration_s": 2.52,
+      "wall_time_s": 0.972535,
+      "rtf": 0.385927,
+      "event_count": 3
+    },
+    {
+      "trial_id": "SRA01-SP-004",
+      "branch": "SPEECH",
+      "sample_rate": 16000,
+      "duration_s": 3.9,
+      "wall_time_s": 1.665503,
+      "rtf": 0.427052,
+      "event_count": 4
+    },
+    {
+      "trial_id": "SRA01-SP-005",
+      "branch": "SPEECH",
+      "sample_rate": 16000,
+      "duration_s": 4.67,
+      "wall_time_s": 2.110281,
+      "rtf": 0.45188,
+      "event_count": 5
+    },
+    {
+      "trial_id": "SRA01-SP-006",
+      "branch": "SPEECH",
+      "sample_rate": 16000,
+      "duration_s": 6.965,
+      "wall_time_s": 4.080676,
+      "rtf": 0.585883,
+      "event_count": 7
+    },
+    {
+      "trial_id": "SRA01-SP-007",
+      "branch": "SPEECH",
+      "sample_rate": 16000,
+      "duration_s": 6.47,
+      "wall_time_s": 3.441288,
+      "rtf": 0.531884,
+      "event_count": 7
+    },
+    {
+      "trial_id": "SRA01-SP-008",
+      "branch": "SPEECH",
+      "sample_rate": 16000,
+      "duration_s": 7.205,
+      "wall_time_s": 4.468763,
+      "rtf": 0.620231,
+      "event_count": 8
+    },
+    {
+      "trial_id": "SRA01-SP-009",
+      "branch": "SPEECH",
+      "sample_rate": 16000,
+      "duration_s": 5.09,
+      "wall_time_s": 2.283641,
+      "rtf": 0.448652,
+      "event_count": 6
+    },
+    {
+      "trial_id": "SRA01-SP-010",
+      "branch": "SPEECH",
+      "sample_rate": 16000,
+      "duration_s": 5.81,
+      "wall_time_s": 3.154883,
+      "rtf": 0.543009,
+      "event_count": 6
+    },
+    {
+      "trial_id": "SRA01-SP-011",
+      "branch": "SPEECH",
+      "sample_rate": 16000,
+      "duration_s": 1.91,
+      "wall_time_s": 0.667551,
+      "rtf": 0.349503,
+      "event_count": 2
+    },
+    {
+      "trial_id": "SRA01-SP-012",
+      "branch": "SPEECH",
+      "sample_rate": 16000,
+      "duration_s": 5.42,
+      "wall_time_s": 2.756881,
+      "rtf": 0.50865,
+      "event_count": 6
+    },
+    {
+      "trial_id": "SRA01-SP-013",
+      "branch": "SPEECH",
+      "sample_rate": 16000,
+      "duration_s": 7.215,
+      "wall_time_s": 4.150136,
+      "rtf": 0.575209,
+      "event_count": 7
+    },
+    {
+      "trial_id": "SRA01-SP-014",
+      "branch": "SPEECH",
+      "sample_rate": 16000,
+      "duration_s": 7.965,
+      "wall_time_s": 5.180153,
+      "rtf": 0.650364,
+      "event_count": 8
+    },
+    {
+      "trial_id": "SRA01-SP-015",
+      "branch": "SPEECH",
+      "sample_rate": 16000,
+      "duration_s": 7.65,
+      "wall_time_s": 4.76578,
+      "rtf": 0.622978,
+      "event_count": 8
+    },
+    {
+      "trial_id": "SRA01-SP-016",
+      "branch": "SPEECH",
+      "sample_rate": 16000,
+      "duration_s": 7.64,
+      "wall_time_s": 5.055204,
+      "rtf": 0.661676,
+      "event_count": 8
+    },
+    {
+      "trial_id": "SRA01-SP-017",
+      "branch": "SPEECH",
+      "sample_rate": 16000,
+      "duration_s": 4.65,
+      "wall_time_s": 1.984838,
+      "rtf": 0.426847,
+      "event_count": 5
+    },
+    {
+      "trial_id": "SRA01-SP-018",
+      "branch": "SPEECH",
+      "sample_rate": 16000,
+      "duration_s": 6.57,
+      "wall_time_s": 3.658049,
+      "rtf": 0.556781,
+      "event_count": 7
+    },
+    {
+      "trial_id": "SRA01-SP-019",
+      "branch": "SPEECH",
+      "sample_rate": 16000,
+      "duration_s": 4.17,
+      "wall_time_s": 1.834052,
+      "rtf": 0.439821,
+      "event_count": 5
+    },
+    {
+      "trial_id": "SRA01-SP-020",
+      "branch": "SPEECH",
+      "sample_rate": 16000,
+      "duration_s": 4.645,
+      "wall_time_s": 2.191346,
+      "rtf": 0.471765,
+      "event_count": 5
+    },
+    {
+      "trial_id": "SRA01-SP-021",
+      "branch": "SPEECH",
+      "sample_rate": 16000,
+      "duration_s": 6.865,
+      "wall_time_s": 3.917278,
+      "rtf": 0.570616,
+      "event_count": 7
+    },
+    {
+      "trial_id": "SRA01-SP-022",
+      "branch": "SPEECH",
+      "sample_rate": 16000,
+      "duration_s": 6.33,
+      "wall_time_s": 3.492592,
+      "rtf": 0.551752,
+      "event_count": 7
+    },
+    {
+      "trial_id": "SRA01-SP-023",
+      "branch": "SPEECH",
+      "sample_rate": 16000,
+      "duration_s": 4.75,
+      "wall_time_s": 2.175486,
+      "rtf": 0.457997,
+      "event_count": 5
+    },
+    {
+      "trial_id": "SRA01-SP-024",
+      "branch": "SPEECH",
+      "sample_rate": 16000,
+      "duration_s": 4.685,
+      "wall_time_s": 2.109622,
+      "rtf": 0.450293,
+      "event_count": 5
+    },
+    {
+      "trial_id": "SRA01-ENV-001",
+      "branch": "ENVIRONMENTAL",
+      "sample_rate": 48000,
+      "duration_s": 5.0,
+      "wall_time_s": 7.557891,
+      "rtf": 1.511578,
+      "event_count": 6
+    },
+    {
+      "trial_id": "SRA01-ENV-002",
+      "branch": "ENVIRONMENTAL",
+      "sample_rate": 48000,
+      "duration_s": 5.0,
+      "wall_time_s": 7.398903,
+      "rtf": 1.479781,
+      "event_count": 6
+    },
+    {
+      "trial_id": "SRA01-ENV-003",
+      "branch": "ENVIRONMENTAL",
+      "sample_rate": 48000,
+      "duration_s": 5.0,
+      "wall_time_s": 7.515928,
+      "rtf": 1.503186,
+      "event_count": 6
+    },
+    {
+      "trial_id": "SRA01-ENV-004",
+      "branch": "ENVIRONMENTAL",
+      "sample_rate": 48000,
+      "duration_s": 5.0,
+      "wall_time_s": 7.598763,
+      "rtf": 1.519753,
+      "event_count": 5
+    },
+    {
+      "trial_id": "SRA01-ENV-005",
+      "branch": "ENVIRONMENTAL",
+      "sample_rate": 48000,
+      "duration_s": 5.0,
+      "wall_time_s": 7.600046,
+      "rtf": 1.520009,
+      "event_count": 2
+    },
+    {
+      "trial_id": "SRA01-ENV-006",
+      "branch": "ENVIRONMENTAL",
+      "sample_rate": 48000,
+      "duration_s": 5.0,
+      "wall_time_s": 7.777428,
+      "rtf": 1.555486,
+      "event_count": 2
+    },
+    {
+      "trial_id": "SRA01-ENV-007",
+      "branch": "ENVIRONMENTAL",
+      "sample_rate": 48000,
+      "duration_s": 5.0,
+      "wall_time_s": 7.733099,
+      "rtf": 1.54662,
+      "event_count": 3
+    },
+    {
+      "trial_id": "SRA01-ENV-008",
+      "branch": "ENVIRONMENTAL",
+      "sample_rate": 48000,
+      "duration_s": 5.0,
+      "wall_time_s": 7.266041,
+      "rtf": 1.453208,
+      "event_count": 5
+    },
+    {
+      "trial_id": "SRA01-ENV-009",
+      "branch": "ENVIRONMENTAL",
+      "sample_rate": 48000,
+      "duration_s": 5.0,
+      "wall_time_s": 7.267048,
+      "rtf": 1.45341,
+      "event_count": 6
+    },
+    {
+      "trial_id": "SRA01-ENV-010",
+      "branch": "ENVIRONMENTAL",
+      "sample_rate": 48000,
+      "duration_s": 5.0,
+      "wall_time_s": 7.16349,
+      "rtf": 1.432698,
+      "event_count": 6
+    },
+    {
+      "trial_id": "SRA01-ENV-011",
+      "branch": "ENVIRONMENTAL",
+      "sample_rate": 48000,
+      "duration_s": 5.0,
+      "wall_time_s": 7.551908,
+      "rtf": 1.510382,
+      "event_count": 3
+    },
+    {
+      "trial_id": "SRA01-ENV-012",
+      "branch": "ENVIRONMENTAL",
+      "sample_rate": 48000,
+      "duration_s": 5.0,
+      "wall_time_s": 7.447686,
+      "rtf": 1.489537,
+      "event_count": 2
+    },
+    {
+      "trial_id": "SRA01-ENV-013",
+      "branch": "ENVIRONMENTAL",
+      "sample_rate": 48000,
+      "duration_s": 5.0,
+      "wall_time_s": 7.846247,
+      "rtf": 1.569249,
+      "event_count": 5
+    },
+    {
+      "trial_id": "SRA01-ENV-014",
+      "branch": "ENVIRONMENTAL",
+      "sample_rate": 48000,
+      "duration_s": 5.0,
+      "wall_time_s": 7.517502,
+      "rtf": 1.5035,
+      "event_count": 6
+    },
+    {
+      "trial_id": "SRA01-ENV-015",
+      "branch": "ENVIRONMENTAL",
+      "sample_rate": 48000,
+      "duration_s": 5.0,
+      "wall_time_s": 7.463441,
+      "rtf": 1.492688,
+      "event_count": 6
+    },
+    {
+      "trial_id": "SRA01-ENV-016",
+      "branch": "ENVIRONMENTAL",
+      "sample_rate": 48000,
+      "duration_s": 5.0,
+      "wall_time_s": 7.72077,
+      "rtf": 1.544154,
+      "event_count": 6
+    },
+    {
+      "trial_id": "SRA01-ENV-017",
+      "branch": "ENVIRONMENTAL",
+      "sample_rate": 48000,
+      "duration_s": 5.0,
+      "wall_time_s": 7.632074,
+      "rtf": 1.526415,
+      "event_count": 6
+    },
+    {
+      "trial_id": "SRA01-ENV-018",
+      "branch": "ENVIRONMENTAL",
+      "sample_rate": 48000,
+      "duration_s": 5.0,
+      "wall_time_s": 7.43269,
+      "rtf": 1.486538,
+      "event_count": 6
+    },
+    {
+      "trial_id": "SRA01-ENV-019",
+      "branch": "ENVIRONMENTAL",
+      "sample_rate": 48000,
+      "duration_s": 5.0,
+      "wall_time_s": 7.768376,
+      "rtf": 1.553675,
+      "event_count": 6
+    },
+    {
+      "trial_id": "SRA01-ENV-020",
+      "branch": "ENVIRONMENTAL",
+      "sample_rate": 48000,
+      "duration_s": 5.0,
+      "wall_time_s": 7.85511,
+      "rtf": 1.571022,
+      "event_count": 6
+    },
+    {
+      "trial_id": "SRA01-ENV-021",
+      "branch": "ENVIRONMENTAL",
+      "sample_rate": 48000,
+      "duration_s": 5.0,
+      "wall_time_s": 7.22103,
+      "rtf": 1.444206,
+      "event_count": 6
+    },
+    {
+      "trial_id": "SRA01-ENV-022",
+      "branch": "ENVIRONMENTAL",
+      "sample_rate": 48000,
+      "duration_s": 5.0,
+      "wall_time_s": 7.388303,
+      "rtf": 1.477661,
+      "event_count": 6
+    },
+    {
+      "trial_id": "SRA01-ENV-023",
+      "branch": "ENVIRONMENTAL",
+      "sample_rate": 48000,
+      "duration_s": 5.0,
+      "wall_time_s": 7.476773,
+      "rtf": 1.495355,
+      "event_count": 6
+    },
+    {
+      "trial_id": "SRA01-ENV-024",
+      "branch": "ENVIRONMENTAL",
+      "sample_rate": 48000,
+      "duration_s": 5.0,
+      "wall_time_s": 7.692588,
+      "rtf": 1.538518,
+      "event_count": 6
+    },
+    {
+      "trial_id": "SRA01-AMB-001",
+      "branch": "AMBIENT",
+      "sample_rate": 48000,
+      "duration_s": 5.0,
+      "wall_time_s": 7.096183,
+      "rtf": 1.419237,
+      "event_count": 6
+    },
+    {
+      "trial_id": "SRA01-AMB-002",
+      "branch": "AMBIENT",
+      "sample_rate": 48000,
+      "duration_s": 5.0,
+      "wall_time_s": 6.994124,
+      "rtf": 1.398825,
+      "event_count": 6
+    },
+    {
+      "trial_id": "SRA01-AMB-003",
+      "branch": "AMBIENT",
+      "sample_rate": 48000,
+      "duration_s": 5.0,
+      "wall_time_s": 7.644462,
+      "rtf": 1.528892,
+      "event_count": 6
+    },
+    {
+      "trial_id": "SRA01-AMB-004",
+      "branch": "AMBIENT",
+      "sample_rate": 48000,
+      "duration_s": 5.0,
+      "wall_time_s": 7.345729,
+      "rtf": 1.469146,
+      "event_count": 6
+    },
+    {
+      "trial_id": "SRA01-AMB-005",
+      "branch": "AMBIENT",
+      "sample_rate": 48000,
+      "duration_s": 5.0,
+      "wall_time_s": 7.445858,
+      "rtf": 1.489172,
+      "event_count": 6
+    },
+    {
+      "trial_id": "SRA01-AMB-006",
+      "branch": "AMBIENT",
+      "sample_rate": 48000,
+      "duration_s": 5.0,
+      "wall_time_s": 7.324934,
+      "rtf": 1.464987,
+      "event_count": 6
+    },
+    {
+      "trial_id": "SRA01-AMB-007",
+      "branch": "AMBIENT",
+      "sample_rate": 48000,
+      "duration_s": 5.0,
+      "wall_time_s": 7.427568,
+      "rtf": 1.485514,
+      "event_count": 6
+    },
+    {
+      "trial_id": "SRA01-AMB-008",
+      "branch": "AMBIENT",
+      "sample_rate": 48000,
+      "duration_s": 5.0,
+      "wall_time_s": 6.879841,
+      "rtf": 1.375968,
+      "event_count": 6
+    },
+    {
+      "trial_id": "SRA01-MIX-001",
+      "branch": "MIXTURE",
+      "sample_rate": 16000,
+      "duration_s": 2.52,
+      "wall_time_s": 0.903849,
+      "rtf": 0.35867,
+      "event_count": 3
+    },
+    {
+      "trial_id": "SRA01-MIX-002",
+      "branch": "MIXTURE",
+      "sample_rate": 16000,
+      "duration_s": 4.0,
+      "wall_time_s": 1.65014,
+      "rtf": 0.412535,
+      "event_count": 5
+    },
+    {
+      "trial_id": "SRA01-MIX-003",
+      "branch": "MIXTURE",
+      "sample_rate": 16000,
+      "duration_s": 4.0,
+      "wall_time_s": 1.598009,
+      "rtf": 0.399502,
+      "event_count": 5
+    },
+    {
+      "trial_id": "SRA01-MIX-004",
+      "branch": "MIXTURE",
+      "sample_rate": 16000,
+      "duration_s": 4.0,
+      "wall_time_s": 1.649241,
+      "rtf": 0.41231,
+      "event_count": 5
+    },
+    {
+      "trial_id": "SRA01-MIX-005",
+      "branch": "MIXTURE",
+      "sample_rate": 48000,
+      "duration_s": 4.0,
+      "wall_time_s": 5.717081,
+      "rtf": 1.42927,
+      "event_count": 5
+    },
+    {
+      "trial_id": "SRA01-MIX-006",
+      "branch": "MIXTURE",
+      "sample_rate": 48000,
+      "duration_s": 4.0,
+      "wall_time_s": 5.561368,
+      "rtf": 1.390342,
+      "event_count": 5
+    },
+    {
+      "trial_id": "SRA01-MIX-007",
+      "branch": "MIXTURE",
+      "sample_rate": 48000,
+      "duration_s": 4.0,
+      "wall_time_s": 5.355905,
+      "rtf": 1.338976,
+      "event_count": 5
+    },
+    {
+      "trial_id": "SRA01-MIX-008",
+      "branch": "MIXTURE",
+      "sample_rate": 48000,
+      "duration_s": 3.9,
+      "wall_time_s": 5.431142,
+      "rtf": 1.392601,
+      "event_count": 4
+    }
+  ]
+}

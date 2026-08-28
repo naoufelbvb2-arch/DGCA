@@ -1,0 +1,14 @@
+{
+  "RealWavCount": 1,
+  "Clips": [
+    {
+      "ClipID": "real_apple_voiced_01",
+      "Path": "C:\\Users\\Laptop\\Desktop\\DGCA FLASH\\data\\assets\\audio\\real_apple_voiced.wav",
+      "Category": "Speech_Voiced",
+      "RecordedOrSynthetic": "RECORDED"
+    }
+  ],
+  "RealAudioBranchStatus": "PARTIAL",
+  "ForensicClosureStatus": "PARTIAL",
+  "Explanation": "1 real WAV file present in data/assets/audio; full 24-40 clip real audio corpus not pre-packaged. Per spec Section 36 & 83, REAL_AUDIO_BRANCH = PARTIAL and FORENSIC_CLOSURE = PARTIAL."
+}

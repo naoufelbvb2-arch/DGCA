@@ -1,0 +1,16 @@
+{
+  "total_items": 64,
+  "unsupported": 0,
+  "crashes": 0,
+  "nan_inf_outputs": 0,
+  "clearly_audible_qualifying": 48,
+  "clearly_audible_produced_events": 48,
+  "clearly_audible_event_rate": 1.0,
+  "total_events": 351,
+  "median_events_per_clip": 6.0,
+  "p90_events_per_clip": 7.0,
+  "max_events_per_clip": 8,
+  "max_descriptors_per_event": 4,
+  "legacy_f1_f2_tokens": 0,
+  "paired_text": 0
+}

@@ -1,0 +1,7 @@
+{
+  "ProcessAudioSignature": "process_audio(waveform, paired_text=None, ...)",
+  "PairedTextBehavior": "Appends ('text', paired_text) directly into emitted SensoryEpisode signals",
+  "Classification": "SENSOR_PLUS_GROUNDING_ORCHESTRATOR",
+  "SemanticAuthorityLeakageRisk": true,
+  "Recommendation": "Must be removed from Audio Encoder v2. Sensory encoder must be a pure acoustic descriptor generator."
+}

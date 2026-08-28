@@ -1,0 +1,9 @@
+{
+  "total_events": 351,
+  "median_events": 6.0,
+  "p90_events": 7.0,
+  "max_events": 8,
+  "max_descriptors_per_event": 4,
+  "active_descriptor_ceiling_violations": 0,
+  "reserved_slots_used": 0
+}

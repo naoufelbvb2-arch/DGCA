@@ -1,0 +1,14 @@
+{
+  "1sec_8kHz": {
+    "WallTimeMs": 1.2,
+    "RealTimeFactor": 0.0012
+  },
+  "5sec_8kHz": {
+    "WallTimeMs": 5.8,
+    "RealTimeFactor": 0.00116
+  },
+  "10sec_8kHz": {
+    "WallTimeMs": 11.5,
+    "RealTimeFactor": 0.00115
+  }
+}

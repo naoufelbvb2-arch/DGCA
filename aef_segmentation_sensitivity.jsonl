@@ -1,0 +1,3 @@
+{"Mode": "Full_300_then_1000", "FMT1": 10, "FMT2": 6, "Voiced": true}
+{"Mode": "Chunk1_300Hz", "FMT1": 10, "FMT2": 7, "Voiced": true}
+{"Mode": "Chunk2_1000Hz", "FMT1": 8, "FMT2": 6, "Voiced": true}

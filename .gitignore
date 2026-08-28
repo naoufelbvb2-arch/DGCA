@@ -9,3 +9,5 @@ dist/
 venv/
 scratch/
 data/*.parquet
+data/
+

@@ -1,0 +1,8 @@
+{
+  "StreamingState": "ABSENT",
+  "ChunkBoundaryEquivalence": "FAIL",
+  "SegmentBoundaryIntroducesDiscontinuity": true,
+  "AGCStatePersists": false,
+  "FilterStatePersists": false,
+  "Explanation": "process_waveform initializes y_prev1, y_prev2, env_fast, env_slow to 0.0 on every call, destroying continuity across chunk boundaries."
+}

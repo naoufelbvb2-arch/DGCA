@@ -1,0 +1,1 @@
+{"Signal": "step_onset", "has_onset": false, "OnsetPresence": "SUPPORTED", "OnsetTiming": "ABSENT", "MultipleEvents": "COLLAPSED", "Explanation": "detect_onset returns a single whole-segment Boolean has_onset. Onset timing and multiple onset events are not represented."}

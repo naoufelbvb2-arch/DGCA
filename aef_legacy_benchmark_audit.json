@@ -1,0 +1,38 @@
+[
+  {
+    "BenchmarkScenario": "Scenario 1: Vowel Discretization",
+    "Claim": "Discretizes /a/, /i/, /u/",
+    "Input": "Synthetic vowels",
+    "Status": "PASS"
+  },
+  {
+    "BenchmarkScenario": "Scenario 2: Stationary Noise Suppression",
+    "Claim": "AGC noise suppression",
+    "Input": "300ms white noise",
+    "Status": "PASS"
+  },
+  {
+    "BenchmarkScenario": "Scenario 3: Voicing Distinction",
+    "Claim": "Voiced vs Unvoiced distinction",
+    "Input": "Synthetic vowel vs noise",
+    "Status": "PASS"
+  },
+  {
+    "BenchmarkScenario": "Scenario 4: Cocktail Party Grouping",
+    "Claim": "Speaker separation",
+    "Input": "Separate spk1 and spk2 calls",
+    "Status": "OVERCLAIMED"
+  },
+  {
+    "BenchmarkScenario": "Scenario 5: Transient Audio Instance GC",
+    "Claim": "Transient node decay",
+    "Input": "Synthetic tone",
+    "Status": "PASS"
+  },
+  {
+    "BenchmarkScenario": "Scenario 6: Tri-Modal Grounding",
+    "Claim": "Cross-modal resonance",
+    "Input": "Simultaneous observation",
+    "Status": "PASS"
+  }
+]

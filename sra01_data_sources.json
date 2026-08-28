@@ -1,0 +1,27 @@
+{
+  "speech": {
+    "source": "OpenSLR SLR31 Mini LibriSpeech dev-clean-2",
+    "license": "CC BY 4.0",
+    "archive_sha256": "176ec501490eced2d6c1f89f4f0ddc7dfe799e649e5322f8ba49fe3ff50c8012",
+    "items": 24,
+    "speakers": 6
+  },
+  "environmental": {
+    "source": "ESC-10 (from ESC-50 Dataset)",
+    "license": "CC BY-NC 3.0",
+    "archive_sha256": "805afc618aff80eff0641d51311647871fead5807da68bb18e43a27db47a79ce",
+    "items": 24,
+    "classes": 10
+  },
+  "ambient": {
+    "source": "ESC-50 Natural Ambient Recorded Audio",
+    "license": "CC BY-NC 3.0",
+    "items": 8,
+    "recorded_or_synthetic": "RECORDED"
+  },
+  "mixtures": {
+    "source": "Derived Genuine-Source Mixtures",
+    "items": 8,
+    "pairing_seed": "DGCA-SRA01-MIXTURE-v1.0"
+  }
+}

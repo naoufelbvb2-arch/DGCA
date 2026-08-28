@@ -1,0 +1,46 @@
+{
+  "num_channels": {
+    "value": 16,
+    "class": "DSP_DESIGN_CONSTANT"
+  },
+  "freq_min": {
+    "value": 100.0,
+    "class": "DSP_DESIGN_CONSTANT"
+  },
+  "freq_max": {
+    "value": 4000.0,
+    "class": "DSP_DESIGN_CONSTANT"
+  },
+  "agc_fast_ms": {
+    "value": 5.0,
+    "class": "DSP_DESIGN_CONSTANT"
+  },
+  "agc_slow_ms": {
+    "value": 100.0,
+    "class": "DSP_DESIGN_CONSTANT"
+  },
+  "agc_gain_coeffs": {
+    "value": "0.6 * env_fast + 2.5 * env_slow",
+    "class": "HEURISTIC"
+  },
+  "pitch_min_max_hz": {
+    "value": "80-400 Hz",
+    "class": "PHYSICAL_CONSTRAINT"
+  },
+  "voicing_thresh": {
+    "value": 0.35,
+    "class": "HEURISTIC"
+  },
+  "onset_thresh": {
+    "value": "2.5x mean energy",
+    "class": "HEURISTIC"
+  },
+  "structural_weight": {
+    "value": 0.8,
+    "class": "SEMANTIC_POLICY"
+  },
+  "b_audio": {
+    "value": 3,
+    "class": "LEGACY_UNJUSTIFIED"
+  }
+}

@@ -1,0 +1,8 @@
+{"mixture_trial_id": "SRA01-MIX-001", "source_A_trial_id": "SRA01-SP-007", "source_B_trial_id": "SRA01-SP-003", "recall_A": 0.6667, "recall_B": 0.4, "classification": "BOTH_SOURCE_EVIDENCE_VISIBLE"}
+{"mixture_trial_id": "SRA01-MIX-002", "source_A_trial_id": "SRA01-SP-005", "source_B_trial_id": "SRA01-SP-001", "recall_A": 1.0, "recall_B": 0.7, "classification": "BOTH_SOURCE_EVIDENCE_VISIBLE"}
+{"mixture_trial_id": "SRA01-MIX-003", "source_A_trial_id": "SRA01-SP-001", "source_B_trial_id": "SRA01-AMB-002", "recall_A": 0.2, "recall_B": 0.0, "classification": "PRIMARY_ONLY"}
+{"mixture_trial_id": "SRA01-MIX-004", "source_A_trial_id": "SRA01-SP-024", "source_B_trial_id": "SRA01-AMB-008", "recall_A": 0.8571, "recall_B": 0.75, "classification": "BOTH_SOURCE_EVIDENCE_VISIBLE"}
+{"mixture_trial_id": "SRA01-MIX-005", "source_A_trial_id": "SRA01-ENV-003", "source_B_trial_id": "SRA01-ENV-016", "recall_A": 1.0, "recall_B": 1.0, "classification": "BOTH_SOURCE_EVIDENCE_VISIBLE"}
+{"mixture_trial_id": "SRA01-MIX-006", "source_A_trial_id": "SRA01-ENV-023", "source_B_trial_id": "SRA01-ENV-006", "recall_A": 1.0, "recall_B": 0.6, "classification": "BOTH_SOURCE_EVIDENCE_VISIBLE"}
+{"mixture_trial_id": "SRA01-MIX-007", "source_A_trial_id": "SRA01-SP-017", "source_B_trial_id": "SRA01-ENV-008", "recall_A": 0.7778, "recall_B": 0.9167, "classification": "BOTH_SOURCE_EVIDENCE_VISIBLE"}
+{"mixture_trial_id": "SRA01-MIX-008", "source_A_trial_id": "SRA01-SP-004", "source_B_trial_id": "SRA01-ENV-015", "recall_A": 0.75, "recall_B": 0.8, "classification": "BOTH_SOURCE_EVIDENCE_VISIBLE"}

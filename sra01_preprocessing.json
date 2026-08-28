@@ -1,0 +1,4 @@
+{
+  "preprocessing_frozen": true,
+  "resampler_polyphase_fir": "scipy.signal.resample_poly(up=160, down=147)"
+}

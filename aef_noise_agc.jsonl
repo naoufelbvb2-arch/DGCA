@@ -1,0 +1,1 @@
+{"NoiseType": "white_noise_300ms", "FirstHalfEnergy": 0.019788107767796867, "SecondHalfEnergy": 0.019235856754437633, "SuppressionRatio": 0.027908227499041944, "LocalPerChannelAGC": true, "CrossChannelCoupled": false, "StatefulAcrossCalls": false}

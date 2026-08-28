@@ -1,0 +1,6 @@
+{
+  "StructuralWeightRule": "0.80 if (features.is_voiced and features.has_onset) else 0.0",
+  "Classification": "HEURISTIC_SALIENCE_POLICY",
+  "JustifiedByPhysics": false,
+  "Recommendation": "Should be removed or integrated into clean DGCA salience policy rather than hard-coded in sensory encoder."
+}

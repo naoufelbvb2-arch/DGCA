@@ -1,0 +1,10 @@
+{
+  "B_audio": 3,
+  "PersistentDescriptors": [
+    "fmt1_band",
+    "fmt2_band",
+    "voiced"
+  ],
+  "Evaluation": "TOO_AGGRESSIVE",
+  "Explanation": "Compressing the entire auditory episode into 3 static tokens destroys temporal order, pitch identity, and multi-event structure."
+}

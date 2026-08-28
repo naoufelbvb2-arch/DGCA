@@ -1,0 +1,7 @@
+{
+  "total_speech_items": 24,
+  "speakers": 6,
+  "exact_ir_collisions": 0,
+  "cross_speaker_collisions": 0,
+  "verdict": "COMPLETE"
+}

@@ -1,0 +1,8 @@
+{
+  "RawSamples_100ms": 800,
+  "ChannelTimeValues_16x800": 12800,
+  "FeatureScalars": 5,
+  "PersistentAudioTokens": 3,
+  "TemporalPositionsRetained": 0,
+  "SequenceEdgesExposedToGraph": 0
+}

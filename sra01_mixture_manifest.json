@@ -1,0 +1,90 @@
+[
+  {
+    "mixture_type": "M01",
+    "source_A_trial_id": "SRA01-SP-007",
+    "source_B_trial_id": "SRA01-SP-003",
+    "sample_rate": 16000,
+    "rms_A_init": 0.094625,
+    "rms_B_init": 0.055614,
+    "rms_ref": 0.1,
+    "rel_gain_db": 0.0,
+    "anti_clip_scale": 0.728576
+  },
+  {
+    "mixture_type": "M02",
+    "source_A_trial_id": "SRA01-SP-005",
+    "source_B_trial_id": "SRA01-SP-001",
+    "sample_rate": 16000,
+    "rms_A_init": 0.05695,
+    "rms_B_init": 0.07205,
+    "rms_ref": 0.1,
+    "rel_gain_db": -6.0,
+    "anti_clip_scale": 0.984312
+  },
+  {
+    "mixture_type": "M03",
+    "source_A_trial_id": "SRA01-SP-001",
+    "source_B_trial_id": "SRA01-AMB-002",
+    "sample_rate": 16000,
+    "rms_A_init": 0.07205,
+    "rms_B_init": 0.056553,
+    "rms_ref": 0.1,
+    "rel_gain_db": 0.0,
+    "anti_clip_scale": 0.992186
+  },
+  {
+    "mixture_type": "M04",
+    "source_A_trial_id": "SRA01-SP-024",
+    "source_B_trial_id": "SRA01-AMB-008",
+    "sample_rate": 16000,
+    "rms_A_init": 0.061217,
+    "rms_B_init": 0.497442,
+    "rms_ref": 0.1,
+    "rel_gain_db": -6.0,
+    "anti_clip_scale": 1.0
+  },
+  {
+    "mixture_type": "M05",
+    "source_A_trial_id": "SRA01-ENV-003",
+    "source_B_trial_id": "SRA01-ENV-016",
+    "sample_rate": 48000,
+    "rms_A_init": 0.11262,
+    "rms_B_init": 0.275338,
+    "rms_ref": 0.1,
+    "rel_gain_db": 0.0,
+    "anti_clip_scale": 1.0
+  },
+  {
+    "mixture_type": "M06",
+    "source_A_trial_id": "SRA01-ENV-023",
+    "source_B_trial_id": "SRA01-ENV-006",
+    "sample_rate": 48000,
+    "rms_A_init": 0.114256,
+    "rms_B_init": 0.036708,
+    "rms_ref": 0.1,
+    "rel_gain_db": -6.0,
+    "anti_clip_scale": 0.690973
+  },
+  {
+    "mixture_type": "M07",
+    "source_A_trial_id": "SRA01-SP-017",
+    "source_B_trial_id": "SRA01-ENV-008",
+    "sample_rate": 48000,
+    "rms_A_init": 0.043884,
+    "rms_B_init": 0.10933,
+    "rms_ref": 0.1,
+    "rel_gain_db": 0.0,
+    "anti_clip_scale": 0.678058
+  },
+  {
+    "mixture_type": "M08",
+    "source_A_trial_id": "SRA01-SP-004",
+    "source_B_trial_id": "SRA01-ENV-015",
+    "sample_rate": 48000,
+    "rms_A_init": 0.05641,
+    "rms_B_init": 0.155836,
+    "rms_ref": 0.1,
+    "rel_gain_db": -6.0,
+    "anti_clip_scale": 1.0
+  }
+]

@@ -1,0 +1,6 @@
+{
+  "TransientUID1": "inst:aud_1",
+  "TransientUID2": "inst:aud_2",
+  "CallOrderDependent": true,
+  "Recommendation": "Audio v2 should use external scope ID or deterministic transient identity."
+}

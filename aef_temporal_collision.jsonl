@@ -1,0 +1,1 @@
+{"WaveformA": "300Hz_then_1000Hz", "WaveformB": "1000Hz_then_300Hz", "FeaturesA": {"fmt1": 10, "fmt2": 6, "voiced": true, "onset": false}, "FeaturesB": {"fmt1": 10, "fmt2": 6, "voiced": true, "onset": false}, "Collision": true, "EarliestLossStage": "WHOLE_SEGMENT_AGGREGATION", "Explanation": "channel_energies sums z*z across the whole segment, throwing away time order."}

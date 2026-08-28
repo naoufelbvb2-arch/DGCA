@@ -1,0 +1,1 @@
+{"Signal": "300Hz_tone", "is_voiced": true, "PitchEstimated": false, "VoicingOnly": true, "Explanation": "detect_voicing returns Boolean is_voiced by checking if autocorrelation peak >= 0.35. No numerical F0 Hz value is returned."}

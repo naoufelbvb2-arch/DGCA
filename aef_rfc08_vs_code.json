@@ -1,0 +1,58 @@
+[
+  {
+    "RFC08Claim": "16-Channel Greenwood Tonotopic Mapping (100Hz - 4000Hz)",
+    "ImplementationSite": "dgca/audio.py:LeanCARFAC._compute_greenwood_frequencies",
+    "ImplementedBehavior": "Logarithmic formula from 4000Hz down to 100Hz for 16 channels",
+    "MatchStatus": "PARTIAL",
+    "ScientificImpact": "Channels 14 and 15 clamp to 100Hz (duplicated low-end channel); Channel 0 clamps to 4000Hz (Nyquist at 8kHz)."
+  },
+  {
+    "RFC08Claim": "Cascade of Asymmetric Resonators (CAR)",
+    "ImplementationSite": "dgca/audio.py:LeanCARFAC.process_waveform",
+    "ImplementedBehavior": "Parallel loop of independent 2-pole IIR resonators receiving raw input waveform",
+    "MatchStatus": "MATERIAL_MISMATCH",
+    "ScientificImpact": "No cascade between channels. Resonators are symmetric 2-pole IIR filters in parallel."
+  },
+  {
+    "RFC08Claim": "Inner Hair Cell (IHC) Half-Wave & Cubic Transduction + Smoothing",
+    "ImplementationSite": "dgca/audio.py:LeanCARFAC.process_waveform",
+    "ImplementedBehavior": "ihc_v = pow(max(0.0, y), 3). Half-wave and cubic present, explicit low-pass smoothing absent.",
+    "MatchStatus": "PARTIAL",
+    "ScientificImpact": "No explicit IHC low-pass smoothing filter; smoothing is performed downstream by AGC envelopes."
+  },
+  {
+    "RFC08Claim": "Two-Stage Fast/Slow AGC (5ms / 100ms)",
+    "ImplementationSite": "dgca/audio.py:LeanCARFAC.process_waveform",
+    "ImplementedBehavior": "Local per-channel exponential smoothing of ihc_v with gain = 1/(1 + 0.6*fast + 2.5*slow)",
+    "MatchStatus": "PARTIAL",
+    "ScientificImpact": "AGC state resets to 0 on every process_waveform call. No cross-channel AGC coupling. No streaming state."
+  },
+  {
+    "RFC08Claim": "Formant Extraction (F1 & F2)",
+    "ImplementationSite": "dgca/audio.py:LeanCARFAC.extract_features",
+    "ImplementedBehavior": "fmt1_band = argmax channel energy in 8..15; fmt2_band = argmax in 2..7",
+    "MatchStatus": "MATERIAL_MISMATCH",
+    "ScientificImpact": "Overclaimed label. Does not track true vocal tract formants; selects dominant energy bin in fixed index ranges."
+  },
+  {
+    "RFC08Claim": "Pitch Voicing (F0 Autocorrelation)",
+    "ImplementationSite": "dgca/audio.py:LeanCARFAC._detect_voicing",
+    "ImplementedBehavior": "Short-term autocorrelation peak search in 80Hz..400Hz returning boolean is_voiced",
+    "MatchStatus": "PARTIAL",
+    "ScientificImpact": "No numerical F0 pitch value estimated or returned; voicing is binary Boolean only."
+  },
+  {
+    "RFC08Claim": "Onset Detection",
+    "ImplementationSite": "dgca/audio.py:LeanCARFAC._detect_onset",
+    "ImplementedBehavior": "Peak energy in first 25% of waveform vs 2.5x mean energy returning boolean has_onset",
+    "MatchStatus": "PARTIAL",
+    "ScientificImpact": "Whole-segment single Boolean. No onset timing, no multiple onsets, no offsets."
+  },
+  {
+    "RFC08Claim": "Cocktail Party Source Separation / Grouping",
+    "ImplementationSite": "scripts/benchmark_audio.py:run_audio_benchmark (Scenario 4)",
+    "ImplementedBehavior": "Benchmark encodes spk1 and spk2 in separate API calls; process_audio does not separate mixed waveforms",
+    "MatchStatus": "MATERIAL_MISMATCH",
+    "ScientificImpact": "Source separation was not demonstrated on actual mixed signals. Mixtures collapse into single representation."
+  }
+]

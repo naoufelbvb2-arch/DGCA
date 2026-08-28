@@ -1,0 +1,38 @@
+{
+  "HistoricalBaselineSignature": "915119d40643cb97",
+  "CurrentSignature": "915119d40643cb97",
+  "SignatureStatus": "MATCH",
+  "ArchitectureChanges": 0,
+  "PersistentSchemaChanges": 0,
+  "NewLaws": 0,
+  "SourceFiles": [
+    "dgca/audio.py",
+    "tests/test_phase9_audio_rfc08.py",
+    "scripts/benchmark_audio.py",
+    "data/assets/audio/real_apple_voiced.wav"
+  ],
+  "SearchTermsInventory": [
+    "audio",
+    "carfac",
+    "CARFAC",
+    "CAR-FAC",
+    "cochlea",
+    "greenwood",
+    "resonator",
+    "formant",
+    "fmt1",
+    "fmt2",
+    "F1",
+    "F2",
+    "F0",
+    "pitch",
+    "voicing",
+    "onset",
+    "cocktail",
+    "speaker",
+    "source separation",
+    "paired_text",
+    "structural_weight",
+    "uid_counter"
+  ]
+}

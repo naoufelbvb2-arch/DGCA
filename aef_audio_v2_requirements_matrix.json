@@ -1,0 +1,116 @@
+{
+  "Requirements": [
+    {
+      "Component": "raw_waveform_input_contract",
+      "LegacyBehavior": "Accepts list[float]",
+      "Decision": "REDESIGN",
+      "RequiredV2Behavior": "Accepts AudioFrameIR / PixelFrame-equivalent AudioPixelFrame or normalized float array with explicit sample_rate and scope_id.",
+      "EvidenceStrength": "PROVEN_NECESSARY"
+    },
+    {
+      "Component": "frequency_map",
+      "LegacyBehavior": "Greenwood 100-4000 Hz with duplicate low channels and Nyquist at 8kHz",
+      "Decision": "KEEP_WITH_FIX",
+      "RequiredV2Behavior": "Fix Greenwood mapping so channel 0 < Nyquist at 8kHz and channel 14/15 are distinct.",
+      "EvidenceStrength": "PROVEN_NECESSARY"
+    },
+    {
+      "Component": "resonator_topology",
+      "LegacyBehavior": "Parallel independent 2-pole IIR resonator bank",
+      "Decision": "KEEP_WITH_FIX",
+      "RequiredV2Behavior": "Retain parallel deterministic resonator bank (CAR-inspired); do not require full heavy CAR-FAC cascade unless proven necessary.",
+      "EvidenceStrength": "STRONGLY_SUPPORTED"
+    },
+    {
+      "Component": "ihc_transduction",
+      "LegacyBehavior": "Half-wave + cubic (pow(max(0, y), 3))",
+      "Decision": "KEEP",
+      "RequiredV2Behavior": "Retain half-wave cubic transduction.",
+      "EvidenceStrength": "STRONGLY_SUPPORTED"
+    },
+    {
+      "Component": "ihc_smoothing",
+      "LegacyBehavior": "Absent in IHC step; handled implicitly downstream",
+      "Decision": "KEEP_WITH_FIX",
+      "RequiredV2Behavior": "Add explicit low-pass IHC smoothing filter.",
+      "EvidenceStrength": "STRONGLY_SUPPORTED"
+    },
+    {
+      "Component": "streaming_filter_state",
+      "LegacyBehavior": "Resets y_prev to 0 on every call",
+      "Decision": "REDESIGN",
+      "RequiredV2Behavior": "Persist filter states across streaming chunks.",
+      "EvidenceStrength": "PROVEN_NECESSARY"
+    },
+    {
+      "Component": "streaming_agc_state",
+      "LegacyBehavior": "Resets env_fast, env_slow to 0 on every call",
+      "Decision": "REDESIGN",
+      "RequiredV2Behavior": "Persist AGC envelopes across streaming chunks.",
+      "EvidenceStrength": "PROVEN_NECESSARY"
+    },
+    {
+      "Component": "silence_no_evidence_handling",
+      "LegacyBehavior": "Fails open; returns fmt1=11/8, fmt2=5/2 on 0 energy",
+      "Decision": "REDESIGN",
+      "RequiredV2Behavior": "Fail closed. Return NO_EVIDENCE / empty feature set on silence or sub-threshold energy.",
+      "EvidenceStrength": "PROVEN_NECESSARY"
+    },
+    {
+      "Component": "f1_f2_semantics",
+      "LegacyBehavior": "Selects argmax channel in fixed index slices 8..15 and 2..7",
+      "Decision": "REDESIGN",
+      "RequiredV2Behavior": "Replace or rename to dominant_low_band / dominant_high_band or time-frequency channel spectral tokens.",
+      "EvidenceStrength": "PROVEN_NECESSARY"
+    },
+    {
+      "Component": "pitch_voicing",
+      "LegacyBehavior": "Returns binary is_voiced Boolean only",
+      "Decision": "KEEP_WITH_FIX",
+      "RequiredV2Behavior": "Expose bounded pitch band (e.g. pitch_low/mid/high) alongside voiced status.",
+      "EvidenceStrength": "STRONGLY_SUPPORTED"
+    },
+    {
+      "Component": "onset_offset_timing",
+      "LegacyBehavior": "Whole-segment single Boolean has_onset",
+      "Decision": "REDESIGN",
+      "RequiredV2Behavior": "Expose event onset/offset temporal boundaries.",
+      "EvidenceStrength": "PROVEN_NECESSARY"
+    },
+    {
+      "Component": "temporal_sequence_output",
+      "LegacyBehavior": "Whole-segment energy integration throwing away time order",
+      "Decision": "REDESIGN",
+      "RequiredV2Behavior": "Emit temporal frames or event-driven Audio IR sequences over time.",
+      "EvidenceStrength": "PROVEN_NECESSARY"
+    },
+    {
+      "Component": "paired_text_coupling",
+      "LegacyBehavior": "Inserts ('text', paired_text) directly into sensory episode",
+      "Decision": "REMOVE",
+      "RequiredV2Behavior": "Remove paired_text from sensory encoder; audio encoder must be a pure acoustic descriptor generator.",
+      "EvidenceStrength": "PROVEN_NECESSARY"
+    },
+    {
+      "Component": "structural_weight_policy",
+      "LegacyBehavior": "Hard-coded 0.80 if voiced and onset",
+      "Decision": "REMOVE",
+      "RequiredV2Behavior": "Remove hard-coded 0.80 from encoder; defer structural weight to DGCA orchestration.",
+      "EvidenceStrength": "PROVEN_NECESSARY"
+    },
+    {
+      "Component": "transient_identity",
+      "LegacyBehavior": "Mutable _uid_counter creating inst:aud_1, inst:aud_2",
+      "Decision": "REDESIGN",
+      "RequiredV2Behavior": "Use external scope_id or deterministic transient identity.",
+      "EvidenceStrength": "PROVEN_NECESSARY"
+    },
+    {
+      "Component": "auditory_source_organization",
+      "LegacyBehavior": "Collapses mixtures into single global representation",
+      "Decision": "DEFER_TO_POST_ENCODER_SUBSYSTEM",
+      "RequiredV2Behavior": "Auditory source separation / cocktail party organization belongs to a separate post-cochlear subsystem.",
+      "EvidenceStrength": "STRONGLY_SUPPORTED"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "BenchmarkScenario": "Scenario 4 in scripts/benchmark_audio.py",
+  "ActualInput": "spk1 encoded in process_audio(spk1); spk2 encoded in process_audio(spk2)",
+  "IsActualMixtureTest": false,
+  "SeparateSignalDiscrimination": true,
+  "SourceSeparationDemonstrated": "NOT_DEMONSTRATED",
+  "BenchmarkClaimGap": "BENCHMARK_CLAIM_GAP",
+  "Explanation": "Benchmark tested separate signal processing of spk1 and spk2 in separate API calls, not a physically mixed waveform."
+}

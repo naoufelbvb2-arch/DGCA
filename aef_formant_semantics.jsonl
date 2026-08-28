@@ -1,0 +1,1 @@
+{"Signal": "300Hz_tone", "fmt1_band": 10, "fmt2_band": 7, "ScientificClassification": "DOMINANT_LOW_BAND", "OverclaimStatus": "OVERCLAIMED", "Explanation": "fmt1_band and fmt2_band do not track vocal tract formant resonances; they select peak energy channel within fixed index slices 8..15 and 2..7."}

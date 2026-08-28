@@ -1,0 +1,7 @@
+{
+  "resampler_library": "scipy.signal",
+  "method": "resample_poly",
+  "up": 160,
+  "down": 147,
+  "status": "PASS"
+}

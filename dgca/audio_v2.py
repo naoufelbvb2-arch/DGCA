@@ -272,11 +272,8 @@ class AudioEncoderV2:
         state = self.get_or_create_stream_state(stream_scope_id, sample_rate_hz, reset=reset)
         state.end_of_stream = end_of_stream
         state.sample_buffer.extend(samples_list)
-        state.periodicity_buffer.extend(samples_list)
 
         max_p_samples = int(0.100 * sample_rate_hz)
-        if len(state.periodicity_buffer) > max_p_samples:
-            del state.periodicity_buffer[:-max_p_samples]
 
         # DSP Setup
         fs = float(sample_rate_hz)
@@ -328,12 +325,19 @@ class AudioEncoderV2:
             if len(state.sample_buffer) >= L_f:
                 frame_samples = state.sample_buffer[:L_f]
                 frame_adapted = [ad_buf[k][:L_f] for k in range(self.NUM_CHANNELS)]
+                hopped_smps = state.sample_buffer[:L_h]
                 del state.sample_buffer[:L_h]
                 for k in range(self.NUM_CHANNELS):
                     del ad_buf[k][:L_h]
+                state.periodicity_buffer.extend(hopped_smps)
+                if len(state.periodicity_buffer) > max_p_samples:
+                    del state.periodicity_buffer[:-max_p_samples]
             else:
                 frame_samples = state.sample_buffer
                 frame_adapted = ad_buf
+                state.periodicity_buffer.extend(frame_samples)
+                if len(state.periodicity_buffer) > max_p_samples:
+                    del state.periodicity_buffer[:-max_p_samples]
                 state.sample_buffer = []
                 state.adapted_buffer = [[] for _ in range(self.NUM_CHANNELS)]
                 ad_buf = state.adapted_buffer
@@ -342,8 +346,8 @@ class AudioEncoderV2:
             frame_idx = state.frame_index
             state.frame_index += 1
 
-            start_sample = state.absolute_sample_index - len(frame_samples)
-            end_sample = state.absolute_sample_index
+            start_sample = frame_idx * L_h
+            end_sample = start_sample + len(frame_samples)
             start_time_s = start_sample / fs
             end_time_s = end_sample / fs
 
@@ -406,8 +410,9 @@ class AudioEncoderV2:
             periodicity_band = None
             periodicity_strength = None
 
-            if frame_status == "COMPLETE" and len(state.periodicity_buffer) >= int(0.040 * fs):
-                p_buf = np.array(state.periodicity_buffer[-int(0.040 * fs):], dtype=np.float64)
+            past_audio = state.periodicity_buffer + (frame_samples[L_h:] if len(frame_samples) > L_h else [])
+            if frame_status == "COMPLETE" and len(past_audio) >= int(0.040 * fs):
+                p_buf = np.array(past_audio[-int(0.040 * fs):], dtype=np.float64)
                 p_buf_c = p_buf - np.mean(p_buf)
                 var_p = float(np.sum(p_buf_c ** 2))
 
@@ -537,7 +542,7 @@ class AudioEncoderV2:
             else:
                 if state.event_state == "IN_EVENT":
                     state.low_energy_run_count += 1
-                    if state.low_energy_run_count >= 4 or state.end_of_stream:
+                    if state.low_energy_run_count >= 4:
                         evt = self._compile_event(state, end_status="COMPLETE")
                         emitted_events.append(evt)
                         state.event_index += 1

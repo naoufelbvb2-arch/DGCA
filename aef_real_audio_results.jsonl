@@ -1,0 +1,1 @@
+{"ClipID": "real_apple_voiced_01", "SampleRate": 8000, "DurationSec": 0.4, "fmt1_band": 12, "fmt2_band": 7, "is_voiced": true, "has_onset": true, "EmittedSignals": [["audio", "inst:aud_3"], ["audio", "aud:fmt1:band_12"], ["audio", "aud:fmt2:band_7"], ["audio", "aud:pitch:voiced"]]}

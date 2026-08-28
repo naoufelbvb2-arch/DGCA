@@ -1,0 +1,12 @@
+{
+  "ActualCascadeBetweenChannels": false,
+  "AsymmetricResonators": false,
+  "PoleZeroAsymmetry": false,
+  "PersistentCARState": false,
+  "PersistentIHCState": false,
+  "PersistentAGCStateAcrossCalls": false,
+  "CrossChannelAGCCoupling": false,
+  "AGCFeedbackIntoCochlearStage": false,
+  "EachChannelReceivesOriginalWaveform": true,
+  "ClassifiedTopology": "PARALLEL_RESONATOR_BANK"
+}
