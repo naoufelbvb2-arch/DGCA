@@ -1,0 +1,349 @@
+{
+  "total_probes": 38,
+  "sufficient_count": 38,
+  "all_sufficient": true,
+  "records": [
+    {
+      "probe_type": "HELDOUT",
+      "trial_id": "ATG01-H-C00-01",
+      "C_Q_reconstructible": true,
+      "N_Q": 10,
+      "evidence_count": 6,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "HELDOUT",
+      "trial_id": "ATG01-H-C01-01",
+      "C_Q_reconstructible": true,
+      "N_Q": 10,
+      "evidence_count": 5,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "HELDOUT",
+      "trial_id": "ATG01-H-C02-01",
+      "C_Q_reconstructible": true,
+      "N_Q": 10,
+      "evidence_count": 5,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "HELDOUT",
+      "trial_id": "ATG01-H-C03-01",
+      "C_Q_reconstructible": true,
+      "N_Q": 10,
+      "evidence_count": 6,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "HELDOUT",
+      "trial_id": "ATG01-H-C04-01",
+      "C_Q_reconstructible": true,
+      "N_Q": 10,
+      "evidence_count": 3,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "HELDOUT",
+      "trial_id": "ATG01-H-C05-01",
+      "C_Q_reconstructible": true,
+      "N_Q": 10,
+      "evidence_count": 3,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "HELDOUT",
+      "trial_id": "ATG01-H-C06-01",
+      "C_Q_reconstructible": true,
+      "N_Q": 10,
+      "evidence_count": 6,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "HELDOUT",
+      "trial_id": "ATG01-H-C07-01",
+      "C_Q_reconstructible": true,
+      "N_Q": 10,
+      "evidence_count": 5,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "HELDOUT",
+      "trial_id": "ATG01-H-C08-01",
+      "C_Q_reconstructible": true,
+      "N_Q": 10,
+      "evidence_count": 5,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "HELDOUT",
+      "trial_id": "ATG01-H-C09-01",
+      "C_Q_reconstructible": true,
+      "N_Q": 10,
+      "evidence_count": 5,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "HELDOUT",
+      "trial_id": "ATG01-H-C00-02",
+      "C_Q_reconstructible": true,
+      "N_Q": 10,
+      "evidence_count": 3,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "HELDOUT",
+      "trial_id": "ATG01-H-C01-02",
+      "C_Q_reconstructible": true,
+      "N_Q": 10,
+      "evidence_count": 3,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "HELDOUT",
+      "trial_id": "ATG01-H-C02-02",
+      "C_Q_reconstructible": true,
+      "N_Q": 10,
+      "evidence_count": 4,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "HELDOUT",
+      "trial_id": "ATG01-H-C03-02",
+      "C_Q_reconstructible": true,
+      "N_Q": 10,
+      "evidence_count": 2,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "HELDOUT",
+      "trial_id": "ATG01-H-C04-02",
+      "C_Q_reconstructible": true,
+      "N_Q": 10,
+      "evidence_count": 6,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "HELDOUT",
+      "trial_id": "ATG01-H-C05-02",
+      "C_Q_reconstructible": true,
+      "N_Q": 8,
+      "evidence_count": 1,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "HELDOUT",
+      "trial_id": "ATG01-H-C06-02",
+      "C_Q_reconstructible": true,
+      "N_Q": 10,
+      "evidence_count": 5,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "HELDOUT",
+      "trial_id": "ATG01-H-C07-02",
+      "C_Q_reconstructible": true,
+      "N_Q": 10,
+      "evidence_count": 6,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "HELDOUT",
+      "trial_id": "ATG01-H-C08-02",
+      "C_Q_reconstructible": true,
+      "N_Q": 10,
+      "evidence_count": 5,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "HELDOUT",
+      "trial_id": "ATG01-H-C09-02",
+      "C_Q_reconstructible": true,
+      "N_Q": 10,
+      "evidence_count": 6,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "OOD",
+      "trial_id": "ATG01-OOD-O00",
+      "C_Q_reconstructible": true,
+      "N_Q": 9,
+      "evidence_count": 4,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "OOD",
+      "trial_id": "ATG01-OOD-O01",
+      "C_Q_reconstructible": true,
+      "N_Q": 10,
+      "evidence_count": 3,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "OOD",
+      "trial_id": "ATG01-OOD-O02",
+      "C_Q_reconstructible": true,
+      "N_Q": 10,
+      "evidence_count": 4,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "OOD",
+      "trial_id": "ATG01-OOD-O03",
+      "C_Q_reconstructible": true,
+      "N_Q": 10,
+      "evidence_count": 6,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "OOD",
+      "trial_id": "ATG01-OOD-O04",
+      "C_Q_reconstructible": true,
+      "N_Q": 10,
+      "evidence_count": 4,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "OOD",
+      "trial_id": "ATG01-OOD-O05",
+      "C_Q_reconstructible": true,
+      "N_Q": 10,
+      "evidence_count": 4,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "OOD",
+      "trial_id": "ATG01-OOD-O06",
+      "C_Q_reconstructible": true,
+      "N_Q": 10,
+      "evidence_count": 5,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "OOD",
+      "trial_id": "ATG01-OOD-O07",
+      "C_Q_reconstructible": true,
+      "N_Q": 10,
+      "evidence_count": 4,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "OOD",
+      "trial_id": "ATG01-OOD-O08",
+      "C_Q_reconstructible": true,
+      "N_Q": 4,
+      "evidence_count": 1,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "OOD",
+      "trial_id": "ATG01-OOD-O09",
+      "C_Q_reconstructible": true,
+      "N_Q": 10,
+      "evidence_count": 3,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "PERMUTATION",
+      "trial_id": "ATG01-H-C00-01",
+      "C_Q_reconstructible": true,
+      "N_Q": 4,
+      "evidence_count": 6,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "PERMUTATION",
+      "trial_id": "ATG01-H-C01-01",
+      "C_Q_reconstructible": true,
+      "N_Q": 4,
+      "evidence_count": 5,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "PERMUTATION",
+      "trial_id": "ATG01-H-C02-01",
+      "C_Q_reconstructible": true,
+      "N_Q": 4,
+      "evidence_count": 4,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "PERMUTATION",
+      "trial_id": "ATG01-H-C03-01",
+      "C_Q_reconstructible": true,
+      "N_Q": 4,
+      "evidence_count": 6,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "PERMUTATION",
+      "trial_id": "ATG01-H-C00-02",
+      "C_Q_reconstructible": true,
+      "N_Q": 4,
+      "evidence_count": 3,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "PERMUTATION",
+      "trial_id": "ATG01-H-C01-02",
+      "C_Q_reconstructible": true,
+      "N_Q": 4,
+      "evidence_count": 3,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "PERMUTATION",
+      "trial_id": "ATG01-H-C02-02",
+      "C_Q_reconstructible": true,
+      "N_Q": 4,
+      "evidence_count": 4,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    },
+    {
+      "probe_type": "PERMUTATION",
+      "trial_id": "ATG01-H-C03-02",
+      "C_Q_reconstructible": true,
+      "N_Q": 4,
+      "evidence_count": 2,
+      "parent_scores_reconstructible": true,
+      "sufficient": true
+    }
+  ]
+}

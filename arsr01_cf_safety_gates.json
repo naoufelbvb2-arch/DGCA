@@ -1,0 +1,15 @@
+{
+  "S1_candidate_conservation": {
+    "pass": true,
+    "conserved": "38/38"
+  },
+  "S2_zero_mutation": {
+    "pass": true,
+    "delta_persistent_state": 0
+  },
+  "S3_permutation_safeguard": {
+    "pass": true,
+    "natural_dominant": "1/8 (<=2)"
+  },
+  "all_safety_pass": true
+}

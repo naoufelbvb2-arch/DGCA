@@ -1,0 +1,83 @@
+{
+  "tests": {
+    "M01_uniform_10_way": {
+      "pass": true,
+      "ldsr": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "M02_two_of_ten_equal": {
+      "pass": true,
+      "ldsr": [
+        0.4,
+        0.4,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "M03_unique_of_ten": {
+      "pass": true,
+      "ldsr": [
+        0.9,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "M04_weak_2_way": {
+      "pass": true,
+      "ldsr": [
+        0.010000000000000009,
+        0.0
+      ]
+    },
+    "M05_uniform_2_way": {
+      "pass": true,
+      "ldsr": [
+        0.0,
+        0.0
+      ]
+    },
+    "M06_nq_1": {
+      "pass": true,
+      "ldsr": [
+        0.0
+      ]
+    },
+    "M07_total_variation_identity": {
+      "pass": true
+    },
+    "M08_permutation_invariance": {
+      "pass": true
+    },
+    "M09_scale_invariance": {
+      "pass": true
+    },
+    "M10_no_mutation": {
+      "pass": true
+    }
+  },
+  "math_precheck_score": "10/10",
+  "verdict": "PASS"
+}

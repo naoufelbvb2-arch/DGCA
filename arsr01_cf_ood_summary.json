@@ -1,0 +1,17 @@
+{
+  "parent_ood": {
+    "forced": 9,
+    "ambiguous": 1,
+    "no_retrieval": 0
+  },
+  "simulated_ood": {
+    "forced": 9,
+    "ambiguous": 1,
+    "no_retrieval": 0
+  },
+  "deltas": {
+    "forced_delta": 0,
+    "ambiguous_delta": 0,
+    "no_retrieval_delta": 0
+  }
+}

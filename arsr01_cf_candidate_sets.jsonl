@@ -1,0 +1,38 @@
+{"probe_type": "HELDOUT", "trial_id": "ATG01-H-C00-01", "N_Q": 10, "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"]}
+{"probe_type": "HELDOUT", "trial_id": "ATG01-H-C01-01", "N_Q": 10, "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"]}
+{"probe_type": "HELDOUT", "trial_id": "ATG01-H-C02-01", "N_Q": 10, "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"]}
+{"probe_type": "HELDOUT", "trial_id": "ATG01-H-C03-01", "N_Q": 10, "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"]}
+{"probe_type": "HELDOUT", "trial_id": "ATG01-H-C04-01", "N_Q": 10, "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"]}
+{"probe_type": "HELDOUT", "trial_id": "ATG01-H-C05-01", "N_Q": 10, "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"]}
+{"probe_type": "HELDOUT", "trial_id": "ATG01-H-C06-01", "N_Q": 10, "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"]}
+{"probe_type": "HELDOUT", "trial_id": "ATG01-H-C07-01", "N_Q": 10, "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"]}
+{"probe_type": "HELDOUT", "trial_id": "ATG01-H-C08-01", "N_Q": 10, "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"]}
+{"probe_type": "HELDOUT", "trial_id": "ATG01-H-C09-01", "N_Q": 10, "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"]}
+{"probe_type": "HELDOUT", "trial_id": "ATG01-H-C00-02", "N_Q": 10, "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"]}
+{"probe_type": "HELDOUT", "trial_id": "ATG01-H-C01-02", "N_Q": 10, "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"]}
+{"probe_type": "HELDOUT", "trial_id": "ATG01-H-C02-02", "N_Q": 10, "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"]}
+{"probe_type": "HELDOUT", "trial_id": "ATG01-H-C03-02", "N_Q": 10, "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"]}
+{"probe_type": "HELDOUT", "trial_id": "ATG01-H-C04-02", "N_Q": 10, "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"]}
+{"probe_type": "HELDOUT", "trial_id": "ATG01-H-C05-02", "N_Q": 8, "C_Q": ["text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:on", "text:tree"]}
+{"probe_type": "HELDOUT", "trial_id": "ATG01-H-C06-02", "N_Q": 10, "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"]}
+{"probe_type": "HELDOUT", "trial_id": "ATG01-H-C07-02", "N_Q": 10, "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"]}
+{"probe_type": "HELDOUT", "trial_id": "ATG01-H-C08-02", "N_Q": 10, "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"]}
+{"probe_type": "HELDOUT", "trial_id": "ATG01-H-C09-02", "N_Q": 10, "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"]}
+{"probe_type": "OOD", "trial_id": "ATG01-OOD-O00", "N_Q": 9, "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:no", "text:off", "text:on", "text:tree"]}
+{"probe_type": "OOD", "trial_id": "ATG01-OOD-O01", "N_Q": 10, "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"]}
+{"probe_type": "OOD", "trial_id": "ATG01-OOD-O02", "N_Q": 10, "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"]}
+{"probe_type": "OOD", "trial_id": "ATG01-OOD-O03", "N_Q": 10, "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"]}
+{"probe_type": "OOD", "trial_id": "ATG01-OOD-O04", "N_Q": 10, "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"]}
+{"probe_type": "OOD", "trial_id": "ATG01-OOD-O05", "N_Q": 10, "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"]}
+{"probe_type": "OOD", "trial_id": "ATG01-OOD-O06", "N_Q": 10, "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"]}
+{"probe_type": "OOD", "trial_id": "ATG01-OOD-O07", "N_Q": 10, "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"]}
+{"probe_type": "OOD", "trial_id": "ATG01-OOD-O08", "N_Q": 4, "C_Q": ["text:go", "text:no", "text:off", "text:on"]}
+{"probe_type": "OOD", "trial_id": "ATG01-OOD-O09", "N_Q": 10, "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"]}
+{"probe_type": "PERMUTATION", "trial_id": "ATG01-H-C00-01", "N_Q": 4, "C_Q": ["text:bird", "text:cat", "text:dog", "text:tree"]}
+{"probe_type": "PERMUTATION", "trial_id": "ATG01-H-C01-01", "N_Q": 4, "C_Q": ["text:bird", "text:cat", "text:dog", "text:tree"]}
+{"probe_type": "PERMUTATION", "trial_id": "ATG01-H-C02-01", "N_Q": 4, "C_Q": ["text:bird", "text:cat", "text:dog", "text:tree"]}
+{"probe_type": "PERMUTATION", "trial_id": "ATG01-H-C03-01", "N_Q": 4, "C_Q": ["text:bird", "text:cat", "text:dog", "text:tree"]}
+{"probe_type": "PERMUTATION", "trial_id": "ATG01-H-C00-02", "N_Q": 4, "C_Q": ["text:bird", "text:cat", "text:dog", "text:tree"]}
+{"probe_type": "PERMUTATION", "trial_id": "ATG01-H-C01-02", "N_Q": 4, "C_Q": ["text:bird", "text:cat", "text:dog", "text:tree"]}
+{"probe_type": "PERMUTATION", "trial_id": "ATG01-H-C02-02", "N_Q": 4, "C_Q": ["text:bird", "text:cat", "text:dog", "text:tree"]}
+{"probe_type": "PERMUTATION", "trial_id": "ATG01-H-C03-02", "N_Q": 4, "C_Q": ["text:bird", "text:cat", "text:dog", "text:tree"]}

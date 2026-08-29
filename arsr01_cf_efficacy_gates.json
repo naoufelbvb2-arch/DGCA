@@ -1,0 +1,21 @@
+{
+  "E1_heldout_correct_ge_2": {
+    "pass": false,
+    "simulated_correct": "0/20 (>=2)"
+  },
+  "E2_median_rank_improve_ge_1": {
+    "pass": true,
+    "parent_median": 6.0,
+    "simulated_median": 5.0,
+    "improvement": 1.0
+  },
+  "E3_ood_forced_le_7": {
+    "pass": false,
+    "simulated_forced": "9/10 (<=7)"
+  },
+  "E4_permutation_correct_ge_4": {
+    "pass": false,
+    "simulated_permuted_correct": "1/8 (>=4)"
+  },
+  "at_least_one_efficacy_pass": true
+}

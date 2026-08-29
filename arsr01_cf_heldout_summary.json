@@ -1,0 +1,23 @@
+{
+  "parent_heldout": {
+    "correct": 0,
+    "wrong": 19,
+    "ambiguous": 1,
+    "no_retrieval": 0,
+    "median_correct_rank": 6.0
+  },
+  "simulated_heldout": {
+    "correct": 0,
+    "wrong": 19,
+    "ambiguous": 1,
+    "no_retrieval": 0,
+    "median_correct_rank": 5.0,
+    "concepts_with_ge_1_correct": 0
+  },
+  "deltas": {
+    "correct_delta": 0,
+    "wrong_delta": 0,
+    "ambiguous_delta": 0,
+    "median_rank_delta": -1.0
+  }
+}
