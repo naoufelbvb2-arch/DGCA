@@ -1,0 +1,10 @@
+{
+  "ood_probes_count": 10,
+  "forced": 9,
+  "ambiguous": 1,
+  "no_retrieval": 0,
+  "r7_forced_le_6": {
+    "pass": false,
+    "value": "9/10"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "G10": {
+    "observed": "8b7e29e216f03ad19bec289688c502cd244a507cf9cd60af50b23dc9ddc9aa39",
+    "expected": "8b7e29e216f03ad19bec289688c502cd244a507cf9cd60af50b23dc9ddc9aa39",
+    "match": true
+  },
+  "G20": {
+    "observed": "2e98b8006864ec2ffee2735f5b1640c441df8b1ac177d7ca992057d6baa5b46d",
+    "expected": "2e98b8006864ec2ffee2735f5b1640c441df8b1ac177d7ca992057d6baa5b46d",
+    "match": true
+  },
+  "G30": {
+    "observed": "313f27795f670ba9a12b7f5e6d5214d39749826941280a41cbeaeab7ee53ecbc",
+    "expected": "313f27795f670ba9a12b7f5e6d5214d39749826941280a41cbeaeab7ee53ecbc",
+    "match": true
+  },
+  "G40": {
+    "observed": "0fc67a5763767f2dd8f6d970d2d4589de488e8238bba61adc6e2d83b99f5dc99",
+    "expected": "0fc67a5763767f2dd8f6d970d2d4589de488e8238bba61adc6e2d83b99f5dc99",
+    "match": true
+  },
+  "all_match": true
+}

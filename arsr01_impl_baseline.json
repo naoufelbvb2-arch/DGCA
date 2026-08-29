@@ -1,0 +1,32 @@
+{
+  "git_commit": "c3bf4dc",
+  "branch": "main",
+  "historical_signature": "915119d40643cb97",
+  "pytest_passed": 2428,
+  "code_identity_before": {
+    "dgca/graph.py": {
+      "role": "query_cross_modal / LESR / IGSV / LDSR integration",
+      "sha256": "cff38a061791e6ab892f85a7c7e4fda8eaeb4b99631ce6df276067b53814bfa9"
+    },
+    "dgca/audio_v2.py": {
+      "role": "AudioEncoderV2",
+      "sha256": "cc0aae26d8473b6800a028e51ac8017c19cbad1917a22ade1973784f48ab90ba"
+    },
+    "dgca/encoding/english/encoder.py": {
+      "role": "EnglishEncoderV2",
+      "sha256": "45589798560d76d65e9b45acfe4d91f6a7cef1a0effdd5db5d3ec984c360d76f"
+    },
+    "dgca/encoder.py": {
+      "role": "MasterSymbolicEncoder",
+      "sha256": "1f6dfc8ac058424636c5589c6c20fa6711b7b244e1d444823bff8a5b458c6e19"
+    },
+    "dgca/recurrent.py": {
+      "role": "RecurrentDynamics",
+      "sha256": "863f426c7cc79f0063ef54a5df4b43aae8397101f69c8a8066e15af8621bacba"
+    },
+    "dgca/reasoning.py": {
+      "role": "Reasoning / DeepInfer",
+      "sha256": "a09c1c019083f2504630c10c8e6e60b844c9cbfaf5c96660cf3ddbb693b9eab2"
+    }
+  }
+}

@@ -127,6 +127,32 @@ class Edge:
         return 0.0
 
 
+def local_differential_specificity_residual(
+    weights: dict[str, float],
+    candidate_set: set[str],
+    u_Q: float,
+) -> dict[str, float]:
+    """Computes unnormalized LDSR v1.0 differential residuals for local candidate competition.
+
+    Authoritative Formula:
+        LDSR_Q(f, c) = max(0, rho_Q(f, c) - 1 / N_Q)
+    where rho_Q(f, c) = W_{f,c} / sum_{k in C_Q} W_{f,k}.
+    Unsupported candidates carry W_{f,c} = 0.
+    No post-residual renormalization is performed.
+    """
+    Z_f = sum(weights.values())
+    if Z_f <= 0.0 or not candidate_set:
+        return {}
+    residuals: dict[str, float] = {}
+    for c in candidate_set:
+        w = weights.get(c, 0.0)
+        rho = w / Z_f
+        ldsr = max(0.0, rho - u_Q)
+        if ldsr > 0.0:
+            residuals[c] = ldsr
+    return residuals
+
+
 # ─────────────────────────────────────────────────────────── الشبكة
 @dataclass
 class CognitiveGraph:
@@ -984,11 +1010,11 @@ class CognitiveGraph:
         target_prefix: str = "text:",
         enable_igsv: bool = True,
     ) -> dict:
-        """Local Evidence Share Ranking (LESR v1.0) + IGSV v1.0 for cross-modal retrieval.
+        """Local Evidence Share Ranking (LESR v1.0) + IGSV v1.0 + LDSR v1.0 for cross-modal retrieval.
 
         Read-only retrieval path implementing IGSV local differential specificity,
-        provenance evidence conservation, Local Evidence Conservation, and Exact-Top-Tie
-        Ambiguity semantics according to DGCA-Cross-Modal-Grounding-Specificity-Repair-Formal-Architectural-Specification-v1.0.md.
+        provenance evidence conservation, Local Evidence Conservation, LDSR v1.0
+        auditory specificity residuals, and Exact-Top-Tie Ambiguity semantics.
         """
         # Deduplicate query evidence nodes within query scope
         evidence_nodes = []
@@ -1009,6 +1035,21 @@ class CognitiveGraph:
                 "ranked": [],
                 "ambiguous_candidates": [],
             }
+
+        # Check if query is authorized auditory cross-modal lexical retrieval
+        is_auditory_lexical = (
+            target_prefix == "text:" and any(f.startswith("audio:") for f in evidence_nodes)
+        )
+
+        # Discover pre-scoring canonical candidate set C_Q
+        pre_scoring_candidates: set[str] = set()
+        for f in evidence_nodes:
+            for e in list(self.out_edges(f)) + list(self.in_edges(f)):
+                target = e.dst if e.src == f else e.src
+                if target.startswith(target_prefix):
+                    pre_scoring_candidates.add(target)
+        N_Q = len(pre_scoring_candidates)
+        u_Q = 1.0 / N_Q if N_Q > 0 else 0.0
 
         # -----------------------------------------------------------------
         # IGSV STAGE: PROVENANCE GROUPING & LOCAL DIFFERENTIAL SPECIFICITY
@@ -1050,13 +1091,25 @@ class CognitiveGraph:
                             rec = len(e.contexts) if len(e.contexts) > 0 else 1.0
                             candidate_recurrence[target] = max(candidate_recurrence.get(target, 0.0), float(rec))
 
-                    N_f = sum(candidate_recurrence.values())
-                    if N_f > 0.0:
-                        for c, rec in candidate_recurrence.items():
-                            sigma_f_c = rec / N_f
-                            contrib = q_group_share * q_within_group * sigma_f_c
+                    if is_auditory_lexical:
+                        # LDSR v1.0 for Auditory Retrieval Specificity (ARSR01)
+                        ldsr_residuals = local_differential_specificity_residual(
+                            weights=candidate_recurrence,
+                            candidate_set=pre_scoring_candidates,
+                            u_Q=u_Q,
+                        )
+                        for c, ldsr_val in ldsr_residuals.items():
+                            contrib = q_group_share * q_within_group * ldsr_val
                             candidate_supports[c] = candidate_supports.get(c, 0.0) + contrib
                             evidence_decompositions.setdefault(c, {})[f] = contrib
+                    else:
+                        N_f = sum(candidate_recurrence.values())
+                        if N_f > 0.0:
+                            for c, rec in candidate_recurrence.items():
+                                sigma_f_c = rec / N_f
+                                contrib = q_group_share * q_within_group * sigma_f_c
+                                candidate_supports[c] = candidate_supports.get(c, 0.0) + contrib
+                                evidence_decompositions.setdefault(c, {})[f] = contrib
         else:
             # Baseline LESR without IGSV
             q_share = 1.0 / len(evidence_nodes)
@@ -1070,13 +1123,24 @@ class CognitiveGraph:
                     if target.startswith(target_prefix):
                         candidate_weights[target] = max(candidate_weights.get(target, 0.0), e.W)
 
-                Z_f = sum(candidate_weights.values())
-                if Z_f > 0.0:
-                    for c, w in candidate_weights.items():
-                        rho_f_c = w / Z_f
-                        contrib = q_share * rho_f_c
+                if is_auditory_lexical:
+                    ldsr_residuals = local_differential_specificity_residual(
+                        weights=candidate_weights,
+                        candidate_set=pre_scoring_candidates,
+                        u_Q=u_Q,
+                    )
+                    for c, ldsr_val in ldsr_residuals.items():
+                        contrib = q_share * ldsr_val
                         candidate_supports[c] = candidate_supports.get(c, 0.0) + contrib
                         evidence_decompositions.setdefault(c, {})[f] = contrib
+                else:
+                    Z_f = sum(candidate_weights.values())
+                    if Z_f > 0.0:
+                        for c, w in candidate_weights.items():
+                            rho_f_c = w / Z_f
+                            contrib = q_share * rho_f_c
+                            candidate_supports[c] = candidate_supports.get(c, 0.0) + contrib
+                            evidence_decompositions.setdefault(c, {})[f] = contrib
 
         if not candidate_supports:
             return {

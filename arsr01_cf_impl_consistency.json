@@ -1,0 +1,7 @@
+{
+  "heldout_match": true,
+  "ood_match": true,
+  "permutation_match": true,
+  "status": "MATCH",
+  "description": "Implemented query_cross_modal with LDSR v1.0 reproduced exact counterfactual predictions bitwise/within machine tolerance across all 38 probes."
+}

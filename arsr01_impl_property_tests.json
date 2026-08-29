@@ -1,0 +1,14 @@
+{
+  "M01_uniform_10_way": "PASS",
+  "M02_two_of_ten_equal": "PASS",
+  "M03_unique_of_ten": "PASS",
+  "M04_weak_asymmetry_preserved": "PASS",
+  "M05_uniform_2_way": "PASS",
+  "M06_nq_1": "PASS",
+  "M07_total_variation_identity": "PASS",
+  "M08_permutation_invariance": "PASS",
+  "M09_scale_invariance": "PASS",
+  "M10_unsupported_candidate_zero": "PASS",
+  "M11_no_residual_renormalization": "PASS",
+  "M12_zero_graph_mutation_in_query": "PASS"
+}

@@ -1,0 +1,8 @@
+{
+  "total_probes": 10,
+  "own_structure": 4,
+  "wrong_dominant": 0,
+  "ambiguous": 6,
+  "no_retrieval": 0,
+  "regression": false
+}

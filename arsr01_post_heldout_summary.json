@@ -1,0 +1,17 @@
+{
+  "heldout_probes_count": 20,
+  "correct": 0,
+  "wrong": 19,
+  "ambiguous": 1,
+  "no_retrieval": 0,
+  "median_correct_rank": 5.0,
+  "concepts_with_ge_1_correct": 0,
+  "r5_correct_ge_4": {
+    "pass": false,
+    "value": "0/20"
+  },
+  "r6_wrong_le_15": {
+    "pass": false,
+    "value": "19/20"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "total_probes": 8,
+  "permuted_correct": 1,
+  "natural_dominant": 1,
+  "category_coverage": 1,
+  "r8_permuted_ge_2": {
+    "pass": false,
+    "value": "1/8"
+  },
+  "r9_natural_le_2": {
+    "pass": true,
+    "value": "1/8"
+  }
+}
