@@ -1,0 +1,64 @@
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c00_r1_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:bird": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:aud:band:0", "fanout": 9, "z_f": 9.0, "rhos": {"text:dog": 0.1111111111111111, "text:bed": 0.1111111111111111, "text:cat": 0.1111111111111111, "text:house": 0.1111111111111111, "text:tree": 0.1111111111111111, "text:go": 0.1111111111111111, "text:bird": 0.1111111111111111, "text:no": 0.1111111111111111, "text:off": 0.1111111111111111}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:aud:band:3", "fanout": 9, "z_f": 9.0, "rhos": {"text:dog": 0.1111111111111111, "text:bed": 0.1111111111111111, "text:cat": 0.1111111111111111, "text:no": 0.1111111111111111, "text:tree": 0.1111111111111111, "text:go": 0.1111111111111111, "text:bird": 0.1111111111111111, "text:on": 0.1111111111111111, "text:off": 0.1111111111111111}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:aud:band:6", "fanout": 6, "z_f": 6.0, "rhos": {"text:no": 0.16666666666666666, "text:tree": 0.16666666666666666, "text:go": 0.16666666666666666, "text:bird": 0.16666666666666666, "text:on": 0.16666666666666666, "text:off": 0.16666666666666666}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:aud:periodicity:P5", "fanout": 8, "z_f": 8.0, "rhos": {"text:dog": 0.125, "text:bed": 0.125, "text:cat": 0.125, "text:house": 0.125, "text:tree": 0.125, "text:go": 0.125, "text:bird": 0.125, "text:off": 0.125}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:aud:energy:STEADY", "fanout": 9, "z_f": 9.0, "rhos": {"text:dog": 0.1111111111111111, "text:bed": 0.1111111111111111, "text:cat": 0.1111111111111111, "text:house": 0.1111111111111111, "text:tree": 0.1111111111111111, "text:go": 0.1111111111111111, "text:bird": 0.1111111111111111, "text:no": 0.1111111111111111, "text:off": 0.1111111111111111}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c01_r1_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:cat": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:aud:band:1", "fanout": 10, "z_f": 10.0, "rhos": {"text:dog": 0.1, "text:bed": 0.1, "text:bird": 0.1, "text:cat": 0.1, "text:house": 0.1, "text:tree": 0.1, "text:go": 0.1, "text:no": 0.1, "text:on": 0.1, "text:off": 0.1}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:aud:periodicity:P2", "fanout": 8, "z_f": 8.0, "rhos": {"text:dog": 0.125, "text:bed": 0.125, "text:cat": 0.125, "text:house": 0.125, "text:no": 0.125, "text:go": 0.125, "text:bird": 0.125, "text:off": 0.125}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c02_r1_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:dog": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:aud:band:2", "fanout": 8, "z_f": 8.0, "rhos": {"text:dog": 0.125, "text:bed": 0.125, "text:cat": 0.125, "text:no": 0.125, "text:tree": 0.125, "text:bird": 0.125, "text:on": 0.125, "text:off": 0.125}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:aud:band:5", "fanout": 7, "z_f": 7.0, "rhos": {"text:dog": 0.14285714285714285, "text:cat": 0.14285714285714285, "text:no": 0.14285714285714285, "text:tree": 0.14285714285714285, "text:go": 0.14285714285714285, "text:bird": 0.14285714285714285, "text:on": 0.14285714285714285}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:aud:periodicity:P1", "fanout": 7, "z_f": 7.0, "rhos": {"text:dog": 0.14285714285714285, "text:bed": 0.14285714285714285, "text:no": 0.14285714285714285, "text:go": 0.14285714285714285, "text:bird": 0.14285714285714285, "text:on": 0.14285714285714285, "text:off": 0.14285714285714285}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:aud:energy:RISING", "fanout": 8, "z_f": 8.0, "rhos": {"text:dog": 0.125, "text:go": 0.125, "text:cat": 0.125, "text:no": 0.125, "text:tree": 0.125, "text:house": 0.125, "text:bird": 0.125, "text:on": 0.125}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c03_r1_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:tree": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:aud:periodicity:P0", "fanout": 6, "z_f": 6.0, "rhos": {"text:dog": 0.16666666666666666, "text:bed": 0.16666666666666666, "text:cat": 0.16666666666666666, "text:house": 0.16666666666666666, "text:tree": 0.16666666666666666, "text:on": 0.16666666666666666}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c04_r1_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:bed": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:aud:band:4", "fanout": 5, "z_f": 5.0, "rhos": {"text:bed": 0.2, "text:cat": 0.2, "text:no": 0.2, "text:bird": 0.2, "text:on": 0.2}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c05_r1_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:house": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c06_r1_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:no": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:aud:energy:PULSE", "fanout": 4, "z_f": 4.0, "rhos": {"text:on": 0.25, "text:off": 0.25, "text:no": 0.25, "text:go": 0.25}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c07_r1_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:go": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c08_r1_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:on": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:aud:band:8", "fanout": 2, "z_f": 2.0, "rhos": {"text:on": 0.5, "text:cat": 0.5}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:aud:periodicity:P3", "fanout": 3, "z_f": 3.0, "rhos": {"text:on": 0.3333333333333333, "text:no": 0.3333333333333333, "text:tree": 0.3333333333333333}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c09_r1_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:off": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:aud:band:7", "fanout": 3, "z_f": 3.0, "rhos": {"text:dog": 0.3333333333333333, "text:off": 0.3333333333333333, "text:no": 0.3333333333333333}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:aud:energy:FALLING", "fanout": 5, "z_f": 5.0, "rhos": {"text:bed": 0.2, "text:house": 0.2, "text:tree": 0.2, "text:no": 0.2, "text:off": 0.2}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c03_r2_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:tree": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c04_r2_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:bed": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c05_r2_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:house": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c06_r2_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:no": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c07_r2_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:go": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c08_r2_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:on": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:aud:band:10", "fanout": 2, "z_f": 2.0, "rhos": {"text:on": 0.5, "text:go": 0.5}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c09_r2_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:off": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:aud:band:19", "fanout": 2, "z_f": 2.0, "rhos": {"text:off": 0.5, "text:house": 0.5}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c00_r2_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:bird": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c01_r2_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:cat": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c02_r2_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:dog": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c06_r3_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:no": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c06_r3_1", "fanout": 1, "z_f": 1.0, "rhos": {"text:no": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c06_r3_2", "fanout": 1, "z_f": 1.0, "rhos": {"text:no": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c07_r3_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:go": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c08_r3_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:on": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c09_r3_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:off": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c00_r3_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:bird": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c01_r3_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:cat": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c02_r3_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:dog": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c03_r3_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:tree": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c04_r3_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:bed": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c05_r3_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:house": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c09_r4_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:off": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c00_r4_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:bird": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c01_r4_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:cat": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c02_r4_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:dog": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c03_r4_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:tree": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c04_r4_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:bed": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:aud:band:13", "fanout": 1, "z_f": 1.0, "rhos": {"text:bed": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c05_r4_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:house": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:aud:periodicity:P4", "fanout": 1, "z_f": 1.0, "rhos": {"text:house": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c06_r4_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:no": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c07_r4_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:go": 1.0}, "sum_rho": 1.0, "conserved": true}
+{"evidence_node": "audio:inst:aud_scope_atg01_g_c08_r4_0", "fanout": 1, "z_f": 1.0, "rhos": {"text:on": 1.0}, "sum_rho": 1.0, "conserved": true}

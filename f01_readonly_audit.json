@@ -1,0 +1,92 @@
+{
+  "pre_investigation": {
+    "digest_before": "0fc67a5763767f2dd8f6d970d2d4589de488e8238bba61adc6e2d83b99f5dc99",
+    "digest_after": "0fc67a5763767f2dd8f6d970d2d4589de488e8238bba61adc6e2d83b99f5dc99",
+    "delta_persistent_state": 0,
+    "identical": true
+  },
+  "stage_a_representation": {
+    "digest_before": "0fc67a5763767f2dd8f6d970d2d4589de488e8238bba61adc6e2d83b99f5dc99",
+    "digest_after": "0fc67a5763767f2dd8f6d970d2d4589de488e8238bba61adc6e2d83b99f5dc99",
+    "delta_persistent_state": 0,
+    "identical": true
+  },
+  "stage_b_ordered_unordered": {
+    "digest_before": "0fc67a5763767f2dd8f6d970d2d4589de488e8238bba61adc6e2d83b99f5dc99",
+    "digest_after": "0fc67a5763767f2dd8f6d970d2d4589de488e8238bba61adc6e2d83b99f5dc99",
+    "delta_persistent_state": 0,
+    "identical": true
+  },
+  "stage_c_reinstatement": {
+    "digest_before": "0fc67a5763767f2dd8f6d970d2d4589de488e8238bba61adc6e2d83b99f5dc99",
+    "digest_after": "0fc67a5763767f2dd8f6d970d2d4589de488e8238bba61adc6e2d83b99f5dc99",
+    "delta_persistent_state": 0,
+    "identical": true
+  },
+  "stage_d_candidate_discovery": {
+    "digest_before": "0fc67a5763767f2dd8f6d970d2d4589de488e8238bba61adc6e2d83b99f5dc99",
+    "digest_after": "0fc67a5763767f2dd8f6d970d2d4589de488e8238bba61adc6e2d83b99f5dc99",
+    "delta_persistent_state": 0,
+    "identical": true
+  },
+  "stage_e_score_decomposition": {
+    "digest_before": "0fc67a5763767f2dd8f6d970d2d4589de488e8238bba61adc6e2d83b99f5dc99",
+    "digest_after": "0fc67a5763767f2dd8f6d970d2d4589de488e8238bba61adc6e2d83b99f5dc99",
+    "delta_persistent_state": 0,
+    "identical": true
+  },
+  "stage_f_fanout_genericity": {
+    "digest_before": "0fc67a5763767f2dd8f6d970d2d4589de488e8238bba61adc6e2d83b99f5dc99",
+    "digest_after": "0fc67a5763767f2dd8f6d970d2d4589de488e8238bba61adc6e2d83b99f5dc99",
+    "delta_persistent_state": 0,
+    "identical": true
+  },
+  "stage_g_degree_hub": {
+    "digest_before": "0fc67a5763767f2dd8f6d970d2d4589de488e8238bba61adc6e2d83b99f5dc99",
+    "digest_after": "0fc67a5763767f2dd8f6d970d2d4589de488e8238bba61adc6e2d83b99f5dc99",
+    "delta_persistent_state": 0,
+    "identical": true
+  },
+  "stage_h_lesr": {
+    "digest_before": "0fc67a5763767f2dd8f6d970d2d4589de488e8238bba61adc6e2d83b99f5dc99",
+    "digest_after": "0fc67a5763767f2dd8f6d970d2d4589de488e8238bba61adc6e2d83b99f5dc99",
+    "delta_persistent_state": 0,
+    "identical": true
+  },
+  "stage_i_igsv_provenance": {
+    "digest_before": "0fc67a5763767f2dd8f6d970d2d4589de488e8238bba61adc6e2d83b99f5dc99",
+    "digest_after": "0fc67a5763767f2dd8f6d970d2d4589de488e8238bba61adc6e2d83b99f5dc99",
+    "delta_persistent_state": 0,
+    "identical": true
+  },
+  "stage_j_sequence_utilization": {
+    "digest_before": "0fc67a5763767f2dd8f6d970d2d4589de488e8238bba61adc6e2d83b99f5dc99",
+    "digest_after": "0fc67a5763767f2dd8f6d970d2d4589de488e8238bba61adc6e2d83b99f5dc99",
+    "delta_persistent_state": 0,
+    "identical": true
+  },
+  "stage_k_ood_commitment": {
+    "digest_before": "0fc67a5763767f2dd8f6d970d2d4589de488e8238bba61adc6e2d83b99f5dc99",
+    "digest_after": "0fc67a5763767f2dd8f6d970d2d4589de488e8238bba61adc6e2d83b99f5dc99",
+    "delta_persistent_state": 0,
+    "identical": true
+  },
+  "stage_l_reverse_retrieval": {
+    "digest_before": "0fc67a5763767f2dd8f6d970d2d4589de488e8238bba61adc6e2d83b99f5dc99",
+    "digest_after": "0fc67a5763767f2dd8f6d970d2d4589de488e8238bba61adc6e2d83b99f5dc99",
+    "delta_persistent_state": 0,
+    "identical": true
+  },
+  "step_19_all_ablations": {
+    "digest_before": "0fc67a5763767f2dd8f6d970d2d4589de488e8238bba61adc6e2d83b99f5dc99",
+    "digest_after": "0fc67a5763767f2dd8f6d970d2d4589de488e8238bba61adc6e2d83b99f5dc99",
+    "delta_persistent_state": 0,
+    "identical": true
+  },
+  "post_investigation_final": {
+    "digest_before": "0fc67a5763767f2dd8f6d970d2d4589de488e8238bba61adc6e2d83b99f5dc99",
+    "digest_after": "0fc67a5763767f2dd8f6d970d2d4589de488e8238bba61adc6e2d83b99f5dc99",
+    "delta_persistent_state": 0,
+    "identical": true
+  }
+}

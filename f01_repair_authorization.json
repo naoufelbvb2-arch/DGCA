@@ -1,0 +1,10 @@
+{
+  "authorized_repair_class": "R-A RETRIEVAL_SPECIFICITY_REPAIR",
+  "repair_target": "Earliest information-loss stage: SPECIFICITY_PROVENANCE & RETRIEVAL SPECIFICITY",
+  "forbidden_repair_actions": [
+    "Reopening Audio Encoder v2 without representation failure proof",
+    "Inventing phoneme or speaker primitives",
+    "Modifying learning laws or adding backprop"
+  ],
+  "status": "AUTHORIZED_FOR_FUTURE_REPAIR_TRIAL"
+}

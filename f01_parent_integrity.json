@@ -1,0 +1,15 @@
+{
+  "parent_commit": "7e43974",
+  "parent_manifest_sha256": "41658084f09148e4c086c7b00eb626eaa13c65113c4c769a74be214c99a81ff7",
+  "parent_manifest_sha256_match": true,
+  "parent_behavioral_digest": "abef5a931451bddb87c1492a928fc2d635f01ab89f22f066de1c58b63a65bddc",
+  "parent_behavioral_digest_match": true,
+  "historical_cognitive_signature": "915119d40643cb97",
+  "historical_cognitive_signature_match": true,
+  "parent_heldout_reproduced": true,
+  "parent_reverse_reproduced": true,
+  "parent_ood_reproduced": true,
+  "parent_permutation_reproduced": true,
+  "parent_verdict": "AUDIO_TEXT_GROUNDING_FAILED",
+  "precheck_status": "PASS"
+}

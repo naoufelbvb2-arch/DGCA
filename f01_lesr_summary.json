@@ -1,0 +1,7 @@
+{
+  "total_evidence_nodes_audited": 64,
+  "conservation_violations": 0,
+  "mass_conservation_satisfied": true,
+  "lesr_finding": "LESR_GENERICITY_UNDERSUPPRESSION",
+  "rationale": "LESR correctly conserves mass across connected concepts, but because generic ERB bands connect uniformly to all 10 concepts, each concept receives identical non-zero baseline support (1/10), allowing hub/multiplicity accumulation to dominate."
+}

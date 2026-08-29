@@ -1,0 +1,10 @@
+{"concept_code": "C00", "concept_word": "bird", "outcome": "AMBIGUOUS", "winner": null, "top_candidates_count": 16, "ambiguity_cause": "Shared low-frequency ERB bands (e.g. aud:band:0, aud:band:1) have identical connection strength across multiple words."}
+{"concept_code": "C01", "concept_word": "cat", "outcome": "WINNER", "winner": "aud:band:0", "top_candidates_count": 16, "ambiguity_cause": "None"}
+{"concept_code": "C02", "concept_word": "dog", "outcome": "AMBIGUOUS", "winner": null, "top_candidates_count": 16, "ambiguity_cause": "Shared low-frequency ERB bands (e.g. aud:band:0, aud:band:1) have identical connection strength across multiple words."}
+{"concept_code": "C03", "concept_word": "tree", "outcome": "WINNER", "winner": "aud:band:0", "top_candidates_count": 16, "ambiguity_cause": "None"}
+{"concept_code": "C04", "concept_word": "bed", "outcome": "AMBIGUOUS", "winner": null, "top_candidates_count": 16, "ambiguity_cause": "Shared low-frequency ERB bands (e.g. aud:band:0, aud:band:1) have identical connection strength across multiple words."}
+{"concept_code": "C05", "concept_word": "house", "outcome": "WINNER", "winner": "aud:band:0", "top_candidates_count": 14, "ambiguity_cause": "None"}
+{"concept_code": "C06", "concept_word": "no", "outcome": "AMBIGUOUS", "winner": null, "top_candidates_count": 21, "ambiguity_cause": "Shared low-frequency ERB bands (e.g. aud:band:0, aud:band:1) have identical connection strength across multiple words."}
+{"concept_code": "C07", "concept_word": "go", "outcome": "WINNER", "winner": "aud:band:1", "top_candidates_count": 16, "ambiguity_cause": "None"}
+{"concept_code": "C08", "concept_word": "on", "outcome": "AMBIGUOUS", "winner": null, "top_candidates_count": 17, "ambiguity_cause": "Shared low-frequency ERB bands (e.g. aud:band:0, aud:band:1) have identical connection strength across multiple words."}
+{"concept_code": "C09", "concept_word": "off", "outcome": "AMBIGUOUS", "winner": null, "top_candidates_count": 17, "ambiguity_cause": "Shared low-frequency ERB bands (e.g. aud:band:0, aud:band:1) have identical connection strength across multiple words."}

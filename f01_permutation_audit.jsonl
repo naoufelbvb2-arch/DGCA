@@ -1,0 +1,8 @@
+{"trial_id": "ATG01-H-C00-01", "acoustic_word": "bird", "permuted_target": "cat", "winner": null, "permuted_correct": false, "natural_dominant": false, "generic_evidence_dominant": true}
+{"trial_id": "ATG01-H-C01-01", "acoustic_word": "cat", "permuted_target": "dog", "winner": "tree", "permuted_correct": false, "natural_dominant": false, "generic_evidence_dominant": true}
+{"trial_id": "ATG01-H-C02-01", "acoustic_word": "dog", "permuted_target": "tree", "winner": "dog", "permuted_correct": false, "natural_dominant": true, "generic_evidence_dominant": true}
+{"trial_id": "ATG01-H-C03-01", "acoustic_word": "tree", "permuted_target": "bird", "winner": "bird", "permuted_correct": true, "natural_dominant": false, "generic_evidence_dominant": true}
+{"trial_id": "ATG01-H-C00-02", "acoustic_word": "bird", "permuted_target": "cat", "winner": null, "permuted_correct": false, "natural_dominant": false, "generic_evidence_dominant": true}
+{"trial_id": "ATG01-H-C01-02", "acoustic_word": "cat", "permuted_target": "dog", "winner": null, "permuted_correct": false, "natural_dominant": false, "generic_evidence_dominant": true}
+{"trial_id": "ATG01-H-C02-02", "acoustic_word": "dog", "permuted_target": "tree", "winner": "bird", "permuted_correct": false, "natural_dominant": false, "generic_evidence_dominant": true}
+{"trial_id": "ATG01-H-C03-02", "acoustic_word": "tree", "permuted_target": "bird", "winner": null, "permuted_correct": false, "natural_dominant": false, "generic_evidence_dominant": true}

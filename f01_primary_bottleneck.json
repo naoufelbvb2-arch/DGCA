@@ -1,0 +1,10 @@
+{
+  "primary_bottleneck": "AUDITORY_RETRIEVAL_SPECIFICITY_BOTTLENECK",
+  "earliest_information_loss_stage": "SPECIFICITY_PROVENANCE",
+  "secondary_bottlenecks": [
+    "AUDITORY_SEQUENCE_UTILIZATION_BOTTLENECK",
+    "AUDITORY_ABSTENTION_BOTTLENECK"
+  ],
+  "b4_generic_evidence_share": "11/30 (36.7%)",
+  "evidence_summary": "Topological reachability was 100% (20/20) and correct acoustic memory was reinstated for all probes. Loss of target dominance occurs at the cross-modal specificity / ranking stage where high-fanout ERB bands distribute non-specific support equally to all concepts, allowing degree/multiplicity to overwhelm target evidence."
+}

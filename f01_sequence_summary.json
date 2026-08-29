@@ -1,0 +1,6 @@
+{
+  "total_probes_audited": 20,
+  "sequence_utilization_absent_count": 20,
+  "sequence_finding": "SEQUENCE_EVIDENCE_NOT_UTILIZED",
+  "rationale": "AudioSensoryPipelineV2 creates temporal event sequences, but query_cross_modal operates strictly on an unordered bag of descriptor nodes, resulting in 0% sequence contribution to final text concept scores."
+}

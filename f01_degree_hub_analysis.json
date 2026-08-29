@@ -1,0 +1,46 @@
+{
+  "concept_degrees": {
+    "bird": {
+      "degree": 32,
+      "cross_modal_edges": 32
+    },
+    "cat": {
+      "degree": 32,
+      "cross_modal_edges": 32
+    },
+    "dog": {
+      "degree": 32,
+      "cross_modal_edges": 32
+    },
+    "tree": {
+      "degree": 32,
+      "cross_modal_edges": 32
+    },
+    "bed": {
+      "degree": 32,
+      "cross_modal_edges": 32
+    },
+    "house": {
+      "degree": 28,
+      "cross_modal_edges": 28
+    },
+    "no": {
+      "degree": 42,
+      "cross_modal_edges": 42
+    },
+    "go": {
+      "degree": 32,
+      "cross_modal_edges": 32
+    },
+    "on": {
+      "degree": 34,
+      "cross_modal_edges": 34
+    },
+    "off": {
+      "degree": 34,
+      "cross_modal_edges": 34
+    }
+  },
+  "spearman_score_degree_correlation": 0.2468,
+  "hub_bias_finding": "PARTIAL"
+}

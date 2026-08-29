@@ -1,0 +1,74 @@
+{
+  "B1": {
+    "name": "REPRESENTATION_GENERALIZATION",
+    "heldout": 2,
+    "ood": 0,
+    "total": 2
+  },
+  "B2": {
+    "name": "SEQUENCE_REINSTATEMENT",
+    "heldout": 0,
+    "ood": 0,
+    "total": 0
+  },
+  "B3": {
+    "name": "CANDIDATE_DISCOVERY",
+    "heldout": 0,
+    "ood": 0,
+    "total": 0
+  },
+  "B4": {
+    "name": "GENERIC_EVIDENCE_DOMINANCE",
+    "heldout": 7,
+    "ood": 4,
+    "total": 11
+  },
+  "B5": {
+    "name": "DEGREE_HUB_BIAS",
+    "heldout": 0,
+    "ood": 0,
+    "total": 0
+  },
+  "B6": {
+    "name": "LESR_LIMITATION",
+    "heldout": 0,
+    "ood": 0,
+    "total": 0
+  },
+  "B7": {
+    "name": "IGSV_PROVENANCE_INDEPENDENCE",
+    "heldout": 0,
+    "ood": 0,
+    "total": 0
+  },
+  "B8": {
+    "name": "SEQUENCE_NOT_UTILIZED",
+    "heldout": 11,
+    "ood": 0,
+    "total": 11
+  },
+  "B9": {
+    "name": "ABSTENTION_COMMITMENT",
+    "heldout": 0,
+    "ood": 5,
+    "total": 5
+  },
+  "B10": {
+    "name": "MULTI_FACTOR",
+    "heldout": 0,
+    "ood": 0,
+    "total": 0
+  },
+  "B11": {
+    "name": "NO_FAILURE",
+    "heldout": 0,
+    "ood": 1,
+    "total": 1
+  },
+  "B12": {
+    "name": "UNKNOWN",
+    "heldout": 0,
+    "ood": 0,
+    "total": 0
+  }
+}

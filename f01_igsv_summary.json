@@ -1,0 +1,8 @@
+{
+  "audited_unit": "descriptor node identity",
+  "audio_provenance_grouping_active": false,
+  "reason": "query_cross_modal only groups tokens starting with 'vis:'. All audio tokens fall into 'other_<token>' and thus receive isolated group weight without sensory channel/event grouping.",
+  "correlated_same_event_overcount": true,
+  "context_recurrence_sound": true,
+  "igsv_finding": "IGSV_PROVENANCE_MISMATCH"
+}

@@ -1,0 +1,42 @@
+{
+  "parent_manifest_sha256": "41658084f09148e4c086c7b00eb626eaa13c65113c4c769a74be214c99a81ff7",
+  "heldout_probes_count": 20,
+  "ood_probes_count": 10,
+  "reverse_probes_count": 10,
+  "permutation_probes_count": 8,
+  "grounding_recordings_count": 40,
+  "heldout_probe_ids": [
+    "ATG01-H-C00-01",
+    "ATG01-H-C01-01",
+    "ATG01-H-C02-01",
+    "ATG01-H-C03-01",
+    "ATG01-H-C04-01",
+    "ATG01-H-C05-01",
+    "ATG01-H-C06-01",
+    "ATG01-H-C07-01",
+    "ATG01-H-C08-01",
+    "ATG01-H-C09-01",
+    "ATG01-H-C00-02",
+    "ATG01-H-C01-02",
+    "ATG01-H-C02-02",
+    "ATG01-H-C03-02",
+    "ATG01-H-C04-02",
+    "ATG01-H-C05-02",
+    "ATG01-H-C06-02",
+    "ATG01-H-C07-02",
+    "ATG01-H-C08-02",
+    "ATG01-H-C09-02"
+  ],
+  "ood_probe_ids": [
+    "ATG01-OOD-O00",
+    "ATG01-OOD-O01",
+    "ATG01-OOD-O02",
+    "ATG01-OOD-O03",
+    "ATG01-OOD-O04",
+    "ATG01-OOD-O05",
+    "ATG01-OOD-O06",
+    "ATG01-OOD-O07",
+    "ATG01-OOD-O08",
+    "ATG01-OOD-O09"
+  ]
+}

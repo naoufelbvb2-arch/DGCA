@@ -1,0 +1,9 @@
+{
+  "primary_g40_digest": "0fc67a5763767f2dd8f6d970d2d4589de488e8238bba61adc6e2d83b99f5dc99",
+  "primary_g40_nodes": 82,
+  "primary_g40_edges": 1231,
+  "permutation_g16_digest": "5a2872470eb587b7fc815f01b15af7869871783bf49aa5439b6ba538049c23b4",
+  "permutation_g16_nodes": 40,
+  "permutation_g16_edges": 494,
+  "status": "EXACT_RESTORATION_VERIFIED"
+}
