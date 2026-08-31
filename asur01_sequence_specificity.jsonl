@@ -1,0 +1,1 @@
+{"probe_key": "ATG01-H-C09-02", "trial_id": "ATG01-H-C09-02", "transition_id": "('aud:band:0', 'aud:band:1', 'aud:band:21', 'aud:energy:FALLING', 'aud:periodicity:P4') -> ('aud:band:0', 'aud:band:1', 'aud:energy:PULSE', 'aud:periodicity:P1')", "SeqLDSR": {}, "differential_mass": 0}

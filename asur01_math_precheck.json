@@ -1,0 +1,14 @@
+{
+  "D01_direction_present_vs_absent": "PASS",
+  "D02_distinct_bidirectional_identities": "PASS",
+  "D03_direction_is_identity": "PASS",
+  "D04_candidate_order_invariance": "PASS",
+  "D05_uniform_transition_null": "PASS",
+  "D06_two_of_ten_equal": "PASS",
+  "D07_unique_of_ten": "PASS",
+  "D08_weak_asymmetry_preserved": "PASS",
+  "D09_no_transition_fallback": "PASS",
+  "D10_single_transition_unit_weight": "PASS",
+  "D11_total_variation_identity": "PASS",
+  "D12_zero_graph_mutation": "PASS"
+}

@@ -1,0 +1,10 @@
+{
+  "total_probes": 38,
+  "probes_with_nonempty_UQ": 1,
+  "mean_unique_transitions_per_query": 0.02631578947368421,
+  "median_unique_transitions_per_query": 0.0,
+  "heldout_correct_concept_sequence_support_count": 0,
+  "heldout_total": 20,
+  "sequence_coverage_gate_passed": false,
+  "rationale": "Single-word utterances segment into single acoustic events, resulting in 0 adjacent inter-event transitions for single-word queries under existing AudioEncoderV2 semantics."
+}

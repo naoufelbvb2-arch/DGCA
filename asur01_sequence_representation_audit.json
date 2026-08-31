@@ -1,0 +1,16 @@
+{
+  "existing_persistent_sequence_relation_class": "DGCA Law 11 observe_sequence / Edge(kind='seq')",
+  "observe_method_used_in_atg01": "observe() [simultaneous pool]",
+  "total_nodes_in_g40": 82,
+  "total_edges_in_g40": 1231,
+  "directional_sequence_edges_count": 0,
+  "association_edges_count": 1016,
+  "similarity_edges_count": 139,
+  "directional_lag_values": [],
+  "endpoint_identity_semantics": "(source_node -> destination_node)",
+  "directionality_semantics": "Strictly directional structural identity",
+  "grounding_context_provenance_available": true,
+  "query_time_ordered_representation_available": true,
+  "audit_finding": "EXISTING_PERSISTENT_AND_QUERY_REPRESENTATIONS_AUDITED",
+  "status": "AUTHORIZED"
+}

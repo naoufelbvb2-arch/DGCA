@@ -1,0 +1,7 @@
+{
+  "E1_heldout_correct_ge_2": "FAIL",
+  "E2_median_correct_rank_le_4": "FAIL",
+  "E3_broad_rank_improvement_ge_6": "FAIL",
+  "E4_permuted_correct_ge_3": "FAIL",
+  "E5_correct_sequence_advantage_ge_6": "FAIL"
+}

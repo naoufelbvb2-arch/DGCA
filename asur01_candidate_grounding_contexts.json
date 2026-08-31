@@ -1,0 +1,62 @@
+{
+  "text:bird": [
+    "ATG01-GCTX-001",
+    "ATG01-GCTX-018",
+    "ATG01-GCTX-025",
+    "ATG01-GCTX-032"
+  ],
+  "text:cat": [
+    "ATG01-GCTX-002",
+    "ATG01-GCTX-019",
+    "ATG01-GCTX-026",
+    "ATG01-GCTX-033"
+  ],
+  "text:dog": [
+    "ATG01-GCTX-003",
+    "ATG01-GCTX-020",
+    "ATG01-GCTX-027",
+    "ATG01-GCTX-034"
+  ],
+  "text:tree": [
+    "ATG01-GCTX-004",
+    "ATG01-GCTX-011",
+    "ATG01-GCTX-028",
+    "ATG01-GCTX-035"
+  ],
+  "text:bed": [
+    "ATG01-GCTX-005",
+    "ATG01-GCTX-012",
+    "ATG01-GCTX-029",
+    "ATG01-GCTX-036"
+  ],
+  "text:house": [
+    "ATG01-GCTX-006",
+    "ATG01-GCTX-013",
+    "ATG01-GCTX-030",
+    "ATG01-GCTX-037"
+  ],
+  "text:no": [
+    "ATG01-GCTX-007",
+    "ATG01-GCTX-014",
+    "ATG01-GCTX-021",
+    "ATG01-GCTX-038"
+  ],
+  "text:go": [
+    "ATG01-GCTX-008",
+    "ATG01-GCTX-015",
+    "ATG01-GCTX-022",
+    "ATG01-GCTX-039"
+  ],
+  "text:on": [
+    "ATG01-GCTX-009",
+    "ATG01-GCTX-016",
+    "ATG01-GCTX-023",
+    "ATG01-GCTX-040"
+  ],
+  "text:off": [
+    "ATG01-GCTX-010",
+    "ATG01-GCTX-017",
+    "ATG01-GCTX-024",
+    "ATG01-GCTX-031"
+  ]
+}

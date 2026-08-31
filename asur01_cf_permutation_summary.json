@@ -1,0 +1,8 @@
+{
+  "permutation_probes_count": 8,
+  "permuted_target_correct": 1,
+  "natural_target_dominant": 1,
+  "category_coverage": 1,
+  "s3_natural_dominant_le_1": true,
+  "e4_permuted_correct_ge_3": false
+}

@@ -1,0 +1,38 @@
+{"probe_key": "ATG01-H-C00-01", "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"], "N_Q": 10}
+{"probe_key": "ATG01-H-C01-01", "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on"], "N_Q": 9}
+{"probe_key": "ATG01-H-C02-01", "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"], "N_Q": 10}
+{"probe_key": "ATG01-H-C03-01", "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"], "N_Q": 10}
+{"probe_key": "ATG01-H-C04-01", "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:on", "text:tree"], "N_Q": 8}
+{"probe_key": "ATG01-H-C05-01", "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"], "N_Q": 10}
+{"probe_key": "ATG01-H-C06-01", "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"], "N_Q": 10}
+{"probe_key": "ATG01-H-C07-01", "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"], "N_Q": 10}
+{"probe_key": "ATG01-H-C08-01", "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:on", "text:tree"], "N_Q": 9}
+{"probe_key": "ATG01-H-C09-01", "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"], "N_Q": 10}
+{"probe_key": "ATG01-H-C00-02", "C_Q": ["text:bed", "text:cat", "text:go", "text:no", "text:off", "text:on", "text:tree"], "N_Q": 7}
+{"probe_key": "ATG01-H-C01-02", "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off"], "N_Q": 8}
+{"probe_key": "ATG01-H-C02-02", "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"], "N_Q": 10}
+{"probe_key": "ATG01-H-C03-02", "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:on", "text:tree"], "N_Q": 9}
+{"probe_key": "ATG01-H-C04-02", "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:no", "text:off", "text:on", "text:tree"], "N_Q": 9}
+{"probe_key": "ATG01-H-C05-02", "C_Q": ["text:cat", "text:on", "text:tree"], "N_Q": 3}
+{"probe_key": "ATG01-H-C06-02", "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"], "N_Q": 10}
+{"probe_key": "ATG01-H-C07-02", "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"], "N_Q": 10}
+{"probe_key": "ATG01-H-C08-02", "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"], "N_Q": 10}
+{"probe_key": "ATG01-H-C09-02", "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"], "N_Q": 10}
+{"probe_key": "ATG01-OOD-O00", "C_Q": ["text:bed", "text:bird", "text:dog", "text:go", "text:no", "text:off", "text:on", "text:tree"], "N_Q": 8}
+{"probe_key": "ATG01-OOD-O01", "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off"], "N_Q": 8}
+{"probe_key": "ATG01-OOD-O02", "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"], "N_Q": 10}
+{"probe_key": "ATG01-OOD-O03", "C_Q": ["text:bed", "text:bird", "text:dog", "text:go", "text:no", "text:off", "text:on", "text:tree"], "N_Q": 8}
+{"probe_key": "ATG01-OOD-O04", "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:tree"], "N_Q": 8}
+{"probe_key": "ATG01-OOD-O05", "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on", "text:tree"], "N_Q": 10}
+{"probe_key": "ATG01-OOD-O06", "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:tree"], "N_Q": 9}
+{"probe_key": "ATG01-OOD-O07", "C_Q": ["text:bed", "text:bird", "text:cat", "text:dog", "text:go", "text:house", "text:no", "text:off", "text:on"], "N_Q": 9}
+{"probe_key": "ATG01-OOD-O08", "C_Q": ["text:no", "text:on"], "N_Q": 2}
+{"probe_key": "ATG01-OOD-O09", "C_Q": ["text:bed", "text:bird", "text:dog", "text:go", "text:no", "text:off", "text:on"], "N_Q": 7}
+{"probe_key": "PERM-ATG01-H-C00-01", "C_Q": ["text:cat", "text:tree"], "N_Q": 2}
+{"probe_key": "PERM-ATG01-H-C01-01", "C_Q": ["text:cat", "text:dog", "text:tree"], "N_Q": 3}
+{"probe_key": "PERM-ATG01-H-C02-01", "C_Q": ["text:dog"], "N_Q": 1}
+{"probe_key": "PERM-ATG01-H-C03-01", "C_Q": ["text:bird", "text:dog", "text:tree"], "N_Q": 3}
+{"probe_key": "PERM-ATG01-H-C00-02", "C_Q": ["text:cat", "text:tree"], "N_Q": 2}
+{"probe_key": "PERM-ATG01-H-C01-02", "C_Q": ["text:cat", "text:tree"], "N_Q": 2}
+{"probe_key": "PERM-ATG01-H-C02-02", "C_Q": ["text:bird", "text:cat", "text:dog", "text:tree"], "N_Q": 4}
+{"probe_key": "PERM-ATG01-H-C03-02", "C_Q": ["text:bird", "text:dog", "text:tree"], "N_Q": 3}

@@ -1,0 +1,18 @@
+{
+  "heldout_probes_count": 20,
+  "parent_correct": 0,
+  "simulated_correct": 0,
+  "parent_wrong": 19,
+  "simulated_wrong": 19,
+  "parent_ambiguous": 1,
+  "simulated_ambiguous": 1,
+  "parent_median_rank": 5.0,
+  "simulated_median_rank": 5.0,
+  "ranks_improved": 0,
+  "ranks_unchanged": 20,
+  "ranks_worsened": 0,
+  "ranks_worsened_by_gt_1": 0,
+  "correct_sequence_contribution_gt_0": 0,
+  "correct_sequence_advantage_over_wrong_winner": 0,
+  "concepts_with_ge_1_correct": 0
+}

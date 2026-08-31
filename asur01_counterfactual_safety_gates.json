@@ -1,0 +1,11 @@
+{
+  "S1_candidate_discovery_unchanged": "PASS",
+  "S2_zero_persistent_mutation": "PASS",
+  "S3_permutation_natural_dominant_le_1": "PASS",
+  "S4_base_outcomes_reproduced_38_of_38": "PASS",
+  "S5_no_double_counting_or_path_multiplicity": "PASS",
+  "S6_directionality_adversarial_tests": "PASS",
+  "S7_no_transition_fallback_exact": "PASS",
+  "S8_bounded_budget_proofs_pass": "PASS",
+  "S9_ood_forced_le_9": "PASS"
+}

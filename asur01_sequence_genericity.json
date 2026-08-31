@@ -1,0 +1,9 @@
+{
+  "fanout_distribution": {
+    "GLOBAL": 0,
+    "HIGH_SHARED": 0,
+    "MID_SHARED": 0,
+    "LOW_SHARED": 0,
+    "SPECIFIC": 0
+  }
+}
