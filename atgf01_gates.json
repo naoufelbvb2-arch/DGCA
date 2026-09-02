@@ -1,0 +1,119 @@
+{
+  "all_gates_pass": true,
+  "pass_count": 28,
+  "total_count": 28,
+  "gates": {
+    "ATGF01-G01": {
+      "desc": "Parent lineage verified",
+      "passed": true
+    },
+    "ATGF01-G02": {
+      "desc": "Manifest/data identity verified",
+      "passed": true
+    },
+    "ATGF01-G03": {
+      "desc": "Audio v2 source unchanged",
+      "passed": true
+    },
+    "ATGF01-G04": {
+      "desc": "Read-only guards PASS",
+      "passed": true
+    },
+    "ATGF01-G05": {
+      "desc": "68/70 single-event finding reproduced",
+      "passed": true
+    },
+    "ATGF01-G06": {
+      "desc": "Frame inventory complete",
+      "passed": true
+    },
+    "ATGF01-G07": {
+      "desc": "Event aggregation telemetry complete",
+      "passed": true
+    },
+    "ATGF01-G08": {
+      "desc": "EA-PRECOMPRESSION + descriptor compression audit complete",
+      "passed": true
+    },
+    "ATGF01-G09": {
+      "desc": "AudioTemporalIR audit complete",
+      "passed": true
+    },
+    "ATGF01-G10": {
+      "desc": "Graph-facing acoustic-only audit complete",
+      "passed": true
+    },
+    "ATGF01-G11": {
+      "desc": "P2 extraction complete",
+      "passed": true
+    },
+    "ATGF01-G12": {
+      "desc": "P4 extraction complete",
+      "passed": true
+    },
+    "ATGF01-G13": {
+      "desc": "P8 extraction complete",
+      "passed": true
+    },
+    "ATGF01-G14": {
+      "desc": "Ordered matrices complete with empty-block exclusion",
+      "passed": true
+    },
+    "ATGF01-G15": {
+      "desc": "Bag matrices complete",
+      "passed": true
+    },
+    "ATGF01-G16": {
+      "desc": "Reversal matrices complete",
+      "passed": true
+    },
+    "ATGF01-G17": {
+      "desc": "Shuffle matrices complete; P2 degeneracy recorded",
+      "passed": true
+    },
+    "ATGF01-G18": {
+      "desc": "Same-word/different-word matrices complete",
+      "passed": true
+    },
+    "ATGF01-G19": {
+      "desc": "Speaker isolation verified",
+      "passed": true
+    },
+    "ATGF01-G20": {
+      "desc": "Stage classifications complete 20/20",
+      "passed": true
+    },
+    "ATGF01-G21": {
+      "desc": "Frame temporal-signal criterion evaluated",
+      "passed": true
+    },
+    "ATGF01-G22": {
+      "desc": "Aggregation-vs-compression separation evaluated",
+      "passed": true
+    },
+    "ATGF01-G23": {
+      "desc": "Frontend-failure criterion evaluated",
+      "passed": true
+    },
+    "ATGF01-G24": {
+      "desc": "IR/persistence loss criteria evaluated",
+      "passed": true
+    },
+    "ATGF01-G25": {
+      "desc": "Exactly one earliest-loss verdict",
+      "passed": true
+    },
+    "ATGF01-G26": {
+      "desc": "Exactly one reopening decision",
+      "passed": true
+    },
+    "ATGF01-G27": {
+      "desc": "36/36 invariants + 36/36 forbidden PASS",
+      "passed": true
+    },
+    "ATGF01-G28": {
+      "desc": "Historical signature MATCH + regression untouched",
+      "passed": true
+    }
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "numeric_tolerance": 1e-12,
+  "policy": "FIXED_ATGF01_CANONICAL",
+  "status": "PASS"
+}

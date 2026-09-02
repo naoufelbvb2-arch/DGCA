@@ -1,0 +1,13 @@
+{
+  "execution_mode": "STRICT_READ_ONLY_FORENSIC",
+  "audio_encoder_source_path": "dgca\\audio_v2.py",
+  "audio_encoder_source_sha256": "cc0aae26d8473b6800a028e51ac8017c19cbad1917a22ade1973784f48ab90ba",
+  "audio_encoder_source_changes": 0,
+  "retrieval_source_path": "dgca\\graph.py",
+  "retrieval_source_sha256": "0bf319ba74b4e25554a242e6be91a41d4c17f981f64e7f171f6885d1112d7c99",
+  "retrieval_source_changes": 0,
+  "grounding_source_changes": 0,
+  "graph_mutation": 0,
+  "historical_signature": "915119d40643cb97",
+  "status": "PASS"
+}

@@ -1,0 +1,20 @@
+{
+  "total_items": 70,
+  "single_event_items_count": 68,
+  "multi_event_items_count": 2,
+  "expected_single_event_count": 68,
+  "single_event_reproduction_pass": true,
+  "non_single_event_items": [
+    {
+      "trial_id": "ATG01-G-C06-R3",
+      "role": "GROUNDING",
+      "num_events": 3
+    },
+    {
+      "trial_id": "ATG01-H-C09-02",
+      "role": "HELDOUT",
+      "num_events": 2
+    }
+  ],
+  "status": "PASS"
+}

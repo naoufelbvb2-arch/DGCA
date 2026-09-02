@@ -1,0 +1,10 @@
+{
+  "total_recordings": 70,
+  "total_frames_extracted": 13552,
+  "total_valid_frames": 13500,
+  "mean_frames_per_recording": 193.6,
+  "mean_valid_frames_per_recording": 192.86,
+  "distinct_descriptors_observed": 30,
+  "inventory_complete": true,
+  "status": "PASS"
+}

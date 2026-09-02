@@ -1,0 +1,16 @@
+{
+  "frame_temporal_signal": "DEMONSTRATED",
+  "satisfying_partitions": [
+    "P2",
+    "P4",
+    "P8"
+  ],
+  "event_aggregation_loss": "DEMONSTRATED",
+  "event_descriptor_compression_loss": "DEMONSTRATED",
+  "audiotemporal_ir_loss": "NOT_DEMONSTRATED",
+  "graph_persistence_loss": "NOT_DEMONSTRATED",
+  "earliest_information_loss_stage": "EVENT_AGGREGATION",
+  "pipeline_priority_applied": "FRONTEND_FRAME_REPRESENTATION -> EVENT_AGGREGATION -> EVENT_DESCRIPTOR_COMPRESSION -> AUDIOTEMPORAL_IR -> GRAPH_PERSISTENCE",
+  "causal_rationale": "Intra-word temporal order is present at the frame level across P2/P4/P8, but is collapsed into a single event at EVENT_AGGREGATION (68/70 Speech Commands items have num_events == 1). Downstream descriptor compression further degrades acoustic specificity, but intra-word temporal order was already eliminated at EVENT_AGGREGATION.",
+  "status": "PASS"
+}

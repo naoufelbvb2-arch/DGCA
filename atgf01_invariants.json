@@ -1,0 +1,151 @@
+{
+  "all_invariants_pass": true,
+  "pass_count": 36,
+  "total_count": 36,
+  "invariants": {
+    "ATGF01-INV-01": {
+      "desc": "Parent lineage exact",
+      "passed": true
+    },
+    "ATGF01-INV-02": {
+      "desc": "Parent data unchanged",
+      "passed": true
+    },
+    "ATGF01-INV-03": {
+      "desc": "Audio Encoder source unchanged",
+      "passed": true
+    },
+    "ATGF01-INV-04": {
+      "desc": "Retrieval source unchanged",
+      "passed": true
+    },
+    "ATGF01-INV-05": {
+      "desc": "Grounding unchanged",
+      "passed": true
+    },
+    "ATGF01-INV-06": {
+      "desc": "Graph mutation zero",
+      "passed": true
+    },
+    "ATGF01-INV-07": {
+      "desc": "No new persistent state",
+      "passed": true
+    },
+    "ATGF01-INV-08": {
+      "desc": "No new Law",
+      "passed": true
+    },
+    "ATGF01-INV-09": {
+      "desc": "No learned scalar",
+      "passed": true
+    },
+    "ATGF01-INV-10": {
+      "desc": "No semantic labels enter representation",
+      "passed": true
+    },
+    "ATGF01-INV-11": {
+      "desc": "Held-out speakers isolated",
+      "passed": true
+    },
+    "ATGF01-INV-12": {
+      "desc": "Current frame stream used exactly",
+      "passed": true
+    },
+    "ATGF01-INV-13": {
+      "desc": "Current event representation reproduced",
+      "passed": true
+    },
+    "ATGF01-INV-14": {
+      "desc": "68/70 single-event finding reproduced",
+      "passed": true
+    },
+    "ATGF01-INV-15": {
+      "desc": "P2 fixed",
+      "passed": true
+    },
+    "ATGF01-INV-16": {
+      "desc": "P4 fixed",
+      "passed": true
+    },
+    "ATGF01-INV-17": {
+      "desc": "P8 fixed",
+      "passed": true
+    },
+    "ATGF01-INV-18": {
+      "desc": "No adaptive segmentation",
+      "passed": true
+    },
+    "ATGF01-INV-19": {
+      "desc": "Ordered comparison deterministic",
+      "passed": true
+    },
+    "ATGF01-INV-20": {
+      "desc": "Bag control deterministic and EMPTY_EMPTY contributes no lexical mass",
+      "passed": true
+    },
+    "ATGF01-INV-21": {
+      "desc": "Reversal control deterministic",
+      "passed": true
+    },
+    "ATGF01-INV-22": {
+      "desc": "Shuffle fixed; P2 degeneracy recorded",
+      "passed": true
+    },
+    "ATGF01-INV-23": {
+      "desc": "No external alignment",
+      "passed": true
+    },
+    "ATGF01-INV-24": {
+      "desc": "No external feature extractor",
+      "passed": true
+    },
+    "ATGF01-INV-25": {
+      "desc": "No phoneme semantics",
+      "passed": true
+    },
+    "ATGF01-INV-26": {
+      "desc": "Similarity formula and common acoustic-only projection fixed",
+      "passed": true
+    },
+    "ATGF01-INV-27": {
+      "desc": "No partition selected as repair",
+      "passed": true
+    },
+    "ATGF01-INV-28": {
+      "desc": "20/20 primary probes retained",
+      "passed": true
+    },
+    "ATGF01-INV-29": {
+      "desc": "10/10 OOD controls retained",
+      "passed": true
+    },
+    "ATGF01-INV-30": {
+      "desc": "Stage classification separates EA-PRECOMPRESSION and compressed event",
+      "passed": true
+    },
+    "ATGF01-INV-31": {
+      "desc": "Earliest-loss rule obeyed",
+      "passed": true
+    },
+    "ATGF01-INV-32": {
+      "desc": "No post-hoc threshold tuning",
+      "passed": true
+    },
+    "ATGF01-INV-33": {
+      "desc": "No source replacement",
+      "passed": true
+    },
+    "ATGF01-INV-34": {
+      "desc": "Failures retained",
+      "passed": true
+    },
+    "ATGF01-INV-35": {
+      "desc": "Scientific conclusion bounded",
+      "passed": true
+    },
+    "ATGF01-INV-36": {
+      "desc": "Historical signature MATCH",
+      "passed": true
+    }
+  }
+}

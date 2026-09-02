@@ -1,0 +1,187 @@
+{
+  "all_forbidden_passed": true,
+  "passed_count": 36,
+  "total_count": 36,
+  "checks": {
+    "F_01": {
+      "desc": "Audio Encoder modification",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_02": {
+      "desc": "Retrieval modification",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_03": {
+      "desc": "Grounding modification",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_04": {
+      "desc": "Graph learning",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_05": {
+      "desc": "New persistent field",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_06": {
+      "desc": "New primitive",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_07": {
+      "desc": "New Law",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_08": {
+      "desc": "New threshold",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_09": {
+      "desc": "Threshold tuning",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_10": {
+      "desc": "Learned segmentation",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_11": {
+      "desc": "Adaptive block boundaries",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_12": {
+      "desc": "Label-dependent partition",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_13": {
+      "desc": "Concept-specific transformation",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_14": {
+      "desc": "Speaker embedding",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_15": {
+      "desc": "ASR",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_16": {
+      "desc": "Phoneme model",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_17": {
+      "desc": "Forced alignment",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_18": {
+      "desc": "DTW",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_19": {
+      "desc": "Edit distance classifier",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_20": {
+      "desc": "LCS classifier",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_21": {
+      "desc": "Template matching",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_22": {
+      "desc": "Wav2vec/HuBERT/Whisper",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_23": {
+      "desc": "MFCC classifier",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_24": {
+      "desc": "New audio feature extractor",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_25": {
+      "desc": "Data augmentation",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_26": {
+      "desc": "New recordings",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_27": {
+      "desc": "Synthetic speech",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_28": {
+      "desc": "Same-speaker shortcut",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_29": {
+      "desc": "Probe exclusion",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_30": {
+      "desc": "Best-of-partition cherry-picking",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_31": {
+      "desc": "Best-of-shuffle cherry-picking or treating P2 reversal as independent shuffle",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_32": {
+      "desc": "Post-hoc numeric tolerance change",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_33": {
+      "desc": "Event-threshold modification",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_34": {
+      "desc": "Persistent frame-block creation or lexical/cross-modal stage leakage",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_35": {
+      "desc": "Repair implementation",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_36": {
+      "desc": "Claiming phoneme/syllable discovery",
+      "prohibited": true,
+      "violated": false
+    }
+  }
+}

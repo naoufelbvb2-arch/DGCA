@@ -1,0 +1,10 @@
+{
+  "grounding_speakers_count": 40,
+  "heldout_speakers_count": 20,
+  "ood_speakers_count": 10,
+  "speaker_overlap_count": 0,
+  "speaker_overlap": [],
+  "speaker_metadata_entered_representation": false,
+  "speaker_isolation_passed": true,
+  "status": "PASS"
+}

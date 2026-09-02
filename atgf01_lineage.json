@@ -1,0 +1,20 @@
+{
+  "parent_atg01_commit": "7e43974",
+  "parent_f01_commit": "74f788e",
+  "parent_arsr01_cf_commit": "c3bf4dc",
+  "parent_arsr01_impl_commit": "a26deb5",
+  "expected_manifest_sha256": "41658084f09148e4c086c7b00eb626eaa13c65113c4c769a74be214c99a81ff7",
+  "actual_manifest_sha256": "41658084f09148e4c086c7b00eb626eaa13c65113c4c769a74be214c99a81ff7",
+  "manifest_sha256_match": true,
+  "historical_signature": "915119d40643cb97",
+  "actual_historical_signature": "915119d40643cb97",
+  "historical_signature_match": true,
+  "trial_composition": {
+    "total_items": 70,
+    "grounding_items": 40,
+    "heldout_items": 20,
+    "ood_items": 10,
+    "composition_match": true
+  },
+  "status": "PASS"
+}
