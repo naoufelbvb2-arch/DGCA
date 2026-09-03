@@ -1,0 +1,13 @@
+{
+  "multi_event_heldout": {
+    "val": 20,
+    "threshold": 12,
+    "pass": true
+  },
+  "correct_concept_sequence_support": {
+    "val": 20,
+    "threshold": 10,
+    "pass": true
+  },
+  "all_coverage_gates_pass": true
+}

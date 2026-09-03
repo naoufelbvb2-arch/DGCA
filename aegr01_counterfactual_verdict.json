@@ -1,0 +1,18 @@
+{
+  "final_counterfactual_verdict": "AEGR01_PREIMPLEMENTATION_REJECTED",
+  "implementation_authorized": false,
+  "authorization_conditions": {
+    "1_safety_S1_S16": true,
+    "2_multi_event_heldout": true,
+    "3_sequence_support": true,
+    "4_directional_Q1_Q3": true,
+    "5_outcome_readiness_E1_E2": true,
+    "6_supporting_readiness_E3_E4_E5": false,
+    "7_invariants_36": true,
+    "8_forbidden_36": true
+  },
+  "rejection_reasons": [
+    "6_supporting_readiness_E3_E4_E5"
+  ],
+  "status": "PASS"
+}

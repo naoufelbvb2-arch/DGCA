@@ -1,0 +1,20 @@
+{
+  "all_q_gates_pass": true,
+  "gates": {
+    "Q1": {
+      "desc": "Positive correct sequence evidence >= 10/20",
+      "count": 20,
+      "pass": true
+    },
+    "Q2": {
+      "desc": "Correct sequence advantage >= 6/20",
+      "count": 6,
+      "pass": true
+    },
+    "Q3": {
+      "desc": "Direction sensitivity (D2 reversal penalty) >= 6/20",
+      "count": 16,
+      "pass": true
+    }
+  }
+}

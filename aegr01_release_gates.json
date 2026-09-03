@@ -1,0 +1,119 @@
+{
+  "all_release_gates_pass": false,
+  "pass_count": 27,
+  "total_count": 28,
+  "gates": {
+    "AEGR01-G01": {
+      "desc": "Parent ATGF01 causal verdict and lineage verified",
+      "pass": true
+    },
+    "AEGR01-G02": {
+      "desc": "Frozen Audio v2 constants audited",
+      "pass": true
+    },
+    "AEGR01-G03": {
+      "desc": "Existing 40ms periodicity horizon verified",
+      "pass": true
+    },
+    "AEGR01-G04": {
+      "desc": "B_audio,event=8 verified as descriptor ceiling",
+      "pass": true
+    },
+    "AEGR01-G05": {
+      "desc": "B3 = ExistingTransitionCandidate AND R(t)>0 frozen",
+      "pass": true
+    },
+    "AEGR01-G06": {
+      "desc": "Candidate eligibility frozen",
+      "pass": true
+    },
+    "AEGR01-G07": {
+      "desc": "Regime support construction frozen",
+      "pass": true
+    },
+    "AEGR01-G08": {
+      "desc": "Exact existing transition-candidate semantics frozen",
+      "pass": true
+    },
+    "AEGR01-G09": {
+      "desc": "Anti-chatter/conflict rule frozen",
+      "pass": true
+    },
+    "AEGR01-G10": {
+      "desc": "Boundary timestamp/backdating frozen",
+      "pass": true
+    },
+    "AEGR01-G11": {
+      "desc": "Parent onset/final offset conservation frozen",
+      "pass": true
+    },
+    "AEGR01-G12": {
+      "desc": "Existing compressor conservation frozen",
+      "pass": true
+    },
+    "AEGR01-G13": {
+      "desc": "AudioTemporalIR/Law11 compatibility frozen",
+      "pass": true
+    },
+    "AEGR01-G14": {
+      "desc": "A0 baseline reproduction complete",
+      "pass": true
+    },
+    "AEGR01-G15": {
+      "desc": "Read-only boundary counterfactual complete 70/70",
+      "pass": true
+    },
+    "AEGR01-G16": {
+      "desc": "Structural coverage gates pass",
+      "pass": true
+    },
+    "AEGR01-G17": {
+      "desc": "H-based structural sparsity/event-integrity pass",
+      "pass": true
+    },
+    "AEGR01-G18": {
+      "desc": "Determinism/chunk-equivalence counterfactual pass",
+      "pass": true
+    },
+    "AEGR01-G19": {
+      "desc": "A1 exact isolated replay complete",
+      "pass": true
+    },
+    "AEGR01-G20": {
+      "desc": "D0 sequence-blind + D1 frozen ASUR01 diagnostics complete",
+      "pass": true
+    },
+    "AEGR01-G21": {
+      "desc": "D2 directional reversal diagnostic complete",
+      "pass": true
+    },
+    "AEGR01-G22": {
+      "desc": "Q1\u2013Q3 sequence-readiness directional gates pass",
+      "pass": true
+    },
+    "AEGR01-G23": {
+      "desc": "D1 frozen-ASUR01 outcome readiness E1/E2 pass",
+      "pass": true
+    },
+    "AEGR01-G24": {
+      "desc": "D1 supporting readiness E3/E4/E5 pass",
+      "pass": false
+    },
+    "AEGR01-G25": {
+      "desc": "M0 non-regression controls pass",
+      "pass": true
+    },
+    "AEGR01-G26": {
+      "desc": "SRA01 regression counterfactual complete",
+      "pass": true
+    },
+    "AEGR01-G27": {
+      "desc": "36/36 invariants + 36/36 forbidden PASS",
+      "pass": true
+    },
+    "AEGR01-G28": {
+      "desc": "Historical signature governance + no production mutation PASS",
+      "pass": true
+    }
+  }
+}

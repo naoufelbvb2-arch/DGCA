@@ -1,0 +1,13 @@
+{
+  "description": "Boundary identity anchored to absolute frame-hop index and completed right regime horizon",
+  "tested_chunk_patterns": [
+    "equal_2_chunks",
+    "equal_4_chunks",
+    "irregular_chunks",
+    "small_25ms_chunks"
+  ],
+  "streaming_delayed_commitment_horizon_ms": 20.0,
+  "boundaries_dependent_on_caller_chunks": false,
+  "chunk_equivalence_pass": true,
+  "status": "PASS"
+}

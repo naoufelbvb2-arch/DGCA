@@ -1,0 +1,36 @@
+{
+  "outcome_gates": {
+    "E1": {
+      "desc": "D1 held-out correct >= 2/20",
+      "val": 4,
+      "pass": true
+    },
+    "E2": {
+      "desc": "D1 permuted-target correct >= 3/8",
+      "val": 3,
+      "pass": true
+    }
+  },
+  "at_least_one_outcome_gate_passed": true,
+  "supporting_gates": {
+    "E3": {
+      "desc": "D1 median held-out correct rank <= 4.0",
+      "val": 5.0,
+      "pass": false
+    },
+    "E4": {
+      "desc": "Rank improved >= 6/20 with <= 2 worsening by >1",
+      "improved": 6,
+      "worsened_gt1": 5,
+      "pass": false
+    },
+    "E5": {
+      "desc": "Q2 correct-sequence advantage reaches >= 8/20",
+      "val": 6,
+      "pass": false
+    }
+  },
+  "at_least_one_supporting_gate_passed": false,
+  "efficacy_gates_authorized": false,
+  "status": "FAIL"
+}

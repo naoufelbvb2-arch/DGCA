@@ -1,0 +1,7 @@
+{
+  "audio_temporal_ir_schema_modified": false,
+  "events_are_ordinary_acoustic_events": true,
+  "subword_flag_added": false,
+  "boundary_confidence_field_added": false,
+  "status": "PASS"
+}

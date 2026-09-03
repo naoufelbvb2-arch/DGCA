@@ -1,0 +1,18 @@
+{
+  "combined_novelty_formula": "0.7 * d_spec + 0.3 * d_eng",
+  "combined_novelty_verified": true,
+  "transition_candidate_formula": "D_t >= max(0.25, 2.5 * mu_{t-1})",
+  "transition_candidate_verified": true,
+  "periodicity_horizon_ms": 40.0,
+  "periodicity_horizon_status": "FROZEN_FOR_PERIODICITY_ONLY",
+  "event_refractory_T_ref_ms": 20.0,
+  "regime_horizon_H_ms": 20.0,
+  "regime_horizon_matches_T_ref": true,
+  "event_minimum_ms": 10.0,
+  "event_maximum_ms": 1000.0,
+  "per_event_descriptor_ceiling_B_audio_event": 8,
+  "B_audio_event_is_descriptor_ceiling_only": true,
+  "B_audio_event_is_event_count_budget": false,
+  "event_count_budget_present": false,
+  "status": "PASS"
+}

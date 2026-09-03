@@ -1,0 +1,12 @@
+{
+  "description": "Simulation of AEGR01 event boundary formation across SRA01 speech, environmental, ambient, and mixture assets",
+  "silence_fabrication_checked": true,
+  "fabricated_silence_events": 0,
+  "deterministic_replay_verified": true,
+  "all_items_obey_derived_bound": true,
+  "all_items_obey_20ms_separation": true,
+  "previously_distinguishable_order_probes_distinguishable": true,
+  "mixture_evidence_catastrophic_regression": false,
+  "sra01_regression_verdict": "PASS",
+  "status": "PASS"
+}

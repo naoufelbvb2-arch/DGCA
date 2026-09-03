@@ -1,0 +1,7 @@
+{
+  "total_ood": 10,
+  "forced": 10,
+  "ambiguous": 0,
+  "no_catastrophic_collapse": true,
+  "status": "PASS"
+}

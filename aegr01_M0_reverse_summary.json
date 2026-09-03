@@ -1,0 +1,8 @@
+{
+  "total_reverse_probes": 10,
+  "own": 1,
+  "wrong": 0,
+  "ambiguous": 9,
+  "wrong_dominant_eq_0": true,
+  "status": "PASS"
+}

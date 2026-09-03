@@ -1,0 +1,8 @@
+{
+  "heldout_probes_total": 20,
+  "heldout_with_nonempty_transitions": 20,
+  "correct_concept_sequence_support_count": 20,
+  "correct_concept_sequence_support_required": 10,
+  "correct_concept_sequence_support_gate_passed": true,
+  "status": "PASS"
+}

@@ -1,0 +1,151 @@
+{
+  "all_invariants_pass": true,
+  "pass_count": 36,
+  "total_count": 36,
+  "invariants": {
+    "AEGR01-INV-01": {
+      "desc": "ERB frontend unchanged",
+      "pass": true
+    },
+    "AEGR01-INV-02": {
+      "desc": "IHC unchanged",
+      "pass": true
+    },
+    "AEGR01-INV-03": {
+      "desc": "Adaptation unchanged",
+      "pass": true
+    },
+    "AEGR01-INV-04": {
+      "desc": "Frame width/hop/phase unchanged",
+      "pass": true
+    },
+    "AEGR01-INV-05": {
+      "desc": "Frame descriptor identities unchanged",
+      "pass": true
+    },
+    "AEGR01-INV-06": {
+      "desc": "Existing novelty computation unchanged",
+      "pass": true
+    },
+    "AEGR01-INV-07": {
+      "desc": "Periodicity unchanged",
+      "pass": true
+    },
+    "AEGR01-INV-08": {
+      "desc": "Energy evidence unchanged",
+      "pass": true
+    },
+    "AEGR01-INV-09": {
+      "desc": "Only event granularity reopened",
+      "pass": true
+    },
+    "AEGR01-INV-10": {
+      "desc": "Onset semantics unchanged",
+      "pass": true
+    },
+    "AEGR01-INV-11": {
+      "desc": "Final offset semantics unchanged",
+      "pass": true
+    },
+    "AEGR01-INV-12": {
+      "desc": "Descriptor compression unchanged",
+      "pass": true
+    },
+    "AEGR01-INV-13": {
+      "desc": "AudioTemporalIR schema unchanged",
+      "pass": true
+    },
+    "AEGR01-INV-14": {
+      "desc": "Graph persistence schema unchanged",
+      "pass": true
+    },
+    "AEGR01-INV-15": {
+      "desc": "Grounding unchanged",
+      "pass": true
+    },
+    "AEGR01-INV-16": {
+      "desc": "Retrieval unchanged",
+      "pass": true
+    },
+    "AEGR01-INV-17": {
+      "desc": "Law 11 unchanged",
+      "pass": true
+    },
+    "AEGR01-INV-18": {
+      "desc": "No new persistent primitive",
+      "pass": true
+    },
+    "AEGR01-INV-19": {
+      "desc": "No new persistent field",
+      "pass": true
+    },
+    "AEGR01-INV-20": {
+      "desc": "No new Law",
+      "pass": true
+    },
+    "AEGR01-INV-21": {
+      "desc": "No new learned/hand-tuned threshold or scalar",
+      "pass": true
+    },
+    "AEGR01-INV-22": {
+      "desc": "No semantic label in boundary formation",
+      "pass": true
+    },
+    "AEGR01-INV-23": {
+      "desc": "No speaker identity in boundary formation",
+      "pass": true
+    },
+    "AEGR01-INV-24": {
+      "desc": "P2/P4/P8 not used as production segmentation",
+      "pass": true
+    },
+    "AEGR01-INV-25": {
+      "desc": "H=T_ref=20ms uses frozen event-boundary semantics",
+      "pass": true
+    },
+    "AEGR01-INV-26": {
+      "desc": "B_audio,event=8 remains descriptor ceiling only",
+      "pass": true
+    },
+    "AEGR01-INV-27": {
+      "desc": "No empty/fabricated event",
+      "pass": true
+    },
+    "AEGR01-INV-28": {
+      "desc": "Boundary determinism 70/70",
+      "pass": true
+    },
+    "AEGR01-INV-29": {
+      "desc": "Streaming/chunk equivalence preserved",
+      "pass": true
+    },
+    "AEGR01-INV-30": {
+      "desc": "No frame-level token explosion",
+      "pass": true
+    },
+    "AEGR01-INV-31": {
+      "desc": "Descriptor-mass confound measured separately",
+      "pass": true
+    },
+    "AEGR01-INV-32": {
+      "desc": "D0/D1/D2 diagnostics required without retrieval modification",
+      "pass": true
+    },
+    "AEGR01-INV-33": {
+      "desc": "Exact parent data retained",
+      "pass": true
+    },
+    "AEGR01-INV-34": {
+      "desc": "Production graph unchanged during counterfactual",
+      "pass": true
+    },
+    "AEGR01-INV-35": {
+      "desc": "Failures retained and reported",
+      "pass": true
+    },
+    "AEGR01-INV-36": {
+      "desc": "Descriptor-compression repair remains separate",
+      "pass": true
+    }
+  }
+}

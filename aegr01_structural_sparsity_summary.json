@@ -1,0 +1,22 @@
+{
+  "total_items": 70,
+  "grounding_multi_event": 39,
+  "grounding_total": 40,
+  "heldout_multi_event": 20,
+  "heldout_total": 20,
+  "ood_multi_event": 10,
+  "ood_total": 10,
+  "multi_event_heldout_gate_passed": true,
+  "all_median_events": 4.0,
+  "all_p90_events": 7.0,
+  "all_max_events": 11,
+  "heldout_median_events": 4.0,
+  "heldout_p90_events": 7.100000000000001,
+  "heldout_max_events": 9,
+  "derived_bound_violations_count": 0,
+  "structural_bound_passed": true,
+  "total_existing_transition_candidates": 713,
+  "total_regime_qualified_candidates": 318,
+  "total_accepted_boundaries": 229,
+  "status": "PASS"
+}

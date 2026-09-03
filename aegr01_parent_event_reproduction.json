@@ -1,0 +1,18 @@
+{
+  "total_recordings": 70,
+  "single_event_count": 68,
+  "expected_single_event_count": 68,
+  "multi_event_count": 2,
+  "multi_event_items": [
+    {
+      "trial_id": "ATG01-G-C06-R3",
+      "num_events": 3
+    },
+    {
+      "trial_id": "ATG01-H-C09-02",
+      "num_events": 2
+    }
+  ],
+  "reproduction_pass": true,
+  "status": "PASS"
+}

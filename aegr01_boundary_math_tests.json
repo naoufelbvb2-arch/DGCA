@@ -1,0 +1,71 @@
+{
+  "all_math_tests_pass": true,
+  "pass_count": 16,
+  "total_count": 16,
+  "tests": {
+    "M01": {
+      "desc": "Combined novelty formula matches parent",
+      "pass": true
+    },
+    "M02": {
+      "desc": "Transition candidate formula matches parent D_t >= max(0.25, 2.5*mu_{t-1})",
+      "pass": true
+    },
+    "M03": {
+      "desc": "Regime support fractions in [0, 1]",
+      "pass": true
+    },
+    "M04": {
+      "desc": "Weighted Jaccard in [0, 1]",
+      "pass": true
+    },
+    "M05": {
+      "desc": "Within-consistency C_L, C_R in [0, 1]",
+      "pass": true
+    },
+    "M06": {
+      "desc": "Across-regime similarity X in [0, 1]",
+      "pass": true
+    },
+    "M07": {
+      "desc": "Regime separation margin R in [-1, 1]",
+      "pass": true
+    },
+    "M08": {
+      "desc": "Candidate requires transition candidate AND R > 0",
+      "pass": true
+    },
+    "M09": {
+      "desc": "No boundary from empty/insufficient regime evidence (>=2 valid frames per side)",
+      "pass": true
+    },
+    "M10": {
+      "desc": "No new novelty or turnover threshold exists",
+      "pass": true
+    },
+    "M11": {
+      "desc": "Accepted boundaries separated by >= H = 20ms",
+      "pass": true
+    },
+    "M12": {
+      "desc": "H = T_ref = 20ms exactly",
+      "pass": true
+    },
+    "M13": {
+      "desc": "Parent onset and final offset conserved",
+      "pass": true
+    },
+    "M14": {
+      "desc": "No frame membership duplication across sub-events",
+      "pass": true
+    },
+    "M15": {
+      "desc": "Conflict resolution deterministic and lexicographic by Strength(t)",
+      "pass": true
+    },
+    "M16": {
+      "desc": "B_audio,event=8 is descriptor ceiling only; no event budget invented",
+      "pass": true
+    }
+  }
+}

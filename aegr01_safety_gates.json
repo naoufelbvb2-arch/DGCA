@@ -1,0 +1,71 @@
+{
+  "all_safety_gates_pass": true,
+  "pass_count": 16,
+  "total_count": 16,
+  "gates": {
+    "S01": {
+      "desc": "Parent lineage and data exact",
+      "pass": true
+    },
+    "S02": {
+      "desc": "A0 baseline reproduced exactly",
+      "pass": true
+    },
+    "S03": {
+      "desc": "Production graph mutation = 0",
+      "pass": true
+    },
+    "S04": {
+      "desc": "Frozen B3 rule used; no rule search",
+      "pass": true
+    },
+    "S05": {
+      "desc": "Exact frozen transition-candidate equation reused",
+      "pass": true
+    },
+    "S06": {
+      "desc": "No labels or speaker identity in boundary formation",
+      "pass": true
+    },
+    "S07": {
+      "desc": "Frontend, frame evidence, novelty computation unchanged",
+      "pass": true
+    },
+    "S08": {
+      "desc": "Existing onset and final-offset semantics preserved",
+      "pass": true
+    },
+    "S09": {
+      "desc": "No empty or fabricated events",
+      "pass": true
+    },
+    "S10": {
+      "desc": "H-based structural separation and derived bound PASS all items",
+      "pass": true
+    },
+    "S11": {
+      "desc": "Boundary determinism 70/70",
+      "pass": true
+    },
+    "S12": {
+      "desc": "Chunk-equivalence counterfactual PASS",
+      "pass": true
+    },
+    "S13": {
+      "desc": "Descriptor compression unchanged; B_audio,event=8 remains descriptor ceiling only",
+      "pass": true
+    },
+    "S14": {
+      "desc": "AudioTemporalIR, grounding, production retrieval, Law 11 unchanged",
+      "pass": true
+    },
+    "S15": {
+      "desc": "M0 current-retrieval non-regression PASS",
+      "pass": true
+    },
+    "S16": {
+      "desc": "SRA01 regression counterfactual PASS",
+      "pass": true
+    }
+  }
+}

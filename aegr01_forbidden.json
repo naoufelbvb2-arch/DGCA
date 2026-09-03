@@ -1,0 +1,187 @@
+{
+  "all_forbidden_pass": true,
+  "passed_count": 36,
+  "total_count": 36,
+  "checks": {
+    "F_01": {
+      "desc": "Phoneme model",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_02": {
+      "desc": "Syllable model",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_03": {
+      "desc": "ASR",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_04": {
+      "desc": "DTW",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_05": {
+      "desc": "Forced alignment",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_06": {
+      "desc": "Learned change-point model",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_07": {
+      "desc": "Neural segmentation model",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_08": {
+      "desc": "Speaker embedding",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_09": {
+      "desc": "Word-specific boundary",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_10": {
+      "desc": "Class-specific boundary",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_11": {
+      "desc": "Label-dependent threshold",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_12": {
+      "desc": "P2 production split",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_13": {
+      "desc": "P4 production split",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_14": {
+      "desc": "P8 production split",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_15": {
+      "desc": "Equal-duration production segmentation",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_16": {
+      "desc": "Corpus-derived boundary frequency",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_17": {
+      "desc": "Learned novelty threshold",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_18": {
+      "desc": "New turnover threshold or local-max boundary gate",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_19": {
+      "desc": "Post-hoc held-out threshold search",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_20": {
+      "desc": "New persistent MicroEvent",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_21": {
+      "desc": "New persistent SubwordEvent",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_22": {
+      "desc": "New persistent PhonemeEvent",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_23": {
+      "desc": "New Law",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_24": {
+      "desc": "Descriptor-compression repair",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_25": {
+      "desc": "IGSV repair",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_26": {
+      "desc": "Abstention repair",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_27": {
+      "desc": "Grounding change",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_28": {
+      "desc": "Retrieval-rule change",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_29": {
+      "desc": "Global audio statistic or invented event-count budget",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_30": {
+      "desc": "Event-count target learned from labels",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_31": {
+      "desc": "Source/data replacement",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_32": {
+      "desc": "New training audio",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_33": {
+      "desc": "Augmentation",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_34": {
+      "desc": "Failure-probe deletion",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_35": {
+      "desc": "Hidden parameter/rule search",
+      "prohibited": true,
+      "violated": false
+    },
+    "F_36": {
+      "desc": "Claiming discovered linguistic units",
+      "prohibited": true,
+      "violated": false
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "grounding_episodes_replayed": 40,
+  "ephemeral_nodes_created": 241,
+  "ephemeral_edges_created": 7255,
+  "production_graph_mutation": 0,
+  "temporary_graph_discarded_after_use": true,
+  "unique_grounding_transitions_extracted": 592,
+  "status": "PASS"
+}

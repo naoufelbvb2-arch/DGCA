@@ -1,0 +1,10 @@
+{"concept_word": "bird", "winner": null, "outcome": "AMBIGUOUS"}
+{"concept_word": "cat", "winner": "aud:energy:STEADY", "outcome": "WINNER"}
+{"concept_word": "dog", "winner": null, "outcome": "AMBIGUOUS"}
+{"concept_word": "tree", "winner": null, "outcome": "AMBIGUOUS"}
+{"concept_word": "bed", "winner": null, "outcome": "AMBIGUOUS"}
+{"concept_word": "house", "winner": null, "outcome": "AMBIGUOUS"}
+{"concept_word": "no", "winner": null, "outcome": "AMBIGUOUS"}
+{"concept_word": "go", "winner": null, "outcome": "AMBIGUOUS"}
+{"concept_word": "on", "winner": null, "outcome": "AMBIGUOUS"}
+{"concept_word": "off", "winner": null, "outcome": "AMBIGUOUS"}
