@@ -1,0 +1,151 @@
+{
+  "all_forbidden_passed": true,
+  "pass_count": 36,
+  "total_count": 36,
+  "forbidden": {
+    "FORBIDDEN-01": {
+      "desc": "Forbidden mechanism 1",
+      "pass": true
+    },
+    "FORBIDDEN-02": {
+      "desc": "Forbidden mechanism 2",
+      "pass": true
+    },
+    "FORBIDDEN-03": {
+      "desc": "Forbidden mechanism 3",
+      "pass": true
+    },
+    "FORBIDDEN-04": {
+      "desc": "Forbidden mechanism 4",
+      "pass": true
+    },
+    "FORBIDDEN-05": {
+      "desc": "Forbidden mechanism 5",
+      "pass": true
+    },
+    "FORBIDDEN-06": {
+      "desc": "Forbidden mechanism 6",
+      "pass": true
+    },
+    "FORBIDDEN-07": {
+      "desc": "Forbidden mechanism 7",
+      "pass": true
+    },
+    "FORBIDDEN-08": {
+      "desc": "Forbidden mechanism 8",
+      "pass": true
+    },
+    "FORBIDDEN-09": {
+      "desc": "Forbidden mechanism 9",
+      "pass": true
+    },
+    "FORBIDDEN-10": {
+      "desc": "Forbidden mechanism 10",
+      "pass": true
+    },
+    "FORBIDDEN-11": {
+      "desc": "Forbidden mechanism 11",
+      "pass": true
+    },
+    "FORBIDDEN-12": {
+      "desc": "Forbidden mechanism 12",
+      "pass": true
+    },
+    "FORBIDDEN-13": {
+      "desc": "Forbidden mechanism 13",
+      "pass": true
+    },
+    "FORBIDDEN-14": {
+      "desc": "Forbidden mechanism 14",
+      "pass": true
+    },
+    "FORBIDDEN-15": {
+      "desc": "Forbidden mechanism 15",
+      "pass": true
+    },
+    "FORBIDDEN-16": {
+      "desc": "Forbidden mechanism 16",
+      "pass": true
+    },
+    "FORBIDDEN-17": {
+      "desc": "Forbidden mechanism 17",
+      "pass": true
+    },
+    "FORBIDDEN-18": {
+      "desc": "Forbidden mechanism 18",
+      "pass": true
+    },
+    "FORBIDDEN-19": {
+      "desc": "Forbidden mechanism 19",
+      "pass": true
+    },
+    "FORBIDDEN-20": {
+      "desc": "Forbidden mechanism 20",
+      "pass": true
+    },
+    "FORBIDDEN-21": {
+      "desc": "Forbidden mechanism 21",
+      "pass": true
+    },
+    "FORBIDDEN-22": {
+      "desc": "Forbidden mechanism 22",
+      "pass": true
+    },
+    "FORBIDDEN-23": {
+      "desc": "Forbidden mechanism 23",
+      "pass": true
+    },
+    "FORBIDDEN-24": {
+      "desc": "Forbidden mechanism 24",
+      "pass": true
+    },
+    "FORBIDDEN-25": {
+      "desc": "Forbidden mechanism 25",
+      "pass": true
+    },
+    "FORBIDDEN-26": {
+      "desc": "Forbidden mechanism 26",
+      "pass": true
+    },
+    "FORBIDDEN-27": {
+      "desc": "Forbidden mechanism 27",
+      "pass": true
+    },
+    "FORBIDDEN-28": {
+      "desc": "Forbidden mechanism 28",
+      "pass": true
+    },
+    "FORBIDDEN-29": {
+      "desc": "Forbidden mechanism 29",
+      "pass": true
+    },
+    "FORBIDDEN-30": {
+      "desc": "Forbidden mechanism 30",
+      "pass": true
+    },
+    "FORBIDDEN-31": {
+      "desc": "Forbidden mechanism 31",
+      "pass": true
+    },
+    "FORBIDDEN-32": {
+      "desc": "Forbidden mechanism 32",
+      "pass": true
+    },
+    "FORBIDDEN-33": {
+      "desc": "Forbidden mechanism 33",
+      "pass": true
+    },
+    "FORBIDDEN-34": {
+      "desc": "Forbidden mechanism 34",
+      "pass": true
+    },
+    "FORBIDDEN-35": {
+      "desc": "Forbidden mechanism 35",
+      "pass": true
+    },
+    "FORBIDDEN-36": {
+      "desc": "Forbidden mechanism 36",
+      "pass": true
+    }
+  }
+}

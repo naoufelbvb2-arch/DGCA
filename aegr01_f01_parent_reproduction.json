@@ -1,0 +1,22 @@
+{
+  "reproduction_checks": {
+    "P_heldout_correct_eq_0": true,
+    "P_heldout_wrong_eq_19": true,
+    "P_heldout_ambiguous_eq_1": true,
+    "P_heldout_median_rank_eq_5": true,
+    "P_ood_forced_eq_9": true,
+    "B_M0_heldout_correct_eq_6": true,
+    "B_M0_heldout_wrong_eq_14": true,
+    "B_M0_heldout_median_rank_eq_4": true,
+    "B_M0_ood_forced_eq_10": true,
+    "D0_heldout_median_rank_eq_4": true,
+    "D1_heldout_correct_eq_4": true,
+    "D1_heldout_median_rank_eq_5": true,
+    "D1_permuted_correct_eq_3": true,
+    "Q1_eq_20": true,
+    "Q2_eq_6": true,
+    "Q3_eq_16": true
+  },
+  "all_parent_states_reproduced": true,
+  "status": "PASS"
+}

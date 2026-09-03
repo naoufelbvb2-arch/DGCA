@@ -1,0 +1,9 @@
+{
+  "primary_verdict": "MULTI_STAGE",
+  "earliest_upstream_mechanism": "DESCRIPTOR_MASS_DOMINANCE",
+  "next_repair_recommendation": "AUDITORY_EVENT_EVIDENCE_MASS_GOVERNANCE_REPAIR_CANDIDATE",
+  "abstention_repair_authorized": false,
+  "boundary_selectivity_repair_authorized": false,
+  "implementation_authorized": false,
+  "status": "PASS"
+}

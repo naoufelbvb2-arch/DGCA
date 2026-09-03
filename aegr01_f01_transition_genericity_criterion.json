@@ -1,0 +1,10 @@
+{
+  "TG1_qualifying_regressions": 5,
+  "TG1_total_regressions": 5,
+  "TG1_pass": true,
+  "TG2_majority_shared_q2_failures": 11,
+  "TG2_total_q2_failures": 14,
+  "TG2_pass": true,
+  "TRANSITION_GENERICITY_COLLISION_SUPPORTED": true,
+  "status": "PASS"
+}

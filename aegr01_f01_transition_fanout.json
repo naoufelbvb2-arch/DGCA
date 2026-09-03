@@ -1,0 +1,10 @@
+{
+  "total_directional_transitions": 592,
+  "fanout_breakdown": {
+    "UNIQUE": 251,
+    "LOW_SHARED": 170,
+    "MID_SHARED": 97,
+    "HIGH_SHARED": 61,
+    "GLOBAL": 13
+  }
+}

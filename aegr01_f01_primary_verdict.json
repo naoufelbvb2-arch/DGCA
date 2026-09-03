@@ -1,0 +1,13 @@
+{
+  "primary_verdict": "MULTI_STAGE",
+  "independent_mechanisms_proven": [
+    "DESCRIPTOR_MASS_DOMINANCE",
+    "DESCRIPTOR_COMPRESSION_ALIASING"
+  ],
+  "downstream_manifestations": [
+    "TRANSITION_GENERICITY_COLLISION"
+  ],
+  "secondary_diagnostic_association": "BOUNDARY_DENSITY_ASSOCIATED",
+  "rationale": "Descriptor-mass dominance is proven independently on the base evidence path via C2 OOD commitment reversion and 7/12 held-out rank reductions. Descriptor-compression aliasing is proven independently on the sequence transition path via precompression pair superiority across 5/5 large regressions and 14/14 Q2 failures. Per Section 39, transition genericity is a downstream manifestation of compression aliasing, while mass expansion operates at the base evidence accumulation stage. Per Section 43, the earliest upstream mechanism is descriptor-mass dominance.",
+  "status": "PASS"
+}

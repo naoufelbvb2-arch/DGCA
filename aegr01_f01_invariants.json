@@ -1,0 +1,151 @@
+{
+  "all_invariants_passed": true,
+  "pass_count": 36,
+  "total_count": 36,
+  "invariants": {
+    "AEGR01-F01-INV-01": {
+      "desc": "Invariant 1",
+      "pass": true
+    },
+    "AEGR01-F01-INV-02": {
+      "desc": "Invariant 2",
+      "pass": true
+    },
+    "AEGR01-F01-INV-03": {
+      "desc": "Invariant 3",
+      "pass": true
+    },
+    "AEGR01-F01-INV-04": {
+      "desc": "Invariant 4",
+      "pass": true
+    },
+    "AEGR01-F01-INV-05": {
+      "desc": "Invariant 5",
+      "pass": true
+    },
+    "AEGR01-F01-INV-06": {
+      "desc": "Invariant 6",
+      "pass": true
+    },
+    "AEGR01-F01-INV-07": {
+      "desc": "Invariant 7",
+      "pass": true
+    },
+    "AEGR01-F01-INV-08": {
+      "desc": "Invariant 8",
+      "pass": true
+    },
+    "AEGR01-F01-INV-09": {
+      "desc": "Invariant 9",
+      "pass": true
+    },
+    "AEGR01-F01-INV-10": {
+      "desc": "Invariant 10",
+      "pass": true
+    },
+    "AEGR01-F01-INV-11": {
+      "desc": "Invariant 11",
+      "pass": true
+    },
+    "AEGR01-F01-INV-12": {
+      "desc": "Invariant 12",
+      "pass": true
+    },
+    "AEGR01-F01-INV-13": {
+      "desc": "Invariant 13",
+      "pass": true
+    },
+    "AEGR01-F01-INV-14": {
+      "desc": "Invariant 14",
+      "pass": true
+    },
+    "AEGR01-F01-INV-15": {
+      "desc": "Invariant 15",
+      "pass": true
+    },
+    "AEGR01-F01-INV-16": {
+      "desc": "Invariant 16",
+      "pass": true
+    },
+    "AEGR01-F01-INV-17": {
+      "desc": "Invariant 17",
+      "pass": true
+    },
+    "AEGR01-F01-INV-18": {
+      "desc": "Invariant 18",
+      "pass": true
+    },
+    "AEGR01-F01-INV-19": {
+      "desc": "Invariant 19",
+      "pass": true
+    },
+    "AEGR01-F01-INV-20": {
+      "desc": "Invariant 20",
+      "pass": true
+    },
+    "AEGR01-F01-INV-21": {
+      "desc": "Invariant 21",
+      "pass": true
+    },
+    "AEGR01-F01-INV-22": {
+      "desc": "Invariant 22",
+      "pass": true
+    },
+    "AEGR01-F01-INV-23": {
+      "desc": "Invariant 23",
+      "pass": true
+    },
+    "AEGR01-F01-INV-24": {
+      "desc": "Invariant 24",
+      "pass": true
+    },
+    "AEGR01-F01-INV-25": {
+      "desc": "Invariant 25",
+      "pass": true
+    },
+    "AEGR01-F01-INV-26": {
+      "desc": "Invariant 26",
+      "pass": true
+    },
+    "AEGR01-F01-INV-27": {
+      "desc": "Invariant 27",
+      "pass": true
+    },
+    "AEGR01-F01-INV-28": {
+      "desc": "Invariant 28",
+      "pass": true
+    },
+    "AEGR01-F01-INV-29": {
+      "desc": "Invariant 29",
+      "pass": true
+    },
+    "AEGR01-F01-INV-30": {
+      "desc": "Invariant 30",
+      "pass": true
+    },
+    "AEGR01-F01-INV-31": {
+      "desc": "Invariant 31",
+      "pass": true
+    },
+    "AEGR01-F01-INV-32": {
+      "desc": "Invariant 32",
+      "pass": true
+    },
+    "AEGR01-F01-INV-33": {
+      "desc": "Invariant 33",
+      "pass": true
+    },
+    "AEGR01-F01-INV-34": {
+      "desc": "Invariant 34",
+      "pass": true
+    },
+    "AEGR01-F01-INV-35": {
+      "desc": "Invariant 35",
+      "pass": true
+    },
+    "AEGR01-F01-INV-36": {
+      "desc": "Invariant 36",
+      "pass": true
+    }
+  }
+}

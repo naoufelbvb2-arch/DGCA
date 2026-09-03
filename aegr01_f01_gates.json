@@ -1,0 +1,120 @@
+{
+  "all_gates_passed": true,
+  "pass_count": 28,
+  "total_count": 28,
+  "gates": {
+    "F01-G01": {
+      "desc": "Corrected AEGR01 parent governance state verified",
+      "pass": true
+    },
+    "F01-G02": {
+      "desc": "Parent lineage/data exact",
+      "pass": true
+    },
+    "F01-G03": {
+      "desc": "P/B/D0/D1 parent states reproduced",
+      "pass": true
+    },
+    "F01-G04": {
+      "desc": "Read-only guard PASS",
+      "pass": true
+    },
+    "F01-G05": {
+      "desc": "Boundary identity 70/70 conserved",
+      "pass": true
+    },
+    "F01-G06": {
+      "desc": "Descriptor occurrence inventory complete",
+      "pass": true
+    },
+    "F01-G07": {
+      "desc": "Distinct/multiplicity mass decomposition complete",
+      "pass": true
+    },
+    "F01-G08": {
+      "desc": "Exact B/M0 score-decomposition reproduction PASS + C1 projection complete",
+      "pass": true
+    },
+    "F01-G09": {
+      "desc": "C2 projection complete",
+      "pass": true
+    },
+    "F01-G10": {
+      "desc": "OOD commitment decomposition complete",
+      "pass": true
+    },
+    "F01-G11": {
+      "desc": "Descriptor-mass criterion evaluated",
+      "pass": true
+    },
+    "F01-G12": {
+      "desc": "Boundary-density telemetry complete",
+      "pass": true
+    },
+    "F01-G13": {
+      "desc": "Transition inventory complete",
+      "pass": true
+    },
+    "F01-G14": {
+      "desc": "Fanout telemetry complete",
+      "pass": true
+    },
+    "F01-G15": {
+      "desc": "Transition specificity/TV verified",
+      "pass": true
+    },
+    "F01-G16": {
+      "desc": "All 5 D0->D1 large regressions traced",
+      "pass": true
+    },
+    "F01-G17": {
+      "desc": "Regression taxonomy complete",
+      "pass": true
+    },
+    "F01-G18": {
+      "desc": "All Q2 failures traced",
+      "pass": true
+    },
+    "F01-G19": {
+      "desc": "Transition-genericity criterion evaluated",
+      "pass": true
+    },
+    "F01-G20": {
+      "desc": "Precompression transition-pair provenance/similarity complete",
+      "pass": true
+    },
+    "F01-G21": {
+      "desc": "Retrieval-relevant compression-alias traces complete",
+      "pass": true
+    },
+    "F01-G22": {
+      "desc": "Compression-alias criterion evaluated",
+      "pass": true
+    },
+    "F01-G23": {
+      "desc": "Exactly one primary verdict selected",
+      "pass": true
+    },
+    "F01-G24": {
+      "desc": "Exactly one next-repair recommendation selected",
+      "pass": true
+    },
+    "F01-G25": {
+      "desc": "16/16 mathematical prechecks PASS",
+      "pass": true
+    },
+    "F01-G26": {
+      "desc": "36/36 invariants PASS",
+      "pass": true
+    },
+    "F01-G27": {
+      "desc": "36/36 forbidden mechanisms PASS",
+      "pass": true
+    },
+    "F01-G28": {
+      "desc": "Historical signature / zero production mutation PASS",
+      "pass": true
+    }
+  },
+  "final_status": "AEGR01_F01_FORENSICALLY_CLOSED"
+}

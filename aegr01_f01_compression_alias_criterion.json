@@ -1,0 +1,10 @@
+{
+  "CA1_alias_hits_regressions": 5,
+  "CA1_total_regressions": 5,
+  "CA1_pass": true,
+  "CA2_alias_hits_q2_failures": 13,
+  "CA2_total_q2_failures": 14,
+  "CA2_pass": true,
+  "DESCRIPTOR_COMPRESSION_ALIASING_SUPPORTED": true,
+  "status": "PASS"
+}

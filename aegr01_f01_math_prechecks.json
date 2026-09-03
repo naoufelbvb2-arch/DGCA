@@ -1,0 +1,71 @@
+{
+  "all_prechecks_passed": true,
+  "pass_count": 16,
+  "total_count": 16,
+  "prechecks": {
+    "F01-M01": {
+      "desc": "Mass counts are nonnegative integers",
+      "pass": true
+    },
+    "F01-M02": {
+      "desc": "M_distinct <= M_occ",
+      "pass": true
+    },
+    "F01-M03": {
+      "desc": "Repetition factor Rep >= 1 when mass nonzero",
+      "pass": true
+    },
+    "F01-M04": {
+      "desc": "C1 descriptor identity contributes at most once/recording",
+      "pass": true
+    },
+    "F01-M05": {
+      "desc": "C2 identities are a subset of parent identity set",
+      "pass": true
+    },
+    "F01-M06": {
+      "desc": "Candidate sets unchanged by C1/C2",
+      "pass": true
+    },
+    "F01-M07": {
+      "desc": "Transition fanout 1 <= K_t <= 10 when supported",
+      "pass": true
+    },
+    "F01-M08": {
+      "desc": "rho sums to 1 when support nonzero",
+      "pass": true
+    },
+    "F01-M09": {
+      "desc": "SeqLDSR nonnegative",
+      "pass": true
+    },
+    "F01-M10": {
+      "desc": "TV identity holds",
+      "pass": true
+    },
+    "F01-M11": {
+      "desc": "Precompression pair similarity uses only frozen ATGF01 weighted Jaccard",
+      "pass": true
+    },
+    "F01-M12": {
+      "desc": "Retrieval-relevant alias requires strict PreMatch(correct) > PreMatch(wrong) with no threshold",
+      "pass": true
+    },
+    "F01-M13": {
+      "desc": "No boundary changes",
+      "pass": true
+    },
+    "F01-M14": {
+      "desc": "No graph mutation",
+      "pass": true
+    },
+    "F01-M15": {
+      "desc": "All projections deterministic",
+      "pass": true
+    },
+    "F01-M16": {
+      "desc": "No threshold optimization",
+      "pass": true
+    }
+  }
+}

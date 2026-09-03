@@ -1,0 +1,20 @@
+{
+  "DM1_ood_regression_reversion": {
+    "probe": "ATG01-OOD-O08",
+    "parent_outcome": "AMBIGUOUS",
+    "B_outcome": "WINNER",
+    "C1_outcome": "WINNER",
+    "C2_outcome": "NO_RESULT",
+    "reverted": true,
+    "pass": true
+  },
+  "DM2_heldout_rank_improvement_reduction": {
+    "total_P_to_B_improvements": 12,
+    "improvements_reduced_under_C2": 7,
+    "reduction_fraction": 0.5833,
+    "threshold_fraction": 0.5,
+    "pass": true
+  },
+  "DESCRIPTOR_MASS_DOMINANCE_SUPPORTED": true,
+  "status": "PASS"
+}
