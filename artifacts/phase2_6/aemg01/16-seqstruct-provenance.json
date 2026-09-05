@@ -1,0 +1,8 @@
+{
+  "governed_seqstruct_origin": "REPLAY_DERIVED_ONLY",
+  "b_state_injection": 0,
+  "total_transitions_governed": 592,
+  "total_transitions_b": 592,
+  "transitions_match_b": true,
+  "status": "PASS"
+}

@@ -1,0 +1,489 @@
+{
+  "F01_parent_occurrence_mass": 340,
+  "F01_aegr01_occurrence_mass": 1420,
+  "total_occurrence_delta": 1080,
+  "distinct_mass_delta": 450,
+  "multiplicity_mass_delta": 630,
+  "parent_effective_base_identity_mass": 337,
+  "aemg01_effective_base_identity_mass": 337,
+  "q_base_per_recording": {
+    "ATG01-G-C00-R1": [
+      "aud:band:0",
+      "aud:band:3",
+      "aud:band:6",
+      "aud:energy:STEADY",
+      "aud:periodicity:P5"
+    ],
+    "ATG01-G-C01-R1": [
+      "aud:band:1",
+      "aud:energy:STEADY",
+      "aud:periodicity:P2"
+    ],
+    "ATG01-G-C02-R1": [
+      "aud:band:1",
+      "aud:band:2",
+      "aud:band:3",
+      "aud:band:5",
+      "aud:energy:RISING",
+      "aud:periodicity:P1"
+    ],
+    "ATG01-G-C03-R1": [
+      "aud:band:0",
+      "aud:energy:STEADY",
+      "aud:periodicity:P0"
+    ],
+    "ATG01-G-C04-R1": [
+      "aud:band:0",
+      "aud:band:1",
+      "aud:band:2",
+      "aud:band:4",
+      "aud:energy:STEADY",
+      "aud:periodicity:P0"
+    ],
+    "ATG01-G-C05-R1": [
+      "aud:band:0",
+      "aud:energy:STEADY",
+      "aud:periodicity:P2"
+    ],
+    "ATG01-G-C06-R1": [
+      "aud:band:3",
+      "aud:band:4",
+      "aud:band:5",
+      "aud:band:6",
+      "aud:energy:PULSE",
+      "aud:periodicity:P1"
+    ],
+    "ATG01-G-C07-R1": [
+      "aud:band:0",
+      "aud:band:1",
+      "aud:band:6",
+      "aud:energy:STEADY",
+      "aud:periodicity:P5"
+    ],
+    "ATG01-G-C08-R1": [
+      "aud:band:3",
+      "aud:band:8",
+      "aud:energy:PULSE",
+      "aud:periodicity:P3"
+    ],
+    "ATG01-G-C09-R1": [
+      "aud:band:1",
+      "aud:band:2",
+      "aud:band:6",
+      "aud:band:7",
+      "aud:energy:FALLING",
+      "aud:periodicity:P5"
+    ],
+    "ATG01-G-C00-R2": [
+      "aud:band:0",
+      "aud:band:1",
+      "aud:band:2",
+      "aud:band:4",
+      "aud:energy:RISING",
+      "aud:periodicity:P2"
+    ],
+    "ATG01-G-C01-R2": [
+      "aud:band:0",
+      "aud:band:3",
+      "aud:band:5",
+      "aud:energy:RISING",
+      "aud:periodicity:P0"
+    ],
+    "ATG01-G-C02-R2": [
+      "aud:band:0",
+      "aud:band:2",
+      "aud:energy:STEADY",
+      "aud:periodicity:P0"
+    ],
+    "ATG01-G-C03-R2": [
+      "aud:band:0",
+      "aud:band:1",
+      "aud:band:2",
+      "aud:band:5",
+      "aud:energy:RISING",
+      "aud:periodicity:P5"
+    ],
+    "ATG01-G-C04-R2": [
+      "aud:band:0",
+      "aud:band:1",
+      "aud:band:2",
+      "aud:band:4",
+      "aud:energy:FALLING",
+      "aud:periodicity:P2"
+    ],
+    "ATG01-G-C05-R2": [
+      "aud:band:0",
+      "aud:band:1",
+      "aud:energy:FALLING",
+      "aud:periodicity:P5"
+    ],
+    "ATG01-G-C06-R2": [
+      "aud:band:0",
+      "aud:band:1",
+      "aud:band:2",
+      "aud:energy:STEADY",
+      "aud:periodicity:P1"
+    ],
+    "ATG01-G-C07-R2": [
+      "aud:band:0",
+      "aud:band:1",
+      "aud:band:5",
+      "aud:band:6",
+      "aud:energy:PULSE",
+      "aud:periodicity:P1"
+    ],
+    "ATG01-G-C08-R2": [
+      "aud:band:10",
+      "aud:band:2",
+      "aud:band:4",
+      "aud:band:6",
+      "aud:energy:PULSE",
+      "aud:periodicity:P0"
+    ],
+    "ATG01-G-C09-R2": [
+      "aud:band:0",
+      "aud:band:19",
+      "aud:energy:FALLING",
+      "aud:periodicity:P1"
+    ],
+    "ATG01-G-C00-R3": [
+      "aud:band:2",
+      "aud:band:3",
+      "aud:band:4",
+      "aud:band:5",
+      "aud:energy:STEADY",
+      "aud:periodicity:P2"
+    ],
+    "ATG01-G-C01-R3": [
+      "aud:band:0",
+      "aud:band:1",
+      "aud:energy:RISING",
+      "aud:periodicity:P5"
+    ],
+    "ATG01-G-C02-R3": [
+      "aud:band:0",
+      "aud:band:1",
+      "aud:band:3",
+      "aud:band:7",
+      "aud:energy:STEADY",
+      "aud:periodicity:P5"
+    ],
+    "ATG01-G-C03-R3": [
+      "aud:band:0",
+      "aud:band:1",
+      "aud:band:3",
+      "aud:band:5",
+      "aud:energy:FALLING",
+      "aud:periodicity:P5"
+    ],
+    "ATG01-G-C04-R3": [
+      "aud:band:0",
+      "aud:band:1",
+      "aud:band:2",
+      "aud:band:3",
+      "aud:energy:FALLING",
+      "aud:periodicity:P1"
+    ],
+    "ATG01-G-C05-R3": [
+      "aud:band:0",
+      "aud:energy:STEADY",
+      "aud:periodicity:P0"
+    ],
+    "ATG01-G-C06-R3": [
+      "aud:band:0",
+      "aud:band:1",
+      "aud:band:2",
+      "aud:band:3",
+      "aud:band:6",
+      "aud:energy:FALLING",
+      "aud:energy:RISING",
+      "aud:energy:STEADY",
+      "aud:periodicity:P2",
+      "aud:periodicity:P3"
+    ],
+    "ATG01-G-C07-R3": [
+      "aud:band:0",
+      "aud:band:1",
+      "aud:band:6",
+      "aud:energy:STEADY",
+      "aud:periodicity:P2"
+    ],
+    "ATG01-G-C08-R3": [
+      "aud:band:1",
+      "aud:band:3",
+      "aud:band:5",
+      "aud:band:6",
+      "aud:energy:RISING",
+      "aud:periodicity:P1"
+    ],
+    "ATG01-G-C09-R3": [
+      "aud:energy:PULSE",
+      "aud:periodicity:P2"
+    ],
+    "ATG01-G-C00-R4": [
+      "aud:band:0",
+      "aud:band:1",
+      "aud:band:2",
+      "aud:energy:STEADY",
+      "aud:periodicity:P1"
+    ],
+    "ATG01-G-C01-R4": [
+      "aud:band:0",
+      "aud:band:2",
+      "aud:band:4",
+      "aud:band:8",
+      "aud:energy:STEADY",
+      "aud:periodicity:P5"
+    ],
+    "ATG01-G-C02-R4": [
+      "aud:band:0",
+      "aud:band:5",
+      "aud:energy:STEADY",
+      "aud:periodicity:P2"
+    ],
+    "ATG01-G-C03-R4": [
+      "aud:band:0",
+      "aud:band:3",
+      "aud:band:6",
+      "aud:energy:RISING",
+      "aud:periodicity:P3"
+    ],
+    "ATG01-G-C04-R4": [
+      "aud:band:0",
+      "aud:band:1",
+      "aud:band:13",
+      "aud:energy:STEADY",
+      "aud:periodicity:P5"
+    ],
+    "ATG01-G-C05-R4": [
+      "aud:band:1",
+      "aud:band:19",
+      "aud:energy:RISING",
+      "aud:periodicity:P4"
+    ],
+    "ATG01-G-C06-R4": [
+      "aud:band:1",
+      "aud:band:2",
+      "aud:band:4",
+      "aud:band:7",
+      "aud:energy:PULSE",
+      "aud:periodicity:P1"
+    ],
+    "ATG01-G-C07-R4": [
+      "aud:band:1",
+      "aud:band:10",
+      "aud:band:3",
+      "aud:band:5",
+      "aud:energy:RISING",
+      "aud:periodicity:P1"
+    ],
+    "ATG01-G-C08-R4": [
+      "aud:band:2",
+      "aud:band:4",
+      "aud:energy:RISING",
+      "aud:periodicity:P0"
+    ],
+    "ATG01-G-C09-R4": [
+      "aud:band:0",
+      "aud:band:1",
+      "aud:band:3",
+      "aud:band:6",
+      "aud:energy:STEADY",
+      "aud:periodicity:P1"
+    ],
+    "ATG01-H-C00-01": [
+      "aud:band:0",
+      "aud:band:1",
+      "aud:band:2",
+      "aud:band:3",
+      "aud:energy:STEADY",
+      "aud:periodicity:P1"
+    ],
+    "ATG01-H-C01-01": [
+      "aud:band:2",
+      "aud:band:7",
+      "aud:band:8",
+      "aud:energy:STEADY",
+      "aud:periodicity:P1"
+    ],
+    "ATG01-H-C02-01": [
+      "aud:band:0",
+      "aud:band:1",
+      "aud:band:8",
+      "aud:energy:PULSE",
+      "aud:periodicity:P5"
+    ],
+    "ATG01-H-C03-01": [
+      "aud:band:0",
+      "aud:band:1",
+      "aud:band:2",
+      "aud:band:3",
+      "aud:energy:FALLING",
+      "aud:periodicity:P0"
+    ],
+    "ATG01-H-C04-01": [
+      "aud:band:0",
+      "aud:energy:RISING",
+      "aud:periodicity:P0"
+    ],
+    "ATG01-H-C05-01": [
+      "aud:band:2",
+      "aud:band:21",
+      "aud:energy:RISING",
+      "aud:periodicity:P2"
+    ],
+    "ATG01-H-C06-01": [
+      "aud:band:0",
+      "aud:band:1",
+      "aud:band:2",
+      "aud:band:3",
+      "aud:energy:PULSE",
+      "aud:periodicity:P0"
+    ],
+    "ATG01-H-C07-01": [
+      "aud:band:3",
+      "aud:band:4",
+      "aud:band:8",
+      "aud:energy:STEADY",
+      "aud:periodicity:P2"
+    ],
+    "ATG01-H-C08-01": [
+      "aud:band:0",
+      "aud:band:1",
+      "aud:band:2",
+      "aud:energy:RISING",
+      "aud:periodicity:P5"
+    ],
+    "ATG01-H-C09-01": [
+      "aud:band:0",
+      "aud:band:1",
+      "aud:band:2",
+      "aud:energy:STEADY",
+      "aud:periodicity:P1"
+    ],
+    "ATG01-H-C00-02": [
+      "aud:band:1",
+      "aud:band:12",
+      "aud:energy:RISING",
+      "aud:periodicity:P1"
+    ],
+    "ATG01-H-C01-02": [
+      "aud:band:1",
+      "aud:energy:STEADY",
+      "aud:periodicity:P1"
+    ],
+    "ATG01-H-C02-02": [
+      "aud:band:2",
+      "aud:band:4",
+      "aud:energy:FALLING",
+      "aud:periodicity:P2"
+    ],
+    "ATG01-H-C03-02": [
+      "aud:energy:STEADY",
+      "aud:periodicity:P0"
+    ],
+    "ATG01-H-C04-02": [
+      "aud:band:1",
+      "aud:band:3",
+      "aud:band:4",
+      "aud:band:7",
+      "aud:energy:RISING",
+      "aud:periodicity:P1"
+    ],
+    "ATG01-H-C05-02": [
+      "aud:band:21",
+      "aud:energy:RISING"
+    ],
+    "ATG01-H-C06-02": [
+      "aud:band:0",
+      "aud:band:2",
+      "aud:band:7",
+      "aud:energy:STEADY",
+      "aud:periodicity:P0"
+    ],
+    "ATG01-H-C07-02": [
+      "aud:band:1",
+      "aud:band:2",
+      "aud:band:3",
+      "aud:band:6",
+      "aud:energy:STEADY",
+      "aud:periodicity:P3"
+    ],
+    "ATG01-H-C08-02": [
+      "aud:band:1",
+      "aud:band:3",
+      "aud:band:5",
+      "aud:energy:FALLING",
+      "aud:periodicity:P0"
+    ],
+    "ATG01-H-C09-02": [
+      "aud:band:0",
+      "aud:band:1",
+      "aud:band:21",
+      "aud:energy:FALLING",
+      "aud:energy:PULSE",
+      "aud:periodicity:P1",
+      "aud:periodicity:P4"
+    ],
+    "ATG01-OOD-O00": [
+      "aud:band:2",
+      "aud:band:22",
+      "aud:band:3",
+      "aud:energy:PULSE",
+      "aud:periodicity:P3"
+    ],
+    "ATG01-OOD-O01": [
+      "aud:band:1",
+      "aud:energy:STEADY",
+      "aud:periodicity:P1"
+    ],
+    "ATG01-OOD-O02": [
+      "aud:band:0",
+      "aud:band:8",
+      "aud:energy:PULSE",
+      "aud:periodicity:P1"
+    ],
+    "ATG01-OOD-O03": [
+      "aud:band:1",
+      "aud:band:2",
+      "aud:band:3",
+      "aud:band:7",
+      "aud:energy:PULSE",
+      "aud:periodicity:P1"
+    ],
+    "ATG01-OOD-O04": [
+      "aud:band:0",
+      "aud:band:1",
+      "aud:energy:STEADY",
+      "aud:periodicity:P5"
+    ],
+    "ATG01-OOD-O05": [
+      "aud:band:0",
+      "aud:band:1",
+      "aud:energy:PULSE",
+      "aud:periodicity:P0"
+    ],
+    "ATG01-OOD-O06": [
+      "aud:band:0",
+      "aud:band:1",
+      "aud:band:5",
+      "aud:energy:STEADY",
+      "aud:periodicity:P1"
+    ],
+    "ATG01-OOD-O07": [
+      "aud:band:1",
+      "aud:band:4",
+      "aud:energy:STEADY",
+      "aud:periodicity:P1"
+    ],
+    "ATG01-OOD-O08": [
+      "aud:energy:PULSE"
+    ],
+    "ATG01-OOD-O09": [
+      "aud:band:1",
+      "aud:band:2",
+      "aud:energy:PULSE"
+    ]
+  },
+  "status": "PASS"
+}

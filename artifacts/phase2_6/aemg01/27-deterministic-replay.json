@@ -1,0 +1,6 @@
+{
+  "deterministic_counterfactual_replay": "EXACT MATCH",
+  "pass_1_verdict": "AEMG01_COUNTERFACTUAL_BLOCKED",
+  "pass_2_verdict": "AEMG01_COUNTERFACTUAL_BLOCKED",
+  "status": "PASS"
+}

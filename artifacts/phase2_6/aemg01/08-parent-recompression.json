@@ -1,0 +1,8 @@
+{
+  "total_recordings": 70,
+  "total_lawful_parent_events": 73,
+  "exact_recompressed_events": 73,
+  "recompression_pass_fraction": "73 / 73",
+  "all_exact": true,
+  "status": "PASS"
+}

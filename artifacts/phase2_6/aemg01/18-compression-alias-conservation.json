@@ -1,0 +1,8 @@
+{
+  "compression_aliasing_conserved": true,
+  "prior_large_regressions_traced": "5/5",
+  "prior_q2_failures_traced": "14/14",
+  "ca1_criterion": "5/5",
+  "ca2_criterion": "13/14",
+  "status": "PASS"
+}

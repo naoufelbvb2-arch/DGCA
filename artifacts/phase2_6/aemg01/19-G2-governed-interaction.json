@@ -1,0 +1,11 @@
+{
+  "g2_heldout_correct": 3,
+  "g2_heldout_median_rank": 5.0,
+  "g2_ood_forced": 10,
+  "g2_governed_correct_concept_sequence_support": 20,
+  "g2_q1": "18/20",
+  "g2_q2": "3/20",
+  "g2_q3": "20/20",
+  "g2_state_identity_with_governed_architecture": "MATCH",
+  "status": "PASS"
+}

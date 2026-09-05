@@ -1,0 +1,11 @@
+{
+  "p_genesis_hash": "f8154647abbc2bfd2ab93447c3cc76046cee2684895c0f8a3e036fe16c97ab26",
+  "b_genesis_hash": "f8154647abbc2bfd2ab93447c3cc76046cee2684895c0f8a3e036fe16c97ab26",
+  "g0_genesis_hash": "f8154647abbc2bfd2ab93447c3cc76046cee2684895c0f8a3e036fe16c97ab26",
+  "g1_genesis_hash": "f8154647abbc2bfd2ab93447c3cc76046cee2684895c0f8a3e036fe16c97ab26",
+  "g2_genesis_hash": "f8154647abbc2bfd2ab93447c3cc76046cee2684895c0f8a3e036fe16c97ab26",
+  "genesis_identical": true,
+  "nodes_at_genesis": 0,
+  "edges_at_genesis": 0,
+  "status": "PASS"
+}

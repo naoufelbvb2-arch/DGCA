@@ -1,0 +1,7 @@
+{
+  "g1_heldout_multi_event": 20,
+  "g1_correct_concept_sequence_support": 20,
+  "transitions_conserved": 592,
+  "max_g1_b_lens_sequence_error": 0.0,
+  "status": "PASS"
+}

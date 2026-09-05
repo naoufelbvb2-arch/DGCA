@@ -1,0 +1,11 @@
+{
+  "heldout_correct": 0,
+  "heldout_wrong": 19,
+  "heldout_ambiguous": 1,
+  "heldout_median_rank": 5.0,
+  "ood_forced": 9,
+  "ood_ambiguous": 1,
+  "ood_o08_outcome": "AMBIGUOUS",
+  "parent_reproduction_pass": true,
+  "status": "PASS"
+}

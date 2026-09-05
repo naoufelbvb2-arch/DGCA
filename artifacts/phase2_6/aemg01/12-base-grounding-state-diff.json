@@ -1,0 +1,2517 @@
+{
+  "parent_audio_text_edges_count": 330,
+  "g0_audio_text_edges_count": 326,
+  "semantic_diff_count": 166,
+  "semantic_diffs": [
+    {
+      "edge": [
+        "text:tree",
+        "audio:inst:aud_scope_atg01_g_c03_r1_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-004"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c08_r1_0",
+        "text:on"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-009"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c03_r1_0",
+        "text:tree"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-004"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:go",
+        "audio:inst:aud_scope_atg01_g_c07_r4_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-039"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:dog",
+        "audio:inst:aud_scope_atg01_g_c02_r1_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-003"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c09_r2_0",
+        "text:off"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-017"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:dog",
+        "audio:inst:aud_scope_atg01_g_c02_r3_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-027"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:bed",
+        "audio:inst:aud_scope_atg01_g_c04_r2_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-012"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:no",
+        "audio:inst:aud_scope_atg01_g_c06_r1_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-007"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:no",
+        "audio:inst:aud_scope_atg01_g_c06_r2_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-014"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c02_r1_base",
+        "text:dog"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-003"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:off",
+        "audio:inst:aud_scope_atg01_g_c09_r4_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-031"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c04_r1_0",
+        "text:bed"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-005"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:go",
+        "audio:inst:aud_scope_atg01_g_c07_r4_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-039"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:on",
+        "audio:inst:aud_scope_atg01_g_c08_r2_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-016"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:tree",
+        "audio:inst:aud_scope_atg01_g_c03_r2_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-011"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:no",
+        "audio:inst:aud_scope_atg01_g_c06_r2_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-014"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c08_r3_base",
+        "text:on"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-023"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:off",
+        "audio:inst:aud_scope_atg01_g_c09_r1_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-010"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:tree",
+        "audio:inst:aud_scope_atg01_g_c03_r3_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-028"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:no",
+        "audio:inst:aud_scope_atg01_g_c06_r3_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-021"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c00_r1_base",
+        "text:bird"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-001"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c03_r4_base",
+        "text:tree"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-035"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:bird",
+        "audio:inst:aud_scope_atg01_g_c00_r4_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-032"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c03_r3_base",
+        "text:tree"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-028"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c00_r1_0",
+        "text:bird"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-001"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:cat",
+        "audio:inst:aud_scope_atg01_g_c01_r4_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-033"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:no",
+        "audio:inst:aud_scope_atg01_g_c06_r4_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-038"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c04_r4_base",
+        "text:bed"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-036"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c07_r1_0",
+        "text:go"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-008"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:dog",
+        "audio:inst:aud_scope_atg01_g_c02_r2_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-020"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c01_r1_base",
+        "text:cat"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-002"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:cat",
+        "audio:inst:aud_scope_atg01_g_c01_r2_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-019"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:go",
+        "audio:inst:aud_scope_atg01_g_c07_r3_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-022"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:off",
+        "audio:inst:aud_scope_atg01_g_c09_r3_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-024"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c03_r1_base",
+        "text:tree"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-004"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c02_r1_0",
+        "text:dog"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-003"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:on",
+        "audio:inst:aud_scope_atg01_g_c08_r1_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-009"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:bed",
+        "audio:inst:aud_scope_atg01_g_c04_r1_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-005"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:on",
+        "audio:inst:aud_scope_atg01_g_c08_r3_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-023"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:house",
+        "audio:inst:aud_scope_atg01_g_c05_r4_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-037"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c05_r1_base",
+        "text:house"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-006"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:no",
+        "audio:inst:aud_scope_atg01_g_c06_r1_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-007"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c03_r4_0",
+        "text:tree"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-035"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c08_r2_0",
+        "text:on"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-016"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:cat",
+        "audio:inst:aud_scope_atg01_g_c01_r1_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-002"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:no",
+        "audio:inst:aud_scope_atg01_g_c06_r4_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-038"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:cat",
+        "audio:inst:aud_scope_atg01_g_c01_r1_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-002"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:no",
+        "audio:inst:aud_scope_atg01_g_c06_r3_2"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-021"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c06_r1_0",
+        "text:no"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-007"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:house",
+        "audio:inst:aud_scope_atg01_g_c05_r3_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-030"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c06_r1_base",
+        "text:no"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-007"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:house",
+        "audio:inst:aud_scope_atg01_g_c05_r3_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-030"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c00_r2_base",
+        "text:bird"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-018"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:house",
+        "audio:inst:aud_scope_atg01_g_c05_r2_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-013"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:tree",
+        "audio:inst:aud_scope_atg01_g_c03_r4_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-035"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c06_r3_base",
+        "text:no"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-021"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:house",
+        "audio:inst:aud_scope_atg01_g_c05_r1_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-006"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:go",
+        "audio:inst:aud_scope_atg01_g_c07_r1_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-008"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c07_r4_0",
+        "text:go"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-039"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c06_r3_1",
+        "text:no"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-021"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c01_r2_0",
+        "text:cat"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-019"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c01_r4_0",
+        "text:cat"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-033"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c08_r4_0",
+        "text:on"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-040"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c04_r4_0",
+        "text:bed"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-036"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c02_r2_base",
+        "text:dog"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-020"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:on",
+        "audio:inst:aud_scope_atg01_g_c08_r2_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-016"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c03_r2_base",
+        "text:tree"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-011"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c00_r4_base",
+        "text:bird"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-032"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c02_r4_0",
+        "text:dog"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-034"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c05_r2_base",
+        "text:house"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-013"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:dog",
+        "audio:inst:aud_scope_atg01_g_c02_r4_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-034"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:bed",
+        "audio:inst:aud_scope_atg01_g_c04_r3_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-029"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:bird",
+        "audio:inst:aud_scope_atg01_g_c00_r3_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-025"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:off",
+        "audio:inst:aud_scope_atg01_g_c09_r4_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-031"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c04_r3_base",
+        "text:bed"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-029"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:on",
+        "audio:inst:aud_scope_atg01_g_c08_r3_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-023"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:bird",
+        "audio:inst:aud_scope_atg01_g_c00_r4_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-032"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:dog",
+        "audio:inst:aud_scope_atg01_g_c02_r1_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-003"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c08_r2_base",
+        "text:on"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-016"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c02_r3_base",
+        "text:dog"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-027"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c04_r3_0",
+        "text:bed"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-029"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:dog",
+        "audio:inst:aud_scope_atg01_g_c02_r3_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-027"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:cat",
+        "audio:inst:aud_scope_atg01_g_c01_r4_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-033"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c09_r3_base",
+        "text:off"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-024"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c00_r3_0",
+        "text:bird"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-025"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c06_r4_0",
+        "text:no"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-038"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:aud:band:3",
+        "text:no"
+      ],
+      "parent_state": [
+        0.2524744,
+        3,
+        2,
+        [
+          "ATG01-GCTX-007",
+          "ATG01-GCTX-021"
+        ]
+      ],
+      "g0_state": [
+        0.20476,
+        2,
+        2,
+        [
+          "ATG01-GCTX-007",
+          "ATG01-GCTX-021"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c07_r3_0",
+        "text:go"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-022"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c05_r2_0",
+        "text:house"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-013"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c05_r3_0",
+        "text:house"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-030"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:bird",
+        "audio:inst:aud_scope_atg01_g_c00_r1_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-001"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:bird",
+        "audio:inst:aud_scope_atg01_g_c00_r3_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-025"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c01_r3_base",
+        "text:cat"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-026"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c06_r2_0",
+        "text:no"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-014"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:cat",
+        "audio:inst:aud_scope_atg01_g_c01_r3_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-026"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c05_r3_base",
+        "text:house"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-030"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:tree",
+        "audio:inst:aud_scope_atg01_g_c03_r1_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-004"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c07_r2_base",
+        "text:go"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-015"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c08_r4_base",
+        "text:on"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-040"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c00_r2_0",
+        "text:bird"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-018"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:on",
+        "audio:inst:aud_scope_atg01_g_c08_r1_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-009"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:bed",
+        "audio:inst:aud_scope_atg01_g_c04_r4_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-036"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:off",
+        "audio:inst:aud_scope_atg01_g_c09_r2_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-017"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:bird",
+        "audio:inst:aud_scope_atg01_g_c00_r2_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-018"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c02_r2_0",
+        "text:dog"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-020"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:tree",
+        "audio:inst:aud_scope_atg01_g_c03_r3_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-028"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c09_r1_base",
+        "text:off"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-010"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:bed",
+        "audio:inst:aud_scope_atg01_g_c04_r4_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-036"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c05_r1_0",
+        "text:house"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-006"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c01_r1_0",
+        "text:cat"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-002"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c05_r4_base",
+        "text:house"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-037"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:dog",
+        "audio:inst:aud_scope_atg01_g_c02_r4_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-034"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c08_r1_base",
+        "text:on"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-009"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c09_r2_base",
+        "text:off"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-017"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:bird",
+        "audio:inst:aud_scope_atg01_g_c00_r1_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-001"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c07_r1_base",
+        "text:go"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-008"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:go",
+        "audio:inst:aud_scope_atg01_g_c07_r2_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-015"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:no",
+        "audio:inst:aud_scope_atg01_g_c06_r3_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-021"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:house",
+        "audio:inst:aud_scope_atg01_g_c05_r2_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-013"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c03_r3_0",
+        "text:tree"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-028"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c09_r4_base",
+        "text:off"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-031"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:cat",
+        "audio:inst:aud_scope_atg01_g_c01_r2_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-019"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c07_r4_base",
+        "text:go"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-039"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:bird",
+        "audio:inst:aud_scope_atg01_g_c00_r2_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-018"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c08_r3_0",
+        "text:on"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-023"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:go",
+        "audio:inst:aud_scope_atg01_g_c07_r3_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-022"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c04_r2_0",
+        "text:bed"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-012"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:bed",
+        "audio:inst:aud_scope_atg01_g_c04_r3_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-029"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c07_r3_base",
+        "text:go"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-022"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c09_r1_0",
+        "text:off"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-010"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:house",
+        "audio:inst:aud_scope_atg01_g_c05_r4_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-037"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c07_r2_0",
+        "text:go"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-015"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c05_r4_0",
+        "text:house"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-037"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:on",
+        "audio:inst:aud_scope_atg01_g_c08_r4_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-040"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c06_r2_base",
+        "text:no"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-014"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c01_r2_base",
+        "text:cat"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-019"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c02_r4_base",
+        "text:dog"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-034"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:bed",
+        "audio:inst:aud_scope_atg01_g_c04_r1_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-005"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:dog",
+        "audio:inst:aud_scope_atg01_g_c02_r2_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-020"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c09_r4_0",
+        "text:off"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-031"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c06_r3_0",
+        "text:no"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-021"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:go",
+        "audio:inst:aud_scope_atg01_g_c07_r1_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-008"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:off",
+        "audio:inst:aud_scope_atg01_g_c09_r2_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-017"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:off",
+        "audio:inst:aud_scope_atg01_g_c09_r3_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-024"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c03_r2_0",
+        "text:tree"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-011"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c06_r4_base",
+        "text:no"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-038"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c02_r3_0",
+        "text:dog"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-027"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:off",
+        "audio:inst:aud_scope_atg01_g_c09_r1_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-010"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:tree",
+        "audio:inst:aud_scope_atg01_g_c03_r4_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-035"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c06_r3_2",
+        "text:no"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-021"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:cat",
+        "audio:inst:aud_scope_atg01_g_c01_r3_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-026"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c00_r4_0",
+        "text:bird"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-032"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:go",
+        "audio:inst:aud_scope_atg01_g_c07_r2_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-015"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c00_r3_base",
+        "text:bird"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-025"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c04_r1_base",
+        "text:bed"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-005"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c04_r2_base",
+        "text:bed"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-012"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:tree",
+        "audio:inst:aud_scope_atg01_g_c03_r2_0"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-011"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:no",
+        "audio:inst:aud_scope_atg01_g_c06_r3_1"
+      ],
+      "parent_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-021"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:on",
+        "audio:inst:aud_scope_atg01_g_c08_r4_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-040"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c09_r3_0",
+        "text:off"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-024"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "text:no",
+        "audio:aud:band:3"
+      ],
+      "parent_state": [
+        0.2524744,
+        3,
+        2,
+        [
+          "ATG01-GCTX-007",
+          "ATG01-GCTX-021"
+        ]
+      ],
+      "g0_state": [
+        0.20476,
+        2,
+        2,
+        [
+          "ATG01-GCTX-007",
+          "ATG01-GCTX-021"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:house",
+        "audio:inst:aud_scope_atg01_g_c05_r1_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-006"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "text:bed",
+        "audio:inst:aud_scope_atg01_g_c04_r2_base"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.316,
+        1,
+        1,
+        [
+          "ATG01-GCTX-012"
+        ]
+      ]
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c01_r3_0",
+        "text:cat"
+      ],
+      "parent_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-026"
+        ]
+      ],
+      "g0_state": null
+    },
+    {
+      "edge": [
+        "audio:inst:aud_scope_atg01_g_c01_r4_base",
+        "text:cat"
+      ],
+      "parent_state": null,
+      "g0_state": [
+        0.64,
+        1,
+        1,
+        [
+          "ATG01-GCTX-033"
+        ]
+      ]
+    }
+  ],
+  "base_grounding_state_equality": "FAIL",
+  "status": "FAIL"
+}

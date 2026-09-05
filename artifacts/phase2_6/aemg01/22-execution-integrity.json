@@ -1,0 +1,53 @@
+{
+  "checks": {
+    "EI-01": {
+      "desc": "Relevant production worktree clean",
+      "pass": true
+    },
+    "EI-02": {
+      "desc": "Frozen asset integrity exact",
+      "pass": true
+    },
+    "EI-03": {
+      "desc": "Historical Parent lexical-exposure identity exact",
+      "pass": true
+    },
+    "EI-04": {
+      "desc": "Canonical genesis identical across P/B/G",
+      "pass": true
+    },
+    "EI-05": {
+      "desc": "Base retrieval dependency manifest complete",
+      "pass": true
+    },
+    "EI-06": {
+      "desc": "Historical artifacts comparator-only",
+      "pass": true
+    },
+    "EI-07": {
+      "desc": "No B-state injection",
+      "pass": true
+    },
+    "EI-08": {
+      "desc": "No runtime production-semantic monkeypatching",
+      "pass": true
+    },
+    "EI-09": {
+      "desc": "No post-hoc graph surgery",
+      "pass": true
+    },
+    "EI-10": {
+      "desc": "No long-lived external cognitive side-table",
+      "pass": true
+    },
+    "EI-11": {
+      "desc": "G2 and single-architecture governed state identity matches",
+      "pass": true
+    },
+    "EI-12": {
+      "desc": "Governed SEQSTRUCT is replay-derived",
+      "pass": true
+    }
+  },
+  "passed": 12
+}

@@ -1,0 +1,133 @@
+{
+  "gates": {
+    "G01": {
+      "desc": "Parent AEGR01/F01 lineage exact",
+      "pass": true
+    },
+    "G02": {
+      "desc": "Historical cognitive signature exact",
+      "pass": true
+    },
+    "G03": {
+      "desc": "Historical P retrieval reproduction exact",
+      "pass": true
+    },
+    "G04": {
+      "desc": "Historical B/F01 reproduction exact",
+      "pass": true
+    },
+    "G05": {
+      "desc": "Parent recompression exact",
+      "pass": true
+    },
+    "G06": {
+      "desc": "F01 occurrence/distinct mass definitions reproduced",
+      "pass": true
+    },
+    "G07": {
+      "desc": "Effective base identity mass independently measured",
+      "pass": true
+    },
+    "G08": {
+      "desc": "Production source changes = 0",
+      "pass": true
+    },
+    "G09": {
+      "desc": "Production cognitive artifact mutation = 0",
+      "pass": true
+    },
+    "G10": {
+      "desc": "AEGR01 boundaries conserved",
+      "pass": true
+    },
+    "G11": {
+      "desc": "Child descriptor representation conserved",
+      "pass": true
+    },
+    "G12": {
+      "desc": "G0 base evidence identities equal Parent",
+      "pass": true
+    },
+    "G13": {
+      "desc": "G0 base grounding state equals Parent",
+      "pass": false
+    },
+    "G14": {
+      "desc": "Child-only lexical authority violations = 0",
+      "pass": false
+    },
+    "G15": {
+      "desc": "Parent duplicate lexical authority violations = 0",
+      "pass": true
+    },
+    "G16": {
+      "desc": "Single-architecture executable realizability PASS",
+      "pass": true
+    },
+    "G17": {
+      "desc": "G0 candidate sets equal Parent",
+      "pass": true
+    },
+    "G18": {
+      "desc": "G0 base score error = 0.0",
+      "pass": false
+    },
+    "G19": {
+      "desc": "G0 winner/tie/abstention equals Parent",
+      "pass": true
+    },
+    "G20": {
+      "desc": "All ten G0 OOD probe states equal Parent",
+      "pass": true
+    },
+    "G21": {
+      "desc": "Grounding schedule and exposure count unchanged",
+      "pass": false
+    },
+    "G22": {
+      "desc": "No provisional child base commit",
+      "pass": true
+    },
+    "G23": {
+      "desc": "G1 held-out multi-event = 20/20",
+      "pass": true
+    },
+    "G24": {
+      "desc": "G1 correct-concept sequence support = 20/20",
+      "pass": true
+    },
+    "G25": {
+      "desc": "592 transitions conserved",
+      "pass": true
+    },
+    "G26": {
+      "desc": "Transition provenance Gamma_t conserved",
+      "pass": true
+    },
+    "G27": {
+      "desc": "G1 B-lens sequence score error = 0.0",
+      "pass": true
+    },
+    "G28": {
+      "desc": "Compression-alias structure conserved",
+      "pass": true
+    },
+    "G29": {
+      "desc": "Complete G2 governed interaction report produced",
+      "pass": true
+    },
+    "G30": {
+      "desc": "Deterministic replay PASS",
+      "pass": true
+    },
+    "G31": {
+      "desc": "Streaming/chunk equivalence PASS",
+      "pass": true
+    },
+    "G32": {
+      "desc": "20/20 math + 36/36 invariants + 36/36 forbidden PASS",
+      "pass": true
+    }
+  },
+  "passed": 28
+}

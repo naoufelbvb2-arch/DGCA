@@ -1,0 +1,1019 @@
+{
+  "audit_scope": "40 grounding recordings",
+  "total_grounding_recordings": 40,
+  "single_event_single_exposure_recordings": 39,
+  "multi_event_multi_exposure_recordings": 1,
+  "mismatched_details": [
+    {
+      "episode_number": 21,
+      "recording_id": "ATG01-G-C06-R3",
+      "concept_label": "no",
+      "context_ids": [
+        "ATG01-GCTX-021"
+      ],
+      "lawful_parent_event_count": 3,
+      "historical_lexical_observation_calls": 3,
+      "historical_lexical_exposure_count": 3,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:3",
+          "aud:band:6",
+          "aud:periodicity:P3",
+          "aud:energy:FALLING"
+        ],
+        [
+          "aud:energy:STEADY"
+        ],
+        [
+          "aud:band:1",
+          "aud:band:2",
+          "aud:band:0",
+          "aud:band:3",
+          "aud:periodicity:P2",
+          "aud:energy:RISING"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 4,
+        "edges": 63
+      }
+    }
+  ],
+  "historical_reconstruction_exact": true,
+  "frozen_premise": "LexicalExposureCount(R) == 1 for every grounding recording under both Parent and AEMG01",
+  "frozen_premise_test_result": "MISMATCH",
+  "premise_mismatch_reason": "FROZEN_PARENT_EXPOSURE_PREMISE_MISMATCH",
+  "formal_spec_reopen_required": "YES",
+  "historical_exposure_records": [
+    {
+      "episode_number": 1,
+      "recording_id": "ATG01-G-C00-R1",
+      "concept_label": "bird",
+      "context_ids": [
+        "ATG01-GCTX-001"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:0",
+          "aud:band:3",
+          "aud:band:6",
+          "aud:periodicity:P5",
+          "aud:energy:STEADY"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 7,
+        "edges": 42
+      }
+    },
+    {
+      "episode_number": 2,
+      "recording_id": "ATG01-G-C01-R1",
+      "concept_label": "cat",
+      "context_ids": [
+        "ATG01-GCTX-002"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:1",
+          "aud:periodicity:P2",
+          "aud:energy:STEADY"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 4,
+        "edges": 20
+      }
+    },
+    {
+      "episode_number": 3,
+      "recording_id": "ATG01-G-C02-R1",
+      "concept_label": "dog",
+      "context_ids": [
+        "ATG01-GCTX-003"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:1",
+          "aud:band:2",
+          "aud:band:3",
+          "aud:band:5",
+          "aud:periodicity:P1",
+          "aud:energy:RISING"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 6,
+        "edges": 56
+      }
+    },
+    {
+      "episode_number": 4,
+      "recording_id": "ATG01-G-C03-R1",
+      "concept_label": "tree",
+      "context_ids": [
+        "ATG01-GCTX-004"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:0",
+          "aud:periodicity:P0",
+          "aud:energy:STEADY"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 3,
+        "edges": 19
+      }
+    },
+    {
+      "episode_number": 5,
+      "recording_id": "ATG01-G-C04-R1",
+      "concept_label": "bed",
+      "context_ids": [
+        "ATG01-GCTX-005"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:1",
+          "aud:band:0",
+          "aud:band:2",
+          "aud:band:4",
+          "aud:periodicity:P0",
+          "aud:energy:STEADY"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 3,
+        "edges": 46
+      }
+    },
+    {
+      "episode_number": 6,
+      "recording_id": "ATG01-G-C05-R1",
+      "concept_label": "house",
+      "context_ids": [
+        "ATG01-GCTX-006"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:0",
+          "aud:periodicity:P2",
+          "aud:energy:STEADY"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 2,
+        "edges": 20
+      }
+    },
+    {
+      "episode_number": 7,
+      "recording_id": "ATG01-G-C06-R1",
+      "concept_label": "no",
+      "context_ids": [
+        "ATG01-GCTX-007"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:5",
+          "aud:band:6",
+          "aud:band:4",
+          "aud:band:3",
+          "aud:periodicity:P1",
+          "aud:energy:PULSE"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 3,
+        "edges": 48
+      }
+    },
+    {
+      "episode_number": 8,
+      "recording_id": "ATG01-G-C07-R1",
+      "concept_label": "go",
+      "context_ids": [
+        "ATG01-GCTX-008"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:0",
+          "aud:band:1",
+          "aud:band:6",
+          "aud:periodicity:P5",
+          "aud:energy:STEADY"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 3,
+        "edges": 34
+      }
+    },
+    {
+      "episode_number": 9,
+      "recording_id": "ATG01-G-C08-R1",
+      "concept_label": "on",
+      "context_ids": [
+        "ATG01-GCTX-009"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:3",
+          "aud:band:8",
+          "aud:periodicity:P3",
+          "aud:energy:PULSE"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 4,
+        "edges": 28
+      }
+    },
+    {
+      "episode_number": 10,
+      "recording_id": "ATG01-G-C09-R1",
+      "concept_label": "off",
+      "context_ids": [
+        "ATG01-GCTX-010"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:7",
+          "aud:band:6",
+          "aud:band:1",
+          "aud:band:2",
+          "aud:periodicity:P5",
+          "aud:energy:FALLING"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 4,
+        "edges": 48
+      }
+    },
+    {
+      "episode_number": 11,
+      "recording_id": "ATG01-G-C03-R2",
+      "concept_label": "tree",
+      "context_ids": [
+        "ATG01-GCTX-011"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:0",
+          "aud:band:1",
+          "aud:band:5",
+          "aud:band:2",
+          "aud:periodicity:P5",
+          "aud:energy:RISING"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 1,
+        "edges": 33
+      }
+    },
+    {
+      "episode_number": 12,
+      "recording_id": "ATG01-G-C04-R2",
+      "concept_label": "bed",
+      "context_ids": [
+        "ATG01-GCTX-012"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:2",
+          "aud:band:1",
+          "aud:band:0",
+          "aud:band:4",
+          "aud:periodicity:P2",
+          "aud:energy:FALLING"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 1,
+        "edges": 29
+      }
+    },
+    {
+      "episode_number": 13,
+      "recording_id": "ATG01-G-C05-R2",
+      "concept_label": "house",
+      "context_ids": [
+        "ATG01-GCTX-013"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:0",
+          "aud:band:1",
+          "aud:periodicity:P5",
+          "aud:energy:FALLING"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 1,
+        "edges": 20
+      }
+    },
+    {
+      "episode_number": 14,
+      "recording_id": "ATG01-G-C06-R2",
+      "concept_label": "no",
+      "context_ids": [
+        "ATG01-GCTX-014"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:1",
+          "aud:band:0",
+          "aud:band:2",
+          "aud:periodicity:P1",
+          "aud:energy:STEADY"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 1,
+        "edges": 29
+      }
+    },
+    {
+      "episode_number": 15,
+      "recording_id": "ATG01-G-C07-R2",
+      "concept_label": "go",
+      "context_ids": [
+        "ATG01-GCTX-015"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:0",
+          "aud:band:6",
+          "aud:band:1",
+          "aud:band:5",
+          "aud:periodicity:P1",
+          "aud:energy:PULSE"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 1,
+        "edges": 26
+      }
+    },
+    {
+      "episode_number": 16,
+      "recording_id": "ATG01-G-C08-R2",
+      "concept_label": "on",
+      "context_ids": [
+        "ATG01-GCTX-016"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:2",
+          "aud:band:4",
+          "aud:band:10",
+          "aud:band:6",
+          "aud:periodicity:P0",
+          "aud:energy:PULSE"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 2,
+        "edges": 40
+      }
+    },
+    {
+      "episode_number": 17,
+      "recording_id": "ATG01-G-C09-R2",
+      "concept_label": "off",
+      "context_ids": [
+        "ATG01-GCTX-017"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:0",
+          "aud:band:19",
+          "aud:periodicity:P1",
+          "aud:energy:FALLING"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 2,
+        "edges": 24
+      }
+    },
+    {
+      "episode_number": 18,
+      "recording_id": "ATG01-G-C00-R2",
+      "concept_label": "bird",
+      "context_ids": [
+        "ATG01-GCTX-018"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:0",
+          "aud:band:1",
+          "aud:band:2",
+          "aud:band:4",
+          "aud:periodicity:P2",
+          "aud:energy:RISING"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 2,
+        "edges": 39
+      }
+    },
+    {
+      "episode_number": 19,
+      "recording_id": "ATG01-G-C01-R2",
+      "concept_label": "cat",
+      "context_ids": [
+        "ATG01-GCTX-019"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:0",
+          "aud:band:3",
+          "aud:band:5",
+          "aud:periodicity:P0",
+          "aud:energy:RISING"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 2,
+        "edges": 36
+      }
+    },
+    {
+      "episode_number": 20,
+      "recording_id": "ATG01-G-C02-R2",
+      "concept_label": "dog",
+      "context_ids": [
+        "ATG01-GCTX-020"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:0",
+          "aud:band:2",
+          "aud:periodicity:P0",
+          "aud:energy:STEADY"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 1,
+        "edges": 25
+      }
+    },
+    {
+      "episode_number": 21,
+      "recording_id": "ATG01-G-C06-R3",
+      "concept_label": "no",
+      "context_ids": [
+        "ATG01-GCTX-021"
+      ],
+      "lawful_parent_event_count": 3,
+      "historical_lexical_observation_calls": 3,
+      "historical_lexical_exposure_count": 3,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:3",
+          "aud:band:6",
+          "aud:periodicity:P3",
+          "aud:energy:FALLING"
+        ],
+        [
+          "aud:energy:STEADY"
+        ],
+        [
+          "aud:band:1",
+          "aud:band:2",
+          "aud:band:0",
+          "aud:band:3",
+          "aud:periodicity:P2",
+          "aud:energy:RISING"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 4,
+        "edges": 63
+      }
+    },
+    {
+      "episode_number": 22,
+      "recording_id": "ATG01-G-C07-R3",
+      "concept_label": "go",
+      "context_ids": [
+        "ATG01-GCTX-022"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:1",
+          "aud:band:6",
+          "aud:band:0",
+          "aud:periodicity:P2",
+          "aud:energy:STEADY"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 1,
+        "edges": 26
+      }
+    },
+    {
+      "episode_number": 23,
+      "recording_id": "ATG01-G-C08-R3",
+      "concept_label": "on",
+      "context_ids": [
+        "ATG01-GCTX-023"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:1",
+          "aud:band:5",
+          "aud:band:3",
+          "aud:band:6",
+          "aud:periodicity:P1",
+          "aud:energy:RISING"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 2,
+        "edges": 35
+      }
+    },
+    {
+      "episode_number": 24,
+      "recording_id": "ATG01-G-C09-R3",
+      "concept_label": "off",
+      "context_ids": [
+        "ATG01-GCTX-024"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:periodicity:P2",
+          "aud:energy:PULSE"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 1,
+        "edges": 12
+      }
+    },
+    {
+      "episode_number": 25,
+      "recording_id": "ATG01-G-C00-R3",
+      "concept_label": "bird",
+      "context_ids": [
+        "ATG01-GCTX-025"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:3",
+          "aud:band:2",
+          "aud:band:4",
+          "aud:band:5",
+          "aud:periodicity:P2",
+          "aud:energy:STEADY"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 1,
+        "edges": 21
+      }
+    },
+    {
+      "episode_number": 26,
+      "recording_id": "ATG01-G-C01-R3",
+      "concept_label": "cat",
+      "context_ids": [
+        "ATG01-GCTX-026"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:0",
+          "aud:band:1",
+          "aud:periodicity:P5",
+          "aud:energy:RISING"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 1,
+        "edges": 18
+      }
+    },
+    {
+      "episode_number": 27,
+      "recording_id": "ATG01-G-C02-R3",
+      "concept_label": "dog",
+      "context_ids": [
+        "ATG01-GCTX-027"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:0",
+          "aud:band:1",
+          "aud:band:3",
+          "aud:band:7",
+          "aud:periodicity:P5",
+          "aud:energy:STEADY"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 1,
+        "edges": 28
+      }
+    },
+    {
+      "episode_number": 28,
+      "recording_id": "ATG01-G-C03-R3",
+      "concept_label": "tree",
+      "context_ids": [
+        "ATG01-GCTX-028"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:0",
+          "aud:band:1",
+          "aud:band:3",
+          "aud:band:5",
+          "aud:periodicity:P5",
+          "aud:energy:FALLING"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 1,
+        "edges": 29
+      }
+    },
+    {
+      "episode_number": 29,
+      "recording_id": "ATG01-G-C04-R3",
+      "concept_label": "bed",
+      "context_ids": [
+        "ATG01-GCTX-029"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:1",
+          "aud:band:0",
+          "aud:band:3",
+          "aud:band:2",
+          "aud:periodicity:P1",
+          "aud:energy:FALLING"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 1,
+        "edges": 24
+      }
+    },
+    {
+      "episode_number": 30,
+      "recording_id": "ATG01-G-C05-R3",
+      "concept_label": "house",
+      "context_ids": [
+        "ATG01-GCTX-030"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:0",
+          "aud:periodicity:P0",
+          "aud:energy:STEADY"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 1,
+        "edges": 21
+      }
+    },
+    {
+      "episode_number": 31,
+      "recording_id": "ATG01-G-C09-R4",
+      "concept_label": "off",
+      "context_ids": [
+        "ATG01-GCTX-031"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:1",
+          "aud:band:0",
+          "aud:band:6",
+          "aud:band:3",
+          "aud:periodicity:P1",
+          "aud:energy:STEADY"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 1,
+        "edges": 26
+      }
+    },
+    {
+      "episode_number": 32,
+      "recording_id": "ATG01-G-C00-R4",
+      "concept_label": "bird",
+      "context_ids": [
+        "ATG01-GCTX-032"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:1",
+          "aud:band:0",
+          "aud:band:2",
+          "aud:periodicity:P1",
+          "aud:energy:STEADY"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 1,
+        "edges": 30
+      }
+    },
+    {
+      "episode_number": 33,
+      "recording_id": "ATG01-G-C01-R4",
+      "concept_label": "cat",
+      "context_ids": [
+        "ATG01-GCTX-033"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:0",
+          "aud:band:8",
+          "aud:band:2",
+          "aud:band:4",
+          "aud:periodicity:P5",
+          "aud:energy:STEADY"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 1,
+        "edges": 33
+      }
+    },
+    {
+      "episode_number": 34,
+      "recording_id": "ATG01-G-C02-R4",
+      "concept_label": "dog",
+      "context_ids": [
+        "ATG01-GCTX-034"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:0",
+          "aud:band:5",
+          "aud:periodicity:P2",
+          "aud:energy:STEADY"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 1,
+        "edges": 18
+      }
+    },
+    {
+      "episode_number": 35,
+      "recording_id": "ATG01-G-C03-R4",
+      "concept_label": "tree",
+      "context_ids": [
+        "ATG01-GCTX-035"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:0",
+          "aud:band:3",
+          "aud:band:6",
+          "aud:periodicity:P3",
+          "aud:energy:RISING"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 1,
+        "edges": 28
+      }
+    },
+    {
+      "episode_number": 36,
+      "recording_id": "ATG01-G-C04-R4",
+      "concept_label": "bed",
+      "context_ids": [
+        "ATG01-GCTX-036"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:0",
+          "aud:band:1",
+          "aud:band:13",
+          "aud:periodicity:P5",
+          "aud:energy:STEADY"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 2,
+        "edges": 39
+      }
+    },
+    {
+      "episode_number": 37,
+      "recording_id": "ATG01-G-C05-R4",
+      "concept_label": "house",
+      "context_ids": [
+        "ATG01-GCTX-037"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:19",
+          "aud:band:1",
+          "aud:periodicity:P4",
+          "aud:energy:RISING"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 2,
+        "edges": 26
+      }
+    },
+    {
+      "episode_number": 38,
+      "recording_id": "ATG01-G-C06-R4",
+      "concept_label": "no",
+      "context_ids": [
+        "ATG01-GCTX-038"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:4",
+          "aud:band:2",
+          "aud:band:1",
+          "aud:band:7",
+          "aud:periodicity:P1",
+          "aud:energy:PULSE"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 2,
+        "edges": 30
+      }
+    },
+    {
+      "episode_number": 39,
+      "recording_id": "ATG01-G-C07-R4",
+      "concept_label": "go",
+      "context_ids": [
+        "ATG01-GCTX-039"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:1",
+          "aud:band:3",
+          "aud:band:5",
+          "aud:band:10",
+          "aud:periodicity:P1",
+          "aud:energy:RISING"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 2,
+        "edges": 41
+      }
+    },
+    {
+      "episode_number": 40,
+      "recording_id": "ATG01-G-C08-R4",
+      "concept_label": "on",
+      "context_ids": [
+        "ATG01-GCTX-040"
+      ],
+      "lawful_parent_event_count": 1,
+      "historical_lexical_observation_calls": 1,
+      "historical_lexical_exposure_count": 1,
+      "descriptor_set_per_exposure": [
+        [
+          "aud:band:2",
+          "aud:band:4",
+          "aud:periodicity:P0",
+          "aud:energy:RISING"
+        ]
+      ],
+      "graph_delta": {
+        "nodes": 2,
+        "edges": 21
+      }
+    }
+  ],
+  "status": "FAIL"
+}

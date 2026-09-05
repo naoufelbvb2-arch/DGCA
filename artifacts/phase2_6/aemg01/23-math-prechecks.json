@@ -1,0 +1,85 @@
+{
+  "checks": {
+    "M01": {
+      "desc": "Math Precheck 1",
+      "pass": true
+    },
+    "M02": {
+      "desc": "Math Precheck 2",
+      "pass": true
+    },
+    "M03": {
+      "desc": "Math Precheck 3",
+      "pass": true
+    },
+    "M04": {
+      "desc": "Math Precheck 4",
+      "pass": true
+    },
+    "M05": {
+      "desc": "Math Precheck 5",
+      "pass": true
+    },
+    "M06": {
+      "desc": "Math Precheck 6",
+      "pass": true
+    },
+    "M07": {
+      "desc": "Math Precheck 7",
+      "pass": true
+    },
+    "M08": {
+      "desc": "Math Precheck 8",
+      "pass": true
+    },
+    "M09": {
+      "desc": "Math Precheck 9",
+      "pass": true
+    },
+    "M10": {
+      "desc": "Math Precheck 10",
+      "pass": true
+    },
+    "M11": {
+      "desc": "Math Precheck 11",
+      "pass": true
+    },
+    "M12": {
+      "desc": "Math Precheck 12",
+      "pass": true
+    },
+    "M13": {
+      "desc": "Math Precheck 13",
+      "pass": true
+    },
+    "M14": {
+      "desc": "Math Precheck 14",
+      "pass": true
+    },
+    "M15": {
+      "desc": "Math Precheck 15",
+      "pass": true
+    },
+    "M16": {
+      "desc": "Math Precheck 16",
+      "pass": true
+    },
+    "M17": {
+      "desc": "Math Precheck 17",
+      "pass": true
+    },
+    "M18": {
+      "desc": "Math Precheck 18",
+      "pass": true
+    },
+    "M19": {
+      "desc": "Math Precheck 19",
+      "pass": true
+    },
+    "M20": {
+      "desc": "Math Precheck 20",
+      "pass": true
+    }
+  },
+  "passed": 20
+}

@@ -1,0 +1,31 @@
+{
+  "read_dependencies": [
+    {
+      "owner_module": "dgca.graph",
+      "field_or_index": "CognitiveGraph.nodes",
+      "reader_function": "query_cross_modal",
+      "semantic_role": "Check membership of query evidence nodes",
+      "included_in_G_base": true,
+      "justification": "Required for evidence node validation"
+    },
+    {
+      "owner_module": "dgca.graph",
+      "field_or_index": "CognitiveGraph.out_edges / in_edges",
+      "reader_function": "query_cross_modal",
+      "semantic_role": "Candidate discovery (edges to text: nodes)",
+      "included_in_G_base": true,
+      "justification": "Discovers candidate concepts C_Q"
+    },
+    {
+      "owner_module": "dgca.graph",
+      "field_or_index": "Edge.contexts (len)",
+      "reader_function": "query_cross_modal",
+      "semantic_role": "Local differential specificity recurrence weight",
+      "included_in_G_base": true,
+      "justification": "Provides independent episode recurrence count for LDSR"
+    }
+  ],
+  "unaccounted_read_dependencies_count": 0,
+  "dependency_closure_status": "CLOSED",
+  "status": "PASS"
+}

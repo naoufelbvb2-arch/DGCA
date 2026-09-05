@@ -1,0 +1,13 @@
+{
+  "g0_heldout_correct": 0,
+  "g0_heldout_wrong": 19,
+  "g0_heldout_ambiguous": 1,
+  "g0_heldout_median_rank": 5.0,
+  "g0_ood_forced": 9,
+  "g0_ood_ambiguous": 1,
+  "g0_ood_o08_outcome": "AMBIGUOUS",
+  "ood_per_probe_state_equality": "PASS",
+  "max_g0_base_score_error": 1.3877787807814457e-17,
+  "candidate_set_equality": true,
+  "status": "PASS"
+}

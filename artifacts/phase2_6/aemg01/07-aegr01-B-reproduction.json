@@ -1,0 +1,18 @@
+{
+  "b_heldout_correct": 6,
+  "b_heldout_wrong": 14,
+  "b_heldout_median_rank": 4.0,
+  "b_ood_forced": 10,
+  "b_ood_ambiguous": 0,
+  "b_ood_o08_outcome": "WINNER",
+  "b_ood_o08_winner": "house",
+  "unique_grounding_transitions": 592,
+  "fanout_classification": {
+    "UNIQUE": 251,
+    "LOW_SHARED": 170,
+    "MID_SHARED": 97,
+    "HIGH_SHARED": 61,
+    "GLOBAL": 13
+  },
+  "status": "PASS"
+}
