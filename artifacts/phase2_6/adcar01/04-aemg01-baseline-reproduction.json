@@ -1,0 +1,8 @@
+{
+  "aemg01_execution_commit": "6fd2157",
+  "aemg01_all_gates_passed": true,
+  "aemg01_passed_gates_count": 38,
+  "aemg01_verdict": "AEMG01_COUNTERFACTUAL_PASS",
+  "aemg01_validated_component": true,
+  "status": "PASS"
+}

@@ -1,0 +1,119 @@
+{
+  "passed_count": 28,
+  "total_count": 28,
+  "checks": {
+    "M01": {
+      "desc": "Parent event reproduction exact",
+      "pass": true
+    },
+    "M02": {
+      "desc": "AEMG01 base reproduction exact",
+      "pass": true
+    },
+    "M03": {
+      "desc": "F01 CA1 inventory exact",
+      "pass": true
+    },
+    "M04": {
+      "desc": "F01 CA2 inventory exact",
+      "pass": true
+    },
+    "M05": {
+      "desc": "Precompression support reproduction exact",
+      "pass": true
+    },
+    "M06": {
+      "desc": "Coarse descriptor reproduction exact",
+      "pass": true
+    },
+    "M07": {
+      "desc": "Spectral profile deterministic ordering",
+      "pass": true
+    },
+    "M08": {
+      "desc": "Periodicity profile deterministic ordering",
+      "pass": true
+    },
+    "M09": {
+      "desc": "BCAP canonical identity deterministic",
+      "pass": true
+    },
+    "M10": {
+      "desc": "CCAP canonical identity deterministic",
+      "pass": true
+    },
+    "M11": {
+      "desc": "BCAP label independence",
+      "pass": true
+    },
+    "M12": {
+      "desc": "CCAP label independence",
+      "pass": true
+    },
+    "M13": {
+      "desc": "Descriptor-budget interpretation exact",
+      "pass": true
+    },
+    "M14": {
+      "desc": "BCAP/CCAP grammar compatibility PASS",
+      "pass": true
+    },
+    "M15": {
+      "desc": "R0 reproduced",
+      "pass": true
+    },
+    "M16": {
+      "desc": "R0C uses no discarded acoustic evidence",
+      "pass": true
+    },
+    "M17": {
+      "desc": "R1 uses no new acoustic evidence",
+      "pass": true
+    },
+    "M18": {
+      "desc": "R0C/R1 topology class matched",
+      "pass": true
+    },
+    "M19": {
+      "desc": "Causal witness concordance complete",
+      "pass": true
+    },
+    "M20": {
+      "desc": "Identity/rank separability audit complete",
+      "pass": true
+    },
+    "M21": {
+      "desc": "AEMG01 base semantic diff 0",
+      "pass": true
+    },
+    "M22": {
+      "desc": "Candidate set diff 0",
+      "pass": true
+    },
+    "M23": {
+      "desc": "Sequence->base conductance 0",
+      "pass": true
+    },
+    "M24": {
+      "desc": "Held-out self-grounding 0",
+      "pass": true
+    },
+    "M25": {
+      "desc": "OOD per-probe safety complete",
+      "pass": true
+    },
+    "M26": {
+      "desc": "Streaming/chunk equivalence",
+      "pass": true
+    },
+    "M27": {
+      "desc": "Determinism exact",
+      "pass": true
+    },
+    "M28": {
+      "desc": "No forbidden mechanism required",
+      "pass": true
+    }
+  },
+  "status": "PASS"
+}

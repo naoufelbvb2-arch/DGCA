@@ -1,0 +1,27 @@
+{
+  "r0_transitions": 592,
+  "r0_fanout": {
+    "UNIQUE": 251,
+    "LOW_SHARED": 170,
+    "MID_SHARED": 97,
+    "HIGH_SHARED": 61,
+    "GLOBAL": 13
+  },
+  "r0c_transitions": 133,
+  "r0c_fanout": {
+    "UNIQUE": 133,
+    "LOW_SHARED": 0,
+    "MID_SHARED": 0,
+    "HIGH_SHARED": 0,
+    "GLOBAL": 0
+  },
+  "r1_transitions": 136,
+  "r1_fanout": {
+    "UNIQUE": 136,
+    "LOW_SHARED": 0,
+    "MID_SHARED": 0,
+    "HIGH_SHARED": 0,
+    "GLOBAL": 0
+  },
+  "status": "PASS"
+}

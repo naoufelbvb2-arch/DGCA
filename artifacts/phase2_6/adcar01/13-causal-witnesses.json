@@ -1,0 +1,12 @@
+{
+  "total_witnesses": 103,
+  "concordance_breakdown": {
+    "CAUSAL_WITNESS_PRESERVED": 103
+  },
+  "causal_witness_preserved_count": 103,
+  "alias_broken_by_noncausal_tail_count": 0,
+  "magnitude_witness_lost_count": 0,
+  "true_profile_collision_count": 0,
+  "inconclusive_count": 0,
+  "status": "PASS"
+}

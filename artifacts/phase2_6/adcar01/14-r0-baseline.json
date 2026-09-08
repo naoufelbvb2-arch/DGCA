@@ -1,0 +1,9 @@
+{
+  "condition": "R0_COARSE_BASELINE",
+  "distinct_transitions": 592,
+  "heldout_correct": 4,
+  "heldout_wrong": 16,
+  "heldout_ambiguous": 0,
+  "heldout_median_rank": 5.0,
+  "status": "PASS"
+}

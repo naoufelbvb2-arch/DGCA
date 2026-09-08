@@ -1,0 +1,167 @@
+{
+  "passed_count": 40,
+  "total_count": 40,
+  "checks": {
+    "INV01": {
+      "desc": "Audio v2 frontend unchanged",
+      "pass": true
+    },
+    "INV02": {
+      "desc": "Audio v2 validity semantics unchanged",
+      "pass": true
+    },
+    "INV03": {
+      "desc": "Parent events unchanged",
+      "pass": true
+    },
+    "INV04": {
+      "desc": "AEGR01 boundaries unchanged",
+      "pass": true
+    },
+    "INV05": {
+      "desc": "Child frame partition unchanged",
+      "pass": true
+    },
+    "INV06": {
+      "desc": "Current coarse descriptors reproducible",
+      "pass": true
+    },
+    "INV07": {
+      "desc": "AEMG01 Parent authority unchanged",
+      "pass": true
+    },
+    "INV08": {
+      "desc": "Parent transactions unchanged",
+      "pass": true
+    },
+    "INV09": {
+      "desc": "Base graph semantic equality",
+      "pass": true
+    },
+    "INV10": {
+      "desc": "Continuation equality",
+      "pass": true
+    },
+    "INV11": {
+      "desc": "Child lexical authority zero",
+      "pass": true
+    },
+    "INV12": {
+      "desc": "Sequence->base conductance zero",
+      "pass": true
+    },
+    "INV13": {
+      "desc": "Candidate discovery unchanged",
+      "pass": true
+    },
+    "INV14": {
+      "desc": "LDSR unchanged",
+      "pass": true
+    },
+    "INV15": {
+      "desc": "ASUR mathematics unchanged",
+      "pass": true
+    },
+    "INV16": {
+      "desc": "Law 11 unchanged",
+      "pass": true
+    },
+    "INV17": {
+      "desc": "BCAP existing acoustic support only",
+      "pass": true
+    },
+    "INV18": {
+      "desc": "CCAP coarse compressed support only",
+      "pass": true
+    },
+    "INV19": {
+      "desc": "BCAP deterministic",
+      "pass": true
+    },
+    "INV20": {
+      "desc": "CCAP deterministic",
+      "pass": true
+    },
+    "INV21": {
+      "desc": "BCAP label-independent",
+      "pass": true
+    },
+    "INV22": {
+      "desc": "BCAP speaker-metadata-independent",
+      "pass": true
+    },
+    "INV23": {
+      "desc": "BCAP file-independent",
+      "pass": true
+    },
+    "INV24": {
+      "desc": "No learned codebook",
+      "pass": true
+    },
+    "INV25": {
+      "desc": "No magnitude quantization",
+      "pass": true
+    },
+    "INV26": {
+      "desc": "Frozen witness inventory exact",
+      "pass": true
+    },
+    "INV27": {
+      "desc": "CA1 witness completeness",
+      "pass": true
+    },
+    "INV28": {
+      "desc": "CA2 witness completeness",
+      "pass": true
+    },
+    "INV29": {
+      "desc": "R0C topology class matched to R1",
+      "pass": true
+    },
+    "INV30": {
+      "desc": "R0C contains no discarded specificity",
+      "pass": true
+    },
+    "INV31": {
+      "desc": "R1 contains no new acoustic feature",
+      "pass": true
+    },
+    "INV32": {
+      "desc": "Transition provenance lawful",
+      "pass": true
+    },
+    "INV33": {
+      "desc": "Held-out self-grounding zero",
+      "pass": true
+    },
+    "INV34": {
+      "desc": "OOD audit per probe",
+      "pass": true
+    },
+    "INV35": {
+      "desc": "Streaming/chunk equivalence",
+      "pass": true
+    },
+    "INV36": {
+      "desc": "SRA01 safety",
+      "pass": true
+    },
+    "INV37": {
+      "desc": "Text isolation",
+      "pass": true
+    },
+    "INV38": {
+      "desc": "Vision isolation",
+      "pass": true
+    },
+    "INV39": {
+      "desc": "Persistent schema unchanged",
+      "pass": true
+    },
+    "INV40": {
+      "desc": "Descriptor-budget semantics obeyed",
+      "pass": true
+    }
+  },
+  "status": "PASS"
+}

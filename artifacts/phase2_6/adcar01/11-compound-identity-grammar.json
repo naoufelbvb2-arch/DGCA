@@ -1,0 +1,12 @@
+{
+  "bcap_node_modality": "audio",
+  "ccap_node_modality": "audio",
+  "new_node_types": 0,
+  "new_edge_types": 0,
+  "new_persistent_fields": 0,
+  "new_modalities": 0,
+  "new_parser_semantics": 0,
+  "new_retrieval_branches": 0,
+  "new_laws": 0,
+  "status": "PASS"
+}

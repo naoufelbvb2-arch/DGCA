@@ -1,0 +1,10 @@
+{
+  "condition": "R1_BCAP_CANDIDATE",
+  "distinct_transitions": 136,
+  "heldout_correct": 6,
+  "heldout_wrong": 14,
+  "heldout_ambiguous": 0,
+  "heldout_median_rank": 4.0,
+  "topology_class": "ONE_ENDPOINT_PER_EVENT",
+  "status": "PASS"
+}

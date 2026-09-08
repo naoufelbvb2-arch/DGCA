@@ -1,0 +1,12 @@
+{
+  "budget_interpretation": "A_GRAPH_FACING_DESCRIPTOR_COUNT_BOUND",
+  "frozen_budget_bound": 8,
+  "bcap_graph_facing_tokens_per_event": 1,
+  "ccap_graph_facing_tokens_per_event": 1,
+  "bcap_internal_independent_graph_access": 0,
+  "bcap_internal_independent_weights": 0,
+  "bcap_internal_independent_retrieval_channels": 0,
+  "ccap_internal_independent_graph_access": 0,
+  "budget_laundering_detected": false,
+  "status": "PASS"
+}

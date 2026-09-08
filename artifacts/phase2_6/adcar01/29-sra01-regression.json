@@ -1,0 +1,7 @@
+{
+  "audio_frontend_unchanged": true,
+  "silence_behavior_unchanged": true,
+  "event_boundaries_unchanged": true,
+  "sra01_regression_safe": true,
+  "status": "PASS"
+}

@@ -1,0 +1,158 @@
+{
+  "passed_count": 34,
+  "total_count": 36,
+  "all_gates_passed": false,
+  "failed_gates": [
+    "G26",
+    "G31"
+  ],
+  "verdict": "ADCAR01_COUNTERFACTUAL_EFFICACY_FAIL",
+  "component_validated": false,
+  "gates": {
+    "G01": {
+      "desc": "lineage exact",
+      "pass": true
+    },
+    "G02": {
+      "desc": "assets exact",
+      "pass": true
+    },
+    "G03": {
+      "desc": "current regression PASS",
+      "pass": true
+    },
+    "G04": {
+      "desc": "historical signature exact",
+      "pass": true
+    },
+    "G05": {
+      "desc": "AEMG01 baseline reproduced",
+      "pass": true
+    },
+    "G06": {
+      "desc": "Parent events exact",
+      "pass": true
+    },
+    "G07": {
+      "desc": "F01 CA1 inventory exact",
+      "pass": true
+    },
+    "G08": {
+      "desc": "F01 CA2 inventory exact",
+      "pass": true
+    },
+    "G09": {
+      "desc": "precompression evidence exact",
+      "pass": true
+    },
+    "G10": {
+      "desc": "coarse descriptor evidence exact",
+      "pass": true
+    },
+    "G11": {
+      "desc": "descriptor-budget semantics exact",
+      "pass": true
+    },
+    "G12": {
+      "desc": "BCAP + CCAP grammar compatible",
+      "pass": true
+    },
+    "G13": {
+      "desc": "no budget laundering / no additive endpoint",
+      "pass": true
+    },
+    "G14": {
+      "desc": "separability audit complete",
+      "pass": true
+    },
+    "G15": {
+      "desc": "R0 exact",
+      "pass": true
+    },
+    "G16": {
+      "desc": "R0C valid",
+      "pass": true
+    },
+    "G17": {
+      "desc": "R1 valid/current-graph executable",
+      "pass": true
+    },
+    "G18": {
+      "desc": "R0C/R1 topology class matched",
+      "pass": true
+    },
+    "G19": {
+      "desc": "base semantic diff 0",
+      "pass": true
+    },
+    "G20": {
+      "desc": "continuation diff 0",
+      "pass": true
+    },
+    "G21": {
+      "desc": "child lexical leaks 0",
+      "pass": true
+    },
+    "G22": {
+      "desc": "candidate-set diff 0",
+      "pass": true
+    },
+    "G23": {
+      "desc": "sequence->base conductance 0",
+      "pass": true
+    },
+    "G24": {
+      "desc": "transition provenance legal",
+      "pass": true
+    },
+    "G25": {
+      "desc": "CA1 causal alias repair 5/5",
+      "pass": true
+    },
+    "G26": {
+      "desc": "CA1 score inversion repair 5/5",
+      "pass": false
+    },
+    "G27": {
+      "desc": "CA2 witness telemetry complete",
+      "pass": true
+    },
+    "G28": {
+      "desc": "CA2 causal probe resolution 13/13",
+      "pass": true
+    },
+    "G29": {
+      "desc": "held-out self-grounding 0",
+      "pass": true
+    },
+    "G30": {
+      "desc": "held-out multi-event 20/20",
+      "pass": true
+    },
+    "G31": {
+      "desc": "held-out correct-concept support 20/20",
+      "pass": false
+    },
+    "G32": {
+      "desc": "OOD per-probe safety 10/10",
+      "pass": true
+    },
+    "G33": {
+      "desc": "streaming/chunk PASS",
+      "pass": true
+    },
+    "G34": {
+      "desc": "deterministic replay PASS",
+      "pass": true
+    },
+    "G35": {
+      "desc": "SRA01/text/vision regression safety PASS",
+      "pass": true
+    },
+    "G36": {
+      "desc": "math/invariants/forbidden all PASS",
+      "pass": true
+    }
+  },
+  "status": "FAIL"
+}

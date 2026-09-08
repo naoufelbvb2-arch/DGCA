@@ -1,0 +1,8 @@
+{
+  "r2_base_state_preserved": true,
+  "r2_candidate_set_preserved": true,
+  "r2_bcap_multiset_preserved": true,
+  "r2_directional_sequence_effect": "DIRECTIONAL_DIFFERENCE_OBSERVED",
+  "r2_heldout_correct": 6,
+  "status": "PASS"
+}

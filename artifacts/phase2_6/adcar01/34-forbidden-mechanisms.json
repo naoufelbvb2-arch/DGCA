@@ -1,0 +1,167 @@
+{
+  "passed_count": 40,
+  "total_count": 40,
+  "checks": {
+    "FM01": {
+      "desc": "phoneme model",
+      "pass": true
+    },
+    "FM02": {
+      "desc": "syllable model",
+      "pass": true
+    },
+    "FM03": {
+      "desc": "ASR",
+      "pass": true
+    },
+    "FM04": {
+      "desc": "DTW",
+      "pass": true
+    },
+    "FM05": {
+      "desc": "forced alignment",
+      "pass": true
+    },
+    "FM06": {
+      "desc": "speaker embedding",
+      "pass": true
+    },
+    "FM07": {
+      "desc": "label-conditioned BCAP",
+      "pass": true
+    },
+    "FM08": {
+      "desc": "concept-conditioned BCAP",
+      "pass": true
+    },
+    "FM09": {
+      "desc": "OOD-conditioned BCAP",
+      "pass": true
+    },
+    "FM10": {
+      "desc": "held-out tuning",
+      "pass": true
+    },
+    "FM11": {
+      "desc": "learned acoustic embedding",
+      "pass": true
+    },
+    "FM12": {
+      "desc": "neural compressor",
+      "pass": true
+    },
+    "FM13": {
+      "desc": "learned quantizer",
+      "pass": true
+    },
+    "FM14": {
+      "desc": "k-means",
+      "pass": true
+    },
+    "FM15": {
+      "desc": "corpus-trained codebook",
+      "pass": true
+    },
+    "FM16": {
+      "desc": "magnitude-bin threshold search",
+      "pass": true
+    },
+    "FM17": {
+      "desc": "top-k search",
+      "pass": true
+    },
+    "FM18": {
+      "desc": "unrestricted descriptor ceiling increase",
+      "pass": true
+    },
+    "FM19": {
+      "desc": "independent persistence of all frame descriptors",
+      "pass": true
+    },
+    "FM20": {
+      "desc": "raw frame-vector persistence",
+      "pass": true
+    },
+    "FM21": {
+      "desc": "waveform persistence",
+      "pass": true
+    },
+    "FM22": {
+      "desc": "per-frame spectral graph nodes",
+      "pass": true
+    },
+    "FM23": {
+      "desc": "per-frame periodicity graph nodes",
+      "pass": true
+    },
+    "FM24": {
+      "desc": "new node type",
+      "pass": true
+    },
+    "FM25": {
+      "desc": "new edge type",
+      "pass": true
+    },
+    "FM26": {
+      "desc": "new persistent signal modality",
+      "pass": true
+    },
+    "FM27": {
+      "desc": "external python memory sidecar",
+      "pass": true
+    },
+    "FM28": {
+      "desc": "lossless bypass channel",
+      "pass": true
+    },
+    "FM29": {
+      "desc": "additive sequence representation",
+      "pass": true
+    },
+    "FM30": {
+      "desc": "unordered BCAP lexical authority",
+      "pass": true
+    },
+    "FM31": {
+      "desc": "AEMG01 authority modification",
+      "pass": true
+    },
+    "FM32": {
+      "desc": "child lexical grounding",
+      "pass": true
+    },
+    "FM33": {
+      "desc": "new persistent scope field",
+      "pass": true
+    },
+    "FM34": {
+      "desc": "second cognitive graph",
+      "pass": true
+    },
+    "FM35": {
+      "desc": "post-hoc edge surgery",
+      "pass": true
+    },
+    "FM36": {
+      "desc": "test-specific exception",
+      "pass": true
+    },
+    "FM37": {
+      "desc": "descriptor-budget laundering",
+      "pass": true
+    },
+    "FM38": {
+      "desc": "compound internal-component retrieval backdoor",
+      "pass": true
+    },
+    "FM39": {
+      "desc": "F01 witness cherry-picking",
+      "pass": true
+    },
+    "FM40": {
+      "desc": "aggregate-only OOD safety masking",
+      "pass": true
+    }
+  },
+  "status": "PASS"
+}

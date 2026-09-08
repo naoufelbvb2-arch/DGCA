@@ -1,0 +1,83 @@
+{
+  "ca1_probes_evaluated": 5,
+  "ca1_witness_level_alias_resolution": 5,
+  "ca1_score_inversions_repaired": 0,
+  "records": [
+    {
+      "trial_id": "ATG01-H-C01-01",
+      "true_concept": "cat",
+      "wrong_competitor": "dog",
+      "r0_correct_score": 0.01840229147214441,
+      "r0_wrong_score": 0.05481539838157484,
+      "r0_margin": -0.036413106909430434,
+      "r0c_correct_score": 0.0,
+      "r0c_wrong_score": 0.0,
+      "r0c_margin": 0.0,
+      "r1_correct_score": 0.0,
+      "r1_wrong_score": 0.0,
+      "r1_margin": 0.0,
+      "score_inversion_repaired": false
+    },
+    {
+      "trial_id": "ATG01-H-C05-01",
+      "true_concept": "house",
+      "wrong_competitor": "cat",
+      "r0_correct_score": 0.023357963875205254,
+      "r0_wrong_score": 0.06894312583967757,
+      "r0_margin": -0.04558516196447232,
+      "r0c_correct_score": 0.0,
+      "r0c_wrong_score": 0.0,
+      "r0c_margin": 0.0,
+      "r1_correct_score": 0.0,
+      "r1_wrong_score": 0.0,
+      "r1_margin": 0.0,
+      "score_inversion_repaired": false
+    },
+    {
+      "trial_id": "ATG01-H-C08-01",
+      "true_concept": "on",
+      "wrong_competitor": "bed",
+      "r0_correct_score": 0.006296296296296296,
+      "r0_wrong_score": 0.1144568630352944,
+      "r0_margin": -0.1081605667389981,
+      "r0c_correct_score": 0.0,
+      "r0c_wrong_score": 0.0,
+      "r0c_margin": 0.0,
+      "r1_correct_score": 0.0,
+      "r1_wrong_score": 0.0,
+      "r1_margin": 0.0,
+      "score_inversion_repaired": false
+    },
+    {
+      "trial_id": "ATG01-H-C00-02",
+      "true_concept": "bird",
+      "wrong_competitor": "house",
+      "r0_correct_score": 0.014764239028944907,
+      "r0_wrong_score": 0.10833333333333334,
+      "r0_margin": -0.09356909430438842,
+      "r0c_correct_score": 0.0,
+      "r0c_wrong_score": 0.0,
+      "r0c_margin": 0.0,
+      "r1_correct_score": 0.0,
+      "r1_wrong_score": 0.0,
+      "r1_margin": 0.0,
+      "score_inversion_repaired": false
+    },
+    {
+      "trial_id": "ATG01-H-C07-02",
+      "true_concept": "go",
+      "wrong_competitor": "on",
+      "r0_correct_score": 0.030953889346193635,
+      "r0_wrong_score": 0.10219115464858498,
+      "r0_margin": -0.07123726530239136,
+      "r0c_correct_score": 0.0,
+      "r0c_wrong_score": 0.0,
+      "r0c_margin": 0.0,
+      "r1_correct_score": 0.0,
+      "r1_wrong_score": 0.0,
+      "r1_margin": 0.0,
+      "score_inversion_repaired": false
+    }
+  ],
+  "status": "FAIL"
+}

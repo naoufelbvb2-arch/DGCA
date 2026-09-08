@@ -1,0 +1,9 @@
+{
+  "heldout_self_grounding_contributions": 0,
+  "heldout_multi_event_coverage": 20,
+  "r0_heldout_correct_sequence_support": 20,
+  "r0c_heldout_correct_sequence_support": 0,
+  "r1_heldout_correct_sequence_support": 0,
+  "required_heldout_correct_support": 20,
+  "status": "FAIL"
+}

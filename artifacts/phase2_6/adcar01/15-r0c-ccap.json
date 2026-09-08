@@ -1,0 +1,10 @@
+{
+  "condition": "R0C_CCAP_CONTROL",
+  "distinct_transitions": 133,
+  "heldout_correct": 6,
+  "heldout_wrong": 14,
+  "heldout_ambiguous": 0,
+  "heldout_median_rank": 4.0,
+  "topology_class": "ONE_ENDPOINT_PER_EVENT",
+  "status": "PASS"
+}

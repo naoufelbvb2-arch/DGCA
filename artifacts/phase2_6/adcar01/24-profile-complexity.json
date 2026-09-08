@@ -1,0 +1,14 @@
+{
+  "bcap_event_occurrences": 302,
+  "bcap_distinct_identities": 299,
+  "bcap_singleton_identities": 297,
+  "bcap_recurrent_identities": 2,
+  "bcap_cross_speaker_recurrent": 2,
+  "bcap_heldout_grounded": 1,
+  "bcap_unseen_heldout": 89,
+  "ccap_distinct_identities": 236,
+  "ccap_singleton_identities": 197,
+  "ccap_recurrent_identities": 39,
+  "profile_over_specificity_detected": true,
+  "status": "PASS"
+}

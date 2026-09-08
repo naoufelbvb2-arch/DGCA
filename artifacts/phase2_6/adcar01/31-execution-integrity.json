@@ -1,0 +1,55 @@
+{
+  "passed_count": 12,
+  "total_count": 12,
+  "checks": {
+    "EI01": {
+      "desc": "Relevant production worktree clean",
+      "pass": true
+    },
+    "EI02": {
+      "desc": "Lineage exact",
+      "pass": true
+    },
+    "EI03": {
+      "desc": "Frozen assets exact",
+      "pass": true
+    },
+    "EI04": {
+      "desc": "Current regression PASS",
+      "pass": true
+    },
+    "EI05": {
+      "desc": "AEMG01 baseline exact",
+      "pass": true
+    },
+    "EI06": {
+      "desc": "F01 witness inventory exact",
+      "pass": true
+    },
+    "EI07": {
+      "desc": "Precompression evidence exact",
+      "pass": true
+    },
+    "EI08": {
+      "desc": "Artifacts comparator-only",
+      "pass": true
+    },
+    "EI09": {
+      "desc": "No external cognitive side table",
+      "pass": true
+    },
+    "EI10": {
+      "desc": "No graph surgery",
+      "pass": true
+    },
+    "EI11": {
+      "desc": "R1 current-CognitiveGraph executable",
+      "pass": true
+    },
+    "EI12": {
+      "desc": "Deterministic replay exact",
+      "pass": true
+    }
+  },
+  "status": "PASS"
+}

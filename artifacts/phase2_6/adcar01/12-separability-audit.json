@@ -1,0 +1,12 @@
+{
+  "total_witnesses": 103,
+  "separability_breakdown": {
+    "IDENTITY_SET_DIFFERENCE": 103
+  },
+  "identity_set_difference_count": 103,
+  "rank_order_difference_count": 0,
+  "magnitude_only_difference_count": 0,
+  "true_precompression_profile_collision_count": 0,
+  "inconclusive_count": 0,
+  "status": "PASS"
+}

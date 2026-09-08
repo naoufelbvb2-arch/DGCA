@@ -1,0 +1,87 @@
+{
+  "ca2_probes_evaluated": 13,
+  "ca2_probes_fully_resolved": 13,
+  "total_ca2_witnesses": 103,
+  "total_ca2_witnesses_resolved": 103,
+  "probe_summary": [
+    {
+      "trial_id": "ATG01-H-C01-01",
+      "total_witnesses": 9,
+      "witnesses_resolved": 9,
+      "probe_fully_resolved": true
+    },
+    {
+      "trial_id": "ATG01-H-C02-01",
+      "total_witnesses": 11,
+      "witnesses_resolved": 11,
+      "probe_fully_resolved": true
+    },
+    {
+      "trial_id": "ATG01-H-C03-01",
+      "total_witnesses": 2,
+      "witnesses_resolved": 2,
+      "probe_fully_resolved": true
+    },
+    {
+      "trial_id": "ATG01-H-C04-01",
+      "total_witnesses": 6,
+      "witnesses_resolved": 6,
+      "probe_fully_resolved": true
+    },
+    {
+      "trial_id": "ATG01-H-C05-01",
+      "total_witnesses": 4,
+      "witnesses_resolved": 4,
+      "probe_fully_resolved": true
+    },
+    {
+      "trial_id": "ATG01-H-C07-01",
+      "total_witnesses": 5,
+      "witnesses_resolved": 5,
+      "probe_fully_resolved": true
+    },
+    {
+      "trial_id": "ATG01-H-C09-01",
+      "total_witnesses": 22,
+      "witnesses_resolved": 22,
+      "probe_fully_resolved": true
+    },
+    {
+      "trial_id": "ATG01-H-C00-02",
+      "total_witnesses": 1,
+      "witnesses_resolved": 1,
+      "probe_fully_resolved": true
+    },
+    {
+      "trial_id": "ATG01-H-C01-02",
+      "total_witnesses": 6,
+      "witnesses_resolved": 6,
+      "probe_fully_resolved": true
+    },
+    {
+      "trial_id": "ATG01-H-C04-02",
+      "total_witnesses": 6,
+      "witnesses_resolved": 6,
+      "probe_fully_resolved": true
+    },
+    {
+      "trial_id": "ATG01-H-C06-02",
+      "total_witnesses": 10,
+      "witnesses_resolved": 10,
+      "probe_fully_resolved": true
+    },
+    {
+      "trial_id": "ATG01-H-C07-02",
+      "total_witnesses": 6,
+      "witnesses_resolved": 6,
+      "probe_fully_resolved": true
+    },
+    {
+      "trial_id": "ATG01-H-C09-02",
+      "total_witnesses": 15,
+      "witnesses_resolved": 15,
+      "probe_fully_resolved": true
+    }
+  ],
+  "status": "PASS"
+}

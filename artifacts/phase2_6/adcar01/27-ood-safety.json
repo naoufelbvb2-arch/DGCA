@@ -1,0 +1,8 @@
+{
+  "total_ood_probes": 10,
+  "r1_ood_forced": 10,
+  "parent_ood_forced": 10,
+  "newly_forced_ood_vs_parent": 0,
+  "ood_per_probe_safety_pass": 10,
+  "status": "PASS"
+}

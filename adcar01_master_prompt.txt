@@ -1,0 +1,2819 @@
+<USER_REQUEST>
+# DGCA Phase 2.6 — ADCAR01
+
+## Auditory Descriptor Compression Aliasing Repair 01
+
+# Strict Read-Only Pre-Implementation Counterfactual Execution Master Prompt v1.0 — FROZEN
+
+**Project:** DGCA — Dynamic Graph Cognitive Architecture
+**Phase:** 2.6
+**Study / Repair ID:** `ADCAR01`
+**Document Type:** Strict Read-Only Pre-Implementation Counterfactual Master Prompt
+**Version:** `1.0`
+**Status:** `FROZEN — COUNTERFACTUAL EXECUTION AUTHORIZED`
+
+---
+
+# 0. AUTHORITATIVE GOVERNANCE STATE
+
+The following state is binding:
+
+```text
+AEGR01 COUNTERFACTUAL:
+AEGR01_COUNTERFACTUAL_SAFETY_FAIL
+
+AEGR01-F01:
+FORENSICALLY CLOSED
+
+AEGR01-F01 PRIMARY VERDICT:
+MULTI_STAGE
+
+AEMG01 COUNTERFACTUAL:
+AEMG01_COUNTERFACTUAL_PASS
+
+AEMG01 COMPONENT VALIDATED:
+YES
+
+AEMG01 EXECUTION COMMIT:
+6fd2157
+
+ADCAR01 FORMAL REPAIR SPECIFICATION:
+v1.1 FROZEN
+
+ADCAR01 COUNTERFACTUAL EXECUTION:
+AUTHORIZED
+
+AEGR01 PRODUCTION IMPLEMENTATION:
+NOT AUTHORIZED
+
+AEMG01 PRODUCTION IMPLEMENTATION:
+NOT AUTHORIZED
+
+ADCAR01 PRODUCTION IMPLEMENTATION:
+NOT AUTHORIZED
+```
+
+Historical cognitive signature:
+
+```text
+915119d40643cb97
+```
+
+---
+
+# 1. EXECUTION ROLE
+
+You are executing a:
+
+```text
+STRICT_READ_ONLY
+PRE_IMPLEMENTATION
+ARCHITECTURAL_COUNTERFACTUAL
+```
+
+for:
+
+```text
+ADCAR01
+```
+
+You are NOT:
+
+* implementing ADCAR01 in production;
+* modifying Audio v2;
+* modifying AEGR01 boundaries;
+* modifying AEMG01;
+* tuning retrieval;
+* optimizing held-out accuracy;
+* introducing an ASR model;
+* introducing learned acoustic embeddings;
+* adding new Laws.
+
+Your task is to determine whether:
+
+```text
+discarded precompression acoustic specificity
+```
+
+can be restored into sequence identity through:
+
+```text
+BCAP
+Bounded Conjunctive Acoustic Profile
+```
+
+while preserving all validated upstream DGCA semantics.
+
+---
+
+# 2. FROZEN CAUSAL TARGET
+
+The only repair target is:
+
+```text
+DESCRIPTOR_COMPRESSION_ALIASING
+```
+
+The authoritative causal path is:
+
+```text
+precompression acoustic evidence
+        ↓
+correct concept has stronger specificity
+        ↓
+current event compression
+        ↓
+different acoustic profiles collapse
+        ↓
+generic/shared transitions
+        ↓
+wrong sequence support
+```
+
+Frozen forensic references:
+
+```text
+CA1:
+5/5 large regressions compression-alias traced
+
+CA2:
+13/14 Q2 failures compression-alias traced
+```
+
+Do NOT reinterpret these as a frontend failure.
+
+---
+
+# 3. FROZEN SCIENTIFIC HYPOTHESIS
+
+Test:
+
+$$
+\boxed{
+PrecompressionSpecificity
+\rightarrow
+BoundedSequenceIdentity
+}
+$$
+
+while maintaining:
+
+$$
+\boxed{
+AEMG01BaseAuthority
+=
+Invariant
+}
+$$
+
+and:
+
+$$
+\boxed{
+SequenceMathematics
+=
+Invariant
+}
+$$
+
+---
+
+# 4. REPAIR CANDIDATE
+
+Candidate:
+
+```text
+BCAP
+Bounded Conjunctive Acoustic Profile
+```
+
+For child event \(E\), BCAP is constructed only from already-existing precompression:
+
+```text
+spectral support
+periodicity support
+validity state
+```
+
+No new acoustic features are authorized.
+
+---
+
+# 5. BCAP SPECTRAL PROFILE
+
+For every child event \(E\), obtain existing valid spectral support:
+
+$$
+S_E^{spec}(b)
+$$
+
+for existing Audio v2 spectral bands.
+
+Construct ordered:
+
+$$
+\Pi_{spec}(E)
+$$
+
+using:
+
+1. descending existing support;
+2. canonical band identity as tie-break.
+
+No threshold search.
+
+No top-k search.
+
+---
+
+# 6. BCAP PERIODICITY PROFILE
+
+Using existing valid periodicity support:
+
+$$
+S_E^{per}(p)
+$$
+
+construct:
+
+$$
+\Pi_{per}(E)
+$$
+
+using:
+
+1. descending existing support;
+2. canonical periodicity identity tie-break.
+
+---
+
+# 7. BCAP IDENTITY
+
+Construct deterministic:
+
+$$
+BCAP(E)
+=
+CanonicalConjunction(
+\Pi_{spec}(E),
+\Pi_{per}(E)
+)
+$$
+
+It preserves:
+
+```text
+descriptor membership
+relative support ordering
+spectral/periodicity conjunction
+```
+
+It does NOT preserve:
+
+```text
+raw support magnitudes
+waveform samples
+frame vectors
+```
+
+---
+
+# 8. CCAP CONTROL
+
+Define:
+
+```text
+CCAP
+Coarse Conjunctive Acoustic Profile
+```
+
+using ONLY the currently emitted coarse child descriptors:
+
+$$
+CCAP(E)
+=
+CanonicalTuple(C(E))
+$$
+
+CCAP MUST contain no discarded precompression information.
+
+---
+
+# 9. SUBSTITUTIVE SEQUENCE PROJECTION
+
+Binding Closure Clarification C1:
+
+R0 uses current coarse sequence endpoints.
+
+R0C uses:
+
+$$
+D_{seq}^{R0C}(E)
+=
+\{CCAP(E)\}
+$$
+
+R1 uses:
+
+$$
+D_{seq}^{R1}(E)
+=
+\{BCAP(E)\}
+$$
+
+Forbidden:
+
+$$
+C(E)\cup\{BCAP(E)\}
+$$
+
+or:
+
+$$
+C(E)\cup\{CCAP(E)\}
+$$
+
+as graph-facing sequence representation.
+
+Required:
+
+```text
+R0C GRAPH-FACING SEQUENCE TOKENS PER EVENT:
+1
+
+R1 GRAPH-FACING SEQUENCE TOKENS PER EVENT:
+1
+```
+
+---
+
+# 10. DESCRIPTOR BUDGET INTERPRETATION
+
+Frozen:
+
+```text
+B_audio,event = 8
+```
+
+means:
+
+```text
+MAXIMUM GRAPH-FACING ACOUSTIC
+DESCRIPTOR TOKENS PER EVENT
+```
+
+It is NOT interpreted as a limit on the number of categorical components encoded inside one lawful compound identity.
+
+However the compound identity is lawful only if its internal members have:
+
+```text
+INDEPENDENT GRAPH ACCESS:
+0
+
+INDEPENDENT GRAPH WEIGHT:
+0
+
+INDEPENDENT RETRIEVAL:
+0
+```
+
+---
+
+# 11. DESCRIPTOR BUDGET NON-LAUNDERING GATE
+
+For BCAP and CCAP report:
+
+```text
+graph_facing_token_count
+internal_component_count
+independently_graph_accessible_components
+independently_weighted_components
+independently_retrievable_components
+```
+
+Required:
+
+```text
+INDEPENDENTLY GRAPH-ACCESSIBLE INTERNAL COMPONENTS:
+0
+
+INDEPENDENTLY WEIGHTED INTERNAL COMPONENTS:
+0
+
+INDEPENDENTLY RETRIEVABLE INTERNAL COMPONENTS:
+0
+```
+
+Failure:
+
+```text
+ADCAR01_PREIMPLEMENTATION_REJECTED
+```
+
+---
+
+# 12. IDENTITY GRAMMAR COMPATIBILITY
+
+Binding Closure Clarification C2.
+
+Both BCAP and CCAP must be representable using the existing current DGCA signal/node identity grammar.
+
+Required for BOTH:
+
+```text
+NEW NODE TYPE:
+0
+
+NEW EDGE TYPE:
+0
+
+NEW PERSISTENT FIELD:
+0
+
+NEW MODALITY:
+0
+
+SPECIAL RETRIEVAL BRANCH:
+0
+
+NEW LAW:
+0
+```
+
+If either compound identity requires new persistent semantics:
+
+```text
+ADCAR01_PREIMPLEMENTATION_REJECTED
+```
+
+---
+
+# 13. SINGLE-ARCHITECTURE REQUIREMENT
+
+Binding Closure Clarification C3.
+
+R0C and R1 must run through:
+
+```text
+exact current CognitiveGraph
++
+current context machinery
++
+current transition machinery
++
+current sequence scoring machinery
+```
+
+A helper may construct BCAP/CCAP identities before lawful graph use.
+
+A helper may NOT become cognitive memory.
+
+---
+
+# 14. FORBIDDEN EXTERNAL COGNITION
+
+Forbidden:
+
+```text
+external BCAP→concept table
+external BCAP→context table
+external BCAP transition memory
+synthetic SeqLDSR scorer
+graph merge
+graph transplant
+manual transition injection
+B-state transition copy
+post-hoc edge creation
+```
+
+Telemetry is comparator-only.
+
+---
+
+# 15. STRICT PRODUCTION READ-ONLY CONTRACT
+
+Required:
+
+```text
+PRODUCTION SOURCE CHANGES:
+0
+
+PRODUCTION GRAPH MUTATION:
+0
+
+PRODUCTION SCHEMA CHANGES:
+0
+
+PRODUCTION LAW CHANGES:
+0
+
+PRODUCTION RETRIEVAL CHANGES:
+0
+```
+
+Ephemeral counterfactual graphs may mutate lawfully.
+
+Direct manual graph surgery remains forbidden.
+
+---
+
+# 16. WORKTREE INTEGRITY
+
+Before execution:
+
+* record HEAD;
+* record `git status`;
+* identify relevant dependencies;
+* hash relevant production files.
+
+If relevant production work is dirty:
+
+```text
+ADCAR01_COUNTERFACTUAL_BLOCKED
+```
+
+Do not stash/reset/discard user work.
+
+---
+
+# 17. LINEAGE GATE
+
+Verify required historical ancestry including:
+
+```text
+265f4a2
+793cbea
+6fd2157
+```
+
+If authoritative lineage cannot be established:
+
+```text
+ADCAR01_COUNTERFACTUAL_BLOCKED
+```
+
+---
+
+# 18. ASSET INTEGRITY
+
+Verify all frozen assets used by:
+
+```text
+ATG01
+AEGR01
+AEGR01-F01
+AEMG01
+SRA01
+```
+
+Known ATG01 archive SHA256:
+
+```text
+af14739ee7dc311471de98f5f9d2c9191b18aedfe957f4a6ff791c709868ff58
+```
+
+Mismatch:
+
+```text
+ADCAR01_COUNTERFACTUAL_BLOCKED
+```
+
+---
+
+# 19. BASELINE REGRESSION
+
+Run complete current regression suite before counterfactual.
+
+Historical reference:
+
+```text
+2440/2440 PASS
+```
+
+Report actual current count.
+
+All current tests must pass.
+
+---
+
+# 20. AEMG01 BASELINE REPRODUCTION
+
+Before ADCAR01, reproduce validated AEMG01 state.
+
+Required:
+
+```text
+AEMG01 VERDICT REFERENCE:
+PASS
+
+BASE GROUNDING SEMANTIC DIFF:
+0
+
+POST-CONTINUATION BASE DIFF:
+0
+
+CHILD LEXICAL AUTHORITY LEAKS:
+0
+
+DOUBLE AUTHORITY VIOLATIONS:
+0
+
+SEQUENCE→BASE CONDUCTANCE:
+0
+
+G1 MULTI-EVENT:
+20/20
+
+G1 CORRECT-CONCEPT SUPPORT:
+20/20
+
+TRANSITIONS:
+592/592
+```
+
+Failure:
+
+```text
+ADCAR01_COUNTERFACTUAL_BLOCKED
+```
+
+---
+
+# 21. F01 WITNESS REPRODUCTION
+
+Load exact frozen forensic witness inventories:
+
+$$
+\mathcal A_{CA1}
+$$
+
+and:
+
+$$
+\mathcal A_{CA2}
+$$
+
+Do NOT reconstruct them from remembered probe counts.
+
+Required:
+
+```text
+CA1 PROBES:
+5/5 reproduced
+
+CA1 WITNESS INVENTORY:
+100% exact
+
+CA2 POSITIVE PROBES:
+13/13 reproduced
+
+CA2 WITNESS INVENTORY:
+100% exact
+```
+
+Failure:
+
+```text
+ADCAR01_COUNTERFACTUAL_BLOCKED
+```
+
+---
+
+# 22. PRECOMPRESSION EVIDENCE REPRODUCTION
+
+Reconstruct exact precompression child-event acoustic support for all frozen witnesses.
+
+Required exact reproduction of:
+
+```text
+valid spectral identities
+spectral supports
+valid periodicity identities
+periodicity supports
+coarse compressed descriptors
+```
+
+Failure:
+
+```text
+ADCAR01_COUNTERFACTUAL_BLOCKED
+```
+
+---
+
+# 23. PRECOMPRESSION SEPARABILITY AUDIT
+
+Before R1 efficacy scoring, classify each frozen witness exactly:
+
+```text
+IDENTITY_SET_DIFFERENCE
+
+RANK_ORDER_DIFFERENCE
+
+MAGNITUDE_ONLY_DIFFERENCE
+
+TRUE_PRECOMPRESSION_PROFILE_COLLISION
+
+INCONCLUSIVE
+```
+
+No repair action may depend on labels.
+
+Labels are forensic comparator metadata only.
+
+---
+
+# 24. RANK-ONLY HYPOTHESIS IS FALSIFIABLE
+
+BCAP can separate only:
+
+```text
+IDENTITY_SET_DIFFERENCE
+```
+
+or:
+
+```text
+RANK_ORDER_DIFFERENCE
+```
+
+witnesses.
+
+If a mandatory CA1 witness requires magnitude:
+
+```text
+BCAP_REPRESENTATION_INSUFFICIENT
+```
+
+and final valid outcome cannot be PASS.
+
+Do NOT add magnitude bins.
+
+---
+
+# 25. CAUSAL WITNESS DEFINITION
+
+Binding Closure Clarification C4.
+
+For each frozen alias witness derive before R1 interpretation:
+
+$$
+W_{causal}
+$$
+
+which may be:
+
+```text
+one descriptor contribution
+multiple descriptor contributions
+rank relation
+combination of above
+```
+
+It must explain the frozen:
+
+$$
+PreMatch(c^*)>PreMatch(w)
+$$
+
+relationship.
+
+Do NOT choose \(W_{causal}\) after observing R1 success.
+
+---
+
+# 26. WITNESS CONCORDANCE
+
+Classify R1 result for every witness as:
+
+```text
+CAUSAL_WITNESS_PRESERVED
+
+ALIAS_BROKEN_BY_NONCAUSAL_TAIL_DIFFERENCE
+
+MAGNITUDE_WITNESS_LOST
+
+TRUE_PROFILE_COLLISION
+
+INCONCLUSIVE
+```
+
+Only:
+
+```text
+CAUSAL_WITNESS_PRESERVED
+```
+
+counts toward causal repair.
+
+---
+
+# 27. EXPERIMENTAL CONDITIONS
+
+Use exactly:
+
+```text
+P
+Historical Parent.
+
+B
+Validated AEGR01 + AEMG01 reference.
+
+R0
+Current governed coarse sequence baseline.
+
+R0C
+CCAP topology/conjunction control.
+
+R1
+BCAP recovered-specificity candidate.
+
+R2
+R1 reversed-order diagnostic.
+
+R3
+Frozen F01 witness forensic projection.
+```
+
+---
+
+# 28. INDEPENDENT GENESIS
+
+Each graph-bearing condition starts independently from equivalent canonical genesis.
+
+Record hashes.
+
+Forbidden:
+
+```text
+R0 → mutate to R0C → mutate to R1
+```
+
+---
+
+# 29. R0
+
+R0 reproduces the current governed coarse sequence path exactly.
+
+No changes.
+
+---
+
+# 30. R0C
+
+R0C:
+
+* same Audio v2;
+* same AEGR01 boundaries;
+* same AEMG01 base;
+* same child events;
+* same lawful provenance;
+* same ASUR mathematics;
+* one CCAP sequence endpoint/event;
+* no discarded acoustic information.
+
+---
+
+# 31. R1
+
+R1:
+
+* same Audio v2;
+* same AEGR01 boundaries;
+* same AEMG01 base;
+* same child events;
+* same lawful provenance;
+* same ASUR mathematics;
+* one BCAP sequence endpoint/event;
+* uses identity/rank precompression information only.
+
+---
+
+# 32. R2
+
+Reverse only R1 child-event order.
+
+Preserve:
+
+```text
+BCAP multiset
+base evidence
+candidate set
+Parent state
+```
+
+Only directional sequence behavior may change.
+
+---
+
+# 33. R3
+
+Read-only forensic projection over exact F01 witness inventory.
+
+It must contain:
+
+```text
+precompression support
+coarse identity
+CCAP identity
+BCAP identity
+causal witness
+correct concept
+wrong competitor
+R0 transition
+R0C transition
+R1 transition
+```
+
+No cognition may read R3.
+
+---
+
+# 34. TOPOLOGY CONTROL INTERPRETATION
+
+Freeze:
+
+$$
+R0C-R0
+$$
+
+as:
+
+```text
+TOPOLOGY / CONJUNCTION EFFECT
+```
+
+and:
+
+$$
+R1-R0C
+$$
+
+as:
+
+```text
+RECOVERED PRECOMPRESSION SPECIFICITY EFFECT
+```
+
+A positive:
+
+$$
+R1-R0
+$$
+
+alone is insufficient.
+
+---
+
+# 35. COLLISION-COUNT DIFFERENCE
+
+R0C and R1 need not have identical distinct transition counts.
+
+If BCAP lawfully distinguishes profiles CCAP merges:
+
+```text
+R1 distinct transition count
+may exceed R0C
+```
+
+This is not automatically a topology confound.
+
+Topology matching means:
+
+```text
+same one-endpoint/event grammar
+same graph semantics
+same provenance mechanics
+same sequence mathematics
+```
+
+---
+
+# 36. BASE AUTHORITY CONSERVATION
+
+For R0C and R1 require:
+
+```text
+BASE GROUNDING SEMANTIC DIFF:
+0
+
+POST-CONTINUATION BASE DIFF:
+0
+
+CHILD LEXICAL AUTHORITY LEAKS:
+0
+
+DOUBLE AUTHORITY VIOLATIONS:
+0
+
+SEQUENCE→BASE CONDUCTANCE:
+0
+```
+
+---
+
+# 37. BCAP / CCAP LEXICAL GROUNDING
+
+Forbidden:
+
+```text
+observe(BCAP + text label)
+
+observe(CCAP + text label)
+```
+
+as unordered lexical grounding.
+
+Compound profiles are sequence-only.
+
+---
+
+# 38. CANDIDATE SET CONSERVATION
+
+For every relevant probe:
+
+$$
+C_Q^{R0C}=C_Q^{AEMG01}
+$$
+
+and:
+
+$$
+C_Q^{R1}=C_Q^{AEMG01}
+$$
+
+Required:
+
+```text
+CANDIDATE_SET_DIFF_R0C:
+0
+
+CANDIDATE_SET_DIFF_R1:
+0
+```
+
+---
+
+# 39. TRANSITION PROVENANCE
+
+Use exact AEMG01-validated lawful provenance.
+
+Required:
+
+```text
+ILLICIT CHILD LEXICAL TRANSITION CONTEXTS:
+0
+
+SEQUENCE→BASE CONDUCTANCE:
+0
+```
+
+No BCAP-specific lexical context path.
+
+---
+
+# 40. FROZEN SEQUENCE MATHEMATICS
+
+Do not alter ASUR01 equations.
+
+Use existing:
+
+$$
+W_{t,c}=|\Gamma_t\cap\Gamma_c|
+$$
+
+$$
+N_Q=|C_Q|
+$$
+
+$$
+Z_t=\sum_{k\in C_Q}W_{t,k}
+$$
+
+$$
+\rho_Q(t,c)=W_{t,c}/Z_t
+$$
+
+$$
+SeqLDSR_Q(t,c)
+=
+\max(0,\rho_Q(t,c)-1/N_Q)
+$$
+
+No coefficient.
+
+No renormalization.
+
+No new transition weight.
+
+---
+
+# 41. TRANSITION ACTIVATION
+
+Any existing frozen \(q_t\) behavior remains unchanged.
+
+Do not normalize away R0/R0C/R1 transition-count differences with new rules.
+
+Report actual topology differences.
+
+---
+
+# 42. CA1 PASS GATE
+
+Binding exact requirement:
+
+```text
+CA1 FROZEN PROBES:
+5/5 reproduced
+
+CA1 CAUSAL ALIAS RESOLUTION:
+5/5
+
+CA1 CORRECT-vs-WRONG
+SEQUENCE INVERSION RESOLVED:
+5/5
+```
+
+For each CA1 probe report:
+
+```text
+R0 correct score
+R0 wrong score
+R0 margin
+
+R0C correct score
+R0C wrong score
+R0C margin
+
+R1 correct score
+R1 wrong score
+R1 margin
+```
+
+Required:
+
+$$
+S_{seq}^{R1}(c^*)>
+S_{seq}^{R1}(w)
+$$
+
+for all 5.
+
+---
+
+# 43. CA2 PASS GATE
+
+Binding Closure Clarification C5.
+
+Required:
+
+```text
+CA2 POSITIVE FROZEN PROBES:
+13/13 reproduced
+
+CA2 PROBES WITH ALL FROZEN
+CAUSAL COMPRESSION-ALIAS
+WITNESSES RESOLVED:
+13/13
+```
+
+At witness level:
+
+```text
+ALL MANDATORY RANK/IDENTITY-SEPARABLE
+CA2 CAUSAL WITNESSES:
+RESOLVED
+```
+
+No probe may be removed from denominator.
+
+---
+
+# 44. CA2 FAILURE
+
+If any required CA2 probe remains unresolved because of:
+
+```text
+MAGNITUDE_ONLY_DIFFERENCE
+TRUE_PRECOMPRESSION_PROFILE_COLLISION
+INCONCLUSIVE
+```
+
+then PASS is impossible.
+
+If architecture and safety otherwise pass:
+
+```text
+ADCAR01_COUNTERFACTUAL_EFFICACY_FAIL
+```
+
+---
+
+# 45. GENERALIZATION / ANTI-FINGERPRINT GATE
+
+Required:
+
+```text
+HELDOUT SELF-GROUNDING CONTRIBUTIONS:
+0
+
+HELDOUT MULTI-EVENT COVERAGE:
+20/20
+
+HELDOUT CORRECT-CONCEPT
+SEQUENCE SUPPORT:
+20/20
+```
+
+Any held-out support must originate lawfully from grounding-derived contexts.
+
+---
+
+# 46. SPEAKER METADATA GOVERNANCE
+
+Binding Closure Clarification C6.
+
+BCAP/CCAP must be:
+
+```text
+SPEAKER-METADATA-INDEPENDENT
+```
+
+Required:
+
+```text
+speaker_id input to BCAP:
+NO
+
+speaker_id input to CCAP:
+NO
+```
+
+Acoustic variation caused naturally by different speakers is allowed.
+
+---
+
+# 47. PROFILE COMPLEXITY TELEMETRY
+
+For BCAP and CCAP report:
+
+```text
+event occurrences
+distinct identities
+singleton identities
+recurrent identities
+cross-recording recurrence
+cross-speaker recurrence
+held-out identities with grounding support
+unseen held-out identities
+transition occurrences
+distinct transitions
+singleton transitions
+```
+
+No numeric recurrence threshold may be invented.
+
+---
+
+# 48. PROFILE OVER-SPECIFICITY
+
+If BCAP becomes too unique to preserve lawful held-out grounding-derived sequence support:
+
+```text
+PROFILE_OVER_SPECIFICITY
+```
+
+If safety passes:
+
+```text
+ADCAR01_COUNTERFACTUAL_EFFICACY_FAIL
+```
+
+---
+
+# 49. OOD SAFETY
+
+Compare each of 10 OOD probes to Parent/AEMG01 baseline.
+
+Required:
+
+```text
+NEWLY_FORCED_OOD_VS_PARENT:
+0
+
+OOD_PER_PROBE_SAFETY_AUDIT:
+10/10
+```
+
+Aggregate-only equality is insufficient.
+
+---
+
+# 50. OOD SAFETY FAILURE
+
+If any historically non-forced OOD probe becomes forced:
+
+```text
+ADCAR01_COUNTERFACTUAL_SAFETY_FAIL
+```
+
+even if aggregate forced count is unchanged.
+
+---
+
+# 51. GLOBAL HELD-OUT TELEMETRY
+
+Report for:
+
+```text
+R0
+R0C
+R1
+```
+
+exactly:
+
+```text
+correct /20
+wrong /20
+ambiguous /20
+median correct rank
+mean correct rank
+```
+
+Current AEMG01 G2 reference:
+
+```text
+4/20 correct
+median rank 5.0
+```
+
+Reference only.
+
+Do not optimize to it.
+
+---
+
+# 52. ACCURACY IS NOT PASS CRITERION
+
+ADCAR01 does not PASS merely because:
+
+```text
+R1 held-out accuracy > R0
+```
+
+Causal witness repair is mandatory.
+
+---
+
+# 53. R2 REVERSAL
+
+R2 must preserve:
+
+```text
+base state
+candidate sets
+BCAP identities
+BCAP multiset
+```
+
+but reverse temporal direction.
+
+Report sequence score changes.
+
+If directionally informative transitions remain unchanged after reversal:
+
+classify and report.
+
+Do not patch.
+
+---
+
+# 54. TRANSITION FANOUT
+
+Report fanout distributions for:
+
+```text
+R0
+R0C
+R1
+```
+
+Historical R0 reference:
+
+```text
+592 transitions
+
+251 UNIQUE
+170 LOW_SHARED
+97 MID_SHARED
+61 HIGH_SHARED
+13 GLOBAL
+```
+
+No fanout target is frozen.
+
+---
+
+# 55. NO GENERICITY TUNING
+
+Forbidden:
+
+```text
+fanout penalty
+genericity penalty
+inverse-frequency weighting
+generic-transition suppression
+transition quota
+```
+
+Any improvement must emerge from representation alone.
+
+---
+
+# 56. RESIDUAL TAXONOMY
+
+Use exactly:
+
+```text
+RESIDUAL_SUPPORT_MAGNITUDE_ALIASING
+
+TRUE_PRECOMPRESSION_PROFILE_COLLISION
+
+GROUNDING_COVERAGE_LOSS
+
+PROFILE_OVER_SPECIFICITY
+
+TRANSITION_PROVENANCE_FAILURE
+
+COARSE_CONJUNCTION_TOPOLOGY_EFFECT
+
+BCAP_REPRESENTATION_INSUFFICIENT
+
+NO_RESIDUAL_ALIAS_FOUND
+
+INCONCLUSIVE
+```
+
+---
+
+# 57. NO MAGNITUDE REPAIR
+
+If BCAP rank/identity fails because the missing distinction is magnitude-only:
+
+do NOT introduce:
+
+```text
+magnitude bins
+amplitude quantization
+learned thresholds
+fixed searched thresholds
+```
+
+Return efficacy failure.
+
+---
+
+# 58. STREAMING / CHUNK EQUIVALENCE
+
+For lawful chunkings require:
+
+$$
+BCAP_{whole}(E)=BCAP_{chunked}(E)
+$$
+
+and:
+
+$$
+CCAP_{whole}(E)=CCAP_{chunked}(E)
+$$
+
+for every child event.
+
+Sequence identities and transitions must be chunk-invariant.
+
+---
+
+# 59. DETERMINISM
+
+BCAP and CCAP construction must be deterministic.
+
+Run complete counterfactual twice independently.
+
+Required:
+
+```text
+DETERMINISTIC_REPLAY:
+EXACT
+```
+
+---
+
+# 60. SRA01 SAFETY
+
+Run applicable frozen SRA01 regression.
+
+ADCAR01 must not alter:
+
+```text
+Audio v2 frontend
+silence behavior
+onset/offset
+event boundaries
+streaming semantics
+```
+
+---
+
+# 61. TEXT / VISION ISOLATION
+
+Required:
+
+```text
+TEXT BEHAVIOR CHANGE:
+0
+
+VISION BEHAVIOR CHANGE:
+0
+```
+
+---
+
+# 62. EXECUTION INTEGRITY
+
+Evaluate at minimum:
+
+```text
+EI01 relevant production worktree clean
+EI02 lineage exact
+EI03 frozen assets exact
+EI04 current regression PASS
+EI05 AEMG01 baseline exact
+EI06 F01 witness inventory exact
+EI07 precompression evidence exact
+EI08 artifacts comparator-only
+EI09 no external cognitive side table
+EI10 no graph surgery
+EI11 R1 current-CognitiveGraph executable
+EI12 deterministic replay exact
+```
+
+Required:
+
+```text
+12/12 PASS
+```
+
+---
+
+# 63. MATHEMATICAL / FORMAL PRECHECKS
+
+Evaluate exactly 28:
+
+```text
+M01 Parent event reproduction exact.
+M02 AEMG01 base reproduction exact.
+M03 F01 CA1 inventory exact.
+M04 F01 CA2 inventory exact.
+M05 Precompression support reproduction exact.
+M06 Coarse descriptor reproduction exact.
+M07 Spectral profile deterministic ordering.
+M08 Periodicity profile deterministic ordering.
+M09 BCAP canonical identity deterministic.
+M10 CCAP canonical identity deterministic.
+M11 BCAP label independence.
+M12 CCAP label independence.
+M13 Descriptor-budget interpretation exact.
+M14 BCAP/CCAP grammar compatibility PASS.
+M15 R0 reproduced.
+M16 R0C uses no discarded acoustic evidence.
+M17 R1 uses no new acoustic evidence.
+M18 R0C/R1 topology class matched.
+M19 Causal witness concordance complete.
+M20 Identity/rank separability audit complete.
+M21 AEMG01 base semantic diff 0.
+M22 Candidate set diff 0.
+M23 Sequence→base conductance 0.
+M24 Held-out self-grounding 0.
+M25 OOD per-probe safety complete.
+M26 Streaming/chunk equivalence.
+M27 Determinism exact.
+M28 No forbidden mechanism required.
+```
+
+Required:
+
+```text
+28/28 PASS
+```
+
+---
+
+# 64. STRUCTURAL INVARIANTS
+
+Evaluate exactly 40.
+
+```text
+INV01 Audio v2 frontend unchanged.
+INV02 Audio v2 validity semantics unchanged.
+INV03 Parent events unchanged.
+INV04 AEGR01 boundaries unchanged.
+INV05 Child frame partition unchanged.
+INV06 Current coarse descriptors reproducible.
+INV07 AEMG01 Parent authority unchanged.
+INV08 Parent transactions unchanged.
+INV09 Base graph semantic equality.
+INV10 Continuation equality.
+INV11 Child lexical authority zero.
+INV12 Sequence→base conductance zero.
+INV13 Candidate discovery unchanged.
+INV14 LDSR unchanged.
+INV15 ASUR mathematics unchanged.
+INV16 Law 11 unchanged.
+INV17 BCAP existing acoustic support only.
+INV18 CCAP coarse compressed support only.
+INV19 BCAP deterministic.
+INV20 CCAP deterministic.
+INV21 BCAP label-independent.
+INV22 BCAP speaker-metadata-independent.
+INV23 BCAP file-independent.
+INV24 No learned codebook.
+INV25 No magnitude quantization.
+INV26 Frozen witness inventory exact.
+INV27 CA1 witness completeness.
+INV28 CA2 witness completeness.
+INV29 R0C topology class matched to R1.
+INV30 R0C contains no discarded specificity.
+INV31 R1 contains no new acoustic feature.
+INV32 Transition provenance lawful.
+INV33 Held-out self-grounding zero.
+INV34 OOD audit per probe.
+INV35 Streaming/chunk equivalence.
+INV36 SRA01 safety.
+INV37 Text isolation.
+INV38 Vision isolation.
+INV39 Persistent schema unchanged.
+INV40 Descriptor-budget semantics obeyed.
+```
+
+Required:
+
+```text
+40/40 PASS
+```
+
+---
+
+# 65. FORBIDDEN MECHANISMS
+
+Evaluate exactly 40:
+
+```text
+FM01 phoneme model
+FM02 syllable model
+FM03 ASR
+FM04 DTW
+FM05 forced alignment
+FM06 speaker embedding
+FM07 label-conditioned BCAP
+FM08 concept-conditioned BCAP
+FM09 OOD-conditioned BCAP
+FM10 held-out tuning
+FM11 learned acoustic embedding
+FM12 neural compressor
+FM13 learned quantizer
+FM14 k-means
+FM15 corpus-trained codebook
+FM16 magnitude-bin threshold search
+FM17 top-k search
+FM18 unrestricted descriptor ceiling increase
+FM19 independent persistence of all frame descriptors
+FM20 raw frame-vector persistence
+FM21 waveform persistence
+FM22 transition fanout penalty
+FM23 generic-transition suppression
+FM24 inverse-frequency weighting
+FM25 TF-IDF
+FM26 retrieval-rule modification
+FM27 LDSR modification
+FM28 ASUR mathematics modification
+FM29 Law 11 modification
+FM30 AEGR01 boundary modification
+FM31 AEMG01 authority modification
+FM32 child lexical grounding
+FM33 new persistent scope field
+FM34 second cognitive graph
+FM35 post-hoc edge surgery
+FM36 test-specific exception
+FM37 descriptor-budget laundering
+FM38 compound internal-component retrieval backdoor
+FM39 F01 witness cherry-picking
+FM40 aggregate-only OOD safety masking
+```
+
+Required:
+
+```text
+40/40 PASS
+```
+
+---
+
+# 66. RELEASE GATES
+
+Evaluate exactly 36:
+
+```text
+G01 lineage exact
+G02 assets exact
+G03 current regression PASS
+G04 historical signature exact
+G05 AEMG01 baseline reproduced
+G06 Parent events exact
+G07 F01 CA1 inventory exact
+G08 F01 CA2 inventory exact
+G09 precompression evidence exact
+G10 coarse descriptor evidence exact
+G11 descriptor-budget semantics exact
+G12 BCAP + CCAP grammar compatible
+G13 no budget laundering / no additive endpoint
+G14 separability audit complete
+G15 R0 exact
+G16 R0C valid
+G17 R1 valid/current-graph executable
+G18 R0C/R1 topology class matched
+G19 base semantic diff 0
+G20 continuation diff 0
+G21 child lexical leaks 0
+G22 candidate-set diff 0
+G23 sequence→base conductance 0
+G24 transition provenance legal
+G25 CA1 causal alias repair 5/5
+G26 CA1 score inversion repair 5/5
+G27 CA2 witness telemetry complete
+G28 CA2 causal probe resolution 13/13
+G29 held-out self-grounding 0
+G30 held-out multi-event 20/20
+G31 held-out correct-concept support 20/20
+G32 OOD per-probe safety 10/10
+G33 streaming/chunk PASS
+G34 deterministic replay PASS
+G35 SRA01/text/vision regression safety PASS
+G36 math/invariants/forbidden all PASS
+```
+
+Required:
+
+```text
+36/36 PASS
+```
+
+---
+
+# 67. VERDICT VOCABULARY
+
+Exactly five:
+
+```text
+ADCAR01_COUNTERFACTUAL_PASS
+
+ADCAR01_COUNTERFACTUAL_EFFICACY_FAIL
+
+ADCAR01_COUNTERFACTUAL_SAFETY_FAIL
+
+ADCAR01_PREIMPLEMENTATION_REJECTED
+
+ADCAR01_COUNTERFACTUAL_BLOCKED
+```
+
+No sixth verdict.
+
+---
+
+# 68. VERDICT PRECEDENCE
+
+Apply:
+
+```text
+BLOCKED
+↓
+PREIMPLEMENTATION_REJECTED
+↓
+SAFETY_FAIL
+↓
+EFFICACY_FAIL
+↓
+PASS
+```
+
+---
+
+# 69. BLOCKED
+
+Use when trustworthy reconstruction is unavailable.
+
+Examples:
+
+```text
+lineage mismatch
+asset mismatch
+AEMG01 baseline mismatch
+F01 witness inventory unavailable
+precompression support cannot reproduce
+```
+
+---
+
+# 70. PREIMPLEMENTATION_REJECTED
+
+Use when BCAP requires illegal architecture.
+
+Examples:
+
+```text
+budget laundering
+new persistent primitive
+new schema field
+new Law
+special retrieval branch
+external cognitive side table
+second graph
+```
+
+---
+
+# 71. SAFETY_FAIL
+
+Use when BCAP is lawful and reconstruction valid, but safety breaks.
+
+Examples:
+
+```text
+base state changes
+candidate set changes
+newly forced OOD
+child lexical authority appears
+sequence→base conductance
+regression failure
+```
+
+---
+
+# 72. EFFICACY_FAIL
+
+Use when architecture is lawful and safe but the hypothesis fails.
+
+Examples:
+
+```text
+mandatory CA1 magnitude-only
+CA1 < 5/5
+CA2 < 13/13
+R1 causal effect not beyond R0C
+profile over-specificity
+20/20 support lost
+BCAP representation insufficient
+```
+
+---
+
+# 73. PASS REQUIREMENTS
+
+PASS requires simultaneously:
+
+```text
+EXECUTION INTEGRITY:
+12/12
+
+MATH:
+28/28
+
+INVARIANTS:
+40/40
+
+FORBIDDEN:
+40/40
+
+RELEASE GATES:
+36/36
+
+BCAP GRAMMAR:
+PASS
+
+CCAP GRAMMAR:
+PASS
+
+DESCRIPTOR BUDGET:
+PASS
+
+CA1:
+5/5 causal repair
+
+CA1 SCORE INVERSION:
+5/5 repaired
+
+CA2:
+13/13 probe-level causal repair
+
+HELDOUT MULTI-EVENT:
+20/20
+
+HELDOUT CORRECT-CONCEPT SUPPORT:
+20/20
+
+HELDOUT SELF-GROUNDING:
+0
+
+CANDIDATE SET DIFF:
+0
+
+AEMG01 BASE DIFF:
+0
+
+POST-CONTINUATION DIFF:
+0
+
+SEQUENCE→BASE CONDUCTANCE:
+0
+
+NEWLY FORCED OOD:
+0
+
+OOD SAFETY:
+10/10
+
+STREAMING:
+PASS
+
+DETERMINISM:
+PASS
+
+PERSISTENT SCHEMA DELTA:
+0
+```
+
+---
+
+# 74. PASS MEANING
+
+PASS means:
+
+```text
+DESCRIPTOR_COMPRESSION_ALIASING REPAIR:
+COMPONENT VALIDATED
+
+BCAP:
+LAWFUL BOUNDED SEQUENCE IDENTITY
+
+TOPOLOGY CONFOUND:
+CONTROLLED BY R0C
+
+RECOVERED PRECOMPRESSION SPECIFICITY:
+CAUSALLY SUPPORTED
+
+CA1:
+5/5 RESOLVED
+
+CA2:
+13/13 RESOLVED
+
+AEMG01 BASE:
+EXACTLY CONSERVED
+
+GENERALIZED SEQUENCE SUPPORT:
+20/20
+
+OOD SAFETY:
+CONSERVED
+
+CURRENT DGCA SCHEMA:
+SUFFICIENT
+```
+
+It does NOT mean full Audio is solved.
+
+---
+
+# 75. REQUIRED ARTIFACTS
+
+Generate at minimum:
+
+```text
+00-lineage.json
+01-worktree-hashes-before.json
+02-frozen-assets.json
+03-regression-before.json
+04-aemg01-baseline-reproduction.json
+05-parent-event-reproduction.json
+06-f01-ca1-inventory.json
+07-f01-ca2-inventory.json
+08-precompression-evidence.json
+09-coarse-descriptor-reproduction.json
+10-descriptor-budget-audit.json
+11-compound-identity-grammar.json
+12-separability-audit.json
+13-causal-witnesses.json
+14-r0-baseline.json
+15-r0c-ccap.json
+16-r1-bcap.json
+17-r2-reversal.json
+18-r3-witness-projection.json
+19-base-state-safety.json
+20-candidate-set-diff.json
+21-transition-provenance.json
+22-ca1-causal-repair.json
+23-ca2-causal-repair.json
+24-profile-complexity.json
+25-transition-fanout.json
+26-heldout-generalization.json
+27-ood-safety.json
+28-streaming-chunk.json
+29-sra01-regression.json
+30-text-vision-isolation.json
+31-execution-integrity.json
+32-math-prechecks.json
+33-invariants.json
+34-forbidden-mechanisms.json
+35-release-gates.json
+36-deterministic-replay.json
+37-regression-after.json
+38-production-hashes-after.json
+39-historical-signature.json
+```
+
+Equivalent deterministic naming is acceptable.
+
+Content is mandatory.
+
+---
+
+# 76. MASTER REPORT
+
+Generate:
+
+```text
+ADCAR01-PREIMPLEMENTATION-COUNTERFACTUAL-REPORT.md
+```
+
+Required sections:
+
+1. Executive verdict.
+2. Governance and lineage.
+3. Worktree integrity.
+4. Asset integrity.
+5. Baseline regression.
+6. AEMG01 reproduction.
+7. Parent event reproduction.
+8. F01 CA1 inventory.
+9. F01 CA2 inventory.
+10. Precompression evidence reproduction.
+11. Descriptor-budget audit.
+12. BCAP/CCAP grammar audit.
+13. Separability audit.
+14. Causal witness derivation.
+15. R0.
+16. R0C.
+17. R1.
+18. R2.
+19. R3.
+20. Base conservation.
+21. Candidate-set conservation.
+22. Provenance/non-conductance.
+23. CA1 repair.
+24. CA2 repair.
+25. Profile complexity.
+26. Transition fanout.
+27. Held-out generalization.
+28. OOD safety.
+29. Streaming/chunk.
+30. SRA01.
+31. Text/Vision isolation.
+32. Execution integrity.
+33. Math.
+34. Invariants.
+35. Forbidden.
+36. Release gates.
+37. Deterministic replay.
+38. Regression after.
+39. Historical signature.
+40. Final metrics block.
+41. Final verdict.
+
+---
+
+# 77. MANDATORY EXECUTION ORDER
+
+Execute in this exact order:
+
+```text
+STEP 00
+Worktree/dependency integrity.
+
+STEP 01
+Lineage.
+
+STEP 02
+Frozen asset integrity.
+
+STEP 03
+Baseline regression.
+
+STEP 04
+Historical signature precheck.
+
+STEP 05
+AEMG01 PASS baseline reproduction.
+
+STEP 06
+Parent-event reproduction.
+
+STEP 07
+F01 CA1 witness inventory.
+
+STEP 08
+F01 CA2 witness inventory.
+
+STEP 09
+Precompression evidence reproduction.
+
+STEP 10
+Current coarse descriptor reproduction.
+
+STEP 11
+Descriptor-budget semantics audit.
+
+STEP 12
+BCAP + CCAP identity grammar audit.
+
+STEP 13
+Freeze harness semantics.
+
+STEP 14
+Separability audit.
+
+STEP 15
+Causal witness derivation.
+
+STEP 16
+R0 reproduction.
+
+STEP 17
+R0C construction/execution.
+
+STEP 18
+R1 construction/execution.
+
+STEP 19
+Base-state safety comparison.
+
+STEP 20
+Candidate-set comparison.
+
+STEP 21
+Transition provenance audit.
+
+STEP 22
+Sequence→base conductance audit.
+
+STEP 23
+CA1 causal repair analysis.
+
+STEP 24
+CA2 causal repair analysis.
+
+STEP 25
+Profile/fingerprint complexity audit.
+
+STEP 26
+Transition fanout audit.
+
+STEP 27
+Held-out generalization audit.
+
+STEP 28
+OOD per-probe safety.
+
+STEP 29
+R2 reversal diagnostic.
+
+STEP 30
+R3 frozen witness projection.
+
+STEP 31
+Streaming/chunk equivalence.
+
+STEP 32
+SRA01 regression.
+
+STEP 33
+Text/Vision isolation.
+
+STEP 34
+Execution-integrity checks.
+
+STEP 35
+28 mathematical/formal prechecks.
+
+STEP 36
+40 invariants.
+
+STEP 37
+40 forbidden mechanisms.
+
+STEP 38
+36 release gates.
+
+STEP 39
+Complete deterministic second replay.
+
+STEP 40
+Final regression suite.
+
+STEP 41
+Production hash verification.
+
+STEP 42
+Historical signature verification.
+
+STEP 43
+Final report and verdict.
+
+STEP 44
+Commit/push forensic-only outputs if normal workflow permits.
+```
+
+---
+
+# 78. EARLY STOP RULES
+
+### If AEMG01 baseline cannot reproduce
+
+```text
+ADCAR01_COUNTERFACTUAL_BLOCKED
+```
+
+### If F01 witness inventories cannot reproduce
+
+```text
+ADCAR01_COUNTERFACTUAL_BLOCKED
+```
+
+### If BCAP/CCAP require illegal schema
+
+```text
+ADCAR01_PREIMPLEMENTATION_REJECTED
+```
+
+### If budget laundering is required
+
+```text
+ADCAR01_PREIMPLEMENTATION_REJECTED
+```
+
+### If base/OOD/candidate safety breaks
+
+```text
+ADCAR01_COUNTERFACTUAL_SAFETY_FAIL
+```
+
+### If safe/legal but CA1 or CA2 efficacy fails
+
+```text
+ADCAR01_COUNTERFACTUAL_EFFICACY_FAIL
+```
+
+Do not manufacture downstream PASS telemetry after a hard-stop verdict.
+
+Diagnostic telemetry may continue only when clearly marked:
+
+```text
+POST-VERDICT EXPLORATORY
+```
+
+---
+
+# 79. REQUIRED SCIENTIFIC QUESTIONS
+
+Final report must answer:
+
+### Q1
+
+Can BCAP and CCAP exist lawfully inside current DGCA identity grammar?
+
+### Q2
+
+Does BCAP respect the graph-facing descriptor budget without internal-component leakage?
+
+### Q3
+
+Are all frozen CA1 and CA2 witnesses reproduced exactly?
+
+### Q4
+
+Are the causal precompression distinctions identity/rank separable?
+
+### Q5
+
+Does R0C isolate topology/conjunction effects?
+
+### Q6
+
+Does R1 provide causal specificity gain beyond R0C?
+
+### Q7
+
+Are CA1 regressions repaired 5/5?
+
+### Q8
+
+Are CA2-positive probes repaired 13/13?
+
+### Q9
+
+Does held-out sequence support remain grounding-derived 20/20?
+
+### Q10
+
+Does AEMG01 base remain exact?
+
+### Q11
+
+Do candidate sets remain exact?
+
+### Q12
+
+Does sequence→base conductance remain zero?
+
+### Q13
+
+Are OOD outcomes safe per probe?
+
+### Q14
+
+Does BCAP avoid profile-over-specificity/fingerprint failure?
+
+### Q15
+
+Does reversal preserve base and change directional sequence evidence lawfully?
+
+### Q16
+
+Does any residual alias require magnitude information?
+
+---
+
+# 80. FINAL METRICS BLOCK
+
+The final report MUST end with:
+
+```text
+============================================================
+DGCA PHASE 2.6 — ADCAR01
+STRICT READ-ONLY PRE-IMPLEMENTATION COUNTERFACTUAL
+
+EXECUTION MODE:
+STRICT_READ_ONLY
+
+FORMAL SPEC:
+ADCAR01 v1.1 FROZEN
+
+AEMG01 BASELINE:
+PASS / FAIL
+
+WORKTREE:
+PASS / FAIL
+
+LINEAGE:
+PASS / FAIL
+
+ASSET INTEGRITY:
+PASS / FAIL
+
+PRODUCTION SOURCE CHANGES:
+0 / NONZERO
+
+PRODUCTION COGNITIVE ARTIFACT MUTATION:
+0 / NONZERO
+
+HISTORICAL SIGNATURE:
+MATCH / MISMATCH
+
+F01 CA1 PROBES:
+<count>/5
+
+F01 CA1 WITNESS INVENTORY:
+PASS / FAIL
+
+F01 CA2 POSITIVE PROBES:
+<count>/13
+
+F01 CA2 WITNESS INVENTORY:
+PASS / FAIL
+
+PRECOMPRESSION EVIDENCE:
+PASS / FAIL
+
+COARSE DESCRIPTOR REPRODUCTION:
+PASS / FAIL
+
+DESCRIPTOR BUDGET SEMANTICS:
+GRAPH_FACING_TOKEN_COUNT_BOUND / INVALID
+
+BCAP GRAMMAR:
+PASS / FAIL
+
+CCAP GRAMMAR:
+PASS / FAIL
+
+BCAP GRAPH-FACING TOKENS/EVENT:
+<measured>
+
+CCAP GRAPH-FACING TOKENS/EVENT:
+<measured>
+
+BCAP INTERNAL INDEPENDENT GRAPH ACCESS:
+<count>
+
+CCAP INTERNAL INDEPENDENT GRAPH ACCESS:
+<count>
+
+SEPARABILITY:
+IDENTITY_SET=<count>
+RANK_ORDER=<count>
+MAGNITUDE_ONLY=<count>
+TRUE_COLLISION=<count>
+INCONCLUSIVE=<count>
+
+R0 HELDOUT CORRECT:
+<count>/20
+
+R0C HELDOUT CORRECT:
+<count>/20
+
+R1 HELDOUT CORRECT:
+<count>/20
+
+R0 MEDIAN RANK:
+<value>
+
+R0C MEDIAN RANK:
+<value>
+
+R1 MEDIAN RANK:
+<value>
+
+CA1 CAUSAL REPAIR:
+<count>/5
+
+CA1 SCORE INVERSION REPAIRED:
+<count>/5
+
+CA2 PROBES FULLY RESOLVED:
+<count>/13
+
+CA2 WITNESSES RESOLVED:
+<count>/<total>
+
+COARSE CONJUNCTION TOPOLOGY EFFECT:
+<summary>
+
+RECOVERED PRECOMPRESSION SPECIFICITY EFFECT:
+SUPPORTED / NOT_SUPPORTED / INCONCLUSIVE
+
+AEMG01 BASE SEMANTIC DIFF:
+<count>
+
+POST-CONTINUATION BASE DIFF:
+<count>
+
+CHILD LEXICAL AUTHORITY LEAKS:
+<count>
+
+DOUBLE AUTHORITY VIOLATIONS:
+<count>
+
+CANDIDATE SET DIFF R0C:
+<count>
+
+CANDIDATE SET DIFF R1:
+<count>
+
+SEQUENCE→BASE CONDUCTANCE:
+<count>
+
+ILLICIT CHILD LEXICAL TRANSITION CONTEXTS:
+<count>
+
+HELDOUT SELF-GROUNDING CONTRIBUTIONS:
+<count>
+
+HELDOUT MULTI-EVENT:
+<count>/20
+
+HELDOUT CORRECT-CONCEPT SEQUENCE SUPPORT:
+<count>/20
+
+BCAP EVENT OCCURRENCES:
+<count>
+
+BCAP DISTINCT IDENTITIES:
+<count>
+
+BCAP SINGLETON IDENTITIES:
+<count>
+
+BCAP RECURRENT IDENTITIES:
+<count>
+
+BCAP CROSS-SPEAKER RECURRENT:
+<count>
+
+BCAP HELDOUT GROUNDED:
+<count>
+
+BCAP UNSEEN HELDOUT:
+<count>
+
+CCAP DISTINCT IDENTITIES:
+<count>
+
+R0 TRANSITIONS:
+<count>
+
+R0C DISTINCT TRANSITIONS:
+<count>
+
+R1 DISTINCT TRANSITIONS:
+<count>
+
+NEWLY FORCED OOD VS PARENT:
+<count>
+
+OOD PER-PROBE SAFETY:
+<count>/10
+
+R2 BASE STATE:
+UNCHANGED / CHANGED
+
+R2 CANDIDATE SET:
+UNCHANGED / CHANGED
+
+R2 DIRECTIONAL SEQUENCE EFFECT:
+PRESENT / ABSENT / INCONCLUSIVE
+
+STREAMING/CHUNK:
+PASS / FAIL
+
+SRA01:
+PASS / FAIL
+
+TEXT ISOLATION:
+PASS / FAIL
+
+VISION ISOLATION:
+PASS / FAIL
+
+PERSISTENT SCHEMA DELTA:
+0 / NONZERO
+
+NEW COGNITIVE PRIMITIVES:
+0 / NONZERO
+
+NEW LAWS:
+0 / NONZERO
+
+EXECUTION INTEGRITY:
+<count>/12
+
+MATH:
+<count>/28
+
+INVARIANTS:
+<count>/40
+
+FORBIDDEN:
+<count>/40
+
+RELEASE GATES:
+<count>/36
+
+DETERMINISTIC REPLAY:
+PASS / FAIL
+
+REGRESSION BEFORE:
+<count>/<total>
+
+REGRESSION AFTER:
+<count>/<total>
+
+PRODUCTION HASHES:
+MATCH / MISMATCH
+
+FINAL VERDICT:
+ADCAR01_COUNTERFACTUAL_PASS /
+ADCAR01_COUNTERFACTUAL_EFFICACY_FAIL /
+ADCAR01_COUNTERFACTUAL_SAFETY_FAIL /
+ADCAR01_PREIMPLEMENTATION_REJECTED /
+ADCAR01_COUNTERFACTUAL_BLOCKED
+
+ADCAR01 COMPONENT VALIDATED:
+YES / NO
+
+AEGR01 IMPLEMENTATION AUTHORIZED:
+NO
+
+AEMG01 PRODUCTION IMPLEMENTATION AUTHORIZED:
+NO
+
+ADCAR01 PRODUCTION IMPLEMENTATION AUTHORIZED:
+NO
+
+NEXT STAGE IF PASS:
+AUDIO_COMPOSITE_REPAIR_COUNTERFACTUAL
+============================================================
+```
+
+---
+
+# 81. AUTHORIZED CLAIM ON PASS
+
+The strongest authorized claim is:
+
+> ADCAR01 validated that sequence-relevant acoustic specificity lost by the frozen auditory event compressor can be restored through a lawful bounded conjunctive event identity beyond a topology-matched coarse-conjunction control, while preserving AEMG01 Parent-equivalent lexical authority, candidate discovery, existing sequence mathematics, OOD safety, and current DGCA persistent schema.
+
+Do NOT claim complete speech recognition or full Audio success.
+
+---
+
+# 82. PRODUCTION GOVERNANCE
+
+Regardless of PASS:
+
+```text
+AEGR01 IMPLEMENTATION AUTHORIZED:
+NO
+
+AEMG01 PRODUCTION IMPLEMENTATION AUTHORIZED:
+NO
+
+ADCAR01 PRODUCTION IMPLEMENTATION AUTHORIZED:
+NO
+```
+
+A PASS authorizes only:
+
+```text
+AUDIO_COMPOSITE_REPAIR_COUNTERFACTUAL
+```
+
+---
+
+# 83. COMMIT / PUSH
+
+Only after:
+
+* final verdict;
+* regression pass;
+* deterministic replay;
+* production hash match;
+* historical signature match.
+
+Commit only new forensic/counterfactual outputs.
+
+Suggested message:
+
+```text
+phase2.6: execute ADCAR01 read-only counterfactual
+```
+
+Do not force-push.
+
+Return:
+
+```text
+commit hash
+push status
+```
+
+---
+
+# 84. FINAL EXECUTION DIRECTIVE
+
+Proceed autonomously.
+
+Do NOT optimize for PASS.
+
+Do NOT change BCAP after seeing failures.
+
+Do NOT add magnitude information.
+
+Do NOT modify topology mathematics.
+
+Do NOT introduce speaker/file/label information.
+
+Do NOT drop failed CA2 probes.
+
+Do NOT weaken CA1 5/5.
+
+Do NOT weaken CA2 13/13.
+
+Do NOT accept accuracy improvement as causal proof.
+
+Do NOT use external cognitive tables.
+
+Do NOT allow BCAP to alter base candidates.
+
+Do NOT implement anything in production.
+
+All five verdicts are scientifically acceptable.
+
+---
+
+# 85. MASTER PROMPT FREEZE DECLARATION
+
+This Master Prompt incorporates:
+
+```text
+ADCAR01 Formal Repair Specification v1.1 FROZEN
+```
+
+and all six binding Closure Clarifications:
+
+```text
+C1
+CCAP/BCAP are substitutive sequence projections.
+
+C2
+Grammar compatibility applies to both.
+
+C3
+R0C/R1 must run through current CognitiveGraph semantics.
+
+C4
+Causal witness may be a fixed reproducible combination,
+not necessarily one descriptor.
+
+C5
+CA2 requires exact 13/13 probe-level causal resolution.
+
+C6
+BCAP/CCAP construction is speaker-metadata-independent,
+not assumed acoustically speaker-invariant.
+```
+
+Final state:
+
+```text
+============================================================
+DGCA PHASE 2.6 — ADCAR01
+
+FORMAL REPAIR SPECIFICATION:
+v1.1 FROZEN
+
+COUNTERFACTUAL MASTER PROMPT:
+v1.0 FROZEN
+
+CAUSAL TARGET:
+DESCRIPTOR_COMPRESSION_ALIASING
+
+PRIMARY CANDIDATE:
+BCAP
+
+TOPOLOGY CONTROL:
+CCAP / R0C
+
+DESCRIPTOR BUDGET:
+GRAPH-FACING TOKEN BOUND
+
+CA1 REQUIREMENT:
+5/5
+
+CA2 REQUIREMENT:
+13/13
+
+HELDOUT SEQUENCE SUPPORT:
+20/20
+
+OOD SAFETY:
+PER-PROBE
+
+AEMG01 BASE:
+MUST REMAIN EXACT
+
+COUNTERFACTUAL EXECUTION:
+AUTHORIZED
+
+PRODUCTION IMPLEMENTATION:
+NOT AUTHORIZED
+
+FINAL STATUS:
+ADCAR01_COUNTERFACTUAL_MASTER_PROMPT_v1.0_FROZEN
+============================================================
+```
+
+## END OF MASTER PROMPT
+
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-09-08T17:24:19-04:00.
+</ADDITIONAL_METADATA>
