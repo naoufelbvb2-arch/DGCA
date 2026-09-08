@@ -1,0 +1,9 @@
+{
+  "total_recordings": 70,
+  "total_lawful_parent_events": 73,
+  "grounding_lawful_parent_events": 42,
+  "atg01_g_c06_r3_parent_events": 3,
+  "parent_event_identity_reproduction": "100% EXACT",
+  "pre_aegr01_extraction": true,
+  "status": "PASS"
+}

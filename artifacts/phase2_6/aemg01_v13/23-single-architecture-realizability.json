@@ -1,0 +1,8 @@
+{
+  "single_architecture_realizable": true,
+  "persistent_schema_delta": 0,
+  "new_cognitive_primitives": 0,
+  "post_hoc_graph_surgery": 0,
+  "long_lived_side_memory": 0,
+  "status": "PASS"
+}

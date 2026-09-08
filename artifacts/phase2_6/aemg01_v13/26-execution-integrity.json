@@ -1,0 +1,20 @@
+{
+  "checks": {
+    "EI-01": true,
+    "EI-02": true,
+    "EI-03": true,
+    "EI-04": true,
+    "EI-05": true,
+    "EI-06": true,
+    "EI-07": true,
+    "EI-08": true,
+    "EI-09": true,
+    "EI-10": true,
+    "EI-11": true,
+    "EI-12": true
+  },
+  "passed_count": 12,
+  "total_count": 12,
+  "all_passed": true,
+  "status": "PASS"
+}

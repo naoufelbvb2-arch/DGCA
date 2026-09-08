@@ -1,0 +1,8 @@
+{
+  "pass1_verdict": "AEMG01_COUNTERFACTUAL_PASS",
+  "pass2_verdict": "AEMG01_COUNTERFACTUAL_PASS",
+  "retrieval_bitwise_equal": true,
+  "release_gates_equal": true,
+  "deterministic_replay_pass": "PASS",
+  "status": "PASS"
+}

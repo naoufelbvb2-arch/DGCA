@@ -1,0 +1,14 @@
+{
+  "g2_state_identity": "MATCH",
+  "g2_heldout_correct": 3,
+  "g2_heldout_wrong": 17,
+  "g2_heldout_ambiguous": 0,
+  "g2_heldout_median_rank": 5.0,
+  "g2_ood_forced": 10,
+  "g2_ood_ambiguous": 0,
+  "q1_rate": 1.0,
+  "q2_rate": 0.1,
+  "q3_rate": 0.5,
+  "diagnostic_only": true,
+  "status": "PASS"
+}

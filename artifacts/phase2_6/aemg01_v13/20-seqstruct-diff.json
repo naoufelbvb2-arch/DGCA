@@ -1,0 +1,7 @@
+{
+  "governed_seqstruct_origin": "REPLAY_DERIVED_ONLY",
+  "unique_directional_transitions": 592,
+  "expected_transitions": 592,
+  "seqstruct_matches_b": true,
+  "status": "PASS"
+}

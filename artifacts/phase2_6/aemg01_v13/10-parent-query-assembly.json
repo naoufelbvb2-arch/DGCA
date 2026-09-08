@@ -1,0 +1,6 @@
+{
+  "probes_evaluated": 38,
+  "historical_query_assembly_form": "RECORDING-SCOPE PARENT DESCRIPTOR UNION + DEDUP",
+  "historical_query_assembly_reproduced": true,
+  "status": "PASS"
+}

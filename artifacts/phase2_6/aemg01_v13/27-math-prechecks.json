@@ -1,0 +1,32 @@
+{
+  "checks": {
+    "M01_parent_event_identity_exact": true,
+    "M02_parent_frame_ownership_exact": true,
+    "M03_child_partition_complete_disjoint": true,
+    "M04_frozen_compressor_exact": true,
+    "M05_parent_recompression_exact": true,
+    "M06_historical_parent_transaction_count_exact": true,
+    "M07_historical_parent_transaction_order_exact": true,
+    "M08_historical_observation_payload_exact": true,
+    "M09_historical_context_semantics_exact": true,
+    "M10_base_transaction_timeline_exact_or_nonconductive": true,
+    "M11_child_sequence_base_clock_effect_zero": true,
+    "M12_no_forensic_artifact_influences_routing": true,
+    "M13_parent_query_assembly_exact": true,
+    "M14_f01_occurrence_mass_reproduced": true,
+    "M15_f01_distinct_mass_reproduced": true,
+    "M16_effective_base_mass_reproduced": true,
+    "M17_base_retrieval_dependency_closure_complete": true,
+    "M18_base_semantic_diff_zero": true,
+    "M19_child_only_lexical_leaks_zero": true,
+    "M20_parent_double_authority_violations_zero": true,
+    "M21_transition_provenance_legality_pass": true,
+    "M22_sequence_to_base_conductance_zero": true,
+    "M23_seqstruct_equals_b": true,
+    "M24_g1_b_lens_sequence_score_error_zero": true
+  },
+  "passed_count": 24,
+  "total_count": 24,
+  "all_passed": true,
+  "status": "PASS"
+}

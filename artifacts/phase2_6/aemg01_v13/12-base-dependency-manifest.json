@@ -1,0 +1,27 @@
+{
+  "dependencies": [
+    {
+      "module": "dgca.graph",
+      "target": "CognitiveGraph.nodes",
+      "role": "Query evidence membership"
+    },
+    {
+      "module": "dgca.graph",
+      "target": "CognitiveGraph.out_edges / in_edges",
+      "role": "Candidate discovery"
+    },
+    {
+      "module": "dgca.graph",
+      "target": "Edge.contexts (len)",
+      "role": "LDSR local differential support"
+    },
+    {
+      "module": "dgca.graph",
+      "target": "Edge.W",
+      "role": "Direct semantic association weight"
+    }
+  ],
+  "unaccounted_dependencies": 0,
+  "dependency_closure_status": "CLOSED",
+  "status": "PASS"
+}

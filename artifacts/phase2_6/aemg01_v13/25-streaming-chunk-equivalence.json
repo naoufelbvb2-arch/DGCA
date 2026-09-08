@@ -1,0 +1,15 @@
+{
+  "chunking_modes_tested": [
+    "whole_clip",
+    "chunk_100ms",
+    "chunk_250ms"
+  ],
+  "parent_identity_exact": true,
+  "parent_descriptors_exact": true,
+  "historical_transactions_exact": true,
+  "child_boundaries_exact": true,
+  "child_descriptors_exact": true,
+  "seqstruct_exact": true,
+  "streaming_chunk_equivalence": "PASS",
+  "status": "PASS"
+}

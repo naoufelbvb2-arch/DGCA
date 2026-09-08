@@ -1,0 +1,389 @@
+{
+  "total_grounding_recordings": 40,
+  "total_historical_lexical_transactions": 42,
+  "expected_transactions": 42,
+  "single_event_recordings_count": 39,
+  "multi_event_recordings_count": 1,
+  "atg01_g_c06_r3_transactions": 3,
+  "transactions_summary": [
+    {
+      "ordinal": 1,
+      "recording_id": "ATG01-G-C00-R1",
+      "concept": "bird",
+      "context_id": "ATG01-GCTX-001",
+      "tick_before": 0,
+      "tick_after": 1,
+      "descriptors_count": 5
+    },
+    {
+      "ordinal": 2,
+      "recording_id": "ATG01-G-C01-R1",
+      "concept": "cat",
+      "context_id": "ATG01-GCTX-002",
+      "tick_before": 1,
+      "tick_after": 2,
+      "descriptors_count": 3
+    },
+    {
+      "ordinal": 3,
+      "recording_id": "ATG01-G-C02-R1",
+      "concept": "dog",
+      "context_id": "ATG01-GCTX-003",
+      "tick_before": 2,
+      "tick_after": 3,
+      "descriptors_count": 6
+    },
+    {
+      "ordinal": 4,
+      "recording_id": "ATG01-G-C03-R1",
+      "concept": "tree",
+      "context_id": "ATG01-GCTX-004",
+      "tick_before": 3,
+      "tick_after": 4,
+      "descriptors_count": 3
+    },
+    {
+      "ordinal": 5,
+      "recording_id": "ATG01-G-C04-R1",
+      "concept": "bed",
+      "context_id": "ATG01-GCTX-005",
+      "tick_before": 4,
+      "tick_after": 5,
+      "descriptors_count": 6
+    },
+    {
+      "ordinal": 6,
+      "recording_id": "ATG01-G-C05-R1",
+      "concept": "house",
+      "context_id": "ATG01-GCTX-006",
+      "tick_before": 5,
+      "tick_after": 6,
+      "descriptors_count": 3
+    },
+    {
+      "ordinal": 7,
+      "recording_id": "ATG01-G-C06-R1",
+      "concept": "no",
+      "context_id": "ATG01-GCTX-007",
+      "tick_before": 6,
+      "tick_after": 7,
+      "descriptors_count": 6
+    },
+    {
+      "ordinal": 8,
+      "recording_id": "ATG01-G-C07-R1",
+      "concept": "go",
+      "context_id": "ATG01-GCTX-008",
+      "tick_before": 7,
+      "tick_after": 8,
+      "descriptors_count": 5
+    },
+    {
+      "ordinal": 9,
+      "recording_id": "ATG01-G-C08-R1",
+      "concept": "on",
+      "context_id": "ATG01-GCTX-009",
+      "tick_before": 8,
+      "tick_after": 9,
+      "descriptors_count": 4
+    },
+    {
+      "ordinal": 10,
+      "recording_id": "ATG01-G-C09-R1",
+      "concept": "off",
+      "context_id": "ATG01-GCTX-010",
+      "tick_before": 9,
+      "tick_after": 10,
+      "descriptors_count": 6
+    },
+    {
+      "ordinal": 11,
+      "recording_id": "ATG01-G-C03-R2",
+      "concept": "tree",
+      "context_id": "ATG01-GCTX-011",
+      "tick_before": 10,
+      "tick_after": 11,
+      "descriptors_count": 6
+    },
+    {
+      "ordinal": 12,
+      "recording_id": "ATG01-G-C04-R2",
+      "concept": "bed",
+      "context_id": "ATG01-GCTX-012",
+      "tick_before": 11,
+      "tick_after": 12,
+      "descriptors_count": 6
+    },
+    {
+      "ordinal": 13,
+      "recording_id": "ATG01-G-C05-R2",
+      "concept": "house",
+      "context_id": "ATG01-GCTX-013",
+      "tick_before": 12,
+      "tick_after": 13,
+      "descriptors_count": 4
+    },
+    {
+      "ordinal": 14,
+      "recording_id": "ATG01-G-C06-R2",
+      "concept": "no",
+      "context_id": "ATG01-GCTX-014",
+      "tick_before": 13,
+      "tick_after": 14,
+      "descriptors_count": 5
+    },
+    {
+      "ordinal": 15,
+      "recording_id": "ATG01-G-C07-R2",
+      "concept": "go",
+      "context_id": "ATG01-GCTX-015",
+      "tick_before": 14,
+      "tick_after": 15,
+      "descriptors_count": 6
+    },
+    {
+      "ordinal": 16,
+      "recording_id": "ATG01-G-C08-R2",
+      "concept": "on",
+      "context_id": "ATG01-GCTX-016",
+      "tick_before": 15,
+      "tick_after": 16,
+      "descriptors_count": 6
+    },
+    {
+      "ordinal": 17,
+      "recording_id": "ATG01-G-C09-R2",
+      "concept": "off",
+      "context_id": "ATG01-GCTX-017",
+      "tick_before": 16,
+      "tick_after": 17,
+      "descriptors_count": 4
+    },
+    {
+      "ordinal": 18,
+      "recording_id": "ATG01-G-C00-R2",
+      "concept": "bird",
+      "context_id": "ATG01-GCTX-018",
+      "tick_before": 17,
+      "tick_after": 18,
+      "descriptors_count": 6
+    },
+    {
+      "ordinal": 19,
+      "recording_id": "ATG01-G-C01-R2",
+      "concept": "cat",
+      "context_id": "ATG01-GCTX-019",
+      "tick_before": 18,
+      "tick_after": 19,
+      "descriptors_count": 5
+    },
+    {
+      "ordinal": 20,
+      "recording_id": "ATG01-G-C02-R2",
+      "concept": "dog",
+      "context_id": "ATG01-GCTX-020",
+      "tick_before": 19,
+      "tick_after": 20,
+      "descriptors_count": 4
+    },
+    {
+      "ordinal": 21,
+      "recording_id": "ATG01-G-C06-R3",
+      "concept": "no",
+      "context_id": "ATG01-GCTX-021",
+      "tick_before": 20,
+      "tick_after": 21,
+      "descriptors_count": 4
+    },
+    {
+      "ordinal": 22,
+      "recording_id": "ATG01-G-C06-R3",
+      "concept": "no",
+      "context_id": "ATG01-GCTX-021",
+      "tick_before": 21,
+      "tick_after": 22,
+      "descriptors_count": 1
+    },
+    {
+      "ordinal": 23,
+      "recording_id": "ATG01-G-C06-R3",
+      "concept": "no",
+      "context_id": "ATG01-GCTX-021",
+      "tick_before": 22,
+      "tick_after": 23,
+      "descriptors_count": 6
+    },
+    {
+      "ordinal": 24,
+      "recording_id": "ATG01-G-C07-R3",
+      "concept": "go",
+      "context_id": "ATG01-GCTX-022",
+      "tick_before": 23,
+      "tick_after": 24,
+      "descriptors_count": 5
+    },
+    {
+      "ordinal": 25,
+      "recording_id": "ATG01-G-C08-R3",
+      "concept": "on",
+      "context_id": "ATG01-GCTX-023",
+      "tick_before": 24,
+      "tick_after": 25,
+      "descriptors_count": 6
+    },
+    {
+      "ordinal": 26,
+      "recording_id": "ATG01-G-C09-R3",
+      "concept": "off",
+      "context_id": "ATG01-GCTX-024",
+      "tick_before": 25,
+      "tick_after": 26,
+      "descriptors_count": 2
+    },
+    {
+      "ordinal": 27,
+      "recording_id": "ATG01-G-C00-R3",
+      "concept": "bird",
+      "context_id": "ATG01-GCTX-025",
+      "tick_before": 26,
+      "tick_after": 27,
+      "descriptors_count": 6
+    },
+    {
+      "ordinal": 28,
+      "recording_id": "ATG01-G-C01-R3",
+      "concept": "cat",
+      "context_id": "ATG01-GCTX-026",
+      "tick_before": 27,
+      "tick_after": 28,
+      "descriptors_count": 4
+    },
+    {
+      "ordinal": 29,
+      "recording_id": "ATG01-G-C02-R3",
+      "concept": "dog",
+      "context_id": "ATG01-GCTX-027",
+      "tick_before": 28,
+      "tick_after": 29,
+      "descriptors_count": 6
+    },
+    {
+      "ordinal": 30,
+      "recording_id": "ATG01-G-C03-R3",
+      "concept": "tree",
+      "context_id": "ATG01-GCTX-028",
+      "tick_before": 29,
+      "tick_after": 30,
+      "descriptors_count": 6
+    },
+    {
+      "ordinal": 31,
+      "recording_id": "ATG01-G-C04-R3",
+      "concept": "bed",
+      "context_id": "ATG01-GCTX-029",
+      "tick_before": 30,
+      "tick_after": 31,
+      "descriptors_count": 6
+    },
+    {
+      "ordinal": 32,
+      "recording_id": "ATG01-G-C05-R3",
+      "concept": "house",
+      "context_id": "ATG01-GCTX-030",
+      "tick_before": 31,
+      "tick_after": 32,
+      "descriptors_count": 3
+    },
+    {
+      "ordinal": 33,
+      "recording_id": "ATG01-G-C09-R4",
+      "concept": "off",
+      "context_id": "ATG01-GCTX-031",
+      "tick_before": 32,
+      "tick_after": 33,
+      "descriptors_count": 6
+    },
+    {
+      "ordinal": 34,
+      "recording_id": "ATG01-G-C00-R4",
+      "concept": "bird",
+      "context_id": "ATG01-GCTX-032",
+      "tick_before": 33,
+      "tick_after": 34,
+      "descriptors_count": 5
+    },
+    {
+      "ordinal": 35,
+      "recording_id": "ATG01-G-C01-R4",
+      "concept": "cat",
+      "context_id": "ATG01-GCTX-033",
+      "tick_before": 34,
+      "tick_after": 35,
+      "descriptors_count": 6
+    },
+    {
+      "ordinal": 36,
+      "recording_id": "ATG01-G-C02-R4",
+      "concept": "dog",
+      "context_id": "ATG01-GCTX-034",
+      "tick_before": 35,
+      "tick_after": 36,
+      "descriptors_count": 4
+    },
+    {
+      "ordinal": 37,
+      "recording_id": "ATG01-G-C03-R4",
+      "concept": "tree",
+      "context_id": "ATG01-GCTX-035",
+      "tick_before": 36,
+      "tick_after": 37,
+      "descriptors_count": 5
+    },
+    {
+      "ordinal": 38,
+      "recording_id": "ATG01-G-C04-R4",
+      "concept": "bed",
+      "context_id": "ATG01-GCTX-036",
+      "tick_before": 37,
+      "tick_after": 38,
+      "descriptors_count": 5
+    },
+    {
+      "ordinal": 39,
+      "recording_id": "ATG01-G-C05-R4",
+      "concept": "house",
+      "context_id": "ATG01-GCTX-037",
+      "tick_before": 38,
+      "tick_after": 39,
+      "descriptors_count": 4
+    },
+    {
+      "ordinal": 40,
+      "recording_id": "ATG01-G-C06-R4",
+      "concept": "no",
+      "context_id": "ATG01-GCTX-038",
+      "tick_before": 39,
+      "tick_after": 40,
+      "descriptors_count": 6
+    },
+    {
+      "ordinal": 41,
+      "recording_id": "ATG01-G-C07-R4",
+      "concept": "go",
+      "context_id": "ATG01-GCTX-039",
+      "tick_before": 40,
+      "tick_after": 41,
+      "descriptors_count": 6
+    },
+    {
+      "ordinal": 42,
+      "recording_id": "ATG01-G-C08-R4",
+      "concept": "on",
+      "context_id": "ATG01-GCTX-040",
+      "tick_before": 41,
+      "tick_after": 42,
+      "descriptors_count": 4
+    }
+  ],
+  "status": "PASS"
+}

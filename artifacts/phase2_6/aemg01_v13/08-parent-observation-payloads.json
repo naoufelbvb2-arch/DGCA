@@ -1,0 +1,118 @@
+{
+  "total_payloads_audited": 42,
+  "all_payloads_atomic": true,
+  "observation_payload_equality_status": "PASS",
+  "payload_samples": [
+    {
+      "ordinal": 1,
+      "recording_id": "ATG01-G-C00-R1",
+      "modalities": [
+        "audio",
+        "text"
+      ],
+      "text_signal": [
+        [
+          "text",
+          "bird"
+        ]
+      ],
+      "instance_signal": [
+        [
+          "audio",
+          "inst:aud_scope_atg01_g_c00_r1_0"
+        ]
+      ],
+      "auditory_descriptors_count": 5,
+      "atomicity": true
+    },
+    {
+      "ordinal": 2,
+      "recording_id": "ATG01-G-C01-R1",
+      "modalities": [
+        "audio",
+        "text"
+      ],
+      "text_signal": [
+        [
+          "text",
+          "cat"
+        ]
+      ],
+      "instance_signal": [
+        [
+          "audio",
+          "inst:aud_scope_atg01_g_c01_r1_0"
+        ]
+      ],
+      "auditory_descriptors_count": 3,
+      "atomicity": true
+    },
+    {
+      "ordinal": 3,
+      "recording_id": "ATG01-G-C02-R1",
+      "modalities": [
+        "audio",
+        "text"
+      ],
+      "text_signal": [
+        [
+          "text",
+          "dog"
+        ]
+      ],
+      "instance_signal": [
+        [
+          "audio",
+          "inst:aud_scope_atg01_g_c02_r1_0"
+        ]
+      ],
+      "auditory_descriptors_count": 6,
+      "atomicity": true
+    },
+    {
+      "ordinal": 4,
+      "recording_id": "ATG01-G-C03-R1",
+      "modalities": [
+        "audio",
+        "text"
+      ],
+      "text_signal": [
+        [
+          "text",
+          "tree"
+        ]
+      ],
+      "instance_signal": [
+        [
+          "audio",
+          "inst:aud_scope_atg01_g_c03_r1_0"
+        ]
+      ],
+      "auditory_descriptors_count": 3,
+      "atomicity": true
+    },
+    {
+      "ordinal": 5,
+      "recording_id": "ATG01-G-C04-R1",
+      "modalities": [
+        "audio",
+        "text"
+      ],
+      "text_signal": [
+        [
+          "text",
+          "bed"
+        ]
+      ],
+      "instance_signal": [
+        [
+          "audio",
+          "inst:aud_scope_atg01_g_c04_r1_0"
+        ]
+      ],
+      "auditory_descriptors_count": 6,
+      "atomicity": true
+    }
+  ],
+  "status": "PASS"
+}

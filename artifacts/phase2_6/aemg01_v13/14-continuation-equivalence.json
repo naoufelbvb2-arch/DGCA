@@ -1,0 +1,13 @@
+{
+  "continuation_probe_selected": "FIRST CANONICAL HISTORICAL GROUNDING TRANSACTION IN FROZEN MANIFEST ORDER",
+  "probe_recording_id": "ATG01-G-C00-R1",
+  "probe_concept": "bird",
+  "probe_context_id": "ATG01-GCTX-001",
+  "probe_payload_signals_count": 7,
+  "pre_continuation_hash_p": "eb85ace743b24fb7d74f7ff4af62ee75267addb291be5de44ad0a38eba9c72cf",
+  "pre_continuation_hash_g": "eb85ace743b24fb7d74f7ff4af62ee75267addb291be5de44ad0a38eba9c72cf",
+  "post_continuation_base_diff_count": 0,
+  "post_continuation_diffs": [],
+  "continuation_equivalence_pass": true,
+  "status": "PASS"
+}

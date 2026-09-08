@@ -1,0 +1,11 @@
+{
+  "F01_parent_occurrence_mass": 340,
+  "F01_aegr01_occurrence_mass": 1420,
+  "total_occurrence_delta": 1080,
+  "distinct_mass_delta": 450,
+  "multiplicity_mass_delta": 630,
+  "parent_effective_base_identity_mass": 337,
+  "aemg01_effective_base_identity_mass": 337,
+  "effective_base_mass_ratio": 1.0,
+  "status": "PASS"
+}
