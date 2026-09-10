@@ -1,0 +1,9 @@
+{
+  "heldout_transitions_with_witnesses_at_both_endpoints": 12,
+  "source_witness_recurrent": 12,
+  "dest_witness_recurrent": 12,
+  "both_endpoints_witness_recurrent": 12,
+  "directional_causal_transition_recurrent": 12,
+  "composition_only_failure": 0,
+  "status": "PASS"
+}

@@ -1,0 +1,538 @@
+{
+  "total_probe_events_with_witnesses": 29,
+  "b_sim_max": 21,
+  "max_sim_probe_event_id": "ATG01-H-C05-01_E2",
+  "max_simultaneous_causal_witness_structures": 9,
+  "max_structures_probe_event_id": "ATG01-H-C09-01_E2",
+  "sim_atom_distribution": {
+    "7": 4,
+    "9": 4,
+    "16": 1,
+    "19": 1,
+    "4": 2,
+    "11": 2,
+    "8": 4,
+    "15": 1,
+    "10": 2,
+    "21": 1,
+    "17": 1,
+    "6": 1,
+    "5": 2,
+    "14": 1,
+    "2": 2
+  },
+  "sim_structure_distribution": {
+    "1": 6,
+    "3": 6,
+    "5": 3,
+    "4": 3,
+    "2": 5,
+    "6": 3,
+    "8": 1,
+    "7": 1,
+    "9": 1
+  },
+  "probe_events": {
+    "ATG01-H-C00-02_E0": {
+      "probe_id": "ATG01-H-C00-02",
+      "event_index": 0,
+      "causal_witness_structure_count": 1,
+      "distinct_atomic_component_union_size": 7,
+      "atoms": [
+        "aud:band:11",
+        "aud:band:12",
+        "aud:band:13",
+        "aud:band:6",
+        "aud:band:8",
+        "aud:periodicity:P0",
+        "aud:periodicity:P1"
+      ]
+    },
+    "ATG01-H-C01-01_E0": {
+      "probe_id": "ATG01-H-C01-01",
+      "event_index": 0,
+      "causal_witness_structure_count": 3,
+      "distinct_atomic_component_union_size": 9,
+      "atoms": [
+        "aud:band:12",
+        "aud:band:14",
+        "aud:band:15",
+        "aud:band:16",
+        "aud:band:18",
+        "aud:band:19",
+        "aud:band:20",
+        "aud:periodicity:P0",
+        "aud:periodicity:P1"
+      ]
+    },
+    "ATG01-H-C01-01_E1": {
+      "probe_id": "ATG01-H-C01-01",
+      "event_index": 1,
+      "causal_witness_structure_count": 5,
+      "distinct_atomic_component_union_size": 16,
+      "atoms": [
+        "aud:band:12",
+        "aud:band:14",
+        "aud:band:15",
+        "aud:band:17",
+        "aud:band:18",
+        "aud:band:19",
+        "aud:band:4",
+        "aud:band:5",
+        "aud:band:6",
+        "aud:band:8",
+        "aud:band:9",
+        "aud:periodicity:P0",
+        "aud:periodicity:P1",
+        "aud:periodicity:P2",
+        "aud:periodicity:P4",
+        "aud:periodicity:P5"
+      ]
+    },
+    "ATG01-H-C01-01_E2": {
+      "probe_id": "ATG01-H-C01-01",
+      "event_index": 2,
+      "causal_witness_structure_count": 1,
+      "distinct_atomic_component_union_size": 9,
+      "atoms": [
+        "aud:band:14",
+        "aud:band:15",
+        "aud:band:16",
+        "aud:band:17",
+        "aud:band:19",
+        "aud:band:22",
+        "aud:periodicity:P1",
+        "aud:periodicity:P4",
+        "aud:periodicity:P5"
+      ]
+    },
+    "ATG01-H-C01-02_E1": {
+      "probe_id": "ATG01-H-C01-02",
+      "event_index": 1,
+      "causal_witness_structure_count": 3,
+      "distinct_atomic_component_union_size": 7,
+      "atoms": [
+        "aud:band:16",
+        "aud:band:4",
+        "aud:band:5",
+        "aud:band:6",
+        "aud:band:8",
+        "aud:periodicity:P4",
+        "aud:periodicity:P5"
+      ]
+    },
+    "ATG01-H-C01-02_E3": {
+      "probe_id": "ATG01-H-C01-02",
+      "event_index": 3,
+      "causal_witness_structure_count": 3,
+      "distinct_atomic_component_union_size": 19,
+      "atoms": [
+        "aud:band:12",
+        "aud:band:13",
+        "aud:band:14",
+        "aud:band:15",
+        "aud:band:16",
+        "aud:band:17",
+        "aud:band:18",
+        "aud:band:19",
+        "aud:band:2",
+        "aud:band:20",
+        "aud:band:21",
+        "aud:band:22",
+        "aud:band:6",
+        "aud:band:8",
+        "aud:band:9",
+        "aud:periodicity:P0",
+        "aud:periodicity:P1",
+        "aud:periodicity:P4",
+        "aud:periodicity:P5"
+      ]
+    },
+    "ATG01-H-C02-01_E0": {
+      "probe_id": "ATG01-H-C02-01",
+      "event_index": 0,
+      "causal_witness_structure_count": 1,
+      "distinct_atomic_component_union_size": 4,
+      "atoms": [
+        "aud:band:5",
+        "aud:band:7",
+        "aud:band:9",
+        "aud:periodicity:P5"
+      ]
+    },
+    "ATG01-H-C02-01_E3": {
+      "probe_id": "ATG01-H-C02-01",
+      "event_index": 3,
+      "causal_witness_structure_count": 3,
+      "distinct_atomic_component_union_size": 9,
+      "atoms": [
+        "aud:band:10",
+        "aud:band:12",
+        "aud:band:13",
+        "aud:band:16",
+        "aud:band:17",
+        "aud:band:18",
+        "aud:band:19",
+        "aud:periodicity:P0",
+        "aud:periodicity:P5"
+      ]
+    },
+    "ATG01-H-C02-01_E4": {
+      "probe_id": "ATG01-H-C02-01",
+      "event_index": 4,
+      "causal_witness_structure_count": 4,
+      "distinct_atomic_component_union_size": 11,
+      "atoms": [
+        "aud:band:10",
+        "aud:band:12",
+        "aud:band:13",
+        "aud:band:14",
+        "aud:band:6",
+        "aud:band:7",
+        "aud:band:8",
+        "aud:periodicity:P0",
+        "aud:periodicity:P2",
+        "aud:periodicity:P3",
+        "aud:periodicity:P5"
+      ]
+    },
+    "ATG01-H-C02-01_E5": {
+      "probe_id": "ATG01-H-C02-01",
+      "event_index": 5,
+      "causal_witness_structure_count": 3,
+      "distinct_atomic_component_union_size": 8,
+      "atoms": [
+        "aud:band:10",
+        "aud:band:12",
+        "aud:band:13",
+        "aud:band:14",
+        "aud:band:15",
+        "aud:band:19",
+        "aud:band:7",
+        "aud:periodicity:P5"
+      ]
+    },
+    "ATG01-H-C03-01_E2": {
+      "probe_id": "ATG01-H-C03-01",
+      "event_index": 2,
+      "causal_witness_structure_count": 2,
+      "distinct_atomic_component_union_size": 15,
+      "atoms": [
+        "aud:band:1",
+        "aud:band:12",
+        "aud:band:13",
+        "aud:band:14",
+        "aud:band:15",
+        "aud:band:16",
+        "aud:band:17",
+        "aud:band:19",
+        "aud:band:20",
+        "aud:band:21",
+        "aud:band:4",
+        "aud:band:5",
+        "aud:periodicity:P0",
+        "aud:periodicity:P1",
+        "aud:periodicity:P3"
+      ]
+    },
+    "ATG01-H-C04-01_E3": {
+      "probe_id": "ATG01-H-C04-01",
+      "event_index": 3,
+      "causal_witness_structure_count": 6,
+      "distinct_atomic_component_union_size": 10,
+      "atoms": [
+        "aud:band:13",
+        "aud:band:5",
+        "aud:band:7",
+        "aud:band:8",
+        "aud:band:9",
+        "aud:periodicity:P0",
+        "aud:periodicity:P1",
+        "aud:periodicity:P2",
+        "aud:periodicity:P3",
+        "aud:periodicity:P5"
+      ]
+    },
+    "ATG01-H-C04-02_E1": {
+      "probe_id": "ATG01-H-C04-02",
+      "event_index": 1,
+      "causal_witness_structure_count": 1,
+      "distinct_atomic_component_union_size": 8,
+      "atoms": [
+        "aud:band:10",
+        "aud:band:11",
+        "aud:band:2",
+        "aud:band:6",
+        "aud:band:9",
+        "aud:periodicity:P1",
+        "aud:periodicity:P3",
+        "aud:periodicity:P4"
+      ]
+    },
+    "ATG01-H-C04-02_E2": {
+      "probe_id": "ATG01-H-C04-02",
+      "event_index": 2,
+      "causal_witness_structure_count": 5,
+      "distinct_atomic_component_union_size": 7,
+      "atoms": [
+        "aud:band:5",
+        "aud:band:6",
+        "aud:band:9",
+        "aud:periodicity:P1",
+        "aud:periodicity:P2",
+        "aud:periodicity:P3",
+        "aud:periodicity:P5"
+      ]
+    },
+    "ATG01-H-C05-01_E1": {
+      "probe_id": "ATG01-H-C05-01",
+      "event_index": 1,
+      "causal_witness_structure_count": 2,
+      "distinct_atomic_component_union_size": 8,
+      "atoms": [
+        "aud:band:10",
+        "aud:band:11",
+        "aud:band:12",
+        "aud:band:13",
+        "aud:band:14",
+        "aud:band:17",
+        "aud:band:18",
+        "aud:band:3"
+      ]
+    },
+    "ATG01-H-C05-01_E2": {
+      "probe_id": "ATG01-H-C05-01",
+      "event_index": 2,
+      "causal_witness_structure_count": 2,
+      "distinct_atomic_component_union_size": 21,
+      "atoms": [
+        "aud:band:0",
+        "aud:band:10",
+        "aud:band:11",
+        "aud:band:12",
+        "aud:band:13",
+        "aud:band:14",
+        "aud:band:15",
+        "aud:band:17",
+        "aud:band:2",
+        "aud:band:20",
+        "aud:band:21",
+        "aud:band:23",
+        "aud:band:4",
+        "aud:band:5",
+        "aud:band:7",
+        "aud:band:8",
+        "aud:band:9",
+        "aud:periodicity:P0",
+        "aud:periodicity:P2",
+        "aud:periodicity:P3",
+        "aud:periodicity:P4"
+      ]
+    },
+    "ATG01-H-C06-02_E0": {
+      "probe_id": "ATG01-H-C06-02",
+      "event_index": 0,
+      "causal_witness_structure_count": 2,
+      "distinct_atomic_component_union_size": 11,
+      "atoms": [
+        "aud:band:12",
+        "aud:band:13",
+        "aud:band:16",
+        "aud:band:17",
+        "aud:band:18",
+        "aud:band:19",
+        "aud:band:20",
+        "aud:band:21",
+        "aud:periodicity:P0",
+        "aud:periodicity:P3",
+        "aud:periodicity:P4"
+      ]
+    },
+    "ATG01-H-C06-02_E1": {
+      "probe_id": "ATG01-H-C06-02",
+      "event_index": 1,
+      "causal_witness_structure_count": 8,
+      "distinct_atomic_component_union_size": 17,
+      "atoms": [
+        "aud:band:0",
+        "aud:band:1",
+        "aud:band:10",
+        "aud:band:12",
+        "aud:band:13",
+        "aud:band:16",
+        "aud:band:18",
+        "aud:band:2",
+        "aud:band:4",
+        "aud:band:5",
+        "aud:band:6",
+        "aud:band:7",
+        "aud:band:8",
+        "aud:band:9",
+        "aud:periodicity:P0",
+        "aud:periodicity:P1",
+        "aud:periodicity:P2"
+      ]
+    },
+    "ATG01-H-C07-01_E1": {
+      "probe_id": "ATG01-H-C07-01",
+      "event_index": 1,
+      "causal_witness_structure_count": 3,
+      "distinct_atomic_component_union_size": 6,
+      "atoms": [
+        "aud:band:10",
+        "aud:band:5",
+        "aud:band:6",
+        "aud:band:7",
+        "aud:periodicity:P2",
+        "aud:periodicity:P3"
+      ]
+    },
+    "ATG01-H-C07-01_E2": {
+      "probe_id": "ATG01-H-C07-01",
+      "event_index": 2,
+      "causal_witness_structure_count": 1,
+      "distinct_atomic_component_union_size": 4,
+      "atoms": [
+        "aud:band:10",
+        "aud:band:15",
+        "aud:band:8",
+        "aud:periodicity:P2"
+      ]
+    },
+    "ATG01-H-C07-01_E4": {
+      "probe_id": "ATG01-H-C07-01",
+      "event_index": 4,
+      "causal_witness_structure_count": 1,
+      "distinct_atomic_component_union_size": 5,
+      "atoms": [
+        "aud:band:10",
+        "aud:band:11",
+        "aud:band:8",
+        "aud:band:9",
+        "aud:periodicity:P3"
+      ]
+    },
+    "ATG01-H-C07-02_E0": {
+      "probe_id": "ATG01-H-C07-02",
+      "event_index": 0,
+      "causal_witness_structure_count": 6,
+      "distinct_atomic_component_union_size": 14,
+      "atoms": [
+        "aud:band:10",
+        "aud:band:11",
+        "aud:band:12",
+        "aud:band:13",
+        "aud:band:14",
+        "aud:band:20",
+        "aud:band:6",
+        "aud:band:7",
+        "aud:band:8",
+        "aud:band:9",
+        "aud:periodicity:P2",
+        "aud:periodicity:P3",
+        "aud:periodicity:P4",
+        "aud:periodicity:P5"
+      ]
+    },
+    "ATG01-H-C09-01_E0": {
+      "probe_id": "ATG01-H-C09-01",
+      "event_index": 0,
+      "causal_witness_structure_count": 7,
+      "distinct_atomic_component_union_size": 2,
+      "atoms": [
+        "aud:band:13",
+        "aud:periodicity:P2"
+      ]
+    },
+    "ATG01-H-C09-01_E1": {
+      "probe_id": "ATG01-H-C09-01",
+      "event_index": 1,
+      "causal_witness_structure_count": 6,
+      "distinct_atomic_component_union_size": 8,
+      "atoms": [
+        "aud:band:10",
+        "aud:band:13",
+        "aud:band:6",
+        "aud:band:7",
+        "aud:band:8",
+        "aud:band:9",
+        "aud:periodicity:P0",
+        "aud:periodicity:P1"
+      ]
+    },
+    "ATG01-H-C09-01_E2": {
+      "probe_id": "ATG01-H-C09-01",
+      "event_index": 2,
+      "causal_witness_structure_count": 9,
+      "distinct_atomic_component_union_size": 9,
+      "atoms": [
+        "aud:band:10",
+        "aud:band:5",
+        "aud:band:6",
+        "aud:band:7",
+        "aud:band:8",
+        "aud:band:9",
+        "aud:periodicity:P0",
+        "aud:periodicity:P1",
+        "aud:periodicity:P2"
+      ]
+    },
+    "ATG01-H-C09-02_E3": {
+      "probe_id": "ATG01-H-C09-02",
+      "event_index": 3,
+      "causal_witness_structure_count": 4,
+      "distinct_atomic_component_union_size": 10,
+      "atoms": [
+        "aud:band:15",
+        "aud:band:17",
+        "aud:band:18",
+        "aud:band:19",
+        "aud:band:20",
+        "aud:band:21",
+        "aud:band:23",
+        "aud:periodicity:P0",
+        "aud:periodicity:P1",
+        "aud:periodicity:P4"
+      ]
+    },
+    "ATG01-H-C09-02_E4": {
+      "probe_id": "ATG01-H-C09-02",
+      "event_index": 4,
+      "causal_witness_structure_count": 5,
+      "distinct_atomic_component_union_size": 7,
+      "atoms": [
+        "aud:band:10",
+        "aud:band:4",
+        "aud:band:5",
+        "aud:band:7",
+        "aud:periodicity:P0",
+        "aud:periodicity:P1",
+        "aud:periodicity:P2"
+      ]
+    },
+    "ATG01-H-C09-02_E5": {
+      "probe_id": "ATG01-H-C09-02",
+      "event_index": 5,
+      "causal_witness_structure_count": 2,
+      "distinct_atomic_component_union_size": 5,
+      "atoms": [
+        "aud:band:14",
+        "aud:band:4",
+        "aud:band:8",
+        "aud:periodicity:P0",
+        "aud:periodicity:P1"
+      ]
+    },
+    "ATG01-H-C09-02_E7": {
+      "probe_id": "ATG01-H-C09-02",
+      "event_index": 7,
+      "causal_witness_structure_count": 4,
+      "distinct_atomic_component_union_size": 2,
+      "atoms": [
+        "aud:band:10",
+        "aud:periodicity:P0"
+      ]
+    }
+  },
+  "status": "PASS"
+}

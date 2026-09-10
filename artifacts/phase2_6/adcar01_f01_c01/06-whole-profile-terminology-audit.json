@@ -1,0 +1,9 @@
+{
+  "prior_bcap_metric_string": "BCAP=0/299",
+  "prior_ccap_metric_string": "CCAP=0/236",
+  "literal_meaning_of_numerator_0": "GROUNDING_TO_HELDOUT_RECURRENT_IDENTITIES",
+  "corrected_terminology_bcap": "GROUNDING\u2192HELDOUT RECURRENT BCAP IDENTITIES: 0/299",
+  "corrected_terminology_ccap": "GROUNDING\u2192HELDOUT RECURRENT CCAP IDENTITIES: 0/236",
+  "clarification": "The prior shorthand 'BCAP=0/299' denoted 0 grounding->heldout sequence support and 0/70 supported transitions. At the individual profile identity level, BCAP has 299 distinct identities (297 singletons, 2 non-singletons). Both non-singleton BCAP identities recur cross-recording and cross-speaker (with 1 occurring across grounding->heldout). CCAP has 236 distinct identities (197 singletons, 39 non-singletons, 38 cross-recording, 14 grounding->heldout). Crucially, despite these rare token occurrences, whole-profile directional transitions fail completely (0/70 supported for both BCAP and CCAP).",
+  "status": "PASS"
+}

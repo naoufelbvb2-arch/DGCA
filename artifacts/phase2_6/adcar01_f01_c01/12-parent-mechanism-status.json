@@ -1,0 +1,28 @@
+{
+  "parent_primary_failure_mechanism": "MULTI_STAGE",
+  "parent_primary_mechanism_status": "REFINED",
+  "corrections_required_count": 4,
+  "corrections_ledger": [
+    {
+      "item": "Budget Clarification",
+      "parent_statement": "MAX SIMULTANEOUS CAUSAL STRUCTURES PER EVENT: 9 (NOT_IN_CONFLICT_WITH_EXISTING_BUDGET)",
+      "audit_clarification": "9 is the count of pairwise witness structures. Distinct atomic union B_sim_max = 21 > 8 (EXCEEDS_SIMPLE_ATOMIC_FACTORIZATION_BUDGET, BUDGET_COMPATIBILITY_INCONCLUSIVE). Minimal containers (k_causal <= 2) remain compatible."
+    },
+    {
+      "item": "Whole-Profile Terminology",
+      "parent_statement": "WHOLE PROFILE RECURRENCE: BCAP=0/299, CCAP=0/236",
+      "audit_clarification": "Corrected to clarify heldout sequence and transition support = 0/70, while BCAP has 2 non-singletons (1 across G->H) and CCAP has 39 non-singletons (14 across G->H)."
+    },
+    {
+      "item": "M7 Independence",
+      "parent_statement": "M7 TRANSITION_COMPOSITION_FRAGMENTATION: SUPPORTED",
+      "audit_clarification": "Refined to M7_PARTIALLY_INDEPENDENT (whole-profile transitions are downstream of M1, but prefixes and ordered pairs show genuine composition-only failure)."
+    },
+    {
+      "item": "M3 Nesting",
+      "parent_statement": "M3 TAIL_DESCRIPTOR_INSTABILITY: SUPPORTED (as co-equal stage in MULTI_STAGE)",
+      "audit_clarification": "Classified as SUBMECHANISM_OF_M1 (the causal mechanism driving whole-profile identity fragmentation)."
+    }
+  ],
+  "status": "PASS"
+}

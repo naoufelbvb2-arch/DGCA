@@ -1,0 +1,13 @@
+{
+  "final_audit_verdict": "ADCAR01_F01_C01_CLOSED_WITH_CLARIFICATIONS",
+  "parent_primary_mechanism_status": "REFINED",
+  "m7_status": "M7_PARTIALLY_INDEPENDENT",
+  "m3_relation": "SUBMECHANISM_OF_M1",
+  "atomic_causal_burden": "EXCEEDS_SIMPLE_ATOMIC_FACTORIZATION_BUDGET",
+  "budget_compatibility": "BUDGET_COMPATIBILITY_INCONCLUSIVE",
+  "corrections_required_count": 4,
+  "component_validated": false,
+  "production_implementation_authorized": false,
+  "next_action": "OPEN FINAL AUDIO REPAIR FORMAL SPECIFICATION",
+  "status": "PASS"
+}

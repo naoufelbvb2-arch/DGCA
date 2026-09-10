@@ -1,0 +1,41 @@
+{
+  "family_A_atomic": {
+    "source_supported": 70,
+    "dest_supported": 70,
+    "both_supported": 70
+  },
+  "family_B_unordered_pairs": {
+    "source_supported": 69,
+    "dest_supported": 70,
+    "both_supported": 69
+  },
+  "family_C_ordered_rank_pairs": {
+    "source_supported": 69,
+    "dest_supported": 70,
+    "both_supported": 69
+  },
+  "family_D_prefixes": {
+    "k1": {
+      "source_supported": 65,
+      "dest_supported": 65,
+      "both_supported": 60
+    },
+    "k2": {
+      "source_supported": 41,
+      "dest_supported": 39,
+      "both_supported": 25
+    },
+    "k3": {
+      "source_supported": 24,
+      "dest_supported": 24,
+      "both_supported": 10
+    }
+  },
+  "family_F_causal_witnesses": {
+    "both_endpoints_have_witnesses": 12,
+    "source_supported": 12,
+    "dest_supported": 12,
+    "both_supported": 12
+  },
+  "status": "PASS"
+}

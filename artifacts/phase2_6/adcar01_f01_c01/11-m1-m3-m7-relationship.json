@@ -1,0 +1,11 @@
+{
+  "m1_status": "PRIMARY_EVENT_IDENTITY_FAILURE",
+  "m3_relation_to_m1": "SUBMECHANISM_OF_M1",
+  "m7_status": "M7_PARTIALLY_INDEPENDENT",
+  "relationship_taxonomy": {
+    "M1_whole_profile_identity_fragmentation": "Root event-level collapse mechanism causing 99.3% singletons.",
+    "M3_tail_descriptor_instability": "Submechanism nested within M1; explains the empirical driver of M1 (adding low-ranked tail descriptors k>=4 destroys recurrence).",
+    "M7_transition_composition_fragmentation": "Partially independent sequential stage; temporal transitions fail even when endpoint sub-profile structures recur."
+  },
+  "status": "PASS"
+}

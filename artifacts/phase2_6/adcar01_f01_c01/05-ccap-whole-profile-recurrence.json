@@ -1,0 +1,23 @@
+{
+  "total_profile_occurrences": 302,
+  "distinct_profile_identities": 236,
+  "singleton_profile_identities": 197,
+  "non_singleton_profile_identities": 39,
+  "cross_recording_recurrent_identities": 38,
+  "cross_speaker_recurrent_identities": 38,
+  "grounding_to_heldout_recurrent_identities": 14,
+  "grounding_to_heldout_covered_heldout_events": 20,
+  "total_heldout_events": 90,
+  "grounding_to_heldout_supported_heldout_directional_transitions": 0,
+  "total_heldout_directional_transitions": 68,
+  "heldout_probes_with_at_least_one_supported_transition": 0,
+  "total_heldout_probes": 20,
+  "non_singleton_breakdown": {
+    "within_same_recording_only": 1,
+    "inside_grounding_only": 15,
+    "inside_heldout_only": 5,
+    "across_grounding_to_heldout": 14
+  },
+  "arithmetic_identity_check_pass": true,
+  "status": "PASS"
+}

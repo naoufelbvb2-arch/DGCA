@@ -1,0 +1,89 @@
+{
+  "passed_count": 20,
+  "total_count": 20,
+  "all_invariants_passed": true,
+  "failed_invariants": [],
+  "invariants": {
+    "CINV01": {
+      "desc": "Parent ADCAR01-F01 artifacts unchanged",
+      "pass": true
+    },
+    "CINV02": {
+      "desc": "103 witness inventory unchanged",
+      "pass": true
+    },
+    "CINV03": {
+      "desc": "Witness components unchanged",
+      "pass": true
+    },
+    "CINV04": {
+      "desc": "Speaker lineage unchanged",
+      "pass": true
+    },
+    "CINV05": {
+      "desc": "No new structure family",
+      "pass": true
+    },
+    "CINV06": {
+      "desc": "No new recurrence rule",
+      "pass": true
+    },
+    "CINV07": {
+      "desc": "No new threshold",
+      "pass": true
+    },
+    "CINV08": {
+      "desc": "No heldout-informed structure generation",
+      "pass": true
+    },
+    "CINV09": {
+      "desc": "No label-informed structure generation",
+      "pass": true
+    },
+    "CINV10": {
+      "desc": "No graph mutation",
+      "pass": true
+    },
+    "CINV11": {
+      "desc": "No retrieval modification",
+      "pass": true
+    },
+    "CINV12": {
+      "desc": "No sequence-score modification",
+      "pass": true
+    },
+    "CINV13": {
+      "desc": "Budget uses distinct atomic union",
+      "pass": true
+    },
+    "CINV14": {
+      "desc": "Global and simultaneous burden distinguished",
+      "pass": true
+    },
+    "CINV15": {
+      "desc": "BCAP recurrence metrics disaggregated",
+      "pass": true
+    },
+    "CINV16": {
+      "desc": "CCAP recurrence metrics disaggregated",
+      "pass": true
+    },
+    "CINV17": {
+      "desc": "Singleton != grounding->heldout recurrence",
+      "pass": true
+    },
+    "CINV18": {
+      "desc": "M7 tested below whole-profile level",
+      "pass": true
+    },
+    "CINV19": {
+      "desc": "M7 uses only frozen structure families",
+      "pass": true
+    },
+    "CINV20": {
+      "desc": "Production hashes match",
+      "pass": true
+    }
+  },
+  "status": "PASS"
+}

@@ -1,0 +1,5 @@
+{
+  "m7_independence_classification": "M7_PARTIALLY_INDEPENDENT",
+  "rationale": "M7 is partially independent. At the whole-profile level (Family E), transition failure is predominantly downstream of whole-profile identity fragmentation (69/70 transitions fail because neither endpoint profile exists in grounding). However, below the whole-profile level, genuine composition-only transition failures demonstrably exist: in Family D (k=1), 25 heldout transitions fail at directional composition despite both endpoint rank-1 descriptors recurring in grounding; in Family D (k=2), 19 transitions exhibit composition-only failure; and in Family C, 4 transitions exhibit composition-only failure. Thus, M7 represents a genuine temporal composition bottleneck that operates partially independently of endpoint identity.",
+  "status": "PASS"
+}

@@ -1,0 +1,11 @@
+{
+  "frozen_graph_budget_bound": 8,
+  "b_global_max": 21,
+  "b_sim_max": 21,
+  "max_simultaneous_witness_structures": 9,
+  "case_selected": "CASE_B",
+  "atomic_causal_burden": "EXCEEDS_SIMPLE_ATOMIC_FACTORIZATION_BUDGET",
+  "budget_compatibility_classification": "BUDGET_COMPATIBILITY_INCONCLUSIVE",
+  "clarification_summary": "The count 9 represents causal witness structures (pairwise comparisons) at probe ATG01-H-C09-01 Event 2. The distinct atomic component union size B_sim_max is 21 (at ATG01-H-C05-01 Event 2). Because B_sim_max = 21 > 8, a naive runtime factorization that emits every distinguishing atomic descriptor as a separate graph token exceeds B_audio,event = 8 (EXCEEDS_SIMPLE_ATOMIC_FACTORIZATION_BUDGET). However, because minimal causal containers require at most 2 atomic components (k_causal <= 2 for 100% of witnesses) and not all 21 distinguishing features need to be emitted simultaneously as independent tokens, architectural budget compatibility is classified as BUDGET_COMPATIBILITY_INCONCLUSIVE.",
+  "status": "PASS"
+}

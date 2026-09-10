@@ -1,0 +1,12 @@
+{
+  "parent_commit": "65b1c30",
+  "is_ancestor_parent": true,
+  "grandparent_commit": "57d3240",
+  "is_ancestor_grandparent": true,
+  "historical_signature": "915119d40643cb97",
+  "historical_signature_match": true,
+  "manifest_sha256_match": true,
+  "parent_artifacts_count": 42,
+  "parent_artifacts_ok": true,
+  "status": "PASS"
+}

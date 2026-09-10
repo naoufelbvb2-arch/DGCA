@@ -1,0 +1,46 @@
+{
+  "family_A_atomic": {
+    "both_supported": 70,
+    "directional_supported": 70,
+    "composition_only_failure": 0
+  },
+  "family_B_unordered_pairs": {
+    "both_supported": 69,
+    "directional_supported": 69,
+    "composition_only_failure": 0
+  },
+  "family_C_ordered_rank_pairs": {
+    "both_supported": 69,
+    "directional_supported": 65,
+    "composition_only_failure": 4
+  },
+  "family_D_prefixes": {
+    "k1": {
+      "source_supported": 65,
+      "dest_supported": 65,
+      "both_supported": 60,
+      "directional_supported": 35,
+      "composition_only_failure": 25
+    },
+    "k2": {
+      "source_supported": 41,
+      "dest_supported": 39,
+      "both_supported": 25,
+      "directional_supported": 6,
+      "composition_only_failure": 19
+    },
+    "k3": {
+      "source_supported": 24,
+      "dest_supported": 24,
+      "both_supported": 10,
+      "directional_supported": 1,
+      "composition_only_failure": 9
+    }
+  },
+  "family_F_causal_witnesses": {
+    "both_supported": 12,
+    "directional_supported": 12,
+    "composition_only_failure": 0
+  },
+  "status": "PASS"
+}
