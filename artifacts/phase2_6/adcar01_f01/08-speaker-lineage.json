@@ -1,0 +1,10 @@
+{
+  "total_recordings": 70,
+  "total_distinct_speakers": 70,
+  "speaker_id_source": "FROZEN_DATASET_METADATA",
+  "grounding_speakers": 40,
+  "heldout_speakers": 20,
+  "ood_speakers": 10,
+  "lineage_complete": true,
+  "status": "PASS"
+}

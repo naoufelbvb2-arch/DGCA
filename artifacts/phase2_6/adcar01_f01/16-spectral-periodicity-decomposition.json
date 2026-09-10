@@ -1,0 +1,7 @@
+{
+  "spectral_alone_recurrence_k3": 23,
+  "periodicity_alone_recurrence_k1": 6,
+  "conjoint_whole_profile_recurrence": 1,
+  "finding": "Spectral core k<=3 retains recurrence; conjoining full spectral and periodicity tails induces 99.3% identity fragmentation",
+  "status": "PASS"
+}

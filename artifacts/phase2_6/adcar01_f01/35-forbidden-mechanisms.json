@@ -1,0 +1,127 @@
+{
+  "forbidden": {
+    "FM01": {
+      "pass": true
+    },
+    "FM02": {
+      "pass": true
+    },
+    "FM03": {
+      "pass": true
+    },
+    "FM04": {
+      "pass": true
+    },
+    "FM05": {
+      "pass": true
+    },
+    "FM06": {
+      "pass": true
+    },
+    "FM07": {
+      "pass": true
+    },
+    "FM08": {
+      "pass": true
+    },
+    "FM09": {
+      "pass": true
+    },
+    "FM10": {
+      "pass": true
+    },
+    "FM11": {
+      "pass": true
+    },
+    "FM12": {
+      "pass": true
+    },
+    "FM13": {
+      "pass": true
+    },
+    "FM14": {
+      "pass": true
+    },
+    "FM15": {
+      "pass": true
+    },
+    "FM16": {
+      "pass": true
+    },
+    "FM17": {
+      "pass": true
+    },
+    "FM18": {
+      "pass": true
+    },
+    "FM19": {
+      "pass": true
+    },
+    "FM20": {
+      "pass": true
+    },
+    "FM21": {
+      "pass": true
+    },
+    "FM22": {
+      "pass": true
+    },
+    "FM23": {
+      "pass": true
+    },
+    "FM24": {
+      "pass": true
+    },
+    "FM25": {
+      "pass": true
+    },
+    "FM26": {
+      "pass": true
+    },
+    "FM27": {
+      "pass": true
+    },
+    "FM28": {
+      "pass": true
+    },
+    "FM29": {
+      "pass": true
+    },
+    "FM30": {
+      "pass": true
+    },
+    "FM31": {
+      "pass": true
+    },
+    "FM32": {
+      "pass": true
+    },
+    "FM33": {
+      "pass": true
+    },
+    "FM34": {
+      "pass": true
+    },
+    "FM35": {
+      "pass": true
+    },
+    "FM36": {
+      "pass": true
+    },
+    "FM37": {
+      "pass": true
+    },
+    "FM38": {
+      "pass": true
+    },
+    "FM39": {
+      "pass": true
+    },
+    "FM40": {
+      "pass": true
+    }
+  },
+  "passed_count": 40,
+  "total": 40,
+  "status": "PASS"
+}

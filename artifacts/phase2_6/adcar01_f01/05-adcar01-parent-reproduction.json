@@ -1,0 +1,14 @@
+{
+  "parent_execution_commit": "57d3240",
+  "parent_verdict": "ADCAR01_COUNTERFACTUAL_EFFICACY_FAIL",
+  "parent_passed_gates": 34,
+  "parent_total_gates": 36,
+  "parent_causal_witnesses": 103,
+  "parent_bcap_distinct": 299,
+  "parent_bcap_singletons": 297,
+  "parent_bcap_singleton_rate": 0.993,
+  "parent_r1_heldout_sequence_support": 0,
+  "parent_r0c_heldout_sequence_support": 0,
+  "parent_ca1_score_inversions_repaired": 0,
+  "status": "PASS"
+}

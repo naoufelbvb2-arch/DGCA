@@ -1,0 +1,6 @@
+{
+  "frozen_graph_budget_bound": 8,
+  "max_simultaneous_causal_structures_per_event": 9,
+  "budget_compatibility_classification": "NOT_IN_CONFLICT_WITH_EXISTING_BUDGET",
+  "status": "PASS"
+}

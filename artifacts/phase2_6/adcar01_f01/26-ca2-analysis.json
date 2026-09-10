@@ -1,0 +1,74 @@
+{
+  "ca2_positive_probes_evaluated": 13,
+  "ca2_frozen_witnesses": 103,
+  "ca2_witnesses_with_recurrent_container": 103,
+  "ca2_fully_covered_probes": 13,
+  "probe_summary": {
+    "ATG01-H-C01-01": {
+      "total_witnesses": 9,
+      "recurrent_containers": 9,
+      "covered": true
+    },
+    "ATG01-H-C02-01": {
+      "total_witnesses": 11,
+      "recurrent_containers": 11,
+      "covered": true
+    },
+    "ATG01-H-C03-01": {
+      "total_witnesses": 2,
+      "recurrent_containers": 2,
+      "covered": true
+    },
+    "ATG01-H-C04-01": {
+      "total_witnesses": 6,
+      "recurrent_containers": 6,
+      "covered": true
+    },
+    "ATG01-H-C05-01": {
+      "total_witnesses": 4,
+      "recurrent_containers": 4,
+      "covered": true
+    },
+    "ATG01-H-C07-01": {
+      "total_witnesses": 5,
+      "recurrent_containers": 5,
+      "covered": true
+    },
+    "ATG01-H-C09-01": {
+      "total_witnesses": 22,
+      "recurrent_containers": 22,
+      "covered": true
+    },
+    "ATG01-H-C00-02": {
+      "total_witnesses": 1,
+      "recurrent_containers": 1,
+      "covered": true
+    },
+    "ATG01-H-C01-02": {
+      "total_witnesses": 6,
+      "recurrent_containers": 6,
+      "covered": true
+    },
+    "ATG01-H-C04-02": {
+      "total_witnesses": 6,
+      "recurrent_containers": 6,
+      "covered": true
+    },
+    "ATG01-H-C06-02": {
+      "total_witnesses": 10,
+      "recurrent_containers": 10,
+      "covered": true
+    },
+    "ATG01-H-C07-02": {
+      "total_witnesses": 6,
+      "recurrent_containers": 6,
+      "covered": true
+    },
+    "ATG01-H-C09-02": {
+      "total_witnesses": 15,
+      "recurrent_containers": 15,
+      "covered": true
+    }
+  },
+  "status": "PASS"
+}

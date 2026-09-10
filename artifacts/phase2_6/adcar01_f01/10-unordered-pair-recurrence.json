@@ -1,0 +1,10 @@
+{
+  "family": "B_UNORDERED_PAIRS",
+  "cardinality": 2,
+  "total_distinct": 434,
+  "cross_recording_recurrent": 428,
+  "cross_speaker_recurrent": 428,
+  "grounding_to_heldout_recurrent": 404,
+  "recurrence_fraction": 0.9308755760368663,
+  "status": "PASS"
+}

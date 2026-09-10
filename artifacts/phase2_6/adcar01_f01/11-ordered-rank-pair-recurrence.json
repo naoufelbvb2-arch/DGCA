@@ -1,0 +1,10 @@
+{
+  "family": "C_ORDERED_RANK_PAIRS",
+  "cardinality": 2,
+  "total_distinct": 560,
+  "cross_recording_recurrent": 527,
+  "cross_speaker_recurrent": 527,
+  "grounding_to_heldout_recurrent": 447,
+  "recurrence_fraction": 0.7982142857142858,
+  "status": "PASS"
+}

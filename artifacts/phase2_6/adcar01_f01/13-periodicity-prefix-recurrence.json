@@ -1,0 +1,61 @@
+{
+  "family": "D_PERIODICITY_PREFIXES",
+  "max_k": 6,
+  "curve": {
+    "1": {
+      "k": 1,
+      "distinct": 6,
+      "singletons": 0,
+      "singleton_rate": 0.0,
+      "cross_recording": 6,
+      "cross_speaker": 6,
+      "grounding_to_heldout": 6
+    },
+    "2": {
+      "k": 2,
+      "distinct": 27,
+      "singletons": 7,
+      "singleton_rate": 0.25925925925925924,
+      "cross_recording": 20,
+      "cross_speaker": 20,
+      "grounding_to_heldout": 9
+    },
+    "3": {
+      "k": 3,
+      "distinct": 41,
+      "singletons": 28,
+      "singleton_rate": 0.6829268292682927,
+      "cross_recording": 12,
+      "cross_speaker": 12,
+      "grounding_to_heldout": 4
+    },
+    "4": {
+      "k": 4,
+      "distinct": 19,
+      "singletons": 18,
+      "singleton_rate": 0.9473684210526315,
+      "cross_recording": 1,
+      "cross_speaker": 1,
+      "grounding_to_heldout": 0
+    },
+    "5": {
+      "k": 5,
+      "distinct": 8,
+      "singletons": 8,
+      "singleton_rate": 1.0,
+      "cross_recording": 0,
+      "cross_speaker": 0,
+      "grounding_to_heldout": 0
+    },
+    "6": {
+      "k": 6,
+      "distinct": 1,
+      "singletons": 1,
+      "singleton_rate": 1.0,
+      "cross_recording": 0,
+      "cross_speaker": 0,
+      "grounding_to_heldout": 0
+    }
+  },
+  "status": "PASS"
+}

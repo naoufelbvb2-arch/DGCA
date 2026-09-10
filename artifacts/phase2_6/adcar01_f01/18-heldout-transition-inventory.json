@@ -1,0 +1,8 @@
+{
+  "heldout_directional_transitions": 70,
+  "supported_heldout_transitions": 0,
+  "unsupported_heldout_transitions": 70,
+  "probes_with_at_least_one_supported_transition": 0,
+  "probes_with_zero_supported_transitions": 20,
+  "status": "PASS"
+}

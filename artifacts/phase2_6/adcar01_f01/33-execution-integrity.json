@@ -1,0 +1,55 @@
+{
+  "checks": {
+    "EI01": {
+      "desc": "worktree integrity",
+      "pass": true
+    },
+    "EI02": {
+      "desc": "lineage exact",
+      "pass": true
+    },
+    "EI03": {
+      "desc": "assets exact",
+      "pass": true
+    },
+    "EI04": {
+      "desc": "parent reproduction exact",
+      "pass": true
+    },
+    "EI05": {
+      "desc": "103 witness inventory exact",
+      "pass": true
+    },
+    "EI06": {
+      "desc": "witness components exact",
+      "pass": true
+    },
+    "EI07": {
+      "desc": "speaker lineage exact",
+      "pass": true
+    },
+    "EI08": {
+      "desc": "heldout firewall",
+      "pass": true
+    },
+    "EI09": {
+      "desc": "label firewall",
+      "pass": true
+    },
+    "EI10": {
+      "desc": "no graph mutation",
+      "pass": true
+    },
+    "EI11": {
+      "desc": "deterministic replay exact",
+      "pass": true
+    },
+    "EI12": {
+      "desc": "production hashes exact",
+      "pass": true
+    }
+  },
+  "passed_count": 12,
+  "total": 12,
+  "status": "PASS"
+}

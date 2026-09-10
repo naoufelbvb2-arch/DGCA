@@ -1,0 +1,10 @@
+{
+  "family": "A_ATOMIC_IDENTITIES",
+  "cardinality": 1,
+  "total_distinct": 30,
+  "cross_recording_recurrent": 30,
+  "cross_speaker_recurrent": 30,
+  "grounding_to_heldout_recurrent": 30,
+  "recurrence_fraction": 1.0,
+  "status": "PASS"
+}

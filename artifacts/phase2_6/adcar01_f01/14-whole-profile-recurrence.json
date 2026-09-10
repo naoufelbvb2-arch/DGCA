@@ -1,0 +1,17 @@
+{
+  "bcap": {
+    "distinct": 299,
+    "singletons": 297,
+    "singleton_rate": 0.9933110367892977,
+    "cross_recording": 2,
+    "grounding_to_heldout": 1
+  },
+  "ccap": {
+    "distinct": 236,
+    "singletons": 197,
+    "singleton_rate": 0.8347457627118644,
+    "cross_recording": 38,
+    "grounding_to_heldout": 14
+  },
+  "status": "PASS"
+}

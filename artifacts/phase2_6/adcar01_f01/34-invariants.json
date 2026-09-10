@@ -1,0 +1,127 @@
+{
+  "invariants": {
+    "INV01": {
+      "pass": true
+    },
+    "INV02": {
+      "pass": true
+    },
+    "INV03": {
+      "pass": true
+    },
+    "INV04": {
+      "pass": true
+    },
+    "INV05": {
+      "pass": true
+    },
+    "INV06": {
+      "pass": true
+    },
+    "INV07": {
+      "pass": true
+    },
+    "INV08": {
+      "pass": true
+    },
+    "INV09": {
+      "pass": true
+    },
+    "INV10": {
+      "pass": true
+    },
+    "INV11": {
+      "pass": true
+    },
+    "INV12": {
+      "pass": true
+    },
+    "INV13": {
+      "pass": true
+    },
+    "INV14": {
+      "pass": true
+    },
+    "INV15": {
+      "pass": true
+    },
+    "INV16": {
+      "pass": true
+    },
+    "INV17": {
+      "pass": true
+    },
+    "INV18": {
+      "pass": true
+    },
+    "INV19": {
+      "pass": true
+    },
+    "INV20": {
+      "pass": true
+    },
+    "INV21": {
+      "pass": true
+    },
+    "INV22": {
+      "pass": true
+    },
+    "INV23": {
+      "pass": true
+    },
+    "INV24": {
+      "pass": true
+    },
+    "INV25": {
+      "pass": true
+    },
+    "INV26": {
+      "pass": true
+    },
+    "INV27": {
+      "pass": true
+    },
+    "INV28": {
+      "pass": true
+    },
+    "INV29": {
+      "pass": true
+    },
+    "INV30": {
+      "pass": true
+    },
+    "INV31": {
+      "pass": true
+    },
+    "INV32": {
+      "pass": true
+    },
+    "INV33": {
+      "pass": true
+    },
+    "INV34": {
+      "pass": true
+    },
+    "INV35": {
+      "pass": true
+    },
+    "INV36": {
+      "pass": true
+    },
+    "INV37": {
+      "pass": true
+    },
+    "INV38": {
+      "pass": true
+    },
+    "INV39": {
+      "pass": true
+    },
+    "INV40": {
+      "pass": true
+    }
+  },
+  "passed_count": 40,
+  "total": 40,
+  "status": "PASS"
+}

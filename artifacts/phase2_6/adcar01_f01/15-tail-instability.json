@@ -1,0 +1,13 @@
+{
+  "prefix_survival": {
+    "k1_to_k2_recurrence_drop": -2,
+    "k2_to_k3_recurrence_drop": -3,
+    "k3_to_k4_recurrence_drop": 14,
+    "k4_to_k5_recurrence_drop": 6,
+    "k5_to_k6_recurrence_drop": 3
+  },
+  "tail_instability_classification": "STABLE_CORE_VARIABLE_TAIL",
+  "collapse_onset_k": 4,
+  "collapse_complete_k": 6,
+  "status": "PASS"
+}

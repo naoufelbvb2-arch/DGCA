@@ -1,0 +1,14 @@
+{
+  "ancestor_aegr01_f01": "265f4a2",
+  "is_ancestor_aegr01_f01": true,
+  "ancestor_aemg01_v13": "6fd2157",
+  "is_ancestor_aemg01_v13": true,
+  "ancestor_adcar01": "57d3240",
+  "is_ancestor_adcar01": true,
+  "manifest_sha256": "41658084f09148e4c086c7b00eb626eaa13c65113c4c769a74be214c99a81ff7",
+  "manifest_sha256_match": true,
+  "historical_signature": "915119d40643cb97",
+  "historical_signature_match": true,
+  "upstream_adcar01_verdict": "ADCAR01_COUNTERFACTUAL_EFFICACY_FAIL",
+  "status": "PASS"
+}

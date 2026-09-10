@@ -1,0 +1,8 @@
+{
+  "total_heldout_events": 90,
+  "covered_by_atomic_identity": 90,
+  "covered_by_unordered_pair": 89,
+  "covered_by_spectral_prefix_k3": 29,
+  "covered_by_whole_profile_bcap": 1,
+  "status": "PASS"
+}

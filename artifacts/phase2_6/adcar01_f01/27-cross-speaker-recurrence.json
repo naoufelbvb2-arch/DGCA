@@ -1,0 +1,7 @@
+{
+  "atomic_cross_speaker_fraction": 1.0,
+  "pair_cross_speaker_fraction": 0.9861751152073732,
+  "whole_profile_cross_speaker_fraction": 0.006688963210702341,
+  "speaker_drift_dominant_cause": false,
+  "status": "PASS"
+}

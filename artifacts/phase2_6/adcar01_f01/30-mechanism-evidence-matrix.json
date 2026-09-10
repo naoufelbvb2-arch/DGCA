@@ -1,0 +1,34 @@
+{
+  "M1_WHOLE_PROFILE_IDENTITY_FRAGMENTATION": {
+    "status": "SUPPORTED",
+    "evidence": "297/299 BCAP profiles are singletons (99.3%); heldout sequence support collapsed to 0/20 while smaller structures (atomic 100%, pairs 93%) recur."
+  },
+  "M2_RANK_ORDER_INSTABILITY_ACROSS_RECORDINGS": {
+    "status": "NOT_SUPPORTED",
+    "evidence": "Lawful within-family ordered rank pairs recur at 79.8% (447/560), proving rank order instability is not the primary driver of 0% sequence support."
+  },
+  "M3_TAIL_DESCRIPTOR_INSTABILITY": {
+    "status": "SUPPORTED",
+    "evidence": "Prefix recurrence rapidly collapses from k=3 (81% singletons) to k>=6 (99.5%-100% singletons) as low-ranked tail descriptors are added."
+  },
+  "M4_SPECTRAL_CORE_WITH_VARIABLE_RESIDUALS": {
+    "status": "SUPPORTED",
+    "evidence": "Spectral core k<=3 retains recurrence, but distinguishing descriptors for higher-band witnesses reside outside core k<=3."
+  },
+  "M5_PERIODICITY_INSTABILITY": {
+    "status": "NOT_SUPPORTED",
+    "evidence": "Spectral-only prefixes at k>=6 already suffer 100% singletons without periodicity; periodicity change is not necessary for collapse."
+  },
+  "M6_CROSS_SPEAKER_PROFILE_DRIFT": {
+    "status": "NOT_SUPPORTED",
+    "evidence": "Singletons occur across all 70 distinct speakers; profile fragmentation is structural rather than speaker-clustering driven."
+  },
+  "M7_TRANSITION_COMPOSITION_FRAGMENTATION": {
+    "status": "SUPPORTED",
+    "evidence": "Even where event substructures recur in heldout, 100% of heldout directional transitions fail to match grounding whole-profile transitions."
+  },
+  "M8_NO_RECURRENT_DISCRIMINATIVE_SUBSTRUCTURE": {
+    "status": "NOT_SUPPORTED",
+    "evidence": "100/103 causal witnesses have recurrent atomic/pair containers; discriminative precompression substructures do recur."
+  }
+}

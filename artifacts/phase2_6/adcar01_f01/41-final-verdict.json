@@ -1,0 +1,7 @@
+{
+  "final_forensic_verdict": "ADCAR01_F01_FORENSIC_PASS",
+  "primary_failure_mechanism": "MULTI_STAGE",
+  "next_repair_direction": "NEXT_REPAIR_DIRECTION_IDENTIFIED",
+  "component_validated": false,
+  "production_implementation_authorized": false
+}

@@ -1,0 +1,15 @@
+{
+  "heldout_transitions_partition": {
+    "WHOLE_PROFILE_FRAGMENTATION": 69,
+    "DESTINATION_STRUCTURE_UNSEEN": 1
+  },
+  "source_structure_unseen": 0,
+  "destination_structure_unseen": 1,
+  "source_and_destination_seen_but_pair_unseen": 0,
+  "direction_only_unseen": 0,
+  "whole_profile_fragmentation": 69,
+  "multi_factor": 0,
+  "sum_unsupported": 70,
+  "matches_unsupported_total": true,
+  "status": "PASS"
+}

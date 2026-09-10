@@ -1,0 +1,162 @@
+{
+  "passed_count": 38,
+  "total_count": 38,
+  "all_gates_passed": true,
+  "failed_gates": [],
+  "verdict": "ADCAR01_F01_FORENSIC_PASS",
+  "gates": {
+    "G01": {
+      "desc": "lineage exact",
+      "pass": true
+    },
+    "G02": {
+      "desc": "asset integrity exact",
+      "pass": true
+    },
+    "G03": {
+      "desc": "regression before PASS",
+      "pass": true
+    },
+    "G04": {
+      "desc": "historical signature exact",
+      "pass": true
+    },
+    "G05": {
+      "desc": "ADCAR01 parent reproduction exact",
+      "pass": true
+    },
+    "G06": {
+      "desc": "BCAP collapse reproduction exact",
+      "pass": true
+    },
+    "G07": {
+      "desc": "103 witness inventory exact",
+      "pass": true
+    },
+    "G08": {
+      "desc": "speaker lineage exact",
+      "pass": true
+    },
+    "G09": {
+      "desc": "Family A complete",
+      "pass": true
+    },
+    "G10": {
+      "desc": "Family B complete",
+      "pass": true
+    },
+    "G11": {
+      "desc": "Family C complete",
+      "pass": true
+    },
+    "G12": {
+      "desc": "Family D complete",
+      "pass": true
+    },
+    "G13": {
+      "desc": "Family E complete",
+      "pass": true
+    },
+    "G14": {
+      "desc": "Family F complete",
+      "pass": true
+    },
+    "G15": {
+      "desc": "Family G transition inventory exact",
+      "pass": true
+    },
+    "G16": {
+      "desc": "recurrence definitions exact",
+      "pass": true
+    },
+    "G17": {
+      "desc": "heldout firewall intact",
+      "pass": true
+    },
+    "G18": {
+      "desc": "label firewall intact",
+      "pass": true
+    },
+    "G19": {
+      "desc": "witness closure fixed",
+      "pass": true
+    },
+    "G20": {
+      "desc": "k_causal complete",
+      "pass": true
+    },
+    "G21": {
+      "desc": "k_recur complete",
+      "pass": true
+    },
+    "G22": {
+      "desc": "CA1 witness accounting complete",
+      "pass": true
+    },
+    "G23": {
+      "desc": "CA2 witness accounting complete",
+      "pass": true
+    },
+    "G24": {
+      "desc": "103 ledger complete",
+      "pass": true
+    },
+    "G25": {
+      "desc": "transition partition complete",
+      "pass": true
+    },
+    "G26": {
+      "desc": "spectral/periodicity decomposition complete",
+      "pass": true
+    },
+    "G27": {
+      "desc": "speaker recurrence analysis complete",
+      "pass": true
+    },
+    "G28": {
+      "desc": "grounding->heldout analysis complete",
+      "pass": true
+    },
+    "G29": {
+      "desc": "budget compatibility classification valid",
+      "pass": true
+    },
+    "G30": {
+      "desc": "magnitude scope valid",
+      "pass": true
+    },
+    "G31": {
+      "desc": "mechanism evidence matrix complete",
+      "pass": true
+    },
+    "G32": {
+      "desc": "primary mechanism rule obeyed",
+      "pass": true
+    },
+    "G33": {
+      "desc": "next repair direction rule obeyed",
+      "pass": true
+    },
+    "G34": {
+      "desc": "forbidden mechanisms 40/40",
+      "pass": true
+    },
+    "G35": {
+      "desc": "invariants 40/40",
+      "pass": true
+    },
+    "G36": {
+      "desc": "deterministic replay PASS",
+      "pass": true
+    },
+    "G37": {
+      "desc": "regression after PASS",
+      "pass": true
+    },
+    "G38": {
+      "desc": "production hashes MATCH",
+      "pass": true
+    }
+  },
+  "status": "PASS"
+}

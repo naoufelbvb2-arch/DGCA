@@ -1,0 +1,12 @@
+{
+  "head_commit": "57d3240",
+  "clean_production_worktree": true,
+  "production_source_diff_lines": 0,
+  "production_hashes": {
+    "__init__.py": "eed0f263d59e4c3c695fa49cde158f7eec210c310f815b45e99efb50f4102734",
+    "agent.py": "f5d9a1f5a55c420ef607aa07428f4bbc1ac30e5889b74789114712aa4158134f",
+    "audio_v2.py": "cc0aae26d8473b6800a028e51ac8017c19cbad1917a22ade1973784f48ab90ba",
+    "graph.py": "0bf319ba74b4e25554a242e6be91a41d4c17f981f64e7f171f6885d1112d7c99"
+  },
+  "status": "PASS"
+}
