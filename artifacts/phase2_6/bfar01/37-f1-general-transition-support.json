@@ -1,0 +1,7 @@
+{
+  "general_heldout_transition_support": "70/70",
+  "supported_boundaries_rate": 1.0,
+  "heldout_transitions_supported_in_grounding": "520/596",
+  "transition_support_rate": 0.87248322147651,
+  "status": "PASS"
+}

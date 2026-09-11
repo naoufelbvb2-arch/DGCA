@@ -1,0 +1,31 @@
+{
+  "ca1_pairs": [
+    [
+      "ATG01-H-C01-01",
+      "cat",
+      "dog"
+    ],
+    [
+      "ATG01-H-C05-01",
+      "house",
+      "bed"
+    ],
+    [
+      "ATG01-H-C08-01",
+      "on",
+      "off"
+    ],
+    [
+      "ATG01-H-C00-02",
+      "bird",
+      "tree"
+    ],
+    [
+      "ATG01-H-C07-02",
+      "go",
+      "no"
+    ]
+  ],
+  "ca2_probes_count": 13,
+  "status": "PASS"
+}

@@ -1,0 +1,8 @@
+{
+  "distinct_transitions": 701,
+  "cross_recording_recurrent": 494,
+  "cross_speaker_recurrent": 494,
+  "grounding_to_heldout_recurrent": 520,
+  "singleton_transitions": 207,
+  "status": "PASS"
+}

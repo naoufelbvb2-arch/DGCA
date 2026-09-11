@@ -1,0 +1,5 @@
+{
+  "q_normalization": "UNIFORM_OVER_CANDIDATES",
+  "per_boundary_renormalization": false,
+  "status": "PASS"
+}

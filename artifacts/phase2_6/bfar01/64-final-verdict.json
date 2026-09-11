@@ -1,0 +1,7 @@
+{
+  "final_verdict": "BFAR01_COUNTERFACTUAL_EFFICACY_FAIL",
+  "bfar01_component_validated": false,
+  "production_implementation_authorized": false,
+  "next_stage": "AUDIO_COMPOSITE_REPAIR_COUNTERFACTUAL",
+  "status": "PASS"
+}

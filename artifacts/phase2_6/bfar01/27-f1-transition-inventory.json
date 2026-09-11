@@ -1,0 +1,6 @@
+{
+  "distinct_bfar_transitions_corpus": 777,
+  "grounding_distinct_transitions": 701,
+  "heldout_distinct_transitions": 596,
+  "status": "PASS"
+}

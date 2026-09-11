@@ -1,0 +1,12 @@
+{
+  "release_gates_evaluated": 40,
+  "release_gates_passed": 35,
+  "failed_gates": [
+    "G23",
+    "G29",
+    "G30",
+    "G31",
+    "G38"
+  ],
+  "status": "FAIL"
+}

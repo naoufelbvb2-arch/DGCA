@@ -1,0 +1,59 @@
+{
+  "ca2_evaluated": 13,
+  "ca2_resolved": "1/13",
+  "details": {
+    "ATG01-H-C01-01": {
+      "rank": 5,
+      "resolved": false
+    },
+    "ATG01-H-C02-01": {
+      "rank": 5,
+      "resolved": false
+    },
+    "ATG01-H-C03-01": {
+      "rank": 1,
+      "resolved": true
+    },
+    "ATG01-H-C04-01": {
+      "rank": 9,
+      "resolved": false
+    },
+    "ATG01-H-C05-01": {
+      "rank": 4,
+      "resolved": false
+    },
+    "ATG01-H-C07-01": {
+      "rank": 4,
+      "resolved": false
+    },
+    "ATG01-H-C09-01": {
+      "rank": 9,
+      "resolved": false
+    },
+    "ATG01-H-C00-02": {
+      "rank": 2,
+      "resolved": false
+    },
+    "ATG01-H-C01-02": {
+      "rank": 5,
+      "resolved": false
+    },
+    "ATG01-H-C04-02": {
+      "rank": 7,
+      "resolved": false
+    },
+    "ATG01-H-C06-02": {
+      "rank": 5,
+      "resolved": false
+    },
+    "ATG01-H-C07-02": {
+      "rank": 5,
+      "resolved": false
+    },
+    "ATG01-H-C09-02": {
+      "rank": 7,
+      "resolved": false
+    }
+  },
+  "status": "FAIL"
+}

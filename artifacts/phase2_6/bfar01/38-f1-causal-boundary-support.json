@@ -1,0 +1,92 @@
+{
+  "frozen_c01_causal_boundaries": 12,
+  "bfar_causal_boundary_support": "9/12",
+  "support_rate": 0.75,
+  "details": [
+    {
+      "probe_id": "ATG01-H-C01-01",
+      "boundary_id": "ATG01-H-C01-01_B0_1",
+      "concept": "cat",
+      "general_supported": true,
+      "causal_component_supported": false
+    },
+    {
+      "probe_id": "ATG01-H-C01-01",
+      "boundary_id": "ATG01-H-C01-01_B1_2",
+      "concept": "cat",
+      "general_supported": true,
+      "causal_component_supported": true
+    },
+    {
+      "probe_id": "ATG01-H-C02-01",
+      "boundary_id": "ATG01-H-C02-01_B3_4",
+      "concept": "dog",
+      "general_supported": true,
+      "causal_component_supported": true
+    },
+    {
+      "probe_id": "ATG01-H-C02-01",
+      "boundary_id": "ATG01-H-C02-01_B4_5",
+      "concept": "dog",
+      "general_supported": true,
+      "causal_component_supported": true
+    },
+    {
+      "probe_id": "ATG01-H-C05-01",
+      "boundary_id": "ATG01-H-C05-01_B1_2",
+      "concept": "house",
+      "general_supported": true,
+      "causal_component_supported": true
+    },
+    {
+      "probe_id": "ATG01-H-C07-01",
+      "boundary_id": "ATG01-H-C07-01_B1_2",
+      "concept": "go",
+      "general_supported": true,
+      "causal_component_supported": false
+    },
+    {
+      "probe_id": "ATG01-H-C09-01",
+      "boundary_id": "ATG01-H-C09-01_B0_1",
+      "concept": "off",
+      "general_supported": true,
+      "causal_component_supported": false
+    },
+    {
+      "probe_id": "ATG01-H-C09-01",
+      "boundary_id": "ATG01-H-C09-01_B1_2",
+      "concept": "off",
+      "general_supported": true,
+      "causal_component_supported": true
+    },
+    {
+      "probe_id": "ATG01-H-C04-02",
+      "boundary_id": "ATG01-H-C04-02_B1_2",
+      "concept": "bed",
+      "general_supported": true,
+      "causal_component_supported": true
+    },
+    {
+      "probe_id": "ATG01-H-C06-02",
+      "boundary_id": "ATG01-H-C06-02_B0_1",
+      "concept": "no",
+      "general_supported": true,
+      "causal_component_supported": true
+    },
+    {
+      "probe_id": "ATG01-H-C09-02",
+      "boundary_id": "ATG01-H-C09-02_B3_4",
+      "concept": "off",
+      "general_supported": true,
+      "causal_component_supported": true
+    },
+    {
+      "probe_id": "ATG01-H-C09-02",
+      "boundary_id": "ATG01-H-C09-02_B4_5",
+      "concept": "off",
+      "general_supported": true,
+      "causal_component_supported": true
+    }
+  ],
+  "status": "FAIL"
+}

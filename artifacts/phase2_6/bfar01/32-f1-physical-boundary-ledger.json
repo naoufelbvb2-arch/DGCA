@@ -1,0 +1,9 @@
+{
+  "transitions_per_physical_boundary": {
+    "median": 40,
+    "p90": 64,
+    "max": 64,
+    "ceiling": 64
+  },
+  "status": "PASS"
+}

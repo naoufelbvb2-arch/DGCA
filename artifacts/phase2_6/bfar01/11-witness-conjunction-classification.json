@@ -1,0 +1,8 @@
+{
+  "conjunction_not_required": 100,
+  "genuinely_conjunctive": 0,
+  "inconclusive": 0,
+  "classification": "CONJUNCTION_NOT_REQUIRED",
+  "rationale": "All 100 recurrent witnesses possess k_recur=1 atomic containers in ADCAR01-F01; individual atomic components carry causal distinction without mandatory logical conjunction.",
+  "status": "PASS"
+}

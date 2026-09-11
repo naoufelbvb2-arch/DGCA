@@ -1,0 +1,509 @@
+{
+  "frozen_c01_causal_boundaries": 12,
+  "boundaries": [
+    {
+      "probe_id": "ATG01-H-C01-01",
+      "concept": "cat",
+      "boundary_id": "ATG01-H-C01-01_B0_1",
+      "source_event": 0,
+      "dest_event": 1,
+      "source_witnesses": [
+        "W_000",
+        "W_001",
+        "W_002"
+      ],
+      "dest_witnesses": [
+        "W_003",
+        "W_004",
+        "W_005",
+        "W_006",
+        "W_007"
+      ],
+      "source_frozen_comps": [
+        "aud:band:12",
+        "aud:band:14",
+        "aud:band:15",
+        "aud:band:16",
+        "aud:band:18",
+        "aud:band:19",
+        "aud:band:20",
+        "aud:periodicity:P0",
+        "aud:periodicity:P1"
+      ],
+      "dest_frozen_comps": [
+        "aud:band:12",
+        "aud:band:14",
+        "aud:band:15",
+        "aud:band:17",
+        "aud:band:18",
+        "aud:band:19",
+        "aud:band:4",
+        "aud:band:5",
+        "aud:band:6",
+        "aud:band:8",
+        "aud:band:9",
+        "aud:periodicity:P0",
+        "aud:periodicity:P1",
+        "aud:periodicity:P2",
+        "aud:periodicity:P4",
+        "aud:periodicity:P5"
+      ]
+    },
+    {
+      "probe_id": "ATG01-H-C01-01",
+      "concept": "cat",
+      "boundary_id": "ATG01-H-C01-01_B1_2",
+      "source_event": 1,
+      "dest_event": 2,
+      "source_witnesses": [
+        "W_003",
+        "W_004",
+        "W_005",
+        "W_006",
+        "W_007"
+      ],
+      "dest_witnesses": [
+        "W_008"
+      ],
+      "source_frozen_comps": [
+        "aud:band:12",
+        "aud:band:14",
+        "aud:band:15",
+        "aud:band:17",
+        "aud:band:18",
+        "aud:band:19",
+        "aud:band:4",
+        "aud:band:5",
+        "aud:band:6",
+        "aud:band:8",
+        "aud:band:9",
+        "aud:periodicity:P0",
+        "aud:periodicity:P1",
+        "aud:periodicity:P2",
+        "aud:periodicity:P4",
+        "aud:periodicity:P5"
+      ],
+      "dest_frozen_comps": [
+        "aud:band:14",
+        "aud:band:15",
+        "aud:band:16",
+        "aud:band:17",
+        "aud:band:19",
+        "aud:band:22",
+        "aud:periodicity:P1",
+        "aud:periodicity:P4",
+        "aud:periodicity:P5"
+      ]
+    },
+    {
+      "probe_id": "ATG01-H-C02-01",
+      "concept": "dog",
+      "boundary_id": "ATG01-H-C02-01_B3_4",
+      "source_event": 3,
+      "dest_event": 4,
+      "source_witnesses": [
+        "W_010",
+        "W_011",
+        "W_012"
+      ],
+      "dest_witnesses": [
+        "W_013",
+        "W_014",
+        "W_015",
+        "W_016"
+      ],
+      "source_frozen_comps": [
+        "aud:band:10",
+        "aud:band:12",
+        "aud:band:13",
+        "aud:band:16",
+        "aud:band:17",
+        "aud:band:18",
+        "aud:band:19",
+        "aud:periodicity:P0",
+        "aud:periodicity:P5"
+      ],
+      "dest_frozen_comps": [
+        "aud:band:10",
+        "aud:band:12",
+        "aud:band:13",
+        "aud:band:14",
+        "aud:band:6",
+        "aud:band:7",
+        "aud:band:8",
+        "aud:periodicity:P0",
+        "aud:periodicity:P2",
+        "aud:periodicity:P3",
+        "aud:periodicity:P5"
+      ]
+    },
+    {
+      "probe_id": "ATG01-H-C02-01",
+      "concept": "dog",
+      "boundary_id": "ATG01-H-C02-01_B4_5",
+      "source_event": 4,
+      "dest_event": 5,
+      "source_witnesses": [
+        "W_013",
+        "W_014",
+        "W_015",
+        "W_016"
+      ],
+      "dest_witnesses": [
+        "W_017",
+        "W_018",
+        "W_019"
+      ],
+      "source_frozen_comps": [
+        "aud:band:10",
+        "aud:band:12",
+        "aud:band:13",
+        "aud:band:14",
+        "aud:band:6",
+        "aud:band:7",
+        "aud:band:8",
+        "aud:periodicity:P0",
+        "aud:periodicity:P2",
+        "aud:periodicity:P3",
+        "aud:periodicity:P5"
+      ],
+      "dest_frozen_comps": [
+        "aud:band:10",
+        "aud:band:12",
+        "aud:band:13",
+        "aud:band:14",
+        "aud:band:15",
+        "aud:band:19",
+        "aud:band:7",
+        "aud:periodicity:P5"
+      ]
+    },
+    {
+      "probe_id": "ATG01-H-C05-01",
+      "concept": "house",
+      "boundary_id": "ATG01-H-C05-01_B1_2",
+      "source_event": 1,
+      "dest_event": 2,
+      "source_witnesses": [
+        "W_028",
+        "W_029"
+      ],
+      "dest_witnesses": [
+        "W_030",
+        "W_031"
+      ],
+      "source_frozen_comps": [
+        "aud:band:10",
+        "aud:band:11",
+        "aud:band:12",
+        "aud:band:13",
+        "aud:band:14",
+        "aud:band:17",
+        "aud:band:18",
+        "aud:band:3"
+      ],
+      "dest_frozen_comps": [
+        "aud:band:0",
+        "aud:band:10",
+        "aud:band:11",
+        "aud:band:12",
+        "aud:band:13",
+        "aud:band:14",
+        "aud:band:15",
+        "aud:band:17",
+        "aud:band:2",
+        "aud:band:20",
+        "aud:band:21",
+        "aud:band:23",
+        "aud:band:4",
+        "aud:band:5",
+        "aud:band:7",
+        "aud:band:8",
+        "aud:band:9",
+        "aud:periodicity:P0",
+        "aud:periodicity:P2",
+        "aud:periodicity:P3",
+        "aud:periodicity:P4"
+      ]
+    },
+    {
+      "probe_id": "ATG01-H-C07-01",
+      "concept": "go",
+      "boundary_id": "ATG01-H-C07-01_B1_2",
+      "source_event": 1,
+      "dest_event": 2,
+      "source_witnesses": [
+        "W_032",
+        "W_033",
+        "W_034"
+      ],
+      "dest_witnesses": [
+        "W_035"
+      ],
+      "source_frozen_comps": [
+        "aud:band:10",
+        "aud:band:5",
+        "aud:band:6",
+        "aud:band:7",
+        "aud:periodicity:P2",
+        "aud:periodicity:P3"
+      ],
+      "dest_frozen_comps": [
+        "aud:band:10",
+        "aud:band:15",
+        "aud:band:8",
+        "aud:periodicity:P2"
+      ]
+    },
+    {
+      "probe_id": "ATG01-H-C09-01",
+      "concept": "off",
+      "boundary_id": "ATG01-H-C09-01_B0_1",
+      "source_event": 0,
+      "dest_event": 1,
+      "source_witnesses": [
+        "W_037",
+        "W_038",
+        "W_039",
+        "W_040",
+        "W_041",
+        "W_042",
+        "W_043"
+      ],
+      "dest_witnesses": [
+        "W_044",
+        "W_045",
+        "W_046",
+        "W_047",
+        "W_048",
+        "W_049"
+      ],
+      "source_frozen_comps": [
+        "aud:band:13",
+        "aud:periodicity:P2"
+      ],
+      "dest_frozen_comps": [
+        "aud:band:10",
+        "aud:band:13",
+        "aud:band:6",
+        "aud:band:7",
+        "aud:band:8",
+        "aud:band:9",
+        "aud:periodicity:P0",
+        "aud:periodicity:P1"
+      ]
+    },
+    {
+      "probe_id": "ATG01-H-C09-01",
+      "concept": "off",
+      "boundary_id": "ATG01-H-C09-01_B1_2",
+      "source_event": 1,
+      "dest_event": 2,
+      "source_witnesses": [
+        "W_044",
+        "W_045",
+        "W_046",
+        "W_047",
+        "W_048",
+        "W_049"
+      ],
+      "dest_witnesses": [
+        "W_050",
+        "W_051",
+        "W_052",
+        "W_053",
+        "W_054",
+        "W_055",
+        "W_056",
+        "W_057",
+        "W_058"
+      ],
+      "source_frozen_comps": [
+        "aud:band:10",
+        "aud:band:13",
+        "aud:band:6",
+        "aud:band:7",
+        "aud:band:8",
+        "aud:band:9",
+        "aud:periodicity:P0",
+        "aud:periodicity:P1"
+      ],
+      "dest_frozen_comps": [
+        "aud:band:10",
+        "aud:band:5",
+        "aud:band:6",
+        "aud:band:7",
+        "aud:band:8",
+        "aud:band:9",
+        "aud:periodicity:P0",
+        "aud:periodicity:P1",
+        "aud:periodicity:P2"
+      ]
+    },
+    {
+      "probe_id": "ATG01-H-C04-02",
+      "concept": "bed",
+      "boundary_id": "ATG01-H-C04-02_B1_2",
+      "source_event": 1,
+      "dest_event": 2,
+      "source_witnesses": [
+        "W_066"
+      ],
+      "dest_witnesses": [
+        "W_067",
+        "W_068",
+        "W_069",
+        "W_070",
+        "W_071"
+      ],
+      "source_frozen_comps": [
+        "aud:band:10",
+        "aud:band:11",
+        "aud:band:2",
+        "aud:band:6",
+        "aud:band:9",
+        "aud:periodicity:P1",
+        "aud:periodicity:P3",
+        "aud:periodicity:P4"
+      ],
+      "dest_frozen_comps": [
+        "aud:band:5",
+        "aud:band:6",
+        "aud:band:9",
+        "aud:periodicity:P1",
+        "aud:periodicity:P2",
+        "aud:periodicity:P3",
+        "aud:periodicity:P5"
+      ]
+    },
+    {
+      "probe_id": "ATG01-H-C06-02",
+      "concept": "no",
+      "boundary_id": "ATG01-H-C06-02_B0_1",
+      "source_event": 0,
+      "dest_event": 1,
+      "source_witnesses": [
+        "W_072",
+        "W_073"
+      ],
+      "dest_witnesses": [
+        "W_074",
+        "W_075",
+        "W_076",
+        "W_077",
+        "W_078",
+        "W_079",
+        "W_080",
+        "W_081"
+      ],
+      "source_frozen_comps": [
+        "aud:band:12",
+        "aud:band:13",
+        "aud:band:16",
+        "aud:band:17",
+        "aud:band:18",
+        "aud:band:19",
+        "aud:band:20",
+        "aud:band:21",
+        "aud:periodicity:P0",
+        "aud:periodicity:P3",
+        "aud:periodicity:P4"
+      ],
+      "dest_frozen_comps": [
+        "aud:band:0",
+        "aud:band:1",
+        "aud:band:10",
+        "aud:band:12",
+        "aud:band:13",
+        "aud:band:16",
+        "aud:band:18",
+        "aud:band:2",
+        "aud:band:4",
+        "aud:band:5",
+        "aud:band:6",
+        "aud:band:7",
+        "aud:band:8",
+        "aud:band:9",
+        "aud:periodicity:P0",
+        "aud:periodicity:P1",
+        "aud:periodicity:P2"
+      ]
+    },
+    {
+      "probe_id": "ATG01-H-C09-02",
+      "concept": "off",
+      "boundary_id": "ATG01-H-C09-02_B3_4",
+      "source_event": 3,
+      "dest_event": 4,
+      "source_witnesses": [
+        "W_088",
+        "W_089",
+        "W_090",
+        "W_091"
+      ],
+      "dest_witnesses": [
+        "W_092",
+        "W_093",
+        "W_094",
+        "W_095",
+        "W_096"
+      ],
+      "source_frozen_comps": [
+        "aud:band:15",
+        "aud:band:17",
+        "aud:band:18",
+        "aud:band:19",
+        "aud:band:20",
+        "aud:band:21",
+        "aud:band:23",
+        "aud:periodicity:P0",
+        "aud:periodicity:P1",
+        "aud:periodicity:P4"
+      ],
+      "dest_frozen_comps": [
+        "aud:band:10",
+        "aud:band:4",
+        "aud:band:5",
+        "aud:band:7",
+        "aud:periodicity:P0",
+        "aud:periodicity:P1",
+        "aud:periodicity:P2"
+      ]
+    },
+    {
+      "probe_id": "ATG01-H-C09-02",
+      "concept": "off",
+      "boundary_id": "ATG01-H-C09-02_B4_5",
+      "source_event": 4,
+      "dest_event": 5,
+      "source_witnesses": [
+        "W_092",
+        "W_093",
+        "W_094",
+        "W_095",
+        "W_096"
+      ],
+      "dest_witnesses": [
+        "W_097",
+        "W_098"
+      ],
+      "source_frozen_comps": [
+        "aud:band:10",
+        "aud:band:4",
+        "aud:band:5",
+        "aud:band:7",
+        "aud:periodicity:P0",
+        "aud:periodicity:P1",
+        "aud:periodicity:P2"
+      ],
+      "dest_frozen_comps": [
+        "aud:band:14",
+        "aud:band:4",
+        "aud:band:8",
+        "aud:periodicity:P0",
+        "aud:periodicity:P1"
+      ]
+    }
+  ],
+  "status": "PASS"
+}

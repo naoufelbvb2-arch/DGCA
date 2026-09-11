@@ -1,0 +1,6 @@
+{
+  "total_projected_events": 302,
+  "bfar_max_tokens_per_event": 8,
+  "events_saturating_budget": 156,
+  "status": "PASS"
+}

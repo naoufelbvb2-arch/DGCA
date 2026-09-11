@@ -1,0 +1,8 @@
+{
+  "ca1_witnesses_total": 20,
+  "fully_retained": 0,
+  "partially_retained": 15,
+  "not_retained": 5,
+  "retention_rate": 0.0,
+  "status": "PASS"
+}
