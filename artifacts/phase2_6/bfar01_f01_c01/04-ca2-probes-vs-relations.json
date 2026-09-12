@@ -1,0 +1,27 @@
+{
+  "ca2_probe_denominator": 13,
+  "ca2_competitor_relation_denominator": 14,
+  "distinction_explanation": "Parent BFAR evaluated 13 CA2 witness-positive probes (audio recordings). The frozen competitor inventory contains 14 CA2 relations because probe ATG01-H-C08-01 (relation CA2_07, on vs bird) has 0 grounding witnesses and was omitted from witness-positive scoring but preserved in the relation inventory.",
+  "ca2_witness_positive_probe_ids": [
+    "ATG01-H-C00-02",
+    "ATG01-H-C01-01",
+    "ATG01-H-C01-02",
+    "ATG01-H-C02-01",
+    "ATG01-H-C03-01",
+    "ATG01-H-C04-01",
+    "ATG01-H-C04-02",
+    "ATG01-H-C05-01",
+    "ATG01-H-C06-02",
+    "ATG01-H-C07-01",
+    "ATG01-H-C07-02",
+    "ATG01-H-C09-01",
+    "ATG01-H-C09-02"
+  ],
+  "omitted_relation": {
+    "relation_id": "CA2_07",
+    "probe_id": "ATG01-H-C08-01",
+    "reason": "0_GROUNDING_WITNESSES"
+  },
+  "denominator_defect": false,
+  "status": "PASS"
+}

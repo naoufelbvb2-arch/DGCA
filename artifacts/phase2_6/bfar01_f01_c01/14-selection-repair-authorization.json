@@ -1,0 +1,9 @@
+{
+  "k_transition_global_max_le_8": true,
+  "grounded_unresolved_has_l1_failure": true,
+  "static_budget_insufficiency_not_supported": true,
+  "verdict": "SELECTION_POLICY_REPAIR_JUSTIFIED",
+  "scope": "FINAL_BOUNDED_SELECTION_REPAIR_FORMAL_DESIGN",
+  "production_implementation": "NOT AUTHORIZED",
+  "status": "PASS"
+}

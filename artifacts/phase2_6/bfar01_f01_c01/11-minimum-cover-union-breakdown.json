@@ -1,0 +1,6 @@
+{
+  "event_descriptor_variables_count": 620,
+  "unique_descriptor_identities_count": 25,
+  "explanation": "620 denotes canonical event-descriptor variable assignments (E, d) across the 302 canonical events; the underlying vocabulary comprises 25 unique atomic descriptor identities (21 spectral bands + 4 periodicity bands).",
+  "status": "PASS"
+}

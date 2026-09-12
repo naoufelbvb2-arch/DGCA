@@ -1,0 +1,7 @@
+{
+  "minimum_cover_core_variables": 0,
+  "budget_feasible_core_variables": 0,
+  "interpretation": "Core = 0 means there is no single event-descriptor variable (E, d) present in every optimal solution, nor in every valid <=8 solution. This establishes substantial causal redundancy across alternate grounding transitions, and does not mean causal descriptors are unneeded.",
+  "causal_redundancy_confirmed": true,
+  "status": "PASS"
+}

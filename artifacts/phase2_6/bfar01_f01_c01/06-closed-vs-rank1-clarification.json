@@ -1,0 +1,10 @@
+{
+  "concept": "CAUSAL_COMPETITOR_CLOSED != FINAL_PROBE_RANK_1",
+  "ca1_closed_relations": "2/5",
+  "ca1_rank1_repairs": "1/5",
+  "ca1_explanation": "ATG01-H-C05-01 (house vs bed) and ATG01-H-C07-02 (go vs no) achieve positive causal margin against their specific competitor (Delta_causal > 0, CLOSED), but remain below Rank 1 overall (Rank 4 and Rank 5) due to baseline scores of other non-competitor candidates.",
+  "ca2_closed_relations": "7/14",
+  "ca2_rank1_resolutions": "2/13",
+  "ca2_explanation": "Seven CA2 relations achieve Delta_causal > 0 against their competitor, but only two probes (ATG01-H-C01-01 and ATG01-H-C03-01) achieve Rank 1 across the full 10-way candidate vocabulary.",
+  "status": "CONFIRMED"
+}

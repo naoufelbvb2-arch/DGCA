@@ -1,0 +1,15 @@
+{
+  "grounded_relations_total": 17,
+  "closed": "9/17",
+  "l1_membership_failure": "3/17",
+  "l2_directional_failure": "1/17",
+  "l3_nonpositive_margin": "4/17",
+  "grounded_sum": 17,
+  "non_grounded_relations": 2,
+  "non_grounded_relation_ids": [
+    "CA1_03",
+    "CA2_07"
+  ],
+  "total_relation_accounting": "17 grounded + 2 non-grounded = 19",
+  "status": "PASS"
+}

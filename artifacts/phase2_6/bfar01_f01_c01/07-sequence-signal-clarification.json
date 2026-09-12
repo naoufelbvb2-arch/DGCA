@@ -1,0 +1,9 @@
+{
+  "original_metric": "SEQUENCE_DISCRIMINATIVE: 20/20",
+  "clarified_metric_1": "SEQUENCE_SIGNAL_PRESENT: 20/20",
+  "clarified_metric_1_definition": "True-concept sequence support seq_score(c_true) > 0 exists for all 20 heldout probes.",
+  "clarified_metric_2": "FROZEN_CAUSAL_RELATIONS_WITH_POSITIVE_MARGIN: 9/17",
+  "clarified_metric_2_definition": "Specific competitor margin Delta_causal(c_true, c_wrong) > 0 is positive for 9 of 17 grounded relations.",
+  "terminology_amended": true,
+  "status": "PASS"
+}

@@ -1,0 +1,7 @@
+{
+  "k_value": 0,
+  "status": "INFEASIBLE",
+  "proof": "At K=0, C_E = empty for all E; covering any causal path requires at least one supported transition (u, v) which necessitates |C_E| >= 1 on participating events. Therefore 0 relations can be covered at K=0.",
+  "minimax_optimality_closed": true,
+  "exact_k_optimal": 1
+}

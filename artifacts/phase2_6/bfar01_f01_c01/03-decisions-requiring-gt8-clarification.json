@@ -1,0 +1,7 @@
+{
+  "grounded_relations_requiring_gt_8": "0/17",
+  "non_grounded_relations_status": "2/19 N/A because no grounded causal path",
+  "classification": "REPORTING_DENOMINATOR_CLARIFICATION",
+  "scientific_finding_altered": false,
+  "status": "PASS"
+}

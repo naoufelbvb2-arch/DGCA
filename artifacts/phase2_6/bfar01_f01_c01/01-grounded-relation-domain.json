@@ -1,0 +1,47 @@
+{
+  "total_competitor_relations": 19,
+  "grounded_relations_count": 17,
+  "grounded_relation_ids": [
+    "CA1_01",
+    "CA1_02",
+    "CA1_04",
+    "CA1_05",
+    "CA2_01",
+    "CA2_02",
+    "CA2_03",
+    "CA2_04",
+    "CA2_05",
+    "CA2_06",
+    "CA2_08",
+    "CA2_09",
+    "CA2_10",
+    "CA2_11",
+    "CA2_12",
+    "CA2_13",
+    "CA2_14"
+  ],
+  "non_grounded_relations_count": 2,
+  "non_grounded_relation_details": [
+    {
+      "relation_id": "CA1_03",
+      "probe_id": "ATG01-H-C08-01",
+      "correct_candidate": "on",
+      "wrong_candidate": "off",
+      "witness_ids": [],
+      "reason_unavailable": "0_GROUNDING_WITNESSES (concept 'on' has no recurrent causal container connecting to competitor in grounding schedule)",
+      "relation_group": "CA1",
+      "parent_bfar_outcome": "UNRESOLVED (Rank 8, causal margin <= 0)"
+    },
+    {
+      "relation_id": "CA2_07",
+      "probe_id": "ATG01-H-C08-01",
+      "correct_candidate": "on",
+      "wrong_candidate": "bird",
+      "witness_ids": [],
+      "reason_unavailable": "0_GROUNDING_WITNESSES (concept 'on' has no recurrent causal container connecting to competitor in grounding schedule)",
+      "relation_group": "CA2",
+      "parent_bfar_outcome": "UNRESOLVED (Rank 8, causal margin <= 0)"
+    }
+  ],
+  "status": "PASS"
+}

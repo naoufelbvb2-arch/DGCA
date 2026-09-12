@@ -1,0 +1,11 @@
+{
+  "optimization_domain": "GROUNDED_RELATIONS_ONLY",
+  "grounded_static_causal_relations": "17/17 feasible with K_transition_global_max = 1",
+  "non_grounded_relations_status": "NOT_APPLICABLE_TO_GROUNDED_CAUSAL_COVER",
+  "k_atomic_global_max": 1,
+  "k_atomic_decision_max": 1,
+  "k_transition_global_max": 1,
+  "k_transition_decision_max": 1,
+  "clarification": "Feasibility optimization covers all and only relations for which a lawful grounding-derived frozen causal path exists (17 relations).",
+  "status": "PASS"
+}

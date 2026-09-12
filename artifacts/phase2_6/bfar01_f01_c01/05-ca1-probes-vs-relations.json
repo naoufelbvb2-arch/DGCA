@@ -1,0 +1,13 @@
+{
+  "ca1_frozen_probes": 5,
+  "ca1_frozen_competitor_relations": 5,
+  "one_to_one_mapping": true,
+  "probe_ids": [
+    "ATG01-H-C01-01",
+    "ATG01-H-C05-01",
+    "ATG01-H-C08-01",
+    "ATG01-H-C00-02",
+    "ATG01-H-C07-02"
+  ],
+  "status": "PASS"
+}

@@ -1,0 +1,9 @@
+{
+  "assignment_type": "SINGLE_GLOBAL_ASSIGNMENT",
+  "relation_specific_switching_of_C_E": 0,
+  "canonical_events_evaluated": 302,
+  "max_descriptors_per_event": 1,
+  "grounded_relations_covered": "17/17",
+  "verification": "One fixed static assignment of at most 1 atom per canonical event simultaneously preserves all 17 grounded causal paths.",
+  "status": "PASS"
+}
