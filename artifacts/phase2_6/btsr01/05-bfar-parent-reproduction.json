@@ -1,0 +1,10 @@
+{
+  "parent_repair": "BFAR01",
+  "parent_verdict": "BFAR01_COUNTERFACTUAL_EFFICACY_FAIL",
+  "parent_commit": "0e4afdf",
+  "b_audio_event": 8,
+  "bfar_positive_grounded_margins": "9/17",
+  "bfar_ca1_repaired": "0/5",
+  "bfar_ca2_resolved": "1/13",
+  "status": "PASS"
+}

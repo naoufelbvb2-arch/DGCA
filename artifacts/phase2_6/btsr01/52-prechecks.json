@@ -1,0 +1,111 @@
+{
+  "prechecks_total": 26,
+  "prechecks_passed": 26,
+  "details": {
+    "P01": {
+      "name": "historical signature exact",
+      "status": "PASS"
+    },
+    "P02": {
+      "name": "lineage exact",
+      "status": "PASS"
+    },
+    "P03": {
+      "name": "BFAR parent exact",
+      "status": "PASS"
+    },
+    "P04": {
+      "name": "BFAR01-F01 exact",
+      "status": "PASS"
+    },
+    "P05": {
+      "name": "BFAR01-F01-C01 exact",
+      "status": "PASS"
+    },
+    "P06": {
+      "name": "grounded relation domain = 17",
+      "status": "PASS"
+    },
+    "P07": {
+      "name": "non-grounded domain = 2",
+      "status": "PASS"
+    },
+    "P08": {
+      "name": "K_transition_global_max=1 reproduced",
+      "status": "PASS"
+    },
+    "P09": {
+      "name": "K=1 assignment not used by selector",
+      "status": "PASS"
+    },
+    "P10": {
+      "name": "24 spectral channels exact",
+      "status": "PASS"
+    },
+    "P11": {
+      "name": "canonical channel order exact",
+      "status": "PASS"
+    },
+    "P12": {
+      "name": "fixed stratum count = 8",
+      "status": "PASS"
+    },
+    "P13": {
+      "name": "fixed stratum membership exact",
+      "status": "PASS"
+    },
+    "P14": {
+      "name": "Pi_spec exact",
+      "status": "PASS"
+    },
+    "P15": {
+      "name": "periodicity semantics exact",
+      "status": "PASS"
+    },
+    "P16": {
+      "name": "event budget = 8",
+      "status": "PASS"
+    },
+    "P17": {
+      "name": "periodicity cannot alter partition",
+      "status": "PASS"
+    },
+    "P18": {
+      "name": "selector event-local",
+      "status": "PASS"
+    },
+    "P19": {
+      "name": "no label dependency",
+      "status": "PASS"
+    },
+    "P20": {
+      "name": "no heldout dependency",
+      "status": "PASS"
+    },
+    "P21": {
+      "name": "no candidate dependency",
+      "status": "PASS"
+    },
+    "P22": {
+      "name": "no graph-memory dependency",
+      "status": "PASS"
+    },
+    "P23": {
+      "name": "no speaker dependency",
+      "status": "PASS"
+    },
+    "P24": {
+      "name": "no oracle dependency",
+      "status": "PASS"
+    },
+    "P25": {
+      "name": "exact 12-boundary grounded inventory reproduced",
+      "status": "PASS"
+    },
+    "P26": {
+      "name": "deterministic projection exact",
+      "status": "PASS"
+    }
+  },
+  "status": "PASS"
+}

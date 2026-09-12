@@ -1,0 +1,50 @@
+{
+  "stratum_count": 8,
+  "channels_per_stratum": 3,
+  "formula": "floor(i / 3)",
+  "strata": {
+    "S0": [
+      0,
+      1,
+      2
+    ],
+    "S1": [
+      3,
+      4,
+      5
+    ],
+    "S2": [
+      6,
+      7,
+      8
+    ],
+    "S3": [
+      9,
+      10,
+      11
+    ],
+    "S4": [
+      12,
+      13,
+      14
+    ],
+    "S5": [
+      15,
+      16,
+      17
+    ],
+    "S6": [
+      18,
+      19,
+      20
+    ],
+    "S7": [
+      21,
+      22,
+      23
+    ]
+  },
+  "event_dependent_repartition": 0,
+  "periodicity_dependent_repartition": 0,
+  "status": "PASS"
+}

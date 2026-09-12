@@ -1,0 +1,7 @@
+{
+  "total_child_events": 302,
+  "max_tokens_per_event": 8,
+  "budget_ceiling": 8,
+  "budget_violations": 0,
+  "status": "PASS"
+}

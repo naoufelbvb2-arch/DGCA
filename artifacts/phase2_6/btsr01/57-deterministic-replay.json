@@ -1,0 +1,6 @@
+{
+  "deterministic_replay_match": true,
+  "pass_1_state_hash": "75db074afb5e0101191fe090de8c06b29ef702fdf2e2a8afd4e1158e975fa638",
+  "pass_2_state_hash": "75db074afb5e0101191fe090de8c06b29ef702fdf2e2a8afd4e1158e975fa638",
+  "status": "PASS"
+}

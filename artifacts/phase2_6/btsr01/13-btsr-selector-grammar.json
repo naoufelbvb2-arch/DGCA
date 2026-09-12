@@ -1,0 +1,5 @@
+{
+  "grammar": "FIXED_8_STRATUM_TONOTOPIC_SELECTION",
+  "formula": "floor(i/3)",
+  "status": "PASS"
+}

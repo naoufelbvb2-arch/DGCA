@@ -1,0 +1,14 @@
+{
+  "parent_closure": "BFAR01-F01-C01",
+  "parent_verdict": "BFAR01_F01_C01_CLOSED_WITH_CLARIFICATIONS",
+  "parent_commit": "cbd6617",
+  "grounded_relations": 17,
+  "non_grounded_relations": 2,
+  "k_domain": "GROUNDED_RELATIONS_ONLY",
+  "decisions_requiring_gt_8": "0/17",
+  "ca2_probes_vs_relations": "13_probes_vs_14_relations_confirmed",
+  "causal_closed_neq_rank1": "CONFIRMED",
+  "sequence_signal_present": "20/20",
+  "frozen_causal_boundaries": 12,
+  "status": "PASS"
+}

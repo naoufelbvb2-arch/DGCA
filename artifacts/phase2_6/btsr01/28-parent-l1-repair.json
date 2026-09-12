@@ -1,0 +1,14 @@
+{
+  "parent_l1_targets": [
+    "CA1_01",
+    "CA1_04",
+    "CA2_08"
+  ],
+  "repaired_status": {
+    "CA1_01": true,
+    "CA1_04": false,
+    "CA2_08": true
+  },
+  "repaired_count": "2/3",
+  "status": "FAIL"
+}

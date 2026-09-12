@@ -1,0 +1,9 @@
+{
+  "btsr_structural_selection_validated": "NO",
+  "grounded_causal_path_membership": "10/17",
+  "parent_l1_repairs": "2/3",
+  "new_grounded_l1_failures": 6,
+  "grounded_l2_realization": "9/17",
+  "causal_boundary_support": "9/12",
+  "status": "FAIL"
+}

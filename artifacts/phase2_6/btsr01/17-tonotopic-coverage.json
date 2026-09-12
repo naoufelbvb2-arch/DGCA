@@ -1,0 +1,14 @@
+{
+  "stratum_coverage_counts": {
+    "S0": 278,
+    "S1": 251,
+    "S2": 197,
+    "S3": 134,
+    "S4": 107,
+    "S5": 53,
+    "S6": 52,
+    "S7": 35
+  },
+  "total_events": 302,
+  "status": "PASS"
+}

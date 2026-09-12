@@ -1,0 +1,8 @@
+{
+  "transition_authority": "NO_UNLAWFUL_TRANSITION_AUTHORITY_INFLATION",
+  "duplicate_query_transitions": 0,
+  "duplicate_context_authority": 0,
+  "non_adjacent_authority": 0,
+  "heldout_derived_authority": 0,
+  "status": "PASS"
+}

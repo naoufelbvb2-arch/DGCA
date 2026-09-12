@@ -1,0 +1,11 @@
+{
+  "parent_forensic": "BFAR01-F01",
+  "parent_verdict": "BFAR01_F01_FORENSIC_PASS",
+  "parent_commit": "73a283b",
+  "k_atomic_global_max": 1,
+  "k_transition_global_max": 1,
+  "static_feasibility": "STATIC_TRANSITION_REALIZABLE_SELECTION_FEASIBLE",
+  "m1_ranked_selection_misalignment": "SUPPORTED",
+  "next_repair_direction": "SELECTION_POLICY_REPAIR_JUSTIFIED",
+  "status": "PASS"
+}

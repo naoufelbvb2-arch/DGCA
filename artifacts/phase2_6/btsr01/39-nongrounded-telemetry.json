@@ -1,0 +1,14 @@
+{
+  "non_grounded_relations": [
+    "CA1_03",
+    "CA2_07"
+  ],
+  "probe_id": "ATG01-H-C08-01",
+  "parent_rank": 8,
+  "btsr_rank": 9,
+  "parent_s_seq": 1.4572,
+  "btsr_s_seq": 1.4572481865960125,
+  "state": "NOT_FORCED_NOT_GROUNDED",
+  "influences_causal_denominator": false,
+  "status": "PASS"
+}

@@ -1,0 +1,6 @@
+{
+  "event_budget": 8,
+  "max_tokens_per_event": 8,
+  "budget_violations": 0,
+  "status": "PASS"
+}

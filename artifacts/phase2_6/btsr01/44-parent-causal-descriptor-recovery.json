@@ -1,0 +1,7 @@
+{
+  "parent_bfar_dropped_causal_descriptors": 30,
+  "recovered_by_btsr": 6,
+  "still_dropped_under_btsr": 24,
+  "new_causal_descriptors_lost": 12,
+  "status": "PASS"
+}

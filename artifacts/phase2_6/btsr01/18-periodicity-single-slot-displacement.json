@@ -1,0 +1,21 @@
+{
+  "events_with_valid_periodicity": 203,
+  "events_with_8_primary_winners": 2,
+  "periodicity_winner_displacements": 2,
+  "displacement_details": [
+    {
+      "trial_id": "ATG01-G-C09-R3",
+      "event_index": 1,
+      "removed_descriptor": "aud:band:21",
+      "support": 0.020833333333333332
+    },
+    {
+      "trial_id": "ATG01-H-C06-02",
+      "event_index": 0,
+      "removed_descriptor": "aud:band:21",
+      "support": 0.02586206896551724
+    }
+  ],
+  "max_displacement_per_event": 1,
+  "status": "PASS"
+}

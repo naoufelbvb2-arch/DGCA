@@ -1,0 +1,55 @@
+{
+  "integrity_checks_total": 12,
+  "integrity_checks_passed": 12,
+  "details": {
+    "EI01": {
+      "name": "worktree integrity",
+      "status": "PASS"
+    },
+    "EI02": {
+      "name": "lineage integrity",
+      "status": "PASS"
+    },
+    "EI03": {
+      "name": "asset integrity",
+      "status": "PASS"
+    },
+    "EI04": {
+      "name": "parent BFAR reproduction",
+      "status": "PASS"
+    },
+    "EI05": {
+      "name": "BFAR01-F01 reproduction",
+      "status": "PASS"
+    },
+    "EI06": {
+      "name": "C01 reproduction",
+      "status": "PASS"
+    },
+    "EI07": {
+      "name": "selector firewall integrity",
+      "status": "PASS"
+    },
+    "EI08": {
+      "name": "exact 12-boundary inventory",
+      "status": "PASS"
+    },
+    "EI09": {
+      "name": "grounded/non-grounded domain integrity",
+      "status": "PASS"
+    },
+    "EI10": {
+      "name": "deterministic replay",
+      "status": "PASS"
+    },
+    "EI11": {
+      "name": "production source integrity",
+      "status": "PASS"
+    },
+    "EI12": {
+      "name": "historical signature integrity",
+      "status": "PASS"
+    }
+  },
+  "status": "PASS"
+}

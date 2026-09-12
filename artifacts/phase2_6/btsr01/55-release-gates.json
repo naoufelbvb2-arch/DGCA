@@ -1,0 +1,194 @@
+{
+  "release_gates_total": 44,
+  "release_gates_passed": 35,
+  "failed_gates": [
+    "G24",
+    "G25",
+    "G26",
+    "G27",
+    "G28",
+    "G29",
+    "G30",
+    "G31",
+    "G32"
+  ],
+  "details": {
+    "G01": {
+      "name": "lineage exact",
+      "status": "PASS"
+    },
+    "G02": {
+      "name": "assets exact",
+      "status": "PASS"
+    },
+    "G03": {
+      "name": "regression-before PASS",
+      "status": "PASS"
+    },
+    "G04": {
+      "name": "historical signature exact",
+      "status": "PASS"
+    },
+    "G05": {
+      "name": "BFAR reproduction exact",
+      "status": "PASS"
+    },
+    "G06": {
+      "name": "BFAR01-F01 reproduction exact",
+      "status": "PASS"
+    },
+    "G07": {
+      "name": "C01 clarification exact",
+      "status": "PASS"
+    },
+    "G08": {
+      "name": "grounded domain 17/19 exact",
+      "status": "PASS"
+    },
+    "G09": {
+      "name": "exact grounded boundary inventory 12/12",
+      "status": "PASS"
+    },
+    "G10": {
+      "name": "BTSR selector grammar exact",
+      "status": "PASS"
+    },
+    "G11": {
+      "name": "prechecks 26/26",
+      "status": "PASS"
+    },
+    "G12": {
+      "name": "event budget <=8",
+      "status": "PASS"
+    },
+    "G13": {
+      "name": "new descriptors 0",
+      "status": "PASS"
+    },
+    "G14": {
+      "name": "compound/whole/pair tokens 0",
+      "status": "PASS"
+    },
+    "G15": {
+      "name": "selector label firewall PASS",
+      "status": "PASS"
+    },
+    "G16": {
+      "name": "selector heldout firewall PASS",
+      "status": "PASS"
+    },
+    "G17": {
+      "name": "selector candidate firewall PASS",
+      "status": "PASS"
+    },
+    "G18": {
+      "name": "selector graph-memory firewall PASS",
+      "status": "PASS"
+    },
+    "G19": {
+      "name": "selector speaker firewall PASS",
+      "status": "PASS"
+    },
+    "G20": {
+      "name": "selector oracle firewall PASS",
+      "status": "PASS"
+    },
+    "G21": {
+      "name": "T0 base diff 0",
+      "status": "PASS"
+    },
+    "G22": {
+      "name": "candidate set diff 0",
+      "status": "PASS"
+    },
+    "G23": {
+      "name": "sequence->base conductance 0",
+      "status": "PASS"
+    },
+    "G24": {
+      "name": "grounded causal path membership 17/17",
+      "status": "FAIL"
+    },
+    "G25": {
+      "name": "parent L1 failures repaired 3/3",
+      "status": "FAIL"
+    },
+    "G26": {
+      "name": "new grounded L1 failures 0",
+      "status": "FAIL"
+    },
+    "G27": {
+      "name": "grounded L2 realization 17/17",
+      "status": "FAIL"
+    },
+    "G28": {
+      "name": "grounded causal boundary support 12/12",
+      "status": "FAIL"
+    },
+    "G29": {
+      "name": "unrecovered collision causing path loss 0",
+      "status": "FAIL"
+    },
+    "G30": {
+      "name": "positive grounded causal margins 17/17",
+      "status": "FAIL"
+    },
+    "G31": {
+      "name": "CA1 grounded closure 4/4",
+      "status": "FAIL"
+    },
+    "G32": {
+      "name": "CA2 grounded closure 13/13",
+      "status": "FAIL"
+    },
+    "G33": {
+      "name": "sequence signal 20/20",
+      "status": "PASS"
+    },
+    "G34": {
+      "name": "transition authority SAFE",
+      "status": "PASS"
+    },
+    "G35": {
+      "name": "OOD safety 10/10",
+      "status": "PASS"
+    },
+    "G36": {
+      "name": "newly forced OOD 0",
+      "status": "PASS"
+    },
+    "G37": {
+      "name": "T2 reversal PASS",
+      "status": "PASS"
+    },
+    "G38": {
+      "name": "streaming/chunk PASS",
+      "status": "PASS"
+    },
+    "G39": {
+      "name": "deterministic replay PASS",
+      "status": "PASS"
+    },
+    "G40": {
+      "name": "SRA01 PASS",
+      "status": "PASS"
+    },
+    "G41": {
+      "name": "text/vision isolation PASS",
+      "status": "PASS"
+    },
+    "G42": {
+      "name": "invariants 48/48",
+      "status": "PASS"
+    },
+    "G43": {
+      "name": "forbidden 42/42",
+      "status": "PASS"
+    },
+    "G44": {
+      "name": "regression-after + production hashes MATCH",
+      "status": "PASS"
+    }
+  },
+  "status": "FAIL"
+}

@@ -1,0 +1,6 @@
+{
+  "distinct_transitions_corpus": 799,
+  "grounding_distinct_transitions": 733,
+  "heldout_distinct_transitions": 633,
+  "status": "PASS"
+}

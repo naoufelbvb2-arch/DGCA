@@ -1,0 +1,30 @@
+{
+  "correct": "4/20",
+  "wrong": "16/20",
+  "ambiguous": "0/20",
+  "median_correct_rank": 5,
+  "mean_correct_rank": 5.15,
+  "ranks_by_probe": {
+    "ATG01-H-C00-01": 1,
+    "ATG01-H-C01-01": 3,
+    "ATG01-H-C02-01": 6,
+    "ATG01-H-C03-01": 1,
+    "ATG01-H-C04-01": 9,
+    "ATG01-H-C05-01": 4,
+    "ATG01-H-C06-01": 7,
+    "ATG01-H-C07-01": 5,
+    "ATG01-H-C08-01": 9,
+    "ATG01-H-C09-01": 10,
+    "ATG01-H-C00-02": 3,
+    "ATG01-H-C01-02": 8,
+    "ATG01-H-C02-02": 3,
+    "ATG01-H-C03-02": 1,
+    "ATG01-H-C04-02": 7,
+    "ATG01-H-C05-02": 5,
+    "ATG01-H-C06-02": 5,
+    "ATG01-H-C07-02": 5,
+    "ATG01-H-C08-02": 1,
+    "ATG01-H-C09-02": 10
+  },
+  "status": "PASS"
+}

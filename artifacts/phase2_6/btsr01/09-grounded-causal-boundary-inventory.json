@@ -1,0 +1,20 @@
+{
+  "grounded_causal_boundary_denominator": 12,
+  "expected_denominator": 12,
+  "boundary_ids_exact_match": true,
+  "boundaries": [
+    "ATG01-H-C01-01_B0_1",
+    "ATG01-H-C01-01_B1_2",
+    "ATG01-H-C02-01_B3_4",
+    "ATG01-H-C02-01_B4_5",
+    "ATG01-H-C05-01_B1_2",
+    "ATG01-H-C07-01_B1_2",
+    "ATG01-H-C09-01_B0_1",
+    "ATG01-H-C09-01_B1_2",
+    "ATG01-H-C04-02_B1_2",
+    "ATG01-H-C06-02_B0_1",
+    "ATG01-H-C09-02_B3_4",
+    "ATG01-H-C09-02_B4_5"
+  ],
+  "status": "PASS"
+}

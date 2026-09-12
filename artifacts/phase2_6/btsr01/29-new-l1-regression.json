@@ -1,0 +1,12 @@
+{
+  "new_grounded_l1_failures_count": 6,
+  "new_grounded_l1_failures": [
+    "CA1_05",
+    "CA2_03",
+    "CA2_04",
+    "CA2_09",
+    "CA2_10",
+    "CA2_13"
+  ],
+  "status": "FAIL"
+}

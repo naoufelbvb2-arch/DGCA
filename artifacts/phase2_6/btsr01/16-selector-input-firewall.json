@@ -1,0 +1,9 @@
+{
+  "label_dependence": 0,
+  "heldout_dependence": 0,
+  "candidate_dependence": 0,
+  "graph_memory_dependence": 0,
+  "speaker_dependence": 0,
+  "forensic_oracle_dependence": 0,
+  "status": "PASS"
+}

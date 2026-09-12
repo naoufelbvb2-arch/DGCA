@@ -1,0 +1,215 @@
+{
+  "score_decomposition": "EXACT_LDSR_ASUR_SEPARATED",
+  "details": [
+    {
+      "relation_id": "CA1_01",
+      "probe_id": "ATG01-H-C01-01",
+      "correct": "cat",
+      "wrong": "dog",
+      "L1": "PASS",
+      "L2": "PASS",
+      "L3": "POSITIVE",
+      "margin": 3.2607395360966427,
+      "classification": "CLOSED"
+    },
+    {
+      "relation_id": "CA1_02",
+      "probe_id": "ATG01-H-C05-01",
+      "correct": "house",
+      "wrong": "bed",
+      "L1": "PASS",
+      "L2": "PASS",
+      "L3": "POSITIVE",
+      "margin": 4.83936784009833,
+      "classification": "CLOSED"
+    },
+    {
+      "relation_id": "CA1_03",
+      "probe_id": "ATG01-H-C08-01",
+      "correct": "on",
+      "wrong": "off",
+      "L1": "FAIL",
+      "L2": "NOT_APPLICABLE",
+      "L3": "NOT_APPLICABLE",
+      "margin": null,
+      "classification": "NON_GROUNDED_TELEMETRY"
+    },
+    {
+      "relation_id": "CA1_04",
+      "probe_id": "ATG01-H-C00-02",
+      "correct": "bird",
+      "wrong": "tree",
+      "L1": "FAIL",
+      "L2": "FAIL",
+      "L3": "POSITIVE",
+      "margin": 0.777759867561413,
+      "classification": "REQUIRED_CAUSAL_ATOM_DROPPED"
+    },
+    {
+      "relation_id": "CA1_05",
+      "probe_id": "ATG01-H-C07-02",
+      "correct": "go",
+      "wrong": "no",
+      "L1": "FAIL",
+      "L2": "FAIL",
+      "L3": "NONPOSITIVE",
+      "margin": -0.16077878471269247,
+      "classification": "REQUIRED_CAUSAL_ATOM_DROPPED"
+    },
+    {
+      "relation_id": "CA2_01",
+      "probe_id": "ATG01-H-C01-01",
+      "correct": "cat",
+      "wrong": "dog",
+      "L1": "PASS",
+      "L2": "PASS",
+      "L3": "POSITIVE",
+      "margin": 3.2607395360966427,
+      "classification": "CLOSED"
+    },
+    {
+      "relation_id": "CA2_02",
+      "probe_id": "ATG01-H-C02-01",
+      "correct": "dog",
+      "wrong": "on",
+      "L1": "PASS",
+      "L2": "PASS",
+      "L3": "NONPOSITIVE",
+      "margin": -0.2770941239615272,
+      "classification": "SUPPORTED_BUT_MARGIN_NONPOSITIVE"
+    },
+    {
+      "relation_id": "CA2_03",
+      "probe_id": "ATG01-H-C03-01",
+      "correct": "tree",
+      "wrong": "cat",
+      "L1": "FAIL",
+      "L2": "FAIL",
+      "L3": "POSITIVE",
+      "margin": 12.70984349179963,
+      "classification": "REQUIRED_CAUSAL_ATOM_DROPPED"
+    },
+    {
+      "relation_id": "CA2_04",
+      "probe_id": "ATG01-H-C04-01",
+      "correct": "bed",
+      "wrong": "go",
+      "L1": "FAIL",
+      "L2": "FAIL",
+      "L3": "NONPOSITIVE",
+      "margin": -0.27689617050221615,
+      "classification": "REQUIRED_CAUSAL_ATOM_DROPPED"
+    },
+    {
+      "relation_id": "CA2_05",
+      "probe_id": "ATG01-H-C05-01",
+      "correct": "house",
+      "wrong": "cat",
+      "L1": "PASS",
+      "L2": "PASS",
+      "L3": "NONPOSITIVE",
+      "margin": -7.906854076248065,
+      "classification": "SUPPORTED_BUT_MARGIN_NONPOSITIVE"
+    },
+    {
+      "relation_id": "CA2_06",
+      "probe_id": "ATG01-H-C07-01",
+      "correct": "go",
+      "wrong": "bird",
+      "L1": "PASS",
+      "L2": "FAIL",
+      "L3": "NONPOSITIVE",
+      "margin": -4.629778939658556,
+      "classification": "RETAINED_BUT_NO_DIRECTIONAL_SUPPORT"
+    },
+    {
+      "relation_id": "CA2_07",
+      "probe_id": "ATG01-H-C08-01",
+      "correct": "on",
+      "wrong": "bird",
+      "L1": "FAIL",
+      "L2": "NOT_APPLICABLE",
+      "L3": "NOT_APPLICABLE",
+      "margin": null,
+      "classification": "NON_GROUNDED_TELEMETRY"
+    },
+    {
+      "relation_id": "CA2_08",
+      "probe_id": "ATG01-H-C09-01",
+      "correct": "off",
+      "wrong": "on",
+      "L1": "PASS",
+      "L2": "PASS",
+      "L3": "NONPOSITIVE",
+      "margin": -6.635180342159748,
+      "classification": "SUPPORTED_BUT_MARGIN_NONPOSITIVE"
+    },
+    {
+      "relation_id": "CA2_09",
+      "probe_id": "ATG01-H-C00-02",
+      "correct": "bird",
+      "wrong": "dog",
+      "L1": "FAIL",
+      "L2": "FAIL",
+      "L3": "NONPOSITIVE",
+      "margin": -0.4213351767281388,
+      "classification": "REQUIRED_CAUSAL_ATOM_DROPPED"
+    },
+    {
+      "relation_id": "CA2_10",
+      "probe_id": "ATG01-H-C01-02",
+      "correct": "cat",
+      "wrong": "dog",
+      "L1": "FAIL",
+      "L2": "FAIL",
+      "L3": "NONPOSITIVE",
+      "margin": -0.899103475395987,
+      "classification": "REQUIRED_CAUSAL_ATOM_DROPPED"
+    },
+    {
+      "relation_id": "CA2_11",
+      "probe_id": "ATG01-H-C04-02",
+      "correct": "bed",
+      "wrong": "dog",
+      "L1": "PASS",
+      "L2": "PASS",
+      "L3": "NONPOSITIVE",
+      "margin": -0.9807422302171673,
+      "classification": "SUPPORTED_BUT_MARGIN_NONPOSITIVE"
+    },
+    {
+      "relation_id": "CA2_12",
+      "probe_id": "ATG01-H-C06-02",
+      "correct": "no",
+      "wrong": "on",
+      "L1": "PASS",
+      "L2": "PASS",
+      "L3": "NONPOSITIVE",
+      "margin": -1.2540875038556072,
+      "classification": "SUPPORTED_BUT_MARGIN_NONPOSITIVE"
+    },
+    {
+      "relation_id": "CA2_13",
+      "probe_id": "ATG01-H-C07-02",
+      "correct": "go",
+      "wrong": "bird",
+      "L1": "FAIL",
+      "L2": "FAIL",
+      "L3": "NONPOSITIVE",
+      "margin": -1.7178957505579528,
+      "classification": "REQUIRED_CAUSAL_ATOM_DROPPED"
+    },
+    {
+      "relation_id": "CA2_14",
+      "probe_id": "ATG01-H-C09-02",
+      "correct": "off",
+      "wrong": "house",
+      "L1": "PASS",
+      "L2": "PASS",
+      "L3": "NONPOSITIVE",
+      "margin": -6.224055891799472,
+      "classification": "SUPPORTED_BUT_MARGIN_NONPOSITIVE"
+    }
+  ],
+  "status": "PASS"
+}

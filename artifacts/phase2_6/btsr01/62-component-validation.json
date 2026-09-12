@@ -1,0 +1,9 @@
+{
+  "btsr01_component_validated": "NO",
+  "structural_selection_validated": "NO",
+  "positive_grounded_causal_margins": "5/17",
+  "ca1_grounded_closure": "3/4",
+  "ca2_grounded_closure": "2/13",
+  "release_gates_passed": "35/44",
+  "status": "FAIL"
+}

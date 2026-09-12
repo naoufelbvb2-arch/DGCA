@@ -1,0 +1,202 @@
+{
+  "events_with_causal_same_stratum_collision": 9,
+  "total_causal_same_stratum_collisions": 19,
+  "collisions_recovered_by_residual_fill": 7,
+  "unrecovered_collisions": 17,
+  "unrecovered_collisions_causing_path_loss": 6,
+  "collision_ledger": [
+    {
+      "trial_id": "ATG01-H-C01-01",
+      "event_index": 1,
+      "stratum": "S2",
+      "dropped_causal_descriptor": "aud:band:6",
+      "winner_descriptor": "aud:band:8",
+      "classification": "CAUSAL_COLLISION_UNRECOVERED"
+    },
+    {
+      "trial_id": "ATG01-H-C01-01",
+      "event_index": 1,
+      "stratum": "S6",
+      "dropped_causal_descriptor": "aud:band:19",
+      "winner_descriptor": null,
+      "classification": "CAUSAL_COLLISION_UNRECOVERED"
+    },
+    {
+      "trial_id": "ATG01-H-C01-01",
+      "event_index": 1,
+      "stratum": "S6",
+      "dropped_causal_descriptor": "aud:band:18",
+      "winner_descriptor": null,
+      "classification": "CAUSAL_COLLISION_UNRECOVERED"
+    },
+    {
+      "trial_id": "ATG01-H-C02-01",
+      "event_index": 4,
+      "stratum": "S2",
+      "dropped_causal_descriptor": "aud:band:7",
+      "winner_descriptor": "aud:band:8",
+      "classification": "CAUSAL_COLLISION_RECOVERED_BY_RESIDUAL_FILL"
+    },
+    {
+      "trial_id": "ATG01-H-C02-01",
+      "event_index": 4,
+      "stratum": "S2",
+      "dropped_causal_descriptor": "aud:band:6",
+      "winner_descriptor": "aud:band:8",
+      "classification": "CAUSAL_COLLISION_UNRECOVERED"
+    },
+    {
+      "trial_id": "ATG01-H-C02-01",
+      "event_index": 4,
+      "stratum": "S4",
+      "dropped_causal_descriptor": "aud:band:13",
+      "winner_descriptor": "aud:band:12",
+      "classification": "CAUSAL_COLLISION_UNRECOVERED"
+    },
+    {
+      "trial_id": "ATG01-H-C03-01",
+      "event_index": 2,
+      "stratum": "S5",
+      "dropped_causal_descriptor": "aud:band:17",
+      "winner_descriptor": null,
+      "classification": "CAUSAL_COLLISION_UNRECOVERED"
+    },
+    {
+      "trial_id": "ATG01-H-C03-01",
+      "event_index": 2,
+      "stratum": "S5",
+      "dropped_causal_descriptor": "aud:band:16",
+      "winner_descriptor": null,
+      "classification": "CAUSAL_COLLISION_RECOVERED_BY_RESIDUAL_FILL"
+    },
+    {
+      "trial_id": "ATG01-H-C03-01",
+      "event_index": 2,
+      "stratum": "S5",
+      "dropped_causal_descriptor": "aud:band:15",
+      "winner_descriptor": null,
+      "classification": "CAUSAL_COLLISION_RECOVERED_BY_RESIDUAL_FILL"
+    },
+    {
+      "trial_id": "ATG01-H-C09-01",
+      "event_index": 1,
+      "stratum": "S2",
+      "dropped_causal_descriptor": "aud:band:7",
+      "winner_descriptor": "aud:band:8",
+      "classification": "CAUSAL_COLLISION_UNRECOVERED"
+    },
+    {
+      "trial_id": "ATG01-H-C09-01",
+      "event_index": 1,
+      "stratum": "S2",
+      "dropped_causal_descriptor": "aud:band:6",
+      "winner_descriptor": "aud:band:8",
+      "classification": "CAUSAL_COLLISION_UNRECOVERED"
+    },
+    {
+      "trial_id": "ATG01-H-C09-01",
+      "event_index": 1,
+      "stratum": "S3",
+      "dropped_causal_descriptor": "aud:band:9",
+      "winner_descriptor": "aud:band:10",
+      "classification": "CAUSAL_COLLISION_UNRECOVERED"
+    },
+    {
+      "trial_id": "ATG01-H-C01-02",
+      "event_index": 3,
+      "stratum": "S2",
+      "dropped_causal_descriptor": "aud:band:6",
+      "winner_descriptor": "aud:band:8",
+      "classification": "CAUSAL_COLLISION_RECOVERED_BY_RESIDUAL_FILL"
+    },
+    {
+      "trial_id": "ATG01-H-C01-02",
+      "event_index": 3,
+      "stratum": "S4",
+      "dropped_causal_descriptor": "aud:band:13",
+      "winner_descriptor": null,
+      "classification": "CAUSAL_COLLISION_UNRECOVERED"
+    },
+    {
+      "trial_id": "ATG01-H-C01-02",
+      "event_index": 3,
+      "stratum": "S4",
+      "dropped_causal_descriptor": "aud:band:12",
+      "winner_descriptor": null,
+      "classification": "CAUSAL_COLLISION_UNRECOVERED"
+    },
+    {
+      "trial_id": "ATG01-H-C01-02",
+      "event_index": 3,
+      "stratum": "S4",
+      "dropped_causal_descriptor": "aud:band:14",
+      "winner_descriptor": null,
+      "classification": "CAUSAL_COLLISION_UNRECOVERED"
+    },
+    {
+      "trial_id": "ATG01-H-C04-02",
+      "event_index": 1,
+      "stratum": "S3",
+      "dropped_causal_descriptor": "aud:band:11",
+      "winner_descriptor": null,
+      "classification": "CAUSAL_COLLISION_UNRECOVERED"
+    },
+    {
+      "trial_id": "ATG01-H-C04-02",
+      "event_index": 1,
+      "stratum": "S3",
+      "dropped_causal_descriptor": "aud:band:9",
+      "winner_descriptor": null,
+      "classification": "CAUSAL_COLLISION_RECOVERED_BY_RESIDUAL_FILL"
+    },
+    {
+      "trial_id": "ATG01-H-C04-02",
+      "event_index": 1,
+      "stratum": "S3",
+      "dropped_causal_descriptor": "aud:band:10",
+      "winner_descriptor": null,
+      "classification": "CAUSAL_COLLISION_RECOVERED_BY_RESIDUAL_FILL"
+    },
+    {
+      "trial_id": "ATG01-H-C06-02",
+      "event_index": 1,
+      "stratum": "S2",
+      "dropped_causal_descriptor": "aud:band:7",
+      "winner_descriptor": "aud:band:6",
+      "classification": "CAUSAL_COLLISION_UNRECOVERED"
+    },
+    {
+      "trial_id": "ATG01-H-C07-02",
+      "event_index": 0,
+      "stratum": "S2",
+      "dropped_causal_descriptor": "aud:band:7",
+      "winner_descriptor": "aud:band:6",
+      "classification": "CAUSAL_COLLISION_UNRECOVERED"
+    },
+    {
+      "trial_id": "ATG01-H-C07-02",
+      "event_index": 0,
+      "stratum": "S3",
+      "dropped_causal_descriptor": "aud:band:10",
+      "winner_descriptor": "aud:band:9",
+      "classification": "CAUSAL_COLLISION_UNRECOVERED"
+    },
+    {
+      "trial_id": "ATG01-H-C09-02",
+      "event_index": 3,
+      "stratum": "S6",
+      "dropped_causal_descriptor": "aud:band:18",
+      "winner_descriptor": null,
+      "classification": "CAUSAL_COLLISION_UNRECOVERED"
+    },
+    {
+      "trial_id": "ATG01-H-C09-02",
+      "event_index": 3,
+      "stratum": "S6",
+      "dropped_causal_descriptor": "aud:band:20",
+      "winner_descriptor": null,
+      "classification": "CAUSAL_COLLISION_RECOVERED_BY_RESIDUAL_FILL"
+    }
+  ],
+  "status": "FAIL"
+}

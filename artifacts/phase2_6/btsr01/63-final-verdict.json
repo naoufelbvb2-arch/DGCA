@@ -1,0 +1,10 @@
+{
+  "final_verdict": "BTSR01_COUNTERFACTUAL_EFFICACY_FAIL",
+  "btsr_structural_selection_validated": "NO",
+  "btsr01_component_validated": "NO",
+  "residual_sequence_discrimination": "NOT_APPLICABLE",
+  "sequence_discrimination_repair_next": "NOT_APPLICABLE",
+  "production_implementation_authorized": "NO",
+  "next_step": "NO_AUTOMATIC_REDESIGN_RETURN_FROZEN_FAILURE_FORENSICS",
+  "status": "PASS"
+}

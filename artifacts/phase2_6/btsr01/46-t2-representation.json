@@ -1,0 +1,5 @@
+{
+  "t2_multiset_preservation": "IDENTICAL",
+  "t2_event_order": "EXACTLY_REVERSED",
+  "status": "PASS"
+}

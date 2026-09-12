@@ -1,0 +1,9 @@
+{
+  "bfar_distinct_transitions": 765,
+  "btsr_distinct_transitions": 799,
+  "bfar_grounding_to_heldout_recurrent": 499,
+  "btsr_grounding_to_heldout_recurrent": 567,
+  "bfar_median_transition_fanout": 64,
+  "btsr_median_transition_fanout": 40,
+  "status": "PASS"
+}

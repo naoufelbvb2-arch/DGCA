@@ -1,0 +1,9 @@
+{
+  "events_using_residual_fill": 291,
+  "total_residual_fill_selections": 648,
+  "mean_residual_slots_per_event": 2.1456953642384105,
+  "median_residual_slots_per_event": 2,
+  "max_residual_slots_per_event": 5,
+  "fraction_spectral_selections_from_residual": 0.36965202509982886,
+  "status": "PASS"
+}

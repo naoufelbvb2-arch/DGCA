@@ -1,0 +1,35 @@
+{
+  "parent_commit": "cbd6617",
+  "lineage_ancestors": {
+    "AEMG01_v1.3": {
+      "commit": "6fd2157",
+      "is_ancestor": true
+    },
+    "ADCAR01": {
+      "commit": "57d3240",
+      "is_ancestor": true
+    },
+    "ADCAR01-F01": {
+      "commit": "65b1c30",
+      "is_ancestor": true
+    },
+    "ADCAR01-F01-C01": {
+      "commit": "a526b42",
+      "is_ancestor": true
+    },
+    "BFAR01": {
+      "commit": "0e4afdf",
+      "is_ancestor": true
+    },
+    "BFAR01-F01": {
+      "commit": "73a283b",
+      "is_ancestor": true
+    },
+    "BFAR01-F01-C01": {
+      "commit": "cbd6617",
+      "is_ancestor": true
+    }
+  },
+  "all_ancestors_verified": true,
+  "status": "PASS"
+}
