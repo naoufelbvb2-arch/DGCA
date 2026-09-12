@@ -1,0 +1,23 @@
+{
+  "resolution_summary": "7 + 17 = 24 represents descriptor-level outcomes; 14 represents collision groups (event-strata); 19 was an initial uncorrected competitor displacement sum from the parent pre-fill loop.",
+  "units": {
+    "COLLISION_GROUP": "One event-stratum in which more than one causal descriptor competes (14 distinct groups across 9 events).",
+    "DROPPED_CAUSAL_DESCRIPTOR_OUTCOME": "One individual causal descriptor outcome recorded in the collision ledger (24 outcomes).",
+    "PATH_LOSS_EVENT": "Collision outcome eliminating every surviving complete causal path for a grounded relation (6 relations)."
+  },
+  "identity_verification": {
+    "recovered_descriptor_outcomes": 7,
+    "unrecovered_descriptor_outcomes": 17,
+    "total_dropped_causal_descriptor_outcomes": 24,
+    "mathematical_identity_holds": true
+  },
+  "metrics": {
+    "events_with_ge_1_collision": 9,
+    "collision_groups": 14,
+    "dropped_causal_descriptor_outcomes": 24,
+    "recovered_descriptor_outcomes": 7,
+    "unrecovered_descriptor_outcomes": 17,
+    "relations_losing_all_paths_due_to_collision": 6
+  },
+  "status": "PASS"
+}

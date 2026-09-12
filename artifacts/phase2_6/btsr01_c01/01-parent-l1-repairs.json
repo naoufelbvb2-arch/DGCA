@@ -1,0 +1,24 @@
+{
+  "parent_l1_targets": [
+    "CA1_01",
+    "CA1_04",
+    "CA2_08"
+  ],
+  "repaired_status": {
+    "CA1_01": true,
+    "CA1_04": false,
+    "CA2_08": true
+  },
+  "repaired_count": "2/3",
+  "exact_repaired_relations": [
+    "CA1_01",
+    "CA2_08"
+  ],
+  "exact_unrepaired_relations": [
+    "CA1_04"
+  ],
+  "finding": "CA1_01 and CA2_08 were repaired at L1; CA1_04 was not repaired.",
+  "text_defect_classification": "REPORTING_TEXT_DEFECT",
+  "scientific_result_altered": false,
+  "status": "PASS"
+}

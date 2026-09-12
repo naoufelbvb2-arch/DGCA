@@ -1,0 +1,28 @@
+{
+  "clarification": "The generic phrase 'physically lacks energy' must not be applied indiscriminately to all unsupported boundaries.",
+  "taxonomy": {
+    "DESCRIPTOR_ABSENT_FROM_EVENT_EVIDENCE": {
+      "description": "The required witness components have zero support in the raw audio precompression frame.",
+      "exemplars": [
+        "ATG01-H-C01-01_B0_1 (cat event 0)",
+        "ATG01-H-C09-01_B0_1 (off event 0)"
+      ],
+      "boundary_class": "B1_SOURCE_MEMBERSHIP_ABSENT"
+    },
+    "DESCRIPTOR_PRESENT_BUT_NOT_SELECTED": {
+      "description": "Causal descriptors have non-zero acoustic support but are displaced by same-stratum competition or the 8-token budget.",
+      "exemplars": [
+        "14 collision groups (17 unrecovered causal descriptor outcomes)"
+      ],
+      "boundary_class": "L1_MEMBERSHIP_DROPOUT"
+    },
+    "QUERY_TRANSITION_EXISTS_BUT_LACKS_GROUNDING_SUPPORT": {
+      "description": "Endpoints are present and selected, forming a query causal transition, but the transition lacks recurrence in the grounding corpus.",
+      "exemplars": [
+        "ATG01-H-C07-01_B1_2 (go events 1->2) with transition ('aud:periodicity:P3', 'aud:band:8')"
+      ],
+      "boundary_class": "B5_QUERY_TRANSITION_PRESENT_BUT_GROUNDING_SUPPORT_ABSENT"
+    }
+  },
+  "status": "PASS"
+}

@@ -1,0 +1,97 @@
+{
+  "grounded_causal_boundaries_total": 12,
+  "boundary_failure_classes_distribution": {
+    "B1_SOURCE_MEMBERSHIP_ABSENT": 2,
+    "B7_SUPPORTED": 9,
+    "B5_QUERY_TRANSITION_PRESENT_BUT_GROUNDING_SUPPORT_ABSENT": 1
+  },
+  "query_membership_failures": 2,
+  "query_transition_present_but_no_grounding_support": 1,
+  "boundaries": [
+    {
+      "boundary_id": "ATG01-H-C01-01_B0_1",
+      "concept": "cat",
+      "causal_component_supported": false,
+      "classification": "B1_SOURCE_MEMBERSHIP_ABSENT",
+      "reason": "Source event lacks retained causal components (0 retained)."
+    },
+    {
+      "boundary_id": "ATG01-H-C01-01_B1_2",
+      "concept": "cat",
+      "causal_component_supported": true,
+      "classification": "B7_SUPPORTED",
+      "reason": "Query causal transition exists and is fully supported in grounding."
+    },
+    {
+      "boundary_id": "ATG01-H-C02-01_B3_4",
+      "concept": "dog",
+      "causal_component_supported": true,
+      "classification": "B7_SUPPORTED",
+      "reason": "Query causal transition exists and is fully supported in grounding."
+    },
+    {
+      "boundary_id": "ATG01-H-C02-01_B4_5",
+      "concept": "dog",
+      "causal_component_supported": true,
+      "classification": "B7_SUPPORTED",
+      "reason": "Query causal transition exists and is fully supported in grounding."
+    },
+    {
+      "boundary_id": "ATG01-H-C05-01_B1_2",
+      "concept": "house",
+      "causal_component_supported": true,
+      "classification": "B7_SUPPORTED",
+      "reason": "Query causal transition exists and is fully supported in grounding."
+    },
+    {
+      "boundary_id": "ATG01-H-C07-01_B1_2",
+      "concept": "go",
+      "causal_component_supported": false,
+      "classification": "B5_QUERY_TRANSITION_PRESENT_BUT_GROUNDING_SUPPORT_ABSENT",
+      "reason": "Query causal transition ('aud:periodicity:P3', 'aud:band:8') is present in query but absent from grounding transitions."
+    },
+    {
+      "boundary_id": "ATG01-H-C09-01_B0_1",
+      "concept": "off",
+      "causal_component_supported": false,
+      "classification": "B1_SOURCE_MEMBERSHIP_ABSENT",
+      "reason": "Source event lacks retained causal components (0 retained)."
+    },
+    {
+      "boundary_id": "ATG01-H-C09-01_B1_2",
+      "concept": "off",
+      "causal_component_supported": true,
+      "classification": "B7_SUPPORTED",
+      "reason": "Query causal transition exists and is fully supported in grounding."
+    },
+    {
+      "boundary_id": "ATG01-H-C04-02_B1_2",
+      "concept": "bed",
+      "causal_component_supported": true,
+      "classification": "B7_SUPPORTED",
+      "reason": "Query causal transition exists and is fully supported in grounding."
+    },
+    {
+      "boundary_id": "ATG01-H-C06-02_B0_1",
+      "concept": "no",
+      "causal_component_supported": true,
+      "classification": "B7_SUPPORTED",
+      "reason": "Query causal transition exists and is fully supported in grounding."
+    },
+    {
+      "boundary_id": "ATG01-H-C09-02_B3_4",
+      "concept": "off",
+      "causal_component_supported": true,
+      "classification": "B7_SUPPORTED",
+      "reason": "Query causal transition exists and is fully supported in grounding."
+    },
+    {
+      "boundary_id": "ATG01-H-C09-02_B4_5",
+      "concept": "off",
+      "causal_component_supported": true,
+      "classification": "B7_SUPPORTED",
+      "reason": "Query causal transition exists and is fully supported in grounding."
+    }
+  ],
+  "status": "PASS"
+}

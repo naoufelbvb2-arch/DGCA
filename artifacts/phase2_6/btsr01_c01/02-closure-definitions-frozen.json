@@ -1,0 +1,7 @@
+{
+  "MARGIN_POSITIVE": "Relation has Delta_causal(r) > 0 under frozen LDSR/ASUR scoring.",
+  "STRUCTURAL_PATH_COMPLETE": "Relation has L1 = PASS (all witness atoms retained) AND L2 = PASS (all transitions supported in grounding).",
+  "FULL_CAUSAL_RELATION_CLOSED": "Relation satisfies STRUCTURAL_PATH_COMPLETE (L1=PASS, L2=PASS) AND MARGIN_POSITIVE (Delta_causal(r) > 0).",
+  "POSITIVE_MARGIN_WITH_INCOMPLETE_CAUSAL_PATH": "Relation has Delta_causal(r) > 0 but L1 = FAIL or L2 = FAIL; must NOT be counted as CLOSED.",
+  "status": "FROZEN"
+}

@@ -1,0 +1,6 @@
+{
+  "QUERY_ENDPOINT_MEMBERSHIP": "Retaining at least one causal component in both source and destination query events.",
+  "QUERY_CAUSAL_TRANSITION_PRESENCE": "Presence of an actual Cartesian pair (u, v) across source and destination in the query projection.",
+  "GROUNDING_SUPPORTED_CAUSAL_TRANSITION": "The query causal transition (u, v) is present in the grounding-derived transition dictionary.",
+  "status": "FROZEN"
+}

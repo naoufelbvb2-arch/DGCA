@@ -1,0 +1,8 @@
+{
+  "final_verdict": "BTSR01_C01_CLOSED_WITH_CLARIFICATIONS",
+  "parent_formal_verdict": "CONFIRMED",
+  "parent_commit": "81a357e",
+  "execution_mode": "STRICT_READ_ONLY_CLOSURE_CLARIFICATION",
+  "production_source_diff": 0,
+  "status": "PASS"
+}

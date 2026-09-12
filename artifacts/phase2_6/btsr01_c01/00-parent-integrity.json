@@ -1,0 +1,8 @@
+{
+  "parent": "BTSR01_COUNTERFACTUAL_EFFICACY_FAIL",
+  "parent_commit": "81a357e",
+  "production_source_diff_lines": 0,
+  "historical_signature_match": true,
+  "historical_signature": "915119d40643cb97",
+  "status": "PASS"
+}

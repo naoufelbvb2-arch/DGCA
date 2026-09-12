@@ -1,0 +1,10 @@
+{
+  "authorized_next_stage": "BTSR01-F01",
+  "next_stage_title": "EVENT-LOCAL SELECTION IDENTIFIABILITY & CAUSAL OBSERVABILITY FORENSICS",
+  "core_forensic_question": "Is there any non-oracle information already present at the event-selection boundary that consistently distinguishes causally useful atomic descriptors from acoustically stronger but causally irrelevant competitors?",
+  "repair_design_authorized": false,
+  "selector_tuning_authorized": false,
+  "sequence_repair_next": "NOT_APPLICABLE",
+  "production_implementation": "NOT_AUTHORIZED",
+  "status": "AUTHORIZED"
+}

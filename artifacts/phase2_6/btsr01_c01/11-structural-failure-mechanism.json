@@ -1,0 +1,20 @@
+{
+  "primary_structural_failure_mechanism": "M5_MULTI_STAGE",
+  "stages_involved": {
+    "STAGE_0_EVIDENCE_LEVEL": {
+      "mechanism": "M3_QUERY_ENDPOINT_EVIDENCE_ABSENT",
+      "impact": "2 boundaries (cat B0_1, off B0_1) have zero raw acoustic support for witness descriptors."
+    },
+    "STAGE_1_SELECTION_LEVEL": {
+      "mechanism": "M1_LOCAL_COMPETITION_SELECTION_LOSS & M2_RESIDUAL_FILL_RECOVERY_INSUFFICIENT",
+      "impact": "17 unrecovered causal descriptor outcomes cause 6 new grounded relations to lose all causal paths."
+    },
+    "STAGE_2_GROUNDING_RECURRENCE_LEVEL": {
+      "mechanism": "M4_GROUNDING_DIRECTIONAL_SUPPORT_ABSENT",
+      "impact": "1 boundary (go B1_2) forms an empirical query transition that has no support in grounding transitions."
+    }
+  },
+  "conclusion": "BTSR fails not from a single isolated defect, but from multi-stage causal decoupling across evidence, selection, and grounding.",
+  "parent_verdict": "CONFIRMED",
+  "status": "PASS"
+}

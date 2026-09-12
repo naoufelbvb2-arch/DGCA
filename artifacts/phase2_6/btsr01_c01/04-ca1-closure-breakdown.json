@@ -1,0 +1,23 @@
+{
+  "grounded_relations": 4,
+  "ca1_positive_margins": "3/4",
+  "ca1_structural_path_complete": "2/4",
+  "ca1_full_causal_closed": "2/4",
+  "positive_margin_relations": [
+    "CA1_01",
+    "CA1_02",
+    "CA1_04"
+  ],
+  "structural_complete_relations": [
+    "CA1_01",
+    "CA1_02"
+  ],
+  "full_closed_relations": [
+    "CA1_01",
+    "CA1_02"
+  ],
+  "incomplete_path_with_positive_margin": [
+    "CA1_04"
+  ],
+  "status": "PASS"
+}
