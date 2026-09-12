@@ -1,0 +1,8 @@
+{
+  "periodicity_causally_blocking": 0,
+  "periodicity_displaces_causal_but_redundant_atom": 5,
+  "periodicity_nonessential": 111,
+  "periodicity_required_by_causal_cover": 0,
+  "audit_verdict": "PERIODICITY_DOES_NOT_CAUSALLY_BLOCK_ANY_RELATION",
+  "status": "PASS"
+}

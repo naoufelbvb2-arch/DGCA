@@ -1,0 +1,103 @@
+{
+  "total_relations": 19,
+  "eligible_grounded_relations": "17/19",
+  "unproven_relations": "2/19",
+  "details": {
+    "CA1_01": {
+      "probe_id": "ATG01-H-C01-01",
+      "eligible": true,
+      "grounded_witnesses": 4
+    },
+    "CA1_02": {
+      "probe_id": "ATG01-H-C05-01",
+      "eligible": true,
+      "grounded_witnesses": 4
+    },
+    "CA1_03": {
+      "probe_id": "ATG01-H-C08-01",
+      "eligible": false,
+      "reason": "0_GROUNDING_WITNESSES"
+    },
+    "CA1_04": {
+      "probe_id": "ATG01-H-C00-02",
+      "eligible": true,
+      "grounded_witnesses": 4
+    },
+    "CA1_05": {
+      "probe_id": "ATG01-H-C07-02",
+      "eligible": true,
+      "grounded_witnesses": 4
+    },
+    "CA2_01": {
+      "probe_id": "ATG01-H-C01-01",
+      "eligible": true,
+      "grounded_witnesses": 4
+    },
+    "CA2_02": {
+      "probe_id": "ATG01-H-C02-01",
+      "eligible": true,
+      "grounded_witnesses": 5
+    },
+    "CA2_03": {
+      "probe_id": "ATG01-H-C03-01",
+      "eligible": true,
+      "grounded_witnesses": 4
+    },
+    "CA2_04": {
+      "probe_id": "ATG01-H-C04-01",
+      "eligible": true,
+      "grounded_witnesses": 5
+    },
+    "CA2_05": {
+      "probe_id": "ATG01-H-C05-01",
+      "eligible": true,
+      "grounded_witnesses": 4
+    },
+    "CA2_06": {
+      "probe_id": "ATG01-H-C07-01",
+      "eligible": true,
+      "grounded_witnesses": 5
+    },
+    "CA2_07": {
+      "probe_id": "ATG01-H-C08-01",
+      "eligible": false,
+      "reason": "0_GROUNDING_WITNESSES"
+    },
+    "CA2_08": {
+      "probe_id": "ATG01-H-C09-01",
+      "eligible": true,
+      "grounded_witnesses": 5
+    },
+    "CA2_09": {
+      "probe_id": "ATG01-H-C00-02",
+      "eligible": true,
+      "grounded_witnesses": 4
+    },
+    "CA2_10": {
+      "probe_id": "ATG01-H-C01-02",
+      "eligible": true,
+      "grounded_witnesses": 5
+    },
+    "CA2_11": {
+      "probe_id": "ATG01-H-C04-02",
+      "eligible": true,
+      "grounded_witnesses": 5
+    },
+    "CA2_12": {
+      "probe_id": "ATG01-H-C06-02",
+      "eligible": true,
+      "grounded_witnesses": 5
+    },
+    "CA2_13": {
+      "probe_id": "ATG01-H-C07-02",
+      "eligible": true,
+      "grounded_witnesses": 4
+    },
+    "CA2_14": {
+      "probe_id": "ATG01-H-C09-02",
+      "eligible": true,
+      "grounded_witnesses": 7
+    }
+  },
+  "status": "PASS"
+}

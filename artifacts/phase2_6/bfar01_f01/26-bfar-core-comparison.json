@@ -1,0 +1,8 @@
+{
+  "comparison": "COMPLETE",
+  "core_empty": true,
+  "union_size": 620,
+  "bfar_retained_causal_atoms": 73,
+  "bfar_dropped_causal_atoms": 30,
+  "status": "PASS"
+}

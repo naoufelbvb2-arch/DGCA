@@ -1,0 +1,6 @@
+{
+  "core_type": "MINIMUM_COVER_CORE",
+  "variables_count": 0,
+  "explanation": "Multiple disjoint valid alternative descriptor selections exist for each causal boundary; intersection is empty.",
+  "status": "PASS"
+}

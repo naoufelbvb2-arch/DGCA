@@ -1,0 +1,7 @@
+{
+  "final_verdict": "BFAR01_F01_FORENSIC_PASS",
+  "primary_failure_mechanism": "MULTI_STAGE",
+  "next_repair_direction": "SELECTION_POLICY_REPAIR_JUSTIFIED",
+  "production_implementation": "NOT AUTHORIZED",
+  "status": "PASS"
+}

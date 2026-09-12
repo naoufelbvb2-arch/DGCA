@@ -1,0 +1,18 @@
+{
+  "reproduced_items": {
+    "bfar_max_tokens_per_event": 8,
+    "budget_violations": 0,
+    "events_saturating_budget": "249/302",
+    "dropped_precompression_occurrences": 504,
+    "grounding_supported_bfar_query_transitions": "499/575",
+    "general_heldout_boundaries_supported": "64/70",
+    "correct_concept_sequence_support": "20/20",
+    "ca1_repaired": "1/5",
+    "ca2_resolved": "2/13",
+    "competitor_causal_closure": "9/19",
+    "frozen_causal_boundary_support": "9/12",
+    "ood_generalization": "10/10",
+    "transition_authority": "NO_UNLAWFUL_TRANSITION_AUTHORITY_INFLATION"
+  },
+  "status": "PASS"
+}

@@ -1,0 +1,8 @@
+{
+  "status_definition": "DEFINED",
+  "variables_count": 0,
+  "bfar_retained_budget_core_variables": 0,
+  "bfar_dropped_budget_core_variables": 0,
+  "budget_core_recall": 1.0,
+  "status": "PASS"
+}

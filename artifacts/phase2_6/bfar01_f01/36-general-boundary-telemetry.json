@@ -1,0 +1,6 @@
+{
+  "general_heldout_boundaries_supported": "64/70",
+  "heldout_transitions_supported": "499/575",
+  "heldout_transition_support_rate": 0.8678260869565217,
+  "status": "PASS"
+}

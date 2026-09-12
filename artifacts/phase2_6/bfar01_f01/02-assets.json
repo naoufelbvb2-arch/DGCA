@@ -1,0 +1,9 @@
+{
+  "archive_sha256": "af14739ee7dc311471de98f5f9d2c9191b18aedfe957f4a6ff791c709868ff58",
+  "expected_archive_sha256": "af14739ee7dc311471de98f5f9d2c9191b18aedfe957f4a6ff791c709868ff58",
+  "archive_match": true,
+  "manifest_sha256": "41658084f09148e4c086c7b00eb626eaa13c65113c4c769a74be214c99a81ff7",
+  "expected_manifest_sha256": "41658084f09148e4c086c7b00eb626eaa13c65113c4c769a74be214c99a81ff7",
+  "manifest_match": true,
+  "status": "PASS"
+}

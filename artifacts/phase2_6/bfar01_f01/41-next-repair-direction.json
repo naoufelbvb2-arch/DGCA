@@ -1,0 +1,5 @@
+{
+  "next_repair_direction": "SELECTION_POLICY_REPAIR_JUSTIFIED",
+  "rationale": "Static transition-realizable cover exists at K=1 <= 8; parent failure exhibited genuine ranked selection misalignment. Under Clarification C7, residual sequence-discrimination risk does not block formal selection policy repair design.",
+  "status": "PASS"
+}

@@ -1,0 +1,316 @@
+{
+  "grounded_paths": [
+    {
+      "relation_id": "CA1_01",
+      "probe_id": "ATG01-H-C01-01",
+      "boundary": "B0_1",
+      "source_event": "ATG01-H-C01-01_E0",
+      "destination_event": "ATG01-H-C01-01_E1",
+      "supported_transitions_count": 225,
+      "supported_transitions": [
+        [
+          "aud:band:12",
+          "aud:band:14"
+        ],
+        [
+          "aud:band:12",
+          "aud:band:18"
+        ],
+        [
+          "aud:band:12",
+          "aud:band:19"
+        ],
+        [
+          "aud:band:12",
+          "aud:band:8"
+        ],
+        [
+          "aud:band:12",
+          "aud:band:9"
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "relation_id": "CA1_04",
+      "probe_id": "ATG01-H-C00-02",
+      "boundary": "B0_1",
+      "source_event": "ATG01-H-C00-02_E0",
+      "destination_event": "ATG01-H-C00-02_E1",
+      "supported_transitions_count": 14,
+      "supported_transitions": [
+        [
+          "aud:band:13",
+          "aud:band:10"
+        ],
+        [
+          "aud:band:13",
+          "aud:band:6"
+        ],
+        [
+          "aud:band:13",
+          "aud:band:7"
+        ],
+        [
+          "aud:band:13",
+          "aud:band:8"
+        ],
+        [
+          "aud:band:13",
+          "aud:band:9"
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "relation_id": "CA2_01",
+      "probe_id": "ATG01-H-C01-01",
+      "boundary": "B0_1",
+      "source_event": "ATG01-H-C01-01_E0",
+      "destination_event": "ATG01-H-C01-01_E1",
+      "supported_transitions_count": 225,
+      "supported_transitions": [
+        [
+          "aud:band:12",
+          "aud:band:14"
+        ],
+        [
+          "aud:band:12",
+          "aud:band:18"
+        ],
+        [
+          "aud:band:12",
+          "aud:band:19"
+        ],
+        [
+          "aud:band:12",
+          "aud:band:8"
+        ],
+        [
+          "aud:band:12",
+          "aud:band:9"
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "relation_id": "CA2_02",
+      "probe_id": "ATG01-H-C02-01",
+      "boundary": "B1_2",
+      "source_event": "ATG01-H-C02-01_E1",
+      "destination_event": "ATG01-H-C02-01_E2",
+      "supported_transitions_count": 296,
+      "supported_transitions": [
+        [
+          "aud:band:12",
+          "aud:band:14"
+        ],
+        [
+          "aud:band:12",
+          "aud:band:15"
+        ],
+        [
+          "aud:band:12",
+          "aud:band:19"
+        ],
+        [
+          "aud:band:12",
+          "aud:band:22"
+        ],
+        [
+          "aud:band:12",
+          "aud:periodicity:P1"
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "relation_id": "CA2_04",
+      "probe_id": "ATG01-H-C04-01",
+      "boundary": "B4_5",
+      "source_event": "ATG01-H-C04-01_E4",
+      "destination_event": "ATG01-H-C04-01_E5",
+      "supported_transitions_count": 92,
+      "supported_transitions": [
+        [
+          "aud:band:10",
+          "aud:band:13"
+        ],
+        [
+          "aud:band:10",
+          "aud:band:14"
+        ],
+        [
+          "aud:band:10",
+          "aud:band:15"
+        ],
+        [
+          "aud:band:10",
+          "aud:band:19"
+        ],
+        [
+          "aud:band:10",
+          "aud:periodicity:P5"
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "relation_id": "CA2_08",
+      "probe_id": "ATG01-H-C09-01",
+      "boundary": "B1_2",
+      "source_event": "ATG01-H-C09-01_E1",
+      "destination_event": "ATG01-H-C09-01_E2",
+      "supported_transitions_count": 198,
+      "supported_transitions": [
+        [
+          "aud:band:10",
+          "aud:band:0"
+        ],
+        [
+          "aud:band:10",
+          "aud:band:12"
+        ],
+        [
+          "aud:band:10",
+          "aud:band:14"
+        ],
+        [
+          "aud:band:10",
+          "aud:band:15"
+        ],
+        [
+          "aud:band:10",
+          "aud:band:2"
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "relation_id": "CA2_09",
+      "probe_id": "ATG01-H-C00-02",
+      "boundary": "B0_1",
+      "source_event": "ATG01-H-C00-02_E0",
+      "destination_event": "ATG01-H-C00-02_E1",
+      "supported_transitions_count": 14,
+      "supported_transitions": [
+        [
+          "aud:band:13",
+          "aud:band:10"
+        ],
+        [
+          "aud:band:13",
+          "aud:band:6"
+        ],
+        [
+          "aud:band:13",
+          "aud:band:7"
+        ],
+        [
+          "aud:band:13",
+          "aud:band:8"
+        ],
+        [
+          "aud:band:13",
+          "aud:band:9"
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "relation_id": "CA2_10",
+      "probe_id": "ATG01-H-C01-02",
+      "boundary": "B1_2",
+      "source_event": "ATG01-H-C01-02_E1",
+      "destination_event": "ATG01-H-C01-02_E2",
+      "supported_transitions_count": 32,
+      "supported_transitions": [
+        [
+          "aud:band:10",
+          "aud:periodicity:P1"
+        ],
+        [
+          "aud:band:13",
+          "aud:band:10"
+        ],
+        [
+          "aud:band:13",
+          "aud:periodicity:P1"
+        ],
+        [
+          "aud:band:6",
+          "aud:band:10"
+        ],
+        [
+          "aud:band:6",
+          "aud:periodicity:P1"
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "relation_id": "CA2_12",
+      "probe_id": "ATG01-H-C06-02",
+      "boundary": "B0_1",
+      "source_event": "ATG01-H-C06-02_E0",
+      "destination_event": "ATG01-H-C06-02_E1",
+      "supported_transitions_count": 207,
+      "supported_transitions": [
+        [
+          "aud:band:10",
+          "aud:band:13"
+        ],
+        [
+          "aud:band:10",
+          "aud:band:6"
+        ],
+        [
+          "aud:band:10",
+          "aud:band:7"
+        ],
+        [
+          "aud:band:10",
+          "aud:band:8"
+        ],
+        [
+          "aud:band:10",
+          "aud:band:9"
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "relation_id": "CA2_14",
+      "probe_id": "ATG01-H-C09-02",
+      "boundary": "B4_5",
+      "source_event": "ATG01-H-C09-02_E4",
+      "destination_event": "ATG01-H-C09-02_E5",
+      "supported_transitions_count": 5,
+      "supported_transitions": [
+        [
+          "aud:periodicity:P0",
+          "aud:band:14"
+        ],
+        [
+          "aud:periodicity:P0",
+          "aud:band:4"
+        ],
+        [
+          "aud:periodicity:P0",
+          "aud:band:8"
+        ],
+        [
+          "aud:periodicity:P0",
+          "aud:periodicity:P1"
+        ],
+        [
+          "aud:periodicity:P0",
+          "aud:periodicity:P1"
+        ]
+      ],
+      "status": "PASS"
+    }
+  ],
+  "total_paths": 10,
+  "status": "COMPLETE"
+}

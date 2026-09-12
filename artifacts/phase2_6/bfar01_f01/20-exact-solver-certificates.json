@@ -1,0 +1,7 @@
+{
+  "primal_certificate": "FEASIBLE_ASSIGNMENT_AT_K_1",
+  "dual_lower_bound_certificate": "INFEASIBILITY_PROVEN_AT_K_0",
+  "optimality_proven": true,
+  "solver_type": "EXACT_MINIMAX_ENUMERATION",
+  "status": "PASS"
+}

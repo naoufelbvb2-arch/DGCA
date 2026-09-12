@@ -1,0 +1,10 @@
+{
+  "classification": "STATIC_TRANSITION_REALIZABLE_SELECTION_FEASIBLE",
+  "static_le_8_transition_realizable_solution": true,
+  "k_atomic_global_max": 1,
+  "k_atomic_decision_max": 1,
+  "k_transition_global_max": 1,
+  "k_transition_decision_max": 1,
+  "b_audio_event": 8,
+  "status": "PASS"
+}

@@ -1,0 +1,7 @@
+{
+  "multi_boundary_paths_supported": true,
+  "no_cross_witness_mixing": true,
+  "direction_preserved": true,
+  "actual_adjacency_preserved": true,
+  "status": "PASS"
+}

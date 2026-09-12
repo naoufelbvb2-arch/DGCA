@@ -1,0 +1,9 @@
+{
+  "total_canonical_events": 302,
+  "events_saturating_budget": 249,
+  "events_saturating_budget_rate": "249/302",
+  "dropped_precompression_occurrences": 504,
+  "max_tokens_per_event": 8,
+  "budget_violations": 0,
+  "status": "PASS"
+}

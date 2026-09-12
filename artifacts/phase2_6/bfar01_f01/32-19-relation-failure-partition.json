@@ -1,0 +1,10 @@
+{
+  "closed": "9/19",
+  "required_causal_atom_dropped": "5/19",
+  "retained_but_no_directional_support": "1/19",
+  "supported_but_margin_nonpositive": "4/19",
+  "multi_stage": "0/19",
+  "inconclusive": "0/19",
+  "partition_sum": 19,
+  "status": "PASS"
+}

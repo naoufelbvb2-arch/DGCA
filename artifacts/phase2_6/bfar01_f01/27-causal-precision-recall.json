@@ -1,0 +1,13 @@
+{
+  "causal_atom_precision": {
+    "mean": 0.612,
+    "min": 0.0,
+    "max": 1.0
+  },
+  "causal_atom_recall": {
+    "mean": 0.748,
+    "min": 0.0,
+    "max": 1.0
+  },
+  "status": "PASS"
+}

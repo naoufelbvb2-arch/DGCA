@@ -1,0 +1,8 @@
+{
+  "total_events": 302,
+  "min_domain_size": 0,
+  "max_domain_size": 25,
+  "mean_domain_size": 8.801324503311259,
+  "total_event_descriptor_pairs": 2658,
+  "status": "PASS"
+}

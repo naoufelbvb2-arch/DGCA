@@ -1,0 +1,22 @@
+{
+  "frozen_c01_causal_boundaries": 12,
+  "bfar_causal_boundary_support": "9/12",
+  "unsupported_boundaries": [
+    {
+      "boundary_id": "ATG01-H-C01-01_B0_1",
+      "concept": "cat",
+      "failure_class": "source_membership_missing"
+    },
+    {
+      "boundary_id": "ATG01-H-C07-01_B1_2",
+      "concept": "go",
+      "failure_class": "transition_unsupported"
+    },
+    {
+      "boundary_id": "ATG01-H-C09-01_B0_1",
+      "concept": "off",
+      "failure_class": "source_membership_missing"
+    }
+  ],
+  "status": "PASS"
+}

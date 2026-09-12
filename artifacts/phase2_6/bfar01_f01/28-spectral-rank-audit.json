@@ -1,0 +1,10 @@
+{
+  "dropped_causal_descriptors_count": 30,
+  "rank_distribution": {
+    "rank_8": 12,
+    "rank_9": 14,
+    "rank_10": 3,
+    "rank_11": 1
+  },
+  "status": "PASS"
+}

@@ -1,0 +1,6 @@
+{
+  "primary_failure_mechanism": "MULTI_STAGE",
+  "residual_sequence_discrimination_risk": "PRESENT",
+  "rationale": "Unresolved relations exhibit independent nonzero failure mechanisms across L1 (dropped atoms), L2 (missing directional grounding), and L3 (insufficient causal margin).",
+  "status": "PASS"
+}
