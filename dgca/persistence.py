@@ -620,10 +620,114 @@ def save_cognitive_checkpoint(
 
 
 # ─────────────────────────────────────────────────────────── 10. Schema Migrations
+def validate_schema_1_1_source(
+    source: dict[str, Any],
+    policy: AssemblyPolicy | None = None,
+) -> None:
+    """Validates that a checkpoint is an authentic, untampered, compatible schema-1.1 checkpoint.
+
+    Required source checks (R0-C02 Sections 3 & 4):
+    - checkpoint_schema_version == '1.1'
+    - runtime_contract_version == '1.1'
+    - cognitive_semantics_version == '1.0'
+    - persistent_state exists and is structurally valid dict
+    - all numeric values in persistent_state are finite
+    - recorded checkpoint_state_digest exists and is non-empty
+    - SHA256(canonical source persistent_state) == recorded checkpoint_state_digest
+    - semantic compatibility digests match current runtime
+    """
+    if not isinstance(source, dict):
+        raise CheckpointSchemaError("Source checkpoint must be a JSON object (dict)")
+
+    schema_sec = source.get("schema")
+    if not isinstance(schema_sec, dict):
+        raise CheckpointSchemaError("Missing or invalid 'schema' section in schema 1.1 source")
+
+    schema_ver = schema_sec.get("checkpoint_schema_version")
+    if schema_ver != "1.1":
+        raise CheckpointSchemaError(
+            f"Unsupported source checkpoint_schema_version: '{schema_ver}', expected '1.1'"
+        )
+
+    contract_ver = schema_sec.get("runtime_contract_version")
+    if contract_ver != "1.1":
+        raise CheckpointCompatibilityError(
+            f"Incompatible or missing source runtime_contract_version: '{contract_ver}', expected '1.1'"
+        )
+
+    cog_sem_ver = schema_sec.get("cognitive_semantics_version")
+    if cog_sem_ver != "1.0":
+        raise CheckpointCompatibilityError(
+            f"Incompatible or missing source cognitive_semantics_version: '{cog_sem_ver}', expected '1.0'"
+        )
+
+    persistent_state = source.get("persistent_state")
+    if not isinstance(persistent_state, dict):
+        raise CheckpointSchemaError("Missing or invalid 'persistent_state' in schema 1.1 source")
+
+    assert_finite_numbers(persistent_state, "schema_1_1_source_persistent_state")
+
+    integrity_sec = source.get("integrity")
+    if not isinstance(integrity_sec, dict) or "checkpoint_state_digest" not in integrity_sec:
+        raise CheckpointIntegrityError(
+            "Missing 'checkpoint_state_digest' in schema 1.1 source integrity section"
+        )
+
+    recorded_state_digest = integrity_sec["checkpoint_state_digest"]
+    if not isinstance(recorded_state_digest, str) or not recorded_state_digest:
+        raise CheckpointIntegrityError(
+            "Invalid or empty 'checkpoint_state_digest' in schema 1.1 source integrity section"
+        )
+
+    expected_source_digest = compute_checkpoint_state_digest(persistent_state)
+    if recorded_state_digest != expected_source_digest:
+        raise CheckpointIntegrityError(
+            f"Schema 1.1 source state digest mismatch: recorded '{recorded_state_digest}' != computed '{expected_source_digest}'"
+        )
+
+    compat_sec = source.get("compatibility")
+    if not isinstance(compat_sec, dict):
+        raise CheckpointCompatibilityError("Missing 'compatibility' section in schema 1.1 source")
+
+    current_region_digest = compute_region_schema_digest()
+    current_law_digest = compute_active_law_digest()
+    current_policy_digest = compute_assembly_policy_digest(policy)
+    current_combined_digest = compute_combined_semantics_digest(
+        region_digest=current_region_digest,
+        law_digest=current_law_digest,
+        policy_digest=current_policy_digest,
+        cognitive_semantics_version=cog_sem_ver,
+    )
+
+    if compat_sec.get("region_schema_digest") != current_region_digest:
+        raise CheckpointCompatibilityError(
+            f"Source region schema digest mismatch: {compat_sec.get('region_schema_digest')} != {current_region_digest}"
+        )
+    if compat_sec.get("active_law_digest") != current_law_digest:
+        raise CheckpointCompatibilityError(
+            f"Source active law digest mismatch: {compat_sec.get('active_law_digest')} != {current_law_digest}"
+        )
+    if compat_sec.get("assembly_policy_digest") != current_policy_digest:
+        raise CheckpointCompatibilityError(
+            f"Source assembly policy digest mismatch: {compat_sec.get('assembly_policy_digest')} != {current_policy_digest}"
+        )
+    if compat_sec.get("combined_semantics_digest") != current_combined_digest:
+        raise CheckpointCompatibilityError(
+            f"Source combined semantics digest mismatch: recorded {compat_sec.get('combined_semantics_digest')} != computed {current_combined_digest}"
+        )
+
+
 def migrate_schema_1_1_to_1_1_1(
-    old_checkpoint: dict[str, Any]
+    old_checkpoint: dict[str, Any],
+    policy: AssemblyPolicy | None = None,
 ) -> tuple[dict[str, Any], MigrationReport]:
-    """Migrates a canonical v1.1 checkpoint to v1.1.1 by reconstructing formation candidate storage keys."""
+    """Migrates a canonical v1.1 checkpoint to v1.1.1 by reconstructing formation candidate storage keys.
+
+    Validates source integrity and source contract BEFORE any mutation or transformation (R0-C02).
+    """
+    # Source validation MUST PASS before any transformation (R0-C02 Governing Rule)
+    validate_schema_1_1_source(old_checkpoint, policy=policy)
+
     checkpoint = copy.deepcopy(old_checkpoint)
     pending_ev = checkpoint.get("persistent_state", {}).get("pending_structural_evidence", {})
     old_candidates = pending_ev.get("pending_candidates", [])
@@ -671,9 +775,19 @@ def migrate_schema_1_1_to_1_1_1(
         compatibility_result="COMPATIBLE",
         migration_result="SUCCESS",
         diagnostic_notes=[
-            "Formation candidate storage keys were reconstructed deterministically from candidate_id and context_signature."
+            "source integrity: VERIFIED",
+            "source runtime contract: 1.1",
+            "target runtime contract: 1.1.1",
+            "formation storage keys: reconstructed deterministically from candidate_id and context_signature.",
+            "historical ordered-sequence limitation: pre-serialization ordering lost under schema 1.1 cannot be reconstructed; serialized sequence order is authoritative source data.",
         ],
     )
+    if "diagnostic_metadata" not in checkpoint:
+        checkpoint["diagnostic_metadata"] = {}
+    checkpoint["diagnostic_metadata"]["migration_report"] = report.to_dict()
+    checkpoint["diagnostic_metadata"]["provenance"] = "MIGRATED_FROM_V1.1"
+    checkpoint["diagnostic_metadata"]["source_schema"] = "1.1"
+
     return checkpoint, report
 
 
@@ -850,7 +964,7 @@ def _prepare_restored_cognitive_graph(
         pred_setting = False if enable_prediction is None else enable_prediction
         checkpoint_data, migration_report = migrate_legacy_v1_checkpoint(raw_data, pred_setting)
     elif raw_data.get("schema", {}).get("checkpoint_schema_version") == "1.1":
-        checkpoint_data, migration_report = migrate_schema_1_1_to_1_1_1(raw_data)
+        checkpoint_data, migration_report = migrate_schema_1_1_to_1_1_1(raw_data, policy=policy)
     else:
         checkpoint_data = raw_data
 

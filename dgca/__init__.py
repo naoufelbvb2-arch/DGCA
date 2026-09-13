@@ -113,6 +113,7 @@ from .persistence import (
     policies_semantically_equal,
     restore_cognitive_checkpoint,
     save_cognitive_checkpoint,
+    validate_schema_1_1_source,
 )
 from .reasoning import compose_relations, deep_infer
 from .recurrent import (
@@ -296,6 +297,7 @@ __all__ = [
     "rfc15_behavioral_signature",
     "rfc16_behavioral_signature",
     "save_cognitive_checkpoint",
+    "validate_schema_1_1_source",
 ]
 
 
