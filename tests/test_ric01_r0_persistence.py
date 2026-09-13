@@ -181,7 +181,8 @@ def make_rich_graph(t: int = 100) -> CognitiveGraph:
         root_votes={"root_1", "root_2"},
         created_t=80,
     )
-    mgr.pending_candidates["cand_1"] = cand
+    cand_key = f"{cand.candidate_id}:ctx_{cand.context_signature or 'default'}"
+    mgr.pending_candidates[cand_key] = cand
     mgr.pending_growth[("asm_test", ("n2", "n3"), "ctx_growth")] = {"root_3"}
     mgr.pending_merge[(frozenset(["asm_test"]), "ctx_merge")] = {"root_4", "root_5"}
 
@@ -722,8 +723,9 @@ def test_t10_formation_pending_votes_exact(tmp_path: pathlib.Path) -> None:
     restored, _ = restore_cognitive_checkpoint(ckpt_path)
     mgr = restored._assembly_manager
     assert mgr is not None
-    assert "cand_1" in mgr.pending_candidates
-    cand = mgr.pending_candidates["cand_1"]
+    cand_key = "cand_1:ctx_ctx_sig_1"
+    assert cand_key in mgr.pending_candidates
+    cand = mgr.pending_candidates[cand_key]
     assert cand.root_votes == {"root_1", "root_2"}
     assert cand.created_t == 80
 
@@ -772,7 +774,7 @@ def test_t13_duplicate_stored_root_vote_remains_idempotent(tmp_path: pathlib.Pat
     mod_path.write_text(json.dumps(data), encoding="utf-8")
 
     restored, _ = restore_cognitive_checkpoint(mod_path)
-    cand = restored._assembly_manager.pending_candidates["cand_1"]
+    cand = restored._assembly_manager.pending_candidates["cand_1:ctx_ctx_sig_1"]
     assert cand.root_votes == {"root_1", "root_2"}
     assert len(cand.root_votes) == 2
 
@@ -1179,7 +1181,8 @@ def test_adversarial_b_stale_formation_candidate(tmp_path: pathlib.Path) -> None
         context_signature="ctx",
         root_votes={"rv_1"},
     )
-    g.assembly_manager.pending_candidates["cand_stale"] = cand
+    cand_key = f"{cand.candidate_id}:ctx_{cand.context_signature or 'default'}"
+    g.assembly_manager.pending_candidates[cand_key] = cand
     with pytest.raises(StructuralReferentialIntegrityError):
         validate_structural_referential_integrity(g)
 

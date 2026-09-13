@@ -109,6 +109,8 @@ from .persistence import (
     build_canonical_checkpoint,
     compute_checkpoint_state_digest,
     migrate_legacy_v1_checkpoint,
+    migrate_schema_1_1_to_1_1_1,
+    policies_semantically_equal,
     restore_cognitive_checkpoint,
     save_cognitive_checkpoint,
 )
@@ -285,6 +287,8 @@ __all__ = [
     "init_quantity_backbone",
     "law14_behavioral_signature",
     "migrate_legacy_v1_checkpoint",
+    "migrate_schema_1_1_to_1_1_1",
+    "policies_semantically_equal",
     "restore_cognitive_checkpoint",
     "rfc12_behavioral_signature",
     "rfc13_behavioral_signature",

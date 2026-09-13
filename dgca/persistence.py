@@ -1,12 +1,12 @@
 """
-DGCA — RIC-01 / R0: Persistent Cognitive State & Runtime Lifecycle Contract
-Formal Architecture Specification v1.1 — FROZEN
+DGCA — RIC-01 / R0-C01: Persistent Cognitive State & Runtime Lifecycle Contract
+Formal Architecture Specification v1.1.1 — FROZEN
 
 Constitutional Principles:
 1. PersistentState ∩ TransientWorkingState = ∅
 2. ReconstructibleState ∉ PersistentState
 3. Checkpoint Type: COGNITIVE_CHECKPOINT (not LIVE_PROCESS_SUSPEND)
-4. Canonical Restore: New CognitiveGraph, rebuilt indexes, fresh engines, atomic swap.
+4. Canonical Restore: New CognitiveGraph, rebuilt indexes, fresh engines, atomic swap while RESTORING.
 """
 from __future__ import annotations
 
@@ -18,7 +18,7 @@ import math
 import os
 import pathlib
 import uuid
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Any
 
 from .assembly import (
@@ -57,7 +57,7 @@ class IllegalLifecycleTransitionError(Exception):
 
 
 class LegacyMigrationError(Exception):
-    """Raised when legacy v1.0 checkpoint migration fails."""
+    """Raised when checkpoint migration fails."""
 
 
 # ─────────────────────────────────────────────────────────── 2. Runtime Lifecycle Guard
@@ -147,6 +147,7 @@ class MigrationReport:
     unrecoverable_legacy_state: list[str]
     compatibility_result: str
     migration_result: str
+    diagnostic_notes: list[str] = field(default_factory=list)
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -158,10 +159,42 @@ class MigrationReport:
             "unrecoverable_legacy_state": self.unrecoverable_legacy_state,
             "compatibility_result": self.compatibility_result,
             "migration_result": self.migration_result,
+            "diagnostic_notes": self.diagnostic_notes,
         }
 
 
-# ─────────────────────────────────────────────────────────── 4. Semantic Fingerprints
+# ─────────────────────────────────────────────────────────── 4. Policy Utilities & Semantic Fingerprints
+def policies_semantically_equal(p1: AssemblyPolicy, p2: AssemblyPolicy) -> bool:
+    """Compares policies across the complete authoritative policy payload."""
+    return (
+        p1.policy_version == p2.policy_version
+        and p1.K_ASM_MIN == p2.K_ASM_MIN
+        and p1.N_ASM_CONFIRM == p2.N_ASM_CONFIRM
+        and p1.A_MAX == p2.A_MAX
+        and p1.K_ASM_MEM == p2.K_ASM_MEM
+        and p1.K_ASM_ACTIVE == p2.K_ASM_ACTIVE
+        and p1.K_STRUCT_PENDING == p2.K_STRUCT_PENDING
+    )
+
+
+def resolve_effective_policy(
+    graph: CognitiveGraph,
+    explicit_policy: AssemblyPolicy | None = None,
+) -> AssemblyPolicy:
+    """Resolves authoritative effective policy per Section 8."""
+    if graph._assembly_manager is not None:
+        mgr_policy = graph._assembly_manager.policy
+        if explicit_policy is not None and not policies_semantically_equal(mgr_policy, explicit_policy):
+            raise CheckpointCompatibilityError(
+                "Policy mismatch: explicit policy does not match graph AssemblyManager policy"
+            )
+        return mgr_policy
+    elif explicit_policy is not None:
+        return explicit_policy
+    else:
+        return AssemblyPolicy()
+
+
 def compute_region_schema_digest() -> str:
     """SHA-256 digest over the canonical sorted region namespace."""
     sorted_regions = sorted(REGIONS)
@@ -236,7 +269,6 @@ def extract_canonical_persistent_payload(
 ) -> dict[str, Any]:
     """Extracts the exact, canonically ordered persistent payload from CognitiveGraph."""
     # 1. Nodes (sorted by nid)
-    # Persist durable fields only: nid, region, is_concept, members (sorted), U, V, head, is_intrinsic, N_total
     nodes_list = []
     for nid in sorted(graph.nodes.keys()):
         n = graph.nodes[nid]
@@ -256,7 +288,6 @@ def extract_canonical_persistent_payload(
     edges_list = []
     for pair in sorted(graph.edges.keys()):
         e = graph.edges[pair]
-        # Sort ctx_hits keys
         sorted_ctx_hits = {k: e.ctx_hits[k] for k in sorted(e.ctx_hits.keys())}
         edges_list.append({
             "M_max": float(e.M_max),
@@ -296,9 +327,8 @@ def extract_canonical_persistent_payload(
             sorted_drives[drive_key] = d_val
 
     # 6. Hypotheses (isolated hypothesis state)
+    # Order is durable per C01-05; do NOT sort.
     hypotheses_list = copy.deepcopy(graph.hypotheses)
-    # Sort hypotheses by their canonical JSON representation for determinism
-    hypotheses_list.sort(key=lambda h: json.dumps(h, sort_keys=True, separators=(",", ":")))
 
     # 7. Assemblies (sorted by assembly_id then version)
     assemblies_list = []
@@ -307,12 +337,13 @@ def extract_canonical_persistent_payload(
         for aid in sorted(mgr.assemblies.keys()):
             for asm in sorted(mgr.assemblies[aid], key=lambda a: a.version):
                 member_edges_sorted = sorted([[u, v] for u, v in asm.member_edges])
+                # parent_assemblies is an ordered tuple; order is durable per C01-05; do NOT sort.
                 assemblies_list.append({
                     "assembly_id": asm.assembly_id,
                     "is_retired": bool(asm.is_retired),
                     "member_edges": member_edges_sorted,
                     "origin_signature": str(asm.origin_signature),
-                    "parent_assemblies": sorted(asm.parent_assemblies),
+                    "parent_assemblies": list(asm.parent_assemblies),
                     "predecessor_version": asm.predecessor_version,
                     "version": int(asm.version),
                 })
@@ -323,19 +354,24 @@ def extract_canonical_persistent_payload(
     pending_merge_list = []
 
     if mgr is not None:
-        # Formation candidates (sorted by candidate_id)
-        for cid in sorted(mgr.pending_candidates.keys()):
-            cand = mgr.pending_candidates[cid]
+        # Formation candidates (sorted by storage_key)
+        for storage_key in sorted(mgr.pending_candidates.keys()):
+            cand = mgr.pending_candidates[storage_key]
+            expected_key = f"{cand.candidate_id}:ctx_{cand.context_signature or 'default'}"
+            if storage_key != expected_key:
+                raise StructuralReferentialIntegrityError(
+                    f"Formation candidate storage_key '{storage_key}' does not match expected_key '{expected_key}'"
+                )
             pending_candidates_list.append({
                 "candidate_id": cand.candidate_id,
                 "context_signature": cand.context_signature,
                 "created_t": int(cand.created_t),
                 "edges": sorted([[u, v] for u, v in cand.edges]),
                 "root_votes": sorted(cand.root_votes),
+                "storage_key": storage_key,
             })
 
         # Growth candidates
-        # key is (assembly_id, (u, v), context)
         for g_key in sorted(
             mgr.pending_growth.keys(),
             key=lambda k: (k[0], k[1][0], k[1][1], k[2] or ""),
@@ -350,7 +386,6 @@ def extract_canonical_persistent_payload(
             })
 
         # Merge candidates
-        # key is (frozenset[parent_ids], context)
         for m_key in sorted(
             mgr.pending_merge.keys(),
             key=lambda k: (tuple(sorted(k[0])), k[1] or ""),
@@ -381,7 +416,6 @@ def extract_canonical_persistent_payload(
         "pending_structural_evidence": pending_evidence,
     }
 
-    # Validate finite numbers across entire persistent payload
     assert_finite_numbers(payload, "persistent_state")
     return payload
 
@@ -423,7 +457,6 @@ def validate_structural_referential_integrity(
         for aid, versions in mgr.assemblies.items():
             if not versions:
                 continue
-            # Validate version ordering
             for i in range(len(versions) - 1):
                 if versions[i].version >= versions[i + 1].version:
                     raise StructuralReferentialIntegrityError(
@@ -437,12 +470,17 @@ def validate_structural_referential_integrity(
                             f"Live assembly member edge ({u}, {v}) of '{aid}' missing from graph.edges"
                         )
 
-        # 3. Pending Formation Candidates referential integrity
-        for cid, cand in mgr.pending_candidates.items():
+        # 3. Pending Formation Candidates referential integrity & storage key validation
+        for storage_key, cand in mgr.pending_candidates.items():
+            expected_key = f"{cand.candidate_id}:ctx_{cand.context_signature or 'default'}"
+            if storage_key != expected_key:
+                raise StructuralReferentialIntegrityError(
+                    f"Formation candidate storage_key '{storage_key}' does not match expected_key '{expected_key}'"
+                )
             for u, v in cand.edges:
                 if (u, v) not in graph.edges:
                     raise StructuralReferentialIntegrityError(
-                        f"Formation candidate '{cid}' references edge ({u}, {v}) which is not in live graph.edges"
+                        f"Formation candidate '{storage_key}' references edge ({u}, {v}) which is not in live graph.edges"
                     )
 
         # 4. Pending Growth referential integrity
@@ -481,11 +519,11 @@ def build_canonical_checkpoint(
     policy: AssemblyPolicy | None = None,
     diagnostic_metadata: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    """Constructs the canonical top-level DGCA_COGNITIVE_CHECKPOINT v1.1 structure."""
-    pol = policy or (graph._assembly_manager.policy if graph._assembly_manager else AssemblyPolicy())
+    """Constructs the canonical top-level DGCA_COGNITIVE_CHECKPOINT v1.1.1 structure."""
+    pol = resolve_effective_policy(graph, policy)
 
     # 1. Validate referential integrity before checkpoint construction
-    validate_structural_referential_integrity(graph)
+    validate_structural_referential_integrity(graph, graph._assembly_manager)
 
     # 2. Extract canonical persistent payload
     persistent_payload = extract_canonical_persistent_payload(graph, pol)
@@ -499,7 +537,7 @@ def build_canonical_checkpoint(
 
     metadata = {
         "provenance": "DGCA_R0_CANONICAL",
-        "source_schema": "1.1",
+        "source_schema": "1.1.1",
     }
     if diagnostic_metadata:
         metadata.update(diagnostic_metadata)
@@ -517,9 +555,9 @@ def build_canonical_checkpoint(
         },
         "persistent_state": persistent_payload,
         "schema": {
-            "checkpoint_schema_version": "1.1",
+            "checkpoint_schema_version": "1.1.1",
             "cognitive_semantics_version": "1.0",
-            "runtime_contract_version": "1.1",
+            "runtime_contract_version": "1.1.1",
         },
     }
     return checkpoint
@@ -537,14 +575,15 @@ def save_cognitive_checkpoint(
 
     Returns the state digest D_state of the saved checkpoint.
     """
+    effective_policy = resolve_effective_policy(graph, policy)
+
     dest_path = pathlib.Path(filepath).resolve()
     dest_dir = dest_path.parent
     dest_dir.mkdir(parents=True, exist_ok=True)
 
-    # Enforce lifecycle guard
     active_guard = guard or RuntimeLifecycleGuard()
     with active_guard.checkpointing():
-        checkpoint_data = build_canonical_checkpoint(graph, policy, diagnostic_metadata)
+        checkpoint_data = build_canonical_checkpoint(graph, effective_policy, diagnostic_metadata)
         canonical_json_bytes = json.dumps(
             checkpoint_data,
             sort_keys=True,
@@ -562,7 +601,6 @@ def save_cognitive_checkpoint(
 
             os.replace(temp_file, dest_path)
 
-            # Best effort directory fsync where supported
             try:
                 if hasattr(os, "O_DIRECTORY"):
                     dir_fd = os.open(str(dest_dir), os.O_DIRECTORY)
@@ -581,12 +619,69 @@ def save_cognitive_checkpoint(
             raise
 
 
-# ─────────────────────────────────────────────────────────── 10. Legacy Migration (v1.0 -> v1.1)
+# ─────────────────────────────────────────────────────────── 10. Schema Migrations
+def migrate_schema_1_1_to_1_1_1(
+    old_checkpoint: dict[str, Any]
+) -> tuple[dict[str, Any], MigrationReport]:
+    """Migrates a canonical v1.1 checkpoint to v1.1.1 by reconstructing formation candidate storage keys."""
+    checkpoint = copy.deepcopy(old_checkpoint)
+    pending_ev = checkpoint.get("persistent_state", {}).get("pending_structural_evidence", {})
+    old_candidates = pending_ev.get("pending_candidates", [])
+
+    seen_keys: dict[str, dict[str, Any]] = {}
+    migrated_candidates = []
+
+    for cand in old_candidates:
+        cid = cand.get("candidate_id")
+        ctx = cand.get("context_signature")
+        derived_key = f"{cid}:ctx_{ctx or 'default'}"
+
+        if derived_key in seen_keys:
+            existing = seen_keys[derived_key]
+            c1 = {k: v for k, v in cand.items() if k != "storage_key"}
+            c2 = {k: v for k, v in existing.items() if k != "storage_key"}
+            if c1 != c2:
+                raise LegacyMigrationError(
+                    f"Conflict migrating schema 1.1 formation candidate: multiple records derived storage_key '{derived_key}' with conflicting payloads"
+                )
+            continue
+
+        cand_with_key = dict(cand)
+        cand_with_key["storage_key"] = derived_key
+        seen_keys[derived_key] = cand_with_key
+        migrated_candidates.append(cand_with_key)
+
+    migrated_candidates.sort(key=lambda c: c["storage_key"])
+    pending_ev["pending_candidates"] = migrated_candidates
+
+    checkpoint["schema"]["checkpoint_schema_version"] = "1.1.1"
+    checkpoint["schema"]["runtime_contract_version"] = "1.1.1"
+
+    persistent_payload = checkpoint["persistent_state"]
+    new_state_digest = compute_checkpoint_state_digest(persistent_payload)
+    checkpoint["integrity"]["checkpoint_state_digest"] = new_state_digest
+
+    report = MigrationReport(
+        source_schema="1.1",
+        target_schema="1.1.1",
+        restored_durable_fields=["all_durable_cognition", "pending_structural_evidence"],
+        reset_transient_fields=[],
+        ignored_runtime_configuration=[],
+        unrecoverable_legacy_state=[],
+        compatibility_result="COMPATIBLE",
+        migration_result="SUCCESS",
+        diagnostic_notes=[
+            "Formation candidate storage keys were reconstructed deterministically from candidate_id and context_signature."
+        ],
+    )
+    return checkpoint, report
+
+
 def migrate_legacy_v1_checkpoint(
     legacy_data: dict[str, Any],
     runtime_enable_prediction: bool = False,
 ) -> tuple[dict[str, Any], MigrationReport]:
-    """Migrates a legacy v1.0 checkpoint to canonical v1.1 persistent state."""
+    """Migrates a legacy v1.0 checkpoint to canonical v1.1.1 persistent state."""
     restored_durable = [
         "logical_time", "durable_node_fields", "durable_edge_fields",
         "contradictions", "concept_hits", "drives", "hypotheses",
@@ -603,7 +698,6 @@ def migrate_legacy_v1_checkpoint(
         "RFC11 pending structural evidence was not serialized by the legacy format and cannot be recovered.",
     ]
 
-    # Convert nodes
     nodes_list = []
     for nid in sorted(legacy_data.get("nodes", {}).keys()):
         ndata = legacy_data["nodes"][nid]
@@ -619,7 +713,6 @@ def migrate_legacy_v1_checkpoint(
             "region": str(ndata["region"]),
         })
 
-    # Convert edges
     edges_list = []
     for edata in legacy_data.get("edges", []):
         ctx_hits = edata.get("ctx_hits", {})
@@ -655,12 +748,13 @@ def migrate_legacy_v1_checkpoint(
     assemblies_list = []
     for adata in legacy_data.get("assemblies", []):
         member_edges_sorted = sorted([[pair[0], pair[1]] for pair in adata.get("member_edges", [])])
+        # parent_assemblies order is preserved per C01-05
         assemblies_list.append({
             "assembly_id": adata["assembly_id"],
             "is_retired": bool(adata.get("is_retired", False)),
             "member_edges": member_edges_sorted,
             "origin_signature": str(adata.get("origin_signature", "")),
-            "parent_assemblies": sorted(adata.get("parent_assemblies", [])),
+            "parent_assemblies": list(adata.get("parent_assemblies", ())),
             "predecessor_version": adata.get("predecessor_version"),
             "version": int(adata["version"]),
         })
@@ -689,13 +783,14 @@ def migrate_legacy_v1_checkpoint(
 
     report = MigrationReport(
         source_schema="1.0",
-        target_schema="1.1",
+        target_schema="1.1.1",
         restored_durable_fields=restored_durable,
         reset_transient_fields=reset_transient,
         ignored_runtime_configuration=ignored_config,
         unrecoverable_legacy_state=unrecoverable_state,
         compatibility_result="COMPATIBLE",
         migration_result="SUCCESS",
+        diagnostic_notes=["RFC11 pending structural evidence was not serialized by v1.0."],
     )
 
     region_digest = compute_region_schema_digest()
@@ -720,221 +815,256 @@ def migrate_legacy_v1_checkpoint(
         },
         "persistent_state": persistent_payload,
         "schema": {
-            "checkpoint_schema_version": "1.1",
+            "checkpoint_schema_version": "1.1.1",
             "cognitive_semantics_version": "1.0",
-            "runtime_contract_version": "1.1",
+            "runtime_contract_version": "1.1.1",
         },
     }
     return migrated_checkpoint, report
 
 
 # ─────────────────────────────────────────────────────────── 11. Canonical Two-Phase Restore
+def _prepare_restored_cognitive_graph(
+    filepath: str | pathlib.Path,
+    policy: AssemblyPolicy | None = None,
+    enable_prediction: bool | None = None,
+) -> tuple[CognitiveGraph, MigrationReport | None]:
+    """Phase A: Internal isolated restore into a NEW CognitiveGraph.
+
+    Constructs a fresh graph and validates all schema, digests, compatibility, and referential constraints.
+    Does NOT transition or manipulate lifecycle guards (caller manages guard).
+    """
+    path = pathlib.Path(filepath).resolve()
+    if not path.exists():
+        raise FileNotFoundError(f"Checkpoint file not found: {path}")
+
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            raw_data = json.load(f)
+    except json.JSONDecodeError as err:
+        raise CheckpointSchemaError(f"Malformed JSON checkpoint: {err}")
+
+    # Detect schema version & dispatch migration
+    migration_report: MigrationReport | None = None
+    if raw_data.get("version") == "1.0" or "schema" not in raw_data:
+        pred_setting = False if enable_prediction is None else enable_prediction
+        checkpoint_data, migration_report = migrate_legacy_v1_checkpoint(raw_data, pred_setting)
+    elif raw_data.get("schema", {}).get("checkpoint_schema_version") == "1.1":
+        checkpoint_data, migration_report = migrate_schema_1_1_to_1_1_1(raw_data)
+    else:
+        checkpoint_data = raw_data
+
+    # Validate schema header
+    schema_sec = checkpoint_data.get("schema", {})
+    schema_ver = schema_sec.get("checkpoint_schema_version")
+    contract_ver = schema_sec.get("runtime_contract_version")
+    cog_sem_ver = schema_sec.get("cognitive_semantics_version")
+
+    if schema_ver != "1.1.1":
+        raise CheckpointSchemaError(
+            f"Unsupported checkpoint_schema_version: '{schema_ver}'"
+        )
+    if contract_ver != "1.1.1":
+        raise CheckpointCompatibilityError(
+            f"Incompatible runtime_contract_version: '{contract_ver}'"
+        )
+    if cog_sem_ver != "1.0":
+        raise CheckpointCompatibilityError(
+            f"Incompatible cognitive_semantics_version: '{cog_sem_ver}'"
+        )
+
+    # Validate numeric finiteness
+    assert_finite_numbers(checkpoint_data, "checkpoint_root")
+
+    # Validate semantic compatibility
+    compat_sec = checkpoint_data.get("compatibility", {})
+    current_region_digest = compute_region_schema_digest()
+    current_law_digest = compute_active_law_digest()
+    current_policy_digest = compute_assembly_policy_digest(policy)
+    current_combined_digest = compute_combined_semantics_digest(
+        region_digest=current_region_digest,
+        law_digest=current_law_digest,
+        policy_digest=current_policy_digest,
+        cognitive_semantics_version=cog_sem_ver or "1.0",
+    )
+
+    if compat_sec.get("region_schema_digest") != current_region_digest:
+        raise CheckpointCompatibilityError(
+            f"Region schema digest mismatch: {compat_sec.get('region_schema_digest')} != {current_region_digest}"
+        )
+    if compat_sec.get("active_law_digest") != current_law_digest:
+        raise CheckpointCompatibilityError(
+            f"Active law digest mismatch: {compat_sec.get('active_law_digest')} != {current_law_digest}"
+        )
+    if compat_sec.get("assembly_policy_digest") != current_policy_digest:
+        raise CheckpointCompatibilityError(
+            f"Assembly policy digest mismatch: {compat_sec.get('assembly_policy_digest')} != {current_policy_digest}"
+        )
+    # Explicit validation of recomputed combined_semantics_digest (C01-04)
+    if compat_sec.get("combined_semantics_digest") != current_combined_digest:
+        raise CheckpointCompatibilityError(
+            f"Combined semantics digest mismatch: recorded {compat_sec.get('combined_semantics_digest')} != computed {current_combined_digest}"
+        )
+
+    # Validate state integrity digest
+    persistent_payload = checkpoint_data.get("persistent_state", {})
+    expected_state_digest = compute_checkpoint_state_digest(persistent_payload)
+    recorded_state_digest = checkpoint_data.get("integrity", {}).get("checkpoint_state_digest")
+    if recorded_state_digest != expected_state_digest:
+        raise CheckpointIntegrityError(
+            f"Checkpoint state digest mismatch: recorded {recorded_state_digest} != computed {expected_state_digest}"
+        )
+
+    # ──────────────── Phase A: Construct NEW CognitiveGraph
+    pred_config = False if enable_prediction is None else enable_prediction
+    new_graph = CognitiveGraph(
+        t=persistent_payload.get("logical_time", 0),
+        enable_prediction=pred_config,
+        concept_hits=dict(persistent_payload.get("concept_hits", {})),
+        drives=dict(persistent_payload.get("drives", {})),
+        hypotheses=copy.deepcopy(persistent_payload.get("hypotheses", [])),
+        dmg=0.0,
+        goal=None,
+        outcome=0.0,
+        log=[],
+        prediction_pool={},
+        prediction_sources={},
+    )
+
+    # Restore contradictions
+    for k, v in persistent_payload.get("contradictions", {}).items():
+        new_graph.X[k] = set(v)
+
+    # Restore Nodes
+    for ndata in persistent_payload.get("nodes", []):
+        node = Node(
+            nid=ndata["nid"],
+            region=ndata["region"],
+            is_concept=ndata.get("is_concept", False),
+            members=set(ndata.get("members", [])),
+            U=float(ndata.get("U", 0.0)),
+            V=float(ndata.get("V", 0.0)),
+            head=ndata.get("head"),
+            is_intrinsic=bool(ndata.get("is_intrinsic", False)),
+            N_total=int(ndata.get("N_total", 0)),
+            A=0.0,
+            t_spawn=-999,
+            episode=None,
+        )
+        new_graph.nodes[node.nid] = node
+
+    # Restore Edges
+    for edata in persistent_payload.get("edges", []):
+        edge = Edge(
+            src=edata["src"],
+            dst=edata["dst"],
+            W=float(edata.get("W", 0.0)),
+            kind=edata.get("kind", "assoc"),
+            origin=edata.get("origin", ""),
+            t_created=int(edata.get("t_created", 0)),
+            t_last_update=int(edata.get("t_last_update", 0)),
+            n=int(edata.get("n", 0)),
+            M_max=float(edata.get("M_max", 1.0)),
+            S=float(edata.get("S", 0.0)),
+            tagged=bool(edata.get("tagged", False)),
+            valence=float(edata.get("valence", 0.0)),
+            lag=float(edata.get("lag", 0.0)),
+            fwd=bool(edata.get("fwd", False)),
+            g=edata.get("g"),
+            contexts=set(edata.get("contexts", [])),
+            ctx_hits=dict(edata.get("ctx_hits", {})),
+            is_intrinsic=bool(edata.get("is_intrinsic", False)),
+            k_fail=int(edata.get("k_fail", 0)),
+        )
+        new_graph.edges[(edge.src, edge.dst)] = edge
+        new_graph.out_adj.setdefault(edge.src, {})[edge.dst] = edge
+        new_graph.in_adj.setdefault(edge.dst, {})[edge.src] = edge
+
+    # Construct NEW AssemblyManager
+    effective_policy = policy or AssemblyPolicy()
+    new_mgr = AssemblyManager(new_graph, effective_policy)
+
+    # Restore Assemblies (preserving parent_assemblies order)
+    for adata in persistent_payload.get("assemblies", []):
+        asm = StructuralAssembly(
+            assembly_id=adata["assembly_id"],
+            version=adata["version"],
+            member_edges=frozenset((pair[0], pair[1]) for pair in adata["member_edges"]),
+            origin_signature=adata["origin_signature"],
+            predecessor_version=adata.get("predecessor_version"),
+            parent_assemblies=tuple(adata.get("parent_assemblies", ())),
+            is_retired=adata.get("is_retired", False),
+        )
+        new_mgr.assemblies.setdefault(asm.assembly_id, []).append(asm)
+
+    # Restore Pending Evidence
+    pending_ev = persistent_payload.get("pending_structural_evidence", {})
+
+    # Formation candidates
+    for cdata in pending_ev.get("pending_candidates", []):
+        storage_key = cdata.get("storage_key")
+        candidate_id = cdata.get("candidate_id")
+        context_signature = cdata.get("context_signature")
+        expected_key = f"{candidate_id}:ctx_{context_signature or 'default'}"
+        if storage_key != expected_key:
+            raise StructuralReferentialIntegrityError(
+                f"Invalid formation candidate storage_key: recorded '{storage_key}' != expected '{expected_key}'"
+            )
+        cand_votes = set(cdata.get("root_votes", []))
+        cand = FormationCandidate(
+            candidate_id=candidate_id,
+            edges=frozenset((pair[0], pair[1]) for pair in cdata["edges"]),
+            context_signature=context_signature,
+            root_votes=cand_votes,
+            created_t=cdata.get("created_t", 0),
+        )
+        new_mgr.pending_candidates[storage_key] = cand
+
+    # Growth candidates
+    for gdata in pending_ev.get("pending_growth", []):
+        g_votes = set(gdata.get("root_votes", []))
+        pair = (gdata["new_edge"][0], gdata["new_edge"][1])
+        growth_key = (gdata["assembly_id"], pair, gdata.get("context"))
+        new_mgr.pending_growth[growth_key] = g_votes
+
+    # Merge candidates
+    for mdata in pending_ev.get("pending_merge", []):
+        m_votes = set(mdata.get("root_votes", []))
+        merge_key = (frozenset(mdata["parent_assembly_ids"]), mdata.get("context"))
+        new_mgr.pending_merge[merge_key] = m_votes
+
+    new_mgr.rebuild_indexes()
+    new_graph._assembly_manager = new_mgr
+
+    validate_structural_referential_integrity(new_graph, new_mgr)
+
+    # Assert Phase-II engines are None
+    assert new_graph._representation_engine is None
+    assert new_graph._completion_engine is None
+    assert new_graph._generation_engine is None
+    assert new_graph._recurrent_engine is None
+    assert new_graph._loop_engine is None
+
+    # Assert AssemblyManager bound to new graph
+    assert new_mgr.graph is new_graph
+
+    return new_graph, migration_report
+
+
 def restore_cognitive_checkpoint(
     filepath: str | pathlib.Path,
     policy: AssemblyPolicy | None = None,
     enable_prediction: bool | None = None,
     guard: RuntimeLifecycleGuard | None = None,
 ) -> tuple[CognitiveGraph, MigrationReport | None]:
-    """Phase A: Two-phase restore into a NEW CognitiveGraph.
-
-    Constructs a fresh graph and fresh runtime root.
-    Validates all schema, digests, compatibility, and referential constraints.
-    Returns (restored_graph, migration_report).
-    """
-    path = pathlib.Path(filepath).resolve()
-    if not path.exists():
-        raise FileNotFoundError(f"Checkpoint file not found: {path}")
-
+    """Standalone restore into a NEW CognitiveGraph under lifecycle guard."""
     active_guard = guard or RuntimeLifecycleGuard()
     with active_guard.restoring():
-        try:
-            with open(path, "r", encoding="utf-8") as f:
-                raw_data = json.load(f)
-        except json.JSONDecodeError as err:
-            raise CheckpointSchemaError(f"Malformed JSON checkpoint: {err}")
-
-        # Detect schema version
-        migration_report: MigrationReport | None = None
-        if raw_data.get("version") == "1.0" or "schema" not in raw_data:
-            # Legacy v1.0 migration
-            pred_setting = False if enable_prediction is None else enable_prediction
-            checkpoint_data, migration_report = migrate_legacy_v1_checkpoint(raw_data, pred_setting)
-        else:
-            checkpoint_data = raw_data
-
-        # Validate schema header
-        schema_sec = checkpoint_data.get("schema", {})
-        if schema_sec.get("checkpoint_schema_version") != "1.1":
-            raise CheckpointSchemaError(
-                f"Unsupported checkpoint_schema_version: {schema_sec.get('checkpoint_schema_version')}"
-            )
-        if schema_sec.get("cognitive_semantics_version") != "1.0":
-            raise CheckpointCompatibilityError(
-                f"Incompatible cognitive_semantics_version: {schema_sec.get('cognitive_semantics_version')}"
-            )
-
-        # Validate numeric finiteness
-        assert_finite_numbers(checkpoint_data, "checkpoint_root")
-
-        # Validate semantic compatibility
-        compat_sec = checkpoint_data.get("compatibility", {})
-        current_region_digest = compute_region_schema_digest()
-        current_law_digest = compute_active_law_digest()
-        current_policy_digest = compute_assembly_policy_digest(policy)
-
-        if compat_sec.get("region_schema_digest") != current_region_digest:
-            raise CheckpointCompatibilityError(
-                f"Region schema digest mismatch: {compat_sec.get('region_schema_digest')} != {current_region_digest}"
-            )
-        if compat_sec.get("active_law_digest") != current_law_digest:
-            raise CheckpointCompatibilityError(
-                f"Active law digest mismatch: {compat_sec.get('active_law_digest')} != {current_law_digest}"
-            )
-        if compat_sec.get("assembly_policy_digest") != current_policy_digest:
-            raise CheckpointCompatibilityError(
-                f"Assembly policy digest mismatch: {compat_sec.get('assembly_policy_digest')} != {current_policy_digest}"
-            )
-
-        # Validate state integrity digest
-        persistent_payload = checkpoint_data.get("persistent_state", {})
-        expected_state_digest = compute_checkpoint_state_digest(persistent_payload)
-        recorded_state_digest = checkpoint_data.get("integrity", {}).get("checkpoint_state_digest")
-        if recorded_state_digest != expected_state_digest:
-            raise CheckpointIntegrityError(
-                f"Checkpoint state digest mismatch: recorded {recorded_state_digest} != computed {expected_state_digest}"
-            )
-
-        # ──────────────── Phase A: Construct NEW CognitiveGraph
-        pred_config = False if enable_prediction is None else enable_prediction
-        new_graph = CognitiveGraph(
-            t=persistent_payload.get("logical_time", 0),
-            enable_prediction=pred_config,
-            concept_hits=dict(persistent_payload.get("concept_hits", {})),
-            drives=dict(persistent_payload.get("drives", {})),
-            hypotheses=copy.deepcopy(persistent_payload.get("hypotheses", [])),
-            # Transient operational state strictly initialized quiescent:
-            dmg=0.0,
-            goal=None,
-            outcome=0.0,
-            log=[],
-            prediction_pool={},
-            prediction_sources={},
+        return _prepare_restored_cognitive_graph(
+            filepath=filepath,
+            policy=policy,
+            enable_prediction=enable_prediction,
         )
-
-        # Restore contradictions
-        for k, v in persistent_payload.get("contradictions", {}).items():
-            new_graph.X[k] = set(v)
-
-        # Restore Nodes
-        for ndata in persistent_payload.get("nodes", []):
-            node = Node(
-                nid=ndata["nid"],
-                region=ndata["region"],
-                is_concept=ndata.get("is_concept", False),
-                members=set(ndata.get("members", [])),
-                U=float(ndata.get("U", 0.0)),
-                V=float(ndata.get("V", 0.0)),
-                head=ndata.get("head"),
-                is_intrinsic=bool(ndata.get("is_intrinsic", False)),
-                N_total=int(ndata.get("N_total", 0)),
-                # Node transient activation strictly reset:
-                A=0.0,
-                t_spawn=-999,
-                episode=None,
-            )
-            new_graph.nodes[node.nid] = node
-
-        # Restore Edges
-        for edata in persistent_payload.get("edges", []):
-            edge = Edge(
-                src=edata["src"],
-                dst=edata["dst"],
-                W=float(edata.get("W", 0.0)),
-                kind=edata.get("kind", "assoc"),
-                origin=edata.get("origin", ""),
-                t_created=int(edata.get("t_created", 0)),
-                t_last_update=int(edata.get("t_last_update", 0)),
-                n=int(edata.get("n", 0)),
-                M_max=float(edata.get("M_max", 1.0)),
-                S=float(edata.get("S", 0.0)),
-                tagged=bool(edata.get("tagged", False)),
-                valence=float(edata.get("valence", 0.0)),
-                lag=float(edata.get("lag", 0.0)),
-                fwd=bool(edata.get("fwd", False)),
-                g=edata.get("g"),
-                contexts=set(edata.get("contexts", [])),
-                ctx_hits=dict(edata.get("ctx_hits", {})),
-                is_intrinsic=bool(edata.get("is_intrinsic", False)),
-                k_fail=int(edata.get("k_fail", 0)),
-            )
-            new_graph.edges[(edge.src, edge.dst)] = edge
-            # Reconstructible indexes rebuilt
-            new_graph.out_adj.setdefault(edge.src, {})[edge.dst] = edge
-            new_graph.in_adj.setdefault(edge.dst, {})[edge.src] = edge
-
-        # Construct NEW AssemblyManager
-        new_mgr = AssemblyManager(new_graph, policy or AssemblyPolicy())
-
-        # Restore Assemblies
-        for adata in persistent_payload.get("assemblies", []):
-            asm = StructuralAssembly(
-                assembly_id=adata["assembly_id"],
-                version=adata["version"],
-                member_edges=frozenset((pair[0], pair[1]) for pair in adata["member_edges"]),
-                origin_signature=adata["origin_signature"],
-                predecessor_version=adata.get("predecessor_version"),
-                parent_assemblies=tuple(adata.get("parent_assemblies", ())),
-                is_retired=adata.get("is_retired", False),
-            )
-            new_mgr.assemblies.setdefault(asm.assembly_id, []).append(asm)
-
-        # Restore Pending Evidence
-        pending_ev = persistent_payload.get("pending_structural_evidence", {})
-
-        # Formation candidates
-        for cdata in pending_ev.get("pending_candidates", []):
-            cand_votes = set(cdata.get("root_votes", []))
-            cand = FormationCandidate(
-                candidate_id=cdata["candidate_id"],
-                edges=frozenset((pair[0], pair[1]) for pair in cdata["edges"]),
-                context_signature=cdata.get("context_signature"),
-                root_votes=cand_votes,
-                created_t=cdata.get("created_t", 0),
-            )
-            new_mgr.pending_candidates[cand.candidate_id] = cand
-
-        # Growth candidates
-        for gdata in pending_ev.get("pending_growth", []):
-            g_votes = set(gdata.get("root_votes", []))
-            pair = (gdata["new_edge"][0], gdata["new_edge"][1])
-            growth_key = (gdata["assembly_id"], pair, gdata.get("context"))
-            new_mgr.pending_growth[growth_key] = g_votes
-
-        # Merge candidates
-        for mdata in pending_ev.get("pending_merge", []):
-            m_votes = set(mdata.get("root_votes", []))
-            merge_key = (frozenset(mdata["parent_assembly_ids"]), mdata.get("context"))
-            new_mgr.pending_merge[merge_key] = m_votes
-
-        # Rebuild AssemblyManager derived indexes
-        new_mgr.rebuild_indexes()
-        new_graph._assembly_manager = new_mgr
-
-        # Validate structural referential integrity on the newly constructed graph
-        validate_structural_referential_integrity(new_graph, new_mgr)
-
-        # Fresh Engine Postcondition (Section 15):
-        # All Phase-II engines must be None immediately after restore
-        assert new_graph._representation_engine is None
-        assert new_graph._completion_engine is None
-        assert new_graph._generation_engine is None
-        assert new_graph._recurrent_engine is None
-        assert new_graph._loop_engine is None
-
-        # Verify AssemblyManager graph binding
-        assert new_mgr.graph is new_graph
-
-        return new_graph, migration_report
 
 
 # ─────────────────────────────────────────────────────────── 12. Runtime Root Container
@@ -953,9 +1083,20 @@ class RuntimeRoot:
         guard: RuntimeLifecycleGuard | None = None,
     ) -> None:
         self.graph = graph
-        self.policy = policy or AssemblyPolicy()
         self.enable_prediction = enable_prediction
         self.guard = guard or RuntimeLifecycleGuard()
+
+        # Policy Provenance Rule (Section 9)
+        if policy is not None:
+            if graph._assembly_manager is not None and not policies_semantically_equal(graph._assembly_manager.policy, policy):
+                raise CheckpointCompatibilityError(
+                    "Explicit policy differs from graph AssemblyManager policy"
+                )
+            self.policy = policy
+        elif graph._assembly_manager is not None:
+            self.policy = graph._assembly_manager.policy
+        else:
+            self.policy = AssemblyPolicy()
 
     def save_checkpoint(
         self,
@@ -974,21 +1115,23 @@ class RuntimeRoot:
     def restore_checkpoint(
         self,
         filepath: str | pathlib.Path,
+        _on_pre_swap: Any | None = None,
     ) -> tuple[CognitiveGraph, MigrationReport | None]:
         """Atomic two-phase restore.
 
         Phase A: Prepares and validates a new CognitiveGraph in isolation.
-        Phase B: Commits by swapping self.graph to the new graph.
-        If Phase A fails, self.graph remains object-identical and authoritative.
+        Phase B: Commits by swapping self.graph to the new graph while still RESTORING.
+        If Phase A fails, self.graph remains object-identical and guard returns to IDLE.
         """
-        # Phase A: Construct and validate new graph in isolation
-        new_graph, report = restore_cognitive_checkpoint(
-            filepath=filepath,
-            policy=self.policy,
-            enable_prediction=self.enable_prediction,
-            guard=self.guard,
-        )
-
-        # Phase B: Atomic Root Swap
-        self.graph = new_graph
-        return self.graph, report
+        with self.guard.restoring():
+            new_graph, report = _prepare_restored_cognitive_graph(
+                filepath=filepath,
+                policy=self.policy,
+                enable_prediction=self.enable_prediction,
+            )
+            if _on_pre_swap is not None:
+                _on_pre_swap(self.guard.state)
+            # Root swap occurs strictly while guard.state is RESTORING (C01-03 / C01-I08)
+            assert self.guard.state == RuntimeLifecycleState.RESTORING
+            self.graph = new_graph
+            return self.graph, report
