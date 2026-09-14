@@ -192,6 +192,7 @@ class PatternCompletionEngine:
         self,
         representation: SparseDistributedCognitiveRepresentation,
         rcc_filter: str | None = None,
+        canonical_identity: bool = False,
     ) -> list[PatternCandidate]:
         """اكتشاف مرشحي الأنماط محلياً انطلاقاً من عناصر التمثيل الحالي الحاضرة فعلياً.
 
@@ -243,8 +244,21 @@ class PatternCompletionEngine:
                             scopes.update(rec.scope_refs)
                     scope_tuple = tuple(sorted(scopes)) if scopes else ("global",)
 
-                    cid_parts = [asm.assembly_id, ",".join(sorted(seeds)), ",".join(scope_tuple), ctx or "none"]
-                    cid = f"cand_asm_{hashlib.sha256('|'.join(cid_parts).encode('utf-8')).hexdigest()[:12]}"
+                    if canonical_identity:
+                        from .causal_identity import derive_pattern_candidate_id
+                        cid = derive_pattern_candidate_id(
+                            parent_representation_id=representation.representation_id,
+                            candidate_kind="structural_assembly",
+                            seed_refs=sorted(seeds),
+                            structural_refs=sorted(structural_refs),
+                            assembly_refs=sorted([asm.assembly_id]),
+                            scope_view=scope_tuple,
+                            context_ref=ctx,
+                            prefix="cand_",
+                        )
+                    else:
+                        cid_parts = [asm.assembly_id, ",".join(sorted(seeds)), ",".join(scope_tuple), ctx or "none"]
+                        cid = f"cand_asm_{hashlib.sha256('|'.join(cid_parts).encode('utf-8')).hexdigest()[:12]}"
 
                     if cid not in candidates_map:
                         cand = PatternCandidate(
@@ -335,6 +349,7 @@ class PatternCompletionEngine:
         candidate: PatternCandidate,
         representation: SparseDistributedCognitiveRepresentation,
         settling_epoch: SettlingEpoch | None = None,
+        canonical_identity: bool = False,
     ) -> list[ReinstatementProposal]:
         """تقييم أهلية الاستعادة باستخدام فيزياء القانون 4 والقانون 7 القائمة دون أي عتبات أو مكافآت جديدة."""
         proposals: list[ReinstatementProposal] = []
@@ -383,8 +398,20 @@ class PatternCompletionEngine:
 
             # شرط الأهلية: تجاوز أدنى إشارة معتبرة للنظام (MIN_SIGNAL)
             if estimated_a > Law.MIN_SIGNAL:
-                qid_parts = [candidate.candidate_id, target, ",".join(candidate.scope_view), str(t_now)]
-                qid = f"rp_{hashlib.sha256('|'.join(qid_parts).encode('utf-8')).hexdigest()[:12]}"
+                if canonical_identity:
+                    from .causal_identity import derive_reinstatement_proposal_id
+                    qid = derive_reinstatement_proposal_id(
+                        settling_epoch_id=settling_epoch.epoch_id if settling_epoch else None,
+                        parent_representation_id=representation.representation_id,
+                        candidate_id=candidate.candidate_id,
+                        target_ref=target,
+                        scope_view=candidate.scope_view,
+                        role_ref=candidate.role_ref,
+                        prefix="rp_",
+                    )
+                else:
+                    qid_parts = [candidate.candidate_id, target, ",".join(candidate.scope_view), str(t_now)]
+                    qid = f"rp_{hashlib.sha256('|'.join(qid_parts).encode('utf-8')).hexdigest()[:12]}"
                 proposal = ReinstatementProposal(
                     proposal_id=qid,
                     parent_representation_id=representation.representation_id,
@@ -557,6 +584,9 @@ class PatternCompletionEngine:
         self,
         initial_representation: SparseDistributedCognitiveRepresentation,
         budget: float = Law.E_BUDGET_0,
+        root_authority_ref: str | None = None,
+        work_ref: Any = None,
+        canonical_identity: bool = False,
     ) -> tuple[SparseDistributedCognitiveRepresentation, SettlingOutcomeView]:
         """تشغيل دورة الاستقرار المتكرر للقانون 15 عبر لقطات SDCR متتالية حتى التوقف الحتمي."""
         t_start = self._graph.t
@@ -564,7 +594,17 @@ class PatternCompletionEngine:
         root_authority = frozenset(initial_representation.participating_node_refs)
         memory_snap = self.get_memory_snapshot_ref()
 
-        epoch_id = f"se_{hashlib.sha256(f'{root_rid}|{t_start}|{memory_snap}'.encode()).hexdigest()[:12]}"
+        if canonical_identity or root_authority_ref is not None:
+            from .causal_identity import derive_settling_epoch_id
+            epoch_id = derive_settling_epoch_id(
+                root_representation_id=root_rid,
+                root_causal_authority_ref=root_authority_ref or root_rid,
+                memory_snapshot_ref=memory_snap,
+                work_ref=work_ref or t_start,
+                prefix="se_",
+            )
+        else:
+            epoch_id = f"se_{hashlib.sha256(f'{root_rid}|{t_start}|{memory_snap}'.encode()).hexdigest()[:12]}"
         epoch = SettlingEpoch(
             epoch_id=epoch_id,
             root_representation_id=root_rid,

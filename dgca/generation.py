@@ -704,6 +704,7 @@ class HierarchicalGenerativeEngine:
         parent_representation_id: str,
         language_context: str = "en",
         budget: float = 1.0,
+        canonical_identity: bool = False,
     ) -> SurfaceChunk:
         """
         تحقيق القطعة السطحية الكاملة وتأكيد نسب التوليد (RFC-14.5 / RFC-14.6).
@@ -714,7 +715,17 @@ class HierarchicalGenerativeEngine:
         for i, occ in enumerate(prefix.committed_occurrences):
             bundle = self.build_surface_bundle(occ, language_context)
             for form in bundle.internal_order_view:
-                unit_id = f"su_{parent_representation_id[:8]}_{i}_{form}"
+                if canonical_identity:
+                    from .causal_identity import derive_surface_unit_id
+                    unit_id = derive_surface_unit_id(
+                        parent_representation_id=parent_representation_id,
+                        source_occurrence_ref=occ.occurrence_id,
+                        unit_index=i,
+                        surface_form=form,
+                        prefix="su_",
+                    )
+                else:
+                    unit_id = f"su_{parent_representation_id[:8]}_{i}_{form}"
                 alignment = SourceAlignment(
                     surface_unit_id=unit_id,
                     source_occurrence_ref=occ.occurrence_id,
@@ -741,7 +752,18 @@ class HierarchicalGenerativeEngine:
             closure_reason = "PARTIAL_BUDGET"
 
         rendered_text = " ".join(rendered_words)
-        chunk_id = f"chunk_{hashlib.sha256((parent_representation_id + rendered_text).encode()).hexdigest()[:12]}"
+        if canonical_identity:
+            from .causal_identity import derive_surface_chunk_id
+            chunk_id = derive_surface_chunk_id(
+                parent_representation_id=parent_representation_id,
+                ordered_surface_unit_ids=[u.unit_id for u in surface_units],
+                rendered_text=rendered_text,
+                closure_reason="COMPLETED",
+                origin_lineage="generation",
+                prefix="chunk_",
+            )
+        else:
+            chunk_id = f"chunk_{hashlib.sha256((parent_representation_id + rendered_text).encode()).hexdigest()[:12]}"
 
         return SurfaceChunk(
             chunk_id=chunk_id,

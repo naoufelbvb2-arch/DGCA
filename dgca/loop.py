@@ -696,7 +696,10 @@ class UnifiedGenerativeCognitiveLoopEngine:
             )
 
         # حدث مستقل تماماً يمثل جذراً جديداً
-        new_root_id = f"root_{hashlib.sha256(event.event_id.encode()).hexdigest()[:12]}"
+        if hasattr(event, "root_external_episode_id") and event.root_external_episode_id:
+            new_root_id = event.root_external_episode_id
+        else:
+            new_root_id = f"root_{hashlib.sha256(event.event_id.encode()).hexdigest()[:12]}"
         self._active_roots.add(new_root_id)
         return (
             TaskRelationView(
@@ -707,6 +710,8 @@ class UnifiedGenerativeCognitiveLoopEngine:
             ),
             None,
         )
+
+    determine_task_relation = process_task_relation
 
     # ── Phase 9: Quiescence & Bounded Termination ──
 

@@ -28,6 +28,20 @@ from .assembly import (
     StructuralAssembly,
     canonical_assembly_id,
 )
+from .causal_identity import (
+    CAUSAL_IDENTITY_PROTOCOL_DIGEST,
+    CanonicalLineageState,
+    CanonicalR1RuntimeRoot,
+    CausalCommitLedger,
+    CausalIdentityValidationError,
+    CausalLineageInvalidatedError,
+    CausalRuntimeFailStopError,
+    CausalRuntimeHealth,
+    compute_causal_provenance_digest,
+    compute_checkpoint_bundle_digest,
+    compute_observation_protocol_digest,
+    derive_causal_provenance_epoch_id,
+)
 from .config import REGIONS, Law
 from .graph import CognitiveGraph, Edge, Node
 
@@ -292,16 +306,41 @@ def validate_canonical_persistent_shape(
     data: dict[str, Any],
     schema_label: str = "1.1.1",
 ) -> None:
-    """Validates top-level sections and all frozen durable persistent fields without defaulting (C03-04 / C03-I05)."""
+    """Validates top-level sections and all frozen durable persistent fields without defaulting (C03-04 / C03-I05 / R1-061)."""
     if not isinstance(data, dict):
         raise CheckpointSchemaError(f"{schema_label} checkpoint must be a JSON object (dict)")
 
-    top_level_keys = ["schema", "compatibility", "integrity", "persistent_state"]
+    if schema_label == "1.2.0":
+        top_level_keys = ["schema", "compatibility", "integrity", "persistent_state", "causal_provenance_state"]
+    else:
+        top_level_keys = ["schema", "compatibility", "integrity", "persistent_state"]
+
     for k in top_level_keys:
         if k not in data or not isinstance(data[k], dict):
             raise CheckpointSchemaError(
                 f"Missing or invalid top-level section '{k}' in {schema_label} checkpoint"
             )
+
+    if schema_label == "1.2.0":
+        prov_state = data["causal_provenance_state"]
+        required_prov = ["causal_provenance_epoch", "committed_event_bindings", "committed_transactions"]
+        for pk in required_prov:
+            if pk not in prov_state or not isinstance(prov_state[pk], dict):
+                raise CheckpointSchemaError(
+                    f"Missing or invalid causal_provenance_state section '{pk}' in 1.2.0 checkpoint"
+                )
+        epoch_data = prov_state["causal_provenance_epoch"]
+        for ek in ["epoch_id", "history_status", "base_state_digest"]:
+            if ek not in epoch_data or not isinstance(epoch_data[ek], str) or not epoch_data[ek].strip():
+                raise CheckpointSchemaError(
+                    f"Missing or invalid field '{ek}' in causal_provenance_epoch"
+                )
+        integrity = data["integrity"]
+        for ik in ["checkpoint_state_digest", "causal_provenance_digest", "checkpoint_bundle_digest"]:
+            if ik not in integrity or not isinstance(integrity[ik], str) or not integrity[ik].strip():
+                raise CheckpointIntegrityError(
+                    f"Missing or invalid integrity field '{ik}' in 1.2.0 checkpoint"
+                )
 
     pstate = data["persistent_state"]
     required_pstate: dict[str, tuple[type, ...]] = {
@@ -1096,112 +1135,15 @@ def migrate_legacy_v1_checkpoint(
 
 
 # ─────────────────────────────────────────────────────────── 11. Canonical Two-Phase Restore
-def _prepare_restored_cognitive_graph(
-    filepath: str | pathlib.Path,
+def _restore_graph_from_persistent_payload(
+    persistent_payload: dict[str, Any],
     policy: AssemblyPolicy | None = None,
-    enable_prediction: bool | None = None,
-) -> tuple[CognitiveGraph, MigrationReport | None]:
-    """Phase A: Internal isolated restore into a NEW CognitiveGraph.
-
-    Constructs a fresh graph and validates all schema, digests, compatibility, and referential constraints.
-    Does NOT transition or manipulate lifecycle guards (caller manages guard).
-    """
-    path = pathlib.Path(filepath).resolve()
-    if not path.exists():
-        raise FileNotFoundError(f"Checkpoint file not found: {path}")
-
-    raw_data = load_checkpoint_json(path)
-
-    # Strict Source-Family Recognition (C03-01 / C03-I01)
-    if not isinstance(raw_data, dict):
-        raise CheckpointSchemaError("Checkpoint root must be a JSON object (dict)")
-
-    has_schema = "schema" in raw_data
-    schema_val = raw_data.get("schema")
-
-    migration_report: MigrationReport | None = None
-    if raw_data.get("version") == "1.0" and not has_schema:
-        pred_setting = False if enable_prediction is None else enable_prediction
-        checkpoint_data, migration_report = migrate_legacy_v1_checkpoint(raw_data, pred_setting)
-    elif has_schema and isinstance(schema_val, dict) and schema_val.get("checkpoint_schema_version") == "1.1":
-        checkpoint_data, migration_report = migrate_schema_1_1_to_1_1_1(raw_data, policy=policy)
-    elif has_schema and isinstance(schema_val, dict) and schema_val.get("checkpoint_schema_version") == "1.1.1":
-        checkpoint_data = raw_data
-    else:
-        raise CheckpointSchemaError(
-            "Unrecognized checkpoint family. Expected schema.checkpoint_schema_version == '1.1.1' "
-            "or '1.1', or explicit legacy version == '1.0' without schema."
-        )
-
-    # Canonical 1.1.1 Shape Validation (C03-04 / C03-I05)
-    validate_canonical_persistent_shape(checkpoint_data, schema_label="1.1.1")
-
-    # Validate schema header
-    schema_sec = checkpoint_data["schema"]
-    schema_ver = schema_sec.get("checkpoint_schema_version")
-    contract_ver = schema_sec.get("runtime_contract_version")
-    cog_sem_ver = schema_sec.get("cognitive_semantics_version")
-
-    if schema_ver != "1.1.1":
-        raise CheckpointSchemaError(
-            f"Unsupported checkpoint_schema_version: '{schema_ver}'"
-        )
-    if contract_ver != "1.1.1":
-        raise CheckpointCompatibilityError(
-            f"Incompatible runtime_contract_version: '{contract_ver}'"
-        )
-    if cog_sem_ver != "1.0":
-        raise CheckpointCompatibilityError(
-            f"Incompatible cognitive_semantics_version: '{cog_sem_ver}'"
-        )
-
-    # Validate numeric finiteness
-    assert_finite_numbers(checkpoint_data, "checkpoint_root")
-
-    # Validate semantic compatibility
-    compat_sec = checkpoint_data.get("compatibility", {})
-    current_region_digest = compute_region_schema_digest()
-    current_law_digest = compute_active_law_digest()
-    current_policy_digest = compute_assembly_policy_digest(policy)
-    current_combined_digest = compute_combined_semantics_digest(
-        region_digest=current_region_digest,
-        law_digest=current_law_digest,
-        policy_digest=current_policy_digest,
-        cognitive_semantics_version=cog_sem_ver or "1.0",
-    )
-
-    if compat_sec.get("region_schema_digest") != current_region_digest:
-        raise CheckpointCompatibilityError(
-            f"Region schema digest mismatch: {compat_sec.get('region_schema_digest')} != {current_region_digest}"
-        )
-    if compat_sec.get("active_law_digest") != current_law_digest:
-        raise CheckpointCompatibilityError(
-            f"Active law digest mismatch: {compat_sec.get('active_law_digest')} != {current_law_digest}"
-        )
-    if compat_sec.get("assembly_policy_digest") != current_policy_digest:
-        raise CheckpointCompatibilityError(
-            f"Assembly policy digest mismatch: {compat_sec.get('assembly_policy_digest')} != {current_policy_digest}"
-        )
-    # Explicit validation of recomputed combined_semantics_digest (C01-04)
-    if compat_sec.get("combined_semantics_digest") != current_combined_digest:
-        raise CheckpointCompatibilityError(
-            f"Combined semantics digest mismatch: recorded {compat_sec.get('combined_semantics_digest')} != computed {current_combined_digest}"
-        )
-
-    # Validate state integrity digest
-    persistent_payload = checkpoint_data.get("persistent_state", {})
-    expected_state_digest = compute_checkpoint_state_digest(persistent_payload)
-    recorded_state_digest = checkpoint_data.get("integrity", {}).get("checkpoint_state_digest")
-    if recorded_state_digest != expected_state_digest:
-        raise CheckpointIntegrityError(
-            f"Checkpoint state digest mismatch: recorded {recorded_state_digest} != computed {expected_state_digest}"
-        )
-
-    # ──────────────── Phase A: Construct NEW CognitiveGraph
-    pred_config = False if enable_prediction is None else enable_prediction
+    enable_prediction: bool = False,
+) -> tuple[CognitiveGraph, AssemblyManager]:
+    """Constructs a fresh CognitiveGraph and AssemblyManager from persistent payload."""
     new_graph = CognitiveGraph(
         t=persistent_payload.get("logical_time", 0),
-        enable_prediction=pred_config,
+        enable_prediction=enable_prediction,
         concept_hits=dict(persistent_payload.get("concept_hits", {})),
         drives=dict(persistent_payload.get("drives", {})),
         hypotheses=copy.deepcopy(persistent_payload.get("hypotheses", [])),
@@ -1426,6 +1368,118 @@ def _prepare_restored_cognitive_graph(
     # Assert AssemblyManager bound to new graph
     assert new_mgr.graph is new_graph
 
+    return new_graph, new_mgr
+
+
+
+def _prepare_restored_cognitive_graph(
+    filepath: str | pathlib.Path,
+    policy: AssemblyPolicy | None = None,
+    enable_prediction: bool | None = None,
+) -> tuple[CognitiveGraph, MigrationReport | None]:
+    """Phase A: Internal isolated restore into a NEW CognitiveGraph.
+
+    Constructs a fresh graph and validates all schema, digests, compatibility, and referential constraints.
+    Does NOT transition or manipulate lifecycle guards (caller manages guard).
+    """
+    path = pathlib.Path(filepath).resolve()
+    if not path.exists():
+        raise FileNotFoundError(f"Checkpoint file not found: {path}")
+
+    raw_data = load_checkpoint_json(path)
+
+    # Strict Source-Family Recognition (C03-01 / C03-I01)
+    if not isinstance(raw_data, dict):
+        raise CheckpointSchemaError("Checkpoint root must be a JSON object (dict)")
+
+    has_schema = "schema" in raw_data
+    schema_val = raw_data.get("schema")
+
+    migration_report: MigrationReport | None = None
+    if raw_data.get("version") == "1.0" and not has_schema:
+        pred_setting = False if enable_prediction is None else enable_prediction
+        checkpoint_data, migration_report = migrate_legacy_v1_checkpoint(raw_data, pred_setting)
+    elif has_schema and isinstance(schema_val, dict) and schema_val.get("checkpoint_schema_version") == "1.1":
+        checkpoint_data, migration_report = migrate_schema_1_1_to_1_1_1(raw_data, policy=policy)
+    elif has_schema and isinstance(schema_val, dict) and schema_val.get("checkpoint_schema_version") in ("1.1.1", "1.2.0"):
+        checkpoint_data = raw_data
+    else:
+        raise CheckpointSchemaError(
+            "Unrecognized checkpoint family. Expected schema.checkpoint_schema_version in ('1.2.0', '1.1.1', '1.1') "
+            "or explicit legacy version == '1.0' without schema."
+        )
+
+    cur_schema_label = schema_val.get("checkpoint_schema_version") if (has_schema and isinstance(schema_val, dict)) else "1.1.1"
+    validate_canonical_persistent_shape(checkpoint_data, schema_label=cur_schema_label)
+
+    # Validate schema header
+    schema_sec = checkpoint_data["schema"]
+    schema_ver = schema_sec.get("checkpoint_schema_version")
+    contract_ver = schema_sec.get("runtime_contract_version")
+    cog_sem_ver = schema_sec.get("cognitive_semantics_version")
+
+    if schema_ver not in ("1.1.1", "1.2.0"):
+        raise CheckpointSchemaError(
+            f"Unsupported checkpoint_schema_version: '{schema_ver}'"
+        )
+    if contract_ver != schema_ver:
+        raise CheckpointCompatibilityError(
+            f"Incompatible runtime_contract_version: '{contract_ver}'"
+        )
+    if cog_sem_ver != "1.0":
+        raise CheckpointCompatibilityError(
+            f"Incompatible cognitive_semantics_version: '{cog_sem_ver}'"
+        )
+
+    # Validate numeric finiteness
+    assert_finite_numbers(checkpoint_data, "checkpoint_root")
+
+    # Validate semantic compatibility
+    compat_sec = checkpoint_data.get("compatibility", {})
+    current_region_digest = compute_region_schema_digest()
+    current_law_digest = compute_active_law_digest()
+    current_policy_digest = compute_assembly_policy_digest(policy)
+    current_combined_digest = compute_combined_semantics_digest(
+        region_digest=current_region_digest,
+        law_digest=current_law_digest,
+        policy_digest=current_policy_digest,
+        cognitive_semantics_version=cog_sem_ver or "1.0",
+    )
+
+    if compat_sec.get("region_schema_digest") != current_region_digest:
+        raise CheckpointCompatibilityError(
+            f"Region schema digest mismatch: {compat_sec.get('region_schema_digest')} != {current_region_digest}"
+        )
+    if compat_sec.get("active_law_digest") != current_law_digest:
+        raise CheckpointCompatibilityError(
+            f"Active law digest mismatch: {compat_sec.get('active_law_digest')} != {current_law_digest}"
+        )
+    if compat_sec.get("assembly_policy_digest") != current_policy_digest:
+        raise CheckpointCompatibilityError(
+            f"Assembly policy digest mismatch: {compat_sec.get('assembly_policy_digest')} != {current_policy_digest}"
+        )
+    # Explicit validation of recomputed combined_semantics_digest (C01-04)
+    if compat_sec.get("combined_semantics_digest") != current_combined_digest:
+        raise CheckpointCompatibilityError(
+            f"Combined semantics digest mismatch: recorded {compat_sec.get('combined_semantics_digest')} != computed {current_combined_digest}"
+        )
+
+    # Validate state integrity digest
+    persistent_payload = checkpoint_data.get("persistent_state", {})
+    expected_state_digest = compute_checkpoint_state_digest(persistent_payload)
+    recorded_state_digest = checkpoint_data.get("integrity", {}).get("checkpoint_state_digest")
+    if recorded_state_digest != expected_state_digest:
+        raise CheckpointIntegrityError(
+            f"Checkpoint state digest mismatch: recorded {recorded_state_digest} != computed {expected_state_digest}"
+        )
+
+    # ──────────────── Phase A: Construct NEW CognitiveGraph
+    pred_config = False if enable_prediction is None else enable_prediction
+    new_graph, _ = _restore_graph_from_persistent_payload(
+        persistent_payload=persistent_payload,
+        policy=policy,
+        enable_prediction=pred_config,
+    )
     return new_graph, migration_report
 
 
@@ -1513,3 +1567,376 @@ class RuntimeRoot:
             assert self.guard.state == RuntimeLifecycleState.RESTORING
             self.graph = new_graph
             return self.graph, report
+
+
+# ─────────────────────────────────────────────────────────── R1 Checkpoint 1.2.0 Functions
+def build_canonical_r1_checkpoint(
+    graph: CognitiveGraph,
+    ledger: CausalCommitLedger,
+    observation_protocol_version: str,
+    policy: AssemblyPolicy | None = None,
+    diagnostic_metadata: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Constructs the canonical top-level DGCA_COGNITIVE_CHECKPOINT v1.2.0 structure (Section 61)."""
+    if not isinstance(observation_protocol_version, str) or not observation_protocol_version.strip():
+        raise CausalIdentityValidationError(
+            "Canonical R1 checkpoint requires an explicit non-empty observation_protocol_version"
+        )
+    pol = resolve_effective_policy(graph, policy)
+
+    # 1. Referential integrity check
+    validate_structural_referential_integrity(graph, graph._assembly_manager)
+
+    # 2. Extract canonical persistent payload (exact R0 persistent payload unchanged)
+    persistent_payload = extract_canonical_persistent_payload(graph, pol)
+
+    # 3. Compute digests
+    state_digest = compute_checkpoint_state_digest(persistent_payload)
+    region_digest = compute_region_schema_digest()
+    law_digest = compute_active_law_digest()
+    policy_digest = compute_assembly_policy_digest(pol)
+    combined_digest = compute_combined_semantics_digest(region_digest, law_digest, policy_digest, "1.0")
+
+    # 4. R1 Protocol digests
+    identity_protocol_digest = CAUSAL_IDENTITY_PROTOCOL_DIGEST
+    obs_protocol_digest = compute_observation_protocol_digest(observation_protocol_version)
+
+    # 5. Causal provenance payload & digest
+    causal_provenance_payload = ledger.to_dict()
+    provenance_digest = compute_causal_provenance_digest(causal_provenance_payload)
+
+    # 6. Structured bundle digest
+    bundle_digest = compute_checkpoint_bundle_digest(
+        checkpoint_state_digest=state_digest,
+        causal_provenance_digest=provenance_digest,
+        combined_semantics_digest=combined_digest,
+        causal_identity_protocol_digest=identity_protocol_digest,
+        observation_protocol_digest=obs_protocol_digest,
+        causal_provenance_epoch=causal_provenance_payload["causal_provenance_epoch"],
+    )
+
+    metadata = {
+        "provenance": "DGCA_R1_CANONICAL",
+        "source_schema": "1.2.0",
+    }
+    if diagnostic_metadata:
+        metadata.update(diagnostic_metadata)
+
+    return {
+        "checkpoint_type": "DGCA_COGNITIVE_CHECKPOINT",
+        "compatibility": {
+            "active_law_digest": law_digest,
+            "assembly_policy_digest": policy_digest,
+            "causal_identity_protocol_digest": identity_protocol_digest,
+            "combined_semantics_digest": combined_digest,
+            "observation_protocol_digest": obs_protocol_digest,
+            "region_schema_digest": region_digest,
+        },
+        "diagnostic_metadata": metadata,
+        "integrity": {
+            "causal_provenance_digest": provenance_digest,
+            "checkpoint_bundle_digest": bundle_digest,
+            "checkpoint_state_digest": state_digest,
+        },
+        "persistent_state": persistent_payload,
+        "causal_provenance_state": causal_provenance_payload,
+        "schema": {
+            "causal_identity_protocol_version": "1.0",
+            "checkpoint_schema_version": "1.2.0",
+            "cognitive_semantics_version": "1.0",
+            "observation_protocol_version": observation_protocol_version,
+            "runtime_contract_version": "1.2.0",
+        },
+    }
+
+
+def save_canonical_r1_checkpoint(
+    runtime_root: CanonicalR1RuntimeRoot,
+    filepath: str | pathlib.Path,
+    diagnostic_metadata: dict[str, Any] | None = None,
+) -> str:
+    """Saves a canonical schema 1.2.0 cognitive checkpoint bundle using atomic file replace.
+
+    Returns the bundle digest of the saved checkpoint.
+    """
+    if runtime_root.causal_runtime_health != CausalRuntimeHealth.HEALTHY:
+        raise CausalRuntimeFailStopError(
+            "Runtime is in MUTATION_FAILED fail-stop state. Canonical save is forbidden."
+        )
+    if runtime_root.canonical_lineage_state != CanonicalLineageState.VALID:
+        raise CausalLineageInvalidatedError(
+            "Canonical lineage is invalidated by untracked persistent mutation. Canonical save is forbidden."
+        )
+
+    dest_path = pathlib.Path(filepath).resolve()
+    dest_dir = dest_path.parent
+    dest_dir.mkdir(parents=True, exist_ok=True)
+
+    active_guard = runtime_root.guard or RuntimeLifecycleGuard()
+    with active_guard.checkpointing():
+        checkpoint_data = build_canonical_r1_checkpoint(
+            graph=runtime_root.graph,
+            ledger=runtime_root.ledger,
+            observation_protocol_version=runtime_root.observation_protocol_version,
+            policy=runtime_root.assembly_policy,
+            diagnostic_metadata=diagnostic_metadata,
+        )
+        canonical_bytes = json.dumps(
+            checkpoint_data,
+            sort_keys=True,
+            separators=(",", ":"),
+            ensure_ascii=False,
+            allow_nan=False,
+        ).encode("utf-8")
+
+        temp_file = dest_dir / f".tmp_{dest_path.name}_{uuid.uuid4().hex}"
+        try:
+            with open(temp_file, "wb") as f:
+                f.write(canonical_bytes)
+                f.flush()
+                os.fsync(f.fileno())
+            os.replace(temp_file, dest_path)
+        finally:
+            if temp_file.exists():
+                try:
+                    temp_file.unlink()
+                except OSError:
+                    pass
+
+    return checkpoint_data["integrity"]["checkpoint_bundle_digest"]
+
+
+def migrate_schema_1_1_1_to_1_2_0(
+    old_checkpoint: dict[str, Any],
+    target_observation_protocol_version: str,
+    policy: AssemblyPolicy | None = None,
+) -> tuple[dict[str, Any], MigrationReport]:
+    """Migrates a canonical v1.1.1 checkpoint to v1.2.0 by binding empty causal provenance (Section 68)."""
+    if not isinstance(target_observation_protocol_version, str) or not target_observation_protocol_version.strip():
+        raise CausalIdentityValidationError(
+            "Migrating checkpoint to 1.2.0 requires an explicit target observation_protocol_version"
+        )
+
+    # 1. Source verification
+    validate_canonical_persistent_shape(old_checkpoint, schema_label="1.1.1")
+    src_schema = old_checkpoint["schema"]["checkpoint_schema_version"]
+    if src_schema != "1.1.1":
+        raise CheckpointSchemaError(f"Expected source schema '1.1.1', got '{src_schema}'")
+
+    persistent_payload = old_checkpoint["persistent_state"]
+    assert_finite_numbers(persistent_payload, "migration_source_persistent_state")
+    state_digest = compute_checkpoint_state_digest(persistent_payload)
+    if old_checkpoint["integrity"]["checkpoint_state_digest"] != state_digest:
+        raise CheckpointIntegrityError("Source checkpoint_state_digest does not match persistent_state")
+
+    # 2. Construct 1.2.0 metadata and compatibility
+    checkpoint = copy.deepcopy(old_checkpoint)
+    combined_digest = checkpoint["compatibility"]["combined_semantics_digest"]
+
+    identity_protocol_digest = CAUSAL_IDENTITY_PROTOCOL_DIGEST
+    obs_protocol_digest = compute_observation_protocol_digest(target_observation_protocol_version)
+
+    epoch_id = derive_causal_provenance_epoch_id(
+        base_state_digest=state_digest,
+        source_schema="1.1.1",
+        causal_identity_protocol_version="1.0",
+    )
+    causal_provenance_epoch = {
+        "base_state_digest": state_digest,
+        "epoch_id": epoch_id,
+        "history_status": "PRE_R1_HISTORY_UNAVAILABLE",
+    }
+    causal_provenance_state = {
+        "causal_provenance_epoch": causal_provenance_epoch,
+        "committed_event_bindings": {},
+        "committed_transactions": {},
+    }
+    provenance_digest = compute_causal_provenance_digest(causal_provenance_state)
+
+    bundle_digest = compute_checkpoint_bundle_digest(
+        checkpoint_state_digest=state_digest,
+        causal_provenance_digest=provenance_digest,
+        combined_semantics_digest=combined_digest,
+        causal_identity_protocol_digest=identity_protocol_digest,
+        observation_protocol_digest=obs_protocol_digest,
+        causal_provenance_epoch=causal_provenance_epoch,
+    )
+
+    report = MigrationReport(
+        source_schema="1.1.1",
+        target_schema="1.2.0",
+        restored_durable_fields=["persistent_state"],
+        reset_transient_fields=[],
+        ignored_runtime_configuration=[],
+        unrecoverable_legacy_state=["pre_r1_causal_provenance"],
+        compatibility_result="COMPATIBLE",
+        migration_result="SUCCESS",
+        diagnostic_notes=[
+            "source integrity: VERIFIED",
+            "source schema: 1.1.1",
+            "target schema: 1.2.0",
+            "target observation_protocol_version: " + target_observation_protocol_version,
+            "Pre-R1 persistent mutation causal commit history was not recorded and cannot be reconstructed.",
+        ],
+    )
+
+    checkpoint["checkpoint_type"] = "DGCA_COGNITIVE_CHECKPOINT"
+    checkpoint["schema"] = {
+        "causal_identity_protocol_version": "1.0",
+        "checkpoint_schema_version": "1.2.0",
+        "cognitive_semantics_version": "1.0",
+        "observation_protocol_version": target_observation_protocol_version,
+        "runtime_contract_version": "1.2.0",
+    }
+    checkpoint["compatibility"]["causal_identity_protocol_digest"] = identity_protocol_digest
+    checkpoint["compatibility"]["observation_protocol_digest"] = obs_protocol_digest
+    checkpoint["causal_provenance_state"] = causal_provenance_state
+    checkpoint["integrity"]["causal_provenance_digest"] = provenance_digest
+    checkpoint["integrity"]["checkpoint_bundle_digest"] = bundle_digest
+    if "diagnostic_metadata" not in checkpoint:
+        checkpoint["diagnostic_metadata"] = {}
+    checkpoint["diagnostic_metadata"]["migration_report"] = report.to_dict()
+    checkpoint["diagnostic_metadata"]["provenance"] = "MIGRATED_TO_1.2.0"
+
+    return checkpoint, report
+
+
+def restore_canonical_r1_checkpoint(
+    filepath: str | pathlib.Path,
+    expected_observation_protocol_version: str | None = None,
+    policy: AssemblyPolicy | None = None,
+    enable_prediction: bool | None = None,
+    guard: RuntimeLifecycleGuard | None = None,
+    _on_pre_swap: Any | None = None,
+) -> tuple[CanonicalR1RuntimeRoot, MigrationReport | None]:
+    """Atomic restore into a NEW CanonicalR1RuntimeRoot under lifecycle guard (Section 67)."""
+    active_guard = guard or RuntimeLifecycleGuard()
+    with active_guard.restoring():
+        path = pathlib.Path(filepath).resolve()
+        if not path.exists():
+            raise FileNotFoundError(f"Checkpoint file not found: {path}")
+
+        raw_data = load_checkpoint_json(path)
+        if not isinstance(raw_data, dict):
+            raise CheckpointSchemaError("Checkpoint root must be a JSON object (dict)")
+
+        has_schema = "schema" in raw_data
+        schema_val = raw_data.get("schema")
+        migration_report: MigrationReport | None = None
+
+        if raw_data.get("version") == "1.0" and not has_schema:
+            if not expected_observation_protocol_version or not expected_observation_protocol_version.strip():
+                raise CausalIdentityValidationError(
+                    "Migrating pre-R1 v1.0 checkpoint to 1.2.0 requires an explicit target observation_protocol_version"
+                )
+            pred_setting = False if enable_prediction is None else enable_prediction
+            mid_111, _ = migrate_legacy_v1_checkpoint(raw_data, pred_setting)
+            checkpoint_data, migration_report = migrate_schema_1_1_1_to_1_2_0(
+                mid_111,
+                target_observation_protocol_version=expected_observation_protocol_version,
+                policy=policy,
+            )
+        elif has_schema and isinstance(schema_val, dict) and schema_val.get("checkpoint_schema_version") == "1.1":
+            if not expected_observation_protocol_version or not expected_observation_protocol_version.strip():
+                raise CausalIdentityValidationError(
+                    "Migrating pre-R1 v1.1 checkpoint to 1.2.0 requires an explicit target observation_protocol_version"
+                )
+            mid_111, _ = migrate_schema_1_1_to_1_1_1(raw_data, policy=policy)
+            checkpoint_data, migration_report = migrate_schema_1_1_1_to_1_2_0(
+                mid_111,
+                target_observation_protocol_version=expected_observation_protocol_version,
+                policy=policy,
+            )
+        elif has_schema and isinstance(schema_val, dict) and schema_val.get("checkpoint_schema_version") == "1.1.1":
+            if not expected_observation_protocol_version or not expected_observation_protocol_version.strip():
+                raise CausalIdentityValidationError(
+                    "Migrating pre-R1 v1.1.1 checkpoint to 1.2.0 requires an explicit target observation_protocol_version"
+                )
+            checkpoint_data, migration_report = migrate_schema_1_1_1_to_1_2_0(
+                raw_data,
+                target_observation_protocol_version=expected_observation_protocol_version,
+                policy=policy,
+            )
+        elif has_schema and isinstance(schema_val, dict) and schema_val.get("checkpoint_schema_version") == "1.2.0":
+            checkpoint_data = raw_data
+        else:
+            raise CheckpointSchemaError(
+                "Unrecognized checkpoint family for R1 restore. Expected 1.2.0, 1.1.1, 1.1, or 1.0."
+            )
+
+        validate_canonical_persistent_shape(checkpoint_data, schema_label="1.2.0")
+
+        obs_version = checkpoint_data["schema"].get("observation_protocol_version")
+        if not obs_version or not isinstance(obs_version, str) or not obs_version.strip():
+            raise CausalIdentityValidationError("Missing or empty observation_protocol_version in 1.2.0 schema")
+
+        if expected_observation_protocol_version is not None and obs_version != expected_observation_protocol_version:
+            raise CheckpointCompatibilityError(
+                f"Observation protocol version mismatch: recorded '{obs_version}' != expected '{expected_observation_protocol_version}'"
+            )
+
+        compat = checkpoint_data["compatibility"]
+        if compat.get("causal_identity_protocol_digest") != CAUSAL_IDENTITY_PROTOCOL_DIGEST:
+            raise CheckpointCompatibilityError(
+                f"Causal identity protocol digest mismatch: recorded '{compat.get('causal_identity_protocol_digest')}' != expected '{CAUSAL_IDENTITY_PROTOCOL_DIGEST}'"
+            )
+
+        expected_obs_digest = compute_observation_protocol_digest(obs_version)
+        if compat.get("observation_protocol_digest") != expected_obs_digest:
+            raise CheckpointCompatibilityError(
+                f"Observation protocol digest mismatch: recorded '{compat.get('observation_protocol_digest')}' != computed '{expected_obs_digest}'"
+            )
+
+        pstate = checkpoint_data["persistent_state"]
+        exp_state_digest = compute_checkpoint_state_digest(pstate)
+        rec_state_digest = checkpoint_data["integrity"]["checkpoint_state_digest"]
+        if rec_state_digest != exp_state_digest:
+            raise CheckpointIntegrityError(
+                f"State digest mismatch: recorded '{rec_state_digest}' != computed '{exp_state_digest}'"
+            )
+
+        prov_state = checkpoint_data["causal_provenance_state"]
+        exp_prov_digest = compute_causal_provenance_digest(prov_state)
+        rec_prov_digest = checkpoint_data["integrity"]["causal_provenance_digest"]
+        if rec_prov_digest != exp_prov_digest:
+            raise CheckpointIntegrityError(
+                f"Causal provenance digest mismatch: recorded '{rec_prov_digest}' != computed '{exp_prov_digest}'"
+            )
+
+        exp_bundle_digest = compute_checkpoint_bundle_digest(
+            checkpoint_state_digest=exp_state_digest,
+            causal_provenance_digest=exp_prov_digest,
+            combined_semantics_digest=compat["combined_semantics_digest"],
+            causal_identity_protocol_digest=CAUSAL_IDENTITY_PROTOCOL_DIGEST,
+            observation_protocol_digest=expected_obs_digest,
+            causal_provenance_epoch=prov_state["causal_provenance_epoch"],
+        )
+        rec_bundle_digest = checkpoint_data["integrity"]["checkpoint_bundle_digest"]
+        if rec_bundle_digest != exp_bundle_digest:
+            raise CheckpointIntegrityError(
+                f"Checkpoint bundle digest mismatch: recorded '{rec_bundle_digest}' != computed '{exp_bundle_digest}'"
+            )
+
+        # Restore graph
+        pred_config = False if enable_prediction is None else enable_prediction
+        new_graph, _ = _restore_graph_from_persistent_payload(
+            persistent_payload=pstate,
+            policy=policy,
+            enable_prediction=pred_config,
+        )
+
+        new_ledger = CausalCommitLedger.from_dict(prov_state)
+
+        runtime_root = CanonicalR1RuntimeRoot(
+            graph=new_graph,
+            ledger=new_ledger,
+            observation_protocol_version=obs_version,
+            assembly_policy=new_graph._assembly_manager.policy if new_graph._assembly_manager else policy,
+            lifecycle_guard=active_guard,
+        )
+
+        if _on_pre_swap is not None:
+            _on_pre_swap(active_guard.state)
+
+        assert active_guard.state == RuntimeLifecycleState.RESTORING
+        return runtime_root, migration_report

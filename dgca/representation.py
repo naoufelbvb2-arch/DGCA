@@ -316,6 +316,8 @@ class RepresentationEngine:
         participation_receipts: list[ParticipationReceipt],
         transient_bindings: list[TransientBindingReceipt] | None = None,
         active_assemblies: set[tuple[str, int]] | None = None,
+        causal_parent_ref: str | None = None,
+        canonical_identity: bool = False,
     ) -> SparseDistributedCognitiveRepresentation:
         """
         بناء تمثيل معرفي موزع متناثر انطلاقاً من إيصالات المشاركة والربط الحالية حصراً.
@@ -386,7 +388,62 @@ class RepresentationEngine:
                 else:
                     self.observability.binding_receipts_rejected += 1
 
-        rep_id = f"rep_{uuid.uuid4().hex[:10]}"
+        if canonical_identity or causal_parent_ref is not None:
+            if not causal_parent_ref:
+                from .causal_identity import CausalLineageError
+                raise CausalLineageError("causal_parent_ref is mandatory on canonical path")
+            from .causal_identity import (
+                derive_operational_representation_digest,
+                derive_representation_id,
+            )
+            receipt_descriptors = [
+                {
+                    "receipt_id": r.receipt_id,
+                    "element_ref": r.element_ref,
+                    "parent_cycle_id": r.parent_cycle_id,
+                    "snapshot_or_microtick": r.snapshot_or_microtick,
+                    "origin_lineage": r.origin_lineage,
+                    "participation_kind": r.participation_kind,
+                    "scope_refs": list(r.scope_refs),
+                    "relational_drive": r.relational_drive,
+                    "activation_magnitude": r.activation_magnitude,
+                }
+                for r in valid_receipts
+            ]
+            tbr_descriptors = [
+                {
+                    "binding_id": t.binding_id,
+                    "parent_snapshot_ref": list(t.parent_snapshot_ref),
+                    "binding_scope_id": t.binding_scope_id,
+                    "member_receipt_refs": list(t.member_receipt_refs),
+                    "origin_view": t.origin_view,
+                }
+                for t in valid_tbrs
+            ]
+            sorted_nodes = sorted(participating_nodes)
+            sorted_edges = sorted(participating_edges)
+            sorted_asms = sorted(active_assemblies or ())
+            support_vals = {
+                "nodes": {u: self.compute_node_support_raw(u, valid_receipts) for u in sorted_nodes},
+            }
+            op_digest = derive_operational_representation_digest(
+                context_binding=context,
+                active_assembly_refs=sorted_asms,
+                canonical_accepted_receipt_descriptors=receipt_descriptors,
+                canonical_accepted_tbr_descriptors=tbr_descriptors,
+                participating_refs={"nodes": sorted_nodes, "edges": sorted_edges},
+                snapshot_coordinate=snapshot_or_microtick,
+                support_or_activation_values=support_vals,
+            )
+            rep_id = derive_representation_id(
+                causal_parent_ref=causal_parent_ref,
+                snapshot_or_microtick=snapshot_or_microtick,
+                operational_representation_digest=op_digest,
+                prefix="rep_",
+            )
+        else:
+            rep_id = f"rep_{uuid.uuid4().hex[:10]}"
+
         rep = SparseDistributedCognitiveRepresentation(
             representation_id=rep_id,
             parent_cycle_id=parent_cycle_id,
@@ -420,6 +477,36 @@ class RepresentationEngine:
         self.observability.residual_edges += res_edges
 
         return rep
+
+    def compute_node_support_raw(self, node_id: str, receipts: list[ParticipationReceipt]) -> float:
+        for r in receipts:
+            if r.participation_kind == "node" and r.element_ref == node_id and r.activation_magnitude > 0.0:
+                return min(1.0, max(0.0, r.activation_magnitude))
+        node_obj = self.graph.nodes.get(node_id)
+        if node_obj:
+            return min(1.0, max(0.0, node_obj.A))
+        return 0.0
+
+    def build_canonical_representation(
+        self,
+        causal_parent_ref: str,
+        parent_cycle_id: int,
+        snapshot_or_microtick: int,
+        context: str | None,
+        participation_receipts: list[ParticipationReceipt],
+        transient_bindings: list[TransientBindingReceipt] | None = None,
+        active_assemblies: set[tuple[str, int]] | None = None,
+    ) -> SparseDistributedCognitiveRepresentation:
+        return self.build_representation(
+            parent_cycle_id=parent_cycle_id,
+            snapshot_or_microtick=snapshot_or_microtick,
+            context=context,
+            participation_receipts=participation_receipts,
+            transient_bindings=transient_bindings,
+            active_assemblies=active_assemblies,
+            causal_parent_ref=causal_parent_ref,
+            canonical_identity=True,
+        )
 
     def close_representation(self, representation: SparseDistributedCognitiveRepresentation) -> None:
         """إغلاق تمثيل معرفي وجعله نهائياً غير قابل للتعديل."""

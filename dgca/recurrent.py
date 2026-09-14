@@ -6,7 +6,7 @@ from __future__ import annotations
 
 import hashlib
 from dataclasses import dataclass, field
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 from dgca.config import Law
 from dgca.generation import SourceAlignment, SurfaceChunk
@@ -181,12 +181,22 @@ class PredictiveRecurrentGenerativeEngine:
         root_authority_ref: str,
         budget_authority_ref: str = "budget_root",
         epoch_id: str | None = None,
+        work_ref: Any = None,
+        canonical_identity: bool = False,
     ) -> GenerativeContinuationEpoch:
         """إنشاء حقبة استمرار توليدية جديدة (GCE) تحت سلطة جذرية غير قابلة للتغيير."""
         if not root_authority_ref or not str(root_authority_ref).strip():
             raise ValueError("RootAuthorityRef must be a non-empty lawful reference.")
 
-        eid = epoch_id or f"gce_{hashlib.sha256(f'{root_authority_ref}_{len(self._epochs)}'.encode()).hexdigest()[:12]}"
+        if canonical_identity:
+            from .causal_identity import derive_gce_id
+            eid = epoch_id or derive_gce_id(
+                root_authority_ref=root_authority_ref,
+                work_ref=work_ref or "work_0",
+                prefix="gce_",
+            )
+        else:
+            eid = epoch_id or f"gce_{hashlib.sha256(f'{root_authority_ref}_{len(self._epochs)}'.encode()).hexdigest()[:12]}"
         if eid in self._epochs:
             raise ValueError(f"Epoch {eid} already exists.")
 
@@ -532,6 +542,7 @@ class PredictiveRecurrentGenerativeEngine:
         epoch: GenerativeContinuationEpoch,
         representation: SparseDistributedCognitiveRepresentation,
         budget: float = 1.0,
+        canonical_identity: bool = False,
     ) -> tuple[str, ContinuationCommit | None, float]:
         """
         تنفيذ القانون 17: الالتزام التنبؤي المحدود والاستمرار عبر اللقطات (Law 17 v1.0).
@@ -560,7 +571,18 @@ class PredictiveRecurrentGenerativeEngine:
 
         # مرشح وحيد جاهز قانونياً
         target_ob = frontier.ready_candidates[0]
-        cid = f"cc_{hashlib.sha256(f'{epoch.epoch_id}_{representation.representation_id}_{target_ob.obligation_id}_{len(epoch.progress_receipt_refs)}'.encode()).hexdigest()[:16]}"
+        if canonical_identity:
+            from .causal_identity import canonical_json_bytes, derive_continuation_commit_id
+            progress_digest = hashlib.sha256(canonical_json_bytes(list(epoch.progress_receipt_refs))).hexdigest()
+            cid = derive_continuation_commit_id(
+                epoch_id=epoch.epoch_id,
+                parent_representation_id=representation.representation_id,
+                obligation_id=target_ob.obligation_id,
+                progress_snapshot_digest=progress_digest,
+                prefix="cc_",
+            )
+        else:
+            cid = f"cc_{hashlib.sha256(f'{epoch.epoch_id}_{representation.representation_id}_{target_ob.obligation_id}_{len(epoch.progress_receipt_refs)}'.encode()).hexdigest()[:16]}"
         progress_digest = hashlib.sha256(",".join(epoch.progress_receipt_refs).encode()).hexdigest()
 
         commit = ContinuationCommit(
