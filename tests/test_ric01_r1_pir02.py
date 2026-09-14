@@ -307,12 +307,11 @@ def test_pir02_t13_provenance_epoch_deterministic_id_derivation():
     assert migrated.epoch_id == expected_migrated_id
 
 
-def test_pir02_t14_arbitrary_epoch_id_recomputed_on_construction():
-    """PIR02-T14: CausalProvenanceEpoch recomputes deterministic epoch_id on construction."""
+def test_pir02_t14_arbitrary_epoch_id_fails_on_construction():
+    """PIR02-T14: CausalProvenanceEpoch fails closed on mismatched epoch_id."""
     digest = "b" * 64
-    epoch = CausalProvenanceEpoch(epoch_id="arbitrary_custom_handle", history_status="R1_TRACKED", base_state_digest=digest)
-    expected_id = derive_causal_provenance_epoch_id(digest, "1.2.0", "1.0", prefix="cpe_")
-    assert epoch.epoch_id == expected_id
+    with pytest.raises(CausalIdentityValidationError):
+        CausalProvenanceEpoch(epoch_id="arbitrary_custom_handle", history_status="R1_TRACKED", base_state_digest=digest)
 
 
 def test_pir02_t15_tampered_epoch_id_rejected_on_restore(sample_runtime, tmp_path):

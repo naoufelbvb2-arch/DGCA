@@ -807,7 +807,9 @@ class CausalProvenanceEpoch:
             prefix="cpe_",
         )
         if self.epoch_id != computed_id:
-            object.__setattr__(self, "epoch_id", computed_id)
+            raise CausalIdentityValidationError(
+                f"Provenance epoch_id mismatch: provided '{self.epoch_id}' != computed '{computed_id}'"
+            )
 
     def to_dict(self) -> dict[str, str]:
         return {
@@ -1013,7 +1015,7 @@ def validate_causal_provenance_state(
         causal_identity_protocol_version="1.0",
         prefix="cpe_",
     )
-    if epoch_data["epoch_id"] not in (expected_epoch_id, expected_epoch_id.removeprefix("cpe_")):
+    if epoch_data["epoch_id"] != expected_epoch_id:
         raise CausalIdentityValidationError(
             f"Provenance epoch_id mismatch: recorded '{epoch_data['epoch_id']}' != expected '{expected_epoch_id}'"
         )
@@ -1071,11 +1073,11 @@ def validate_causal_provenance_state(
                 f"Transaction dictionary key '{k}' != record transaction_id '{tx['transaction_id']}'"
             )
 
-        # PIR02-D01: exact 64 lowercase hex for authoritative digest
-        raw_tx_hex = tx["transaction_id"].split("_", 1)[-1] if "_" in tx["transaction_id"] else tx["transaction_id"]
-        if len(raw_tx_hex) != 64 or not all(c in "0123456789abcdef" for c in raw_tx_hex):
+        # PIR03-B03: exact 64 lowercase hex for authoritative digest (no prefix stripping)
+        txid = tx["transaction_id"]
+        if len(txid) != 64 or not all(c in "0123456789abcdef" for c in txid):
             raise CausalIdentityValidationError(
-                f"Transaction '{k}' has invalid authoritative TxID digest shape: '{tx['transaction_id']}'"
+                f"Transaction '{k}' has invalid authoritative TxID digest shape: '{txid}'"
             )
 
         if not tx["root_external_episode_id"] or not isinstance(tx["root_external_episode_id"], str):
@@ -1122,7 +1124,7 @@ def validate_causal_provenance_state(
 
 
 class CognitiveGraphInspectionView:
-    """Read-only detached inspection proxy for CognitiveGraph (Section 8 / PIR01-B05, PIR02-B02)."""
+    """Read-only detached inspection proxy for CognitiveGraph (Section 8 / PIR01-B05, PIR02-B02, PIR03-B01)."""
 
     def __init__(self, graph: Any, runtime: Any = None) -> None:
         self._graph = graph
@@ -1130,11 +1132,11 @@ class CognitiveGraphInspectionView:
 
     @property
     def nodes(self) -> dict[str, Any]:
-        return {nid: copy.copy(node) for nid, node in self._graph.nodes.items()}
+        return {nid: copy.deepcopy(node) for nid, node in self._graph.nodes.items()}
 
     @property
     def edges(self) -> dict[tuple[str, str], Any]:
-        return {k: copy.copy(edge) for k, edge in self._graph.edges.items()}
+        return {k: copy.deepcopy(edge) for k, edge in self._graph.edges.items()}
 
     @property
     def t(self) -> int:
@@ -1168,63 +1170,39 @@ class CognitiveGraphInspectionView:
     def W_learning_enabled(self) -> bool:
         return bool(self._graph.W_learning_enabled)
 
-    @property
-    def _assembly_manager(self) -> Any:
-        return self._graph._assembly_manager
-
-    @property
-    def _representation_engine(self) -> Any:
-        return self._graph._representation_engine
-
-    @property
-    def _completion_engine(self) -> Any:
-        return self._graph._completion_engine
-
-    @property
-    def _generation_engine(self) -> Any:
-        return self._graph._generation_engine
-
-    @property
-    def _recurrent_engine(self) -> Any:
-        return self._graph._recurrent_engine
-
-    @property
-    def _loop_engine(self) -> Any:
-        return self._graph._loop_engine
-
     def edge(self, u: str, v: str) -> Any:
         e = self._graph.edge(u, v)
-        return copy.copy(e) if e is not None else None
+        return copy.deepcopy(e) if e is not None else None
 
     def node(self, nid: str, region: str | None = None) -> Any:
         if nid in self._graph.nodes:
-            return copy.copy(self._graph.nodes[nid])
+            return copy.deepcopy(self._graph.nodes[nid])
         raise CausalLineageError(
             "Direct node creation via CanonicalR1RuntimeRoot.graph is prohibited. "
             "Use runtime.execute_persistent_command() or runtime.unsafe_mutable_graph()."
         )
 
     def out_edges(self, u: str) -> list[Any]:
-        return [copy.copy(e) for e in self._graph.out_edges(u)]
+        return [copy.deepcopy(e) for e in self._graph.out_edges(u)]
 
-    def link(self, *args: Any, **kwargs: Any) -> Any:
+    def link(self, *args: Any, **kwargs: Any) -> None:
         if self._runtime is not None and not self._runtime._in_command:
             self._runtime.canonical_lineage_state = CanonicalLineageState.INVALIDATED_BY_UNTRACKED_PERSISTENT_MUTATION
-        return self._graph.link(*args, **kwargs)
+        self._graph.link(*args, **kwargs)
 
-    def unlink(self, *args: Any, **kwargs: Any) -> Any:
+    def unlink(self, *args: Any, **kwargs: Any) -> None:
         if self._runtime is not None and not self._runtime._in_command:
             self._runtime.canonical_lineage_state = CanonicalLineageState.INVALIDATED_BY_UNTRACKED_PERSISTENT_MUTATION
-        return self._graph.unlink(*args, **kwargs)
+        self._graph.unlink(*args, **kwargs)
 
-    def observe(self, *args: Any, **kwargs: Any) -> Any:
+    def observe(self, *args: Any, **kwargs: Any) -> None:
         if self._runtime is not None and not self._runtime._in_command:
             self._runtime.canonical_lineage_state = CanonicalLineageState.INVALIDATED_BY_UNTRACKED_PERSISTENT_MUTATION
-        return self._graph.observe(*args, **kwargs)
+        self._graph.observe(*args, **kwargs)
 
 
 class CausalLedgerInspectionView:
-    """Read-only detached inspection view for CausalCommitLedger (PIR02-B02)."""
+    """Read-only detached inspection view for CausalCommitLedger (PIR02-B02, PIR03-B01)."""
 
     def __init__(self, ledger: CausalCommitLedger, runtime: Any = None) -> None:
         self._ledger = ledger
@@ -1232,15 +1210,15 @@ class CausalLedgerInspectionView:
 
     @property
     def epoch(self) -> CausalProvenanceEpoch:
-        return copy.copy(self._ledger.epoch)
+        return copy.deepcopy(self._ledger.epoch)
 
     @property
     def committed_transactions(self) -> dict[str, CausalCommitRecord]:
-        return {k: copy.copy(v) for k, v in self._ledger.committed_transactions.items()}
+        return {k: copy.deepcopy(v) for k, v in self._ledger.committed_transactions.items()}
 
     @property
     def committed_event_bindings(self) -> dict[str, EventBindingRecord]:
-        return {k: copy.copy(v) for k, v in self._ledger.committed_event_bindings.items()}
+        return {k: copy.deepcopy(v) for k, v in self._ledger.committed_event_bindings.items()}
 
     def has_transaction(self, transaction_id: str) -> bool:
         return self._ledger.has_transaction(transaction_id)
@@ -1256,12 +1234,7 @@ class CausalLedgerInspectionView:
         )
 
     def to_dict(self) -> dict[str, Any]:
-        return self._ledger.to_dict()
-
-    def commit_transaction(self, record: CausalCommitRecord, binding: EventBindingRecord | None = None) -> None:
-        if self._runtime is not None and not self._runtime._in_command:
-            self._runtime.canonical_lineage_state = CanonicalLineageState.INVALIDATED_BY_UNTRACKED_PERSISTENT_MUTATION
-        self._ledger.commit_transaction(record, binding)
+        return copy.deepcopy(self._ledger.to_dict())
 
 
 # ─────────────────────────────────────────────────────────── 7. Canonical R1 Runtime Root
@@ -1295,17 +1268,13 @@ class CanonicalR1RuntimeRoot:
         self._inspection_ledger = CausalLedgerInspectionView(self._ledger, runtime=self)
 
     @property
-    def graph(self) -> Any:
-        """Returns live mutable graph inside execute_persistent_command, or detached inspection view outside."""
-        if self._in_command:
-            return self._graph
+    def graph(self) -> CognitiveGraphInspectionView:
+        """Always returns detached inspection view (PIR03-B01)."""
         return self._inspection_graph
 
     @property
-    def ledger(self) -> Any:
-        """Returns live mutable ledger inside execute_persistent_command, or detached inspection view outside."""
-        if self._in_command:
-            return self._ledger
+    def ledger(self) -> CausalLedgerInspectionView:
+        """Always returns detached inspection view (PIR03-B01)."""
         return self._inspection_ledger
 
     def unsafe_mutable_graph(self) -> Any:
@@ -1401,10 +1370,7 @@ class CanonicalR1RuntimeRoot:
                 owner_defined_transaction_scope=command.owner_defined_transaction_scope,
                 observation_protocol_version=self.observation_protocol_version,
             )
-            if "commit_transaction" in self._inspection_ledger.__dict__:
-                self._inspection_ledger.__dict__["commit_transaction"](record, staged_binding)
-            else:
-                self._ledger.commit_transaction(record, staged_binding)
+            self._ledger.commit_transaction(record, staged_binding)
         except Exception:
             self.causal_runtime_health = CausalRuntimeHealth.MUTATION_FAILED
             raise

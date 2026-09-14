@@ -442,6 +442,7 @@ def extract_canonical_persistent_payload(
     policy: AssemblyPolicy | None = None,
 ) -> dict[str, Any]:
     """Extracts the exact, canonically ordered persistent payload from CognitiveGraph."""
+    graph = getattr(graph, "_graph", graph)
     # 1. Nodes (sorted by nid)
     nodes_list = []
     for nid in sorted(graph.nodes.keys()):
@@ -1674,13 +1675,15 @@ def build_canonical_r1_checkpoint(
         raise CausalIdentityValidationError(
             "Canonical R1 checkpoint requires an explicit non-empty observation_protocol_version"
         )
-    pol = resolve_effective_policy(graph, policy)
+    actual_graph = getattr(graph, "_graph", graph)
+    actual_ledger = getattr(ledger, "_ledger", ledger)
+    pol = resolve_effective_policy(actual_graph, policy)
 
     # 1. Referential integrity check
-    validate_structural_referential_integrity(graph, graph._assembly_manager)
+    validate_structural_referential_integrity(actual_graph, getattr(actual_graph, "_assembly_manager", None))
 
     # 2. Extract canonical persistent payload (exact R0 persistent payload unchanged)
-    persistent_payload = extract_canonical_persistent_payload(graph, pol)
+    persistent_payload = extract_canonical_persistent_payload(actual_graph, pol)
 
     # 3. Compute digests
     state_digest = compute_checkpoint_state_digest(persistent_payload)
@@ -1694,7 +1697,7 @@ def build_canonical_r1_checkpoint(
     obs_protocol_digest = compute_observation_protocol_digest(observation_protocol_version)
 
     # 5. Causal provenance payload & validation (PIR02-B03, PIR02-B08)
-    causal_provenance_payload = ledger.to_dict()
+    causal_provenance_payload = actual_ledger.to_dict()
     from .causal_identity import validate_causal_provenance_state
     validate_causal_provenance_state(
         causal_provenance_state=causal_provenance_payload,
@@ -1773,8 +1776,8 @@ def save_canonical_r1_checkpoint(
     active_guard = runtime_root.guard
     with active_guard.checkpointing():
         checkpoint_data = build_canonical_r1_checkpoint(
-            graph=runtime_root.graph,
-            ledger=runtime_root.ledger,
+            graph=runtime_root._graph,
+            ledger=runtime_root._ledger,
             observation_protocol_version=runtime_root.observation_protocol_version,
             policy=runtime_root.assembly_policy,
             diagnostic_metadata=diagnostic_metadata,

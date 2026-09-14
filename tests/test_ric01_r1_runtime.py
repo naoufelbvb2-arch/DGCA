@@ -20,13 +20,13 @@ from dgca.causal_identity import (
     CausalCommitLedger,
     CausalIdentityValidationError,
     CausalLineageInvalidatedError,
-    CausalProvenanceEpoch,
     CausalRuntimeFailStopError,
     CausalRuntimeHealth,
     PersistentMutationCommand,
     compute_causal_provenance_digest,
     compute_checkpoint_bundle_digest,
     compute_event_descriptor_digest,
+    create_native_r1_provenance_epoch,
     derive_root_external_episode_id,
 )
 from dgca.config import Law
@@ -489,7 +489,7 @@ def test_r1_t40_ledger_append_failure_fail_stop(base_runtime, monkeypatch):
     def crashing_commit(*args, **kwargs):
         raise OSError("Disk full / ledger write failure")
 
-    monkeypatch.setattr(base_runtime.ledger, "commit_transaction", crashing_commit)
+    monkeypatch.setattr(base_runtime._ledger, "commit_transaction", crashing_commit)
 
     with pytest.raises(OSError, match="Disk full"):
         base_runtime.execute_persistent_command(
@@ -619,7 +619,7 @@ def test_r1_t50_rfc12_rfc16_transient_cold_restart_semantics_conserved(base_runt
         cp_path,
         expected_observation_protocol_version="1.0.0",
     )
-    g = restored_runtime.graph
+    g = restored_runtime.unsafe_mutable_graph()
     assert g._representation_engine is None
     assert g._completion_engine is None
     assert g._generation_engine is None
@@ -629,7 +629,7 @@ def test_r1_t50_rfc12_rfc16_transient_cold_restart_semantics_conserved(base_runt
 
 def test_r1_t54_canonical_runtime_without_explicit_observation_protocol_fails(clean_graph):
     """R1-T54: Canonical RuntimeRoot without explicit observation protocol version fails closed."""
-    epoch = CausalProvenanceEpoch("ep1", "R1_TRACKED", "base")
+    epoch = create_native_r1_provenance_epoch("base")
     ledger = CausalCommitLedger(epoch)
 
     with pytest.raises(CausalIdentityValidationError):

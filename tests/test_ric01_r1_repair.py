@@ -17,11 +17,11 @@ from dgca.causal_identity import (
     CausalCommitLedger,
     CausalIdentityValidationError,
     CausalLineageInvalidatedError,
-    CausalProvenanceEpoch,
     PersistentMutationCommand,
     canonicalize_payload,
     compute_causal_provenance_digest,
     compute_checkpoint_bundle_digest,
+    create_native_r1_provenance_epoch,
     derive_surface_chunk_id,
 )
 from dgca.completion import (
@@ -67,7 +67,7 @@ def clean_guard():
 @pytest.fixture
 def sample_runtime(clean_graph, clean_guard):
     state_digest = compute_checkpoint_state_digest(extract_canonical_persistent_payload(clean_graph, AssemblyPolicy()))
-    epoch = CausalProvenanceEpoch("epoch_test_pir", "R1_TRACKED", state_digest)
+    epoch = create_native_r1_provenance_epoch(state_digest)
     ledger = CausalCommitLedger(epoch=epoch)
     return CanonicalR1RuntimeRoot(
         graph=clean_graph,
@@ -424,7 +424,7 @@ def test_pir01_t16_mandatory_shared_lifecycle_guard(clean_graph):
     """PIR01-T16: Canonical runtime has mandatory shared lifecycle guard."""
     guard = RuntimeLifecycleGuard()
     state_digest = compute_checkpoint_state_digest(extract_canonical_persistent_payload(clean_graph, AssemblyPolicy()))
-    epoch = CausalProvenanceEpoch("epoch_test_16", "R1_TRACKED", state_digest)
+    epoch = create_native_r1_provenance_epoch(state_digest)
     ledger = CausalCommitLedger(epoch=epoch)
     runtime = CanonicalR1RuntimeRoot(
         graph=clean_graph,
