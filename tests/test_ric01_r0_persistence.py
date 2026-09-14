@@ -29,6 +29,7 @@ from dgca import (
     RuntimeRoot,
     StructuralAssembly,
     StructuralReferentialIntegrityError,
+    canonical_assembly_id,
     compute_checkpoint_state_digest,
     restore_cognitive_checkpoint,
     save_cognitive_checkpoint,
@@ -86,6 +87,20 @@ def make_rich_graph(t: int = 100) -> CognitiveGraph:
         t_spawn=70,
         episode="ep_old_2",
     )
+    g.nodes["n4"] = Node(
+        nid="n4",
+        region="QUANTITY",
+        is_concept=False,
+        members=set(),
+        U=0.2,
+        V=0.1,
+        head=None,
+        is_intrinsic=False,
+        N_total=1,
+        A=0.1,
+        t_spawn=75,
+        episode="ep_old_2",
+    )
 
     # 2. Edges: durable fields and transient fields
     e1 = Edge(
@@ -130,6 +145,27 @@ def make_rich_graph(t: int = 100) -> CognitiveGraph:
         is_intrinsic=True,
         k_fail=0,
     )
+    e3 = Edge(
+        src="n3",
+        dst="n4",
+        W=0.5,
+        kind="assoc",
+        origin="agent",
+        t_created=25,
+        t_last_update=65,
+        n=4,
+        M_max=0.8,
+        S=0.2,
+        tagged=False,
+        valence=0.1,
+        lag=0.3,
+        fwd=True,
+        g=None,
+        contexts={"ctx_a"},
+        ctx_hits={"ctx_a": 3},
+        is_intrinsic=False,
+        k_fail=0,
+    )
     g.edges[("n1", "n2")] = e1
     g.out_adj.setdefault("n1", {})["n2"] = e1
     g.in_adj.setdefault("n2", {})["n1"] = e1
@@ -137,6 +173,10 @@ def make_rich_graph(t: int = 100) -> CognitiveGraph:
     g.edges[("n2", "n3")] = e2
     g.out_adj.setdefault("n2", {})["n3"] = e2
     g.in_adj.setdefault("n3", {})["n2"] = e2
+
+    g.edges[("n3", "n4")] = e3
+    g.out_adj.setdefault("n3", {})["n4"] = e3
+    g.in_adj.setdefault("n4", {})["n3"] = e3
 
     # 3. Contradictions X
     g.X["n1"] = {"n3"}
@@ -173,18 +213,31 @@ def make_rich_graph(t: int = 100) -> CognitiveGraph:
     )
     mgr.assemblies["asm_test"] = [asm_v1, asm_v2]
 
+    asm_sec = StructuralAssembly(
+        assembly_id="asm_second",
+        version=1,
+        member_edges=frozenset([("n2", "n3"), ("n3", "n4")]),
+        origin_signature="sig_sec",
+        predecessor_version=None,
+        parent_assemblies=(),
+        is_retired=False,
+    )
+    mgr.assemblies["asm_second"] = [asm_sec]
+
     # 8. Pending Evidence
+    comp_cand = [("n1", "n2"), ("n2", "n3"), ("n3", "n4")]
+    cand_id = canonical_assembly_id(comp_cand)
     cand = FormationCandidate(
-        candidate_id="cand_1",
-        edges=frozenset([("n1", "n2")]),
+        candidate_id=cand_id,
+        edges=frozenset(comp_cand),
         context_signature="ctx_sig_1",
         root_votes={"root_1", "root_2"},
         created_t=80,
     )
     cand_key = f"{cand.candidate_id}:ctx_{cand.context_signature or 'default'}"
     mgr.pending_candidates[cand_key] = cand
-    mgr.pending_growth[("asm_test", ("n2", "n3"), "ctx_growth")] = {"root_3"}
-    mgr.pending_merge[(frozenset(["asm_test"]), "ctx_merge")] = {"root_4", "root_5"}
+    mgr.pending_growth[("asm_test", ("n3", "n4"), "ctx_growth")] = {"root_3"}
+    mgr.pending_merge[(frozenset(["asm_test", "asm_second"]), "ctx_merge")] = {"root_4", "root_5"}
 
     mgr.rebuild_indexes()
     return g
@@ -564,6 +617,10 @@ def test_r0_i24_migration_never_invents_unavailable_legacy_evidence(tmp_path: pa
         },
         "edges": [{"src": "n1", "dst": "n2", "W": 0.8}],
         "assemblies": [],
+        "concept_hits": {},
+        "drives": {},
+        "hypotheses": [],
+        "X": {},
     }
     legacy_path = tmp_path / "legacy_i24.json"
     legacy_path.write_text(json.dumps(legacy_data), encoding="utf-8")
@@ -723,7 +780,8 @@ def test_t10_formation_pending_votes_exact(tmp_path: pathlib.Path) -> None:
     restored, _ = restore_cognitive_checkpoint(ckpt_path)
     mgr = restored._assembly_manager
     assert mgr is not None
-    cand_key = "cand_1:ctx_ctx_sig_1"
+    cand_id = canonical_assembly_id([("n1", "n2"), ("n2", "n3"), ("n3", "n4")])
+    cand_key = f"{cand_id}:ctx_ctx_sig_1"
     assert cand_key in mgr.pending_candidates
     cand = mgr.pending_candidates[cand_key]
     assert cand.root_votes == {"root_1", "root_2"}
@@ -738,7 +796,7 @@ def test_t11_growth_pending_votes_exact(tmp_path: pathlib.Path) -> None:
     restored, _ = restore_cognitive_checkpoint(ckpt_path)
     mgr = restored._assembly_manager
     assert mgr is not None
-    key = ("asm_test", ("n2", "n3"), "ctx_growth")
+    key = ("asm_test", ("n3", "n4"), "ctx_growth")
     assert key in mgr.pending_growth
     assert mgr.pending_growth[key] == {"root_3"}
 
@@ -751,7 +809,7 @@ def test_t12_merge_pending_votes_exact(tmp_path: pathlib.Path) -> None:
     restored, _ = restore_cognitive_checkpoint(ckpt_path)
     mgr = restored._assembly_manager
     assert mgr is not None
-    key = (frozenset(["asm_test"]), "ctx_merge")
+    key = (frozenset(["asm_test", "asm_second"]), "ctx_merge")
     assert key in mgr.pending_merge
     assert mgr.pending_merge[key] == {"root_4", "root_5"}
 
@@ -773,8 +831,10 @@ def test_t13_duplicate_stored_root_vote_remains_idempotent(tmp_path: pathlib.Pat
     mod_path = tmp_path / "mod_t13.json"
     mod_path.write_text(json.dumps(data), encoding="utf-8")
 
+    cand_id = canonical_assembly_id([("n1", "n2"), ("n2", "n3"), ("n3", "n4")])
+    cand_key = f"{cand_id}:ctx_ctx_sig_1"
     restored, _ = restore_cognitive_checkpoint(mod_path)
-    cand = restored._assembly_manager.pending_candidates["cand_1:ctx_ctx_sig_1"]
+    cand = restored._assembly_manager.pending_candidates[cand_key]
     assert cand.root_votes == {"root_1", "root_2"}
     assert len(cand.root_votes) == 2
 
@@ -1033,6 +1093,10 @@ def test_t34_legacy_activation_discarded(tmp_path: pathlib.Path) -> None:
         },
         "edges": [],
         "assemblies": [],
+        "concept_hits": {},
+        "drives": {},
+        "hypotheses": [],
+        "X": {},
     }
     legacy_path = tmp_path / "legacy_t34.json"
     legacy_path.write_text(json.dumps(legacy_data), encoding="utf-8")
@@ -1082,6 +1146,10 @@ def test_t36_legacy_missing_pending_evidence_reported(tmp_path: pathlib.Path) ->
         "nodes": {},
         "edges": [],
         "assemblies": [],
+        "concept_hits": {},
+        "drives": {},
+        "hypotheses": [],
+        "X": {},
     }
     legacy_path = tmp_path / "legacy_t36.json"
     legacy_path.write_text(json.dumps(legacy_data), encoding="utf-8")
@@ -1175,9 +1243,11 @@ def test_adversarial_a_non_finite_numeric_rejection(tmp_path: pathlib.Path) -> N
 def test_adversarial_b_stale_formation_candidate(tmp_path: pathlib.Path) -> None:
     """Adversarial B: Stale formation candidate referring to missing edge fails closed."""
     g = make_rich_graph()
+    stale_edges = [("n1", "n2"), ("n2", "n3"), ("n1", "non_existent_node")]
+    cid = canonical_assembly_id(stale_edges)
     cand = FormationCandidate(
-        candidate_id="cand_stale",
-        edges=frozenset([("n1", "non_existent_node")]),
+        candidate_id=cid,
+        edges=frozenset(stale_edges),
         context_signature="ctx",
         root_votes={"rv_1"},
     )
@@ -1207,7 +1277,7 @@ def test_adversarial_c_stale_growth_candidate(tmp_path: pathlib.Path) -> None:
         parent_assemblies=cur.parent_assemblies,
         is_retired=True,
     )
-    g2.assembly_manager.pending_growth[("asm_test", ("n1", "n2"), "ctx")] = {"v1"}
+    g2.assembly_manager.pending_growth[("asm_test", ("n3", "n4"), "ctx")] = {"v1"}
     with pytest.raises(StructuralReferentialIntegrityError):
         validate_structural_referential_integrity(g2)
 
@@ -1222,7 +1292,7 @@ def test_adversarial_d_stale_merge_candidate(tmp_path: pathlib.Path) -> None:
     """Adversarial D: Stale merge candidate referring to retired/missing parent fails closed."""
     # 1. Missing parent
     g1 = make_rich_graph()
-    g1.assembly_manager.pending_merge[(frozenset(["non_existent_asm"]), "ctx")] = {"v1"}
+    g1.assembly_manager.pending_merge[(frozenset(["non_existent_asm", "asm_second"]), "ctx")] = {"v1"}
     with pytest.raises(StructuralReferentialIntegrityError):
         validate_structural_referential_integrity(g1)
 
@@ -1238,7 +1308,7 @@ def test_adversarial_d_stale_merge_candidate(tmp_path: pathlib.Path) -> None:
         parent_assemblies=cur.parent_assemblies,
         is_retired=True,
     )
-    g2.assembly_manager.pending_merge[(frozenset(["asm_test"]), "ctx")] = {"v1"}
+    g2.assembly_manager.pending_merge[(frozenset(["asm_test", "asm_second"]), "ctx")] = {"v1"}
     with pytest.raises(StructuralReferentialIntegrityError):
         validate_structural_referential_integrity(g2)
 

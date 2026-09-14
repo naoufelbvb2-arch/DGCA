@@ -24,6 +24,7 @@ from dgca import (
     RuntimeLifecycleState,
     RuntimeRoot,
     StructuralAssembly,
+    canonical_assembly_id,
     compute_checkpoint_state_digest,
     restore_cognitive_checkpoint,
     save_cognitive_checkpoint,
@@ -338,8 +339,9 @@ def test_c01_t14_schema_1_1_formation_key_migration(tmp_path: pathlib.Path) -> N
     data["schema"]["checkpoint_schema_version"] = "1.1"
     data["schema"]["runtime_contract_version"] = "1.1"
     # Add candidate without storage_key
+    cid = canonical_assembly_id(comp)
     cand_1_1 = {
-        "candidate_id": "cand_test",
+        "candidate_id": cid,
         "context_signature": "my_ctx",
         "created_t": 50,
         "edges": sorted([[u, v] for u, v in comp]),
@@ -356,10 +358,10 @@ def test_c01_t14_schema_1_1_formation_key_migration(tmp_path: pathlib.Path) -> N
     assert report.target_schema == "1.1.1"
     assert any("reconstructed deterministically" in note for note in report.diagnostic_notes)
 
-    expected_key = "cand_test:ctx_my_ctx"
+    expected_key = f"{cid}:ctx_my_ctx"
     assert expected_key in restored.assembly_manager.pending_candidates
     cand = restored.assembly_manager.pending_candidates[expected_key]
-    assert cand.candidate_id == "cand_test"
+    assert cand.candidate_id == cid
     assert cand.context_signature == "my_ctx"
     assert cand.root_votes == {"vote_1", "vote_2"}
 
@@ -374,15 +376,16 @@ def test_c01_t15_schema_1_1_duplicate_derived_key_conflict_fails_closed(tmp_path
     data["schema"]["checkpoint_schema_version"] = "1.1"
     data["schema"]["runtime_contract_version"] = "1.1"
     # Two conflicting records deriving the same key
+    cid = canonical_assembly_id(comp)
     cand1 = {
-        "candidate_id": "cand_dup",
+        "candidate_id": cid,
         "context_signature": "ctx_shared",
         "created_t": 50,
         "edges": sorted([[u, v] for u, v in comp]),
         "root_votes": ["vote_1"],
     }
     cand2 = {
-        "candidate_id": "cand_dup",
+        "candidate_id": cid,
         "context_signature": "ctx_shared",
         "created_t": 50,
         "edges": sorted([[u, v] for u, v in comp]),
@@ -407,6 +410,10 @@ def test_c01_t16_legacy_1_0_migration_targets_1_1_1(tmp_path: pathlib.Path) -> N
         },
         "edges": [{"src": "n1", "dst": "n2", "W": 0.8}],
         "assemblies": [],
+        "concept_hits": {},
+        "drives": {},
+        "hypotheses": [],
+        "X": {},
     }
     legacy_path = tmp_path / "legacy_1_0.json"
     legacy_path.write_text(json.dumps(legacy_data), encoding="utf-8")

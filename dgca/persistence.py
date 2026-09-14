@@ -26,6 +26,7 @@ from .assembly import (
     AssemblyPolicy,
     FormationCandidate,
     StructuralAssembly,
+    canonical_assembly_id,
 )
 from .config import REGIONS, Law
 from .graph import CognitiveGraph, Edge, Node
@@ -82,13 +83,12 @@ class RuntimeLifecycleGuard:
     def transition_to(self, new_state: RuntimeLifecycleState) -> None:
         """Transitions state or raises IllegalLifecycleTransitionError."""
         current = self._state
-        if current == new_state:
-            return
 
         # Allowed transitions:
         # IDLE -> MUTATING -> IDLE
         # IDLE -> CHECKPOINTING -> IDLE
         # IDLE -> RESTORING -> IDLE
+        # Same-state nesting (e.g. RESTORING -> RESTORING) is strictly prohibited (C03-07 / C03-I14).
         if current == RuntimeLifecycleState.IDLE:
             if new_state in (
                 RuntimeLifecycleState.MUTATING,
@@ -126,13 +126,16 @@ class _LifecycleContext:
     def __init__(self, guard: RuntimeLifecycleGuard, target_state: RuntimeLifecycleState) -> None:
         self.guard = guard
         self.target_state = target_state
+        self._entered = False
 
     def __enter__(self):
         self.guard.transition_to(self.target_state)
+        self._entered = True
         return self.guard
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        self.guard.transition_to(RuntimeLifecycleState.IDLE)
+        if self._entered:
+            self.guard.transition_to(RuntimeLifecycleState.IDLE)
 
 
 # ─────────────────────────────────────────────────────────── 3. Diagnostic Migration Report
@@ -246,6 +249,138 @@ def compute_combined_semantics_digest(
     }
     payload = json.dumps(combined, sort_keys=True, separators=(",", ":"))
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+# ─────────────────────────────────────────────────────────── 4.1 Strict JSON Loader & Shape Validation
+def _reject_duplicate_json_keys(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    """Rejects duplicate JSON object keys instead of last-key-wins behavior (C03-03 / C03-I04)."""
+    obj: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in obj:
+            raise CheckpointSchemaError(f"Duplicate JSON object key detected: '{key}'")
+        obj[key] = value
+    return obj
+
+
+def load_checkpoint_json(content_or_path: str | pathlib.Path | bytes) -> dict[str, Any]:
+    """Loads JSON data for checkpoint operations, strictly rejecting duplicate keys at any depth."""
+    try:
+        if isinstance(content_or_path, pathlib.Path):
+            with open(content_or_path, "r", encoding="utf-8") as f:
+                return json.load(f, object_pairs_hook=_reject_duplicate_json_keys)
+        elif isinstance(content_or_path, bytes):
+            return json.loads(content_or_path.decode("utf-8"), object_pairs_hook=_reject_duplicate_json_keys)
+        elif isinstance(content_or_path, str):
+            is_file = False
+            try:
+                p = pathlib.Path(content_or_path)
+                if p.is_file():
+                    is_file = True
+            except OSError:
+                is_file = False
+            if is_file:
+                with open(content_or_path, "r", encoding="utf-8") as f:
+                    return json.load(f, object_pairs_hook=_reject_duplicate_json_keys)
+            return json.loads(content_or_path, object_pairs_hook=_reject_duplicate_json_keys)
+        else:
+            raise CheckpointSchemaError(f"Unsupported input type for load_checkpoint_json: {type(content_or_path)}")
+    except json.JSONDecodeError as err:
+        raise CheckpointSchemaError(f"Malformed JSON checkpoint: {err}")
+
+
+def validate_canonical_persistent_shape(
+    data: dict[str, Any],
+    schema_label: str = "1.1.1",
+) -> None:
+    """Validates top-level sections and all frozen durable persistent fields without defaulting (C03-04 / C03-I05)."""
+    if not isinstance(data, dict):
+        raise CheckpointSchemaError(f"{schema_label} checkpoint must be a JSON object (dict)")
+
+    top_level_keys = ["schema", "compatibility", "integrity", "persistent_state"]
+    for k in top_level_keys:
+        if k not in data or not isinstance(data[k], dict):
+            raise CheckpointSchemaError(
+                f"Missing or invalid top-level section '{k}' in {schema_label} checkpoint"
+            )
+
+    pstate = data["persistent_state"]
+    required_pstate: dict[str, tuple[type, ...]] = {
+        "logical_time": (int,),
+        "nodes": (list,),
+        "edges": (list,),
+        "contradictions": (dict,),
+        "concept_hits": (dict,),
+        "drives": (dict,),
+        "hypotheses": (list,),
+        "assemblies": (list,),
+        "pending_structural_evidence": (dict,),
+    }
+
+    for fname, exp_types in required_pstate.items():
+        if fname not in pstate:
+            raise CheckpointSchemaError(
+                f"Missing durable persistent section '{fname}' in {schema_label} checkpoint"
+            )
+        val = pstate[fname]
+        if fname == "logical_time":
+            if not isinstance(val, int) or isinstance(val, bool):
+                raise CheckpointSchemaError(
+                    f"Invalid type for 'logical_time': expected int, got {type(val).__name__}"
+                )
+        elif not isinstance(val, exp_types):
+            raise CheckpointSchemaError(
+                f"Invalid type for '{fname}': expected {exp_types[0].__name__}, got {type(val).__name__}"
+            )
+
+    pending_ev = pstate["pending_structural_evidence"]
+    for sub in ["pending_candidates", "pending_growth", "pending_merge"]:
+        if sub not in pending_ev or not isinstance(pending_ev[sub], list):
+            raise CheckpointSchemaError(
+                f"Missing or invalid pending structural evidence sub-section '{sub}' in {schema_label} checkpoint"
+            )
+
+
+def validate_legacy_v1_source(legacy_data: dict[str, Any]) -> None:
+    """Validates that legacy data conforms strictly to DGCA legacy v1.0 structure (C03-02 / C03-I02 / C03-I03)."""
+    if not isinstance(legacy_data, dict):
+        raise CheckpointSchemaError("Legacy checkpoint must be a JSON object (dict)")
+
+    if legacy_data.get("version") != "1.0":
+        raise CheckpointSchemaError(
+            f"Unsupported or missing legacy version: '{legacy_data.get('version')}', expected '1.0'"
+        )
+
+    if "schema" in legacy_data:
+        raise CheckpointSchemaError(
+            "Ambiguous checkpoint: legacy format must not define a canonical 'schema' section"
+        )
+
+    required_sections: dict[str, tuple[type, ...]] = {
+        "t": (int,),
+        "concept_hits": (dict,),
+        "drives": (dict,),
+        "hypotheses": (list,),
+        "X": (dict,),
+        "nodes": (dict,),
+        "edges": (list,),
+        "assemblies": (list,),
+    }
+
+    for sec_name, expected_types in required_sections.items():
+        if sec_name not in legacy_data:
+            raise CheckpointSchemaError(f"Missing durable legacy section: '{sec_name}'")
+        val = legacy_data[sec_name]
+        if sec_name == "t":
+            if not isinstance(val, int) or isinstance(val, bool):
+                raise CheckpointSchemaError(
+                    f"Invalid type for legacy section 't': expected int, got {type(val).__name__}"
+                )
+        elif not isinstance(val, expected_types):
+            raise CheckpointSchemaError(
+                f"Invalid type for legacy section '{sec_name}': expected {expected_types[0].__name__}, got {type(val).__name__}"
+            )
+
+    assert_finite_numbers(legacy_data, "legacy_v1_source")
 
 
 # ─────────────────────────────────────────────────────────── 5. Numeric Validation
@@ -470,12 +605,23 @@ def validate_structural_referential_integrity(
                             f"Live assembly member edge ({u}, {v}) of '{aid}' missing from graph.edges"
                         )
 
-        # 3. Pending Formation Candidates referential integrity & storage key validation
+        # 3. Pending Formation Candidates referential integrity & RFC-11 validation (C03-06)
         for storage_key, cand in mgr.pending_candidates.items():
             expected_key = f"{cand.candidate_id}:ctx_{cand.context_signature or 'default'}"
             if storage_key != expected_key:
-                raise StructuralReferentialIntegrityError(
+                raise CheckpointValidationError(
                     f"Formation candidate storage_key '{storage_key}' does not match expected_key '{expected_key}'"
+                )
+            expected_cid = canonical_assembly_id([(u, v) for u, v in cand.edges])
+            if cand.candidate_id != expected_cid:
+                raise CheckpointValidationError(
+                    f"Formation candidate_id '{cand.candidate_id}' does not match canonical_assembly_id '{expected_cid}'"
+                )
+            k_min = mgr.policy.K_ASM_MIN
+            k_max = mgr.policy.K_ASM_MEM
+            if not (k_min <= len(cand.edges) <= k_max):
+                raise CheckpointValidationError(
+                    f"Formation candidate edge count {len(cand.edges)} outside bounds [{k_min}, {k_max}]"
                 )
             for u, v in cand.edges:
                 if (u, v) not in graph.edges:
@@ -483,7 +629,7 @@ def validate_structural_referential_integrity(
                         f"Formation candidate '{storage_key}' references edge ({u}, {v}) which is not in live graph.edges"
                     )
 
-        # 4. Pending Growth referential integrity
+        # 4. Pending Growth referential integrity & RFC-11 validation (C03-06)
         for (aid, (u, v), ctx) in mgr.pending_growth:
             if aid not in mgr.assemblies:
                 raise StructuralReferentialIntegrityError(
@@ -494,13 +640,21 @@ def validate_structural_referential_integrity(
                 raise StructuralReferentialIntegrityError(
                     f"Pending growth references retired parent assembly '{aid}'"
                 )
+            if (u, v) in latest.member_edges:
+                raise CheckpointValidationError(
+                    f"Growth candidate new_edge {(u, v)} is already a member of parent assembly '{aid}'"
+                )
             if (u, v) not in graph.edges:
                 raise StructuralReferentialIntegrityError(
                     f"Pending growth references new_edge ({u}, {v}) missing from live graph.edges"
                 )
 
-        # 5. Pending Merge referential integrity
+        # 5. Pending Merge referential integrity & RFC-11 validation (C03-06)
         for (parents_set, ctx) in mgr.pending_merge:
+            if len(parents_set) != 2:
+                raise CheckpointValidationError(
+                    f"Merge candidate must have exactly two distinct parents, got {len(parents_set)}"
+                )
             for pid in parents_set:
                 if pid not in mgr.assemblies:
                     raise StructuralReferentialIntegrityError(
@@ -638,6 +792,8 @@ def validate_schema_1_1_source(
     """
     if not isinstance(source, dict):
         raise CheckpointSchemaError("Source checkpoint must be a JSON object (dict)")
+
+    validate_canonical_persistent_shape(source, schema_label="1.1")
 
     schema_sec = source.get("schema")
     if not isinstance(schema_sec, dict):
@@ -796,6 +952,8 @@ def migrate_legacy_v1_checkpoint(
     runtime_enable_prediction: bool = False,
 ) -> tuple[dict[str, Any], MigrationReport]:
     """Migrates a legacy v1.0 checkpoint to canonical v1.1.1 persistent state."""
+    validate_legacy_v1_source(legacy_data)
+
     restored_durable = [
         "logical_time", "durable_node_fields", "durable_edge_fields",
         "contradictions", "concept_hits", "drives", "hypotheses",
@@ -952,24 +1110,34 @@ def _prepare_restored_cognitive_graph(
     if not path.exists():
         raise FileNotFoundError(f"Checkpoint file not found: {path}")
 
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            raw_data = json.load(f)
-    except json.JSONDecodeError as err:
-        raise CheckpointSchemaError(f"Malformed JSON checkpoint: {err}")
+    raw_data = load_checkpoint_json(path)
 
-    # Detect schema version & dispatch migration
+    # Strict Source-Family Recognition (C03-01 / C03-I01)
+    if not isinstance(raw_data, dict):
+        raise CheckpointSchemaError("Checkpoint root must be a JSON object (dict)")
+
+    has_schema = "schema" in raw_data
+    schema_val = raw_data.get("schema")
+
     migration_report: MigrationReport | None = None
-    if raw_data.get("version") == "1.0" or "schema" not in raw_data:
+    if raw_data.get("version") == "1.0" and not has_schema:
         pred_setting = False if enable_prediction is None else enable_prediction
         checkpoint_data, migration_report = migrate_legacy_v1_checkpoint(raw_data, pred_setting)
-    elif raw_data.get("schema", {}).get("checkpoint_schema_version") == "1.1":
+    elif has_schema and isinstance(schema_val, dict) and schema_val.get("checkpoint_schema_version") == "1.1":
         checkpoint_data, migration_report = migrate_schema_1_1_to_1_1_1(raw_data, policy=policy)
-    else:
+    elif has_schema and isinstance(schema_val, dict) and schema_val.get("checkpoint_schema_version") == "1.1.1":
         checkpoint_data = raw_data
+    else:
+        raise CheckpointSchemaError(
+            "Unrecognized checkpoint family. Expected schema.checkpoint_schema_version == '1.1.1' "
+            "or '1.1', or explicit legacy version == '1.0' without schema."
+        )
+
+    # Canonical 1.1.1 Shape Validation (C03-04 / C03-I05)
+    validate_canonical_persistent_shape(checkpoint_data, schema_label="1.1.1")
 
     # Validate schema header
-    schema_sec = checkpoint_data.get("schema", {})
+    schema_sec = checkpoint_data["schema"]
     schema_ver = schema_sec.get("checkpoint_schema_version")
     contract_ver = schema_sec.get("runtime_contract_version")
     cog_sem_ver = schema_sec.get("cognitive_semantics_version")
@@ -1046,13 +1214,18 @@ def _prepare_restored_cognitive_graph(
     )
 
     # Restore contradictions
-    for k, v in persistent_payload.get("contradictions", {}).items():
+    for k, v in persistent_payload["contradictions"].items():
         new_graph.X[k] = set(v)
 
-    # Restore Nodes
-    for ndata in persistent_payload.get("nodes", []):
+    # Restore Nodes (Duplicate Node rejection C03-05 / C03-I06)
+    seen_nids: set[str] = set()
+    for ndata in persistent_payload["nodes"]:
+        nid = ndata["nid"]
+        if nid in seen_nids:
+            raise CheckpointValidationError(f"Duplicate Node ID detected during restore: '{nid}'")
+        seen_nids.add(nid)
         node = Node(
-            nid=ndata["nid"],
+            nid=nid,
             region=ndata["region"],
             is_concept=ndata.get("is_concept", False),
             members=set(ndata.get("members", [])),
@@ -1067,8 +1240,13 @@ def _prepare_restored_cognitive_graph(
         )
         new_graph.nodes[node.nid] = node
 
-    # Restore Edges
-    for edata in persistent_payload.get("edges", []):
+    # Restore Edges (Duplicate Edge rejection C03-05 / C03-I07)
+    seen_edges: set[tuple[str, str]] = set()
+    for edata in persistent_payload["edges"]:
+        pair = (edata["src"], edata["dst"])
+        if pair in seen_edges:
+            raise CheckpointValidationError(f"Duplicate Edge ID detected during restore: {pair}")
+        seen_edges.add(pair)
         edge = Edge(
             src=edata["src"],
             dst=edata["dst"],
@@ -1098,8 +1276,15 @@ def _prepare_restored_cognitive_graph(
     effective_policy = policy or AssemblyPolicy()
     new_mgr = AssemblyManager(new_graph, effective_policy)
 
-    # Restore Assemblies (preserving parent_assemblies order)
-    for adata in persistent_payload.get("assemblies", []):
+    # Restore Assemblies (Duplicate Assembly version rejection C03-05 / C03-I08)
+    seen_assemblies: set[tuple[str, int]] = set()
+    for adata in persistent_payload["assemblies"]:
+        asm_ver_key = (adata["assembly_id"], adata["version"])
+        if asm_ver_key in seen_assemblies:
+            raise CheckpointValidationError(
+                f"Duplicate Assembly version detected during restore: {asm_ver_key}"
+            )
+        seen_assemblies.add(asm_ver_key)
         asm = StructuralAssembly(
             assembly_id=adata["assembly_id"],
             version=adata["version"],
@@ -1112,39 +1297,118 @@ def _prepare_restored_cognitive_graph(
         new_mgr.assemblies.setdefault(asm.assembly_id, []).append(asm)
 
     # Restore Pending Evidence
-    pending_ev = persistent_payload.get("pending_structural_evidence", {})
+    pending_ev = persistent_payload["pending_structural_evidence"]
 
-    # Formation candidates
-    for cdata in pending_ev.get("pending_candidates", []):
+    # Formation candidates (C03-05 / C03-06)
+    seen_formation_keys: set[str] = set()
+    for cdata in pending_ev["pending_candidates"]:
         storage_key = cdata.get("storage_key")
         candidate_id = cdata.get("candidate_id")
         context_signature = cdata.get("context_signature")
         expected_key = f"{candidate_id}:ctx_{context_signature or 'default'}"
         if storage_key != expected_key:
-            raise StructuralReferentialIntegrityError(
+            raise CheckpointValidationError(
                 f"Invalid formation candidate storage_key: recorded '{storage_key}' != expected '{expected_key}'"
             )
+        if storage_key in seen_formation_keys:
+            raise CheckpointValidationError(
+                f"Duplicate formation candidate storage_key detected during restore: '{storage_key}'"
+            )
+        seen_formation_keys.add(storage_key)
+
+        raw_edges = cdata.get("edges", [])
+        edge_pairs = [(pair[0], pair[1]) for pair in raw_edges]
+        expected_cid = canonical_assembly_id(edge_pairs)
+        if candidate_id != expected_cid:
+            raise CheckpointValidationError(
+                f"Formation candidate_id '{candidate_id}' does not match canonical_assembly_id '{expected_cid}'"
+            )
+        k_min = effective_policy.K_ASM_MIN
+        k_max = effective_policy.K_ASM_MEM
+        if not (k_min <= len(edge_pairs) <= k_max):
+            raise CheckpointValidationError(
+                f"Formation candidate edge count {len(edge_pairs)} outside bounds [{k_min}, {k_max}]"
+            )
+        for pair in edge_pairs:
+            if pair not in new_graph.edges:
+                raise StructuralReferentialIntegrityError(
+                    f"Formation candidate '{storage_key}' references edge {pair} missing from live graph.edges"
+                )
+
         cand_votes = set(cdata.get("root_votes", []))
         cand = FormationCandidate(
             candidate_id=candidate_id,
-            edges=frozenset((pair[0], pair[1]) for pair in cdata["edges"]),
+            edges=frozenset(edge_pairs),
             context_signature=context_signature,
             root_votes=cand_votes,
             created_t=cdata.get("created_t", 0),
         )
         new_mgr.pending_candidates[storage_key] = cand
 
-    # Growth candidates
-    for gdata in pending_ev.get("pending_growth", []):
+    # Growth candidates (C03-05 / C03-06)
+    seen_growth_keys: set[tuple[str, tuple[str, str], str | None]] = set()
+    for gdata in pending_ev["pending_growth"]:
+        aid = gdata.get("assembly_id")
+        raw_edge = gdata.get("new_edge")
+        if not isinstance(raw_edge, (list, tuple)) or len(raw_edge) != 2:
+            raise CheckpointValidationError("Growth candidate new_edge must be a 2-element list/tuple")
+        pair = (raw_edge[0], raw_edge[1])
+        growth_key = (aid, pair, gdata.get("context"))
+        if growth_key in seen_growth_keys:
+            raise CheckpointValidationError(
+                f"Duplicate growth candidate key detected during restore: {growth_key}"
+            )
+        seen_growth_keys.add(growth_key)
+
+        if aid not in new_mgr.assemblies:
+            raise StructuralReferentialIntegrityError(
+                f"Pending growth references non-existent parent assembly '{aid}'"
+            )
+        latest = new_mgr.assemblies[aid][-1]
+        if latest.is_retired:
+            raise StructuralReferentialIntegrityError(
+                f"Pending growth references retired parent assembly '{aid}'"
+            )
+        if pair in latest.member_edges:
+            raise CheckpointValidationError(
+                f"Growth candidate new_edge {pair} is already a member of parent assembly '{aid}'"
+            )
+        if pair not in new_graph.edges:
+            raise StructuralReferentialIntegrityError(
+                f"Pending growth references new_edge {pair} missing from live graph.edges"
+            )
+
         g_votes = set(gdata.get("root_votes", []))
-        pair = (gdata["new_edge"][0], gdata["new_edge"][1])
-        growth_key = (gdata["assembly_id"], pair, gdata.get("context"))
         new_mgr.pending_growth[growth_key] = g_votes
 
-    # Merge candidates
-    for mdata in pending_ev.get("pending_merge", []):
+    # Merge candidates (C03-05 / C03-06)
+    seen_merge_keys: set[tuple[frozenset[str], str | None]] = set()
+    for mdata in pending_ev["pending_merge"]:
+        raw_parents = mdata.get("parent_assembly_ids", [])
+        if not isinstance(raw_parents, (list, tuple)) or len(raw_parents) != 2 or len(set(raw_parents)) != 2:
+            raise CheckpointValidationError(
+                f"Merge candidate must have exactly two distinct parent assemblies, got {raw_parents}"
+            )
+        parents = frozenset(raw_parents)
+        merge_key = (parents, mdata.get("context"))
+        if merge_key in seen_merge_keys:
+            raise CheckpointValidationError(
+                f"Duplicate merge candidate key detected during restore: {merge_key}"
+            )
+        seen_merge_keys.add(merge_key)
+
+        for pid in parents:
+            if pid not in new_mgr.assemblies:
+                raise StructuralReferentialIntegrityError(
+                    f"Pending merge references non-existent parent assembly '{pid}'"
+                )
+            latest = new_mgr.assemblies[pid][-1]
+            if latest.is_retired:
+                raise StructuralReferentialIntegrityError(
+                    f"Pending merge references retired parent assembly '{pid}'"
+                )
+
         m_votes = set(mdata.get("root_votes", []))
-        merge_key = (frozenset(mdata["parent_assembly_ids"]), mdata.get("context"))
         new_mgr.pending_merge[merge_key] = m_votes
 
     new_mgr.rebuild_indexes()

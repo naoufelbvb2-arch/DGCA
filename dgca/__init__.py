@@ -108,11 +108,14 @@ from .persistence import (
     StructuralReferentialIntegrityError,
     build_canonical_checkpoint,
     compute_checkpoint_state_digest,
+    load_checkpoint_json,
     migrate_legacy_v1_checkpoint,
     migrate_schema_1_1_to_1_1_1,
     policies_semantically_equal,
     restore_cognitive_checkpoint,
     save_cognitive_checkpoint,
+    validate_canonical_persistent_shape,
+    validate_legacy_v1_source,
     validate_schema_1_1_source,
 )
 from .reasoning import compose_relations, deep_infer
@@ -287,6 +290,7 @@ __all__ = [
     "feed",
     "init_quantity_backbone",
     "law14_behavioral_signature",
+    "load_checkpoint_json",
     "migrate_legacy_v1_checkpoint",
     "migrate_schema_1_1_to_1_1_1",
     "policies_semantically_equal",
@@ -297,6 +301,8 @@ __all__ = [
     "rfc15_behavioral_signature",
     "rfc16_behavioral_signature",
     "save_cognitive_checkpoint",
+    "validate_canonical_persistent_shape",
+    "validate_legacy_v1_source",
     "validate_schema_1_1_source",
 ]
 
