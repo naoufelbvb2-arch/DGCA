@@ -56,7 +56,9 @@ def clean_guard():
 
 @pytest.fixture
 def base_runtime(clean_graph, clean_guard):
-    epoch = CausalProvenanceEpoch("epoch_test_1", "R1_TRACKED", "base_state_digest_000")
+    from dgca.causal_identity import create_native_r1_provenance_epoch
+    state_digest = compute_checkpoint_state_digest(extract_canonical_persistent_payload(clean_graph))
+    epoch = create_native_r1_provenance_epoch(state_digest)
     ledger = CausalCommitLedger(epoch=epoch)
     return CanonicalR1RuntimeRoot(
         graph=clean_graph,

@@ -571,13 +571,24 @@ class UnifiedGenerativeCognitiveLoopEngine:
         surface_chunk: SurfaceChunk,
         parent_rid: str,
         simulate_transport_failure: bool = False,
+        canonical_identity: bool = False,
+        delivery_channel_ref: str | None = None,
     ) -> DeliveryStatusView:
         """
         توصيل المخرج السطحي الملتزم إلى البيئة الخارجية.
         فشل التوصيل أو إعادة النقل لا يلغي إيصال التعبير التوليدي ولا يضاعف التقدم.
         """
         self.observability.delivery_attempts += 1
-        did = f"del_{hashlib.sha256(f'{surface_chunk.chunk_id}_{parent_rid}'.encode()).hexdigest()[:12]}"
+        if canonical_identity:
+            from .causal_identity import derive_delivery_id
+            did = derive_delivery_id(
+                surface_chunk_id=surface_chunk.chunk_id,
+                parent_representation_id=parent_rid,
+                delivery_channel_ref=delivery_channel_ref,
+                prefix="del_",
+            )
+        else:
+            did = f"del_{hashlib.sha256(f'{surface_chunk.chunk_id}_{parent_rid}'.encode()).hexdigest()[:12]}"
 
         if simulate_transport_failure:
             status_view = DeliveryStatusView(

@@ -18,7 +18,7 @@ import math
 import os
 import pathlib
 import uuid
-from dataclasses import dataclass, field, replace
+from dataclasses import dataclass, field
 from typing import Any
 
 from .assembly import (
@@ -40,7 +40,6 @@ from .causal_identity import (
     compute_causal_provenance_digest,
     compute_checkpoint_bundle_digest,
     compute_observation_protocol_digest,
-    derive_causal_provenance_epoch_id,
     validate_causal_provenance_state,
 )
 from .config import REGIONS, Law
@@ -775,8 +774,10 @@ def _atomic_replace_file(dest_path: pathlib.Path, content_bytes: bytes) -> None:
         try:
             if hasattr(os, "O_DIRECTORY"):
                 dir_fd = os.open(str(dest_dir), os.O_DIRECTORY)
-                os.fsync(dir_fd)
-                os.close(dir_fd)
+                try:
+                    os.fsync(dir_fd)
+                finally:
+                    os.close(dir_fd)
         except (OSError, AttributeError):
             pass
     except Exception:
@@ -1692,11 +1693,14 @@ def build_canonical_r1_checkpoint(
     identity_protocol_digest = CAUSAL_IDENTITY_PROTOCOL_DIGEST
     obs_protocol_digest = compute_observation_protocol_digest(observation_protocol_version)
 
-    # 5. Causal provenance payload & digest
+    # 5. Causal provenance payload & validation (PIR02-B03, PIR02-B08)
     causal_provenance_payload = ledger.to_dict()
-    if not ledger.committed_transactions and ledger.epoch.base_state_digest in ("", "base_state_digest_000"):
-        ledger.epoch = replace(ledger.epoch, base_state_digest=state_digest)
-        causal_provenance_payload["causal_provenance_epoch"]["base_state_digest"] = state_digest
+    from .causal_identity import validate_causal_provenance_state
+    validate_causal_provenance_state(
+        causal_provenance_state=causal_provenance_payload,
+        checkpoint_state_digest=state_digest,
+        checkpoint_observation_protocol_version=observation_protocol_version,
+    )
     provenance_digest = compute_causal_provenance_digest(causal_provenance_payload)
 
     # 6. Structured bundle digest
@@ -1820,16 +1824,8 @@ def migrate_schema_1_1_1_to_1_2_0(
     identity_protocol_digest = CAUSAL_IDENTITY_PROTOCOL_DIGEST
     obs_protocol_digest = compute_observation_protocol_digest(target_observation_protocol_version)
 
-    epoch_id = derive_causal_provenance_epoch_id(
-        base_state_digest=state_digest,
-        source_schema="1.1.1",
-        causal_identity_protocol_version="1.0",
-    )
-    causal_provenance_epoch = {
-        "base_state_digest": state_digest,
-        "epoch_id": epoch_id,
-        "history_status": "PRE_R1_HISTORY_UNAVAILABLE",
-    }
+    from .causal_identity import create_migrated_r1_provenance_epoch
+    causal_provenance_epoch = create_migrated_r1_provenance_epoch(state_digest).to_dict()
     causal_provenance_state = {
         "causal_provenance_epoch": causal_provenance_epoch,
         "committed_event_bindings": {},
@@ -1880,6 +1876,11 @@ def migrate_schema_1_1_1_to_1_2_0(
     if "diagnostic_metadata" not in checkpoint:
         checkpoint["diagnostic_metadata"] = {}
     checkpoint["diagnostic_metadata"]["migration_report"] = report.to_dict()
+    existing_chain = checkpoint["diagnostic_metadata"].get("migration_chain")
+    if existing_chain and isinstance(existing_chain, list):
+        checkpoint["diagnostic_metadata"]["migration_chain"] = existing_chain + [report.to_dict()]
+    else:
+        checkpoint["diagnostic_metadata"]["migration_chain"] = [report.to_dict()]
     checkpoint["diagnostic_metadata"]["provenance"] = "MIGRATED_TO_1.2.0"
 
     return checkpoint, report
@@ -1914,23 +1915,56 @@ def restore_canonical_r1_checkpoint(
                     "Migrating pre-R1 v1.0 checkpoint to 1.2.0 requires an explicit target observation_protocol_version"
                 )
             pred_setting = False if enable_prediction is None else enable_prediction
-            mid_111, _ = migrate_legacy_v1_checkpoint(raw_data, pred_setting)
-            checkpoint_data, migration_report = migrate_schema_1_1_1_to_1_2_0(
+            mid_111, rep1 = migrate_legacy_v1_checkpoint(raw_data, pred_setting)
+            checkpoint_data, rep2 = migrate_schema_1_1_1_to_1_2_0(
                 mid_111,
                 target_observation_protocol_version=expected_observation_protocol_version,
                 policy=policy,
             )
+            # PIR02-B09: Preserve chained migration reports and all accumulated loss disclosures
+            combined_notes = list(rep1.diagnostic_notes) + list(rep2.diagnostic_notes)
+            combined_unrec = list(rep1.unrecoverable_legacy_state) + list(rep2.unrecoverable_legacy_state)
+            combined_report = MigrationReport(
+                source_schema="1.0",
+                target_schema="1.2.0",
+                restored_durable_fields=["persistent_state"],
+                reset_transient_fields=list(rep1.reset_transient_fields) + list(rep2.reset_transient_fields),
+                ignored_runtime_configuration=list(rep1.ignored_runtime_configuration) + list(rep2.ignored_runtime_configuration),
+                unrecoverable_legacy_state=combined_unrec,
+                compatibility_result="COMPATIBLE",
+                migration_result="SUCCESS",
+                diagnostic_notes=combined_notes,
+            )
+            migration_report = combined_report
+            checkpoint_data["diagnostic_metadata"]["migration_chain"] = [rep1.to_dict(), rep2.to_dict()]
+            checkpoint_data["diagnostic_metadata"]["migration_report"] = combined_report.to_dict()
         elif has_schema and isinstance(schema_val, dict) and schema_val.get("checkpoint_schema_version") == "1.1":
             if not expected_observation_protocol_version or not expected_observation_protocol_version.strip():
                 raise CausalIdentityValidationError(
                     "Migrating pre-R1 v1.1 checkpoint to 1.2.0 requires an explicit target observation_protocol_version"
                 )
-            mid_111, _ = migrate_schema_1_1_to_1_1_1(raw_data, policy=policy)
-            checkpoint_data, migration_report = migrate_schema_1_1_1_to_1_2_0(
+            mid_111, rep1 = migrate_schema_1_1_to_1_1_1(raw_data, policy=policy)
+            checkpoint_data, rep2 = migrate_schema_1_1_1_to_1_2_0(
                 mid_111,
                 target_observation_protocol_version=expected_observation_protocol_version,
                 policy=policy,
             )
+            combined_notes = list(rep1.diagnostic_notes) + list(rep2.diagnostic_notes)
+            combined_unrec = list(rep1.unrecoverable_legacy_state) + list(rep2.unrecoverable_legacy_state)
+            combined_report = MigrationReport(
+                source_schema="1.1",
+                target_schema="1.2.0",
+                restored_durable_fields=["persistent_state"],
+                reset_transient_fields=list(rep1.reset_transient_fields) + list(rep2.reset_transient_fields),
+                ignored_runtime_configuration=list(rep1.ignored_runtime_configuration) + list(rep2.ignored_runtime_configuration),
+                unrecoverable_legacy_state=combined_unrec,
+                compatibility_result="COMPATIBLE",
+                migration_result="SUCCESS",
+                diagnostic_notes=combined_notes,
+            )
+            migration_report = combined_report
+            checkpoint_data["diagnostic_metadata"]["migration_chain"] = [rep1.to_dict(), rep2.to_dict()]
+            checkpoint_data["diagnostic_metadata"]["migration_report"] = combined_report.to_dict()
         elif has_schema and isinstance(schema_val, dict) and schema_val.get("checkpoint_schema_version") == "1.1.1":
             if not expected_observation_protocol_version or not expected_observation_protocol_version.strip():
                 raise CausalIdentityValidationError(
@@ -1941,6 +1975,7 @@ def restore_canonical_r1_checkpoint(
                 target_observation_protocol_version=expected_observation_protocol_version,
                 policy=policy,
             )
+            checkpoint_data["diagnostic_metadata"]["migration_chain"] = [migration_report.to_dict()]
         elif has_schema and isinstance(schema_val, dict) and schema_val.get("checkpoint_schema_version") == "1.2.0":
             checkpoint_data = raw_data
         else:

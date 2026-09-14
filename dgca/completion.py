@@ -201,7 +201,7 @@ class PatternCompletionEngine:
         self.observability.sdcr_nodes_inspected += len(representation.participating_node_refs)
         self.observability.sdcr_edges_inspected += len(representation.participating_edge_refs)
 
-        cache_key = f"{representation.representation_id}|{rcc_filter or 'all'}"
+        cache_key = (representation.representation_id, rcc_filter or "all", bool(canonical_identity))
         if cache_key in self._candidate_cache:
             return self._candidate_cache[cache_key]
 
@@ -249,8 +249,8 @@ class PatternCompletionEngine:
                         cid = derive_pattern_candidate_id(
                             parent_representation_id=representation.representation_id,
                             candidate_kind="structural_assembly",
-                            seed_refs=sorted(seeds),
-                            structural_refs=sorted(structural_refs, key=lambda x: str(x)),
+                            seed_refs=frozenset(seeds),
+                            structural_refs=frozenset(structural_refs),
                             assembly_refs=sorted([asm.assembly_id]),
                             scope_view=scope_tuple,
                             context_ref=ctx,
@@ -303,8 +303,8 @@ class PatternCompletionEngine:
                     cid = derive_pattern_candidate_id(
                         parent_representation_id=representation.representation_id,
                         candidate_kind="structural_edge",
-                        seed_refs=sorted(seeds),
-                        structural_refs=sorted([e.src, e.dst, edge_pair], key=lambda x: str(x)),
+                        seed_refs=frozenset(seeds),
+                        structural_refs=frozenset([e.src, e.dst, edge_pair]),
                         assembly_refs=[],
                         scope_view=scope_tuple,
                         context_ref=ctx,

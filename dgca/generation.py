@@ -442,9 +442,10 @@ class HierarchicalGenerativeEngine:
         representation: SparseDistributedCognitiveRepresentation,
         generation_scope: GenerationScope | None = None,
         budget: float = 1.0,
+        canonical_identity: bool = False,
     ) -> tuple[GenerativeHierarchy, float]:
         """
-        توسيع الهرمية التوليدية تزايدياً في حدود الميزانية الموروثة المحدودة (RFC-14.3 / 5.5).
+        توسيع الهرمية التوليدية تزايدياً في حدود الميزانية الموروثة المحدودة (RFC-14.3 / 5.5, PIR02-B05).
         """
         remaining_budget = budget
         step_cost = Law.GAMMA  # 0.20 per expansion step
@@ -454,20 +455,81 @@ class HierarchicalGenerativeEngine:
             return hierarchy, 0.0
 
         new_frames = dict(hierarchy.frames)
+        id_remap: dict[str, str] = {}
+
         for opt in frontier.options:
             if remaining_budget < step_cost:
                 break
-            if opt.frame_id in new_frames:
-                target_frame = new_frames[opt.frame_id]
+            current_target_id = id_remap.get(opt.frame_id, opt.frame_id)
+            if current_target_id in new_frames:
+                target_frame = new_frames[current_target_id]
                 new_binding = RoleBinding(
                     role_authority_ref=opt.role_authority_ref,
                     filler_ref=opt.filler_ref,
                 )
                 updated_bindings = target_frame.role_bindings + (new_binding,)
-                new_frames[opt.frame_id] = dataclasses.replace(
-                    target_frame,
-                    role_bindings=updated_bindings,
-                )
+
+                if canonical_identity:
+                    from .causal_identity import derive_generative_frame_id
+                    new_frame_id = derive_generative_frame_id(
+                        parent_representation_id=str(representation.representation_id),
+                        anchors=sorted(target_frame.anchor_refs),
+                        scope=sorted(target_frame.scope_view),
+                        role_bindings=[
+                            {"role_authority_ref": b.role_authority_ref, "filler_ref": b.filler_ref}
+                            for b in sorted(updated_bindings, key=lambda x: (x.role_authority_ref, str(x.filler_ref)))
+                        ],
+                        prefix="frame_",
+                    )
+                    updated_frame = dataclasses.replace(
+                        target_frame,
+                        frame_id=new_frame_id,
+                        role_bindings=updated_bindings,
+                    )
+                    del new_frames[current_target_id]
+                    new_frames[new_frame_id] = updated_frame
+                    id_remap[current_target_id] = new_frame_id
+                    for orig_k, mapped_v in list(id_remap.items()):
+                        if mapped_v == current_target_id:
+                            id_remap[orig_k] = new_frame_id
+
+                    # Also update any parent frame whose role bindings reference current_target_id
+                    for other_id, other_frame in list(new_frames.items()):
+                        if other_id == new_frame_id:
+                            continue
+                        needs_parent_update = any(b.filler_ref == current_target_id for b in other_frame.role_bindings)
+                        if needs_parent_update:
+                            new_parent_bindings = tuple(
+                                dataclasses.replace(b, filler_ref=new_frame_id) if b.filler_ref == current_target_id else b
+                                for b in other_frame.role_bindings
+                            )
+                            new_parent_id = derive_generative_frame_id(
+                                parent_representation_id=str(representation.representation_id),
+                                anchors=sorted(other_frame.anchor_refs),
+                                scope=sorted(other_frame.scope_view),
+                                role_bindings=[
+                                    {"role_authority_ref": b.role_authority_ref, "filler_ref": b.filler_ref}
+                                    for b in sorted(new_parent_bindings, key=lambda x: (x.role_authority_ref, str(x.filler_ref)))
+                                ],
+                                prefix="frame_",
+                            )
+                            updated_parent = dataclasses.replace(
+                                other_frame,
+                                frame_id=new_parent_id,
+                                role_bindings=new_parent_bindings,
+                            )
+                            del new_frames[other_id]
+                            new_frames[new_parent_id] = updated_parent
+                            id_remap[other_id] = new_parent_id
+                            for orig_k, mapped_v in list(id_remap.items()):
+                                if mapped_v == other_id:
+                                    id_remap[orig_k] = new_parent_id
+                else:
+                    new_frames[current_target_id] = dataclasses.replace(
+                        target_frame,
+                        role_bindings=updated_bindings,
+                    )
+
                 remaining_budget -= step_cost
 
         consumed = budget - remaining_budget
@@ -876,6 +938,7 @@ class HierarchicalGenerativeEngine:
             representation=representation,
             generation_scope=generation_scope,
             budget=budget * 0.4,  # تخصيص جزء من الميزانية الموروثة للتوسع
+            canonical_identity=canonical_identity,
         )
 
         # 4. تحويل الهرمية تسلسلياً بواسطة القانون 16

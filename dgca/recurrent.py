@@ -189,14 +189,19 @@ class PredictiveRecurrentGenerativeEngine:
             raise ValueError("RootAuthorityRef must be a non-empty lawful reference.")
 
         if canonical_identity:
-            if not work_ref:
+            if not work_ref or (isinstance(work_ref, str) and not work_ref.strip()):
                 raise ValueError("Canonical GCE creation requires explicit non-empty work_ref.")
             from .causal_identity import derive_gce_id
-            eid = epoch_id or derive_gce_id(
+            expected_eid = derive_gce_id(
                 root_authority_ref=root_authority_ref,
                 work_ref=work_ref,
                 prefix="gce_",
             )
+            if epoch_id is not None and epoch_id != expected_eid:
+                raise ValueError(
+                    f"Supplied epoch_id '{epoch_id}' does not match canonical GCE ID '{expected_eid}'."
+                )
+            eid = expected_eid
         else:
             eid = epoch_id or f"gce_{hashlib.sha256(f'{root_authority_ref}_{len(self._epochs)}'.encode()).hexdigest()[:12]}"
         if eid in self._epochs:
@@ -371,7 +376,7 @@ class PredictiveRecurrentGenerativeEngine:
                 from .causal_identity import derive_expressive_obligation_id
                 ob_id = derive_expressive_obligation_id(
                     root_authority_ref=root_authority_ref,
-                    semantic_element_ref=str(r.element_ref),
+                    semantic_element_ref=r.element_ref,
                     role_scope=str(r.participation_kind),
                     alternative_branch_id=None,
                     prefix="ob_",
@@ -608,7 +613,7 @@ class PredictiveRecurrentGenerativeEngine:
             )
         else:
             cid = f"cc_{hashlib.sha256(f'{epoch.epoch_id}_{representation.representation_id}_{target_ob.obligation_id}_{len(epoch.progress_receipt_refs)}'.encode()).hexdigest()[:16]}"
-        progress_digest = hashlib.sha256(",".join(epoch.progress_receipt_refs).encode()).hexdigest()
+            progress_digest = hashlib.sha256(",".join(epoch.progress_receipt_refs).encode()).hexdigest()
 
         commit = ContinuationCommit(
             commit_id=cid,
