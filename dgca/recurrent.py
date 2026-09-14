@@ -189,10 +189,12 @@ class PredictiveRecurrentGenerativeEngine:
             raise ValueError("RootAuthorityRef must be a non-empty lawful reference.")
 
         if canonical_identity:
+            if not work_ref:
+                raise ValueError("Canonical GCE creation requires explicit non-empty work_ref.")
             from .causal_identity import derive_gce_id
             eid = epoch_id or derive_gce_id(
                 root_authority_ref=root_authority_ref,
-                work_ref=work_ref or "work_0",
+                work_ref=work_ref,
                 prefix="gce_",
             )
         else:
@@ -271,6 +273,7 @@ class PredictiveRecurrentGenerativeEngine:
         parent_rid: str,
         root_authority_ref: str,
         expressed_elements: tuple[str | tuple[str, str], ...] = (),
+        canonical_identity: bool = False,
     ) -> ExpressionReceipt:
         """
         اشتقاق إيصال تعبيري من مخرج سطحي ملتزم بنجاح في RFC-14.
@@ -279,10 +282,21 @@ class PredictiveRecurrentGenerativeEngine:
             raise ValueError("Cannot create ExpressionReceipt for uncommitted or empty SurfaceChunk.")
 
         elems = tuple(sorted(expressed_elements, key=lambda x: str(x))) if expressed_elements else ()
-        elements_sig = ",".join(str(e) for e in elems)
         occ_ref = source_alignment.source_occurrence_ref or ""
-        raw_key = f"ER|{root_authority_ref}|{parent_rid}|{surface_chunk.chunk_id}|{occ_ref}|{elements_sig}"
-        receipt_id = f"er_{hashlib.sha256(raw_key.encode()).hexdigest()[:16]}"
+        if canonical_identity:
+            from .causal_identity import derive_expression_receipt_id
+            receipt_id = derive_expression_receipt_id(
+                root_authority_ref=root_authority_ref,
+                parent_representation_id=parent_rid,
+                chunk_id=surface_chunk.chunk_id,
+                source_occurrence_ref=occ_ref,
+                expressed_elements=elems,
+                prefix="er_",
+            )
+        else:
+            elements_sig = ",".join(str(e) for e in elems)
+            raw_key = f"ER|{root_authority_ref}|{parent_rid}|{surface_chunk.chunk_id}|{occ_ref}|{elements_sig}"
+            receipt_id = f"er_{hashlib.sha256(raw_key.encode()).hexdigest()[:16]}"
 
         receipt = ExpressionReceipt(
             receipt_id=receipt_id,
@@ -338,6 +352,7 @@ class PredictiveRecurrentGenerativeEngine:
         root_authority_ref: str,
         explicit_obligations: list[ExpressiveObligation] | None = None,
         language_context: str = "en",
+        canonical_identity: bool = False,
     ) -> tuple[ExpressiveObligation, ...]:
         """
         اشتقاق الالتزامات التعبيرية الحالية من التمثيل المعرفي الحالي والسلطة الجذرية.
@@ -352,7 +367,17 @@ class PredictiveRecurrentGenerativeEngine:
         # اشتقاق محلي من إيصالات التمثيل النشطة المرتبطة بالسلطة الجذرية
         obligations: list[ExpressiveObligation] = []
         for r in sorted(representation.participation_receipts, key=lambda x: str(x.receipt_id)):
-            ob_id = f"ob_{hashlib.sha256(f'{root_authority_ref}_{r.element_ref}_{r.participation_kind}'.encode()).hexdigest()[:12]}"
+            if canonical_identity:
+                from .causal_identity import derive_expressive_obligation_id
+                ob_id = derive_expressive_obligation_id(
+                    root_authority_ref=root_authority_ref,
+                    semantic_element_ref=str(r.element_ref),
+                    role_scope=str(r.participation_kind),
+                    alternative_branch_id=None,
+                    prefix="ob_",
+                )
+            else:
+                ob_id = f"ob_{hashlib.sha256(f'{root_authority_ref}_{r.element_ref}_{r.participation_kind}'.encode()).hexdigest()[:12]}"
             obligations.append(
                 ExpressiveObligation(
                     obligation_id=ob_id,
@@ -642,6 +667,7 @@ class PredictiveRecurrentGenerativeEngine:
         explicit_obligations: list[ExpressiveObligation] | None = None,
         explicit_precedences: list[tuple[str, str]] | None = None,
         language_context: str = "en",
+        canonical_identity: bool = False,
     ) -> tuple[str, GenerativeContinuationEpoch, ExpressionReceipt | None, float]:
         """
         تنفيذ خطوة توليد تكرارية واحدة وفق الدورة:
@@ -653,7 +679,7 @@ class PredictiveRecurrentGenerativeEngine:
 
         # 1. اشتقاق الالتزامات والتغطية والمتبقي
         obligations = self.derive_obligations(
-            representation, epoch.root_authority_ref, explicit_obligations, language_context
+            representation, epoch.root_authority_ref, explicit_obligations, language_context, canonical_identity=canonical_identity
         )
         covered = self.compute_coverage(obligations, epoch, representation)
         remaining = self.compute_remaining(obligations, covered)
@@ -668,7 +694,7 @@ class PredictiveRecurrentGenerativeEngine:
 
         # 3. الالتزام تحت القانون 17
         status, commit, rem_budget = self.commit_continuation(
-            frontier, epoch, representation, budget
+            frontier, epoch, representation, budget, canonical_identity=canonical_identity
         )
         if status != "CONTINUATION_COMMITTED" or commit is None:
             return status, epoch, None, rem_budget
@@ -679,12 +705,12 @@ class PredictiveRecurrentGenerativeEngine:
 
         # بناء إطار التوليد الخاص بالعنصر الدلالي الملتزم به
         scope_nodes = frozenset([target_ob.semantic_element_ref])
-        frame = gen_engine.build_generative_frame(representation, scope_nodes)
+        frame = gen_engine.build_generative_frame(representation, scope_nodes, canonical_identity=canonical_identity)
         hierarchy = gen_engine.build_hierarchy([frame])
 
         # التحويل التسلسلي والتعبير السطحي
         prefix, consumed_linearization = gen_engine.linearize_hierarchy(
-            hierarchy, language_context=language_context, budget=rem_budget
+            hierarchy, language_context=language_context, budget=rem_budget, canonical_identity=canonical_identity
         )
         rem_budget = max(0.0, rem_budget - consumed_linearization)
         chunk = gen_engine.realize_surface_chunk(
@@ -692,6 +718,7 @@ class PredictiveRecurrentGenerativeEngine:
             str(representation.representation_id),
             language_context=language_context,
             budget=rem_budget,
+            canonical_identity=canonical_identity,
         )
 
         if not chunk.surface_units:
@@ -707,6 +734,7 @@ class PredictiveRecurrentGenerativeEngine:
             parent_rid=str(representation.representation_id),
             root_authority_ref=epoch.root_authority_ref,
             expressed_elements=(target_ob.semantic_element_ref,),
+            canonical_identity=canonical_identity,
         )
         updated_epoch = self.append_receipt(epoch_id, receipt)
         self.observability.recurrent_steps += 1
@@ -722,6 +750,7 @@ class PredictiveRecurrentGenerativeEngine:
         explicit_precedences: list[tuple[str, str]] | None = None,
         language_context: str = "en",
         max_loop_safety: int = 100,
+        canonical_identity: bool = False,
     ) -> tuple[GCEClosureView, HandoffView15To16]:
         """
         تنفيذ حلقة توليد تكرارية كاملة حتى إتمام الالتزامات أو الوصول إلى نقطة ثبات أو استنفاد الميزانية.
@@ -735,7 +764,7 @@ class PredictiveRecurrentGenerativeEngine:
 
         for _ in range(max_loop_safety):
             obligations = self.derive_obligations(
-                representation, epoch.root_authority_ref, explicit_obligations, language_context
+                representation, epoch.root_authority_ref, explicit_obligations, language_context, canonical_identity=canonical_identity
             )
             covered = self.compute_coverage(obligations, epoch, representation)
             remaining = self.compute_remaining(obligations, covered)
@@ -787,6 +816,7 @@ class PredictiveRecurrentGenerativeEngine:
                 explicit_obligations=explicit_obligations,
                 explicit_precedences=explicit_precedences,
                 language_context=language_context,
+                canonical_identity=canonical_identity,
             )
 
             if step_status == "BUDGET_UNAVAILABLE":

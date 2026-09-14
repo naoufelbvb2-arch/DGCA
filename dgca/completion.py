@@ -250,7 +250,7 @@ class PatternCompletionEngine:
                             parent_representation_id=representation.representation_id,
                             candidate_kind="structural_assembly",
                             seed_refs=sorted(seeds),
-                            structural_refs=sorted(structural_refs),
+                            structural_refs=sorted(structural_refs, key=lambda x: str(x)),
                             assembly_refs=sorted([asm.assembly_id]),
                             scope_view=scope_tuple,
                             context_ref=ctx,
@@ -298,8 +298,21 @@ class PatternCompletionEngine:
                         scopes.update(rec.scope_refs)
                 scope_tuple = tuple(sorted(scopes)) if scopes else ("global",)
 
-                cid_parts = [f"edge_{e.src}_{e.dst}", ",".join(sorted(seeds)), ",".join(scope_tuple), ctx or "none"]
-                cid = f"cand_edge_{hashlib.sha256('|'.join(cid_parts).encode('utf-8')).hexdigest()[:12]}"
+                if canonical_identity:
+                    from .causal_identity import derive_pattern_candidate_id
+                    cid = derive_pattern_candidate_id(
+                        parent_representation_id=representation.representation_id,
+                        candidate_kind="structural_edge",
+                        seed_refs=sorted(seeds),
+                        structural_refs=sorted([e.src, e.dst, edge_pair], key=lambda x: str(x)),
+                        assembly_refs=[],
+                        scope_view=scope_tuple,
+                        context_ref=ctx,
+                        prefix="cand_",
+                    )
+                else:
+                    cid_parts = [f"edge_{e.src}_{e.dst}", ",".join(sorted(seeds)), ",".join(scope_tuple), ctx or "none"]
+                    cid = f"cand_edge_{hashlib.sha256('|'.join(cid_parts).encode('utf-8')).hexdigest()[:12]}"
 
                 if cid not in candidates_map:
                     cand = PatternCandidate(
@@ -594,11 +607,25 @@ class PatternCompletionEngine:
         root_authority = frozenset(initial_representation.participating_node_refs)
         memory_snap = self.get_memory_snapshot_ref()
 
-        if canonical_identity or root_authority_ref is not None:
+        if canonical_identity:
+            if not work_ref or not str(work_ref).strip():
+                from .causal_identity import CausalIdentityValidationError
+                raise CausalIdentityValidationError(
+                    "run_settling_epoch in canonical_identity mode requires an explicit non-empty work_ref"
+                )
             from .causal_identity import derive_settling_epoch_id
             epoch_id = derive_settling_epoch_id(
                 root_representation_id=root_rid,
                 root_causal_authority_ref=root_authority_ref or root_rid,
+                memory_snapshot_ref=memory_snap,
+                work_ref=work_ref,
+                prefix="se_",
+            )
+        elif root_authority_ref is not None:
+            from .causal_identity import derive_settling_epoch_id
+            epoch_id = derive_settling_epoch_id(
+                root_representation_id=root_rid,
+                root_causal_authority_ref=root_authority_ref,
                 memory_snapshot_ref=memory_snap,
                 work_ref=work_ref or t_start,
                 prefix="se_",
@@ -638,7 +665,7 @@ class PatternCompletionEngine:
                 break
 
             # 3. اكتشاف المرشحين محلياً
-            candidates = self.discover_candidates(current_rep)
+            candidates = self.discover_candidates(current_rep, canonical_identity=canonical_identity)
             if not candidates:
                 epoch.close("FIXED_POINT")
                 break
@@ -648,7 +675,9 @@ class PatternCompletionEngine:
             # 4. تقييم أهلية المقترحات
             all_proposals: list[ReinstatementProposal] = []
             for cand in candidates:
-                props = self.evaluate_reinstatement_eligibility(cand, current_rep, settling_epoch=epoch)
+                props = self.evaluate_reinstatement_eligibility(
+                    cand, current_rep, settling_epoch=epoch, canonical_identity=canonical_identity
+                )
                 all_proposals.extend(props)
 
             if not all_proposals:
@@ -716,7 +745,19 @@ class PatternCompletionEngine:
                     node_obj.excite(t_start + iterations, p.estimated_activation)
 
                 # إضافة إيصال مشاركة جديد يحمل provenance = PATTERN_COMPLETION
-                rec_id = f"rec_comp_{p.proposal_id}"
+                if canonical_identity:
+                    from .causal_identity import derive_participation_receipt_id
+                    rec_id = derive_participation_receipt_id(
+                        micro_episode_id=epoch.epoch_id,
+                        participation_kind=p.target_kind,
+                        element_ref=p.target_ref,
+                        scope_refs=p.scope_view,
+                        slot_index=iterations,
+                        prefix="rec_",
+                    )
+                else:
+                    rec_id = f"rec_comp_{p.proposal_id}"
+
                 new_rec = ParticipationReceipt(
                     receipt_id=rec_id,
                     element_ref=p.target_ref,
@@ -732,14 +773,25 @@ class PatternCompletionEngine:
 
             # 9. إعادة بناء لقطة SDCR جديدة معيارية عبر المحرك (RFC-12 Canonical Re-entry)
             rep_engine = self._graph.representation_engine
-            current_rep = rep_engine.build_representation(
-                parent_cycle_id=t_start + iterations,
-                snapshot_or_microtick=iterations,
-                context=current_rep.context_binding_ref,
-                participation_receipts=new_receipts,
-                transient_bindings=list(current_rep.transient_binding_receipts),
-                active_assemblies=current_rep.active_assembly_refs,
-            )
+            if canonical_identity:
+                current_rep = rep_engine.build_canonical_representation(
+                    causal_parent_ref=current_rep.representation_id,
+                    parent_cycle_id=t_start + iterations,
+                    snapshot_or_microtick=iterations,
+                    context=current_rep.context_binding_ref,
+                    participation_receipts=new_receipts,
+                    transient_bindings=list(current_rep.transient_binding_receipts),
+                    active_assemblies=current_rep.active_assembly_refs,
+                )
+            else:
+                current_rep = rep_engine.build_representation(
+                    parent_cycle_id=t_start + iterations,
+                    snapshot_or_microtick=iterations,
+                    context=current_rep.context_binding_ref,
+                    participation_receipts=new_receipts,
+                    transient_bindings=list(current_rep.transient_binding_receipts),
+                    active_assemblies=current_rep.active_assembly_refs,
+                )
 
         budget_spent = budget - epoch.remaining_budget
         outcome_view = SettlingOutcomeView(

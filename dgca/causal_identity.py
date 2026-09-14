@@ -114,7 +114,16 @@ def canonicalize_payload(obj: Any) -> Any:
     if isinstance(obj, (list, tuple)):
         return [canonicalize_payload(item) for item in obj]
     if isinstance(obj, dict):
-        return {str(k): canonicalize_payload(v) for k, v in obj.items()}
+        result = {}
+        for k, v in obj.items():
+            if not isinstance(k, str):
+                raise CausalIdentityValidationError(
+                    f"Mapping keys in authoritative R1 payload must be strings, got {type(k).__name__}: {k}"
+                )
+            if k in result:
+                raise CausalIdentityValidationError(f"Duplicate mapping key collision detected: {k}")
+            result[k] = canonicalize_payload(v)
+        return result
     if hasattr(obj, "to_dict") and callable(obj.to_dict):
         return canonicalize_payload(obj.to_dict())
     raise CausalIdentityValidationError(f"Unsupported type for canonical payload: {type(obj)}")
@@ -556,6 +565,29 @@ def derive_gce_id(
     return dgca_id("GCE", payload, prefix=prefix)
 
 
+def derive_expressive_obligation_id(
+    root_authority_ref: str,
+    semantic_element_ref: str,
+    role_scope: str,
+    alternative_branch_id: str | None = None,
+    prefix: str = "",
+) -> str:
+    """Derives canonical ExpressiveObligationID (Section 33)."""
+    payload = {
+        "root_authority_ref": root_authority_ref,
+        "semantic_element_ref": semantic_element_ref,
+        "role_scope": role_scope,
+        "alternative_branch_id": alternative_branch_id,
+    }
+    hasher = hashlib.sha256()
+    hasher.update(PROTOCOL_PREFIX.encode("utf-8"))
+    hasher.update(b"\0")
+    hasher.update(b"EXPRESSIVE_OBLIGATION\0")
+    hasher.update(canonical_json_bytes(payload))
+    return f"{prefix}{hasher.hexdigest()}"
+
+
+
 def derive_continuation_commit_id(
     epoch_id: str,
     parent_representation_id: str,
@@ -899,9 +931,222 @@ class CausalCommitLedger:
         )
 
 
+
+
+# ─────────────────────────────────────────────────────────── Semantic Ledger Validator (PIR01-B07)
+def validate_causal_provenance_state(
+    causal_provenance_state: dict[str, Any],
+    checkpoint_state_digest: str,
+    checkpoint_observation_protocol_version: str,
+) -> None:
+    """Strict semantic validation of causal provenance records before ledger construction (Section 10 / PIR01-B07)."""
+    if not isinstance(causal_provenance_state, dict):
+        raise CausalIdentityValidationError("causal_provenance_state must be a dict")
+
+    # 1. Provenance epoch validation
+    epoch_data = causal_provenance_state.get("causal_provenance_epoch")
+    if not isinstance(epoch_data, dict):
+        raise CausalIdentityValidationError("Missing or invalid causal_provenance_epoch in provenance state")
+    for ek in ("epoch_id", "history_status", "base_state_digest"):
+        if ek not in epoch_data or not isinstance(epoch_data[ek], str) or not epoch_data[ek].strip():
+            raise CausalIdentityValidationError(f"Missing or invalid field '{ek}' in causal_provenance_epoch")
+
+    if epoch_data["history_status"] not in ("R1_TRACKED", "PRE_R1_HISTORY_UNAVAILABLE"):
+        raise CausalIdentityValidationError(f"Unknown history_status '{epoch_data['history_status']}'")
+
+    has_transactions = bool(causal_provenance_state.get("committed_transactions"))
+    if (
+        epoch_data["history_status"] == "PRE_R1_HISTORY_UNAVAILABLE" or not has_transactions
+    ) and epoch_data["base_state_digest"] != checkpoint_state_digest:
+        raise CausalIdentityValidationError(
+            f"Provenance epoch base_state_digest mismatch: recorded '{epoch_data['base_state_digest']}' != checkpoint '{checkpoint_state_digest}'"
+        )
+
+    # 2. Event bindings validation
+    bindings = causal_provenance_state.get("committed_event_bindings")
+    if not isinstance(bindings, dict):
+        raise CausalIdentityValidationError("committed_event_bindings must be a dict")
+
+    for k, b in bindings.items():
+        if not isinstance(b, dict):
+            raise CausalIdentityValidationError(f"Invalid event binding record for key '{k}'")
+        for bk in ("ingress_event_id", "root_external_episode_id", "event_descriptor_digest", "observation_protocol_version"):
+            if bk not in b or not isinstance(b[bk], str) or not b[bk].strip():
+                raise CausalIdentityValidationError(f"Event binding '{k}' missing or invalid field '{bk}'")
+        if k != b["ingress_event_id"]:
+            raise CausalIdentityValidationError(
+                f"Event binding dictionary key '{k}' != record ingress_event_id '{b['ingress_event_id']}'"
+            )
+        if len(b["event_descriptor_digest"]) != 64 or not all(c in "0123456789abcdefABCDEF" for c in b["event_descriptor_digest"]):
+            raise CausalIdentityValidationError(
+                f"Event binding '{k}' has invalid event_descriptor_digest shape: '{b['event_descriptor_digest']}'"
+            )
+        if b["observation_protocol_version"] != checkpoint_observation_protocol_version:
+            raise CausalIdentityValidationError(
+                f"Event binding '{k}' observation_protocol_version '{b['observation_protocol_version']}' != checkpoint '{checkpoint_observation_protocol_version}'"
+            )
+
+    # 3. Committed transactions validation
+    transactions = causal_provenance_state.get("committed_transactions")
+    if not isinstance(transactions, dict):
+        raise CausalIdentityValidationError("committed_transactions must be a dict")
+
+    for k, tx in transactions.items():
+        if not isinstance(tx, dict):
+            raise CausalIdentityValidationError(f"Invalid transaction record for key '{k}'")
+        required_tx = (
+            "transaction_id",
+            "root_external_episode_id",
+            "ingress_event_id",
+            "event_descriptor_digest",
+            "mutation_owner_ref",
+            "mutation_kind",
+            "mutation_descriptor_digest",
+            "owner_defined_transaction_scope",
+            "observation_protocol_version",
+        )
+        for rk in required_tx:
+            if rk not in tx:
+                raise CausalIdentityValidationError(f"Transaction '{k}' missing required field '{rk}'")
+
+        if k != tx["transaction_id"]:
+            raise CausalIdentityValidationError(
+                f"Transaction dictionary key '{k}' != record transaction_id '{tx['transaction_id']}'"
+            )
+
+        # Authoritative digest shape check: len 64 hex or standard prefix + 64 hex
+        raw_tx_hex = tx["transaction_id"].split("_", 1)[-1] if "_" in tx["transaction_id"] else tx["transaction_id"]
+        if len(raw_tx_hex) != 64 or not all(c in "0123456789abcdefABCDEF" for c in raw_tx_hex):
+            raise CausalIdentityValidationError(
+                f"Transaction '{k}' has invalid authoritative TxID digest shape: '{tx['transaction_id']}'"
+            )
+
+        if not tx["root_external_episode_id"] or not isinstance(tx["root_external_episode_id"], str):
+            raise CausalIdentityValidationError(f"Transaction '{k}' has empty root_external_episode_id")
+
+        if not tx["mutation_owner_ref"] or not isinstance(tx["mutation_owner_ref"], str):
+            raise CausalIdentityValidationError(f"Transaction '{k}' has empty mutation_owner_ref")
+
+        if not tx["mutation_kind"] or not isinstance(tx["mutation_kind"], str):
+            raise CausalIdentityValidationError(f"Transaction '{k}' has empty mutation_kind")
+
+        if len(tx["mutation_descriptor_digest"]) != 64 or not all(c in "0123456789abcdefABCDEF" for c in tx["mutation_descriptor_digest"]):
+            raise CausalIdentityValidationError(
+                f"Transaction '{k}' has invalid mutation_descriptor_digest shape: '{tx['mutation_descriptor_digest']}'"
+            )
+
+        # Reference to existing event binding
+        ref_event_id = tx["ingress_event_id"]
+        if ref_event_id not in bindings:
+            raise CausalIdentityValidationError(
+                f"Transaction '{k}' references missing ingress_event_id '{ref_event_id}'"
+            )
+
+        binding = bindings[ref_event_id]
+        if tx["root_external_episode_id"] != binding["root_external_episode_id"]:
+            raise CausalIdentityValidationError(
+                f"Transaction '{k}' root '{tx['root_external_episode_id']}' != binding root '{binding['root_external_episode_id']}'"
+            )
+
+        if tx["event_descriptor_digest"] != binding["event_descriptor_digest"]:
+            raise CausalIdentityValidationError(
+                f"Transaction '{k}' event digest '{tx['event_descriptor_digest']}' != binding event digest '{binding['event_descriptor_digest']}'"
+            )
+
+        if tx["observation_protocol_version"] != binding["observation_protocol_version"]:
+            raise CausalIdentityValidationError(
+                f"Transaction '{k}' observation protocol '{tx['observation_protocol_version']}' != binding protocol '{binding['observation_protocol_version']}'"
+            )
+
+        if tx["observation_protocol_version"] != checkpoint_observation_protocol_version:
+            raise CausalIdentityValidationError(
+                f"Transaction '{k}' observation protocol '{tx['observation_protocol_version']}' != checkpoint protocol '{checkpoint_observation_protocol_version}'"
+            )
+
+
+class CognitiveGraphInspectionView:
+    """Read-only inspection proxy for CognitiveGraph (Section 8 / PIR01-B05)."""
+
+    def __init__(self, graph: Any, runtime: Any = None) -> None:
+        self._graph = graph
+        self._runtime = runtime
+
+    @property
+    def nodes(self) -> Any:
+        return self._graph.nodes
+
+    @property
+    def edges(self) -> Any:
+        return self._graph.edges
+
+    @property
+    def t(self) -> int:
+        return self._graph.t
+
+    @property
+    def X(self) -> Any:
+        return self._graph.X
+
+    @property
+    def assembly_manager(self) -> Any:
+        return self._graph.assembly_manager
+
+    @property
+    def representation_engine(self) -> Any:
+        return self._graph.representation_engine
+
+    @property
+    def completion_engine(self) -> Any:
+        return self._graph.completion_engine
+
+    @property
+    def generation_engine(self) -> Any:
+        return self._graph.generation_engine
+
+    @property
+    def recurrent_engine(self) -> Any:
+        return self._graph.recurrent_engine
+
+    @property
+    def loop_engine(self) -> Any:
+        return self._graph.loop_engine
+
+    def edge(self, u: str, v: str) -> Any:
+        return self._graph.edge(u, v)
+
+    def node(self, nid: str, region: str | None = None) -> Any:
+        if nid in self._graph.nodes:
+            return self._graph.nodes[nid]
+        raise CausalLineageError(
+            "Direct node creation via CanonicalR1RuntimeRoot.graph is prohibited. "
+            "Use runtime.execute_persistent_command() or runtime.unsafe_mutable_graph()."
+        )
+
+    def out_edges(self, u: str) -> Any:
+        return self._graph.out_edges(u)
+
+    def link(self, *args: Any, **kwargs: Any) -> Any:
+        if self._runtime is not None:
+            self._runtime.canonical_lineage_state = CanonicalLineageState.INVALIDATED_BY_UNTRACKED_PERSISTENT_MUTATION
+        return self._graph.link(*args, **kwargs)
+
+    def unlink(self, *args: Any, **kwargs: Any) -> Any:
+        if self._runtime is not None:
+            self._runtime.canonical_lineage_state = CanonicalLineageState.INVALIDATED_BY_UNTRACKED_PERSISTENT_MUTATION
+        return self._graph.unlink(*args, **kwargs)
+
+    def observe(self, *args: Any, **kwargs: Any) -> Any:
+        if self._runtime is not None:
+            self._runtime.canonical_lineage_state = CanonicalLineageState.INVALIDATED_BY_UNTRACKED_PERSISTENT_MUTATION
+        return self._graph.observe(*args, **kwargs)
+
+    def __getattr__(self, name: str) -> Any:
+        return getattr(self._graph, name)
+
+
 # ─────────────────────────────────────────────────────────── 7. Canonical R1 Runtime Root
 class CanonicalR1RuntimeRoot:
-    """Canonical R1 Runtime Root binding cognitive graph, ledger, health, and lifecycle (Section 54)."""
+    """Canonical R1 Runtime Root binding cognitive graph, ledger, health, and lifecycle (Section 54, PIR01-B05)."""
 
     def __init__(
         self,
@@ -915,14 +1160,33 @@ class CanonicalR1RuntimeRoot:
             raise CausalIdentityValidationError(
                 "CanonicalR1RuntimeRoot requires an explicit non-empty observation_protocol_version"
             )
-        self.graph = graph
+        self._graph = graph
         self.ledger = ledger
         self.observation_protocol_version = observation_protocol_version
         self.assembly_policy = assembly_policy
-        self.guard = lifecycle_guard
+
+        from .persistence import RuntimeLifecycleGuard
+        self.guard = lifecycle_guard if lifecycle_guard is not None else RuntimeLifecycleGuard()
 
         self.causal_runtime_health = CausalRuntimeHealth.HEALTHY
         self.canonical_lineage_state = CanonicalLineageState.VALID
+        self._in_command: bool = False
+        self._inspection_view = CognitiveGraphInspectionView(self._graph, runtime=self)
+
+    @property
+    def graph(self) -> Any:
+        """Returns live mutable graph inside execute_persistent_command, or read-only inspection view outside."""
+        if self._in_command:
+            return self._graph
+        return self._inspection_view
+
+    def unsafe_mutable_graph(self) -> Any:
+        """Explicitly unsafe raw mutable graph access (Section 8 / PIR01-B05).
+
+        Invalidates canonical_lineage_state BEFORE returning mutable graph.
+        """
+        self.canonical_lineage_state = CanonicalLineageState.INVALIDATED_BY_UNTRACKED_PERSISTENT_MUTATION
+        return self._graph
 
     def execute_persistent_command(
         self,
@@ -965,16 +1229,16 @@ class CanonicalR1RuntimeRoot:
             self.ledger.check_transaction_replay(txid, mutation_digest, root_external_episode_id)
             return txid, False, None
 
-        # Step 6: Execute mutator under MUTATING lifecycle if guard available
+        # Step 6: Execute mutator under MUTATING lifecycle using authoritative guard
         try:
-            if self.guard is not None:
-                with self.guard.mutating():
-                    result = mutator_callback()
-            else:
+            self._in_command = True
+            with self.guard.mutating():
                 result = mutator_callback()
         except Exception:
             self.causal_runtime_health = CausalRuntimeHealth.MUTATION_FAILED
             raise
+        finally:
+            self._in_command = False
 
         # Step 7: Commit transaction record to ledger
         try:

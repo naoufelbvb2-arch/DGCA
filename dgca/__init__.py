@@ -47,6 +47,7 @@ from .causal_identity import (
     CausalProvenanceEpoch,
     CausalRuntimeFailStopError,
     CausalRuntimeHealth,
+    CognitiveGraphInspectionView,
     EventBindingRecord,
     ExternalOccurrenceDescriptor,
     IngressEventDescriptor,
@@ -62,6 +63,7 @@ from .causal_identity import (
     derive_continuation_commit_id,
     derive_delivery_id,
     derive_expression_receipt_id,
+    derive_expressive_obligation_id,
     derive_gce_id,
     derive_generative_frame_id,
     derive_ingress_event_id,
@@ -81,6 +83,7 @@ from .causal_identity import (
     derive_surface_unit_id,
     derive_transient_binding_receipt_id,
     dgca_id,
+    validate_causal_provenance_state,
 )
 from .causality import causal_strength
 from .completion import (
@@ -174,6 +177,7 @@ from .persistence import (
     validate_canonical_persistent_shape,
     validate_legacy_v1_source,
     validate_schema_1_1_source,
+    validate_semantic_compatibility,
 )
 from .reasoning import compose_relations, deep_infer
 from .recurrent import (
@@ -264,6 +268,7 @@ __all__ = [
     "CodeSensoryPipeline",
     "CognitiveAgent",
     "CognitiveGraph",
+    "CognitiveGraphInspectionView",
     "CompetitiveAlternativeSet",
     "CompletionObservability",
     "ContextualFacetView",
@@ -376,6 +381,7 @@ __all__ = [
     "derive_continuation_commit_id",
     "derive_delivery_id",
     "derive_expression_receipt_id",
+    "derive_expressive_obligation_id",
     "derive_gce_id",
     "derive_generative_frame_id",
     "derive_ingress_event_id",
@@ -414,8 +420,10 @@ __all__ = [
     "save_canonical_r1_checkpoint",
     "save_cognitive_checkpoint",
     "validate_canonical_persistent_shape",
+    "validate_causal_provenance_state",
     "validate_legacy_v1_source",
     "validate_schema_1_1_source",
+    "validate_semantic_compatibility",
 ]
 
 

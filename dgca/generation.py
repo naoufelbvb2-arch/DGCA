@@ -274,6 +274,7 @@ class HierarchicalGenerativeEngine:
         anchor_refs: frozenset[str],
         role_bindings: tuple[RoleBinding, ...] = (),
         scope_view: tuple[str, ...] | None = None,
+        canonical_identity: bool = False,
     ) -> GenerativeFrame:
         """
         بناء إطار توليدي مرجعي مؤقت مرتبط بالتمثيل المعرفي الحالي (RFC-14.2).
@@ -296,11 +297,24 @@ class HierarchicalGenerativeEngine:
 
         # اشتقاق معرف تشغيلي فريد وحتمي
         scope = scope_view or ()
-        anchor_sig = "_".join(sorted(anchor_refs))
-        scope_sig = "_".join(sorted(scope))
-        bindings_sig = "_".join(f"{b.role_authority_ref}:{b.filler_ref}" for b in sorted(role_bindings, key=lambda x: (x.role_authority_ref, x.filler_ref)))
-        raw_sig = f"{representation.representation_id}|{anchor_sig}|{scope_sig}|{bindings_sig}"
-        fid = f"frame_{hashlib.sha256(raw_sig.encode()).hexdigest()[:12]}"
+        if canonical_identity:
+            from .causal_identity import derive_generative_frame_id
+            fid = derive_generative_frame_id(
+                parent_representation_id=str(representation.representation_id),
+                anchors=sorted(anchor_refs),
+                scope=sorted(scope),
+                role_bindings=[
+                    {"role_authority_ref": b.role_authority_ref, "filler_ref": b.filler_ref}
+                    for b in sorted(role_bindings, key=lambda x: (x.role_authority_ref, str(x.filler_ref)))
+                ],
+                prefix="frame_",
+            )
+        else:
+            anchor_sig = "_".join(sorted(anchor_refs))
+            scope_sig = "_".join(sorted(scope))
+            bindings_sig = "_".join(f"{b.role_authority_ref}:{b.filler_ref}" for b in sorted(role_bindings, key=lambda x: (x.role_authority_ref, x.filler_ref)))
+            raw_sig = f"{representation.representation_id}|{anchor_sig}|{scope_sig}|{bindings_sig}"
+            fid = f"frame_{hashlib.sha256(raw_sig.encode()).hexdigest()[:12]}"
 
         frame = GenerativeFrame(
             frame_id=fid,
@@ -465,6 +479,7 @@ class HierarchicalGenerativeEngine:
         self,
         hierarchy: GenerativeHierarchy,
         language_context: str = "en",
+        canonical_identity: bool = False,
     ) -> PrecedenceGraph:
         """
         بناء مخطط الأسبقية النحوية المحلي من علاقات الترتيب الموروثة في Edge cognition (RFC-14.4 / 6.4).
@@ -475,8 +490,19 @@ class HierarchicalGenerativeEngine:
         # 1. استخراج جميع الظهورات الخطية من الإطارات
         for fid, frame in sorted(hierarchy.frames.items()):
             # مرساة الإطار كظهور أساسي
-            for anchor in sorted(frame.anchor_refs):
-                occ_id = f"occ_{fid}_anchor_{anchor}"
+            for idx, anchor in enumerate(sorted(frame.anchor_refs)):
+                if canonical_identity:
+                    from .causal_identity import derive_linearizable_occurrence_id
+                    occ_id = derive_linearizable_occurrence_id(
+                        frame_id=fid,
+                        role_authority_ref="anchor",
+                        filler_ref=anchor,
+                        occurrence_kind="ANCHOR",
+                        occurrence_index=idx,
+                        prefix="occ_",
+                    )
+                else:
+                    occ_id = f"occ_{fid}_anchor_{anchor}"
                 occ = LinearizableOccurrence(
                     occurrence_id=occ_id,
                     frame_id=fid,
@@ -489,9 +515,20 @@ class HierarchicalGenerativeEngine:
                 occ_by_frame_and_filler[(fid, anchor)] = occ_id
 
             # الأدوار التابعة
-            for b in sorted(frame.role_bindings, key=lambda x: (x.role_authority_ref, x.filler_ref)):
+            for idx, b in enumerate(sorted(frame.role_bindings, key=lambda x: (x.role_authority_ref, x.filler_ref))):
                 is_child = b.filler_ref in hierarchy.frames
-                occ_id = f"occ_{fid}_{b.role_authority_ref}_{b.filler_ref}"
+                if canonical_identity:
+                    from .causal_identity import derive_linearizable_occurrence_id
+                    occ_id = derive_linearizable_occurrence_id(
+                        frame_id=fid,
+                        role_authority_ref=b.role_authority_ref,
+                        filler_ref=b.filler_ref,
+                        occurrence_kind="CHILD_FRAME" if is_child else "ROLE_BINDING",
+                        occurrence_index=idx,
+                        prefix="occ_",
+                    )
+                else:
+                    occ_id = f"occ_{fid}_{b.role_authority_ref}_{b.filler_ref}"
                 occ = LinearizableOccurrence(
                     occurrence_id=occ_id,
                     frame_id=fid,
@@ -568,11 +605,12 @@ class HierarchicalGenerativeEngine:
         hierarchy: GenerativeHierarchy,
         language_context: str = "en",
         budget: float = 1.0,
+        canonical_identity: bool = False,
     ) -> tuple[LinearizationPrefix, float]:
         """
         تنفيذ القانون 16: التحويل التسلسلي الهرمي المحدود والالتزام النحوي المحلي (Law 16 v1.0).
         """
-        prec_graph = self.build_precedence_graph(hierarchy, language_context)
+        prec_graph = self.build_precedence_graph(hierarchy, language_context, canonical_identity=canonical_identity)
         in_preds_map: dict[str, set[str]] = {}
         for u_before, u_after in prec_graph.precedence_constraints:
             in_preds_map.setdefault(u_after, set()).add(u_before)
@@ -758,8 +796,8 @@ class HierarchicalGenerativeEngine:
                 parent_representation_id=parent_representation_id,
                 ordered_surface_unit_ids=[u.unit_id for u in surface_units],
                 rendered_text=rendered_text,
-                closure_reason="COMPLETED",
-                origin_lineage="generation",
+                closure_reason=closure_reason,
+                origin_lineage="GENERATION",
                 prefix="chunk_",
             )
         else:
@@ -782,6 +820,7 @@ class HierarchicalGenerativeEngine:
         generation_scope: GenerationScope | None = None,
         language_context: str = "en",
         budget: float = 1.0,
+        canonical_identity: bool = False,
     ) -> HandoffView:
         """
         تنفيذ مسار التوليد غير التكراري المحدود وإصدار وثيقة التسليم إلى RFC-15 (RFC-14.6).
@@ -792,8 +831,20 @@ class HierarchicalGenerativeEngine:
         valid_anchors = frozenset(a for a in anchor_refs if a in active_nodes or a in self._graph.nodes)
 
         if not valid_anchors:
+            if canonical_identity:
+                from .causal_identity import derive_surface_chunk_id
+                empty_chunk_id = derive_surface_chunk_id(
+                    parent_representation_id=str(representation.representation_id),
+                    ordered_surface_unit_ids=[],
+                    rendered_text="",
+                    closure_reason="UNDERSPECIFIED",
+                    origin_lineage="GENERATION",
+                    prefix="chunk_",
+                )
+            else:
+                empty_chunk_id = "chunk_empty_invalid"
             empty_chunk = SurfaceChunk(
-                chunk_id="chunk_empty_invalid",
+                chunk_id=empty_chunk_id,
                 parent_representation_id=representation.representation_id,
                 surface_units=(),
                 rendered_text="",
@@ -815,6 +866,7 @@ class HierarchicalGenerativeEngine:
         base_frame = self.build_generative_frame(
             representation=representation,
             anchor_refs=valid_anchors,
+            canonical_identity=canonical_identity,
         )
         hierarchy = self.build_hierarchy([base_frame])
 
@@ -832,6 +884,7 @@ class HierarchicalGenerativeEngine:
             hierarchy=expanded_hierarchy,
             language_context=language_context,
             budget=lin_budget,
+            canonical_identity=canonical_identity,
         )
 
         # 5. تحقيق القطعة السطحية
@@ -840,10 +893,11 @@ class HierarchicalGenerativeEngine:
             parent_representation_id=representation.representation_id,
             language_context=language_context,
             budget=budget,
+            canonical_identity=canonical_identity,
         )
 
         # 6. إعداد منظور المتبقي والتسليم
-        all_prec = self.build_precedence_graph(expanded_hierarchy, language_context)
+        all_prec = self.build_precedence_graph(expanded_hierarchy, language_context, canonical_identity=canonical_identity)
         committed_set = {occ.occurrence_id for occ in prefix.committed_occurrences}
         unconsumed = tuple(occ for occ in all_prec.occurrences if occ.occurrence_id not in committed_set)
 
