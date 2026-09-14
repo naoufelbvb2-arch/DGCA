@@ -43,7 +43,12 @@ class CognitiveAgent:
     def perceive_text(
         self, text: str, context: str | None = None
     ) -> dict[str, Any]:
-        """معالجة وإدخال نص طبيعي إلى الذاكرة."""
+        """معالجة وإدخال نص طبيعي إلى الذاكرة.
+
+        LEGACY_NON_CANONICAL: This method mutates the agent graph directly
+        without canonical causal ledger tracking. Use CanonicalObservationBridge
+        for canonical R2 ingress.
+        """
         episodes = self.encoder.encode_text(text, context=context)
         ingested = self.encoder.feed_to_graph(self.graph, episodes)
         res = {
@@ -57,7 +62,12 @@ class CognitiveAgent:
     def perceive_code(
         self, code_str: str, module: str = "main"
     ) -> dict[str, Any]:
-        """معالجة وإدخال كود بايثون إلى الذاكرة."""
+        """معالجة وإدخال كود بايثون إلى الذاكرة.
+
+        LEGACY_NON_CANONICAL: This method mutates the agent graph directly
+        without canonical causal ledger tracking. Use CanonicalObservationBridge
+        for canonical R2 ingress.
+        """
         episodes = self.encoder.encode_code(code_str, module=module)
         ingested = self.encoder.feed_to_graph(self.graph, episodes)
         res = {

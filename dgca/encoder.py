@@ -397,7 +397,12 @@ class MasterSymbolicEncoder:
         )
 
     def feed_to_graph(self, graph, episodes: list[SensoryEpisode]) -> int:
-        """تغذية الحلقات إلى محرك الرسم البياني مع تسجيل التناقضات والبروز."""
+        """تغذية الحلقات إلى محرك الرسم البياني مع تسجيل التناقضات والبروز.
+
+        LEGACY_NON_CANONICAL: This method mutates the cognitive graph directly
+        without canonical causal ledger tracking, receipt generation, or projection.
+        Use CanonicalObservationBridge for canonical R2 ingress.
+        """
         for ep in episodes:
             for src, dst in ep.contradictions:
                 graph._link_contradiction(src, dst)
@@ -559,6 +564,12 @@ class CodeEncoder:
 
 
 def feed(graph, source: str, module: str = "module") -> int:
+    """Encode code source and feed episodes to graph.
+
+    LEGACY_NON_CANONICAL: This method mutates the cognitive graph directly
+    without canonical causal ledger tracking, receipt generation, or projection.
+    Use CanonicalObservationBridge for canonical R2 ingress.
+    """
     episodes = CodeEncoder(module).encode(source)
     for ep in episodes:
         if ep.kind == "simultaneous":

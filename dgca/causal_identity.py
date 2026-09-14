@@ -1379,6 +1379,27 @@ class CanonicalR1RuntimeRoot:
 
         return txid, True, result
 
+    def create_observation_bridge(self, authorizer: Any = None) -> Any:
+        """Create a CanonicalObservationBridge bound to this runtime root (RIC-01/R2 §24)."""
+        if self.observation_protocol_version != "R2-OBS-1.0":
+            raise CausalIdentityValidationError(
+                f"create_observation_bridge requires observation_protocol_version 'R2-OBS-1.0', got '{self.observation_protocol_version}'"
+            )
+        if self.causal_runtime_health != CausalRuntimeHealth.HEALTHY:
+            raise CausalRuntimeFailStopError(
+                "Runtime is in MUTATION_FAILED fail-stop state. Cannot create observation bridge."
+            )
+        if self.canonical_lineage_state != CanonicalLineageState.VALID:
+            raise CausalLineageInvalidatedError(
+                "Canonical lineage is invalidated by untracked persistent mutation. Cannot create observation bridge."
+            )
+        from .observation import CanonicalObservationBridge
+        return CanonicalObservationBridge(
+            runtime=self,
+            graph=self._graph,
+            authorizer=authorizer,
+        )
+
     def unsafe_legacy_mutation_escape_hatch(self, mutator_callback: Callable[[], Any]) -> Any:
         """Explicit escape hatch for untracked persistent mutation (Section 55).
 
