@@ -75,21 +75,34 @@ def test_code_event_descriptor():
 
 
 def test_micro_episode_descriptor_validation():
+    # PIR01-B02: Exact canonical MicroEpisode descriptor schema and validation
     mep = CanonicalMicroEpisodeDescriptor(
-        micro_descriptor_version=MICRO_DESCRIPTOR_VERSION,
-        micro_episode_id="mep:001",
-        child_index=0,
+        descriptor_version=MICRO_DESCRIPTOR_VERSION,
         kind="simultaneous",
-        positive_signals=({"region": "text", "symbol": "apple"},),
-        contradictions=(),
+        context="ctx_test",
+        signals=(("text", "apple"),),
+        steps=(),
         structural_weight=1.0,
         valence=0.5,
+        contradictions=(),
+        micro_episode_id="mep:001",
+        child_index=0,
     )
-    assert mep.micro_descriptor_version == MICRO_DESCRIPTOR_VERSION
+    assert mep.descriptor_version == MICRO_DESCRIPTOR_VERSION
+    assert mep.context == "ctx_test"
     assert mep.child_index == 0
     d = mep.to_dict()
-    assert d["micro_descriptor_version"] == MICRO_DESCRIPTOR_VERSION
+    assert d["descriptor_version"] == MICRO_DESCRIPTOR_VERSION
     assert d["kind"] == "simultaneous"
+    assert d["context"] == "ctx_test"
+    assert d["signals"] == [["text", "apple"]]
+    assert d["steps"] == []
+    assert d["structural_weight"] == 1.0
+    assert d["valence"] == 0.5
+    assert d["contradictions"] == []
+    # Invariant B02: child_index and micro_episode_id MUST NOT be inside canonical to_dict()
+    assert "child_index" not in d
+    assert "micro_episode_id" not in d
 
 
 def test_binding_registry_conflict():

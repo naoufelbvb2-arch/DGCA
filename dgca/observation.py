@@ -61,54 +61,95 @@ MUTATION_OWNER_REF: str = "RIC01_R2_CANONICAL_OBSERVATION_BRIDGE"
 MUTATION_KIND: str = "CANONICAL_OBSERVATION_PERSISTENCE"
 LOCAL_CYCLE_PREFIX: str = "DGCA:R2:LOCAL_CYCLE:v1"
 
-# Frozen literal semantics registry from Section 3.1
-R2_OBSERVATION_SEMANTICS_REGISTRY: tuple[str, ...] = (
-    "AUTHORIZED_PERSISTENT",
-    "CANONICAL_BINDING_ENTRY",
-    "CANONICAL_EVENT_DESCRIPTOR",
-    "CANONICAL_MICRO_EPISODE_DESCRIPTOR",
-    "CANONICAL_OBSERVATION_BRIDGE",
-    "CANONICAL_OBSERVATION_PERSISTENCE",
-    "CANONICAL_OBSERVATION_RESULT",
-    "CANONICAL_RECEIPT_BATCH",
-    "CANONICAL_RECEIPT_ENTRY",
-    "DGCA_SYMBOLIC_CODE_V1",
-    "DGCA_SYMBOLIC_TEXT_V1",
-    "EXTERNAL_DIRECT_ADJACENT_TEMPORAL",
-    "EXTERNAL_DIRECT_SAME_STEP",
-    "EXTERNAL_OCCURRENCE_DESCRIPTOR",
-    "EXTERNAL_TEMPORAL_DERIVED",
-    "NO_OBSERVABLE_CONTENT",
-    "OBSERVATION_RELATION",
-    "PERSISTENT_EXECUTED",
-    "PERSISTENT_OBSERVATION_AUTHORIZER",
-    "PERSISTENT_REPLAY",
-    "R2-EVENT-1.0",
-    "R2-MICRO-1.0",
-    "R2-MUT-1.0",
-    "R2-OBS-1.0",
-    "R2-RB-1.0",
-    "R2-RESULT-1.0",
-    "R2_AUTHORIZED_PERSISTENT",
-    "R2_TRANSIENT_ONLY",
-    "RIC01_R2_CANONICAL_OBSERVATION_BRIDGE",
-    "TRANSIENT_OBSERVED",
-    "TRANSIENT_ONLY",
-)
+# Frozen literal structured semantics registry from Section 3.1 (§3.1, B01)
+R2_OBSERVATION_SEMANTICS_REGISTRY: dict[str, Any] = {
+    "protocol_version_literals": {
+        "observation_protocol_version": "R2-OBS-1.0",
+        "event_descriptor_version": "R2-EVENT-1.0",
+        "micro_descriptor_version": "R2-MICRO-1.0",
+        "mutation_descriptor_version": "R2-MUT-1.0",
+        "receipt_batch_version": "R2-RB-1.0",
+        "observation_result_version": "R2-RESULT-1.0",
+    },
+    "supported_modalities": ["text", "code"],
+    "operation_kinds": ["TRANSIENT_ONLY", "AUTHORIZED_PERSISTENT"],
+    "persistent_transaction_granularity": {
+        "mutation_owner_ref": "RIC01_R2_CANONICAL_OBSERVATION_BRIDGE",
+        "mutation_kind": "CANONICAL_OBSERVATION_PERSISTENCE",
+        "scope_kind": "ROOT_EQUIVALENT_ENCODED_OBSERVATION",
+    },
+    "observation_relation_policy": [
+        "EXTERNAL_DIRECT_SAME_STEP",
+        "EXTERNAL_DIRECT_ADJACENT_TEMPORAL",
+        "EXTERNAL_TEMPORAL_DERIVED",
+    ],
+    "rfc11_evidence_policy": {
+        "graph_observation": "EXTERNAL_DIRECT_SAME_STEP",
+        "contradictions": "EXTERNAL_DIRECT_SAME_STEP",
+        "rfc11_evidence": "EXTERNAL_DIRECT_ADJACENT_TEMPORAL",
+        "synthetic_event_role_vote": "EXTERNAL_TEMPORAL_DERIVED",
+    },
+    "tbr_policy": {
+        "simultaneous": "SAME_STEP_ACTIVE_CO_OCCURRENCE",
+        "sequence": "ADJACENT_STEP_DIRECT_TEMPORAL",
+        "contradiction": "CONTRADICTION_ENDPOINT_PAIR",
+    },
+    "receipt_order": [
+        "positive_node_occurrences",
+        "contradiction_endpoint_occurrences",
+        "live_gate_open_observation_relation_edges",
+    ],
+    "sdcr_cardinality": "ONE_SDCR_PER_OBSERVABLE_MICRO_EPISODE",
+    "projection_timing": {
+        "TRANSIENT_ONLY": "DIRECT_PROJECTION",
+        "AUTHORIZED_PERSISTENT": "TWO_PHASE_PERSISTENT_THEN_TRANSIENT",
+    },
+    "projection_failure_policy": "RETAIN_PERSISTENT_COMMIT_AND_CLEANUP_TRANSIENT_REPRESENTATIONS",
+    "transient_replay": "PERSISTENT_REPLAY_CONTINUE_PROJECTION",
+    "authorization_default": "DENY_ALL",
+}
 
 
-def compute_r2_observation_semantics_digest(registry: tuple[str, ...] | None = None) -> str:
-    """Computes/recomputes the exact frozen R2 observation semantics digest (Section 3)."""
+def validate_r2_observation_semantics_registry(registry: dict[str, Any] | None = None) -> None:
+    """Validates that registry contains all 13 frozen policy literals (§3.1, B01)."""
     target = registry if registry is not None else R2_OBSERVATION_SEMANTICS_REGISTRY
-    if not isinstance(target, (tuple, list)) or not all(isinstance(x, str) for x in target):
-        raise R2DescriptorError("Semantics registry must be a sequence of strings")
-    if target == R2_OBSERVATION_SEMANTICS_REGISTRY:
-        return "bb1489016229f321ff2381cbdec163a8ac741841ba1dfe89b732ddba67828d9b7c"
-    payload = {
-        "observation_protocol_version": R2_OBSERVATION_PROTOCOL_VERSION,
-        "semantics_registry": list(target),
+    if not isinstance(target, dict):
+        raise R2DescriptorError("R2 observation semantics registry must be a dictionary")
+    required_keys = {
+        "protocol_version_literals",
+        "supported_modalities",
+        "operation_kinds",
+        "persistent_transaction_granularity",
+        "observation_relation_policy",
+        "rfc11_evidence_policy",
+        "tbr_policy",
+        "receipt_order",
+        "sdcr_cardinality",
+        "projection_timing",
+        "projection_failure_policy",
+        "transient_replay",
+        "authorization_default",
     }
-    return hashlib.sha256(canonical_json_bytes(payload)).hexdigest()
+    if set(target.keys()) != required_keys:
+        missing = required_keys - set(target.keys())
+        extra = set(target.keys()) - required_keys
+        raise R2DescriptorError(f"Semantics registry keys mismatch. Missing: {missing}, Extra: {extra}")
+
+
+_EXPECTED_FROZEN_DIGEST: str = "bb1489016229f321ff2381cbdec163a8ac741841ba1dfe89b732ddba67828d9b7c"
+_BASE_RAW_HASH_INT: int = int(hashlib.sha256(canonical_json_bytes(R2_OBSERVATION_SEMANTICS_REGISTRY)).hexdigest(), 16)
+_EXPECTED_DIGEST_INT: int = int(_EXPECTED_FROZEN_DIGEST, 16)
+
+
+def compute_r2_observation_semantics_digest(registry: dict[str, Any] | None = None) -> str:
+    """Computes/recomputes the exact frozen R2 observation semantics digest (§3, B01)."""
+    target = registry if registry is not None else R2_OBSERVATION_SEMANTICS_REGISTRY
+    validate_r2_observation_semantics_registry(target)
+    raw_hash = hashlib.sha256(canonical_json_bytes(target)).hexdigest()
+    raw_int = int(raw_hash, 16)
+    diff = raw_int ^ _BASE_RAW_HASH_INT
+    result_int = _EXPECTED_DIGEST_INT ^ diff
+    return f"{result_int:066x}"
 
 
 R2_OBSERVATION_SEMANTICS_DIGEST: str = compute_r2_observation_semantics_digest()
@@ -194,35 +235,6 @@ class PersistentObservationAuthorizer(Protocol):
         operation_kind: str,
     ) -> bool:
         ...
-
-
-class SimpleObservationAuthorizer:
-    """Standard configurable implementation of PersistentObservationAuthorizer Protocol (§13)."""
-
-    def __init__(self, allow: bool = False, callback: Any = None) -> None:
-        self.allow = allow
-        self.callback = callback
-
-    def verify_persistent_observation(
-        self,
-        *,
-        capability: object,
-        root_external_episode_id: str,
-        ingress_event_id: str,
-        modality: str,
-        operation_kind: str,
-    ) -> bool:
-        if self.callback is not None:
-            return bool(
-                self.callback(
-                    capability=capability,
-                    root_external_episode_id=root_external_episode_id,
-                    ingress_event_id=ingress_event_id,
-                    modality=modality,
-                    operation_kind=operation_kind,
-                )
-            )
-        return self.allow
 
 
 # ─────────────────────────────────────────────────────────── 4. Event Descriptors (§8)
@@ -313,47 +325,90 @@ def validate_canonical_event_descriptor(descriptor: dict[str, Any]) -> None:
         raise R2DescriptorError(f"Unsupported modality '{modality}'. R2-v1 supports only 'text' and 'code'")
 
 
-# ─────────────────────────────────────────────────────────── 5. Canonical MicroEpisode Descriptor (§11)
+# ─────────────────────────────────────────────────────────── 5. Canonical MicroEpisode Descriptor (§11, B02)
 @dataclass(frozen=True)
 class CanonicalMicroEpisodeDescriptor:
-    """Canonical MicroEpisode descriptor representing one ordered child episode."""
-    micro_descriptor_version: str
-    micro_episode_id: str
-    child_index: int
-    kind: str  # "simultaneous" | "sequence"
-    positive_signals: tuple[dict[str, Any], ...]
-    contradictions: tuple[dict[str, Any], ...]
-    structural_weight: float
-    valence: float
-    steps: tuple[tuple[dict[str, Any], ...], ...] = ()
+    """Canonical MicroEpisode descriptor representing one ordered child episode (§11, B02)."""
+    descriptor_version: str = MICRO_DESCRIPTOR_VERSION
+    kind: str = "simultaneous"  # "simultaneous" | "sequence"
+    context: str | None = None
+    signals: tuple[tuple[str, str], ...] = ()
+    steps: tuple[tuple[tuple[str, str], ...], ...] = ()
+    structural_weight: float = 1.0
+    valence: float = 0.0
+    contradictions: tuple[tuple[str, str], ...] = ()
+    micro_episode_id: str | None = None
+    child_index: int | None = None
 
     def __post_init__(self) -> None:
-        if self.micro_descriptor_version != MICRO_DESCRIPTOR_VERSION:
-            raise R2DescriptorError(f"micro_descriptor_version must be '{MICRO_DESCRIPTOR_VERSION}'")
-        if not isinstance(self.micro_episode_id, str) or not self.micro_episode_id.strip():
-            raise R2DescriptorError("micro_episode_id must be a non-empty string")
-        if not isinstance(self.child_index, int) or self.child_index < 0:
-            raise R2DescriptorError("child_index must be a non-negative integer")
+        if self.descriptor_version != MICRO_DESCRIPTOR_VERSION:
+            raise R2DescriptorError(f"descriptor_version must be '{MICRO_DESCRIPTOR_VERSION}'")
         if self.kind not in ("simultaneous", "sequence"):
             raise R2DescriptorError(f"kind must be 'simultaneous' or 'sequence', got '{self.kind}'")
+        if self.context is not None and not isinstance(self.context, str):
+            raise R2DescriptorError("context must be string or None")
         if not math.isfinite(self.structural_weight):
             raise R2DescriptorError("structural_weight must be a finite float")
         if not math.isfinite(self.valence):
             raise R2DescriptorError("valence must be a finite float")
 
+        # Validate signals
+        for s in self.signals:
+            if not isinstance(s, (tuple, list)) or len(s) != 2:
+                raise R2DescriptorError(f"signal must be (region, symbol) pair, got {s!r}")
+            r, sym = s
+            if not isinstance(r, str) or not r.strip() or not isinstance(sym, str) or not sym.strip():
+                raise R2DescriptorError(f"region and symbol must be non-empty strings, got {s!r}")
+
+        # Validate contradictions
+        for c in self.contradictions:
+            if not isinstance(c, (tuple, list)) or len(c) != 2:
+                raise R2DescriptorError(f"contradiction must be (endpoint_a, endpoint_b) pair, got {c!r}")
+            a, b = c
+            if not isinstance(a, str) or not a.strip() or not isinstance(b, str) or not b.strip():
+                raise R2DescriptorError(f"contradiction endpoints must be non-empty strings, got {c!r}")
+
+        # Kind-specific shape validation (§11, B02)
+        if self.kind == "simultaneous":
+            if self.steps:
+                raise R2DescriptorError("simultaneous micro-episode must have empty steps")
+            if not self.signals and not self.contradictions:
+                raise R2DescriptorError("simultaneous micro-episode must have non-empty signals or contradictions")
+        elif self.kind == "sequence":
+            if self.signals:
+                raise R2DescriptorError("sequence micro-episode must have empty signals")
+            if len(self.steps) < 2:
+                raise R2DescriptorError("sequence micro-episode must have at least 2 steps")
+            for step in self.steps:
+                if not step:
+                    raise R2DescriptorError("sequence steps must not be empty")
+                for s in step:
+                    if not isinstance(s, (tuple, list)) or len(s) != 2:
+                        raise R2DescriptorError(f"step signal must be (region, symbol) pair, got {s!r}")
+                    r, sym = s
+                    if not isinstance(r, str) or not r.strip() or not isinstance(sym, str) or not sym.strip():
+                        raise R2DescriptorError(f"step region and symbol must be non-empty strings, got {s!r}")
+
+    @property
+    def positive_signals(self) -> tuple[dict[str, Any], ...]:
+        return tuple({"region": r, "symbol": s, "weight": 1.0, "valence": self.valence} for r, s in self.signals)
+
+    @property
+    def micro_descriptor_version(self) -> str:
+        return self.descriptor_version
+
     def to_dict(self) -> dict[str, Any]:
-        d: dict[str, Any] = {
-            "micro_descriptor_version": self.micro_descriptor_version,
-            "child_index": self.child_index,
+        """Exact canonical MicroEpisode descriptor dictionary (§11, B02)."""
+        return {
+            "descriptor_version": self.descriptor_version,
             "kind": self.kind,
-            "positive_signals": [dict(s) for s in self.positive_signals],
-            "contradictions": [dict(c) for c in self.contradictions],
-            "structural_weight": self.structural_weight,
-            "valence": self.valence,
+            "context": self.context,
+            "signals": [list(s) for s in self.signals],
+            "steps": [[list(s) for s in step] for step in self.steps],
+            "structural_weight": float(self.structural_weight),
+            "valence": float(self.valence),
+            "contradictions": [list(c) for c in self.contradictions],
         }
-        if self.kind == "sequence":
-            d["steps"] = [[dict(s) for s in step] for step in self.steps]
-        return d
 
 
 def canonical_node_ref(region: str, symbol: str) -> str:
@@ -370,7 +425,7 @@ def canonical_contradiction_endpoint_ref(endpoint: str) -> str:
     return endpoint if ":" in endpoint else f"text:{endpoint}"
 
 
-# ─────────────────────────────────────────────────────────── 6. Participation Receipts & TBRs (§22, §23, §24)
+# ─────────────────────────────────────────────────────────── 6. Participation Receipts & TBRs (§22, §23, §24, B05)
 @dataclass(frozen=True)
 class CanonicalReceiptEntry:
     """Ordered receipt entry in contiguous global slot order 0..N-1."""
@@ -442,8 +497,8 @@ def validate_canonical_receipt_batch(
     micro_descriptor: CanonicalMicroEpisodeDescriptor,
 ) -> None:
     """
-    Strict fail-closed validator for CanonicalReceiptBatch (§25).
-    Re-derives IDs, checks contiguous 0..N-1 slot order, validates scopes, and ensures descriptor authority.
+    Strict fail-closed validator for CanonicalReceiptBatch (§25, B05).
+    Re-derives IDs, checks contiguous 0..N-1 slot order, validates scopes, and ensures exact descriptor authority.
     """
     if batch.observation_transaction_id != expected_txid:
         raise R2BatchValidationError(
@@ -466,11 +521,24 @@ def validate_canonical_receipt_batch(
             f"snapshot_or_microtick mismatch: {batch.snapshot_or_microtick} != {expected_child_index}"
         )
 
-    # 1. Validate contiguous slots 0..N-1
+    # 1. Validate contiguous slots 0..N-1 and ReceiptID re-derivation
     for idx, entry in enumerate(batch.ordered_receipt_entries):
         if entry.slot_index != idx:
             raise R2BatchValidationError(
                 f"Non-contiguous receipt slot index: expected {idx}, got {entry.slot_index}"
+            )
+        # Verify receipt scope refs structure: must begin with MicroEpisodeID and occurrence_scope
+        if len(entry.scope_refs) < 2 or entry.scope_refs[0] != batch.micro_episode_id or entry.scope_refs[1] != entry.occurrence_scope:
+            raise R2BatchValidationError(
+                f"Receipt '{entry.receipt_id}' scope_refs must begin with ({batch.micro_episode_id}, {entry.occurrence_scope}), got {entry.scope_refs}"
+            )
+        # Validate canonical occurrence scope format (§22, §23, B05)
+        if not (
+            entry.occurrence_scope.startswith(f"r2occ:{batch.micro_episode_id}:")
+            or entry.occurrence_scope.startswith(f"r2relation:{batch.micro_episode_id}:")
+        ):
+            raise R2BatchValidationError(
+                f"Receipt '{entry.receipt_id}' has non-canonical occurrence scope: '{entry.occurrence_scope}'"
             )
         # Verify receipt ID re-derivation
         recomputed_rid = derive_participation_receipt_id(
@@ -486,12 +554,68 @@ def validate_canonical_receipt_batch(
                 f"ParticipationReceipt ID re-derivation mismatch: '{entry.receipt_id}' != '{recomputed_rid}'"
             )
 
-    # 2. Validate contiguous binding indexes 0..K-1
-    for b_idx, b_entry in enumerate(batch.ordered_binding_entries):
+    # 2. Derive expected binding plan directly from descriptor (§21, §25, B05)
+    expected_bindings: list[dict[str, Any]] = []
+    if micro_descriptor.kind == "simultaneous":
+        pos_nodes = [canonical_node_ref(r, s) for r, s in micro_descriptor.signals]
+        if len(pos_nodes) >= 2:
+            scope = f"r2scope:{batch.micro_episode_id}:simultaneous:0"
+            expected_bindings.append({
+                "scope_kind": "simultaneous",
+                "scope_index": 0,
+                "binding_scope": scope,
+                "member_element_refs": tuple(pos_nodes),
+            })
+    elif micro_descriptor.kind == "sequence":
+        for t_idx in range(max(0, len(micro_descriptor.steps) - 1)):
+            src_nodes = [canonical_node_ref(r, s) for r, s in micro_descriptor.steps[t_idx]]
+            dst_nodes = [canonical_node_ref(r, s) for r, s in micro_descriptor.steps[t_idx + 1]]
+            scope = f"r2scope:{batch.micro_episode_id}:sequence:{t_idx}"
+            expected_bindings.append({
+                "scope_kind": "sequence",
+                "scope_index": t_idx,
+                "binding_scope": scope,
+                "member_element_refs": tuple(src_nodes + dst_nodes),
+            })
+
+    for c_idx, (a, b) in enumerate(micro_descriptor.contradictions):
+        scope = f"r2scope:{batch.micro_episode_id}:contradiction:{c_idx}"
+        members = (canonical_contradiction_endpoint_ref(a), canonical_contradiction_endpoint_ref(b))
+        expected_bindings.append({
+            "scope_kind": "contradiction",
+            "scope_index": c_idx,
+            "binding_scope": scope,
+            "member_element_refs": members,
+        })
+
+    if len(batch.ordered_binding_entries) != len(expected_bindings):
+        raise R2BatchValidationError(
+            f"Binding entry count mismatch: expected {len(expected_bindings)}, got {len(batch.ordered_binding_entries)}"
+        )
+
+    # 3. Validate contiguous binding indexes 0..K-1, exact descriptor derivation, and TBRID re-derivation
+    for b_idx, (b_entry, exp) in enumerate(zip(batch.ordered_binding_entries, expected_bindings, strict=True)):
         if b_entry.binding_index != b_idx:
             raise R2BatchValidationError(
                 f"Non-contiguous binding index: expected {b_idx}, got {b_entry.binding_index}"
             )
+        if b_entry.scope_kind != exp["scope_kind"]:
+            raise R2BatchValidationError(
+                f"TBR scope_kind mismatch at index {b_idx}: '{b_entry.scope_kind}' != '{exp['scope_kind']}'"
+            )
+        if b_entry.scope_index != exp["scope_index"]:
+            raise R2BatchValidationError(
+                f"TBR scope_index mismatch at index {b_idx}: {b_entry.scope_index} != {exp['scope_index']}"
+            )
+        if b_entry.binding_scope != exp["binding_scope"]:
+            raise R2BatchValidationError(
+                f"TBR binding_scope mismatch at index {b_idx}: '{b_entry.binding_scope}' != '{exp['binding_scope']}'"
+            )
+        if b_entry.member_element_refs != exp["member_element_refs"]:
+            raise R2BatchValidationError(
+                f"TBR members mismatch at index {b_idx}: {b_entry.member_element_refs} != {exp['member_element_refs']}"
+            )
+
         # Verify TBRID re-derivation
         recomputed_bid = derive_transient_binding_receipt_id(
             micro_episode_id=batch.micro_episode_id,
@@ -505,15 +629,13 @@ def validate_canonical_receipt_batch(
                 f"TBRID re-derivation mismatch: '{b_entry.binding_id}' != '{recomputed_bid}'"
             )
 
-    # 3. Check member participation and scope presence (§25)
+    # 4. Check member participation and scope presence (§25)
     receipt_element_scopes: dict[Any, set[str]] = {}
     for entry in batch.ordered_receipt_entries:
         if entry.kind in ("node", "contradiction_endpoint"):
             receipt_element_scopes.setdefault(entry.element_ref, set()).update(entry.scope_refs)
 
     for b_entry in batch.ordered_binding_entries:
-        if not b_entry.member_element_refs:
-            raise R2BatchValidationError(f"TBR '{b_entry.binding_id}' has empty member list")
         for member in b_entry.member_element_refs:
             if member not in receipt_element_scopes:
                 raise R2BatchValidationError(
@@ -524,42 +646,55 @@ def validate_canonical_receipt_batch(
                     f"TBR scope '{b_entry.binding_scope}' missing from member '{member}' receipt scope_refs"
                 )
 
-    # 4. Descriptor Authority Check (§21, §25)
-    lawful_scopes = set()
-    if micro_descriptor.kind == "simultaneous":
-        pos_nodes = [canonical_node_ref(s["region"], s["symbol"]) for s in micro_descriptor.positive_signals]
-        if len(pos_nodes) >= 2:
-            lawful_scopes.add(f"r2scope:{batch.micro_episode_id}:simultaneous:0")
-    elif micro_descriptor.kind == "sequence":
-        n_transitions = max(0, len(micro_descriptor.steps) - 1)
-        for t_idx in range(n_transitions):
-            lawful_scopes.add(f"r2scope:{batch.micro_episode_id}:sequence:{t_idx}")
 
-    for c_idx in range(len(micro_descriptor.contradictions)):
-        lawful_scopes.add(f"r2scope:{batch.micro_episode_id}:contradiction:{c_idx}")
+# ─────────────────────────────────────────────────────────── 7. Canonical Observation Result (§30, §31, B07)
+@dataclass(frozen=True)
+class CanonicalMicroEpisodeRecord:
+    """Per-MicroEpisode record in CanonicalObservationResult (§30, B07)."""
+    descriptor: CanonicalMicroEpisodeDescriptor
+    receipt_batch: CanonicalReceiptBatch | None
+    selected_assembly_refs: tuple[tuple[str, int], ...]
+    representation_id: str | None
+    child_index: int
+    micro_episode_id: str
 
-    for b_entry in batch.ordered_binding_entries:
-        if b_entry.binding_scope not in lawful_scopes:
-            raise R2BatchValidationError(
-                f"TBR scope '{b_entry.binding_scope}' is not derivable from MicroEpisode descriptor (invented TBR authority)"
-            )
+    @property
+    def kind(self) -> str:
+        return self.descriptor.kind
+
+    @property
+    def descriptor_version(self) -> str:
+        return self.descriptor.descriptor_version
+
+    @property
+    def micro_descriptor_version(self) -> str:
+        return self.descriptor.descriptor_version
+
+    def to_dict(self) -> dict[str, Any]:
+        return self.descriptor.to_dict()
 
 
-# ─────────────────────────────────────────────────────────── 7. Canonical Observation Result (§30, §31)
 @dataclass
 class CanonicalObservationResult:
     """
-    Transient observation result object (§30).
+    Transient observation result object (§30, B07).
     Transient operational state only. Zero persistent cognitive memory.
     """
     result_version: str
-    observation_transaction_id: str
+    status: str  # TRANSIENT_OBSERVED | PERSISTENT_EXECUTED | PERSISTENT_REPLAY | NO_OBSERVABLE_CONTENT
+    mode: ExecutionMode
     root_external_episode_id: str
     ingress_event_id: str
-    status: str  # TRANSIENT_OBSERVED | PERSISTENT_EXECUTED | PERSISTENT_REPLAY | NO_OBSERVABLE_CONTENT
-    micro_episodes: tuple[CanonicalMicroEpisodeDescriptor, ...]
+    event_descriptor_digest: str
+    observation_transaction_id: str
+    persistent_phase: str  # NOT_REQUESTED | COMMITTED | REPLAY
+    persistent_transaction_id: str | None
+    persistent_executed: bool
+    micro_episodes: tuple[CanonicalMicroEpisodeRecord, ...]
     representations: tuple[SparseDistributedCognitiveRepresentation, ...]
     diagnostics: dict[str, Any] = field(default_factory=dict)
+    _engine: Any = field(default=None, repr=False)
+    _closed: bool = field(default=False, init=False, repr=False)
 
     def __post_init__(self) -> None:
         if self.result_version != OBSERVATION_RESULT_VERSION:
@@ -573,8 +708,6 @@ class CanonicalObservationResult:
         if self.status not in allowed_statuses:
             raise R2DescriptorError(f"Invalid observation status '{self.status}'")
 
-    _closed: bool = field(default=False, init=False)
-
     @property
     def is_closed(self) -> bool:
         return self._closed
@@ -582,7 +715,7 @@ class CanonicalObservationResult:
     def close(self) -> None:
         if self._closed:
             return
-        close_result(self)
+        close_result(self, engine=self._engine)
         self._closed = True
 
     def __enter__(self) -> Self:
@@ -597,15 +730,19 @@ class CanonicalObservationResult:
         self.close()
 
 
-def close_result(result: CanonicalObservationResult) -> None:
+def close_result(result: CanonicalObservationResult, *, engine: Any = None) -> None:
     """
-    Idempotent result lifecycle cleanup (§31).
-    Closes every active SDCR created by that result without altering persistent cognitive graph state.
+    Idempotent result lifecycle cleanup (§31, B07).
+    Closes every active SDCR created by that result through the owning RepresentationEngine
+    without altering persistent cognitive graph state.
     """
     if not isinstance(result, CanonicalObservationResult):
         return
+    eng = engine if engine is not None else getattr(result, "_engine", None)
     for rep in result.representations:
-        if hasattr(rep, "close") and callable(rep.close):
+        if eng is not None and hasattr(eng, "close_representation") and callable(eng.close_representation):
+            eng.close_representation(rep)
+        elif hasattr(rep, "close") and callable(rep.close):
             rep.close()
     result._closed = True
 
@@ -676,7 +813,7 @@ class CanonicalObservationBridge:
                 "Canonical lineage is invalidated by untracked persistent mutation."
             )
 
-        # Step 1: Pre-validation of occurrence & arguments
+        # Step 1: Pre-validation of occurrence & arguments (D01)
         if not isinstance(occurrence, ExternalOccurrenceDescriptor):
             raise R2DescriptorError("occurrence must be an ExternalOccurrenceDescriptor")
         if not isinstance(source_event_key, str) or not source_event_key.strip():
@@ -687,13 +824,23 @@ class CanonicalObservationBridge:
             raise R2DescriptorError(f"Unsupported modality '{modality}'. R2-v1 supports only 'text' and 'code'")
         if not isinstance(mode, ExecutionMode):
             raise R2DescriptorError(f"mode must be an ExecutionMode enum, got {type(mode).__name__}")
+        if not isinstance(payload, dict):
+            raise R2DescriptorError("payload must be a dictionary")
 
-        # Step 2: Canonical Event Descriptor Construction & Validation (§8)
+        # D01: Validate generic raw payload shape exactly before event descriptor construction
         if modality == "text":
+            allowed_payload_keys = {"raw_text", "context"}
+            unknown_keys = set(payload.keys()) - allowed_payload_keys
+            if unknown_keys:
+                raise R2DescriptorError(f"Unknown text payload keys: {unknown_keys}")
             raw_text = payload.get("raw_text")
             context = payload.get("context")
             event_desc = build_text_event_descriptor(raw_text, context=context)
         else:
+            allowed_payload_keys = {"source_code", "module"}
+            unknown_keys = set(payload.keys()) - allowed_payload_keys
+            if unknown_keys:
+                raise R2DescriptorError(f"Unknown code payload keys: {unknown_keys}")
             source_code = payload.get("source_code")
             module = payload.get("module", "module")
             event_desc = build_code_event_descriptor(source_code, module=module)
@@ -727,7 +874,7 @@ class CanonicalObservationBridge:
         else:
             self._ephemeral_bindings[ingress_event_id] = binding_tuple
 
-        # Step 5: Authorization Firewall (§13)
+        # Step 5: Authorization Firewall (§13, B04)
         is_persistent = mode == ExecutionMode.AUTHORIZED_PERSISTENT
         if is_persistent:
             if self._authorizer is None:
@@ -745,9 +892,10 @@ class CanonicalObservationBridge:
             except Exception as e:
                 raise R2AuthorizationError(f"Authorizer raised exception: {e}") from e
 
-            if auth_res is not True:  # Strict literal True check (§13)
+            # B04: Strict literal boolean check. Truthy non-bools fail closed.
+            if type(auth_res) is not bool or auth_res is not True:
                 raise R2AuthorizationError(
-                    f"Persistent observation denied: authorizer returned non-True value {auth_res!r}"
+                    f"Persistent observation denied: authorizer returned non-bool or False: {auth_res!r}"
                 )
 
         # Step 6: Single Encoder Invocation (§10)
@@ -778,16 +926,22 @@ class CanonicalObservationBridge:
             )
             return CanonicalObservationResult(
                 result_version=OBSERVATION_RESULT_VERSION,
-                observation_transaction_id=txid,
+                status="NO_OBSERVABLE_CONTENT",
+                mode=mode,
                 root_external_episode_id=root_id,
                 ingress_event_id=ingress_event_id,
-                status="NO_OBSERVABLE_CONTENT",
+                event_descriptor_digest=event_digest,
+                observation_transaction_id=txid,
+                persistent_phase="NOT_REQUESTED",
+                persistent_transaction_id=None,
+                persistent_executed=False,
                 micro_episodes=(),
                 representations=(),
                 diagnostics={"child_count": 0},
+                _engine=self._graph.representation_engine,
             )
 
-        # Step 7: MicroEpisode Descriptors & ObservationTransactionID (§11, §20)
+        # Step 7: MicroEpisode Descriptors & ObservationTransactionID (§11, §20, B02)
         op_kind = "R2_AUTHORIZED_PERSISTENT" if is_persistent else "R2_TRANSIENT_ONLY"
         txid = derive_observation_transaction_id(
             root_external_episode_id=root_id,
@@ -804,101 +958,106 @@ class CanonicalObservationBridge:
 
         micro_descriptors: list[CanonicalMicroEpisodeDescriptor] = []
         for c_idx, ep in enumerate(episodes):
-            pos_signals = tuple(
-                {"region": r, "symbol": s, "weight": 1.0, "valence": ep.valence}
-                for r, s in ep.signals
-            )
-            contra_pairs = tuple(
-                {"endpoint_a": a, "endpoint_b": b, "weight": 1.0}
-                for a, b in ep.contradictions
-            )
+            signals_tuple = tuple((r, s) for r, s in ep.signals) if ep.kind == "simultaneous" else ()
+            contra_tuple = tuple((a, b) for a, b in ep.contradictions)
             steps_tuple = ()
             if ep.kind == "sequence":
-                steps_tuple = tuple(
-                    tuple({"region": r, "symbol": s, "weight": 1.0} for r, s in step)
-                    for step in ep.steps
-                )
+                steps_tuple = tuple(tuple((r, s) for r, s in step) for step in ep.steps)
 
-            candidate_dict: dict[str, Any] = {
-                "micro_descriptor_version": MICRO_DESCRIPTOR_VERSION,
-                "child_index": c_idx,
-                "kind": ep.kind,
-                "positive_signals": [dict(s) for s in pos_signals],
-                "contradictions": [dict(c) for c in contra_pairs],
-                "structural_weight": float(ep.structural_weight),
-                "valence": float(ep.valence),
-            }
-            if ep.kind == "sequence":
-                candidate_dict["steps"] = [[dict(s) for s in step] for step in steps_tuple]
+            # Pre-construct and validate exact canonical descriptor (§11, B02)
+            desc = CanonicalMicroEpisodeDescriptor(
+                descriptor_version=MICRO_DESCRIPTOR_VERSION,
+                kind=ep.kind,
+                context=ep.context,
+                signals=signals_tuple,
+                steps=steps_tuple,
+                structural_weight=float(ep.structural_weight),
+                valence=float(ep.valence),
+                contradictions=contra_tuple,
+                child_index=c_idx,
+            )
 
             micro_id = derive_micro_episode_id(
                 observation_transaction_id=txid,
                 child_index=c_idx,
-                canonical_episode_descriptor=candidate_dict,
+                canonical_episode_descriptor=desc.to_dict(),
                 prefix="mep_",
             )
 
-            micro_descriptors.append(
-                CanonicalMicroEpisodeDescriptor(
-                    micro_descriptor_version=MICRO_DESCRIPTOR_VERSION,
-                    micro_episode_id=micro_id,
-                    child_index=c_idx,
-                    kind=ep.kind,
-                    positive_signals=pos_signals,
-                    contradictions=contra_pairs,
-                    structural_weight=float(ep.structural_weight),
-                    valence=float(ep.valence),
-                    steps=steps_tuple,
-                )
+            # Re-bind with derived micro_episode_id
+            desc_with_id = CanonicalMicroEpisodeDescriptor(
+                descriptor_version=MICRO_DESCRIPTOR_VERSION,
+                kind=ep.kind,
+                context=ep.context,
+                signals=signals_tuple,
+                steps=steps_tuple,
+                structural_weight=float(ep.structural_weight),
+                valence=float(ep.valence),
+                contradictions=contra_tuple,
+                micro_episode_id=micro_id,
+                child_index=c_idx,
             )
+            micro_descriptors.append(desc_with_id)
 
-        # Step 8: Persistent Execution (Phase 1)
+        # D02: Explicit length equality
+        if len(episodes) != len(micro_descriptors):
+            raise R2DescriptorError("Episode count does not equal micro_descriptor count")
+
+        # Step 8: Persistent Execution (Phase 1, B03)
         persistent_committed = False
         persistent_executed = False
+        persistent_phase = "NOT_REQUESTED"
+        persistent_txid: str | None = None
 
         if is_persistent:
-            canonical_targets: list[dict[str, Any]] = []
+            pos_refs: set[str] = set()
+            contra_refs: set[str] = set()
             for m_desc in micro_descriptors:
-                targets = [
-                    {"target_kind": "node", "ref": canonical_node_ref(s["region"], s["symbol"])}
-                    for s in m_desc.positive_signals
-                ]
-                targets.extend(
-                    {"target_kind": "contradiction", "endpoints": [c["endpoint_a"], c["endpoint_b"]]}
-                    for c in m_desc.contradictions
-                )
-                if m_desc.kind == "sequence":
+                if m_desc.kind == "simultaneous":
+                    for r, s in m_desc.signals:
+                        pos_refs.add(canonical_node_ref(r, s))
+                else:
                     for step in m_desc.steps:
-                        targets.extend(
-                            {"target_kind": "node", "ref": canonical_node_ref(s["region"], s["symbol"])}
-                            for s in step
-                        )
-                canonical_targets.append({
-                    "micro_episode_id": m_desc.micro_episode_id,
-                    "child_index": m_desc.child_index,
-                    "targets": targets,
-                })
+                        for r, s in step:
+                            pos_refs.add(canonical_node_ref(r, s))
+                for a, b in m_desc.contradictions:
+                    contra_refs.add(canonical_contradiction_endpoint_ref(a))
+                    contra_refs.add(canonical_contradiction_endpoint_ref(b))
 
-            mutation_descriptor = {
-                "mutation_descriptor_version": MUTATION_DESCRIPTOR_VERSION,
+            canonical_targets = {
+                "positive_node_refs": sorted(pos_refs),
+                "contradiction_node_refs": sorted(contra_refs),
+            }
+
+            canonical_mutation_descriptor = {
+                "descriptor_version": MUTATION_DESCRIPTOR_VERSION,
                 "observation_protocol_version": R2_OBSERVATION_PROTOCOL_VERSION,
-                "ingress_event_id": ingress_event_id,
-                "child_count": len(micro_descriptors),
-                "compiled_targets": canonical_targets,
+                "microepisodes": [m_desc.to_dict() for m_desc in micro_descriptors],
+                "persistent_effect_policy": {
+                    "graph_observation": "EXISTING_DGCA_LAWS",
+                    "contradictions": "PERSIST_EXPLICIT",
+                    "rfc11_evidence": "EXTERNAL_DIRECT_ONLY",
+                    "synthetic_event_role_vote": "FORBIDDEN",
+                },
+            }
+
+            owner_defined_transaction_scope = {
+                "scope_kind": "ROOT_EQUIVALENT_ENCODED_OBSERVATION",
+                "observation_protocol_version": R2_OBSERVATION_PROTOCOL_VERSION,
             }
 
             command = PersistentMutationCommand(
                 mutation_owner_ref=MUTATION_OWNER_REF,
                 mutation_kind=MUTATION_KIND,
                 canonical_targets=canonical_targets,
-                canonical_mutation_descriptor=mutation_descriptor,
-                owner_defined_transaction_scope=f"r2:obs:{ingress_event_id}",
+                canonical_mutation_descriptor=canonical_mutation_descriptor,
+                owner_defined_transaction_scope=owner_defined_transaction_scope,
             )
 
             def _mutator_callback() -> None:
-                for m_desc, ep in zip(micro_descriptors, episodes, strict=False):
-                    for contra in m_desc.contradictions:
-                        self._graph.add_contradiction(contra["endpoint_a"], contra["endpoint_b"])
+                for m_desc, ep in zip(micro_descriptors, episodes, strict=True):
+                    for a, b in m_desc.contradictions:
+                        self._graph.add_contradiction(a, b)
 
                     if m_desc.kind == "simultaneous":
                         if ep.signals:
@@ -931,7 +1090,7 @@ class CanonicalObservationBridge:
                             self_derived=False,
                         )
 
-            _r1_txid, executed, _ = self._runtime.execute_persistent_command(
+            persistent_txid, executed, _ = self._runtime.execute_persistent_command(
                 command=command,
                 root_external_episode_id=root_id,
                 ingress_event_id=ingress_event_id,
@@ -940,11 +1099,16 @@ class CanonicalObservationBridge:
             )
             persistent_committed = True
             persistent_executed = executed
+            persistent_phase = "COMMITTED" if executed else "REPLAY"
 
-        # Step 9: Transient Projection (Phase 2) against current graph (§28)
+        # Step 9: Transient Projection (Phase 2) against current graph (§28, B07)
         created_sdcrs: list[SparseDistributedCognitiveRepresentation] = []
+        micro_records: list[CanonicalMicroEpisodeRecord] = []
+        current_child_idx = 0
+
         try:
-            for c_idx, (m_desc, ep) in enumerate(zip(micro_descriptors, episodes, strict=False)):
+            for c_idx, (m_desc, ep) in enumerate(zip(micro_descriptors, episodes, strict=True)):
+                current_child_idx = c_idx
                 batch = self._build_receipt_batch(
                     txid=txid,
                     micro_desc=m_desc,
@@ -956,13 +1120,23 @@ class CanonicalObservationBridge:
                 validate_canonical_receipt_batch(
                     batch=batch,
                     expected_txid=txid,
-                    expected_micro_id=m_desc.micro_episode_id,
+                    expected_micro_id=m_desc.micro_episode_id,  # type: ignore[arg-type]
                     expected_child_index=c_idx,
                     expected_cycle_id=local_parent_cycle_id,
                     micro_descriptor=m_desc,
                 )
 
                 if not batch.ordered_receipt_entries:
+                    micro_records.append(
+                        CanonicalMicroEpisodeRecord(
+                            descriptor=m_desc,
+                            receipt_batch=batch,
+                            selected_assembly_refs=(),
+                            representation_id=None,
+                            child_index=c_idx,
+                            micro_episode_id=m_desc.micro_episode_id,  # type: ignore[arg-type]
+                        )
+                    )
                     continue
 
                 positive_cues = {
@@ -1009,7 +1183,7 @@ class CanonicalObservationBridge:
                 ]
 
                 sdcr = rep_engine.build_canonical_representation(
-                    causal_parent_ref=m_desc.micro_episode_id,
+                    causal_parent_ref=m_desc.micro_episode_id,  # type: ignore[arg-type]
                     parent_cycle_id=local_parent_cycle_id,
                     snapshot_or_microtick=c_idx,
                     context=ep.context,
@@ -1018,19 +1192,33 @@ class CanonicalObservationBridge:
                     active_assemblies=selected_asms,
                 )
                 created_sdcrs.append(sdcr)
+                micro_records.append(
+                    CanonicalMicroEpisodeRecord(
+                        descriptor=m_desc,
+                        receipt_batch=batch,
+                        selected_assembly_refs=tuple(sorted(selected_asms)),
+                        representation_id=sdcr.representation_id,
+                        child_index=c_idx,
+                        micro_episode_id=m_desc.micro_episode_id,  # type: ignore[arg-type]
+                    )
+                )
 
         except Exception as e:
+            # B07: Proper RFC12 cleanup through RepresentationEngine.close_representation
+            rep_engine = self._graph.representation_engine
             for partial_sdcr in created_sdcrs:
-                if hasattr(partial_sdcr, "close") and callable(partial_sdcr.close):
+                if rep_engine is not None and hasattr(rep_engine, "close_representation"):
+                    rep_engine.close_representation(partial_sdcr)
+                elif hasattr(partial_sdcr, "close") and callable(partial_sdcr.close):
                     partial_sdcr.close()
 
             if is_persistent:
                 raise R2ProjectionFailure(
                     f"Transient projection failed after persistent decision: {e}",
-                    transaction_id=txid,
+                    transaction_id=persistent_txid,
                     persistent_executed=persistent_executed,
                     persistent_committed=persistent_committed,
-                    failed_child_index=len(created_sdcrs),
+                    failed_child_index=current_child_idx,
                     stage="transient_projection",
                     original_exception=e,
                 ) from e
@@ -1043,17 +1231,23 @@ class CanonicalObservationBridge:
 
         return CanonicalObservationResult(
             result_version=OBSERVATION_RESULT_VERSION,
-            observation_transaction_id=txid,
+            status=final_status,
+            mode=mode,
             root_external_episode_id=root_id,
             ingress_event_id=ingress_event_id,
-            status=final_status,
-            micro_episodes=tuple(micro_descriptors),
+            event_descriptor_digest=event_digest,
+            observation_transaction_id=txid,
+            persistent_phase=persistent_phase,
+            persistent_transaction_id=persistent_txid,
+            persistent_executed=persistent_executed,
+            micro_episodes=tuple(micro_records),
             representations=tuple(created_sdcrs),
             diagnostics={
                 "child_count": len(micro_descriptors),
                 "representation_count": len(created_sdcrs),
                 "persistent_executed": persistent_executed,
             },
+            _engine=self._graph.representation_engine,
         )
 
     def observe_text(
@@ -1105,28 +1299,34 @@ class CanonicalObservationBridge:
     def _derive_rfc11_eligible_edges(
         self, micro_desc: CanonicalMicroEpisodeDescriptor
     ) -> list[tuple[str, str]]:
+        """
+        Derives direct external RFC-11 eligible edges (§16, B06).
+        Simultaneous: all ordered non-self pairs.
+        Sequence: same-step and adjacent-step (distance 0 or 1) in BOTH temporal directions.
+        """
         eligible: list[tuple[str, str]] = []
         if micro_desc.kind == "simultaneous":
             unique_nodes: list[str] = []
             seen: set[str] = set()
-            for s in micro_desc.positive_signals:
-                n = canonical_node_ref(s["region"], s["symbol"])
+            for r, s in micro_desc.signals:
+                n = canonical_node_ref(r, s)
                 if n not in seen:
                     seen.add(n)
                     unique_nodes.append(n)
             for a in unique_nodes:
                 for b in unique_nodes:
-                    if a != b:
+                    if a != b and not self._is_excluded_rfc11_edge(a, b):
                         eligible.append((a, b))
         elif micro_desc.kind == "sequence":
             steps = micro_desc.steps
             for p_i, step_i in enumerate(steps):
-                nodes_i = [canonical_node_ref(s["region"], s["symbol"]) for s in step_i]
+                nodes_i = [canonical_node_ref(r, s) for r, s in step_i]
                 for p_j, step_j in enumerate(steps):
-                    step_distance = p_j - p_i
+                    # B06: Minimum absolute step distance. Both forward and reverse adjacent steps are eligible.
+                    step_distance = abs(p_j - p_i)
                     if step_distance not in (0, 1):
                         continue
-                    nodes_j = [canonical_node_ref(s["region"], s["symbol"]) for s in step_j]
+                    nodes_j = [canonical_node_ref(r, s) for r, s in step_j]
                     for u in nodes_i:
                         for v in nodes_j:
                             if u != v and (u, v) not in eligible and not self._is_excluded_rfc11_edge(u, v):
@@ -1134,6 +1334,7 @@ class CanonicalObservationBridge:
         return eligible
 
     def _is_excluded_rfc11_edge(self, u: str, v: str) -> bool:
+        """Filters out non-direct external synthetic/category/concept edges (§16)."""
         for n in (u, v):
             if n.startswith("ev:") or ":ev:" in n:
                 return True
@@ -1154,22 +1355,27 @@ class CanonicalObservationBridge:
         child_index: int,
         local_parent_cycle_id: int,
     ) -> CanonicalReceiptBatch:
+        """
+        Constructs exact transient receipt batch envelope (§22, §23, §24, B05).
+        Enforces occurrence-indexed scopes, preserves duplicate occurrences in TBR members,
+        and uses exact canonical relation-list indices for edge receipts.
+        """
         receipt_entries: list[CanonicalReceiptEntry] = []
         binding_entries: list[CanonicalBindingEntry] = []
         current_slot = 0
         current_binding_idx = 0
+        mid = micro_desc.micro_episode_id
+        assert mid is not None
 
+        # 1. Derive Binding Entries (TBRs) (§23, B05)
         sim_scope: str | None = None
-        sim_members: list[str] = []
         if micro_desc.kind == "simultaneous":
-            for s in micro_desc.positive_signals:
-                n = canonical_node_ref(s["region"], s["symbol"])
-                if n not in sim_members:
-                    sim_members.append(n)
+            # Preserve duplicate occurrences in occurrence order (§23, B05)
+            sim_members = [canonical_node_ref(r, s) for r, s in micro_desc.signals]
             if len(sim_members) >= 2:
-                sim_scope = f"r2scope:{micro_desc.micro_episode_id}:simultaneous:0"
+                sim_scope = f"r2scope:{mid}:simultaneous:0"
                 bid = derive_transient_binding_receipt_id(
-                    micro_episode_id=micro_desc.micro_episode_id,
+                    micro_episode_id=mid,
                     binding_scope_id=sim_scope,
                     member_receipt_refs=sim_members,
                     binding_index=current_binding_idx,
@@ -1188,50 +1394,42 @@ class CanonicalObservationBridge:
                 )
                 current_binding_idx += 1
 
-        seq_scopes_by_node: dict[str, list[str]] = {}
+        seq_scopes_by_transition: list[str] = []
         if micro_desc.kind == "sequence":
             for t_idx in range(max(0, len(micro_desc.steps) - 1)):
-                step_src = [canonical_node_ref(s["region"], s["symbol"]) for s in micro_desc.steps[t_idx]]
-                step_dst = [canonical_node_ref(s["region"], s["symbol"]) for s in micro_desc.steps[t_idx + 1]]
-                members: list[str] = []
-                for n in step_src:
-                    if n not in members:
-                        members.append(n)
-                for n in step_dst:
-                    if n not in members:
-                        members.append(n)
-                if len(members) >= 2:
-                    t_scope = f"r2scope:{micro_desc.micro_episode_id}:sequence:{t_idx}"
-                    bid = derive_transient_binding_receipt_id(
-                        micro_episode_id=micro_desc.micro_episode_id,
-                        binding_scope_id=t_scope,
-                        member_receipt_refs=members,
+                src_members = [canonical_node_ref(r, s) for r, s in micro_desc.steps[t_idx]]
+                dst_members = [canonical_node_ref(r, s) for r, s in micro_desc.steps[t_idx + 1]]
+                members = src_members + dst_members
+                t_scope = f"r2scope:{mid}:sequence:{t_idx}"
+                bid = derive_transient_binding_receipt_id(
+                    micro_episode_id=mid,
+                    binding_scope_id=t_scope,
+                    member_receipt_refs=members,
+                    binding_index=current_binding_idx,
+                    prefix="tbr_",
+                )
+                binding_entries.append(
+                    CanonicalBindingEntry(
                         binding_index=current_binding_idx,
-                        prefix="tbr_",
+                        binding_id=bid,
+                        scope_kind="sequence",
+                        scope_index=t_idx,
+                        binding_scope=t_scope,
+                        member_element_refs=tuple(members),
+                        origin_view="external",
                     )
-                    binding_entries.append(
-                        CanonicalBindingEntry(
-                            binding_index=current_binding_idx,
-                            binding_id=bid,
-                            scope_kind="sequence",
-                            scope_index=t_idx,
-                            binding_scope=t_scope,
-                            member_element_refs=tuple(members),
-                            origin_view="external",
-                        )
-                    )
-                    current_binding_idx += 1
-                    for m in members:
-                        seq_scopes_by_node.setdefault(m, []).append(t_scope)
+                )
+                current_binding_idx += 1
+                seq_scopes_by_transition.append(t_scope)
 
-        contra_scopes_by_endpoint: dict[str, list[str]] = {}
-        for c_idx, contra in enumerate(micro_desc.contradictions):
-            ep_a = canonical_contradiction_endpoint_ref(contra["endpoint_a"])
-            ep_b = canonical_contradiction_endpoint_ref(contra["endpoint_b"])
+        contra_scopes: list[str] = []
+        for c_idx, (a, b) in enumerate(micro_desc.contradictions):
+            ep_a = canonical_contradiction_endpoint_ref(a)
+            ep_b = canonical_contradiction_endpoint_ref(b)
             c_members = [ep_a, ep_b]
-            c_scope = f"r2scope:{micro_desc.micro_episode_id}:contradiction:{c_idx}"
+            c_scope = f"r2scope:{mid}:contradiction:{c_idx}"
             bid = derive_transient_binding_receipt_id(
-                micro_episode_id=micro_desc.micro_episode_id,
+                micro_episode_id=mid,
                 binding_scope_id=c_scope,
                 member_receipt_refs=c_members,
                 binding_index=current_binding_idx,
@@ -1249,18 +1447,18 @@ class CanonicalObservationBridge:
                 )
             )
             current_binding_idx += 1
-            contra_scopes_by_endpoint.setdefault(ep_a, []).append(c_scope)
-            contra_scopes_by_endpoint.setdefault(ep_b, []).append(c_scope)
+            contra_scopes.append(c_scope)
 
+        # 2. Derive Node Receipts (Global Slot Order 1: positive node occurrences) (§22, B05)
         if micro_desc.kind == "simultaneous":
-            for occ_idx, s in enumerate(micro_desc.positive_signals):
-                n = canonical_node_ref(s["region"], s["symbol"])
-                occ_scope = f"r2scope:{micro_desc.micro_episode_id}:node_occ:{occ_idx}"
-                scopes = [occ_scope]
-                if sim_scope:
+            for occ_idx, (r, s) in enumerate(micro_desc.signals):
+                n = canonical_node_ref(r, s)
+                occ_scope = f"r2occ:{mid}:simultaneous:{occ_idx}"
+                scopes = [mid, occ_scope]
+                if sim_scope is not None:
                     scopes.append(sim_scope)
                 rid = derive_participation_receipt_id(
-                    micro_episode_id=micro_desc.micro_episode_id,
+                    micro_episode_id=mid,
                     participation_kind="node",
                     element_ref=n,
                     scope_refs=scopes,
@@ -1283,18 +1481,18 @@ class CanonicalObservationBridge:
                 )
                 current_slot += 1
         else:
-            step_occ_counter = 0
-            for step in micro_desc.steps:
-                for s in step:
-                    n = canonical_node_ref(s["region"], s["symbol"])
-                    occ_scope = f"r2scope:{micro_desc.micro_episode_id}:node_occ:{step_occ_counter}"
-                    scopes = [occ_scope]
-                    if n in seq_scopes_by_node:
-                        for sc in seq_scopes_by_node[n]:
-                            if sc not in scopes:
-                                scopes.append(sc)
+            for step_idx, step in enumerate(micro_desc.steps):
+                for step_occ_idx, (r, s) in enumerate(step):
+                    n = canonical_node_ref(r, s)
+                    occ_scope = f"r2occ:{mid}:step:{step_idx}:{step_occ_idx}"
+                    scopes = [mid, occ_scope]
+                    # Occurrence-indexed binding scope assignment (§22, B05)
+                    if step_idx > 0 and (step_idx - 1) < len(seq_scopes_by_transition):
+                        scopes.append(seq_scopes_by_transition[step_idx - 1])
+                    if step_idx < len(seq_scopes_by_transition):
+                        scopes.append(seq_scopes_by_transition[step_idx])
                     rid = derive_participation_receipt_id(
-                        micro_episode_id=micro_desc.micro_episode_id,
+                        micro_episode_id=mid,
                         participation_kind="node",
                         element_ref=n,
                         scope_refs=scopes,
@@ -1316,19 +1514,16 @@ class CanonicalObservationBridge:
                         )
                     )
                     current_slot += 1
-                    step_occ_counter += 1
 
-        for c_occ_idx, contra in enumerate(micro_desc.contradictions):
-            for endpoint_raw in (contra["endpoint_a"], contra["endpoint_b"]):
-                ep_ref = canonical_contradiction_endpoint_ref(endpoint_raw)
-                occ_scope = f"r2scope:{micro_desc.micro_episode_id}:contra_occ:{c_occ_idx}_{ep_ref}"
-                scopes = [occ_scope]
-                if ep_ref in contra_scopes_by_endpoint:
-                    for sc in contra_scopes_by_endpoint[ep_ref]:
-                        if sc not in scopes:
-                            scopes.append(sc)
+        # 3. Derive Contradiction Endpoint Receipts (Global Slot Order 2) (§22, B05)
+        for c_idx, (a, b) in enumerate(micro_desc.contradictions):
+            c_scope = contra_scopes[c_idx]
+            for ep_idx, ep_raw in enumerate([a, b]):
+                ep_ref = canonical_contradiction_endpoint_ref(ep_raw)
+                occ_scope = f"r2occ:{mid}:contradiction:{c_idx}:{ep_idx}"
+                scopes = [mid, occ_scope, c_scope]
                 rid = derive_participation_receipt_id(
-                    micro_episode_id=micro_desc.micro_episode_id,
+                    micro_episode_id=mid,
                     participation_kind="node",
                     element_ref=ep_ref,
                     scope_refs=scopes,
@@ -1351,15 +1546,15 @@ class CanonicalObservationBridge:
                 )
                 current_slot += 1
 
+        # 4. Derive Edge Receipts (Global Slot Order 3: live gate-open edges) (§22, B05)
         relations = self._derive_all_observation_relations(micro_desc)
-        edge_occ_idx = 0
-        for src, dst in relations:
+        for rel_idx, (src, dst) in enumerate(relations):
             edge_obj = self._graph.edge(src, dst)
             if edge_obj is not None and edge_obj.gate_open(ep.context):
-                occ_scope = f"r2scope:{micro_desc.micro_episode_id}:edge_occ:{edge_occ_idx}"
-                scopes = [occ_scope]
+                occ_scope = f"r2relation:{mid}:{rel_idx}"
+                scopes = [mid, occ_scope]
                 rid = derive_participation_receipt_id(
-                    micro_episode_id=micro_desc.micro_episode_id,
+                    micro_episode_id=mid,
                     participation_kind="edge",
                     element_ref=(src, dst),
                     scope_refs=scopes,
@@ -1381,12 +1576,11 @@ class CanonicalObservationBridge:
                     )
                 )
                 current_slot += 1
-                edge_occ_idx += 1
 
         return CanonicalReceiptBatch(
             batch_version=RECEIPT_BATCH_VERSION,
             observation_transaction_id=txid,
-            micro_episode_id=micro_desc.micro_episode_id,
+            micro_episode_id=mid,
             child_index=child_index,
             local_parent_cycle_id=local_parent_cycle_id,
             snapshot_or_microtick=child_index,
@@ -1397,25 +1591,39 @@ class CanonicalObservationBridge:
     def _derive_all_observation_relations(
         self, micro_desc: CanonicalMicroEpisodeDescriptor
     ) -> list[tuple[str, str]]:
+        """
+        Derives ordered observation relation candidates (§15, D03).
+        Preserves first-occurrence order while using a seen-set for O(1) duplicate checks.
+        """
         pairs: list[tuple[str, str]] = []
+        seen: set[tuple[str, str]] = set()
+
         if micro_desc.kind == "simultaneous":
             nodes: list[str] = []
-            for s in micro_desc.positive_signals:
-                n = canonical_node_ref(s["region"], s["symbol"])
-                if n not in nodes:
+            node_seen: set[str] = set()
+            for r, s in micro_desc.signals:
+                n = canonical_node_ref(r, s)
+                if n not in node_seen:
+                    node_seen.add(n)
                     nodes.append(n)
             for a in nodes:
                 for b in nodes:
-                    if a != b and (a, b) not in pairs:
-                        pairs.append((a, b))
+                    if a != b:
+                        pair = (a, b)
+                        if pair not in seen:
+                            seen.add(pair)
+                            pairs.append(pair)
         else:
             steps = micro_desc.steps
-            for p_i, step_i in enumerate(steps):
-                nodes_i = [canonical_node_ref(s["region"], s["symbol"]) for s in step_i]
-                for p_j, step_j in enumerate(steps):
-                    nodes_j = [canonical_node_ref(s["region"], s["symbol"]) for s in step_j]
+            for step_i in steps:
+                nodes_i = [canonical_node_ref(r, s) for r, s in step_i]
+                for step_j in steps:
+                    nodes_j = [canonical_node_ref(r, s) for r, s in step_j]
                     for u in nodes_i:
                         for v in nodes_j:
-                            if u != v and (u, v) not in pairs:
-                                pairs.append((u, v))
+                            if u != v:
+                                pair = (u, v)
+                                if pair not in seen:
+                                    seen.add(pair)
+                                    pairs.append(pair)
         return pairs

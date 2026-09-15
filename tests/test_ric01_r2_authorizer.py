@@ -6,6 +6,8 @@ Verifies:
 - Fail-closed semantics when authorizer raises exception
 - Missing capability gating
 """
+from typing import Any
+
 import pytest
 
 from dgca.causal_identity import (
@@ -17,8 +19,35 @@ from dgca.graph import CognitiveGraph
 from dgca.observation import (
     ExecutionMode,
     R2AuthorizationError,
-    SimpleObservationAuthorizer,
 )
+
+
+class SimpleObservationAuthorizer:
+    """Test stub for PersistentObservationAuthorizer Protocol (§13, B04)."""
+
+    def __init__(self, allow: bool = False, callback: Any = None) -> None:
+        self.allow = allow
+        self.callback = callback
+
+    def verify_persistent_observation(
+        self,
+        *,
+        capability: object,
+        root_external_episode_id: str,
+        ingress_event_id: str,
+        modality: str,
+        operation_kind: str,
+    ) -> Any:
+        if self.callback is not None:
+            return self.callback(
+                capability=capability,
+                root_external_episode_id=root_external_episode_id,
+                ingress_event_id=ingress_event_id,
+                modality=modality,
+                operation_kind=operation_kind,
+            )
+        return self.allow
+
 from dgca.persistence import (
     RuntimeLifecycleGuard,
     compute_checkpoint_state_digest,
@@ -83,7 +112,7 @@ def test_authorized_persistent_fails_without_capability():
 def test_authorized_persistent_fails_when_denied():
     authorizer = SimpleObservationAuthorizer(allow=False)
     bridge = _make_bridge(authorizer=authorizer)
-    with pytest.raises(R2AuthorizationError, match="authorizer returned non-True value"):
+    with pytest.raises(R2AuthorizationError, match="authorizer returned non-bool or False"):
         bridge.observe_text(
             boundary_namespace="auth_test",
             source_occurrence_key="occ_003",
@@ -93,6 +122,23 @@ def test_authorized_persistent_fails_when_denied():
             mode=ExecutionMode.AUTHORIZED_PERSISTENT,
             capability="cap_123",
         )
+
+
+def test_authorizer_truthy_non_bool_fails_closed():
+    # PIR01-B04, PIR01-T13: Non-bool truthy values must fail closed
+    for truthy_val in (1, "yes", [1], object()):
+        authorizer = SimpleObservationAuthorizer(callback=lambda val=truthy_val, **kwargs: val)
+        bridge = _make_bridge(authorizer=authorizer)
+        with pytest.raises(R2AuthorizationError, match="authorizer returned non-bool or False"):
+            bridge.observe_text(
+                boundary_namespace="auth_test",
+                source_occurrence_key="occ_truthy",
+                source_event_key="evt_truthy",
+                ingress_boundary="boundary",
+                raw_text="test text",
+                mode=ExecutionMode.AUTHORIZED_PERSISTENT,
+                capability="cap_123",
+            )
 
 
 def test_authorizer_exception_fails_closed():

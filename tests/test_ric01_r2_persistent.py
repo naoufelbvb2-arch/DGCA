@@ -15,13 +15,14 @@ from dgca.causal_identity import (
 from dgca.graph import CognitiveGraph
 from dgca.observation import (
     ExecutionMode,
-    SimpleObservationAuthorizer,
 )
 from dgca.persistence import (
     RuntimeLifecycleGuard,
     compute_checkpoint_state_digest,
     extract_canonical_persistent_payload,
 )
+
+from .test_ric01_r2_authorizer import SimpleObservationAuthorizer
 
 
 def _setup():

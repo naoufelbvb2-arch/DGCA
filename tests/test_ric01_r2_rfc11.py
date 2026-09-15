@@ -41,30 +41,32 @@ def _make_bridge():
 def test_rfc11_sequence_adjacent_vs_nonadjacent():
     bridge = _make_bridge()
     # Sequence with 3 steps: step 0 (A), step 1 (B), step 2 (C)
-    step0 = ({"region": "text", "symbol": "A"},)
-    step1 = ({"region": "text", "symbol": "B"},)
-    step2 = ({"region": "text", "symbol": "C"},)
-    
+    step0 = (("text", "A"),)
+    step1 = (("text", "B"),)
+    step2 = (("text", "C"),)
+
     mep = CanonicalMicroEpisodeDescriptor(
-        micro_descriptor_version=MICRO_DESCRIPTOR_VERSION,
-        micro_episode_id="mep:seq_test",
-        child_index=0,
+        descriptor_version=MICRO_DESCRIPTOR_VERSION,
         kind="sequence",
-        positive_signals=(),
-        contradictions=(),
+        steps=(step0, step1, step2),
         structural_weight=1.0,
         valence=0.0,
-        steps=(step0, step1, step2),
+        contradictions=(),
+        micro_episode_id="mep:seq_test",
+        child_index=0,
     )
 
     eligible = bridge._derive_rfc11_eligible_edges(mep)
-    
-    # Adjacent pairs (A->B, dist 1) and (B->C, dist 1) must be eligible
+
+    # PIR01-B06: Bidirectional adjacent pairs (dist 1) must be eligible in BOTH directions
     assert ("text:A", "text:B") in eligible
+    assert ("text:B", "text:A") in eligible
     assert ("text:B", "text:C") in eligible
-    
-    # Non-adjacent pair (A->C, dist 2) MUST NOT be eligible for RFC-11
+    assert ("text:C", "text:B") in eligible
+
+    # Non-adjacent pairs (dist 2) MUST NOT be eligible for RFC-11 in either direction
     assert ("text:A", "text:C") not in eligible
+    assert ("text:C", "text:A") not in eligible
 
 
 def test_rfc11_firewall_excludes_role_cat_hub_inst():

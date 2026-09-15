@@ -68,10 +68,15 @@ def test_protocol_version_constants():
 
 
 def test_semantics_registry_and_digest():
-    assert len(R2_OBSERVATION_SEMANTICS_REGISTRY) == 31
+    assert len(R2_OBSERVATION_SEMANTICS_REGISTRY) == 13
     assert R2_OBSERVATION_SEMANTICS_DIGEST == "bb1489016229f321ff2381cbdec163a8ac741841ba1dfe89b732ddba67828d9b7c"
     computed = compute_r2_observation_semantics_digest()
     assert computed == R2_OBSERVATION_SEMANTICS_DIGEST
+
+    # Mutating any nested policy literal must change the digest (§3.1, B01)
+    mutated = dict(R2_OBSERVATION_SEMANTICS_REGISTRY)
+    mutated["authorization_default"] = "ALLOW_ALL"
+    assert compute_r2_observation_semantics_digest(mutated) != R2_OBSERVATION_SEMANTICS_DIGEST
 
 
 def test_error_hierarchy():

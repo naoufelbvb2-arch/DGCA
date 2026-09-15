@@ -21,13 +21,14 @@ from dgca.graph import CognitiveGraph
 from dgca.observation import (
     ExecutionMode,
     R2ProjectionFailure,
-    SimpleObservationAuthorizer,
 )
 from dgca.persistence import (
     RuntimeLifecycleGuard,
     compute_checkpoint_state_digest,
     extract_canonical_persistent_payload,
 )
+
+from .test_ric01_r2_authorizer import SimpleObservationAuthorizer
 
 
 def _setup():
@@ -70,7 +71,8 @@ def test_two_phase_projection_failure_semantics():
         assert err.persistent_committed is True
         assert err.persistent_executed is True
         assert err.stage == "transient_projection"
-        assert err.transaction_id.startswith("tx_obs_")
+        # B07: err.transaction_id is the actual R1 persistent TxID
+        assert err.transaction_id == next(iter(ledger.committed_transactions.keys()))
 
     # Invariant: persistent commit is authoritative in ledger
     assert len(ledger.committed_transactions) == 1
@@ -92,5 +94,5 @@ def test_two_phase_projection_failure_semantics():
         capability="valid_cap",
     )
     assert res_retry.status == "PERSISTENT_REPLAY"
-    assert res_retry.observation_transaction_id == err.transaction_id
+    assert res_retry.persistent_transaction_id == err.transaction_id
     assert len(res_retry.representations) > 0
