@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import hashlib
 from dataclasses import dataclass, field
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Any, Protocol
 
 from .config import Law
 from .representation import (
@@ -19,6 +19,20 @@ from .representation import (
 
 if TYPE_CHECKING:
     from .graph import CognitiveGraph
+
+
+class CompletionActivationSink(Protocol):
+    """Narrow RFC-13 seam for transient activation isolation (R3-Min §17)."""
+
+    def excite_existing_node(
+        self,
+        node_id: str,
+        *,
+        t: int,
+        value: float,
+        episode: str | None = None,
+    ) -> None:
+        ...
 
 
 # ─────────────────────────────────────────────────────────── Observability (Non-Cognitive)
@@ -600,6 +614,7 @@ class PatternCompletionEngine:
         root_authority_ref: str | None = None,
         work_ref: Any = None,
         canonical_identity: bool = False,
+        activation_sink: CompletionActivationSink | None = None,
     ) -> tuple[SparseDistributedCognitiveRepresentation, SettlingOutcomeView]:
         """تشغيل دورة الاستقرار المتكرر للقانون 15 عبر لقطات SDCR متتالية حتى التوقف الحتمي."""
         t_start = self._graph.t
@@ -740,9 +755,18 @@ class PatternCompletionEngine:
                 self.observability.scoped_commits += 1
 
                 # تنشيط العقدة فيزيائياً في الرسم البياني بصفة مؤقتة
-                if isinstance(p.target_ref, str) and p.target_ref in self._graph.nodes:
-                    node_obj = self._graph.nodes[p.target_ref]
-                    node_obj.excite(t_start + iterations, p.estimated_activation)
+                if activation_sink is not None:
+                    if isinstance(p.target_ref, str):
+                        activation_sink.excite_existing_node(
+                            p.target_ref,
+                            t=t_start + iterations,
+                            value=p.estimated_activation,
+                            episode=getattr(epoch, "epoch_id", None),
+                        )
+                else:
+                    if isinstance(p.target_ref, str) and p.target_ref in self._graph.nodes:
+                        node_obj = self._graph.nodes[p.target_ref]
+                        node_obj.excite(t_start + iterations, p.estimated_activation)
 
                 # إضافة إيصال مشاركة جديد يحمل provenance = PATTERN_COMPLETION
                 if canonical_identity:

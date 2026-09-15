@@ -1400,6 +1400,27 @@ class CanonicalR1RuntimeRoot:
             authorizer=authorizer,
         )
 
+    def create_chat_runtime(self, *, session_nonce: str | None = None) -> Any:
+        """Create a CanonicalChatRuntime bound to this runtime root (RIC-01/R3 §9)."""
+        if self.observation_protocol_version != "R2-OBS-1.0":
+            raise CausalIdentityValidationError(
+                f"create_chat_runtime requires observation_protocol_version 'R2-OBS-1.0', got '{self.observation_protocol_version}'"
+            )
+        if self.causal_runtime_health != CausalRuntimeHealth.HEALTHY:
+            raise CausalRuntimeFailStopError(
+                "Runtime is in MUTATION_FAILED fail-stop state. Cannot create chat runtime."
+            )
+        if self.canonical_lineage_state != CanonicalLineageState.VALID:
+            raise CausalLineageInvalidatedError(
+                "Canonical lineage is invalidated by untracked persistent mutation. Cannot create chat runtime."
+            )
+        from .chat_runtime import CanonicalChatRuntime
+        return CanonicalChatRuntime(
+            runtime_root=self,
+            graph=self._graph,
+            session_nonce=session_nonce,
+        )
+
     def unsafe_legacy_mutation_escape_hatch(self, mutator_callback: Callable[[], Any]) -> Any:
         """Explicit escape hatch for untracked persistent mutation (Section 55).
 

@@ -88,8 +88,21 @@ from .causal_identity import (
     validate_causal_provenance_state,
 )
 from .causality import causal_strength
+from .chat_runtime import (
+    R3_MIN_FALLBACK_TEXT,
+    R3_MIN_GENERATION_BUDGET,
+    R3_MIN_LANGUAGE_CONTEXT,
+    R3_MIN_RUNTIME_PROTOCOL_VERSION,
+    R3_MIN_RUNTIME_SEMANTICS_DIGEST,
+    R3_MIN_RUNTIME_SEMANTICS_REGISTRY,
+    CanonicalChatRuntime,
+    R3TurnResult,
+    TransientActivationScope,
+    compute_r3_min_runtime_semantics_digest,
+)
 from .completion import (
     CompetitiveAlternativeSet,
+    CompletionActivationSink,
     CompletionObservability,
     PatternCandidate,
     PatternCompletionEngine,
@@ -132,6 +145,7 @@ from .generation import (
     rfc14_behavioral_signature,
 )
 from .graph import CognitiveGraph, Edge, Node
+from .legacy_agent import LegacyCognitiveAgent
 from .linearizer import LinearizationEngine, ResponsePacket
 from .loop import (
     DeliveryStatusView,
@@ -247,6 +261,12 @@ __all__ = [
     "R2_OBSERVATION_PROTOCOL_VERSION",
     "R2_OBSERVATION_SEMANTICS_DIGEST",
     "R2_OBSERVATION_SEMANTICS_REGISTRY",
+    "R3_MIN_FALLBACK_TEXT",
+    "R3_MIN_GENERATION_BUDGET",
+    "R3_MIN_LANGUAGE_CONTEXT",
+    "R3_MIN_RUNTIME_PROTOCOL_VERSION",
+    "R3_MIN_RUNTIME_SEMANTICS_DIGEST",
+    "R3_MIN_RUNTIME_SEMANTICS_REGISTRY",
     "TEXT",
     "VISION",
     "AcousticEventIR",
@@ -266,6 +286,7 @@ __all__ = [
     "AudioStreamState",
     "AudioTemporalIR",
     "CandidateInference",
+    "CanonicalChatRuntime",
     "CanonicalLineageState",
     "CanonicalObservationBridge",
     "CanonicalObservationResult",
@@ -292,6 +313,7 @@ __all__ = [
     "CognitiveGraph",
     "CognitiveGraphInspectionView",
     "CompetitiveAlternativeSet",
+    "CompletionActivationSink",
     "CompletionObservability",
     "ContextualFacetView",
     "ContinuationCommit",
@@ -330,6 +352,7 @@ __all__ = [
     "InterruptionAuthorityView",
     "LeanCARFAC",
     "LearningAttributionRecord",
+    "LegacyCognitiveAgent",
     "LegacyMigrationError",
     "LexicalCandidate",
     "LinearizableOccurrence",
@@ -350,6 +373,7 @@ __all__ = [
     "QuantityNormalizer",
     "R2ObservationError",
     "R2ProjectionFailure",
+    "R3TurnResult",
     "RecurrentObservability",
     "ReferentialAccessibilityView",
     "ReinstatementProposal",
@@ -378,6 +402,7 @@ __all__ = [
     "SurfaceChunk",
     "SurfaceUnit",
     "TaskRelationView",
+    "TransientActivationScope",
     "TransientBindingReceipt",
     "UnifiedGenerativeCognitiveLoopEngine",
     "UnifiedLoopObservability",
@@ -405,6 +430,7 @@ __all__ = [
     "compute_mutation_descriptor_digest",
     "compute_observation_protocol_digest",
     "compute_r2_observation_semantics_digest",
+    "compute_r3_min_runtime_semantics_digest",
     "create_migrated_r1_provenance_epoch",
     "create_native_r1_provenance_epoch",
     "deep_infer",

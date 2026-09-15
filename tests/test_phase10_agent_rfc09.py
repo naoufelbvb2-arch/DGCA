@@ -12,7 +12,7 @@
 8. عدم الانحدار وثبات البصمة السلوكية الحتمية المرجعية c4b2549940a49789.
 """
 
-from dgca import CognitiveAgent
+from dgca.legacy_agent import LegacyCognitiveAgent as CognitiveAgent
 from dgca.signature import behavioral_signature, build_reference_graph
 
 

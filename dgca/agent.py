@@ -1,171 +1,114 @@
 """
-بيئة الوكيل الإدراكي التفاعلي والواجهة الحية (Interactive Multimodal Agent Runtime — RFC-09).
+DGCA — RIC-01 / R3 Minimal
+Canonical CognitiveAgent Runtime Façade (R3 §27-§30)
 
-يُنسق هذا الموديل كافة الأنظمة الفرعية لمنظومة DGCA:
-- تشفير الحواس (MasterSymbolicEncoder).
-- النواة والذاكرة الطوبولوجية (CognitiveGraph).
-- محرك فك التشبيك والتوليد اللغوي (LinearizationEngine).
-- محرك الاستدلال القياسي (AnalogicalReasoningEngine).
-- العمود الفقري الفطري للأرقام والمقارنة (Quantity Backbone).
+Authoritative Specification:
+RIC-01-R3-Minimal-Canonical-User-Runtime-Formal-Architecture-Specification-v1.1-FROZEN.md
+Status: FROZEN / ADOPTED
 """
+from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Any
+import pathlib
+from typing import TYPE_CHECKING
 
-from .analogy import AnalogicalReasoningEngine
-from .encoder import MasterSymbolicEncoder
+from .causal_identity import (
+    CanonicalR1RuntimeRoot,
+    CausalCommitLedger,
+    create_native_r1_provenance_epoch,
+)
 from .graph import CognitiveGraph
-from .linearizer import LinearizationEngine
-from .numbers import compare_quantities, init_quantity_backbone
+from .numbers import init_quantity_backbone
+from .persistence import (
+    RuntimeLifecycleGuard,
+    compute_checkpoint_state_digest,
+    extract_canonical_persistent_payload,
+    restore_canonical_r1_checkpoint,
+)
 
-
-@dataclass
-class AgentInteraction:
-    """سجل تفاعل واحد للوكيل الإدراكي."""
-
-    kind: str
-    input_payload: Any
-    output_payload: Any
-    status: str
+if TYPE_CHECKING:
+    from .chat_runtime import CanonicalChatRuntime, R3TurnResult
 
 
 class CognitiveAgent:
-    """الوكيل الإدراكي التفاعلي الشامل لمعمارية DGCA."""
+    """Canonical minimal user-facing Cognitive Agent for DGCA (R3 §27).
 
-    def __init__(self, enable_prediction: bool = True):
-        self.graph = CognitiveGraph(enable_prediction=enable_prediction)
-        init_quantity_backbone(self.graph)
-        self.encoder = MasterSymbolicEncoder()
-        self.linearizer = LinearizationEngine(self.graph)
-        self.analogy = AnalogicalReasoningEngine(self.graph)
-        self.history: list[AgentInteraction] = []
+    Exposes only chat(), __call__(), from_checkpoint(), and optional last_turn.
+    Persistent learning, raw graph mutators, and legacy heuristics are strictly unexposed.
+    """
 
-    def perceive_text(
-        self, text: str, context: str | None = None
-    ) -> dict[str, Any]:
-        """معالجة وإدخال نص طبيعي إلى الذاكرة.
+    def __init__(
+        self,
+        *,
+        enable_prediction: bool = False,
+        session_nonce: str | None = None,
+    ) -> None:
+        # Step 1: Initialize CognitiveGraph with prediction disabled by default
+        graph = CognitiveGraph(enable_prediction=enable_prediction)
 
-        LEGACY_NON_CANONICAL: This method mutates the agent graph directly
-        without canonical causal ledger tracking. Use CanonicalObservationBridge
-        for canonical R2 ingress.
-        """
-        episodes = self.encoder.encode_text(text, context=context)
-        ingested = self.encoder.feed_to_graph(self.graph, episodes)
-        res = {
-            "status": "INGESTED",
-            "episodes_count": len(episodes),
-            "events_created": ingested,
-        }
-        self.history.append(AgentInteraction("learn_text", text, res, "OK"))
-        return res
+        # Step 2: Mandatory Quantity Backbone initialization before R1 provenance epoch
+        init_quantity_backbone(graph)
 
-    def perceive_code(
-        self, code_str: str, module: str = "main"
-    ) -> dict[str, Any]:
-        """معالجة وإدخال كود بايثون إلى الذاكرة.
+        # Step 3 & 4: Extract canonical persistent payload and compute canonical state digest
+        persistent_payload = extract_canonical_persistent_payload(graph)
+        state_digest = compute_checkpoint_state_digest(persistent_payload)
 
-        LEGACY_NON_CANONICAL: This method mutates the agent graph directly
-        without canonical causal ledger tracking. Use CanonicalObservationBridge
-        for canonical R2 ingress.
-        """
-        episodes = self.encoder.encode_code(code_str, module=module)
-        ingested = self.encoder.feed_to_graph(self.graph, episodes)
-        res = {
-            "status": "INGESTED_CODE",
-            "episodes_count": len(episodes),
-            "events_created": ingested,
-        }
-        self.history.append(AgentInteraction("learn_code", code_str, res, "OK"))
-        return res
+        # Step 5: Create native R1 provenance epoch
+        epoch = create_native_r1_provenance_epoch(state_digest)
 
-    def query(self, prompt: str, target: str | None = None) -> str:
-        """إجراء استدلال رنيني وصياغة إجابة طبيعية متماسكة."""
-        pkt = self.linearizer.answer_query(prompt, target=target)
-        self.history.append(
-            AgentInteraction(
-                "query", prompt, pkt.text, "SUCCESS" if pkt.text else "NO_REPLY"
-            )
+        # Step 6: Create CausalCommitLedger bound to epoch
+        ledger = CausalCommitLedger(epoch=epoch)
+
+        # Step 7: Create CanonicalR1RuntimeRoot
+        lifecycle_guard = RuntimeLifecycleGuard()
+        self._runtime_root = CanonicalR1RuntimeRoot(
+            graph=graph,
+            ledger=ledger,
+            observation_protocol_version="R2-OBS-1.0",
+            lifecycle_guard=lifecycle_guard,
         )
-        return pkt.text
 
-    def solve_analogy(self, a: str, b: str, c: str) -> dict[str, Any]:
-        """حل لغز التناسب التناظري a : b :: c : ?"""
-        res = self.analogy.solve_proportion(a, b, c)
-        out = {
-            "status": res.status,
-            "target_match": res.target_match,
-            "similarity": res.mapping.similarity if res.mapping else 0.0,
-            "sdi": res.mapping.sdi_score if res.mapping else 0.0,
-        }
-        self.history.append(
-            AgentInteraction("analogy", (a, b, c), out, res.status)
+        # Step 8 & 9: Create CanonicalChatRuntime with non-cognitive session nonce
+        self._runtime: CanonicalChatRuntime = self._runtime_root.create_chat_runtime(
+            session_nonce=session_nonce
         )
-        return out
 
-    def compare(self, n1: int, n2: int) -> str:
-        """مقارنة مقدارين عبر العمود الفقري الفطري للأرقام."""
-        c = compare_quantities(self.graph, n1, n2)
-        if c == 1:
-            verdict = f"{n1} is greater than {n2}"
-        elif c == -1:
-            verdict = f"{n1} is less than {n2}"
-        else:
-            verdict = f"{n1} is equal to {n2}"
-        self.history.append(
-            AgentInteraction("compare", (n1, n2), verdict, "OK")
+    @classmethod
+    def from_checkpoint(
+        cls,
+        filepath: str | pathlib.Path,
+        *,
+        session_nonce: str | None = None,
+    ) -> CognitiveAgent:
+        """Restores a canonical R1 checkpoint into a new CognitiveAgent instance (R3 §29)."""
+        runtime_root, _ = restore_canonical_r1_checkpoint(
+            filepath=filepath,
+            expected_observation_protocol_version="R2-OBS-1.0",
+            enable_prediction=False,
         )
-        return verdict
+        agent = cls.__new__(cls)
+        agent._runtime_root = runtime_root
+        agent._runtime = runtime_root.create_chat_runtime(session_nonce=session_nonce)
+        return agent
 
-    def step_time(self, ticks: int = 1) -> dict[str, int]:
-        """تمرير تكات زمنية تشغيلية صامتة (RFC-09: تقدم زمني حيادي لا يغيّر المعرفة)."""
-        nodes_before = len(self.graph.nodes)
-        for _ in range(ticks):
-            self.graph.tick()
-        nodes_after = len(self.graph.nodes)
-        return {
-            "ticks": ticks,
-            "pruned_nodes": max(0, nodes_before - nodes_after),
-            "remaining_nodes": nodes_after,
-        }
+    def chat(self, text: str) -> str:
+        """Process one conversational turn through canonical R2 ingress, RFC13, and RFC14."""
+        return self._runtime.chat(text)
 
-    def inspect_node(self, nid: str) -> dict[str, Any]:
-        """فحص تفصيلي لحالة العقدة والروابط ومجموعات التناقض."""
-        norm_nid = self.analogy._normalize_nid(nid)
-        if norm_nid not in self.graph.nodes:
-            return {"error": f"Node '{nid}' not found in graph"}
-        node = self.graph.nodes[norm_nid]
-        out_edges = [
-            (e.dst, e.W, e.kind) for e in self.graph.out_edges(norm_nid)
-        ]
-        in_edges = [(e.src, e.W, e.kind) for e in self.graph.in_edges(norm_nid)]
-        return {
-            "nid": node.nid,
-            "region": node.region,
-            "A": node.A,
-            "U": node.U,
-            "is_concept": node.is_concept,
-            "out_edges": out_edges,
-            "in_edges": in_edges,
-            "rivals_X": list(self.graph.X.get(norm_nid, set())),
-        }
+    def __call__(self, text: str) -> str:
+        """Callable shorthand delegating directly to chat()."""
+        return self.chat(text)
 
-    def get_stats(self) -> dict[str, int]:
-        """إحصائيات حية للذاكرة والرسم البياني."""
-        concepts_count = len(self.graph.concepts)
-        return {
-            "nodes_count": len(self.graph.nodes),
-            "edges_count": len(self.graph.edges),
-            "concepts_count": concepts_count,
-            "hypotheses_count": len(self.graph.hypotheses),
-            "history_count": len(self.history),
-        }
+    @property
+    def last_turn(self) -> R3TurnResult | None:
+        """Read-only transient diagnostic summary of the last executed turn."""
+        return self._runtime.last_turn
 
-    def save_brain(self, filepath: str) -> None:
-        """حفظ الشبكة المعرفية بالكامل إلى ملف JSON."""
-        self.graph.save(filepath)
+    @property
+    def _chat_runtime(self) -> CanonicalChatRuntime:
+        """Internal private accessor for testing and verification."""
+        return self._runtime
 
-    def load_brain(self, filepath: str) -> None:
-        """تحميل شبكة معرفية من ملف JSON وإعادة ربط محركات التوليد والاستدلال بها."""
-        self.graph.load(filepath)
-        self.linearizer = LinearizationEngine(self.graph)
-        self.analogy = AnalogicalReasoningEngine(self.graph)
+    @property
+    def _root(self) -> CanonicalR1RuntimeRoot:
+        """Internal private accessor for testing and verification."""
+        return self._runtime_root
