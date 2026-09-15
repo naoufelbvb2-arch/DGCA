@@ -36,14 +36,9 @@ class CognitiveAgent:
     Persistent learning, raw graph mutators, and legacy heuristics are strictly unexposed.
     """
 
-    def __init__(
-        self,
-        *,
-        enable_prediction: bool = False,
-        session_nonce: str | None = None,
-    ) -> None:
-        # Step 1: Initialize CognitiveGraph with prediction disabled by default
-        graph = CognitiveGraph(enable_prediction=enable_prediction)
+    def __init__(self) -> None:
+        # Step 1: Initialize CognitiveGraph with prediction disabled (R3-I33)
+        graph = CognitiveGraph(enable_prediction=False)
 
         # Step 2: Mandatory Quantity Backbone initialization before R1 provenance epoch
         init_quantity_backbone(graph)
@@ -67,19 +62,58 @@ class CognitiveAgent:
             lifecycle_guard=lifecycle_guard,
         )
 
-        # Step 8 & 9: Create CanonicalChatRuntime with non-cognitive session nonce
-        self._runtime: CanonicalChatRuntime = self._runtime_root.create_chat_runtime(
-            session_nonce=session_nonce
-        )
+        # Step 8 & 9: Create CanonicalChatRuntime with non-cognitive host session nonce
+        self._runtime: CanonicalChatRuntime = self._runtime_root.create_chat_runtime()
 
     @classmethod
     def from_checkpoint(
         cls,
         filepath: str | pathlib.Path,
-        *,
-        session_nonce: str | None = None,
     ) -> CognitiveAgent:
         """Restores a canonical R1 checkpoint into a new CognitiveAgent instance (R3 §29)."""
+        runtime_root, _ = restore_canonical_r1_checkpoint(
+            filepath=filepath,
+            expected_observation_protocol_version="R2-OBS-1.0",
+            enable_prediction=False,
+        )
+        agent = cls.__new__(cls)
+        agent._runtime_root = runtime_root
+        agent._runtime = runtime_root.create_chat_runtime()
+        return agent
+
+    @classmethod
+    def _for_test(
+        cls,
+        *,
+        session_nonce: str,
+    ) -> CognitiveAgent:
+        """Private deterministic test constructor allowing fixed session nonce injection."""
+        graph = CognitiveGraph(enable_prediction=False)
+        init_quantity_backbone(graph)
+        persistent_payload = extract_canonical_persistent_payload(graph)
+        state_digest = compute_checkpoint_state_digest(persistent_payload)
+        epoch = create_native_r1_provenance_epoch(state_digest)
+        ledger = CausalCommitLedger(epoch=epoch)
+        lifecycle_guard = RuntimeLifecycleGuard()
+        root = CanonicalR1RuntimeRoot(
+            graph=graph,
+            ledger=ledger,
+            observation_protocol_version="R2-OBS-1.0",
+            lifecycle_guard=lifecycle_guard,
+        )
+        agent = cls.__new__(cls)
+        agent._runtime_root = root
+        agent._runtime = root.create_chat_runtime(session_nonce=session_nonce)
+        return agent
+
+    @classmethod
+    def _from_checkpoint_for_test(
+        cls,
+        filepath: str | pathlib.Path,
+        *,
+        session_nonce: str,
+    ) -> CognitiveAgent:
+        """Private deterministic test constructor from checkpoint allowing fixed session nonce."""
         runtime_root, _ = restore_canonical_r1_checkpoint(
             filepath=filepath,
             expected_observation_protocol_version="R2-OBS-1.0",

@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import copy
 import hashlib
+import inspect
 import json
 import sys
 from typing import Any
@@ -310,6 +311,42 @@ ACCEPTANCE_EVIDENCE_MAP: dict[str, tuple[str, ...]] = {
 # ─────────────────────────────────────────────────────────── Section 1: Exact Semantics Registry & Digest
 def test_r3_t01_semantics_registry_exact_count_and_digest():
     """R3-T01, R3-I39, Section 3: Exact 32-entry semantics registry and canonical SHA-256 digest."""
+    expected_registry = {
+        "activation_scope_lifetime": "RFC13_CALL_ONLY_RESTORE_BEFORE_RFC14",
+        "activation_sink_contract": "EXISTING_NODES_ONLY_TRANSIENT_FIELDS_ONLY",
+        "anchor_policy": "EXTERNAL_POSITIVE_NODE_RECEIPTS_ONLY",
+        "checkpoint_restore": "CANONICAL_R1_SCHEMA_1_2_0",
+        "chunk_policy": "JOIN_NONEMPTY_RENDERED_TEXT_WITH_SINGLE_SPACE",
+        "completion_activation_mode": "SCOPED_TRANSIENT_UNCOUNTED_RESTORED",
+        "completion_budget": "LAW_E_BUDGET_0",
+        "completion_canonical_identity": True,
+        "completion_owner": "RFC13",
+        "external_ingress_count_per_turn": "EXACTLY_ONE",
+        "fallback_text": "I don't have enough information.",
+        "fresh_bootstrap": "QUANTITY_BACKBONE_BEFORE_R1_PROVENANCE_EPOCH",
+        "fresh_prediction_policy": "DISABLED",
+        "generation_budget": 1.0,
+        "generation_canonical_identity": True,
+        "generation_owner": "RFC14",
+        "ingress_owner": "R2_CANONICAL_OBSERVATION_BRIDGE",
+        "language_context": "en",
+        "learning_api": "ABSENT",
+        "legacy_compatibility": "EXPLICIT_LEGACY_COGNITIVE_AGENT",
+        "legacy_linearizer_policy": "FORBIDDEN_ON_CANONICAL_PATH",
+        "loop_policy": "RFC16_NO_EXTERNAL_INGRESS_ON_R3_MIN_PATH",
+        "multi_microepisode_policy": "PROCESS_ALL_OBSERVABLE_CHILDREN_IN_CANONICAL_CHILD_ORDER",
+        "observation_mode": "TRANSIENT_ONLY",
+        "occurrence_policy": "HOST_SESSION_NONCE_PLUS_MONOTONIC_TURN",
+        "protocol_version": "R3-MIN-1.0",
+        "public_api": ["chat", "__call__", "from_checkpoint"],
+        "recurrent_policy": "RFC15_DEFERRED",
+        "restore_prediction_policy": "DISABLED",
+        "supported_modalities": ["text"],
+        "transient_cleanup_policy": "CLOSE_R2_AND_RFC13_DERIVED_SDCRS",
+        "turn_concurrency": "SINGLE_ACTIVE_TURN_FAIL_CLOSED",
+    }
+    assert R3_MIN_RUNTIME_SEMANTICS_REGISTRY == expected_registry
+
     assert len(R3_MIN_RUNTIME_SEMANTICS_REGISTRY) == 32
     computed = compute_r3_min_runtime_semantics_digest()
     expected = "fc357c3bf84a9e43488b58502f82b8d07d2936fcd12613d7050bf006de72efcc"
@@ -422,18 +459,22 @@ def test_c01_to_c05_occurrence_identity():
         agent.chat("   ")  # blank raises ValueError
     assert agent._chat_runtime.turn_index == current_index + 1
 
-    # C05: fixed test session nonce + same turn index reproduces same Root
+    # C05: fixed test session nonce + same turn index reproduces same Root via private seam
     fixed_nonce = "a" * 32
-    agent_det1 = CognitiveAgent(session_nonce=fixed_nonce)
+    agent_det1 = CognitiveAgent._for_test(session_nonce=fixed_nonce)
     agent_det1.chat("hello")
     det_root1 = agent_det1.last_turn.root_external_episode_id
 
-    agent_det2 = CognitiveAgent(session_nonce=fixed_nonce)
+    agent_det2 = CognitiveAgent._for_test(session_nonce=fixed_nonce)
     agent_det2.chat("different text completely")
     det_root2 = agent_det2.last_turn.root_external_episode_id
 
     # Same session nonce + same turn index (0) produces identical RootExternalEpisodeID
     assert det_root1 == det_root2
+
+    # Verify ordinary public caller cannot pass session_nonce
+    with pytest.raises(TypeError):
+        CognitiveAgent(session_nonce=fixed_nonce)
 
 
 def test_d01_to_d06_r2_ingress():
@@ -712,6 +753,23 @@ def test_n01_to_n08_public_surface():
     assert not hasattr(agent, "query")
     assert not hasattr(agent, "save_brain")
     assert not hasattr(agent, "load_brain")
+
+    # Strict signature verification (PIR-01 / B01)
+    sig_agent = inspect.signature(CognitiveAgent)
+    assert len(sig_agent.parameters) == 0, f"CognitiveAgent parameters must be empty, got {sig_agent.parameters}"
+    sig_from_ckpt = inspect.signature(CognitiveAgent.from_checkpoint)
+    assert list(sig_from_ckpt.parameters.keys()) == ["filepath"], f"from_checkpoint parameters must be ['filepath'], got {list(sig_from_ckpt.parameters.keys())}"
+
+    # Verify public constructor rejects unauthorized parameters
+    with pytest.raises(TypeError):
+        CognitiveAgent(enable_prediction=True)
+    with pytest.raises(TypeError):
+        CognitiveAgent(session_nonce="a" * 32)
+    with pytest.raises(TypeError):
+        CognitiveAgent.from_checkpoint("dummy_path", session_nonce="a" * 32)
+
+    # Fresh agent prediction is always disabled
+    assert agent._chat_runtime._graph.enable_prediction is False
 
 
 # ─────────────────────────────────────────────────────────── Section 3: Acceptance Ledger Meta-Test

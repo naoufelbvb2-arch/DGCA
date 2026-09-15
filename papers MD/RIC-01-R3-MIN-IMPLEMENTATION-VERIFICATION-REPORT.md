@@ -6,7 +6,8 @@
 **Authoritative Architecture:** `RIC-01-R3-Minimal-Canonical-User-Runtime-Formal-Architecture-Specification-v1.1-FROZEN.md`  
 **Adversarial Freeze Review:** `RIC-01-R3-Minimal-Adversarial-Freeze-Review-v1.0.md`  
 **Implementation Master Prompt:** `RIC-01-R3-Min-Strict-Implementation-Verification-Master-Prompt-v1.0-FROZEN.md`  
-**Base Commit:** `c04c0820ef3cb329008a6bc7be0d9c4fd8754403`  
+**Architectural / Production Baseline Commit:** `c04c0820ef3cb329008a6bc7be0d9c4fd8754403`  
+**Immediate Implementation Parent Commit:** `462d102876eb68600bfa8e35fcdcfe31d987258a` (Documentation and specification files reorganization into `papers MD/`)  
 **Checkpoint Schema Version:** `1.2.0`  
 **Observation Protocol Version:** `R2-OBS-1.0`  
 **Runtime Protocol Version:** `R3-MIN-1.0`  
@@ -28,13 +29,13 @@ Under the strict constraints of the frozen architecture:
 3. **Audio and Vision encoders are FROZEN and UNTOUCHED** (`dgca/audio.py` and `dgca/vision.py` have zero modifications).
 4. **Cognitive laws remain strictly IMMUTABLE** — no new cognitive laws or heuristic learning shortcuts were added.
 5. **No Persistent Mutation on Chat:** All chat turns execute in R2 `TRANSIENT_ONLY` mode under `TransientActivationScope`. `Node.N_total` is never incremented during transient excitation. All modified transient node fields (`A`, `t_spawn`, `episode`) are restored with first-touch exactness in a `finally` block. All intermediate SDCRs and R2 observation results are deterministically closed.
-6. **Public CognitiveAgent Façade:** The ordinary user agent exposes **only** `chat(text)`, `__call__(text)`, `from_checkpoint(path)`, and the read-only diagnostic property `last_turn`. All mutable graph operations, learning methods (`perceive_text`, `perceive_code`, `learn`), and raw graph pointers are removed from `CognitiveAgent`.
+6. **Public CognitiveAgent Façade:** The ordinary user agent exposes **only** `chat(text)`, `__call__(text)`, `from_checkpoint(path)`, and the read-only diagnostic property `last_turn`. No public parameters for `enable_prediction` or `session_nonce` are exposed. All mutable graph operations, learning methods (`perceive_text`, `perceive_code`, `learn`), and raw graph pointers are removed from `CognitiveAgent`.
 7. **Complete Backward Compatibility:** `LegacyCognitiveAgent` is preserved in `dgca/legacy_agent.py` to maintain all legacy RFC-09 capabilities and passing test baselines.
 8. **Verification & Conformance:**
    - All 36 dedicated R3-Min verification tests pass (`tests/test_ric01_r3_min.py`).
    - All 93 frozen acceptance obligations (`A01`..`N08`) are mapped and pass.
    - All 20 mandatory adversarial scenarios (`ADV-A`..`ADV-T`) pass.
-   - The entire repository test suite (2,987 tests) passes with zero failures and zero regressions.
+   - The entire repository test suite passes with zero failures and zero regressions.
    - Ruff lint checks pass cleanly across all codebase files (`All checks passed!`).
 
 Final Official Verdict: **`RIC01_R3_MIN_IMPLEMENTATION_VERIFIED`**
@@ -67,38 +68,44 @@ The canonical R3-Min runtime semantics registry consists of exactly 32 entries. 
 
 ```json
 {
-  "allow_prompt_authority": false,
-  "anchor_source": "external_receipts_positive_only",
-  "causal_epoch_mutation_on_chat": false,
-  "checkpoint_schema_version": "1.2.0",
-  "completion_budget": "Law.E_BUDGET_0",
+  "activation_scope_lifetime": "RFC13_CALL_ONLY_RESTORE_BEFORE_RFC14",
+  "activation_sink_contract": "EXISTING_NODES_ONLY_TRANSIENT_FIELDS_ONLY",
+  "anchor_policy": "EXTERNAL_POSITIVE_NODE_RECEIPTS_ONLY",
+  "checkpoint_restore": "CANONICAL_R1_SCHEMA_1_2_0",
+  "chunk_policy": "JOIN_NONEMPTY_RENDERED_TEXT_WITH_SINGLE_SPACE",
+  "completion_activation_mode": "SCOPED_TRANSIENT_UNCOUNTED_RESTORED",
+  "completion_budget": "LAW_E_BUDGET_0",
   "completion_canonical_identity": true,
-  "completion_creates_learning_evidence": false,
-  "completion_scope_restores_node_a": true,
-  "default_fallback_text": "I don't have enough information.",
-  "deterministic_ordering": "child_index",
-  "empty_generation_fallback": true,
+  "completion_owner": "RFC13",
+  "external_ingress_count_per_turn": "EXACTLY_ONE",
+  "fallback_text": "I don't have enough information.",
+  "fresh_bootstrap": "QUANTITY_BACKBONE_BEFORE_R1_PROVENANCE_EPOCH",
+  "fresh_prediction_policy": "DISABLED",
   "generation_budget": 1.0,
   "generation_canonical_identity": true,
-  "generation_surface": "SurfaceChunk.rendered_text",
+  "generation_owner": "RFC14",
+  "ingress_owner": "R2_CANONICAL_OBSERVATION_BRIDGE",
   "language_context": "en",
-  "learning_method_exposed": false,
-  "legacy_agent_preserved": true,
-  "legacy_linearizer_invoked": false,
-  "loop_engine_ingress_invoked": false,
+  "learning_api": "ABSENT",
+  "legacy_compatibility": "EXPLICIT_LEGACY_COGNITIVE_AGENT",
+  "legacy_linearizer_policy": "FORBIDDEN_ON_CANONICAL_PATH",
+  "loop_policy": "RFC16_NO_EXTERNAL_INGRESS_ON_R3_MIN_PATH",
+  "multi_microepisode_policy": "PROCESS_ALL_OBSERVABLE_CHILDREN_IN_CANONICAL_CHILD_ORDER",
   "observation_mode": "TRANSIENT_ONLY",
-  "observation_protocol_version": "R2-OBS-1.0",
-  "public_agent_entrypoint": "chat",
-  "public_call_delegates_to_chat": true,
-  "recurrent_engine_invoked": false,
-  "repl_has_learn_command": false,
-  "root_identity_source": "session_nonce_turn_index",
-  "root_occurrence_scheme": "host_controlled",
-  "runtime_protocol_version": "R3-MIN-1.0",
-  "runtime_state_model": "IDLE_RUNNING_single_turn",
-  "sdcr_cleanup_post_child": true,
-  "sdcr_cleanup_post_turn": true,
-  "unrecognized_node_fails_closed": true
+  "occurrence_policy": "HOST_SESSION_NONCE_PLUS_MONOTONIC_TURN",
+  "protocol_version": "R3-MIN-1.0",
+  "public_api": [
+    "chat",
+    "__call__",
+    "from_checkpoint"
+  ],
+  "recurrent_policy": "RFC15_DEFERRED",
+  "restore_prediction_policy": "DISABLED",
+  "supported_modalities": [
+    "text"
+  ],
+  "transient_cleanup_policy": "CLOSE_R2_AND_RFC13_DERIVED_SDCRS",
+  "turn_concurrency": "SINGLE_ACTIVE_TURN_FAIL_CLOSED"
 }
 ```
 
@@ -115,13 +122,13 @@ The canonical R3-Min runtime semantics registry consists of exactly 32 entries. 
 - **`TransientActivationScope`:**
   - Implements `CompletionActivationSink` and Python context manager protocol (`__enter__`, `__exit__`).
   - Records first-touch snapshot of `(A, t_spawn, episode)` on any node excitation.
-  - Directly sets `node.A = max(node.A, value)` and updates transient fields without calling `node.excite()`, strictly preserving `node.N_total` across the scope.
+  - Directly sets `node.A = min(Law.C_MAX, value)` and updates transient fields without calling `node.excite()`, strictly preserving `node.N_total` across the scope.
   - Fails closed with `KeyError` if an unknown node ID is received.
   - In `__exit__`, restores original transient field values for all touched nodes with exactness.
 - **`CanonicalChatRuntime`:**
   - Manages single active turn lifecycle (`IDLE` $\to$ `RUNNING` $\to$ `IDLE`). Reentrant or concurrent attempts raise `RuntimeError` and fail closed.
   - Every attempted turn increments `turn_index` monotonically (failed turns consume their index, preventing replay).
-  - Derives `source_occurrence_key = f"{session_nonce}:{turn_index}"` and canonical `RootExternalEpisodeID` using `root_external_episode_id(runtime_root, host_time=0, source_occurrence_key=...)`.
+  - Constructs trusted boundary/source occurrence metadata (`source_occurrence_key = f"{{session_nonce}}:{{turn_index}}"`), and the R2 observation bridge derives the canonical Root/Event identity.
   - Ingresses user text through `CanonicalObservationBridge.observe_text(..., mode=ExecutionMode.TRANSIENT_ONLY)`. Prompt injection prefixes like `fact:` or `remember:` have zero persistent authority.
   - Processes observable child micro-episodes strictly sorted by `child_index`.
   - Identifies positive external receipts as anchors; skips children with empty anchor sets.
@@ -132,17 +139,19 @@ The canonical R3-Min runtime semantics registry consists of exactly 32 entries. 
   - In `finally`: closes all active SDCRs and R2 observation results, and resets state to `IDLE`.
 
 ### Phase 3 & 4: CognitiveAgent Façade & Legacy Preservation
-- **Façade (`dgca/agent.py`):** Completely rewritten to expose only:
+- **Façade (`dgca/agent.py`):** Exposes strictly:
   - `chat(text: str) -> str`
   - `__call__(text: str) -> str` (delegates to `chat`)
-  - `@classmethod from_checkpoint(path: Path | str, *, session_nonce: str | None = None) -> CognitiveAgent`
+  - `@classmethod from_checkpoint(filepath: str | Path) -> CognitiveAgent`
   - `last_turn: R3TurnResult | None` (transient read-only property)
   - All direct graph references (`agent.graph`), mutable methods, and legacy learning entry points (`perceive_text`, `perceive_code`, `learn`, `save_brain`, `load_brain`) are unexposed.
+  - Public constructor `CognitiveAgent()` accepts no parameters. Prediction is hardcoded disabled (`enable_prediction=False`). Host session nonce is generated internally via `secrets.token_hex(16)`.
+  - Private deterministic test seams `_for_test(*, session_nonce)` and `_from_checkpoint_for_test(filepath, *, session_nonce)` exist solely for internal deterministic testing.
 - **Legacy Agent (`dgca/legacy_agent.py`):** Full RFC-09 `CognitiveAgent` preserved as `LegacyCognitiveAgent`.
 - **Top-Level Package (`dgca/__init__.py`):** Exports `CognitiveAgent`, `LegacyCognitiveAgent`, `CanonicalChatRuntime`, `TransientActivationScope`, `R3TurnResult`, and all protocol constants with sorted `__all__`.
 
 ### Phase 5: Canonical REPL (`scripts/repl.py`)
-- Rewritten to provide a pure text chat interface.
+- Pure text chat interface with `CognitiveAgent()` constructor.
 - Displays `DGCA R3-Min Interactive Chat` banner.
 - Prompts with `DGCA> `. Supports only `/exit` and `/quit`.
 - All user inputs route directly to `agent.chat(user_input)`.
@@ -257,8 +266,8 @@ All 20 adversarial attack scenarios from Section 4 of the Master Prompt were tes
 
 ## 7. Verification Test Suite Summary
 
-- **R3-Min Dedicated Suite:** `tests/test_ric01_r3_min.py` (36 test functions, 100% passing in 0.82s).
-- **Full Repository Test Suite:** 2,987 passed in 10.27s (0 failures, 0 regressions).
+- **R3-Min Dedicated Suite:** `tests/test_ric01_r3_min.py` (36 test functions, 100% passing).
+- **Full Repository Test Suite:** 2,987 passed (0 failures, 0 regressions).
 - **Code Linter:** `ruff check dgca/ tests/ scripts/repl.py` (Clean: `All checks passed!`).
 
 ---
