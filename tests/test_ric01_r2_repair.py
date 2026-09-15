@@ -33,6 +33,7 @@ from dgca.observation import (
     R2BatchValidationError,
     R2DescriptorError,
     R2ProjectionFailure,
+    close_result,
     compute_r2_observation_semantics_digest,
     validate_canonical_receipt_batch,
     validate_r2_observation_semantics_registry,
@@ -62,19 +63,20 @@ def _make_bridge(authorizer=None):
 
 # ─────────────────────────────────────────────────────────── PIR01-B01: Semantics Registry & Digest (T01 - T03)
 def test_pir01_t01_exact_structured_semantics_registry():
-    """PIR01-T01: Exact structured semantics registry containing all 13 frozen policy literals."""
+    """PIR01-T01: Exact structured semantics registry containing all 18 frozen policy literals."""
     assert isinstance(R2_OBSERVATION_SEMANTICS_REGISTRY, dict)
-    assert len(R2_OBSERVATION_SEMANTICS_REGISTRY) == 13
+    assert len(R2_OBSERVATION_SEMANTICS_REGISTRY) == 18
     validate_r2_observation_semantics_registry()
     assert R2_OBSERVATION_SEMANTICS_REGISTRY["authorization_default"] == "DENY_ALL"
-    assert R2_OBSERVATION_SEMANTICS_REGISTRY["sdcr_cardinality"] == "ONE_SDCR_PER_OBSERVABLE_MICRO_EPISODE"
-    assert R2_OBSERVATION_SEMANTICS_REGISTRY["transient_replay"] == "PERSISTENT_REPLAY_CONTINUE_PROJECTION"
+    assert R2_OBSERVATION_SEMANTICS_REGISTRY["sdcr_cardinality"] == "ONE_PER_OBSERVABLE_MICROEPISODE"
+    assert R2_OBSERVATION_SEMANTICS_REGISTRY["transient_replay"] == "CURRENT_STATE_RECONSTRUCTION"
 
 
 def test_pir01_t02_semantics_digest_recomputed_no_constant_short_circuit():
     """PIR01-T02: Semantics digest actually recomputed from canonical JSON bytes with no short-circuit."""
     computed = compute_r2_observation_semantics_digest()
-    assert computed == "bb1489016229f321ff2381cbdec163a8ac741841ba1dfe89b732ddba67828d9b7c"
+    assert computed == "bb1489016229f321ff2381cbdec163a8ac741841ba1dfe89b732ddba67828d9b"
+    assert len(computed) == 64
     assert computed == R2_OBSERVATION_SEMANTICS_DIGEST
 
 
@@ -574,8 +576,8 @@ def test_pir01_t22_forged_rehashed_receipt_with_wrong_occurrence_scope_rejected(
         child_index=0,
         local_parent_cycle_id=1,
     )
-    # Invent a non-canonical occurrence scope and re-hash ReceiptID
-    invented_occ = "invented_occurrence_scope"
+    # Invent a non-matching but regex-valid occurrence scope and re-hash ReceiptID
+    invented_occ = "r2occ:mep_v2:simultaneous:999"
     new_scope_refs = ("mep_v2", invented_occ)
     rehashed_rid = derive_participation_receipt_id(
         micro_episode_id="mep_v2",
@@ -593,7 +595,7 @@ def test_pir01_t22_forged_rehashed_receipt_with_wrong_occurrence_scope_rejected(
         occurrence_scope=invented_occ,
         scope_refs=new_scope_refs,
     )
-    # Must fail closed: scope_refs[1] != entry.occurrence_scope or format mismatch
+    # Must fail closed: occurrence_scope does not match rederived plan
     with pytest.raises(R2BatchValidationError):
         validate_canonical_receipt_batch(
             batch=batch,
@@ -759,7 +761,7 @@ def test_pir01_t30_close_result_removes_rep_from_active_representations():
 
 
 def test_pir01_t31_double_close_remains_idempotent():
-    """PIR01-T31: Double close on CanonicalObservationResult is completely idempotent."""
+    """PIR01-T31: Double close on CanonicalObservationResult via close_result is completely idempotent."""
     bridge = _make_bridge()
     res = bridge.observe_text(
         boundary_namespace="lifecycle",
@@ -768,10 +770,21 @@ def test_pir01_t31_double_close_remains_idempotent():
         ingress_boundary="b",
         raw_text="Testing double close idempotency.",
     )
-    res.close()
-    # Second close must not raise or fail
+    rep_engine = bridge._graph.representation_engine
+    close_result(res)
+    assert res.is_closed is True
+    closed_count = rep_engine.observability.representations_closed
+    assert closed_count > 0
+
+    # Second close via close_result must be completely idempotent and not increment engine stats
+    close_result(res)
+    assert res.is_closed is True
+    assert rep_engine.observability.representations_closed == closed_count
+
+    # res.close() call also idempotent
     res.close()
     assert res.is_closed is True
+    assert rep_engine.observability.representations_closed == closed_count
 
 
 def test_pir01_t32_partial_projection_failure_removes_every_earlier_rep_from_active_representations():
@@ -852,14 +865,24 @@ def test_pir01_t35_episode_micro_descriptor_length_mismatch_fails_closed():
     """PIR01-T35: Episode count mismatch with micro_descriptors fails closed (D02)."""
     bridge = _make_bridge()
     occ = ExternalOccurrenceDescriptor("hardening", "occ_h2")
-    # If encoder returned valid episode with kind
-    with patch.object(bridge._encoder, "encode_text", return_value=[SensoryEpisode(kind="simultaneous", signals=[("text", "A")])]):
-        # Normal execution matches 1-to-1
-        res = bridge.observe(
+    dummy_desc = CanonicalMicroEpisodeDescriptor(
+        descriptor_version=MICRO_DESCRIPTOR_VERSION,
+        kind="simultaneous",
+        signals=(("text", "A"),),
+        micro_episode_id="mep_dummy",
+        child_index=0,
+    )
+    # Inject count mismatch: 1 episode from encoder, but 2 descriptors returned
+    with (
+        patch.object(bridge, "_build_micro_descriptors", return_value=[dummy_desc, dummy_desc]),
+        pytest.raises(R2DescriptorError, match="Episode count does not equal micro_descriptor count"),
+    ):
+        bridge.observe(
             occurrence=occ,
             source_event_key="evt_h2",
             ingress_boundary="b",
             modality="text",
             payload={"raw_text": "hello"},
         )
-        assert len(res.micro_episodes) == 1
+    assert len(bridge._graph.nodes) == 0
+    assert len(bridge._graph.edges) == 0

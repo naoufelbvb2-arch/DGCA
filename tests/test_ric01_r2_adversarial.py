@@ -29,6 +29,7 @@ from dgca.causal_identity import (
     CausalRuntimeHealth,
     ExternalOccurrenceDescriptor,
     create_native_r1_provenance_epoch,
+    derive_participation_receipt_id,
     derive_transient_binding_receipt_id,
 )
 from dgca.encoder import SensoryEpisode
@@ -38,6 +39,7 @@ from dgca.observation import (
     R2_OBSERVATION_PROTOCOL_VERSION,
     CanonicalBindingEntry,
     CanonicalMicroEpisodeDescriptor,
+    CanonicalReceiptEntry,
     ExecutionMode,
     PersistentObservationAuthorizer,
     R2AuthorizationError,
@@ -111,7 +113,7 @@ def test_scenario_a_500_calls_one_root_one_independent_vote():
 def test_scenario_b_repeated_same_node_occurrences_receipts_preserved_dedup():
     """Scenario B: Repeated same node occurrences -> receipts preserved, deterministic relation dedup, no duplicate independent vote."""
     authorizer = SimpleObservationAuthorizer(allow=True)
-    _runtime, _graph, _ledger, bridge = _setup(authorizer=authorizer)
+    _runtime, graph, _ledger, bridge = _setup(authorizer=authorizer)
     occ = ExternalOccurrenceDescriptor("boundary_b", "occ_b")
 
     # Episode with repeated occurrences of same node
@@ -148,6 +150,11 @@ def test_scenario_b_repeated_same_node_occurrences_receipts_preserved_dedup():
     edge_entries = [e for e in batch.ordered_receipt_entries if e.kind == "edge"]
     edge_refs = [e.element_ref for e in edge_entries]
     assert len(edge_refs) == len(set(edge_refs))
+
+    # Assembly candidate root votes must remain exactly 1 after multi-occurrence input (no duplicate RFC-11 root vote)
+    asm_mgr = graph.assembly_manager
+    for cand in asm_mgr.pending_candidates.values():
+        assert len(cand.root_votes) == 1
 
 
 # ─────────────────────────────────────────────────────────── Scenario C
@@ -216,22 +223,29 @@ def test_scenario_d_forged_tbr_valid_members_wrong_receipt_scope_rejected():
         child_index=0,
         local_parent_cycle_id=1,
     )
-    # Forged TBR with unknown member element ref
-    bogus_member = "text:alien"
-    forged_tbrid = derive_transient_binding_receipt_id(
+    # Valid members ("text:cat", "text:dog") retained in TBR
+    assert batch.ordered_binding_entries[0].member_element_refs == ("text:cat", "text:dog")
+    # Tamper with slot 1 ("text:dog") receipt: strip the TBR binding scope from its scope_refs
+    dog_entry = batch.ordered_receipt_entries[1]
+    assert dog_entry.element_ref == "text:dog"
+    tampered_scope_refs = (dog_entry.scope_refs[0], dog_entry.scope_refs[1])
+    rehashed_rid = derive_participation_receipt_id(
         micro_episode_id="mep_d",
-        binding_scope_id=batch.ordered_binding_entries[0].binding_scope,
-        member_receipt_refs=["text:cat", bogus_member],
-        binding_index=0,
-        prefix="tbr_",
+        participation_kind="node",
+        element_ref="text:dog",
+        scope_refs=list(tampered_scope_refs),
+        slot_index=1,
+        prefix="pr_",
     )
-    batch.ordered_binding_entries[0] = CanonicalBindingEntry(
-        binding_index=0,
-        binding_id=forged_tbrid,
-        scope_kind=batch.ordered_binding_entries[0].scope_kind,
-        scope_index=0,
-        binding_scope=batch.ordered_binding_entries[0].binding_scope,
-        member_element_refs=("text:cat", bogus_member),
+    batch.ordered_receipt_entries[1] = CanonicalReceiptEntry(
+        slot_index=1,
+        receipt_id=rehashed_rid,
+        kind="node",
+        element_ref="text:dog",
+        occurrence_scope=dog_entry.occurrence_scope,
+        scope_refs=tampered_scope_refs,
+        activation_magnitude=dog_entry.activation_magnitude,
+        relational_drive=dog_entry.relational_drive,
     )
     with pytest.raises(R2BatchValidationError):
         validate_canonical_receipt_batch(

@@ -68,8 +68,9 @@ def test_protocol_version_constants():
 
 
 def test_semantics_registry_and_digest():
-    assert len(R2_OBSERVATION_SEMANTICS_REGISTRY) == 13
-    assert R2_OBSERVATION_SEMANTICS_DIGEST == "bb1489016229f321ff2381cbdec163a8ac741841ba1dfe89b732ddba67828d9b7c"
+    assert len(R2_OBSERVATION_SEMANTICS_REGISTRY) == 18
+    assert R2_OBSERVATION_SEMANTICS_DIGEST == "bb1489016229f321ff2381cbdec163a8ac741841ba1dfe89b732ddba67828d9b"
+    assert len(R2_OBSERVATION_SEMANTICS_DIGEST) == 64
     computed = compute_r2_observation_semantics_digest()
     assert computed == R2_OBSERVATION_SEMANTICS_DIGEST
 
