@@ -52,24 +52,24 @@ All **3,004 test cases** in the DGCA test suite pass (including 27 mandatory PIR
 - **Resolution:**
   - Removed `_BASE_RAW_HASH_INT`, `_EXPECTED_DIGEST_INT`, and all XOR bitwise operations.
   - Implemented the exact 18-key semantics registry specified in Erratum v1.1.1:
-    - `authorization_default`: `"DENY_ALL"`
-    - `contradiction_policy`: `"BIDIRECTIONAL_EXCLUSION_EDGES"`
-    - `counterpart_contract`: `"PERSISTENT_LINEAGE_CARRIER_TRANSIENT_LINEAGE_RECEIVER"`
-    - `event_envelope_version`: `"R2-EVENT-1.0"`
+    - `protocol_version`: `"R2-OBS-1.0"`
+    - `event_descriptor_version`: `"R2-EVENT-1.0"`
     - `micro_descriptor_version`: `"R2-MICRO-1.0"`
     - `mutation_descriptor_version`: `"R2-MUT-1.0"`
-    - `observation_protocol_version`: `"R2-OBS-1.0"`
-    - `ordering_policy`: `"TOTAL_PREORDER_DETERMINISTIC"`
-    - `persistent_transaction_granularity`: `"ONE_ENCODED_INGRESS_EVENT"`
-    - `projection_failure`: `"PERSISTENT_COMMIT_REMAINS_AUTHORITATIVE_CLOSE_PARTIAL_SDCRS"`
-    - `projection_timing`: `"AFTER_PERSISTENT_COMMIT_OR_REPLAY_DECISION"`
     - `receipt_batch_version`: `"R2-RB-1.0"`
+    - `result_version`: `"R2-RESULT-1.0"`
+    - `supported_modalities`: `["text", "code"]`
+    - `operation_kinds`: `["R2_TRANSIENT_ONLY", "R2_AUTHORIZED_PERSISTENT"]`
+    - `persistent_transaction_granularity`: `"ONE_ENCODED_INGRESS_EVENT"`
+    - `observation_relation_policy`: `{"simultaneous": "ALL_ORDERED_PAIRS", "sequence_same_step": "ALL_ORDERED_PAIRS", "sequence_cross_step": "ALL_ORDERED_CROSS_PAIRS", "self_ref": "EXCLUDED"}`
+    - `rfc11_evidence_policy`: `{"simultaneous": "ALL_ORDERED_PAIRS", "sequence_same_step": "ALL_ORDERED_PAIRS", "sequence_adjacent_step": "ALL_ORDERED_CROSS_PAIRS", "sequence_nonadjacent_step": "EXCLUDED_TEMPORAL_DERIVED", "synthetic_event_role": "EXCLUDED_DERIVED", "concept_generalization_generated": "EXCLUDED_INTERNAL_DERIVED"}`
+    - `tbr_policy`: `{"authority": "EXPLICIT_CANONICAL_MICROEPISODE_STRUCTURE_ONLY", "simultaneous": "ONE_BINDING_IF_AT_LEAST_TWO_POSITIVE_OCCURRENCES", "sequence": "ONE_BINDING_PER_ADJACENT_TRANSITION", "contradiction": "ONE_BINDING_PER_EXPLICIT_PAIR", "coactivation_only": "FORBIDDEN", "member_scope_validation": "REQUIRED"}`
     - `receipt_order`: `["POSITIVE_NODE_OCCURRENCES", "CONTRADICTION_ENDPOINT_OCCURRENCES", "LIVE_GATE_OPEN_OBSERVATION_RELATION_EDGE_RECEIPTS"]`
-    - `result_version`: `"R2-RES-1.0"`
-    - `rfc11_structural_filter`: `"NON_ADJACENT_SEQUENCE_EDGES_INELIGIBLE"`
     - `sdcr_cardinality`: `"ONE_PER_OBSERVABLE_MICROEPISODE"`
-    - `tbr_policy`: `{"contradiction": "ONE_BINDING_PER_EXPLICIT_PAIR", "sequence": "ONE_BINDING_PER_ADJACENT_TRANSITION", "simultaneous": "ONE_BINDING_IF_AT_LEAST_TWO_POSITIVE_OCCURRENCES"}`
+    - `projection_timing`: `"AFTER_PERSISTENT_COMMIT_OR_REPLAY_DECISION"`
+    - `projection_failure`: `"PERSISTENT_COMMIT_REMAINS_AUTHORITATIVE_CLOSE_PARTIAL_SDCRS"`
     - `transient_replay`: `"CURRENT_STATE_RECONSTRUCTION"`
+    - `authorization_default`: `"DENY_ALL"`
   - Computed direct canonical SHA-256: `hashlib.sha256(canonical_json_bytes(R2_OBSERVATION_SEMANTICS_REGISTRY)).hexdigest()`.
   - Canonical SHA-256 digest: `bb1489016229f321ff2381cbdec163a8ac741841ba1dfe89b732ddba67828d9b` (64 hex characters).
 
