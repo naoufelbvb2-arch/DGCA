@@ -1,6 +1,6 @@
 # RIC-01 / R2-PIR-03 IMPLEMENTATION VERIFICATION REPORT
 
-**Status:** VERIFIED  
+**Status:** SUPERSEDED BY PIR-04 (Evidence Alignment)  
 **Date:** 2026-09-15  
 **Scope:** TEST / EVIDENCE / REPORT ONLY (Zero Production Code Changes)  
 **Base Pushed HEAD:** `f1ab1aa1b7873bdefa663ef0c737cbee69332d10`  
@@ -8,6 +8,14 @@
 **Authoritative Architecture:** `RIC-01-R2-Canonical-Ingress-Observation-Bridge-Formal-Architecture-v1.1-FROZEN.md`  
 **Authoritative Erratum:** `RIC-01-R2-Formal-Architecture-v1.1.1-Non-Cognitive-Semantics-Digest-Erratum-FROZEN.md`  
 **Trigger Audit:** `RIC-01-R2-PIR-02-FINAL-INDEPENDENT-CLOSURE-AUDIT-v1.0.md`  
+**Superseding Release / Evidence:** `RIC-01-R2-PIR-04-IMPLEMENTATION-VERIFICATION-REPORT.md`
+
+---
+
+> [!NOTE]
+> **Historical Supersession Notice (PIR-04):**
+> This report documents the R2-PIR-03 verification run. While PIR-03 verified the runtime implementation and 39 high-risk tests, the subsequent independent audit (`RIC-01-R2-PIR-03-FINAL-INDEPENDENT-EVIDENCE-AUDIT-v1.0.md`) rejected the evidence closure due to a 12-entry discrepancy between the committed `FROZEN_R2_TEST_OBLIGATIONS` dictionary and the verbatim Section 5 frozen architecture ledger.
+> Full and definitive evidence closure is established under **PIR-04** (`RIC-01-R2-PIR-04-IMPLEMENTATION-VERIFICATION-REPORT.md`), which aligned the exact frozen ledger (SHA-256 `948b24270fd9b1d1d8cac4a0e5850c31508c3f5818ef45046fca2ed257488156`), strengthened tests T70 and T71, and introduced `tests/test_ric01_r2_pir04.py` (50 dedicated tests).
 
 ---
 

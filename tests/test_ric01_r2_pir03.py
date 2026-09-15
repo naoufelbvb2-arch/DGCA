@@ -576,27 +576,46 @@ def test_pir03_t22_frozen_t69_fifth_independent_rfc11_vote_forms_assembly_visibl
 
 
 def test_pir03_t23_frozen_t70_replay_after_unrelated_graph_change_zero_persistent_delta():
-    """PIR03-T23 (T70): replay after unrelated graph change -> zero persistent delta."""
+    """PIR03-T23 (T70): replay after unrelated graph change still has zero persistent delta."""
     authorizer = SimpleObservationAuthorizer(allow=True)
     bridge, graph, runtime = _make_bridge(authorizer=authorizer)
 
+    # Initial authorized persistent observation
     res1 = bridge.observe_text(
         boundary_namespace="ns",
         source_occurrence_key="k_rep",
         source_event_key="e_rep",
         ingress_boundary="b",
-        raw_text="node_one node_two",
+        raw_text="apple fruit",
         mode=ExecutionMode.AUTHORIZED_PERSISTENT,
-        capability="valid_cap",
+        capability="valid_cap_1",
     )
     assert res1.status == "PERSISTENT_EXECUTED"
+    assert len(runtime.ledger.committed_transactions) == 1
 
-    # Make unrelated graph change
-    graph.node("text:unrelated_node", "text")
-    graph._link("text:unrelated_node", "text:node_one", W=0.7)
-    node_count_before_replay = len(graph.nodes)
-    edge_count_before_replay = len(graph.edges)
-    ledger_count_before_replay = len(runtime.ledger.committed_transactions)
+    digest_after_orig = compute_checkpoint_state_digest(extract_canonical_persistent_payload(graph))
+
+    # Lawful unrelated authorized persistent observation under a DIFFERENT Root
+    res_unrelated = bridge.observe_text(
+        boundary_namespace="ns",
+        source_occurrence_key="k_unrelated_root",
+        source_event_key="e_unrelated_event",
+        ingress_boundary="b",
+        raw_text="river water flow",
+        mode=ExecutionMode.AUTHORIZED_PERSISTENT,
+        capability="valid_cap_2",
+    )
+    assert res_unrelated.status == "PERSISTENT_EXECUTED"
+    assert len(runtime.ledger.committed_transactions) == 2
+    digest_after_unrelated = compute_checkpoint_state_digest(extract_canonical_persistent_payload(graph))
+    assert digest_after_unrelated != digest_after_orig
+
+    # Capture RFC11 candidate root votes before replay
+    asm_mgr = graph.assembly_manager
+    candidates_votes_before_replay = {
+        cid: set(cand.root_votes)
+        for cid, cand in asm_mgr.pending_candidates.items()
+    }
 
     # Replay original observation
     res2 = bridge.observe_text(
@@ -604,18 +623,27 @@ def test_pir03_t23_frozen_t70_replay_after_unrelated_graph_change_zero_persisten
         source_occurrence_key="k_rep",
         source_event_key="e_rep",
         ingress_boundary="b",
-        raw_text="node_one node_two",
+        raw_text="apple fruit",
         mode=ExecutionMode.AUTHORIZED_PERSISTENT,
-        capability="valid_cap",
+        capability="valid_cap_1",
     )
+    # 1. returns replay
     assert res2.status == "PERSISTENT_REPLAY"
-    assert len(graph.nodes) == node_count_before_replay
-    assert len(graph.edges) == edge_count_before_replay
-    assert len(runtime.ledger.committed_transactions) == ledger_count_before_replay
+    # 2. mutation callback not re-executed
+    assert len(runtime.ledger.committed_transactions) == 2
+    # 3. original replay adds zero persistent delta beyond the already-authorized unrelated change
+    digest_after_replay = compute_checkpoint_state_digest(extract_canonical_persistent_payload(graph))
+    assert digest_after_replay == digest_after_unrelated
+    # 4. original RFC11 vote set unchanged by the replay
+    candidates_votes_after_replay = {
+        cid: set(cand.root_votes)
+        for cid, cand in asm_mgr.pending_candidates.items()
+    }
+    assert candidates_votes_after_replay == candidates_votes_before_replay
 
 
 def test_pir03_t24_frozen_t71_changed_graph_may_change_replay_rid():
-    """PIR03-T24 (T71): changed graph may lawfully change replay RID while persistent delta is zero."""
+    """PIR03-T24 (T71): replay after graph change may lawfully produce different current-state RID."""
     authorizer = SimpleObservationAuthorizer(allow=True)
     bridge, graph, _ = _make_bridge(authorizer=authorizer)
 
@@ -624,30 +652,44 @@ def test_pir03_t24_frozen_t71_changed_graph_may_change_replay_rid():
         source_occurrence_key="k_rid",
         source_event_key="e_rid",
         ingress_boundary="b",
-        raw_text="elem_a elem_b",
+        raw_text="sun sky",
         mode=ExecutionMode.AUTHORIZED_PERSISTENT,
         capability="valid_cap",
     )
     assert len(res1.representations) > 0
+    rid_before = res1.representations[0].representation_id
 
-    # Modify existing edge weight between them
-    edge = graph.edge("text:elem_a", "text:elem_b")
-    if edge:
-        edge.W = 99.0
+    # Lawfully change current graph state under distinct roots to form an assembly on (sun, sky)
+    for i in range(2, 7):
+        bridge.observe_text(
+            boundary_namespace="ns",
+            source_occurrence_key=f"k_unrelated_{i}",
+            source_event_key=f"e_unrelated_{i}",
+            ingress_boundary="b",
+            raw_text="sun sky",
+            mode=ExecutionMode.AUTHORIZED_PERSISTENT,
+            capability=f"valid_cap_{i}",
+        )
+
+    digest_after_unrelated = compute_checkpoint_state_digest(extract_canonical_persistent_payload(graph))
 
     res2 = bridge.observe_text(
         boundary_namespace="ns",
         source_occurrence_key="k_rid",
         source_event_key="e_rid",
         ingress_boundary="b",
-        raw_text="elem_a elem_b",
+        raw_text="sun sky",
         mode=ExecutionMode.AUTHORIZED_PERSISTENT,
         capability="valid_cap",
     )
     assert res2.status == "PERSISTENT_REPLAY"
-    # RID derived from current state reflects new support
-    rid2 = res2.representations[0].representation_id
-    assert isinstance(rid2, str) and len(rid2) > 0
+    rid_after = res2.representations[0].representation_id
+
+    # RID reflects changed current graph assembly/participation state: RID_after != RID_before
+    assert rid_after != rid_before
+    # while replay itself contributes zero persistent mutation
+    digest_after_replay = compute_checkpoint_state_digest(extract_canonical_persistent_payload(graph))
+    assert digest_after_replay == digest_after_unrelated
 
 
 def test_pir03_t25_frozen_t72_commit_survives_projection_failure():
