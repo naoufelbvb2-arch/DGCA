@@ -4,6 +4,7 @@
 **Status:** FROZEN / FINAL  
 **Target Verdict:** `RIC01_R2_PIR02_VERIFIED`  
 **Base Commit:** `d66823a2f6c73555cb9f201b5716780a9ee144c7`  
+**Repair Commit:** `76af710795285799d734846d377c44493c37ce0f`  
 **Authoritative Architecture:** `RIC-01-R2-Canonical-Ingress-Observation-Bridge-Formal-Architecture-v1.1-FROZEN.md`  
 **Authoritative Erratum:** `RIC-01-R2-Formal-Architecture-v1.1.1-Non-Cognitive-Semantics-Digest-Erratum-FROZEN.md`  
 **Audit Reference:** `RIC-01-R2-PIR-01-POST-REPAIR-INDEPENDENT-CLOSURE-AUDIT-v1.0.md`  
