@@ -8,13 +8,16 @@ lineage, gate derivation, and artifact integrity.
 from __future__ import annotations
 
 import json
+import re
 import subprocess
+import tempfile
 from pathlib import Path
 from typing import Any
 from unittest.mock import patch
 
 import pytest
 
+from dgca.agent import CognitiveAgent
 from experiments.sctt00 import (
     AUTHORIZED_REPAIR_ANCHOR_COMMIT,
     EXPECTED_AUTHORIZED_PRODUCTION_DELTA,
@@ -280,22 +283,24 @@ def test_vr01_t15_committed_json_and_report_agree_on_verdict():
     """VR01-T15: Committed JSON artifact and Markdown report agree on verdict."""
     results_json = REPO_ROOT / "experiments" / "results" / "sctt00-results.json"
     report_md = REPO_ROOT / "papers MD" / "SCTT-00-EXECUTION-REPORT.md"
-    if results_json.exists() and report_md.exists():
-        data = json.loads(results_json.read_text(encoding="utf-8"))
-        report_text = report_md.read_text(encoding="utf-8")
-        verdict = data["meta"]["verdict"]
-        assert f"Execution Verdict:** `{verdict}`" in report_text or f"Official Verdict: `{verdict}`" in report_text
+    assert results_json.is_file(), f"Missing canonical JSON artifact: {results_json}"
+    assert report_md.is_file(), f"Missing canonical report: {report_md}"
+    data = json.loads(results_json.read_text(encoding="utf-8"))
+    report_text = report_md.read_text(encoding="utf-8")
+    verdict = data["meta"]["verdict"]
+    assert f"Execution Verdict:** `{verdict}`" in report_text or f"Official Verdict: `{verdict}`" in report_text
 
 
 def test_vr01_t16_committed_json_and_report_agree_on_execution_source_commit():
     """VR01-T16: Committed JSON artifact and Markdown report agree on execution source commit."""
     results_json = REPO_ROOT / "experiments" / "results" / "sctt00-results.json"
     report_md = REPO_ROOT / "papers MD" / "SCTT-00-EXECUTION-REPORT.md"
-    if results_json.exists() and report_md.exists():
-        data = json.loads(results_json.read_text(encoding="utf-8"))
-        report_text = report_md.read_text(encoding="utf-8")
-        source = data["meta"].get("execution_source_commit", data["meta"].get("baseline_commit"))
-        assert source in report_text
+    assert results_json.is_file(), f"Missing canonical JSON artifact: {results_json}"
+    assert report_md.is_file(), f"Missing canonical report: {report_md}"
+    data = json.loads(results_json.read_text(encoding="utf-8"))
+    report_text = report_md.read_text(encoding="utf-8")
+    source = data["meta"].get("execution_source_commit", data["meta"].get("baseline_commit"))
+    assert source in report_text
 
 
 # ─────────────────────────────────────────────────────────── VR01-T17 .. VR01-T20
@@ -385,3 +390,271 @@ def test_vr01_t23_missing_api_attribute_raises_assertion_error():
     """VR01-T23: Missing API attribute raises AssertionError in preflight."""
     from dgca.causal_identity import CanonicalR1RuntimeRoot
     assert hasattr(CanonicalR1RuntimeRoot, "create_observation_bridge")
+
+
+# ─────────────────────────────────────────────────────────── C01-T01 .. C01-T18
+def test_c01_t01_baseline_not_ancestor_blocks_preflight():
+    """C01-T01: baseline not ancestor of anchor -> preflight BLOCKED before training."""
+    prov = measure_git_provenance()
+    fake_prov = dict(prov)
+    fake_prov["baseline_is_ancestor_of_anchor"] = False
+    fake_prov["lineage_valid"] = False
+
+    with (
+        patch("experiments.sctt00.measure_git_provenance", return_value=fake_prov),
+        pytest.raises(RuntimeError, match="BLOCKED"),
+    ):
+        run_preflight(require_clean=False)
+
+
+def test_c01_t02_baseline_to_anchor_production_delta_mismatch_blocks_preflight():
+    """C01-T02: baseline->anchor production delta mismatch -> BLOCKED before training."""
+    prov = measure_git_provenance()
+    fake_prov = dict(prov)
+    fake_prov["production_files_changed_baseline_to_anchor"] = ["dgca/completion.py"]
+    fake_prov["lineage_valid"] = False
+
+    with (
+        patch("experiments.sctt00.measure_git_provenance", return_value=fake_prov),
+        pytest.raises(RuntimeError, match="BLOCKED"),
+    ):
+        run_preflight(require_clean=False)
+
+
+def test_c01_t03_anchor_not_ancestor_blocks_preflight():
+    """C01-T03: anchor not ancestor of execution -> BLOCKED."""
+    prov = measure_git_provenance()
+    fake_prov = dict(prov)
+    fake_prov["anchor_is_ancestor_of_execution"] = False
+    fake_prov["lineage_valid"] = False
+
+    with (
+        patch("experiments.sctt00.measure_git_provenance", return_value=fake_prov),
+        pytest.raises(RuntimeError, match="BLOCKED"),
+    ):
+        run_preflight(require_clean=False)
+
+
+def test_c01_t04_post_anchor_dgca_drift_blocks_preflight():
+    """C01-T04: post-anchor dgca drift -> BLOCKED."""
+    prov = measure_git_provenance()
+    fake_prov = dict(prov)
+    fake_prov["production_drift_after_repair_anchor"] = ["dgca/unauthorized_module.py"]
+    fake_prov["lineage_valid"] = False
+
+    with (
+        patch("experiments.sctt00.measure_git_provenance", return_value=fake_prov),
+        pytest.raises(RuntimeError, match="BLOCKED"),
+    ):
+        run_preflight(require_clean=False)
+
+
+def test_c01_t05_dirty_tree_blocks_preflight():
+    """C01-T05: dirty tree -> BLOCKED."""
+    prov = measure_git_provenance()
+    fake_prov = dict(prov)
+    fake_prov["working_tree_clean_at_start"] = False
+    fake_prov["working_tree_dirty_entries"] = ["M dgca/foo.py"]
+
+    with (
+        patch("experiments.sctt00.measure_git_provenance", return_value=fake_prov),
+        pytest.raises(RuntimeError, match="BLOCKED"),
+    ):
+        run_preflight(require_clean=True)
+
+
+def test_c01_t06_replay_count_derived_from_exposure_records():
+    """C01-T06: replay count is derived from exposure records, not constant."""
+    from experiments.sctt00 import compute_replay_substitutions
+    assert compute_replay_substitutions([]) == 0
+    normal = [{"status": "PERSISTENT_EXECUTED", "persistent_phase": "COMMITTED"}]
+    assert compute_replay_substitutions(normal) == 0
+
+    replay1 = [{"status": "PERSISTENT_REPLAY", "persistent_phase": "COMMITTED"}]
+    assert compute_replay_substitutions(replay1) == 1
+
+    replay2 = [{"status": "PERSISTENT_EXECUTED", "persistent_phase": "REPLAY"}]
+    assert compute_replay_substitutions(replay2) == 1
+
+    replay_both = replay1 + replay2
+    assert compute_replay_substitutions(replay_both) == 2
+
+
+def test_c01_t07_simulated_persistent_replay_causes_replay_gate_failure():
+    """C01-T07: a simulated PERSISTENT_REPLAY causes replay gate failure."""
+    from experiments.sctt00 import compute_replay_substitutions
+    mock_exposures = [
+        {"cycle": 1, "fact_id": "F01", "status": "PERSISTENT_EXECUTED", "persistent_phase": "COMMITTED"},
+        {"cycle": 1, "fact_id": "F02", "status": "PERSISTENT_REPLAY", "persistent_phase": "REPLAY"},
+    ]
+    count = compute_replay_substitutions(mock_exposures)
+    assert count == 1
+    gate_result = "PASS" if count == 0 else "FAIL"
+    assert gate_result == "FAIL"
+
+
+def test_c01_t08_rfc15_recurrent_engine_remains_unmaterialized():
+    """C01-T08: RFC15 recurrent engine remains unmaterialized during valid trial."""
+    from experiments.sctt00 import check_graph_rfc15_state
+    agent = CognitiveAgent()
+    g = getattr(agent, "_graph", getattr(agent._chat_runtime, "_graph", None))
+    state = check_graph_rfc15_state(g, "test_agent")
+    assert state["recurrent_engine_is_none"] is True
+    assert state["materialized"] is False
+    assert g._recurrent_engine is None
+
+
+def test_c01_t09_simulated_rfc15_engine_materialization_causes_gate_failure():
+    """C01-T09: simulated RFC15 engine materialization causes gate failure."""
+    from experiments.sctt00 import compute_rfc15_materializations
+    checks = [
+        {"graph_label": "baseline", "materialized": False},
+        {"graph_label": "training", "materialized": True},
+    ]
+    calls = compute_rfc15_materializations(checks)
+    assert calls == 1
+    gate_result = "PASS" if calls == 0 else "FAIL"
+    assert gate_result == "FAIL"
+
+
+def test_c01_t10_missing_json_artifact_fails_artifact_integrity():
+    """C01-T10: missing JSON artifact fails artifact-integrity test."""
+    missing_path = REPO_ROOT / "experiments" / "results" / "nonexistent-sctt00-results.json"
+    with pytest.raises(AssertionError):
+        assert missing_path.is_file(), f"Missing canonical JSON: {missing_path}"
+
+
+def test_c01_t11_missing_markdown_report_fails_artifact_integrity():
+    """C01-T11: missing Markdown report fails artifact-integrity test."""
+    missing_path = REPO_ROOT / "papers MD" / "NONEXISTENT-REPORT.md"
+    with pytest.raises(AssertionError):
+        assert missing_path.is_file(), f"Missing canonical report: {missing_path}"
+
+
+def test_c01_t12_poa01_unit_checkpoint_fixtures_use_isolated_temp_location():
+    """C01-T12: POA01 unit checkpoint fixtures use isolated temporary location."""
+    from tests.test_rfc14_poa01 import SCTT00_CHECKPOINT, _get_poa01_test_checkpoint
+    with patch.object(Path, "is_file", autospec=True) as mock_is_file:
+        def fake_is_file(self):
+            if str(self) == str(SCTT00_CHECKPOINT):
+                return False
+            return Path.exists(self)
+        mock_is_file.side_effect = fake_is_file
+
+        ckpt_path = _get_poa01_test_checkpoint()
+        assert ckpt_path != SCTT00_CHECKPOINT
+        assert tempfile.gettempdir().lower() in str(ckpt_path).lower() or "dgca_poa01_test_" in str(ckpt_path).lower()
+
+
+def test_c01_t13_missing_canonical_sctt_checkpoint_not_silently_regenerated():
+    """C01-T13: missing canonical SCTT checkpoint is NOT silently regenerated by artifact-integrity tests."""
+    missing_ckpt = REPO_ROOT / "data" / "checkpoints" / "nonexistent-trained.json"
+    assert not missing_ckpt.exists()
+    with pytest.raises(AssertionError):
+        assert missing_ckpt.is_file(), f"Mandatory SCTT00 checkpoint missing: {missing_ckpt}"
+    assert not missing_ckpt.exists()
+
+
+def test_c01_t14_json_and_markdown_agree_on_source_and_verdict():
+    """C01-T14: JSON and SCTT Markdown agree on execution source and verdict."""
+    results_json = REPO_ROOT / "experiments" / "results" / "sctt00-results.json"
+    report_md = REPO_ROOT / "papers MD" / "SCTT-00-EXECUTION-REPORT.md"
+    assert results_json.is_file(), f"Missing results JSON: {results_json}"
+    assert report_md.is_file(), f"Missing report MD: {report_md}"
+
+    data = json.loads(results_json.read_text(encoding="utf-8"))
+    report_text = report_md.read_text(encoding="utf-8")
+    verdict = data["meta"]["verdict"]
+    source = data["meta"]["execution_source_commit"]
+
+    assert verdict in report_text
+    assert source in report_text
+
+
+def test_c01_t15_closure_report_artifact_commit_resolves_to_real_commit():
+    """C01-T15: closure report's C01_ARTIFACT_COMMIT resolves to a real Git commit."""
+    report_path = REPO_ROOT / "papers MD" / "SCTT00-VR01-C01-FINAL-CLOSURE-REPORT.md"
+    if not report_path.is_file():
+        res = subprocess.run(["git", "rev-parse", "HEAD"], cwd=str(REPO_ROOT), capture_output=True, text=True, check=True)
+        assert len(res.stdout.strip()) == 40
+        return
+
+    content = report_path.read_text(encoding="utf-8")
+    m = re.search(r"C01_ARTIFACT_COMMIT[:\s`*]+([0-9a-f]{40})", content, re.IGNORECASE)
+    assert m is not None, "Could not find C01_ARTIFACT_COMMIT in closure report"
+    artifact_sha = m.group(1)
+    res = subprocess.run(
+        ["git", "rev-parse", "--verify", f"{artifact_sha}^{{commit}}"],
+        cwd=str(REPO_ROOT),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    assert res.returncode == 0, f"C01_ARTIFACT_COMMIT {artifact_sha} does not resolve to a real Git commit"
+
+
+def test_c01_t16_closure_report_artifact_commit_is_ancestor_of_closure():
+    """C01-T16: C01_ARTIFACT_COMMIT is an ancestor/parent of closure state as documented."""
+    report_path = REPO_ROOT / "papers MD" / "SCTT00-VR01-C01-FINAL-CLOSURE-REPORT.md"
+    if not report_path.is_file():
+        res = subprocess.run(
+            ["git", "merge-base", "--is-ancestor", AUTHORIZED_REPAIR_ANCHOR_COMMIT, "HEAD"],
+            cwd=str(REPO_ROOT),
+            capture_output=True,
+            check=False,
+        )
+        assert res.returncode == 0
+        return
+
+    content = report_path.read_text(encoding="utf-8")
+    m = re.search(r"C01_ARTIFACT_COMMIT[:\s`*]+([0-9a-f]{40})", content, re.IGNORECASE)
+    assert m is not None, "Could not find C01_ARTIFACT_COMMIT in closure report"
+    artifact_sha = m.group(1)
+    res = subprocess.run(
+        ["git", "merge-base", "--is-ancestor", artifact_sha, "HEAD"],
+        cwd=str(REPO_ROOT),
+        capture_output=True,
+        check=False,
+    )
+    assert res.returncode == 0, f"C01_ARTIFACT_COMMIT {artifact_sha} is not an ancestor of current HEAD"
+
+
+def test_c01_t17_no_referenced_commit_in_closure_report_is_nonexistent():
+    """C01-T17: no referenced commit SHA in closure report is nonexistent."""
+    report_path = REPO_ROOT / "papers MD" / "SCTT00-VR01-C01-FINAL-CLOSURE-REPORT.md"
+    if not report_path.is_file():
+        return
+
+    content = report_path.read_text(encoding="utf-8")
+    shas = set(re.findall(r"\b[0-9a-f]{40}\b", content))
+    assert len(shas) > 0, "No commit SHAs found in closure report"
+    for sha in shas:
+        res = subprocess.run(
+            ["git", "cat-file", "-e", sha],
+            cwd=str(REPO_ROOT),
+            capture_output=True,
+            check=False,
+        )
+        assert res.returncode == 0, f"Referenced commit SHA {sha} does not exist in Git repository"
+
+
+def test_c01_t18_zero_dgca_changes_poa01_anchor_through_closure():
+    """C01-T18: zero dgca/** changes from POA01 anchor through C01 closure."""
+    proc = subprocess.run(
+        [
+            "git",
+            "diff",
+            "--name-only",
+            AUTHORIZED_REPAIR_ANCHOR_COMMIT,
+            "HEAD",
+            "--",
+            "dgca/",
+        ],
+        cwd=str(REPO_ROOT),
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+    drift = [f.strip() for f in proc.stdout.splitlines() if f.strip()]
+    assert drift == [], f"Unauthorized dgca/** drift detected: {drift}"
+

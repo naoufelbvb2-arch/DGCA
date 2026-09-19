@@ -261,25 +261,61 @@ def measure_git_provenance(repo_root: Path = REPO_ROOT) -> dict[str, Any]:
 
 
 def run_preflight(require_clean: bool = True, repo_root: Path = REPO_ROOT) -> dict[str, Any]:
-    """Protocol §1 & §3 & VR01: Fail-closed verification of provenance, cleanliness, APIs, and encoder."""
+    """Protocol §1 & §3 & VR01-C01: Fail-closed verification of provenance, cleanliness, APIs, and encoder."""
     prov = measure_git_provenance(repo_root)
 
+    if str(prov.get("execution_source_commit", "")).startswith("ERROR:"):
+        raise RuntimeError(
+            f"SCTT00_REPAIR_RERUN_BLOCKED: Failed to determine execution source commit: "
+            f"{prov['execution_source_commit']}"
+        )
+
+    # 1. Working tree clean at start
     if require_clean and not prov["working_tree_clean_at_start"]:
         raise RuntimeError(
             f"SCTT00_REPAIR_RERUN_BLOCKED: Dirty working tree detected at trial start: "
             f"{prov['working_tree_dirty_entries']}"
         )
 
-    if not prov["anchor_is_ancestor_of_execution"]:
+    # 2. Protocol baseline is ancestor of POA01 anchor
+    if not prov.get("baseline_is_ancestor_of_anchor"):
+        raise RuntimeError(
+            f"SCTT00_REPAIR_RERUN_BLOCKED: Protocol baseline {PROTOCOL_BASELINE_COMMIT} "
+            f"is not an ancestor of authorized POA01 anchor {AUTHORIZED_REPAIR_ANCHOR_COMMIT}"
+        )
+
+    # 3. POA01 anchor is ancestor of execution source
+    if not prov.get("anchor_is_ancestor_of_execution"):
         raise RuntimeError(
             f"SCTT00_REPAIR_RERUN_BLOCKED: Execution source {prov['execution_source_commit']} "
             f"is not a descendant of authorized POA01 anchor {AUTHORIZED_REPAIR_ANCHOR_COMMIT}"
         )
 
-    if len(prov["production_drift_after_repair_anchor"]) > 0:
+    # 4. Baseline -> Anchor production delta is exactly completion.py and generation.py
+    if set(prov.get("production_files_changed_baseline_to_anchor", [])) != set(EXPECTED_AUTHORIZED_PRODUCTION_DELTA):
+        raise RuntimeError(
+            f"SCTT00_REPAIR_RERUN_BLOCKED: Baseline to anchor production delta mismatch: "
+            f"expected {set(EXPECTED_AUTHORIZED_PRODUCTION_DELTA)}, "
+            f"observed {set(prov.get('production_files_changed_baseline_to_anchor', []))}"
+        )
+
+    # 5. Anchor -> Execution production delta is empty
+    if len(prov.get("production_files_changed_anchor_to_execution", [])) > 0:
+        raise RuntimeError(
+            f"SCTT00_REPAIR_RERUN_BLOCKED: Unauthorized dgca/** production files changed anchor to execution: "
+            f"{prov['production_files_changed_anchor_to_execution']}"
+        )
+
+    # 6. Anchor -> Working tree production drift is empty
+    if len(prov.get("production_drift_after_repair_anchor", [])) > 0:
         raise RuntimeError(
             f"SCTT00_REPAIR_RERUN_BLOCKED: Unauthorized dgca/** production drift after POA01 anchor: "
             f"{prov['production_drift_after_repair_anchor']}"
+        )
+
+    if not prov.get("lineage_valid"):
+        raise RuntimeError(
+            "SCTT00_REPAIR_RERUN_BLOCKED: Lineage validation failed"
         )
 
     # Check APIs
@@ -334,9 +370,46 @@ def run_preflight(require_clean: bool = True, repo_root: Path = REPO_ROOT) -> di
     }
 
 
-def run_baseline_probes() -> list[dict[str, Any]]:
+def compute_replay_substitutions(exposures: list[dict[str, Any]]) -> int:
+    """Mechanically counts any exposures marked as PERSISTENT_REPLAY or replay phase."""
+    return sum(
+        1
+        for ex in exposures
+        if ex.get("status") == "PERSISTENT_REPLAY"
+        or ex.get("persistent_phase") == "REPLAY"
+        or "REPLAY" in str(ex.get("status", "")).upper()
+        or "REPLAY" in str(ex.get("persistent_phase", "")).upper()
+    )
+
+
+def check_graph_rfc15_state(graph: Any, label: str) -> dict[str, Any]:
+    """Protocol §18 / VR01-C01: Strict measurement of RFC15 recurrent engine non-materialization."""
+    engine = getattr(graph, "_recurrent_engine", None)
+    is_none = engine is None
+    return {
+        "graph_label": label,
+        "recurrent_engine_is_none": is_none,
+        "materialized": not is_none,
+        "engine_type": type(engine).__name__ if engine is not None else "NoneType",
+    }
+
+
+def compute_rfc15_materializations(records: list[dict[str, Any]]) -> int:
+    """Mechanically derives count of any materialized RFC15 engines."""
+    return sum(1 for r in records if r.get("materialized", False))
+
+
+def run_baseline_probes(
+    agent: CognitiveAgent | None = None,
+    rfc15_checks_out: list[dict[str, Any]] | None = None,
+) -> list[dict[str, Any]]:
     """Protocol §6: Probe 8 subject cues on fresh un-trained CognitiveAgent."""
-    agent = CognitiveAgent()
+    if agent is None:
+        agent = CognitiveAgent()
+    g = getattr(agent, "_graph", getattr(agent._chat_runtime, "_graph", None))
+    if rfc15_checks_out is not None and g is not None:
+        rfc15_checks_out.append(check_graph_rfc15_state(g, "baseline_agent_before_probes"))
+
     records = []
     for fid, sentence, subj, tgt in FACTS:
         reply = agent.chat(subj)
@@ -354,10 +427,15 @@ def run_baseline_probes() -> list[dict[str, Any]]:
             "target_in_reply": target_in_reply,
             "uncontaminated": not target_in_reply,
         })
+
+    if rfc15_checks_out is not None and g is not None:
+        rfc15_checks_out.append(check_graph_rfc15_state(g, "baseline_agent_after_probes"))
     return records
 
 
-def execute_training() -> tuple[CanonicalR1RuntimeRoot, list[dict[str, Any]]]:
+def execute_training(
+    rfc15_checks_out: list[dict[str, Any]] | None = None,
+) -> tuple[CanonicalR1RuntimeRoot, list[dict[str, Any]]]:
     """Protocol §4, §5, §7, §8: Fresh canonical boot and 40 authorized exposures."""
     graph = CognitiveGraph(enable_prediction=False)
     init_quantity_backbone(graph)
@@ -376,6 +454,9 @@ def execute_training() -> tuple[CanonicalR1RuntimeRoot, list[dict[str, Any]]]:
     )
     bridge = runtime_root.create_observation_bridge(authorizer=authorizer)
 
+    if rfc15_checks_out is not None:
+        rfc15_checks_out.append(check_graph_rfc15_state(graph, "training_runtime_before_exposures"))
+
     exposures: list[dict[str, Any]] = []
     for cycle in range(1, 6):
         for fid, sentence, subj, tgt in FACTS:
@@ -389,13 +470,6 @@ def execute_training() -> tuple[CanonicalR1RuntimeRoot, list[dict[str, Any]]]:
                 mode=ExecutionMode.AUTHORIZED_PERSISTENT,
                 capability=CAPABILITY,
             )
-
-            # Protocol §8 Per-Exposure Gate
-            assert res.status == "PERSISTENT_EXECUTED", f"Expected PERSISTENT_EXECUTED, got {res.status}"
-            assert res.mode == ExecutionMode.AUTHORIZED_PERSISTENT
-            assert res.persistent_phase == "COMMITTED"
-            assert res.persistent_executed is True
-            assert res.persistent_transaction_id is not None
 
             rec = {
                 "cycle": cycle,
@@ -412,6 +486,20 @@ def execute_training() -> tuple[CanonicalR1RuntimeRoot, list[dict[str, Any]]]:
             }
             exposures.append(rec)
             close_result(res)
+
+            # Protocol §8 Per-Exposure Gate
+            if res.status == "PERSISTENT_REPLAY" or res.persistent_phase == "REPLAY":
+                raise RuntimeError(
+                    f"SCTT00_BLOCKED: Unauthorized PERSISTENT_REPLAY observed on {occ_key}"
+                )
+            assert res.status == "PERSISTENT_EXECUTED", f"Expected PERSISTENT_EXECUTED, got {res.status}"
+            assert res.mode == ExecutionMode.AUTHORIZED_PERSISTENT
+            assert res.persistent_phase == "COMMITTED"
+            assert res.persistent_executed is True
+            assert res.persistent_transaction_id is not None
+
+    if rfc15_checks_out is not None:
+        rfc15_checks_out.append(check_graph_rfc15_state(graph, "training_runtime_after_exposures"))
 
     return runtime_root, exposures
 
@@ -481,8 +569,13 @@ def save_checkpoint(runtime_root: CanonicalR1RuntimeRoot, ckpt_path: Path) -> di
     file_sha256 = hashlib.sha256(raw_bytes).hexdigest()
     ckpt_json = json.loads(raw_bytes.decode("utf-8"))
 
+    try:
+        rel_path = str(ckpt_path.relative_to(REPO_ROOT)).replace("\\", "/")
+    except ValueError:
+        rel_path = str(ckpt_path).replace("\\", "/")
+
     return {
-        "path": str(ckpt_path.relative_to(REPO_ROOT)).replace("\\", "/"),
+        "path": rel_path,
         "file_sha256": file_sha256,
         "checkpoint_bundle_digest": bundle_digest,
         "checkpoint_state_digest": ckpt_json["integrity"]["checkpoint_state_digest"],
@@ -495,9 +588,14 @@ def save_checkpoint(runtime_root: CanonicalR1RuntimeRoot, ckpt_path: Path) -> di
 
 def run_primary_retrieval(
     ckpt_path: Path,
+    rfc15_checks_out: list[dict[str, Any]] | None = None,
 ) -> tuple[CognitiveAgent, list[dict[str, Any]], list[dict[str, Any]]]:
     """Protocol §12, §13, §15, §18: Restore, probe 8 cues, verify safety snapshots, classify."""
     agent = CognitiveAgent.from_checkpoint(ckpt_path)
+    g = getattr(agent, "_graph", getattr(agent._chat_runtime, "_graph", None))
+    if rfc15_checks_out is not None and g is not None:
+        rfc15_checks_out.append(check_graph_rfc15_state(g, "primary_agent_before_retrieval"))
+
     probes: list[dict[str, Any]] = []
     safety_records: list[dict[str, Any]] = []
 
@@ -564,6 +662,9 @@ def run_primary_retrieval(
             },
         })
 
+    if rfc15_checks_out is not None and g is not None:
+        rfc15_checks_out.append(check_graph_rfc15_state(g, "primary_agent_after_retrieval"))
+
     return agent, probes, safety_records
 
 
@@ -609,10 +710,16 @@ def run_ood_probes(
 
 
 def run_second_restore_determinism(
-    ckpt_path: Path, primary_probes: list[dict[str, Any]]
+    ckpt_path: Path,
+    primary_probes: list[dict[str, Any]],
+    rfc15_checks_out: list[dict[str, Any]] | None = None,
 ) -> list[dict[str, Any]]:
     """Protocol §16: Clean-restore determinism on fresh second agent."""
     agent2 = CognitiveAgent.from_checkpoint(ckpt_path)
+    g2 = getattr(agent2, "_graph", getattr(agent2._chat_runtime, "_graph", None))
+    if rfc15_checks_out is not None and g2 is not None:
+        rfc15_checks_out.append(check_graph_rfc15_state(g2, "second_agent_before_determinism"))
+
     determinism_records = []
 
     for idx, (fid, sentence, subj, tgt) in enumerate(FACTS):
@@ -643,6 +750,9 @@ def run_second_restore_determinism(
             "agent2_reply": reply2,
             "deterministic": deterministic,
         })
+
+    if rfc15_checks_out is not None and g2 is not None:
+        rfc15_checks_out.append(check_graph_rfc15_state(g2, "second_agent_after_determinism"))
 
     return determinism_records
 
@@ -768,16 +878,17 @@ def build_markdown_report(data: dict[str, Any]) -> str:
 
     # 6. Storage Audit
     md.append("### 6. Storage Audit (Protocol §10)")
-    md.append(f"- **Persisted Relations Gate:** `{data['storage_audit']['persisted_relations_gate']}`")
-    md.append(f"- **Post-Training Node Count:** `{data['storage_audit']['node_count']}`")
-    md.append(f"- **Post-Training Edge Count:** `{data['storage_audit']['edge_count']}`")
-    md.append(f"- **Logical Time:** `{data['storage_audit']['logical_time']}`")
-    md.append(f"- **Committed Transactions:** `{data['storage_audit']['committed_transaction_count']}`")
-    md.append(f"- **Canonical State Digest:** `{data['storage_audit']['state_digest']}`")
+    sa = data["storage_audit"]
+    md.append(f"- **Persisted Relations Gate:** `{sa['persisted_relations_gate']}`")
+    md.append(f"- **Post-Training Node Count:** `{sa['node_count']}`")
+    md.append(f"- **Post-Training Edge Count:** `{sa['edge_count']}`")
+    md.append(f"- **Logical Time:** `{sa['logical_time']}`")
+    md.append(f"- **Committed Transactions:** `{sa['committed_transaction_count']}`")
+    md.append(f"- **Canonical State Digest:** `{sa['state_digest']}`")
     md.append("")
     md.append("| ID | Subject Node | Target Node | Forward Edge (W, n) | Backward Edge (W, n) | Persisted? |")
     md.append("|---|---|---|---|---|---|")
-    for p in data["storage_audit"]["pairs"]:
+    for p in sa["pairs"]:
         fwd = p["forward_edge"]
         bwd = p["backward_edge"]
         md.append(
@@ -881,6 +992,8 @@ def main() -> None:
     print("DGCA — SCTT-00: Small Controlled Training Trial 00 (Post-Repair Rerun)")
     print("=" * 70)
 
+    rfc15_monitoring_checks: list[dict[str, Any]] = []
+
     # 1. Preflight
     print("\n[1/7] Running Preflight & Provenance Verification...")
     preflight = run_preflight(require_clean=True)
@@ -892,12 +1005,12 @@ def main() -> None:
     print(f"  Production Drift: {len(prov['production_drift_after_repair_anchor'])} files")
     print(f"  Encoder Preflight: {preflight['encoder_gate']}")
 
-    baseline_probes = run_baseline_probes()
+    baseline_probes = run_baseline_probes(rfc15_checks_out=rfc15_monitoring_checks)
     print(f"  Baseline Probes: {len(baseline_probes)}/8 uncontaminated PASS")
 
     # 2. Training
     print("\n[2/7] Initializing Fresh Training Runtime & Executing 40 Exposures...")
-    runtime_root, training_exposures = execute_training()
+    runtime_root, training_exposures = execute_training(rfc15_checks_out=rfc15_monitoring_checks)
     print(f"  Completed {len(training_exposures)}/40 authorized persistent exposures.")
 
     # 3. Storage Audit
@@ -918,7 +1031,7 @@ def main() -> None:
 
     # 5. Restore & Primary Retrieval
     print("\n[5/7] Cold Restoring via CognitiveAgent.from_checkpoint & Scoring Retrieval...")
-    agent, primary_probes, safety_primary = run_primary_retrieval(ckpt_path)
+    agent, primary_probes, safety_primary = run_primary_retrieval(ckpt_path, rfc15_checks_out=rfc15_monitoring_checks)
     recalled_count = sum(1 for p in primary_probes if p["recalled"])
     print(f"  Primary Learned Recall: {recalled_count}/8 PASS")
     for p in primary_probes:
@@ -930,13 +1043,20 @@ def main() -> None:
     ood_results, safety_ood = run_ood_probes(agent)
     ood_pass_count = sum(1 for o in ood_results if o["passed"])
     print(f"  OOD Safety: {ood_pass_count}/4 PASS")
+    g_prim = getattr(agent, "_graph", getattr(agent._chat_runtime, "_graph", None))
+    if g_prim is not None:
+        rfc15_monitoring_checks.append(check_graph_rfc15_state(g_prim, "primary_agent_after_ood"))
 
-    determinism_records = run_second_restore_determinism(ckpt_path, primary_probes)
+    determinism_records = run_second_restore_determinism(
+        ckpt_path, primary_probes, rfc15_checks_out=rfc15_monitoring_checks
+    )
     det_count = sum(1 for d in determinism_records if d["deterministic"])
     print(f"  Second Restore Determinism: {det_count}/8 PASS")
 
     nat_qs = run_natural_questions(agent)
     print(f"  Exploratory Natural Questions: {len(nat_qs)} completed.")
+    if g_prim is not None:
+        rfc15_monitoring_checks.append(check_graph_rfc15_state(g_prim, "primary_agent_after_natural_questions"))
 
     # 7. Evaluate Success Gates & Build Reports
     print("\n[7/7] Mechanically Evaluating Success Gates & Emitting Reports...")
@@ -948,7 +1068,7 @@ def main() -> None:
     authorized_obs_count = sum(
         1 for ex in training_exposures if ex["status"] == "PERSISTENT_EXECUTED" and ex["persistent_executed"] is True
     )
-    replay_sub_count = 0
+    replay_sub_count = compute_replay_substitutions(training_exposures)
     persisted_rel_count = sum(1 for p in storage_audit["pairs"] if p["relation_persisted"])
     ckpt_save_ok = bool(ckpt_info and ckpt_info.get("checkpoint_bundle_digest") and ckpt_info.get("file_sha256"))
     root = getattr(agent, "_runtime_root", getattr(agent, "_root", None))
@@ -969,7 +1089,7 @@ def main() -> None:
         if hasattr(lineage_enum, "value")
         else str(lineage_enum)
     )
-    rfc15_calls_count = 0
+    rfc15_calls_count = compute_rfc15_materializations(rfc15_monitoring_checks)
     prod_drift_count = len(prov["production_drift_after_repair_anchor"])
 
     success_gates = [
@@ -982,8 +1102,8 @@ def main() -> None:
         {
             "name": "Authorized repair anchor lineage",
             "required": "VALID",
-            "observed": "VALID" if prov["anchor_is_ancestor_of_execution"] else "INVALID",
-            "result": "PASS" if prov["anchor_is_ancestor_of_execution"] else "FAIL",
+            "observed": "VALID" if (prov["anchor_is_ancestor_of_execution"] and prov["lineage_valid"]) else "INVALID",
+            "result": "PASS" if (prov["anchor_is_ancestor_of_execution"] and prov["lineage_valid"]) else "FAIL",
         },
         {
             "name": "Production cognitive code drift after anchor",
@@ -1078,9 +1198,21 @@ def main() -> None:
     ]
 
     all_gates_pass = all(g["result"] == "PASS" for g in success_gates)
-    if not prov["anchor_is_ancestor_of_execution"] or not prov["working_tree_clean_at_start"] or prod_drift_count > 0:
+    if (
+        not prov["anchor_is_ancestor_of_execution"]
+        or not prov["baseline_is_ancestor_of_anchor"]
+        or not prov["working_tree_clean_at_start"]
+        or prod_drift_count > 0
+        or not prov["lineage_valid"]
+    ):
         verdict = "SCTT00_REPAIR_RERUN_BLOCKED"
         primary_failure_stage = "PREFLIGHT_PROVENANCE"
+    elif replay_sub_count > 0:
+        verdict = "SCTT00_REPAIR_RERUN_BLOCKED"
+        primary_failure_stage = "REPLAY_PROHIBITED"
+    elif rfc15_calls_count > 0:
+        verdict = "SCTT00_REPAIR_RERUN_BLOCKED"
+        primary_failure_stage = "RFC15_MATERIALIZED"
     elif all_gates_pass:
         verdict = "SCTT00_REPAIR_RERUN_PASS"
         primary_failure_stage = "NONE"
@@ -1118,6 +1250,15 @@ def main() -> None:
         "preflight": preflight,
         "baseline_probes": baseline_probes,
         "training_exposures": training_exposures,
+        "replay_monitoring": {
+            "total_substitutions": replay_sub_count,
+            "zero_substitutions_pass": replay_sub_count == 0,
+        },
+        "rfc15_monitoring": {
+            "total_materializations": rfc15_calls_count,
+            "zero_materializations_pass": rfc15_calls_count == 0,
+            "checks": rfc15_monitoring_checks,
+        },
         "storage_audit": storage_audit,
         "checkpoint": ckpt_info,
         "primary_retrieval": primary_probes,

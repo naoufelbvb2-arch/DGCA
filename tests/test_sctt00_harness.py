@@ -49,9 +49,9 @@ def test_sctt00_artifacts_exist_and_conform() -> None:
     report_md = REPO_ROOT / "papers MD" / "SCTT-00-EXECUTION-REPORT.md"
     ckpt_file = REPO_ROOT / "data" / "checkpoints" / "SCTT00-trained.json"
 
-    assert results_json.exists(), "experiments/results/sctt00-results.json missing"
-    assert report_md.exists(), "papers MD/SCTT-00-EXECUTION-REPORT.md missing"
-    assert ckpt_file.exists(), "data/checkpoints/SCTT00-trained.json missing"
+    assert results_json.is_file(), f"experiments/results/sctt00-results.json missing: {results_json}"
+    assert report_md.is_file(), f"papers MD/SCTT-00-EXECUTION-REPORT.md missing: {report_md}"
+    assert ckpt_file.is_file(), f"data/checkpoints/SCTT00-trained.json missing: {ckpt_file}"
 
     data = json.loads(results_json.read_text(encoding="utf-8"))
     meta = data["meta"]
@@ -100,6 +100,7 @@ def test_sctt00_artifacts_exist_and_conform() -> None:
 def test_sctt00_checkpoint_chat_conservation() -> None:
     """Verifies that ordinary chat on the trained checkpoint causes zero persistent delta."""
     ckpt_file = REPO_ROOT / "data" / "checkpoints" / "SCTT00-trained.json"
+    assert ckpt_file.is_file(), f"data/checkpoints/SCTT00-trained.json missing: {ckpt_file}"
     agent = CognitiveAgent.from_checkpoint(ckpt_file)
 
     s_before = compute_safety_snapshot(agent)

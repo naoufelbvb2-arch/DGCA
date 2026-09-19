@@ -236,21 +236,44 @@ def test_poa01_t15_no_order_multiple_root_case_remains_linearization_ambiguous()
 
 
 # ─────────────────────────────────────────────────────────── POA01-T16 .. POA01-T26
+_POA01_ISOLATED_TEST_CHECKPOINT: Path | None = None
+
+
+def _get_poa01_test_checkpoint() -> Path:
+    """Provides a trained checkpoint for POA01 unit tests.
+
+    If the canonical repository checkpoint exists, it is used.
+    If absent, a test-local deterministic checkpoint is generated under
+    an isolated temporary directory. The canonical repository artifact
+    data/checkpoints/SCTT00-trained.json is NEVER self-healed or created here.
+    """
+    if SCTT00_CHECKPOINT.is_file():
+        return SCTT00_CHECKPOINT
+    global _POA01_ISOLATED_TEST_CHECKPOINT
+    if _POA01_ISOLATED_TEST_CHECKPOINT is not None and _POA01_ISOLATED_TEST_CHECKPOINT.is_file():
+        return _POA01_ISOLATED_TEST_CHECKPOINT
+    import tempfile
+
+    from experiments.sctt00 import execute_training, save_checkpoint
+
+    tmp_dir = Path(tempfile.mkdtemp(prefix="dgca_poa01_test_"))
+    tmp_ckpt = tmp_dir / "poa01-test-checkpoint.json"
+    runtime_root, _ = execute_training()
+    save_checkpoint(runtime_root, tmp_ckpt)
+    _POA01_ISOLATED_TEST_CHECKPOINT = tmp_ckpt
+    return _POA01_ISOLATED_TEST_CHECKPOINT
+
+
 def _require_sctt00_checkpoint() -> Path:
-    """Ensures SCTT-00 trained checkpoint exists fail-closed without silent skipping."""
-    if not SCTT00_CHECKPOINT.exists():
-        from experiments.sctt00 import execute_training, save_checkpoint
-        r, _ = execute_training()
-        save_checkpoint(r, SCTT00_CHECKPOINT)
-    assert SCTT00_CHECKPOINT.exists(), f"Mandatory SCTT00 checkpoint missing: {SCTT00_CHECKPOINT}"
-    return SCTT00_CHECKPOINT
+    """Backward-compatible alias pointing to the isolated test checkpoint provider."""
+    return _get_poa01_test_checkpoint()
 
 
 def test_poa01_t16_sctt_dog_canine_no_longer_false_order_conflict():
     """POA01-T16: RFC13-SR01 final {dog,canine} no longer creates false ORDER_CONFLICT."""
-    _require_sctt00_checkpoint()
+    ckpt = _get_poa01_test_checkpoint()
 
-    agent = CognitiveAgent.from_checkpoint(SCTT00_CHECKPOINT)
+    agent = CognitiveAgent.from_checkpoint(ckpt)
     g = agent._root._graph
     obs = agent._chat_runtime._bridge.observe_text(
         boundary_namespace="DGCA:R3:CHAT:v1",
@@ -275,9 +298,9 @@ def test_poa01_t16_sctt_dog_canine_no_longer_false_order_conflict():
 
 def test_poa01_t17_dog_probe_surfaces_canine_through_frame_local_structure():
     """POA01-T17: dog probe can surface canine through unchanged frame-local structure."""
-    _require_sctt00_checkpoint()
+    ckpt = _get_poa01_test_checkpoint()
 
-    agent = CognitiveAgent.from_checkpoint(SCTT00_CHECKPOINT)
+    agent = CognitiveAgent.from_checkpoint(ckpt)
     reply = agent.chat("dog")
     assert "canine" in reply.split()
     assert agent.last_turn is not None
@@ -287,9 +310,9 @@ def test_poa01_t17_dog_probe_surfaces_canine_through_frame_local_structure():
 
 def test_poa01_t18_generation_causes_zero_persistent_cognitive_mutation():
     """POA01-T18: Generation causes zero persistent cognitive mutation."""
-    _require_sctt00_checkpoint()
+    ckpt = _get_poa01_test_checkpoint()
 
-    agent = CognitiveAgent.from_checkpoint(SCTT00_CHECKPOINT)
+    agent = CognitiveAgent.from_checkpoint(ckpt)
     g = agent._root._graph
     d_before = compute_checkpoint_state_digest(extract_canonical_persistent_payload(g))
     t_before = g.t
@@ -304,9 +327,9 @@ def test_poa01_t18_generation_causes_zero_persistent_cognitive_mutation():
 
 def test_poa01_t19_generation_causes_zero_assembly_mutation():
     """POA01-T19: Generation causes zero Assembly mutation."""
-    _require_sctt00_checkpoint()
+    ckpt = _get_poa01_test_checkpoint()
 
-    agent = CognitiveAgent.from_checkpoint(SCTT00_CHECKPOINT)
+    agent = CognitiveAgent.from_checkpoint(ckpt)
     g = agent._root._graph
     asm_before = set(g.assemblies.keys()) if hasattr(g, "assemblies") else set()
 
@@ -355,9 +378,9 @@ def test_poa01_t22_weakest_edge_deletion_defense_valid_with_genuine_fixtures():
 
 def test_poa01_t23_deterministic_replay_across_runs():
     """POA01-T23: Deterministic fixed state/context/budget."""
-    _require_sctt00_checkpoint()
+    ckpt = _get_poa01_test_checkpoint()
 
-    agent = CognitiveAgent.from_checkpoint(SCTT00_CHECKPOINT)
+    agent = CognitiveAgent.from_checkpoint(ckpt)
     replies = [agent.chat("dog") for _ in range(5)]
     assert len(set(replies)) == 1
     assert replies[0] == "dog canine"
@@ -382,9 +405,9 @@ def test_poa01_t26_sctt00_post_training_checkpoint_recall_regression():
     Note: This is a post-training checkpoint recall regression, not the full
     end-to-end SCTT training rerun.
     """
-    _require_sctt00_checkpoint()
+    ckpt = _get_poa01_test_checkpoint()
 
-    agent = CognitiveAgent.from_checkpoint(SCTT00_CHECKPOINT)
+    agent = CognitiveAgent.from_checkpoint(ckpt)
     cues_and_targets = [
         ("dog", "canine"),
         ("cat", "feline"),
@@ -399,3 +422,4 @@ def test_poa01_t26_sctt00_post_training_checkpoint_recall_regression():
         reply = agent.chat(cue)
         tokens = reply.split()
         assert target in tokens, f"Expected {target} in tokens for cue '{cue}', got {reply!r}"
+
