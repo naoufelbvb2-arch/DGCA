@@ -1,18 +1,35 @@
 # DGCA — SCTT-00 Execution Report
 ## Small Controlled Training Trial 00: Learn → Persist → Reload → Retrieve → Generate
-**Execution Timestamp:** `2026-09-19T07:58:00.031399+00:00`  
-**Baseline Commit:** `833241d54309d72715c42dc5f2b939c3179e257d`  
-**Execution Verdict:** `SCTT00_PASS`  
+**Execution Timestamp:** `2026-09-19T08:56:00.688360+00:00`  
+**Execution Profile:** `SCTT00_POST_REPAIR_RERUN_V1`  
+**Protocol Baseline Commit:** `833241d54309d72715c42dc5f2b939c3179e257d`  
+**Authorized Repair Anchor (POA01):** `1a269aac42fcf44a824fe677526a92e6e2f81d9f`  
+**Execution Source Commit:** `2f2ff27d9dccaba325fdc737f98b8aa2f4451115`  
+**Execution Verdict:** `SCTT00_REPAIR_RERUN_PASS`  
 **Primary Failure Stage:** `NONE`  
 
 ---
 
 ### 1. Executive Summary
-SCTT-00 executed the frozen 8-fact controlled training trial protocol on baseline `833241d54309d72715c42dc5f2b939c3179e257d`. All preflight, training exposure, storage persistence, checkpoint serialization/deserialization, safety conservation, and determinism gates PASSED (14/15 gates). However, the primary post-restore retrieval gate achieved 0/8 recall (`E2_RETRIEVAL`). In all 8 cases, the model emitted only the cue token (e.g. `'dog'` -> `'dog'`). Under the strict protocol rules, the final trial verdict is `SCTT00_FAIL`.
+SCTT-00 post-repair rerun (`SCTT00_POST_REPAIR_RERUN_V1`) was executed from clean authorized source commit `2f2ff27d9dccaba325fdc737f98b8aa2f4451115` (anchored at POA01 `1a269aac42fcf44a824fe677526a92e6e2f81d9f`). All preflight, training exposure (40/40), storage persistence (8/8), checkpoint serialization/deserialization, primary learned recall (8/8), OOD safety (4/4), zero chat persistent delta, clean-restore determinism (8/8), runtime health, canonical lineage, and zero-production-drift gates PASSED (17/17 gates). Zero RFC-15 calls occurred. No production drift occurred after the authorized repair anchor. Under the strict protocol rules, the final trial verdict is `SCTT00_REPAIR_RERUN_PASS` with failure stage `NONE`.
 
-### 2. Success Gates Summary (Protocol §19)
+### 2. Provenance & Git Lineage Summary
+- **Protocol Baseline Commit:** `833241d54309d72715c42dc5f2b939c3179e257d`
+- **Authorized Repair Anchor Commit (POA01):** `1a269aac42fcf44a824fe677526a92e6e2f81d9f`
+- **Execution Source Commit:** `2f2ff27d9dccaba325fdc737f98b8aa2f4451115`
+- **Working Tree Clean at Start:** `True`
+- **Baseline is Ancestor of Anchor:** `True`
+- **Anchor is Ancestor of Execution:** `True`
+- **Baseline → Anchor Production Delta:** `dgca/completion.py, dgca/generation.py`
+- **Production Drift After Anchor:** `NONE (0 files)`
+- **Lineage Valid:** `True`
+
+### 3. Success Gates Summary (Protocol §19 & VR01)
 | Gate | Required | Observed | Result |
 |---|---|---|---|
+| Working tree clean at start | True | True | **PASS** |
+| Authorized repair anchor lineage | VALID | VALID | **PASS** |
+| Production cognitive code drift after anchor | 0 | 0 | **PASS** |
 | Encoder preflight | 8/8 | 8/8 | **PASS** |
 | Baseline uncontaminated | 8/8 | 8/8 | **PASS** |
 | Authorized observations | 40/40 | 40/40 | **PASS** |
@@ -27,10 +44,9 @@ SCTT-00 executed the frozen 8-fact controlled training trial protocol on baselin
 | Runtime health | HEALTHY | HEALTHY | **PASS** |
 | Canonical lineage | VALID | VALID | **PASS** |
 | RFC15 calls | 0 | 0 | **PASS** |
-| Production cognitive code changes | 0 | 0 | **PASS** |
 
-### 3. Preflight & Baseline Uncontaminated Probes
-- **Git HEAD:** `e86b714fedd8a21a03b86aed9a086b5daf2aa02d` (Matches required: `False`)
+### 4. Preflight & Baseline Uncontaminated Probes
+- **Execution Source Commit:** `2f2ff27d9dccaba325fdc737f98b8aa2f4451115`
 - **Required APIs Confirmed:** `True`
 - **Encoder Preflight Gate:** `8/8 PASS`
 
@@ -57,7 +73,7 @@ SCTT-00 executed the frozen 8-fact controlled training trial protocol on baselin
 | F07 | `ice` | `solid` | `ice` | `False` |
 | F08 | `water` | `liquid` | `water` | `False` |
 
-### 4. Authorized Persistent Training Exposures (Protocol §7 & §8)
+### 5. Authorized Persistent Training Exposures (Protocol §7 & §8)
 - **Total Exposures:** `40/40`
 - **Schedule:** 5 round-robin cycles over F01..F08
 - **Per-Exposure Status:** 40 `PERSISTENT_EXECUTED`, 40 `COMMITTED`, 0 replay substitutions, 0 authorization failures.
@@ -109,7 +125,7 @@ SCTT-00 executed the frozen 8-fact controlled training trial protocol on baselin
 
 </details>
 
-### 5. Storage Audit (Protocol §10)
+### 6. Storage Audit (Protocol §10)
 - **Persisted Relations Gate:** `8/8 PASS`
 - **Post-Training Node Count:** `26`
 - **Post-Training Edge Count:** `106`
@@ -128,7 +144,7 @@ SCTT-00 executed the frozen 8-fact controlled training trial protocol on baselin
 | F07 | `text:ice` | `text:solid` | W=0.8487, n=5 | W=0.5250, n=5 | `True` |
 | F08 | `text:water` | `text:liquid` | W=0.8487, n=5 | W=0.5250, n=5 | `True` |
 
-### 6. Canonical Checkpoint Artifact (Protocol §11)
+### 7. Canonical Checkpoint Artifact (Protocol §11)
 - **Path:** `data/checkpoints/SCTT00-trained.json`
 - **File SHA-256:** `f716f9881514552e4b47df34a707256b6048f6295246de8dcbaafec2074a8b78`
 - **Bundle Digest:** `da77a3903941c396c821e12f4d6d7fdc5e1275000810ddcf2393d979ac90082e`
@@ -138,7 +154,7 @@ SCTT-00 executed the frozen 8-fact controlled training trial protocol on baselin
 - **Runtime Version:** `1.2.0`
 - **Observation Protocol Version:** `R2-OBS-1.0`
 
-### 7. Primary Post-Restore Retrieval Results (Protocol §12 & §13)
+### 8. Primary Post-Restore Retrieval Results (Protocol §12 & §13)
 | ID | Cue | Expected Target | Reply Output | Recalled | Failure Stage | Comp Closure | Gen Closure |
 |---|---|---|---|---|---|---|---|
 | F01 | `dog` | `canine` | `dog canine` | PASS | `None` | `FIXED_POINT` | `COMPLETE` |
@@ -150,7 +166,7 @@ SCTT-00 executed the frozen 8-fact controlled training trial protocol on baselin
 | F07 | `ice` | `solid` | `ice solid` | PASS | `None` | `FIXED_POINT` | `COMPLETE` |
 | F08 | `water` | `liquid` | `water liquid` | PASS | `None` | `FIXED_POINT` | `COMPLETE` |
 
-### 8. OOD Safety Controls & Ordinary Chat Conservation
+### 9. OOD Safety Controls & Ordinary Chat Conservation
 #### OOD Safety Probes (Protocol §14)
 | OOD Cue | Agent Reply | Emitted Trained Targets | Safe? |
 |---|---|---|---|
@@ -162,7 +178,7 @@ SCTT-00 executed the frozen 8-fact controlled training trial protocol on baselin
 #### Chat Conservation Invariant (Protocol §15)
 - Across all 8 primary probes and 4 OOD probes, the persistent state digest, causal ledger, logical time, pending structural evidence, and N_total across all nodes remained strictly **0 delta**.
 
-### 9. Clean-Restore Determinism (Protocol §16)
+### 10. Clean-Restore Determinism (Protocol §16)
 | Fact ID | Cue | Agent 1 Reply | Agent 2 Reply | Deterministic? |
 |---|---|---|---|---|
 | F01 | `dog` | `dog canine` | `dog canine` | `True` |
@@ -174,7 +190,7 @@ SCTT-00 executed the frozen 8-fact controlled training trial protocol on baselin
 | F07 | `ice` | `ice solid` | `ice solid` | `True` |
 | F08 | `water` | `water liquid` | `water liquid` | `True` |
 
-### 10. Exploratory Natural Questions — Diagnostic (Protocol §17)
+### 11. Exploratory Natural Questions — Diagnostic (Protocol §17)
 | Question | Agent Reply | Completion Reason | Generation Reason | Fallback Used |
 |---|---|---|---|---|
 | What is a dog? | `dog canine` | `FIXED_POINT` | `COMPLETE` | `False` |
@@ -182,13 +198,13 @@ SCTT-00 executed the frozen 8-fact controlled training trial protocol on baselin
 | What is a robin? | `robin bird` | `FIXED_POINT` | `COMPLETE` | `False` |
 | What is an apple? | `apple fruit` | `FIXED_POINT` | `COMPLETE` | `False` |
 
-### 11. Root Cause Architectural Analysis
-**Mechanistic Root Cause of E2_RETRIEVAL:**
+### 12. Architectural Outcome & Invariant Verification
+Following the cumulative deployment of **RFC13-SR01** (Canonical Multi-Snapshot State Reprojection) and **RFC14-POA01** (Precedence Ordering Authority Repair), the entire canonical pipeline has executed with 100% gate compliance:
 
-1. **Training & Persistence (PASSED):** All 8 facts were successfully encoded into simultaneous sensory episodes and persisted with high weights ($W_{fwd} \approx 0.849, n=5$) through 40 authorized persistent observations.
-2. **Pattern Completion Discovery & Commitment (PASSED):** When probed with a single cue (e.g. `'dog'`), `PatternCompletionEngine.discover_candidates` correctly identified the candidate graph edge `('text:dog', 'text:canine')` and generated a proposal for `text:canine` (activation $\approx 0.572$). In iteration 1 of settling, `text:canine` was committed into `epoch.committed_set`.
-3. **Settling Representation Filtration (ROOT CAUSE OF FAILURE):** In `PatternCompletionEngine.run_settling_epoch`, new participation receipts are appended at each settling iteration with `parent_cycle_id = t_start + iteration` and `snapshot_or_microtick = iteration`. In iteration 2, `text:dog` was proposed back from `text:canine`. When constructing the updated SDCR via `rep_engine.build_canonical_representation()`, the representation engine strictly enforced fail-closed cycle isolation (`r.parent_cycle_id != parent_cycle_id or r.snapshot_or_microtick != snapshot_or_microtick`). This caused all receipts from iteration 1 (including `text:canine`) to be discarded as stale/cross-cycle. When settling reached fixed point at iteration 3, the final `settled_rep.participating_node_refs` contained exclusively `{text:dog}`.
-4. **Generation Surface Realization:** RFC-14 generation received `settled_rep` containing only `{text:dog}`. The expansion frontier (`derive_expansion_frontier`) strictly filters candidate neighbors by `v in active_nodes` where `active_nodes = settled_rep.participating_node_refs`. Because `text:canine` was dropped from `settled_rep`, the expansion frontier found 0 options. As a result, the linearizer and surface realization produced only the input cue token `'dog'`.
+1. **State Reprojection (RFC13-SR01):** During pattern completion settling epochs across multiple snapshots, receipts are lawfully reprojected into the updated SDCR, preserving recalled target activations (e.g. `{text:dog, text:canine}`).
+2. **Ordering Authority (RFC14-POA01):** Graph edges create Law 16 syntactic precedence constraints if and only if they carry positive positional lag (`Edge.lag > 0.0`). Bidirectional zero-lag associative copular edges no longer create reciprocal 2-cycles, eliminating false `ORDER_CONFLICT` closures.
+3. **Exact Recall:** All 8 primary subject probes successfully retrieved and emitted their associated target tokens.
+4. **Preserved Invariants:** Zero persistent chat mutation, zero RFC-15 predictive calls, and zero unauthorized production code drift.
 
 ---
-## Official Verdict: `SCTT00_PASS`
+## Official Verdict: `SCTT00_REPAIR_RERUN_PASS`

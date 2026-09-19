@@ -1,13 +1,54 @@
 {
   "meta": {
     "trial_id": "SCTT-00",
+    "execution_profile": "SCTT00_POST_REPAIR_RERUN_V1",
     "protocol_document": "papers MD/DGCA-SCTT-00-Small-Controlled-Training-Trial-Protocol-v1.0-FROZEN.md",
-    "baseline_commit": "833241d54309d72715c42dc5f2b939c3179e257d",
-    "timestamp": "2026-09-19T07:58:00.031399+00:00",
-    "verdict": "SCTT00_PASS",
+    "protocol_baseline_commit": "833241d54309d72715c42dc5f2b939c3179e257d",
+    "authorized_repair_anchor_commit": "1a269aac42fcf44a824fe677526a92e6e2f81d9f",
+    "execution_source_commit": "2f2ff27d9dccaba325fdc737f98b8aa2f4451115",
+    "timestamp": "2026-09-19T08:56:00.688360+00:00",
+    "verdict": "SCTT00_REPAIR_RERUN_PASS",
     "failure_stage": "NONE"
   },
+  "provenance": {
+    "protocol_baseline_commit": "833241d54309d72715c42dc5f2b939c3179e257d",
+    "authorized_repair_anchor_commit": "1a269aac42fcf44a824fe677526a92e6e2f81d9f",
+    "execution_source_commit": "2f2ff27d9dccaba325fdc737f98b8aa2f4451115",
+    "working_tree_clean_at_start": true,
+    "working_tree_dirty_entries": [],
+    "baseline_is_ancestor_of_anchor": true,
+    "anchor_is_ancestor_of_execution": true,
+    "authorized_production_delta": [
+      "dgca/completion.py",
+      "dgca/generation.py"
+    ],
+    "production_files_changed_baseline_to_anchor": [
+      "dgca/completion.py",
+      "dgca/generation.py"
+    ],
+    "production_drift_after_repair_anchor": [],
+    "production_files_changed_anchor_to_execution": [],
+    "lineage_valid": true
+  },
   "success_gates": [
+    {
+      "name": "Working tree clean at start",
+      "required": "True",
+      "observed": "True",
+      "result": "PASS"
+    },
+    {
+      "name": "Authorized repair anchor lineage",
+      "required": "VALID",
+      "observed": "VALID",
+      "result": "PASS"
+    },
+    {
+      "name": "Production cognitive code drift after anchor",
+      "required": "0",
+      "observed": "0",
+      "result": "PASS"
+    },
     {
       "name": "Encoder preflight",
       "required": "8/8",
@@ -91,17 +132,33 @@
       "required": "0",
       "observed": "0",
       "result": "PASS"
-    },
-    {
-      "name": "Production cognitive code changes",
-      "required": "0",
-      "observed": "0",
-      "result": "PASS"
     }
   ],
   "preflight": {
-    "git_head": "e86b714fedd8a21a03b86aed9a086b5daf2aa02d",
+    "git_head": "2f2ff27d9dccaba325fdc737f98b8aa2f4451115",
     "head_matches": false,
+    "provenance": {
+      "protocol_baseline_commit": "833241d54309d72715c42dc5f2b939c3179e257d",
+      "authorized_repair_anchor_commit": "1a269aac42fcf44a824fe677526a92e6e2f81d9f",
+      "execution_source_commit": "2f2ff27d9dccaba325fdc737f98b8aa2f4451115",
+      "working_tree_clean_at_start": true,
+      "working_tree_dirty_entries": [],
+      "baseline_is_ancestor_of_anchor": true,
+      "anchor_is_ancestor_of_execution": true,
+      "authorized_production_delta": [
+        "dgca/completion.py",
+        "dgca/generation.py"
+      ],
+      "production_files_changed_baseline_to_anchor": [
+        "dgca/completion.py",
+        "dgca/generation.py"
+      ],
+      "production_drift_after_repair_anchor": [],
+      "production_files_changed_anchor_to_execution": [],
+      "lineage_valid": true
+    },
+    "working_tree_clean": true,
+    "working_tree_dirty_entries": [],
     "apis_confirmed": true,
     "encoder_preflight": [
       {
@@ -1079,20 +1136,20 @@
       "failure_stage": null,
       "last_turn": {
         "turn_index": 0,
-        "root_external_episode_id": "root_e6726d18593201f616274f757b9d5246bf388df7ac44deabe04ad6c455a56232",
-        "ingress_event_id": "iev_ee1c3b53704f58ed0c9bd276e6648bb956b61d9722c1939cff4f6159f9993bb0",
-        "observation_transaction_id": "tx_obs_686fee93c39301b70620373c8b97880192fae83156121be397865ee0ca98ff8d",
+        "root_external_episode_id": "root_5b42b41d963f55f303ea7b5918c5c086d2d9946366de95171979b5f256b2ca6b",
+        "ingress_event_id": "iev_7c750a0dc8288189e8bb139f08db60bac01ee12217a032499de09c97e737e719",
+        "observation_transaction_id": "tx_obs_7e4aa668fc0a9e39b554638b202d776f6277d18fc9be458f02a0e563fb104b6c",
         "micro_episode_ids": [
-          "mep_d17b75c222690ad1cee4c11b9a1efed1949fb7a351384b83758b0cadf3838760"
+          "mep_7f0143f231ba9fdfe7c3ba2810a59ab45a88f8ca57fb522da12375c405ddee3b"
         ],
         "input_representation_ids": [
-          "rep_38de058aa2fb6055600b8f9f92d98fbd73389e16d53cee706b0871f7c22ca6ae"
+          "rep_1f28b0f83b7db1059256a5dfcb26dd5e7d966fa3dfccb52bf640a5a8e6626e48"
         ],
         "settled_representation_ids": [
-          "rep_ece445d39b86e70d2552ef572243e8a29e9b06e30641d4c9243ff25c5508bd68"
+          "rep_79cfca2b19637a43e972a9e5ed94fe199bc90ada98d98162341ea31a644390cb"
         ],
         "surface_chunk_ids": [
-          "chunk_d0f7ddd0c9d476a703549a8bf98825f6caf6046aa5b1a57ce4089ccebeec10d4"
+          "chunk_031d867babea4778cf69ab3f212dfe549e52a544cc7b2112176f571ca0c198a0"
         ],
         "completion_closure_reasons": [
           "FIXED_POINT"
@@ -1116,20 +1173,20 @@
       "failure_stage": null,
       "last_turn": {
         "turn_index": 1,
-        "root_external_episode_id": "root_0be5b87358ef8bed0ca60f737e2647dacbd0f79bd8210104a79f35e4ebf33a26",
-        "ingress_event_id": "iev_371a1ea5b23b3a2787495a45f24acc8cb7fd27e9479f0e152d071101bb271823",
-        "observation_transaction_id": "tx_obs_dd1539d67154c3c06ac230882311c5a6c31afceb45de67a5e9b44e1f1ea374be",
+        "root_external_episode_id": "root_d634c7dc8fa14d51b440981aeb27eae3dc089ada44bde57b3c75d1cf0d887aa8",
+        "ingress_event_id": "iev_ba977f775acbc3a6b85b568897a079a09e98bf992ec333d0b7337648e5dfc052",
+        "observation_transaction_id": "tx_obs_f866efefd33335a5a26c15d35a721f4f733c748ecb8eba2af7e0a28c7e82dff0",
         "micro_episode_ids": [
-          "mep_87ec44017b7bf1140ab4f9ff341487e25df56ae8f19797aa70ada931892e1447"
+          "mep_5c1f77e12b2f5b17f69e0ef90115ec2384a983380107ca45b543ea157f397c65"
         ],
         "input_representation_ids": [
-          "rep_2f50b9bede0ca6660a511a11f442d2ef103b73bb9a7f7a5250ebb2e31ad3ff5b"
+          "rep_9f2dd872454017c2d2e0b534dc1414e5dfd660323609f9f25d70c7f455ac5713"
         ],
         "settled_representation_ids": [
-          "rep_1f02e5463af0f7e7d3b16eb98efe3af24db1616830684ab657675b6879805b6d"
+          "rep_4b285cad6fee2622aff965a55af921c6eecd5ad9f9054e297e84c30e6d5fa52b"
         ],
         "surface_chunk_ids": [
-          "chunk_aaa771971d4037f44dd264d93d509983d68278842c7ba36f4997d945f9903c99"
+          "chunk_771f3d23e078af5e5d715593eb5689ea811cb9122f22e02a9c767c1d80b56394"
         ],
         "completion_closure_reasons": [
           "FIXED_POINT"
@@ -1153,20 +1210,20 @@
       "failure_stage": null,
       "last_turn": {
         "turn_index": 2,
-        "root_external_episode_id": "root_b15a3ad4240f59f2d7c47ff56507ebb51f62c868eab843c3f22f3a3d93a5289a",
-        "ingress_event_id": "iev_ab2b66fc9984dc196b15ded7771697bbfcf8729a8465a2aafe5b9b6acf46be0b",
-        "observation_transaction_id": "tx_obs_e38d77841e0c35214a65e711dbae945cd401ba09121ac81eb9c09eb2d360189d",
+        "root_external_episode_id": "root_378c7750d5732d9b45601d3d07b0b5460213627dcbbb54472ffd445ac71963b4",
+        "ingress_event_id": "iev_99cb2fc8768cb0a37d7d9ab8e97963adeb19fa6dde9ada78d5079123d853c8d6",
+        "observation_transaction_id": "tx_obs_efd8a1ab2fd16864e011714aee1da40a19f42383077524eafae9c79845fd5e8e",
         "micro_episode_ids": [
-          "mep_5250e472dce34b529f5bdb6c5877cc9db1f0f8777c0fef6cbcefc425c2a8e0f4"
+          "mep_e0ad09aa8882a670108449092b7a703ae97f084bb507fddd34f675e5f0907b0c"
         ],
         "input_representation_ids": [
-          "rep_811bc821a8e09a592509668099072c059843822acdaee4e510ce94f0c1286f85"
+          "rep_1070532b6232397e0a7b6f5becf3bb3f4d8a674a527bc5fb8e21481cb48a23f4"
         ],
         "settled_representation_ids": [
-          "rep_3e77c7e850887703ec8f5d3ad13203bba9b0aac72f7bf49e9c2e691aa99719d9"
+          "rep_a432ec1c8d5bb192329c39e00f98dc878a014e785644beeb390e1db824c7b5ad"
         ],
         "surface_chunk_ids": [
-          "chunk_d50fcdfb0c94daf9dbe74e26ed5f38b246606fbab904b4553056c03c5b2ce3a5"
+          "chunk_2b15af08a9998050ed1844c9c811031d7b5ba8c0f7b81df8e72119e2f2cd2622"
         ],
         "completion_closure_reasons": [
           "FIXED_POINT"
@@ -1190,20 +1247,20 @@
       "failure_stage": null,
       "last_turn": {
         "turn_index": 3,
-        "root_external_episode_id": "root_1eb7921ca457718ead506b1f3f1043ba095ea3aa29d16c5f359fbb8d50abf98c",
-        "ingress_event_id": "iev_cf33b91de094a704ad5b6662b46b4bfaac2dae132c7654bf0bfee1f501e0082d",
-        "observation_transaction_id": "tx_obs_94f1ec102f1dece32105f9428e6d49a9d7e1d932cb7faa18940f491cffe12c9f",
+        "root_external_episode_id": "root_07a1f4c09eb64824df94e24eb9459ce309d46ed26d5988a09bbb536d05744ee0",
+        "ingress_event_id": "iev_3632ba65bd10c4a7a2448af20b133139a9516cc5127dd579217b07617183463b",
+        "observation_transaction_id": "tx_obs_0f9bac867c4823651bfe40497ceb44bfc0317728859ff654ea0f9a2a92a4062c",
         "micro_episode_ids": [
-          "mep_faca584753f84745d22429f4ef594384454709c7ebf18e2b36f0c5044aad29d0"
+          "mep_cd08f39c324dc05a89ea060ae389b6fe2612f763ca089581194280a21756a982"
         ],
         "input_representation_ids": [
-          "rep_3ee4acb60c5cda0d04f8706f4d78e1f7cfbe255ab52fcd84cc9b349beb7f7530"
+          "rep_04ac3ac4a8081b27d7b79b4dfe7ae7552d0edc5f6ffef090b3db490e71f652ad"
         ],
         "settled_representation_ids": [
-          "rep_5937f03e7e921311e81a0cf7371d38c55a5ba151ac6806af48d5a130cd0d0629"
+          "rep_905667d5c3a8c13361feb1534b0033189cb3bd0c6079974f99e3b5b43c6d26a1"
         ],
         "surface_chunk_ids": [
-          "chunk_b0aa0371c4a5565fb5c0dfc8c30332f948142d7e333fa108a7ec1de30c03649a"
+          "chunk_8d30b6722a4d50b340a18ba05256829ff4f82fb162bdc1d456e2260f8857e8a7"
         ],
         "completion_closure_reasons": [
           "FIXED_POINT"
@@ -1227,20 +1284,20 @@
       "failure_stage": null,
       "last_turn": {
         "turn_index": 4,
-        "root_external_episode_id": "root_64bdc27a6cc0d6e5d987773cbb37aa7ee73ed06b81edcdc99b8ac47820455b0f",
-        "ingress_event_id": "iev_6442316b083f13b09106cb91339838fdbe47a105404b77c758a64c4a1d34945a",
-        "observation_transaction_id": "tx_obs_131b7603fa3a2f690828f4cf6c05ed6534557b556d89b28853ae533e416344ba",
+        "root_external_episode_id": "root_bfd8f0a296b15b6bbbee9b6bdc45a59454537082196885b24c25797a39886369",
+        "ingress_event_id": "iev_352c8e915d9b931f7b165db00861c7da1179b05c1ca604a5772317014748961e",
+        "observation_transaction_id": "tx_obs_cefd29557c2dd558a261c62d7c9948ba345032255112552d9c4eec1b017392bf",
         "micro_episode_ids": [
-          "mep_3309f3338ba8245519e15fbedfb22da25a665218569c7efbc8f2738c4927293e"
+          "mep_443be71c659810283be49e4bf477feb8e83e404673069bd7d36972b9cebec12d"
         ],
         "input_representation_ids": [
-          "rep_0432d22ea219d71a81957d0cf5c3e5cfc8ef4b9b029fabcc2a97cab00bcf641a"
+          "rep_fb8edd0b7bf0c7085115ebab0279055daca860607b7d87ff13b41277543a8a98"
         ],
         "settled_representation_ids": [
-          "rep_eac19af4feed19d36917e5f0bd0d4741664b842a751a0549b536c3fac37b307c"
+          "rep_ea2d3733ef73a9eba70aed39fead5fa51c1577c5249638a305d78c8b00423a03"
         ],
         "surface_chunk_ids": [
-          "chunk_000ca3398acfc9297343e9950861ab070e17fc761635961ef0f4725b7f6aabbb"
+          "chunk_086a9166e3fdff879ad596d08a74c0957b62d105ccfcf8145bf0a56ff7729b5e"
         ],
         "completion_closure_reasons": [
           "FIXED_POINT"
@@ -1264,20 +1321,20 @@
       "failure_stage": null,
       "last_turn": {
         "turn_index": 5,
-        "root_external_episode_id": "root_dda00b3b148a8ff1bf16bef12bbe4e9c3ece00f8033d57148b32b3359e3075ed",
-        "ingress_event_id": "iev_cad91c5188f686fdd216fcf1b019786aa7b44ce9167ae6ac95553d56f4623075",
-        "observation_transaction_id": "tx_obs_e33b75f36ac19ee4b2e393308f001e876237da84b5a90bba9087d3345678411f",
+        "root_external_episode_id": "root_a1891636c9da51cbc473f634a4a6c20c45294feff07cd26f66df7e471b4e1202",
+        "ingress_event_id": "iev_25ab5b21b8b0dd74faf0da5c030fc766196ace7c82d561a6b1352e1ef7c59bb1",
+        "observation_transaction_id": "tx_obs_7279fa0481374c66cb582a7c1b4bd1c93aa5033cbf6fc286d2354c76df364232",
         "micro_episode_ids": [
-          "mep_364db36a6ca05b9e1d47651e9d50f7f877db57a8023559ae2e997510975e89b6"
+          "mep_268bddb4aa1e71acefcc59d93ac3e72345242c71f4b9aa86e962296b2958c148"
         ],
         "input_representation_ids": [
-          "rep_821d072b5d4ce85a4e5c37c387f54312a3b8a3295f49c35ac1e9437f26a193ed"
+          "rep_df883c30e081e8b8e810ab9b4b5a522a182591f1a59f441244ba95b5180ba732"
         ],
         "settled_representation_ids": [
-          "rep_700035f4887a622d06d41dfe9dbf50a5ec74867ed3ebf15536915bfb8059ca4b"
+          "rep_d5f50dad5773db5099eb73cd433dad98a06b25cf75fd196419f027fa6b6f4fea"
         ],
         "surface_chunk_ids": [
-          "chunk_8aeae0c17ed3e501784dc5b3b735447059f40ffce37b0846bb1ce4c6ec80af72"
+          "chunk_7e77d4da526dddeee3fb38cf63240ce5742a3ca9e0c11eae8563c93b7853bf06"
         ],
         "completion_closure_reasons": [
           "FIXED_POINT"
@@ -1301,20 +1358,20 @@
       "failure_stage": null,
       "last_turn": {
         "turn_index": 6,
-        "root_external_episode_id": "root_76855933b7be6624f28004224479fe221222237e167ce7ec43d75277e71ea6dc",
-        "ingress_event_id": "iev_535434817877008b1d2ffbbd863e6bb8ef0140e4f7fe5182e48ec9bb3ff1b469",
-        "observation_transaction_id": "tx_obs_c4b28d00c42823b60842c4ef761d76a6ac3aaf5947756d1030d3f31885b4e7c2",
+        "root_external_episode_id": "root_3cab8abf2f939f6f3f5c088b0e0f05c14acd8f542001e42790a3bb36098ebaab",
+        "ingress_event_id": "iev_b1338b55c6ce8e15b7213e0a4a99e454fd7cd7db873455d6436d765dbe264896",
+        "observation_transaction_id": "tx_obs_8b40dee7c2f1fc8594b86b9950a518c7511c79a0e748dedac10480803fde1986",
         "micro_episode_ids": [
-          "mep_39baabec9f4be377fc134f0797b82544d2b773ae38cc89737b11b7b058bb35ef"
+          "mep_552ae86c289cace50cf5bc58700ef0da2eac2e137b6e41ad845e1eafb564937e"
         ],
         "input_representation_ids": [
-          "rep_65bb51f60d465c65a62259945554c28ea3636f66f885cf2845098c3c38f8f2c9"
+          "rep_428eb489c7211ce3db3ee7e0e70aec23c4123d77151ef4e51943fc7459ec771b"
         ],
         "settled_representation_ids": [
-          "rep_d3ea897274b213bd0414ab943ed35b4c93c227e44b02d1e525c43e4637fa7833"
+          "rep_9ba58dcac017ccb3ac62fab69683e2835fbfddad04827c4de9109b5c04da4731"
         ],
         "surface_chunk_ids": [
-          "chunk_3110dedd494a6eb35aa3a8bd15eb75763e98eb920fd1ed16e4a90f7bc267254e"
+          "chunk_95e93b3ec52519fb506e70e1988f6522bb91ba3a8c17c9843c845a2ff1228343"
         ],
         "completion_closure_reasons": [
           "FIXED_POINT"
@@ -1338,20 +1395,20 @@
       "failure_stage": null,
       "last_turn": {
         "turn_index": 7,
-        "root_external_episode_id": "root_6964a99cfb6bc368aff89f692d36bb7d4b9f749d798814ac8e4a45a5606af4e2",
-        "ingress_event_id": "iev_3bbbd1b42e461b0434740f75ddeb7154039250a76fd1e73fec046869a0d1fb14",
-        "observation_transaction_id": "tx_obs_606aae0288e0dd99a8418584ee2ceb9b7904787120c5690498ede30a30169178",
+        "root_external_episode_id": "root_8892ecab287e2ade4597146169b116c9678c30accde349837be9dcad77f9d3d8",
+        "ingress_event_id": "iev_4ca5027e7d22a78e3a88a9368230ad72b577fe1fe84e2d1ae3f81b7178d59ed4",
+        "observation_transaction_id": "tx_obs_03384b2725445e0f544b7d71159dc637ac33f69b5c090e226828dbf66da9a20d",
         "micro_episode_ids": [
-          "mep_238d6586c2e0ae3b294368778b4636655b002a7a9e3fd74f3bdd6648c16bad14"
+          "mep_381af813edc7b9871d9ad1088b65c6fbab541510554901c99f9955cf624b00f0"
         ],
         "input_representation_ids": [
-          "rep_f19316c8df37cd0228cc5389f0fb77cbe14de1c0fe439ca6a840f3b297017b11"
+          "rep_be279edc1ce99f124838206f81fc803e897c1caafe86c6508dd4b0dfc73afd38"
         ],
         "settled_representation_ids": [
-          "rep_42190fddce60e03061081abfed5de738768777366ed792c7e0934a83225f9353"
+          "rep_478ac0f272acf2a0b8d82d2f0ecd668cff0fd8b7a938a56751b9856503fc7630"
         ],
         "surface_chunk_ids": [
-          "chunk_16c76dbd909aa2417b0305a75721d5023135670d5cc849532e11de5b6e3e607a"
+          "chunk_476e5acf1384098ced78627ed803aa13df7d16f2fc5a24981d0aeb3060d3e398"
         ],
         "completion_closure_reasons": [
           "FIXED_POINT"
@@ -1635,5 +1692,5 @@
       "used_fallback": false
     }
   ],
-  "root_cause_analysis": "**Mechanistic Root Cause of E2_RETRIEVAL:**\n\n1. **Training & Persistence (PASSED):** All 8 facts were successfully encoded into simultaneous sensory episodes and persisted with high weights ($W_{fwd} \\approx 0.849, n=5$) through 40 authorized persistent observations.\n2. **Pattern Completion Discovery & Commitment (PASSED):** When probed with a single cue (e.g. `'dog'`), `PatternCompletionEngine.discover_candidates` correctly identified the candidate graph edge `('text:dog', 'text:canine')` and generated a proposal for `text:canine` (activation $\\approx 0.572$). In iteration 1 of settling, `text:canine` was committed into `epoch.committed_set`.\n3. **Settling Representation Filtration (ROOT CAUSE OF FAILURE):** In `PatternCompletionEngine.run_settling_epoch`, new participation receipts are appended at each settling iteration with `parent_cycle_id = t_start + iteration` and `snapshot_or_microtick = iteration`. In iteration 2, `text:dog` was proposed back from `text:canine`. When constructing the updated SDCR via `rep_engine.build_canonical_representation()`, the representation engine strictly enforced fail-closed cycle isolation (`r.parent_cycle_id != parent_cycle_id or r.snapshot_or_microtick != snapshot_or_microtick`). This caused all receipts from iteration 1 (including `text:canine`) to be discarded as stale/cross-cycle. When settling reached fixed point at iteration 3, the final `settled_rep.participating_node_refs` contained exclusively `{text:dog}`.\n4. **Generation Surface Realization:** RFC-14 generation received `settled_rep` containing only `{text:dog}`. The expansion frontier (`derive_expansion_frontier`) strictly filters candidate neighbors by `v in active_nodes` where `active_nodes = settled_rep.participating_node_refs`. Because `text:canine` was dropped from `settled_rep`, the expansion frontier found 0 options. As a result, the linearizer and surface realization produced only the input cue token `'dog'`."
+  "root_cause_analysis": "Post-repair rerun completed with 100% compliance across all 17 gates."
 }
