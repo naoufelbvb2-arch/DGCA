@@ -11,7 +11,7 @@ Tests POA01-T01 through POA01-T26 enforcing:
 """
 from __future__ import annotations
 
-import pathlib
+from pathlib import Path
 
 import pytest
 
@@ -27,7 +27,7 @@ from dgca.persistence import (
     extract_canonical_persistent_payload,
 )
 
-REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
+REPO_ROOT = Path(__file__).resolve().parent.parent
 SCTT00_CHECKPOINT = REPO_ROOT / "data" / "checkpoints" / "SCTT00-trained.json"
 
 
@@ -236,10 +236,19 @@ def test_poa01_t15_no_order_multiple_root_case_remains_linearization_ambiguous()
 
 
 # ─────────────────────────────────────────────────────────── POA01-T16 .. POA01-T26
+def _require_sctt00_checkpoint() -> Path:
+    """Ensures SCTT-00 trained checkpoint exists fail-closed without silent skipping."""
+    if not SCTT00_CHECKPOINT.exists():
+        from experiments.sctt00 import execute_training, save_checkpoint
+        r, _ = execute_training()
+        save_checkpoint(r, SCTT00_CHECKPOINT)
+    assert SCTT00_CHECKPOINT.exists(), f"Mandatory SCTT00 checkpoint missing: {SCTT00_CHECKPOINT}"
+    return SCTT00_CHECKPOINT
+
+
 def test_poa01_t16_sctt_dog_canine_no_longer_false_order_conflict():
     """POA01-T16: RFC13-SR01 final {dog,canine} no longer creates false ORDER_CONFLICT."""
-    if not SCTT00_CHECKPOINT.exists():
-        pytest.skip("SCTT00 checkpoint not found")
+    _require_sctt00_checkpoint()
 
     agent = CognitiveAgent.from_checkpoint(SCTT00_CHECKPOINT)
     g = agent._root._graph
@@ -266,8 +275,7 @@ def test_poa01_t16_sctt_dog_canine_no_longer_false_order_conflict():
 
 def test_poa01_t17_dog_probe_surfaces_canine_through_frame_local_structure():
     """POA01-T17: dog probe can surface canine through unchanged frame-local structure."""
-    if not SCTT00_CHECKPOINT.exists():
-        pytest.skip("SCTT00 checkpoint not found")
+    _require_sctt00_checkpoint()
 
     agent = CognitiveAgent.from_checkpoint(SCTT00_CHECKPOINT)
     reply = agent.chat("dog")
@@ -279,8 +287,7 @@ def test_poa01_t17_dog_probe_surfaces_canine_through_frame_local_structure():
 
 def test_poa01_t18_generation_causes_zero_persistent_cognitive_mutation():
     """POA01-T18: Generation causes zero persistent cognitive mutation."""
-    if not SCTT00_CHECKPOINT.exists():
-        pytest.skip("SCTT00 checkpoint not found")
+    _require_sctt00_checkpoint()
 
     agent = CognitiveAgent.from_checkpoint(SCTT00_CHECKPOINT)
     g = agent._root._graph
@@ -297,8 +304,7 @@ def test_poa01_t18_generation_causes_zero_persistent_cognitive_mutation():
 
 def test_poa01_t19_generation_causes_zero_assembly_mutation():
     """POA01-T19: Generation causes zero Assembly mutation."""
-    if not SCTT00_CHECKPOINT.exists():
-        pytest.skip("SCTT00 checkpoint not found")
+    _require_sctt00_checkpoint()
 
     agent = CognitiveAgent.from_checkpoint(SCTT00_CHECKPOINT)
     g = agent._root._graph
@@ -349,8 +355,7 @@ def test_poa01_t22_weakest_edge_deletion_defense_valid_with_genuine_fixtures():
 
 def test_poa01_t23_deterministic_replay_across_runs():
     """POA01-T23: Deterministic fixed state/context/budget."""
-    if not SCTT00_CHECKPOINT.exists():
-        pytest.skip("SCTT00 checkpoint not found")
+    _require_sctt00_checkpoint()
 
     agent = CognitiveAgent.from_checkpoint(SCTT00_CHECKPOINT)
     replies = [agent.chat("dog") for _ in range(5)]
@@ -360,22 +365,24 @@ def test_poa01_t23_deterministic_replay_across_runs():
 
 def test_poa01_t24_all_rfc13_sr01_tests_pass():
     """POA01-T24: All RFC13-SR01 tests pass unchanged."""
-    import pytest
     res = pytest.main(["-q", str(REPO_ROOT / "tests" / "test_rfc13_sr01.py")])
     assert res == pytest.ExitCode.OK
 
 
 def test_poa01_t25_all_r3_min_tests_pass():
     """POA01-T25: All R3-Min tests pass unchanged."""
-    import pytest
     res = pytest.main(["-q", str(REPO_ROOT / "tests" / "test_ric01_r3_min.py")])
     assert res == pytest.ExitCode.OK
 
 
-def test_poa01_t26_sctt00_primary_probes_surface_targets():
-    """POA01-T26: Exact frozen SCTT-00 primary learned recall surfaces all 8 expected targets."""
-    if not SCTT00_CHECKPOINT.exists():
-        pytest.skip("SCTT00 checkpoint not found")
+def test_poa01_t26_sctt00_post_training_checkpoint_recall_regression():
+    """POA01-T26: Post-training checkpoint recall regression.
+
+    Verifies all 8 cues surface expected targets from the trained checkpoint.
+    Note: This is a post-training checkpoint recall regression, not the full
+    end-to-end SCTT training rerun.
+    """
+    _require_sctt00_checkpoint()
 
     agent = CognitiveAgent.from_checkpoint(SCTT00_CHECKPOINT)
     cues_and_targets = [
