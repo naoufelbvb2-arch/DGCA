@@ -613,8 +613,14 @@ class HierarchicalGenerativeEngine:
                 # فحص الحواف المتجهة بين الملاّت (fillers)
                 u_ref, v_ref = occ_u.filler_ref, occ_v.filler_ref
                 edge_uv = self._graph.edges.get((u_ref, v_ref))
-                if edge_uv is not None and (not edge_uv.contexts or language_context in edge_uv.contexts or "global" in edge_uv.contexts):
-                    # الحافة تشير إلى أسبقية u قبل v
+                if (
+                    edge_uv is not None
+                    and edge_uv.lag > 0.0
+                    and (not edge_uv.contexts or language_context in edge_uv.contexts or "global" in edge_uv.contexts)
+                ):
+                    # RFC14-POA01: A graph edge contributes precedence iff it carries
+                    # active, lawful ordering authority (positive positional lag > 0).
+                    # Directed semantic association alone (lag <= 0) is not ordering authority.
                     precedence_constraints.add((occ_u.occurrence_id, occ_v.occurrence_id))
 
                 # الأنماط النحوية الموروثة: المرساة تسبق توابعها في نفس الإطار افتراضياً إذا لم يوجد ترتيب معاكس

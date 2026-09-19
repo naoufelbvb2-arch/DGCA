@@ -130,6 +130,8 @@ def test_rfc14_a10_precedence_cycle_weakest_edge_deletion_attack():
     g = CognitiveGraph()
     g.link("A", "B", W=0.9)
     g.link("B", "A", W=0.1)
+    g.edge("A", "B").lag = 1.0
+    g.edge("B", "A").lag = 1.0
     r1 = ParticipationReceipt("r1", "A", 1, 0, "external", "node", activation_magnitude=0.9)
     r2 = ParticipationReceipt("r2", "B", 1, 0, "external", "node", activation_magnitude=0.9)
     rep = g.representation_engine.build_representation(1, 0, None, [r1, r2])
@@ -138,7 +140,7 @@ def test_rfc14_a10_precedence_cycle_weakest_edge_deletion_attack():
     f2 = g.generation_engine.build_generative_frame(rep, frozenset(["B"]))
     hierarchy = g.generation_engine.build_hierarchy([f1, f2])
     prefix, _ = g.generation_engine.linearize_hierarchy(hierarchy)
-    assert prefix.status in ("ORDER_CONFLICT", "LINEARIZED", "LINEARIZATION_AMBIGUOUS")
+    assert prefix.status == "ORDER_CONFLICT"
 
 
 def test_rfc14_a11_duplicate_occurrence_emission_loop_attack():

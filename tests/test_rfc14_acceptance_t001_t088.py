@@ -416,9 +416,11 @@ def test_rfc14_t038_complete_occurrence_coverage_closes_as_linearized():
 def test_rfc14_t039_remaining_occurrences_empty_ready_closes_as_order_conflict():
     """RFC14-T039: Remaining occurrences plus an empty ReadyFrontier closes as ORDER_CONFLICT."""
     g = CognitiveGraph()
-    # Create cycle
+    # Create genuine precedence cycle with positive lag ordering evidence
     g.link("A", "B", W=0.9)
     g.link("B", "A", W=0.9)
+    g.edge("A", "B").lag = 1.0
+    g.edge("B", "A").lag = 1.0
     r_a = ParticipationReceipt("r_a", "A", 1, 0, "external", "node", activation_magnitude=0.9)
     r_b = ParticipationReceipt("r_b", "B", 1, 0, "external", "node", activation_magnitude=0.9)
     rep = g.representation_engine.build_representation(1, 0, None, [r_a, r_b])
@@ -426,7 +428,7 @@ def test_rfc14_t039_remaining_occurrences_empty_ready_closes_as_order_conflict()
     f2 = g.generation_engine.build_generative_frame(rep, frozenset(["B"]))
     hierarchy = g.generation_engine.build_hierarchy([f1, f2])
     prefix, _ = g.generation_engine.linearize_hierarchy(hierarchy)
-    assert prefix.status in ("ORDER_CONFLICT", "LINEARIZED", "LINEARIZATION_AMBIGUOUS")
+    assert prefix.status == "ORDER_CONFLICT"
 
 
 def test_rfc14_t040_multiple_unresolved_ready_preserves_ambiguity():
@@ -509,6 +511,8 @@ def test_rfc14_t047_precedence_cycle_not_repaired_by_deleting_weakest():
     g = CognitiveGraph()
     g.link("A", "B", W=0.9)
     g.link("B", "A", W=0.1)
+    g.edge("A", "B").lag = 1.0
+    g.edge("B", "A").lag = 1.0
     r_a = ParticipationReceipt("r_a", "A", 1, 0, "external", "node", activation_magnitude=0.9)
     r_b = ParticipationReceipt("r_b", "B", 1, 0, "external", "node", activation_magnitude=0.9)
     rep = g.representation_engine.build_representation(1, 0, None, [r_a, r_b])
@@ -516,7 +520,7 @@ def test_rfc14_t047_precedence_cycle_not_repaired_by_deleting_weakest():
     f2 = g.generation_engine.build_generative_frame(rep, frozenset(["B"]))
     hierarchy = g.generation_engine.build_hierarchy([f1, f2])
     prefix, _ = g.generation_engine.linearize_hierarchy(hierarchy)
-    assert prefix.status in ("ORDER_CONFLICT", "LINEARIZED", "LINEARIZATION_AMBIGUOUS")
+    assert prefix.status == "ORDER_CONFLICT"
 
 
 def test_rfc14_t048_law16_terminates_without_new_step_cap():

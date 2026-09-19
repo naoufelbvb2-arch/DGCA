@@ -34,6 +34,7 @@ def _build_test_graph() -> tuple[CognitiveGraph, SparseDistributedCognitiveRepre
         g.link(f"node_{i}", f"prop_{i}", W=0.85, contexts=("en",))
         if i < 5:
             g.link(f"node_{i}", f"node_{i+1}", W=0.95, contexts=("en",))
+            g.edge(f"node_{i}", f"node_{i+1}").lag = 1.0
 
     # 3. SDCR representation
     receipts = [

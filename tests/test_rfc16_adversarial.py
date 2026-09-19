@@ -28,6 +28,7 @@ def _create_adversarial_graph() -> tuple[CognitiveGraph, SparseDistributedCognit
         g.link(f"adv_node_{i}", f"adv_prop_{i}", W=0.85, contexts=("en",))
         if i < 5:
             g.link(f"adv_node_{i}", f"adv_node_{i+1}", W=0.95, contexts=("en",))
+            g.edge(f"adv_node_{i}", f"adv_node_{i+1}").lag = 1.0
 
     receipts = [
         ParticipationReceipt(f"rcpt_adv_{i}", f"adv_node_{i}", 1, 0, "external", "node", activation_magnitude=0.9)

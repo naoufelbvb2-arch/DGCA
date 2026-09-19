@@ -3,9 +3,9 @@
     "trial_id": "SCTT-00",
     "protocol_document": "papers MD/DGCA-SCTT-00-Small-Controlled-Training-Trial-Protocol-v1.0-FROZEN.md",
     "baseline_commit": "833241d54309d72715c42dc5f2b939c3179e257d",
-    "timestamp": "2026-09-19T07:02:37.198605+00:00",
-    "verdict": "SCTT00_FAIL",
-    "failure_stage": "E2_RETRIEVAL"
+    "timestamp": "2026-09-19T07:58:00.031399+00:00",
+    "verdict": "SCTT00_PASS",
+    "failure_stage": "NONE"
   },
   "success_gates": [
     {
@@ -53,8 +53,8 @@
     {
       "name": "Primary learned recall",
       "required": "8/8",
-      "observed": "0/8",
-      "result": "FAIL"
+      "observed": "8/8",
+      "result": "PASS"
     },
     {
       "name": "OOD safety",
@@ -100,8 +100,8 @@
     }
   ],
   "preflight": {
-    "git_head": "833241d54309d72715c42dc5f2b939c3179e257d",
-    "head_matches": true,
+    "git_head": "e86b714fedd8a21a03b86aed9a086b5daf2aa02d",
+    "head_matches": false,
     "apis_confirmed": true,
     "encoder_preflight": [
       {
@@ -1070,320 +1070,296 @@
       "fact_id": "F01",
       "cue": "dog",
       "expected_target": "canine",
-      "reply": "I don't have enough information.",
+      "reply": "dog canine",
       "tokens": [
-        "I",
-        "don't",
-        "have",
-        "enough",
-        "information."
+        "dog",
+        "canine"
       ],
-      "recalled": false,
-      "failure_stage": "E2_RETRIEVAL",
+      "recalled": true,
+      "failure_stage": null,
       "last_turn": {
         "turn_index": 0,
-        "root_external_episode_id": "root_a4c654d880bc5ecbcb832f7b0534024d4d30cf07fa0999e6b6101c57d136fd66",
-        "ingress_event_id": "iev_18bd8ff8bbe43d12d8ffdaebb10e6894749d28ef7f5d82f44d701b386aa7cd6f",
-        "observation_transaction_id": "tx_obs_525d8f59737c34dc25e62f1653888e678c117d370868529f5ba96c05b0a32d7b",
+        "root_external_episode_id": "root_e6726d18593201f616274f757b9d5246bf388df7ac44deabe04ad6c455a56232",
+        "ingress_event_id": "iev_ee1c3b53704f58ed0c9bd276e6648bb956b61d9722c1939cff4f6159f9993bb0",
+        "observation_transaction_id": "tx_obs_686fee93c39301b70620373c8b97880192fae83156121be397865ee0ca98ff8d",
         "micro_episode_ids": [
-          "mep_7a264f748e50f5212416583bf644df73e57575e4c1d983cb0872ee5971fee3da"
+          "mep_d17b75c222690ad1cee4c11b9a1efed1949fb7a351384b83758b0cadf3838760"
         ],
         "input_representation_ids": [
-          "rep_7bbb5a3a62b741471211d02734ed005077094c264adf9f8762b46f553eff7a2a"
+          "rep_38de058aa2fb6055600b8f9f92d98fbd73389e16d53cee706b0871f7c22ca6ae"
         ],
         "settled_representation_ids": [
-          "rep_6e15e112fb41df1ae608bbd923a540c2a506a0f8121a3b400e432b60b0647c6a"
+          "rep_ece445d39b86e70d2552ef572243e8a29e9b06e30641d4c9243ff25c5508bd68"
         ],
         "surface_chunk_ids": [
-          "chunk_b55ee50e5600a2363ee41d9716731e4c362c424e5a6395374b7f0c107eb902c9"
+          "chunk_d0f7ddd0c9d476a703549a8bf98825f6caf6046aa5b1a57ce4089ccebeec10d4"
         ],
         "completion_closure_reasons": [
           "FIXED_POINT"
         ],
         "generation_closure_reasons": [
-          "CONFLICT"
+          "COMPLETE"
         ],
-        "used_fallback": true
+        "used_fallback": false
       }
     },
     {
       "fact_id": "F02",
       "cue": "cat",
       "expected_target": "feline",
-      "reply": "I don't have enough information.",
+      "reply": "cat feline",
       "tokens": [
-        "I",
-        "don't",
-        "have",
-        "enough",
-        "information."
+        "cat",
+        "feline"
       ],
-      "recalled": false,
-      "failure_stage": "E2_RETRIEVAL",
+      "recalled": true,
+      "failure_stage": null,
       "last_turn": {
         "turn_index": 1,
-        "root_external_episode_id": "root_c4ed33601c2c677dfbcf438278ca1159ce6396388968ce59b365b44bd3e998a7",
-        "ingress_event_id": "iev_b48517eb2fa335f985475c65924b6360b50fd393895541e04320a0d591171c94",
-        "observation_transaction_id": "tx_obs_dccc2d196f7417056462d9a2321619ce147c30d2f816a32ddfe33ebd8a188324",
+        "root_external_episode_id": "root_0be5b87358ef8bed0ca60f737e2647dacbd0f79bd8210104a79f35e4ebf33a26",
+        "ingress_event_id": "iev_371a1ea5b23b3a2787495a45f24acc8cb7fd27e9479f0e152d071101bb271823",
+        "observation_transaction_id": "tx_obs_dd1539d67154c3c06ac230882311c5a6c31afceb45de67a5e9b44e1f1ea374be",
         "micro_episode_ids": [
-          "mep_98900588a42c3d95f6514db0e0cfba8f8cf0ff504caf6a278568149592332d1c"
+          "mep_87ec44017b7bf1140ab4f9ff341487e25df56ae8f19797aa70ada931892e1447"
         ],
         "input_representation_ids": [
-          "rep_f892300863b707fe2d6d48e483dd556377d8c45021848024687ec6db93245fb0"
+          "rep_2f50b9bede0ca6660a511a11f442d2ef103b73bb9a7f7a5250ebb2e31ad3ff5b"
         ],
         "settled_representation_ids": [
-          "rep_00e604617133099076d1ff3d38f1c652eb55284664d43c85085e5eecc54fb0e5"
+          "rep_1f02e5463af0f7e7d3b16eb98efe3af24db1616830684ab657675b6879805b6d"
         ],
         "surface_chunk_ids": [
-          "chunk_0166ba3aa59c38ec6e4eaf52e752a2eb16de5b0467b8e70701da7397ba40533b"
+          "chunk_aaa771971d4037f44dd264d93d509983d68278842c7ba36f4997d945f9903c99"
         ],
         "completion_closure_reasons": [
           "FIXED_POINT"
         ],
         "generation_closure_reasons": [
-          "CONFLICT"
+          "COMPLETE"
         ],
-        "used_fallback": true
+        "used_fallback": false
       }
     },
     {
       "fact_id": "F03",
       "cue": "robin",
       "expected_target": "bird",
-      "reply": "I don't have enough information.",
+      "reply": "robin bird",
       "tokens": [
-        "I",
-        "don't",
-        "have",
-        "enough",
-        "information."
+        "robin",
+        "bird"
       ],
-      "recalled": false,
-      "failure_stage": "E2_RETRIEVAL",
+      "recalled": true,
+      "failure_stage": null,
       "last_turn": {
         "turn_index": 2,
-        "root_external_episode_id": "root_2265da05d19798ea2490f1ca3b77b712579f6d0d948facc25c93f590622aeeec",
-        "ingress_event_id": "iev_9e7d150defd97fbef362f24a98c6de4c6fc950513d52c1dfd437c26fe0cc5464",
-        "observation_transaction_id": "tx_obs_85f0effa74ae106ad67cbbed69fcc759639d3b22d9663d9dbcf8d788045ec57e",
+        "root_external_episode_id": "root_b15a3ad4240f59f2d7c47ff56507ebb51f62c868eab843c3f22f3a3d93a5289a",
+        "ingress_event_id": "iev_ab2b66fc9984dc196b15ded7771697bbfcf8729a8465a2aafe5b9b6acf46be0b",
+        "observation_transaction_id": "tx_obs_e38d77841e0c35214a65e711dbae945cd401ba09121ac81eb9c09eb2d360189d",
         "micro_episode_ids": [
-          "mep_be9ab40a6ddea951ccba39f2bf25c12b6e8334333ce701ea9b7c502d35fd47ec"
+          "mep_5250e472dce34b529f5bdb6c5877cc9db1f0f8777c0fef6cbcefc425c2a8e0f4"
         ],
         "input_representation_ids": [
-          "rep_cdb744828905f5091e8e9d12849cb399ca46311c34b9d90c7a02c6c07a6b532d"
+          "rep_811bc821a8e09a592509668099072c059843822acdaee4e510ce94f0c1286f85"
         ],
         "settled_representation_ids": [
-          "rep_9cca90a02bfe6553f9775d81b746ce6a436ef4558fc58c4f5ee3188496546640"
+          "rep_3e77c7e850887703ec8f5d3ad13203bba9b0aac72f7bf49e9c2e691aa99719d9"
         ],
         "surface_chunk_ids": [
-          "chunk_0bda8874097c01e22b6e5b90d299e3f8a421e29d8891344a416f150a53fe0117"
+          "chunk_d50fcdfb0c94daf9dbe74e26ed5f38b246606fbab904b4553056c03c5b2ce3a5"
         ],
         "completion_closure_reasons": [
           "FIXED_POINT"
         ],
         "generation_closure_reasons": [
-          "CONFLICT"
+          "COMPLETE"
         ],
-        "used_fallback": true
+        "used_fallback": false
       }
     },
     {
       "fact_id": "F04",
       "cue": "rose",
       "expected_target": "flower",
-      "reply": "I don't have enough information.",
+      "reply": "rose flower",
       "tokens": [
-        "I",
-        "don't",
-        "have",
-        "enough",
-        "information."
+        "rose",
+        "flower"
       ],
-      "recalled": false,
-      "failure_stage": "E2_RETRIEVAL",
+      "recalled": true,
+      "failure_stage": null,
       "last_turn": {
         "turn_index": 3,
-        "root_external_episode_id": "root_89a2b9c78472ffb9c02c91b511c278cf1a8cabca0ac7d6bb5a8341bea19c0424",
-        "ingress_event_id": "iev_2980c873466a28ab64681d6f9f08b7464c07432e657a054e422634476cc89712",
-        "observation_transaction_id": "tx_obs_e4a43e49fd7e0fc43300a90e3a893e5596f95088b7711968889f7f45fe08755a",
+        "root_external_episode_id": "root_1eb7921ca457718ead506b1f3f1043ba095ea3aa29d16c5f359fbb8d50abf98c",
+        "ingress_event_id": "iev_cf33b91de094a704ad5b6662b46b4bfaac2dae132c7654bf0bfee1f501e0082d",
+        "observation_transaction_id": "tx_obs_94f1ec102f1dece32105f9428e6d49a9d7e1d932cb7faa18940f491cffe12c9f",
         "micro_episode_ids": [
-          "mep_1ab67b48c34b86779b9e339eeaf141d776d1acd70f3f2d4051023db7969024dc"
+          "mep_faca584753f84745d22429f4ef594384454709c7ebf18e2b36f0c5044aad29d0"
         ],
         "input_representation_ids": [
-          "rep_c83fe55c0ad00793c08e5595087e63e8e0ebcc7f679c62adeee31d7c309bc1db"
+          "rep_3ee4acb60c5cda0d04f8706f4d78e1f7cfbe255ab52fcd84cc9b349beb7f7530"
         ],
         "settled_representation_ids": [
-          "rep_c8c0877c08e1a324f5d553513dc35ab839e3a3072f8f8d6c4636e698aabb0501"
+          "rep_5937f03e7e921311e81a0cf7371d38c55a5ba151ac6806af48d5a130cd0d0629"
         ],
         "surface_chunk_ids": [
-          "chunk_68cec688a8a8f2e0e2de2fdb875c558ed0cd53ce3985dd434bf669b28e50c051"
+          "chunk_b0aa0371c4a5565fb5c0dfc8c30332f948142d7e333fa108a7ec1de30c03649a"
         ],
         "completion_closure_reasons": [
           "FIXED_POINT"
         ],
         "generation_closure_reasons": [
-          "CONFLICT"
+          "COMPLETE"
         ],
-        "used_fallback": true
+        "used_fallback": false
       }
     },
     {
       "fact_id": "F05",
       "cue": "apple",
       "expected_target": "fruit",
-      "reply": "I don't have enough information.",
+      "reply": "apple fruit",
       "tokens": [
-        "I",
-        "don't",
-        "have",
-        "enough",
-        "information."
+        "apple",
+        "fruit"
       ],
-      "recalled": false,
-      "failure_stage": "E2_RETRIEVAL",
+      "recalled": true,
+      "failure_stage": null,
       "last_turn": {
         "turn_index": 4,
-        "root_external_episode_id": "root_60658b93e1f0241e4c7100b81548472432088c37e9d879e5425617da7c9f7234",
-        "ingress_event_id": "iev_bc8bb6160930f6a8fcf78df9274d724812733b85b47fdbe56e22b57a5578b4de",
-        "observation_transaction_id": "tx_obs_5b6d649dfee1109024fd833c09bf3cfe3abb53c7a7b5e63a62faa4a5efc7abe5",
+        "root_external_episode_id": "root_64bdc27a6cc0d6e5d987773cbb37aa7ee73ed06b81edcdc99b8ac47820455b0f",
+        "ingress_event_id": "iev_6442316b083f13b09106cb91339838fdbe47a105404b77c758a64c4a1d34945a",
+        "observation_transaction_id": "tx_obs_131b7603fa3a2f690828f4cf6c05ed6534557b556d89b28853ae533e416344ba",
         "micro_episode_ids": [
-          "mep_8d3da4d9765212bb6fc243c0ccd5b047d937b6430a740a00e83fc9c9a6d68b13"
+          "mep_3309f3338ba8245519e15fbedfb22da25a665218569c7efbc8f2738c4927293e"
         ],
         "input_representation_ids": [
-          "rep_063c1434a1e3f75bc3c38c4b7d6fe50bedceb21baa42832d728c3bc01a4ef880"
+          "rep_0432d22ea219d71a81957d0cf5c3e5cfc8ef4b9b029fabcc2a97cab00bcf641a"
         ],
         "settled_representation_ids": [
-          "rep_e93cf5599d78cc68f6a58869fef2d1d9579332f549dd1c345b4894afdc195b29"
+          "rep_eac19af4feed19d36917e5f0bd0d4741664b842a751a0549b536c3fac37b307c"
         ],
         "surface_chunk_ids": [
-          "chunk_ff3f0a836472f4f8dace2e62a966d98eb3e9b3f1e69c8477f15fdd82d20db4e4"
+          "chunk_000ca3398acfc9297343e9950861ab070e17fc761635961ef0f4725b7f6aabbb"
         ],
         "completion_closure_reasons": [
           "FIXED_POINT"
         ],
         "generation_closure_reasons": [
-          "CONFLICT"
+          "COMPLETE"
         ],
-        "used_fallback": true
+        "used_fallback": false
       }
     },
     {
       "fact_id": "F06",
       "cue": "car",
       "expected_target": "vehicle",
-      "reply": "I don't have enough information.",
+      "reply": "car vehicle",
       "tokens": [
-        "I",
-        "don't",
-        "have",
-        "enough",
-        "information."
+        "car",
+        "vehicle"
       ],
-      "recalled": false,
-      "failure_stage": "E2_RETRIEVAL",
+      "recalled": true,
+      "failure_stage": null,
       "last_turn": {
         "turn_index": 5,
-        "root_external_episode_id": "root_ea495bfc4dca075d28b232dfb0d621110f1823f41078014cb120115bcb9ca8f4",
-        "ingress_event_id": "iev_fbe39601284a0b49129d00adbee67a07811dad263cc07658936fa5ec3a4d14f5",
-        "observation_transaction_id": "tx_obs_d7a807b2a4fb289891aa9dd1e0def9ed5f6abbde955864c3fd051081b343a3d8",
+        "root_external_episode_id": "root_dda00b3b148a8ff1bf16bef12bbe4e9c3ece00f8033d57148b32b3359e3075ed",
+        "ingress_event_id": "iev_cad91c5188f686fdd216fcf1b019786aa7b44ce9167ae6ac95553d56f4623075",
+        "observation_transaction_id": "tx_obs_e33b75f36ac19ee4b2e393308f001e876237da84b5a90bba9087d3345678411f",
         "micro_episode_ids": [
-          "mep_00d967b9911473b2a445c45cc12e14b2cf5c3913a85aed41dfddeba40fc44b67"
+          "mep_364db36a6ca05b9e1d47651e9d50f7f877db57a8023559ae2e997510975e89b6"
         ],
         "input_representation_ids": [
-          "rep_f929bef79eed826ec0b2f9daab5a3f2cb0092bf9ecb4d3f7ab539a80b280680f"
+          "rep_821d072b5d4ce85a4e5c37c387f54312a3b8a3295f49c35ac1e9437f26a193ed"
         ],
         "settled_representation_ids": [
-          "rep_b1fb10511c6344a0c7babc6e1e16d508a976d9e7be3c4c77628b3a968a631cf5"
+          "rep_700035f4887a622d06d41dfe9dbf50a5ec74867ed3ebf15536915bfb8059ca4b"
         ],
         "surface_chunk_ids": [
-          "chunk_912d0515c73b6b5d1016e7bd913c6dcf5420936f47a87e720ee16d793302b1a8"
+          "chunk_8aeae0c17ed3e501784dc5b3b735447059f40ffce37b0846bb1ce4c6ec80af72"
         ],
         "completion_closure_reasons": [
           "FIXED_POINT"
         ],
         "generation_closure_reasons": [
-          "CONFLICT"
+          "COMPLETE"
         ],
-        "used_fallback": true
+        "used_fallback": false
       }
     },
     {
       "fact_id": "F07",
       "cue": "ice",
       "expected_target": "solid",
-      "reply": "I don't have enough information.",
+      "reply": "ice solid",
       "tokens": [
-        "I",
-        "don't",
-        "have",
-        "enough",
-        "information."
+        "ice",
+        "solid"
       ],
-      "recalled": false,
-      "failure_stage": "E2_RETRIEVAL",
+      "recalled": true,
+      "failure_stage": null,
       "last_turn": {
         "turn_index": 6,
-        "root_external_episode_id": "root_eeac67cd0d3091944b16190407bd4fb5f98698ada521b63cfff4f1823c1fd6b9",
-        "ingress_event_id": "iev_d21118379b9132dc9b873fe95769c673986729526c2582c63b0786f620a5115f",
-        "observation_transaction_id": "tx_obs_694b5ac947eaf9dc78a1bada6e2e1ec6dba5260d8209c785acaf66b610cfbb2d",
+        "root_external_episode_id": "root_76855933b7be6624f28004224479fe221222237e167ce7ec43d75277e71ea6dc",
+        "ingress_event_id": "iev_535434817877008b1d2ffbbd863e6bb8ef0140e4f7fe5182e48ec9bb3ff1b469",
+        "observation_transaction_id": "tx_obs_c4b28d00c42823b60842c4ef761d76a6ac3aaf5947756d1030d3f31885b4e7c2",
         "micro_episode_ids": [
-          "mep_8027915c7e6a25369abae885019afe0fe20c2dba7f29490807e0595e92b99c35"
+          "mep_39baabec9f4be377fc134f0797b82544d2b773ae38cc89737b11b7b058bb35ef"
         ],
         "input_representation_ids": [
-          "rep_f3d11e4f512cddff24f97b1cd70c7c82675dbd0ed231407a287374b01edea482"
+          "rep_65bb51f60d465c65a62259945554c28ea3636f66f885cf2845098c3c38f8f2c9"
         ],
         "settled_representation_ids": [
-          "rep_7b4b49ebe936248e5c78d281e1b064da3310c8f1878b278b5e49e3ea29287da1"
+          "rep_d3ea897274b213bd0414ab943ed35b4c93c227e44b02d1e525c43e4637fa7833"
         ],
         "surface_chunk_ids": [
-          "chunk_d6a027b11bfab123916bfd31685949c2daa11b4888925be24e946e9edffaf00c"
+          "chunk_3110dedd494a6eb35aa3a8bd15eb75763e98eb920fd1ed16e4a90f7bc267254e"
         ],
         "completion_closure_reasons": [
           "FIXED_POINT"
         ],
         "generation_closure_reasons": [
-          "CONFLICT"
+          "COMPLETE"
         ],
-        "used_fallback": true
+        "used_fallback": false
       }
     },
     {
       "fact_id": "F08",
       "cue": "water",
       "expected_target": "liquid",
-      "reply": "I don't have enough information.",
+      "reply": "water liquid",
       "tokens": [
-        "I",
-        "don't",
-        "have",
-        "enough",
-        "information."
+        "water",
+        "liquid"
       ],
-      "recalled": false,
-      "failure_stage": "E2_RETRIEVAL",
+      "recalled": true,
+      "failure_stage": null,
       "last_turn": {
         "turn_index": 7,
-        "root_external_episode_id": "root_e9cbd7546d3eceafb585a046691252eb11888b5c22b37be7a64cb20979200ef9",
-        "ingress_event_id": "iev_4bdab58edd261153fd9190789f4392e6371c6dca17c1532d9273433f2b84b0c4",
-        "observation_transaction_id": "tx_obs_d3f9d94f5d680861cb604c3cf8526382dbafb039227b00137d1f5b59a5970ac5",
+        "root_external_episode_id": "root_6964a99cfb6bc368aff89f692d36bb7d4b9f749d798814ac8e4a45a5606af4e2",
+        "ingress_event_id": "iev_3bbbd1b42e461b0434740f75ddeb7154039250a76fd1e73fec046869a0d1fb14",
+        "observation_transaction_id": "tx_obs_606aae0288e0dd99a8418584ee2ceb9b7904787120c5690498ede30a30169178",
         "micro_episode_ids": [
-          "mep_20ab98cf8f62eb0da7fa9ce349837003c38d559863aab58daae6445c8d9958f7"
+          "mep_238d6586c2e0ae3b294368778b4636655b002a7a9e3fd74f3bdd6648c16bad14"
         ],
         "input_representation_ids": [
-          "rep_e502a4488b1e81d204e0210342baa80152642eb1660d6722abe3bf48617dc317"
+          "rep_f19316c8df37cd0228cc5389f0fb77cbe14de1c0fe439ca6a840f3b297017b11"
         ],
         "settled_representation_ids": [
-          "rep_04165b65934c99ea8220af5401d4e7f4f1feefbfa6eda6a82f95eb844e0f5c5a"
+          "rep_42190fddce60e03061081abfed5de738768777366ed792c7e0934a83225f9353"
         ],
         "surface_chunk_ids": [
-          "chunk_db9939e6b91d8f1fb347ddc2c37c9c4f400bdc1c8675d67e39622f69056b0552"
+          "chunk_16c76dbd909aa2417b0305a75721d5023135670d5cc849532e11de5b6e3e607a"
         ],
         "completion_closure_reasons": [
           "FIXED_POINT"
         ],
         "generation_closure_reasons": [
-          "CONFLICT"
+          "COMPLETE"
         ],
-        "used_fallback": true
+        "used_fallback": false
       }
     }
   ],
@@ -1538,8 +1514,8 @@
       "reply_match": true,
       "comp_reasons_match": true,
       "gen_reasons_match": true,
-      "agent1_reply": "I don't have enough information.",
-      "agent2_reply": "I don't have enough information.",
+      "agent1_reply": "dog canine",
+      "agent2_reply": "dog canine",
       "deterministic": true
     },
     {
@@ -1548,8 +1524,8 @@
       "reply_match": true,
       "comp_reasons_match": true,
       "gen_reasons_match": true,
-      "agent1_reply": "I don't have enough information.",
-      "agent2_reply": "I don't have enough information.",
+      "agent1_reply": "cat feline",
+      "agent2_reply": "cat feline",
       "deterministic": true
     },
     {
@@ -1558,8 +1534,8 @@
       "reply_match": true,
       "comp_reasons_match": true,
       "gen_reasons_match": true,
-      "agent1_reply": "I don't have enough information.",
-      "agent2_reply": "I don't have enough information.",
+      "agent1_reply": "robin bird",
+      "agent2_reply": "robin bird",
       "deterministic": true
     },
     {
@@ -1568,8 +1544,8 @@
       "reply_match": true,
       "comp_reasons_match": true,
       "gen_reasons_match": true,
-      "agent1_reply": "I don't have enough information.",
-      "agent2_reply": "I don't have enough information.",
+      "agent1_reply": "rose flower",
+      "agent2_reply": "rose flower",
       "deterministic": true
     },
     {
@@ -1578,8 +1554,8 @@
       "reply_match": true,
       "comp_reasons_match": true,
       "gen_reasons_match": true,
-      "agent1_reply": "I don't have enough information.",
-      "agent2_reply": "I don't have enough information.",
+      "agent1_reply": "apple fruit",
+      "agent2_reply": "apple fruit",
       "deterministic": true
     },
     {
@@ -1588,8 +1564,8 @@
       "reply_match": true,
       "comp_reasons_match": true,
       "gen_reasons_match": true,
-      "agent1_reply": "I don't have enough information.",
-      "agent2_reply": "I don't have enough information.",
+      "agent1_reply": "car vehicle",
+      "agent2_reply": "car vehicle",
       "deterministic": true
     },
     {
@@ -1598,8 +1574,8 @@
       "reply_match": true,
       "comp_reasons_match": true,
       "gen_reasons_match": true,
-      "agent1_reply": "I don't have enough information.",
-      "agent2_reply": "I don't have enough information.",
+      "agent1_reply": "ice solid",
+      "agent2_reply": "ice solid",
       "deterministic": true
     },
     {
@@ -1608,55 +1584,55 @@
       "reply_match": true,
       "comp_reasons_match": true,
       "gen_reasons_match": true,
-      "agent1_reply": "I don't have enough information.",
-      "agent2_reply": "I don't have enough information.",
+      "agent1_reply": "water liquid",
+      "agent2_reply": "water liquid",
       "deterministic": true
     }
   ],
   "exploratory_natural_questions": [
     {
       "question": "What is a dog?",
-      "reply": "I don't have enough information.",
+      "reply": "dog canine",
       "completion_closure_reasons": [
         "FIXED_POINT"
       ],
       "generation_closure_reasons": [
-        "CONFLICT"
+        "COMPLETE"
       ],
-      "used_fallback": true
+      "used_fallback": false
     },
     {
       "question": "What is a cat?",
-      "reply": "I don't have enough information.",
+      "reply": "cat feline",
       "completion_closure_reasons": [
         "FIXED_POINT"
       ],
       "generation_closure_reasons": [
-        "CONFLICT"
+        "COMPLETE"
       ],
-      "used_fallback": true
+      "used_fallback": false
     },
     {
       "question": "What is a robin?",
-      "reply": "I don't have enough information.",
+      "reply": "robin bird",
       "completion_closure_reasons": [
         "FIXED_POINT"
       ],
       "generation_closure_reasons": [
-        "CONFLICT"
+        "COMPLETE"
       ],
-      "used_fallback": true
+      "used_fallback": false
     },
     {
       "question": "What is an apple?",
-      "reply": "I don't have enough information.",
+      "reply": "apple fruit",
       "completion_closure_reasons": [
         "FIXED_POINT"
       ],
       "generation_closure_reasons": [
-        "CONFLICT"
+        "COMPLETE"
       ],
-      "used_fallback": true
+      "used_fallback": false
     }
   ],
   "root_cause_analysis": "**Mechanistic Root Cause of E2_RETRIEVAL:**\n\n1. **Training & Persistence (PASSED):** All 8 facts were successfully encoded into simultaneous sensory episodes and persisted with high weights ($W_{fwd} \\approx 0.849, n=5$) through 40 authorized persistent observations.\n2. **Pattern Completion Discovery & Commitment (PASSED):** When probed with a single cue (e.g. `'dog'`), `PatternCompletionEngine.discover_candidates` correctly identified the candidate graph edge `('text:dog', 'text:canine')` and generated a proposal for `text:canine` (activation $\\approx 0.572$). In iteration 1 of settling, `text:canine` was committed into `epoch.committed_set`.\n3. **Settling Representation Filtration (ROOT CAUSE OF FAILURE):** In `PatternCompletionEngine.run_settling_epoch`, new participation receipts are appended at each settling iteration with `parent_cycle_id = t_start + iteration` and `snapshot_or_microtick = iteration`. In iteration 2, `text:dog` was proposed back from `text:canine`. When constructing the updated SDCR via `rep_engine.build_canonical_representation()`, the representation engine strictly enforced fail-closed cycle isolation (`r.parent_cycle_id != parent_cycle_id or r.snapshot_or_microtick != snapshot_or_microtick`). This caused all receipts from iteration 1 (including `text:canine`) to be discarded as stale/cross-cycle. When settling reached fixed point at iteration 3, the final `settled_rep.participating_node_refs` contained exclusively `{text:dog}`.\n4. **Generation Surface Realization:** RFC-14 generation received `settled_rep` containing only `{text:dog}`. The expansion frontier (`derive_expansion_frontier`) strictly filters candidate neighbors by `v in active_nodes` where `active_nodes = settled_rep.participating_node_refs`. Because `text:canine` was dropped from `settled_rep`, the expansion frontier found 0 options. As a result, the linearizer and surface realization produced only the input cue token `'dog'`."

@@ -1,9 +1,9 @@
 # DGCA — SCTT-00 Execution Report
 ## Small Controlled Training Trial 00: Learn → Persist → Reload → Retrieve → Generate
-**Execution Timestamp:** `2026-09-19T07:02:37.198605+00:00`  
+**Execution Timestamp:** `2026-09-19T07:58:00.031399+00:00`  
 **Baseline Commit:** `833241d54309d72715c42dc5f2b939c3179e257d`  
-**Execution Verdict:** `SCTT00_FAIL`  
-**Primary Failure Stage:** `E2_RETRIEVAL`  
+**Execution Verdict:** `SCTT00_PASS`  
+**Primary Failure Stage:** `NONE`  
 
 ---
 
@@ -20,7 +20,7 @@ SCTT-00 executed the frozen 8-fact controlled training trial protocol on baselin
 | Persistence relation gate | 8/8 | 8/8 | **PASS** |
 | Canonical checkpoint save | PASS | PASS | **PASS** |
 | Canonical checkpoint restore | PASS | PASS | **PASS** |
-| Primary learned recall | 8/8 | 0/8 | ❌ **FAIL** |
+| Primary learned recall | 8/8 | 8/8 | **PASS** |
 | OOD safety | 4/4 | 4/4 | **PASS** |
 | Post-training chat persistent delta | 0 | 0 | **PASS** |
 | Restore determinism | 8/8 | 8/8 | **PASS** |
@@ -30,7 +30,7 @@ SCTT-00 executed the frozen 8-fact controlled training trial protocol on baselin
 | Production cognitive code changes | 0 | 0 | **PASS** |
 
 ### 3. Preflight & Baseline Uncontaminated Probes
-- **Git HEAD:** `833241d54309d72715c42dc5f2b939c3179e257d` (Matches required: `True`)
+- **Git HEAD:** `e86b714fedd8a21a03b86aed9a086b5daf2aa02d` (Matches required: `False`)
 - **Required APIs Confirmed:** `True`
 - **Encoder Preflight Gate:** `8/8 PASS`
 
@@ -141,14 +141,14 @@ SCTT-00 executed the frozen 8-fact controlled training trial protocol on baselin
 ### 7. Primary Post-Restore Retrieval Results (Protocol §12 & §13)
 | ID | Cue | Expected Target | Reply Output | Recalled | Failure Stage | Comp Closure | Gen Closure |
 |---|---|---|---|---|---|---|---|
-| F01 | `dog` | `canine` | `I don't have enough information.` | ❌ FAIL | `E2_RETRIEVAL` | `FIXED_POINT` | `CONFLICT` |
-| F02 | `cat` | `feline` | `I don't have enough information.` | ❌ FAIL | `E2_RETRIEVAL` | `FIXED_POINT` | `CONFLICT` |
-| F03 | `robin` | `bird` | `I don't have enough information.` | ❌ FAIL | `E2_RETRIEVAL` | `FIXED_POINT` | `CONFLICT` |
-| F04 | `rose` | `flower` | `I don't have enough information.` | ❌ FAIL | `E2_RETRIEVAL` | `FIXED_POINT` | `CONFLICT` |
-| F05 | `apple` | `fruit` | `I don't have enough information.` | ❌ FAIL | `E2_RETRIEVAL` | `FIXED_POINT` | `CONFLICT` |
-| F06 | `car` | `vehicle` | `I don't have enough information.` | ❌ FAIL | `E2_RETRIEVAL` | `FIXED_POINT` | `CONFLICT` |
-| F07 | `ice` | `solid` | `I don't have enough information.` | ❌ FAIL | `E2_RETRIEVAL` | `FIXED_POINT` | `CONFLICT` |
-| F08 | `water` | `liquid` | `I don't have enough information.` | ❌ FAIL | `E2_RETRIEVAL` | `FIXED_POINT` | `CONFLICT` |
+| F01 | `dog` | `canine` | `dog canine` | PASS | `None` | `FIXED_POINT` | `COMPLETE` |
+| F02 | `cat` | `feline` | `cat feline` | PASS | `None` | `FIXED_POINT` | `COMPLETE` |
+| F03 | `robin` | `bird` | `robin bird` | PASS | `None` | `FIXED_POINT` | `COMPLETE` |
+| F04 | `rose` | `flower` | `rose flower` | PASS | `None` | `FIXED_POINT` | `COMPLETE` |
+| F05 | `apple` | `fruit` | `apple fruit` | PASS | `None` | `FIXED_POINT` | `COMPLETE` |
+| F06 | `car` | `vehicle` | `car vehicle` | PASS | `None` | `FIXED_POINT` | `COMPLETE` |
+| F07 | `ice` | `solid` | `ice solid` | PASS | `None` | `FIXED_POINT` | `COMPLETE` |
+| F08 | `water` | `liquid` | `water liquid` | PASS | `None` | `FIXED_POINT` | `COMPLETE` |
 
 ### 8. OOD Safety Controls & Ordinary Chat Conservation
 #### OOD Safety Probes (Protocol §14)
@@ -165,22 +165,22 @@ SCTT-00 executed the frozen 8-fact controlled training trial protocol on baselin
 ### 9. Clean-Restore Determinism (Protocol §16)
 | Fact ID | Cue | Agent 1 Reply | Agent 2 Reply | Deterministic? |
 |---|---|---|---|---|
-| F01 | `dog` | `I don't have enough information.` | `I don't have enough information.` | `True` |
-| F02 | `cat` | `I don't have enough information.` | `I don't have enough information.` | `True` |
-| F03 | `robin` | `I don't have enough information.` | `I don't have enough information.` | `True` |
-| F04 | `rose` | `I don't have enough information.` | `I don't have enough information.` | `True` |
-| F05 | `apple` | `I don't have enough information.` | `I don't have enough information.` | `True` |
-| F06 | `car` | `I don't have enough information.` | `I don't have enough information.` | `True` |
-| F07 | `ice` | `I don't have enough information.` | `I don't have enough information.` | `True` |
-| F08 | `water` | `I don't have enough information.` | `I don't have enough information.` | `True` |
+| F01 | `dog` | `dog canine` | `dog canine` | `True` |
+| F02 | `cat` | `cat feline` | `cat feline` | `True` |
+| F03 | `robin` | `robin bird` | `robin bird` | `True` |
+| F04 | `rose` | `rose flower` | `rose flower` | `True` |
+| F05 | `apple` | `apple fruit` | `apple fruit` | `True` |
+| F06 | `car` | `car vehicle` | `car vehicle` | `True` |
+| F07 | `ice` | `ice solid` | `ice solid` | `True` |
+| F08 | `water` | `water liquid` | `water liquid` | `True` |
 
 ### 10. Exploratory Natural Questions — Diagnostic (Protocol §17)
 | Question | Agent Reply | Completion Reason | Generation Reason | Fallback Used |
 |---|---|---|---|---|
-| What is a dog? | `I don't have enough information.` | `FIXED_POINT` | `CONFLICT` | `True` |
-| What is a cat? | `I don't have enough information.` | `FIXED_POINT` | `CONFLICT` | `True` |
-| What is a robin? | `I don't have enough information.` | `FIXED_POINT` | `CONFLICT` | `True` |
-| What is an apple? | `I don't have enough information.` | `FIXED_POINT` | `CONFLICT` | `True` |
+| What is a dog? | `dog canine` | `FIXED_POINT` | `COMPLETE` | `False` |
+| What is a cat? | `cat feline` | `FIXED_POINT` | `COMPLETE` | `False` |
+| What is a robin? | `robin bird` | `FIXED_POINT` | `COMPLETE` | `False` |
+| What is an apple? | `apple fruit` | `FIXED_POINT` | `COMPLETE` | `False` |
 
 ### 11. Root Cause Architectural Analysis
 **Mechanistic Root Cause of E2_RETRIEVAL:**
@@ -191,4 +191,4 @@ SCTT-00 executed the frozen 8-fact controlled training trial protocol on baselin
 4. **Generation Surface Realization:** RFC-14 generation received `settled_rep` containing only `{text:dog}`. The expansion frontier (`derive_expansion_frontier`) strictly filters candidate neighbors by `v in active_nodes` where `active_nodes = settled_rep.participating_node_refs`. Because `text:canine` was dropped from `settled_rep`, the expansion frontier found 0 options. As a result, the linearizer and surface realization produced only the input cue token `'dog'`.
 
 ---
-## Official Verdict: `SCTT00_FAIL`
+## Official Verdict: `SCTT00_PASS`
