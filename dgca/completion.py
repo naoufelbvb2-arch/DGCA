@@ -15,6 +15,7 @@ from .config import Law
 from .representation import (
     ParticipationReceipt,
     SparseDistributedCognitiveRepresentation,
+    TransientBindingReceipt,
 )
 
 if TYPE_CHECKING:
@@ -606,6 +607,216 @@ class PatternCompletionEngine:
 
         return "AMBIGUOUS", frozenset(non_dominated), shared_safe
 
+    def _reproject_settling_snapshot(
+        self,
+        *,
+        current_rep: SparseDistributedCognitiveRepresentation,
+        new_commits: list[ReinstatementProposal],
+        epoch: SettlingEpoch,
+        new_cycle: int,
+        new_tick: int,
+        canonical_identity: bool,
+        receipt_slot_counter: int,
+        tbr_slot_counter: int,
+        activation_sink: CompletionActivationSink | None = None,
+    ) -> tuple[
+        list[ParticipationReceipt],
+        list[TransientBindingReceipt],
+        int,
+        int,
+    ]:
+        """RFC13-SR01: Validated current-snapshot reprojection across Law-15 micro-snapshots.
+
+        Reconstructs the next SDCR from fresh current-snapshot receipts representing
+        the still-lawful current state plus newly committed reinstatements (§4, §6-§10).
+        Never passes stale receipts or stale TBRs into RFC-12.
+        """
+        fresh_receipts: list[ParticipationReceipt] = []
+        planned_nodes: set[str] = set()
+        planned_edges: set[tuple[str, str]] = set()
+
+        eligible_nodes = set(current_rep.participating_node_refs)
+        eligible_edges = set(current_rep.participating_edge_refs)
+
+        # 1. Reproject still-lawful participation receipts in current tuple order (§6, §7, §9)
+        for old_r in current_rep.participation_receipts:
+            if old_r.participation_kind == "node":
+                nid = str(old_r.element_ref)
+                if nid in eligible_nodes and nid in self._graph.nodes:
+                    node_obj = self._graph.nodes[nid]
+                    if (node_obj is not None and node_obj.A > 0.0) or old_r.activation_magnitude > 0.0:
+                        if canonical_identity:
+                            from .causal_identity import derive_participation_receipt_id
+
+                            rec_id = derive_participation_receipt_id(
+                                micro_episode_id=epoch.epoch_id,
+                                participation_kind="node",
+                                element_ref=nid,
+                                scope_refs=old_r.scope_refs,
+                                slot_index=receipt_slot_counter,
+                                prefix="rec_",
+                            )
+                        else:
+                            rec_id = f"rec_reproj_node_{epoch.epoch_id}_{receipt_slot_counter}_{old_r.receipt_id}"
+                        receipt_slot_counter += 1
+
+                        fresh_rec = ParticipationReceipt(
+                            receipt_id=rec_id,
+                            element_ref=nid,
+                            parent_cycle_id=new_cycle,
+                            snapshot_or_microtick=new_tick,
+                            origin_lineage=old_r.origin_lineage,
+                            participation_kind="node",
+                            scope_refs=tuple(old_r.scope_refs),
+                            relational_drive=old_r.relational_drive,
+                            activation_magnitude=old_r.activation_magnitude,
+                            created_t=new_cycle,
+                        )
+                        fresh_receipts.append(fresh_rec)
+                        planned_nodes.add(nid)
+
+            elif old_r.participation_kind == "edge":
+                edge_pair = tuple(old_r.element_ref)  # type: ignore[arg-type]
+                edge_obj = self._graph.edge(edge_pair[0], edge_pair[1])
+                if (
+                    edge_pair in eligible_edges
+                    and edge_obj is not None
+                    and edge_obj.gate_open(current_rep.context_binding_ref)
+                    and edge_pair[0] in eligible_nodes
+                    and edge_pair[1] in eligible_nodes
+                ):
+                    if canonical_identity:
+                        from .causal_identity import derive_participation_receipt_id
+
+                        rec_id = derive_participation_receipt_id(
+                            micro_episode_id=epoch.epoch_id,
+                            participation_kind="edge",
+                            element_ref=edge_pair,
+                            scope_refs=old_r.scope_refs,
+                            slot_index=receipt_slot_counter,
+                            prefix="rec_",
+                        )
+                    else:
+                        rec_id = f"rec_reproj_edge_{epoch.epoch_id}_{receipt_slot_counter}_{old_r.receipt_id}"
+                    receipt_slot_counter += 1
+
+                    fresh_rec = ParticipationReceipt(
+                        receipt_id=rec_id,
+                        element_ref=edge_pair,
+                        parent_cycle_id=new_cycle,
+                        snapshot_or_microtick=new_tick,
+                        origin_lineage=old_r.origin_lineage,
+                        participation_kind="edge",
+                        scope_refs=tuple(old_r.scope_refs),
+                        relational_drive=old_r.relational_drive,
+                        activation_magnitude=old_r.activation_magnitude,
+                        created_t=new_cycle,
+                    )
+                    fresh_receipts.append(fresh_rec)
+                    planned_edges.add(edge_pair)
+
+        # 2. Add fresh receipts for new commits sorted by (target_ref, scope_view, role_ref, proposal_id) (§8, §9)
+        sorted_commits = sorted(
+            new_commits,
+            key=lambda p: (
+                str(p.target_ref),
+                tuple(p.scope_view),
+                p.role_ref or "",
+                p.proposal_id,
+            ),
+        )
+        for p in sorted_commits:
+            commit_key = (p.target_ref, p.scope_view, p.role_ref)
+            epoch.committed_set.add(commit_key)
+            self.observability.scoped_commits += 1
+
+            if activation_sink is not None:
+                if isinstance(p.target_ref, str):
+                    activation_sink.excite_existing_node(
+                        p.target_ref,
+                        t=new_cycle,
+                        value=p.estimated_activation,
+                        episode=getattr(epoch, "epoch_id", None),
+                    )
+            else:
+                if isinstance(p.target_ref, str) and p.target_ref in self._graph.nodes:
+                    node_obj = self._graph.nodes[p.target_ref]
+                    node_obj.excite(new_cycle, p.estimated_activation)
+
+            if canonical_identity:
+                from .causal_identity import derive_participation_receipt_id
+
+                rec_id = derive_participation_receipt_id(
+                    micro_episode_id=epoch.epoch_id,
+                    participation_kind=p.target_kind,
+                    element_ref=p.target_ref,
+                    scope_refs=p.scope_view,
+                    slot_index=receipt_slot_counter,
+                    prefix="rec_",
+                )
+            else:
+                rec_id = f"rec_comp_{p.proposal_id}_{receipt_slot_counter}"
+            receipt_slot_counter += 1
+
+            new_rec = ParticipationReceipt(
+                receipt_id=rec_id,
+                element_ref=p.target_ref,
+                parent_cycle_id=new_cycle,
+                snapshot_or_microtick=new_tick,
+                origin_lineage="PATTERN_COMPLETION",
+                participation_kind=p.target_kind,
+                scope_refs=tuple(p.scope_view),
+                activation_magnitude=p.estimated_activation,
+                relational_drive=p.estimated_activation,
+                created_t=new_cycle,
+            )
+            fresh_receipts.append(new_rec)
+            if p.target_kind == "node" and isinstance(p.target_ref, str):
+                planned_nodes.add(p.target_ref)
+            elif p.target_kind == "edge" and isinstance(p.target_ref, tuple):
+                planned_edges.add(p.target_ref)
+
+        # 3. TBR Reprojection (§10): Drop if any member is non-current; reissue if all current
+        fresh_tbrs: list[TransientBindingReceipt] = []
+        if current_rep.transient_binding_receipts:
+            for old_tbr in current_rep.transient_binding_receipts:
+                if not old_tbr.binding_scope_id:
+                    continue
+                all_members_current = True
+                for member in old_tbr.member_receipt_refs:
+                    if (isinstance(member, str) and member not in planned_nodes) or (
+                        isinstance(member, tuple) and member not in planned_edges
+                    ):
+                        all_members_current = False
+                        break
+
+                if all_members_current:
+                    if canonical_identity:
+                        from .causal_identity import derive_transient_binding_receipt_id
+
+                        bid = derive_transient_binding_receipt_id(
+                            micro_episode_id=epoch.epoch_id,
+                            binding_scope_id=old_tbr.binding_scope_id,
+                            member_receipt_refs=old_tbr.member_receipt_refs,
+                            binding_index=tbr_slot_counter,
+                            prefix="tbr_",
+                        )
+                    else:
+                        bid = f"tbr_reproj_{epoch.epoch_id}_{tbr_slot_counter}"
+                    tbr_slot_counter += 1
+
+                    fresh_tbr = TransientBindingReceipt(
+                        binding_id=bid,
+                        parent_snapshot_ref=(new_cycle, new_tick),
+                        binding_scope_id=old_tbr.binding_scope_id,
+                        member_receipt_refs=tuple(old_tbr.member_receipt_refs),
+                        origin_view=old_tbr.origin_view,
+                        created_t=new_cycle,
+                    )
+                    fresh_tbrs.append(fresh_tbr)
+
+        return fresh_receipts, fresh_tbrs, receipt_slot_counter, tbr_slot_counter
+
     # ─────────────────────────────────────────────────────── RFC-13.5 / Law 15: Settling
     def run_settling_epoch(
         self,
@@ -660,6 +871,8 @@ class PatternCompletionEngine:
         current_rep = initial_representation
         unresolved_cas_records: list[dict[str, Any]] = []
         iterations = 0
+        receipt_slot_counter = 0
+        tbr_slot_counter = 0
 
         while epoch.status == "ACTIVE":
             iterations += 1
@@ -748,72 +961,39 @@ class PatternCompletionEngine:
             epoch.remaining_budget = max(0.0, epoch.remaining_budget - step_cost)
 
             # تسجيل التثبيت وإصدار التنشيط الداخلي القانوني
-            new_receipts: list[ParticipationReceipt] = list(current_rep.participation_receipts)
-            for p in new_commits:
-                commit_key = (p.target_ref, p.scope_view, p.role_ref)
-                epoch.committed_set.add(commit_key)
-                self.observability.scoped_commits += 1
+            # 8 & 9. تنقيذ إعادة الإسقاط المعيارية للقطة وبناء SDCR جديد (RFC13-SR01 Reprojection)
+            new_cycle = t_start + iterations
+            new_tick = iterations
+            fresh_receipts, fresh_tbrs, receipt_slot_counter, tbr_slot_counter = self._reproject_settling_snapshot(
+                current_rep=current_rep,
+                new_commits=new_commits,
+                epoch=epoch,
+                new_cycle=new_cycle,
+                new_tick=new_tick,
+                canonical_identity=canonical_identity,
+                receipt_slot_counter=receipt_slot_counter,
+                tbr_slot_counter=tbr_slot_counter,
+                activation_sink=activation_sink,
+            )
 
-                # تنشيط العقدة فيزيائياً في الرسم البياني بصفة مؤقتة
-                if activation_sink is not None:
-                    if isinstance(p.target_ref, str):
-                        activation_sink.excite_existing_node(
-                            p.target_ref,
-                            t=t_start + iterations,
-                            value=p.estimated_activation,
-                            episode=getattr(epoch, "epoch_id", None),
-                        )
-                else:
-                    if isinstance(p.target_ref, str) and p.target_ref in self._graph.nodes:
-                        node_obj = self._graph.nodes[p.target_ref]
-                        node_obj.excite(t_start + iterations, p.estimated_activation)
-
-                # إضافة إيصال مشاركة جديد يحمل provenance = PATTERN_COMPLETION
-                if canonical_identity:
-                    from .causal_identity import derive_participation_receipt_id
-                    rec_id = derive_participation_receipt_id(
-                        micro_episode_id=epoch.epoch_id,
-                        participation_kind=p.target_kind,
-                        element_ref=p.target_ref,
-                        scope_refs=p.scope_view,
-                        slot_index=iterations,
-                        prefix="rec_",
-                    )
-                else:
-                    rec_id = f"rec_comp_{p.proposal_id}"
-
-                new_rec = ParticipationReceipt(
-                    receipt_id=rec_id,
-                    element_ref=p.target_ref,
-                    parent_cycle_id=t_start + iterations,
-                    snapshot_or_microtick=iterations,
-                    origin_lineage="PATTERN_COMPLETION",
-                    participation_kind=p.target_kind,
-                    scope_refs=p.scope_view,
-                    activation_magnitude=p.estimated_activation,
-                    relational_drive=p.estimated_activation,
-                )
-                new_receipts.append(new_rec)
-
-            # 9. إعادة بناء لقطة SDCR جديدة معيارية عبر المحرك (RFC-12 Canonical Re-entry)
             rep_engine = self._graph.representation_engine
             if canonical_identity:
                 current_rep = rep_engine.build_canonical_representation(
                     causal_parent_ref=current_rep.representation_id,
-                    parent_cycle_id=t_start + iterations,
-                    snapshot_or_microtick=iterations,
+                    parent_cycle_id=new_cycle,
+                    snapshot_or_microtick=new_tick,
                     context=current_rep.context_binding_ref,
-                    participation_receipts=new_receipts,
-                    transient_bindings=list(current_rep.transient_binding_receipts),
+                    participation_receipts=fresh_receipts,
+                    transient_bindings=fresh_tbrs,
                     active_assemblies=current_rep.active_assembly_refs,
                 )
             else:
                 current_rep = rep_engine.build_representation(
-                    parent_cycle_id=t_start + iterations,
-                    snapshot_or_microtick=iterations,
+                    parent_cycle_id=new_cycle,
+                    snapshot_or_microtick=new_tick,
                     context=current_rep.context_binding_ref,
-                    participation_receipts=new_receipts,
-                    transient_bindings=list(current_rep.transient_binding_receipts),
+                    participation_receipts=fresh_receipts,
+                    transient_bindings=fresh_tbrs,
                     active_assemblies=current_rep.active_assembly_refs,
                 )
 

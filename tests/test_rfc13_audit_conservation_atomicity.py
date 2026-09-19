@@ -301,7 +301,8 @@ def test_audit_deterministic_replay_25_runs() -> None:
         signatures.append(sig)
 
     assert len(set(signatures)) == 1, f"Replay divergence observed: {set(signatures)}"
-    assert signatures[0] == "8652eb05126afa8c", f"Unexpected canonical signature: {signatures[0]}"
+    # Post-SR01 repaired canonical behavioral signature
+    assert signatures[0] == "3adbfcfd1f24802a", f"Unexpected canonical signature: {signatures[0]}"
 
 
 # ─────────────────────────────────────────────────────────── 5. RFC-13 Disabled / Zero-Completion Equivalence
