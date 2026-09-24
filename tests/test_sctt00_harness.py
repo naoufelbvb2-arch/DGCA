@@ -5,6 +5,7 @@ enforces real fail-closed git provenance, and produces schema-compliant results.
 """
 
 import json
+import subprocess
 from pathlib import Path
 from unittest.mock import patch
 
@@ -14,6 +15,7 @@ from dgca.agent import CognitiveAgent
 from experiments.sctt00 import (
     AUTHORIZED_REPAIR_ANCHOR_COMMIT,
     PROTOCOL_BASELINE_COMMIT,
+    _run_git_name_only_diff,
     compute_safety_snapshot,
     measure_git_provenance,
     run_preflight,
@@ -130,3 +132,192 @@ def test_sctt00_checkpoint_chat_conservation() -> None:
     assert s_before["logical_time"] == s_after["logical_time"]
     assert s_before["pending_evidence"] == s_after["pending_evidence"]
     assert s_before["n_total"] == s_after["n_total"]
+
+
+# =============================================================================
+# C02 Tests: Git Provenance Command Failure Hardening (C02-T01 to C02-T09)
+# =============================================================================
+
+def test_c02_t01_baseline_to_anchor_git_diff_nonzero_blocks():
+    """C02-T01: baseline -> anchor git diff returns non-zero => BLOCKED."""
+    original_subprocess_run = subprocess.run
+
+    def fake_subprocess_run(cmd, *args, **kwargs):
+        if cmd[:3] == ["git", "diff", "--name-only"] and PROTOCOL_BASELINE_COMMIT in cmd:
+            return subprocess.CompletedProcess(
+                cmd, returncode=128, stdout="", stderr="fatal: bad baseline object"
+            )
+        return original_subprocess_run(cmd, *args, **kwargs)
+
+    with patch("subprocess.run", side_effect=fake_subprocess_run):
+        prov = measure_git_provenance()
+        assert prov["lineage_valid"] is False
+        assert any("fatal: bad baseline object" in err for err in prov["provenance_errors"])
+        with pytest.raises(RuntimeError, match="BLOCKED"):
+            run_preflight(require_clean=False)
+
+
+def test_c02_t02_anchor_to_execution_git_diff_nonzero_blocks():
+    """C02-T02: anchor -> execution git diff returns non-zero => BLOCKED."""
+    original_subprocess_run = subprocess.run
+
+    def fake_subprocess_run(cmd, *args, **kwargs):
+        if (
+            cmd[:3] == ["git", "diff", "--name-only"]
+            and AUTHORIZED_REPAIR_ANCHOR_COMMIT in cmd
+            and len(cmd) > 5
+            and cmd[4] != "--"
+        ):
+            return subprocess.CompletedProcess(
+                cmd, returncode=128, stdout="", stderr="fatal: bad execution revision"
+            )
+        return original_subprocess_run(cmd, *args, **kwargs)
+
+    with patch("subprocess.run", side_effect=fake_subprocess_run):
+        prov = measure_git_provenance()
+        assert prov["lineage_valid"] is False
+        assert any("fatal: bad execution revision" in err for err in prov["provenance_errors"])
+        with pytest.raises(RuntimeError, match="BLOCKED"):
+            run_preflight(require_clean=False)
+
+
+def test_c02_t03_anchor_to_working_tree_git_diff_nonzero_blocks():
+    """C02-T03: anchor -> working-tree git diff returns non-zero => BLOCKED."""
+    original_subprocess_run = subprocess.run
+
+    def fake_subprocess_run(cmd, *args, **kwargs):
+        if (
+            cmd[:3] == ["git", "diff", "--name-only"]
+            and AUTHORIZED_REPAIR_ANCHOR_COMMIT in cmd
+            and len(cmd) > 4
+            and cmd[4] == "--"
+        ):
+            return subprocess.CompletedProcess(
+                cmd, returncode=128, stdout="", stderr="fatal: working tree read error"
+            )
+        return original_subprocess_run(cmd, *args, **kwargs)
+
+    with patch("subprocess.run", side_effect=fake_subprocess_run):
+        prov = measure_git_provenance()
+        assert prov["lineage_valid"] is False
+        assert any("fatal: working tree read error" in err for err in prov["provenance_errors"])
+        with pytest.raises(RuntimeError, match="BLOCKED"):
+            run_preflight(require_clean=False)
+
+
+def test_c02_t04_nonzero_git_diff_with_empty_stdout_cannot_become_empty_list():
+    """C02-T04: non-zero git diff with empty stdout cannot become []."""
+    mock_errors: list[str] = []
+    fake_proc = subprocess.CompletedProcess(
+        ["git", "diff", "--name-only", "A", "B", "--", "dgca/"],
+        returncode=128,
+        stdout="",
+        stderr="fatal: corrupted repository index",
+    )
+    with patch("subprocess.run", return_value=fake_proc):
+        diff_result = _run_git_name_only_diff(["A", "B"], REPO_ROOT, mock_errors)
+
+    assert diff_result != []
+    assert len(diff_result) == 1
+    assert diff_result[0].startswith("ERROR:")
+    assert "corrupted repository index" in diff_result[0]
+    assert len(mock_errors) == 1
+
+
+def test_c02_t05_nonzero_git_diff_with_partial_stdout_still_blocked():
+    """C02-T05: non-zero git diff with misleading partial stdout still BLOCKED."""
+    mock_errors: list[str] = []
+    fake_proc = subprocess.CompletedProcess(
+        ["git", "diff", "--name-only", "A", "B", "--", "dgca/"],
+        returncode=1,
+        stdout="dgca/completion.py\ndgca/generation.py\n",
+        stderr="warning: partial diff error",
+    )
+    with patch("subprocess.run", return_value=fake_proc):
+        diff_result = _run_git_name_only_diff(["A", "B"], REPO_ROOT, mock_errors)
+
+    assert diff_result != ["dgca/completion.py", "dgca/generation.py"]
+    assert len(diff_result) == 1
+    assert diff_result[0].startswith("ERROR:")
+    assert len(mock_errors) == 1
+
+    fake_prov = measure_git_provenance()
+    fake_prov = dict(fake_prov)
+    fake_prov["provenance_errors"] = ["ERROR: git diff failed (rc=1): warning: partial diff error"]
+    with (
+        patch("experiments.sctt00.measure_git_provenance", return_value=fake_prov),
+        pytest.raises(RuntimeError, match="BLOCKED"),
+    ):
+        run_preflight(require_clean=False)
+
+
+def test_c02_t06_successful_git_diff_with_empty_stdout_remains_valid_empty_diff():
+    """C02-T06: successful git diff with empty stdout remains valid empty diff."""
+    mock_errors: list[str] = []
+    fake_proc = subprocess.CompletedProcess(
+        ["git", "diff", "--name-only", "A", "B", "--", "dgca/"],
+        returncode=0,
+        stdout="",
+        stderr="",
+    )
+    with patch("subprocess.run", return_value=fake_proc):
+        diff_result = _run_git_name_only_diff(["A", "B"], REPO_ROOT, mock_errors)
+
+    assert diff_result == []
+    assert len(mock_errors) == 0
+
+
+def test_c02_t07_stderr_error_detail_is_retained_for_diagnostics():
+    """C02-T07: stderr/error detail is retained for diagnostics."""
+    mock_errors: list[str] = []
+    diagnostic_stderr = "fatal: ambiguous argument 'HEAD~99': unknown revision"
+    fake_proc = subprocess.CompletedProcess(
+        ["git", "diff", "--name-only", "HEAD~99", "--", "dgca/"],
+        returncode=128,
+        stdout="",
+        stderr=diagnostic_stderr,
+    )
+    with patch("subprocess.run", return_value=fake_proc):
+        diff_result = _run_git_name_only_diff(["HEAD~99"], REPO_ROOT, mock_errors)
+
+    assert len(diff_result) == 1
+    assert diagnostic_stderr in diff_result[0]
+    assert len(mock_errors) == 1
+    assert diagnostic_stderr in mock_errors[0]
+
+
+def test_c02_t08_ordinary_current_ric02_head_blocks_sctt_preflight():
+    """C02-T08: ordinary current RIC-02 HEAD still blocks historical SCTT preflight because of real post-anchor production drift."""
+    with pytest.raises(RuntimeError, match="Unauthorized dgca/\\*\\* production drift"):
+        run_preflight(require_clean=False)
+
+
+def test_c02_t09_historical_committed_sctt_artifacts_remain_untouched():
+    """C02-T09: historical committed SCTT artifacts remain untouched and conform to historical tag."""
+    results_json = REPO_ROOT / "experiments" / "results" / "sctt00-results.json"
+    report_md = REPO_ROOT / "papers MD" / "SCTT-00-EXECUTION-REPORT.md"
+    ckpt_file = REPO_ROOT / "data" / "checkpoints" / "SCTT00-trained.json"
+
+    assert results_json.is_file()
+    assert report_md.is_file()
+    assert ckpt_file.is_file()
+
+    diff_res = subprocess.run(
+        [
+            "git",
+            "diff",
+            "--name-only",
+            "SCTT00-VR01-VERIFIED",
+            "HEAD",
+            "--",
+            "experiments/results/sctt00-results.json",
+            "papers MD/SCTT-00-EXECUTION-REPORT.md",
+            "data/checkpoints/SCTT00-trained.json",
+        ],
+        cwd=str(REPO_ROOT),
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+    changed_artifacts = [line.strip() for line in diff_res.stdout.splitlines() if line.strip()]
+    assert changed_artifacts == [], f"Historical artifacts modified from tag: {changed_artifacts}"

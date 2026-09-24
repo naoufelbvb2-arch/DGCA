@@ -120,16 +120,71 @@ def compute_safety_snapshot(target: CanonicalSystemRuntime | CanonicalR1RuntimeR
     }
 
 
+def _run_git_name_only_diff(
+    args: list[str],
+    repo_root: Path,
+    provenance_errors: list[str],
+) -> list[str]:
+    """Runs a git diff --name-only command with strict returncode checking.
+
+    Distinguishes success with empty output (valid zero diff) from command failure.
+    On returncode == 0: returns normalized list of changed files.
+    On returncode != 0 or OSError: records stderr/detail into provenance_errors and
+    returns a singleton error list [f"ERROR: ..."], ensuring non-zero exit code never
+    yields an empty list ([]).
+    """
+    cmd = ["git", "diff", "--name-only", *args, "--", "dgca/"]
+    try:
+        proc = subprocess.run(
+            cmd,
+            cwd=str(repo_root),
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        if proc.returncode != 0:
+            stderr_detail = proc.stderr.strip()
+            stdout_detail = proc.stdout.strip()
+            detail = stderr_detail or stdout_detail or "empty error output"
+            err = (
+                f"ERROR: command {' '.join(cmd)} failed (rc={proc.returncode}): {detail}"
+            )
+            provenance_errors.append(err)
+            return [err]
+        return [
+            f.replace("\\", "/").strip()
+            for f in proc.stdout.splitlines()
+            if f.strip()
+        ]
+    except (subprocess.SubprocessError, OSError) as e:
+        err = f"ERROR: command {' '.join(cmd)} raised {type(e).__name__}: {e}"
+        provenance_errors.append(err)
+        return [err]
+
+
 def measure_git_provenance(repo_root: Path = REPO_ROOT) -> dict[str, Any]:
-    """Protocol §1, §3 & VR01: Strict measurement of git provenance and working-tree cleanliness."""
+    """Protocol §1, §3 & VR01-C01 & C02: Strict measurement of git provenance and working-tree cleanliness."""
+    provenance_errors: list[str] = []
+
     # 1. Execution source commit
     try:
-        raw_head = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=str(repo_root))
-        execution_source_commit = (
-            raw_head.decode("utf-8").strip() if isinstance(raw_head, bytes) else str(raw_head).strip()
+        proc_head = subprocess.run(
+            ["git", "rev-parse", "HEAD"],
+            cwd=str(repo_root),
+            capture_output=True,
+            text=True,
+            check=False,
         )
+        if proc_head.returncode != 0:
+            err = f"ERROR: git rev-parse HEAD failed (rc={proc_head.returncode}): {proc_head.stderr.strip()}"
+            execution_source_commit = err
+            provenance_errors.append(err)
+        else:
+            execution_source_commit = proc_head.stdout.strip()
     except (subprocess.SubprocessError, OSError) as e:
-        execution_source_commit = f"ERROR: {e}"
+        err = f"ERROR: git rev-parse HEAD raised {e}"
+        execution_source_commit = err
+        provenance_errors.append(err)
 
     # 2. Working tree cleanliness (tracked staged/unstaged + untracked)
     try:
@@ -140,12 +195,21 @@ def measure_git_provenance(repo_root: Path = REPO_ROOT) -> dict[str, Any]:
             text=True,
             check=False,
         )
-        status_lines = [line.strip() for line in proc_status.stdout.splitlines() if line.strip()]
-        working_tree_clean_at_start = (proc_status.returncode == 0) and (len(status_lines) == 0)
-        dirty_entries = status_lines
+        if proc_status.returncode != 0:
+            stderr_detail = proc_status.stderr.strip() or "empty error output"
+            err = f"ERROR: git status --porcelain failed (rc={proc_status.returncode}): {stderr_detail}"
+            working_tree_clean_at_start = False
+            dirty_entries = [err]
+            provenance_errors.append(err)
+        else:
+            status_lines = [line.strip() for line in proc_status.stdout.splitlines() if line.strip()]
+            working_tree_clean_at_start = len(status_lines) == 0
+            dirty_entries = status_lines
     except (subprocess.SubprocessError, OSError) as e:
         working_tree_clean_at_start = False
-        dirty_entries = [f"ERROR: {e}"]
+        err = f"ERROR: git status raised {e}"
+        dirty_entries = [err]
+        provenance_errors.append(err)
 
     # 3. Ancestry verification
     def resolve_rev(rev: str) -> str:
@@ -159,8 +223,11 @@ def measure_git_provenance(repo_root: Path = REPO_ROOT) -> dict[str, Any]:
             )
             if res.returncode == 0:
                 return res.stdout.strip()
-        except (subprocess.SubprocessError, OSError):
-            pass
+            provenance_errors.append(
+                f"ERROR: git rev-parse {rev} failed (rc={res.returncode}): {res.stderr.strip()}"
+            )
+        except (subprocess.SubprocessError, OSError) as e:
+            provenance_errors.append(f"ERROR: git rev-parse {rev} raised {e}")
         return rev
 
     def is_ancestor(ancestor: str, descendant: str) -> bool:
@@ -187,83 +254,44 @@ def measure_git_provenance(repo_root: Path = REPO_ROOT) -> dict[str, Any]:
     )
 
     # 4. Production files changed baseline -> anchor
-    try:
-        proc_diff_base = subprocess.run(
-            [
-                "git",
-                "diff",
-                "--name-only",
-                PROTOCOL_BASELINE_COMMIT,
-                AUTHORIZED_REPAIR_ANCHOR_COMMIT,
-                "--",
-                "dgca/",
-            ],
-            cwd=str(repo_root),
-            capture_output=True,
-            text=True,
-            check=False,
-        )
-        prod_files_base_anchor = [
-            f.replace("\\", "/").strip()
-            for f in proc_diff_base.stdout.splitlines()
-            if f.strip()
-        ]
-    except (subprocess.SubprocessError, OSError) as e:
-        prod_files_base_anchor = [f"ERROR: {e}"]
+    prod_files_base_anchor = _run_git_name_only_diff(
+        [PROTOCOL_BASELINE_COMMIT, AUTHORIZED_REPAIR_ANCHOR_COMMIT],
+        repo_root,
+        provenance_errors,
+    )
 
     # 5. Production files changed anchor -> execution HEAD
-    try:
-        proc_diff_exec = subprocess.run(
-            [
-                "git",
-                "diff",
-                "--name-only",
-                AUTHORIZED_REPAIR_ANCHOR_COMMIT,
-                execution_source_commit,
-                "--",
-                "dgca/",
-            ],
-            cwd=str(repo_root),
-            capture_output=True,
-            text=True,
-            check=False,
-        )
-        prod_files_anchor_exec = [
-            f.replace("\\", "/").strip()
-            for f in proc_diff_exec.stdout.splitlines()
-            if f.strip()
-        ]
-    except (subprocess.SubprocessError, OSError) as e:
-        prod_files_anchor_exec = [f"ERROR: {e}"]
+    prod_files_anchor_exec = _run_git_name_only_diff(
+        [AUTHORIZED_REPAIR_ANCHOR_COMMIT, execution_source_commit],
+        repo_root,
+        provenance_errors,
+    )
 
     # 6. Production files changed anchor -> working tree
-    try:
-        proc_diff_wt = subprocess.run(
-            [
-                "git",
-                "diff",
-                "--name-only",
-                AUTHORIZED_REPAIR_ANCHOR_COMMIT,
-                "--",
-                "dgca/",
-            ],
-            cwd=str(repo_root),
-            capture_output=True,
-            text=True,
-            check=False,
-        )
-        prod_files_anchor_wt = [
-            f.replace("\\", "/").strip()
-            for f in proc_diff_wt.stdout.splitlines()
-            if f.strip()
-        ]
-    except (subprocess.SubprocessError, OSError) as e:
-        prod_files_anchor_wt = [f"ERROR: {e}"]
+    prod_files_anchor_wt = _run_git_name_only_diff(
+        [AUTHORIZED_REPAIR_ANCHOR_COMMIT],
+        repo_root,
+        provenance_errors,
+    )
 
     production_drift = sorted(set(prod_files_anchor_exec + prod_files_anchor_wt))
 
+    has_errors = bool(
+        provenance_errors
+        or any(
+            str(x).startswith("ERROR:")
+            for x in (
+                [execution_source_commit]
+                + prod_files_base_anchor
+                + prod_files_anchor_exec
+                + prod_files_anchor_wt
+            )
+        )
+    )
+
     lineage_valid = (
-        baseline_is_ancestor_of_anchor
+        not has_errors
+        and baseline_is_ancestor_of_anchor
         and anchor_is_ancestor_of_execution
         and set(prod_files_base_anchor) == set(EXPECTED_AUTHORIZED_PRODUCTION_DELTA)
         and len(production_drift) == 0
@@ -281,6 +309,7 @@ def measure_git_provenance(repo_root: Path = REPO_ROOT) -> dict[str, Any]:
         "production_files_changed_baseline_to_anchor": prod_files_base_anchor,
         "production_drift_after_repair_anchor": production_drift,
         "production_files_changed_anchor_to_execution": prod_files_anchor_exec,
+        "provenance_errors": provenance_errors,
         "lineage_valid": lineage_valid,
     }
 
@@ -288,6 +317,13 @@ def measure_git_provenance(repo_root: Path = REPO_ROOT) -> dict[str, Any]:
 def run_preflight(require_clean: bool = True, repo_root: Path = REPO_ROOT) -> dict[str, Any]:
     """Protocol §1 & §3 & VR01-C01: Fail-closed verification of provenance, cleanliness, APIs, and encoder."""
     prov = measure_git_provenance(repo_root)
+
+    # 0. Fail-closed check on git command failures
+    if prov.get("provenance_errors"):
+        raise RuntimeError(
+            f"SCTT00_REPAIR_RERUN_BLOCKED: Git provenance command failure: "
+            f"{prov['provenance_errors']}"
+        )
 
     if str(prov.get("execution_source_commit", "")).startswith("ERROR:"):
         raise RuntimeError(
