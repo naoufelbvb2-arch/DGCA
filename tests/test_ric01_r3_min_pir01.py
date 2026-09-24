@@ -19,6 +19,7 @@ import dgca
 from dgca import (
     R3_MIN_RUNTIME_SEMANTICS_DIGEST,
     R3_MIN_RUNTIME_SEMANTICS_REGISTRY,
+    CanonicalSystemRuntime,
     CognitiveAgent,
     compute_r3_min_runtime_semantics_digest,
 )
@@ -88,8 +89,8 @@ def test_pir01_t04_agent_session_nonce_rejected():
 
 def test_pir01_t05_fresh_graph_prediction_always_disabled():
     """PIR01-T05: fresh graph prediction always disabled."""
-    agent = CognitiveAgent()
-    assert agent._chat_runtime._graph.enable_prediction is False
+    runtime = CanonicalSystemRuntime.fresh()
+    assert runtime.chat_runtime._graph.enable_prediction is False
 
 
 def test_pir01_t06_public_from_checkpoint_no_session_nonce():
@@ -101,9 +102,9 @@ def test_pir01_t06_public_from_checkpoint_no_session_nonce():
 
 def test_pir01_t07_from_checkpoint_session_nonce_rejected(tmp_path):
     """PIR01-T07: from_checkpoint(..., session_nonce=...) rejected with TypeError."""
-    base_agent = CognitiveAgent()
+    base_runtime = CanonicalSystemRuntime.fresh()
     ckpt_path = tmp_path / "test_ckpt.json"
-    save_canonical_r1_checkpoint(base_agent._root, ckpt_path)
+    save_canonical_r1_checkpoint(base_runtime.runtime_root, ckpt_path)
 
     with pytest.raises(TypeError, match=r"got an unexpected keyword argument 'session_nonce'"):
         CognitiveAgent.from_checkpoint(ckpt_path, session_nonce="a" * 32)
@@ -111,34 +112,34 @@ def test_pir01_t07_from_checkpoint_session_nonce_rejected(tmp_path):
 
 def test_pir01_t08_restored_graph_prediction_disabled(tmp_path):
     """PIR01-T08: restored graph prediction disabled."""
-    base_agent = CognitiveAgent()
+    base_runtime = CanonicalSystemRuntime.fresh()
     ckpt_path = tmp_path / "test_ckpt.json"
-    save_canonical_r1_checkpoint(base_agent._root, ckpt_path)
+    save_canonical_r1_checkpoint(base_runtime.runtime_root, ckpt_path)
 
-    restored = CognitiveAgent.from_checkpoint(ckpt_path)
-    assert restored._chat_runtime._graph.enable_prediction is False
+    restored = CanonicalSystemRuntime.from_checkpoint(ckpt_path)
+    assert restored.chat_runtime._graph.enable_prediction is False
 
 
 def test_pir01_t09_private_deterministic_nonce_seam_works(tmp_path):
-    """PIR01-T09: private deterministic nonce seam works for fresh and restored agents."""
+    """PIR01-T09: private deterministic nonce seam works for fresh and restored runtimes."""
     fixed_nonce = "b" * 32
-    agent1 = CognitiveAgent._for_test(session_nonce=fixed_nonce)
-    assert agent1._chat_runtime.session_nonce == fixed_nonce
+    rt1 = CanonicalSystemRuntime._for_test(session_nonce=fixed_nonce)
+    assert rt1.chat_runtime.session_nonce == fixed_nonce
 
-    agent1.chat("hello world")
-    r1 = agent1.last_turn.root_external_episode_id
+    rt1.chat("hello world")
+    r1 = rt1.last_turn.root_external_episode_id
 
-    agent2 = CognitiveAgent._for_test(session_nonce=fixed_nonce)
-    agent2.chat("completely different sentence")
-    r2 = agent2.last_turn.root_external_episode_id
+    rt2 = CanonicalSystemRuntime._for_test(session_nonce=fixed_nonce)
+    rt2.chat("completely different sentence")
+    r2 = rt2.last_turn.root_external_episode_id
     assert r1 == r2
 
     # Restored checkpoint private seam
     ckpt_path = tmp_path / "test_ckpt.json"
-    save_canonical_r1_checkpoint(agent1._root, ckpt_path)
+    save_canonical_r1_checkpoint(rt1.runtime_root, ckpt_path)
 
-    agent_restored = CognitiveAgent._from_checkpoint_for_test(ckpt_path, session_nonce=fixed_nonce)
-    assert agent_restored._chat_runtime.session_nonce == fixed_nonce
+    rt_restored = CanonicalSystemRuntime._from_checkpoint_for_test(ckpt_path, session_nonce=fixed_nonce)
+    assert rt_restored.chat_runtime.session_nonce == fixed_nonce
 
 
 def test_pir01_t10_ordinary_two_identical_text_calls_create_distinct_roots():

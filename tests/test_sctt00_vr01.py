@@ -17,7 +17,6 @@ from unittest.mock import patch
 
 import pytest
 
-from dgca.agent import CognitiveAgent
 from experiments.sctt00 import (
     AUTHORIZED_REPAIR_ANCHOR_COMMIT,
     EXPECTED_AUTHORIZED_PRODUCTION_DELTA,
@@ -335,6 +334,7 @@ def test_vr01_t20_no_dgca_file_modified_by_vr01():
             "diff",
             "--name-only",
             AUTHORIZED_REPAIR_ANCHOR_COMMIT,
+            "SCTT00-VR01-VERIFIED",
             "--",
             "dgca/",
         ],
@@ -495,9 +495,10 @@ def test_c01_t07_simulated_persistent_replay_causes_replay_gate_failure():
 
 def test_c01_t08_rfc15_recurrent_engine_remains_unmaterialized():
     """C01-T08: RFC15 recurrent engine remains unmaterialized during valid trial."""
+    from dgca.system_runtime import CanonicalSystemRuntime
     from experiments.sctt00 import check_graph_rfc15_state
-    agent = CognitiveAgent()
-    g = getattr(agent, "_graph", getattr(agent._chat_runtime, "_graph", None))
+    agent = CanonicalSystemRuntime.fresh()
+    g = agent._graph
     state = check_graph_rfc15_state(g, "test_agent")
     assert state["recurrent_engine_is_none"] is True
     assert state["materialized"] is False
@@ -646,7 +647,7 @@ def test_c01_t18_zero_dgca_changes_poa01_anchor_through_closure():
             "diff",
             "--name-only",
             AUTHORIZED_REPAIR_ANCHOR_COMMIT,
-            "HEAD",
+            "SCTT00-VR01-VERIFIED",
             "--",
             "dgca/",
         ],

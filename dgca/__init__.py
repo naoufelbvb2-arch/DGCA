@@ -239,6 +239,7 @@ from .representation import (
     TransientBindingReceipt,
     rfc12_behavioral_signature,
 )
+from .system_runtime import CanonicalSystemRuntime
 from .vision import (
     PixelFrame,
     SpatialRelation,
@@ -291,6 +292,7 @@ __all__ = [
     "CanonicalObservationBridge",
     "CanonicalObservationResult",
     "CanonicalR1RuntimeRoot",
+    "CanonicalSystemRuntime",
     "CausalCommitCollisionError",
     "CausalCommitLedger",
     "CausalCommitRecord",

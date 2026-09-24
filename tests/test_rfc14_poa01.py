@@ -26,6 +26,7 @@ from dgca.persistence import (
     compute_checkpoint_state_digest,
     extract_canonical_persistent_payload,
 )
+from dgca.system_runtime import CanonicalSystemRuntime
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SCTT00_CHECKPOINT = REPO_ROOT / "data" / "checkpoints" / "SCTT00-trained.json"
@@ -273,9 +274,9 @@ def test_poa01_t16_sctt_dog_canine_no_longer_false_order_conflict():
     """POA01-T16: RFC13-SR01 final {dog,canine} no longer creates false ORDER_CONFLICT."""
     ckpt = _get_poa01_test_checkpoint()
 
-    agent = CognitiveAgent.from_checkpoint(ckpt)
-    g = agent._root._graph
-    obs = agent._chat_runtime._bridge.observe_text(
+    runtime = CanonicalSystemRuntime.from_checkpoint(ckpt)
+    g = runtime.runtime_root._graph
+    obs = runtime.chat_runtime._bridge.observe_text(
         boundary_namespace="DGCA:R3:CHAT:v1",
         source_occurrence_key="test:t16",
         source_event_key="msg",
@@ -312,12 +313,12 @@ def test_poa01_t18_generation_causes_zero_persistent_cognitive_mutation():
     """POA01-T18: Generation causes zero persistent cognitive mutation."""
     ckpt = _get_poa01_test_checkpoint()
 
-    agent = CognitiveAgent.from_checkpoint(ckpt)
-    g = agent._root._graph
+    runtime = CanonicalSystemRuntime.from_checkpoint(ckpt)
+    g = runtime.runtime_root._graph
     d_before = compute_checkpoint_state_digest(extract_canonical_persistent_payload(g))
     t_before = g.t
 
-    _ = agent.chat("dog")
+    _ = runtime.chat("dog")
 
     d_after = compute_checkpoint_state_digest(extract_canonical_persistent_payload(g))
     t_after = g.t
@@ -329,11 +330,11 @@ def test_poa01_t19_generation_causes_zero_assembly_mutation():
     """POA01-T19: Generation causes zero Assembly mutation."""
     ckpt = _get_poa01_test_checkpoint()
 
-    agent = CognitiveAgent.from_checkpoint(ckpt)
-    g = agent._root._graph
+    runtime = CanonicalSystemRuntime.from_checkpoint(ckpt)
+    g = runtime.runtime_root._graph
     asm_before = set(g.assemblies.keys()) if hasattr(g, "assemblies") else set()
 
-    _ = agent.chat("dog")
+    _ = runtime.chat("dog")
 
     asm_after = set(g.assemblies.keys()) if hasattr(g, "assemblies") else set()
     assert asm_before == asm_after
@@ -344,8 +345,8 @@ def test_poa01_t20_rfc15_remains_unused():
     import sys
     assert "dgca.rfc15" not in sys.modules
     # Ensure generation handoff has not invoked any external predictive engine
-    agent = CognitiveAgent()
-    assert not hasattr(agent._root._graph, "predictive_engine")
+    runtime = CanonicalSystemRuntime.fresh()
+    assert not hasattr(runtime.runtime_root._graph, "predictive_engine")
 
 
 def test_poa01_t21_existing_context_isolation_remains_valid():

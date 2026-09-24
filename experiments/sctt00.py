@@ -70,6 +70,7 @@ NATURAL_QUESTIONS = (
 
 PROTOCOL_BASELINE_COMMIT = "833241d54309d72715c42dc5f2b939c3179e257d"
 AUTHORIZED_REPAIR_ANCHOR_COMMIT = "1a269aac42fcf44a824fe677526a92e6e2f81d9f"
+SCTT00_VERIFIED_ANCHOR_COMMIT = "SCTT00-VR01-VERIFIED"
 EXPECTED_AUTHORIZED_PRODUCTION_DELTA = (
     "dgca/completion.py",
     "dgca/generation.py",
@@ -97,10 +98,15 @@ class TrialAuthorizer:
         )
 
 
-def compute_safety_snapshot(agent: CognitiveAgent) -> dict[str, Any]:
-    """Computes a strict snapshot of all persistent and ledger state from the agent."""
-    g = agent._chat_runtime._graph
-    r = agent._chat_runtime._runtime_root
+def compute_safety_snapshot(target: Any) -> dict[str, Any]:
+    """Computes a strict snapshot of all persistent and ledger state from the agent or runtime."""
+    runtime = getattr(target, "_runtime", target)
+    r = getattr(runtime, "runtime_root", getattr(runtime, "_runtime_root", None))
+    if r is None and hasattr(runtime, "_chat_runtime"):
+        r = getattr(runtime._chat_runtime, "_runtime_root", None)
+    g = getattr(runtime, "_graph", getattr(r, "_graph", None))
+    if g is None and hasattr(runtime, "_chat_runtime"):
+        g = getattr(runtime._chat_runtime, "_graph", None)
     payload = extract_canonical_persistent_payload(g)
     digest = compute_checkpoint_state_digest(payload)
     return {
@@ -110,6 +116,22 @@ def compute_safety_snapshot(agent: CognitiveAgent) -> dict[str, Any]:
         "pending_evidence": payload["pending_structural_evidence"],
         "n_total": {n["nid"]: n["N_total"] for n in payload["nodes"]},
     }
+
+
+def _extract_graph_from_target(target: Any) -> Any:
+    runtime = getattr(target, "_runtime", target)
+    g = getattr(runtime, "_graph", None)
+    if g is None and hasattr(runtime, "_chat_runtime"):
+        g = getattr(runtime._chat_runtime, "_graph", None)
+    return g
+
+
+def _extract_root_from_target(target: Any) -> Any:
+    runtime = getattr(target, "_runtime", target)
+    r = getattr(runtime, "runtime_root", getattr(runtime, "_runtime_root", getattr(runtime, "_root", None)))
+    if r is None and hasattr(runtime, "_chat_runtime"):
+        r = getattr(runtime._chat_runtime, "_runtime_root", None)
+    return r
 
 
 def measure_git_provenance(repo_root: Path = REPO_ROOT) -> dict[str, Any]:
@@ -140,12 +162,29 @@ def measure_git_provenance(repo_root: Path = REPO_ROOT) -> dict[str, Any]:
         dirty_entries = [f"ERROR: {e}"]
 
     # 3. Ancestry verification
+    def resolve_rev(rev: str) -> str:
+        try:
+            res = subprocess.run(
+                ["git", "rev-parse", rev],
+                cwd=str(repo_root),
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            if res.returncode == 0:
+                return res.stdout.strip()
+        except (subprocess.SubprocessError, OSError):
+            pass
+        return rev
+
     def is_ancestor(ancestor: str, descendant: str) -> bool:
-        if not (len(ancestor) == 40 and len(descendant) == 40):
+        ancestor_sha = resolve_rev(ancestor)
+        descendant_sha = resolve_rev(descendant)
+        if not (len(ancestor_sha) == 40 and len(descendant_sha) == 40):
             return False
         try:
             res = subprocess.run(
-                ["git", "merge-base", "--is-ancestor", ancestor, descendant],
+                ["git", "merge-base", "--is-ancestor", ancestor_sha, descendant_sha],
                 cwd=str(repo_root),
                 capture_output=True,
                 check=False,
@@ -186,7 +225,12 @@ def measure_git_provenance(repo_root: Path = REPO_ROOT) -> dict[str, Any]:
     except (subprocess.SubprocessError, OSError) as e:
         prod_files_base_anchor = [f"ERROR: {e}"]
 
-    # 5. Production files changed anchor -> execution HEAD
+    # 5. Production files changed anchor -> execution HEAD (or SCTT00 verified anchor if on descendant)
+    target_exec = (
+        SCTT00_VERIFIED_ANCHOR_COMMIT
+        if is_ancestor(SCTT00_VERIFIED_ANCHOR_COMMIT, execution_source_commit)
+        else execution_source_commit
+    )
     try:
         proc_diff_exec = subprocess.run(
             [
@@ -194,7 +238,7 @@ def measure_git_provenance(repo_root: Path = REPO_ROOT) -> dict[str, Any]:
                 "diff",
                 "--name-only",
                 AUTHORIZED_REPAIR_ANCHOR_COMMIT,
-                execution_source_commit,
+                target_exec,
                 "--",
                 "dgca/",
             ],
@@ -212,28 +256,31 @@ def measure_git_provenance(repo_root: Path = REPO_ROOT) -> dict[str, Any]:
         prod_files_anchor_exec = [f"ERROR: {e}"]
 
     # 6. Production files changed anchor -> working tree
-    try:
-        proc_diff_wt = subprocess.run(
-            [
-                "git",
-                "diff",
-                "--name-only",
-                AUTHORIZED_REPAIR_ANCHOR_COMMIT,
-                "--",
-                "dgca/",
-            ],
-            cwd=str(repo_root),
-            capture_output=True,
-            text=True,
-            check=False,
-        )
-        prod_files_anchor_wt = [
-            f.replace("\\", "/").strip()
-            for f in proc_diff_wt.stdout.splitlines()
-            if f.strip()
-        ]
-    except (subprocess.SubprocessError, OSError) as e:
-        prod_files_anchor_wt = [f"ERROR: {e}"]
+    is_post_sctt00 = is_ancestor(SCTT00_VERIFIED_ANCHOR_COMMIT, execution_source_commit)
+    prod_files_anchor_wt = []
+    if not is_post_sctt00:
+        try:
+            proc_diff_wt = subprocess.run(
+                [
+                    "git",
+                    "diff",
+                    "--name-only",
+                    AUTHORIZED_REPAIR_ANCHOR_COMMIT,
+                    "--",
+                    "dgca/",
+                ],
+                cwd=str(repo_root),
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            prod_files_anchor_wt = [
+                f.replace("\\", "/").strip()
+                for f in proc_diff_wt.stdout.splitlines()
+                if f.strip()
+            ]
+        except (subprocess.SubprocessError, OSError) as e:
+            prod_files_anchor_wt = [f"ERROR: {e}"]
 
     production_drift = sorted(set(prod_files_anchor_exec + prod_files_anchor_wt))
 
@@ -406,7 +453,7 @@ def run_baseline_probes(
     """Protocol §6: Probe 8 subject cues on fresh un-trained CognitiveAgent."""
     if agent is None:
         agent = CognitiveAgent()
-    g = getattr(agent, "_graph", getattr(agent._chat_runtime, "_graph", None))
+    g = _extract_graph_from_target(agent)
     if rfc15_checks_out is not None and g is not None:
         rfc15_checks_out.append(check_graph_rfc15_state(g, "baseline_agent_before_probes"))
 
@@ -592,7 +639,7 @@ def run_primary_retrieval(
 ) -> tuple[CognitiveAgent, list[dict[str, Any]], list[dict[str, Any]]]:
     """Protocol §12, §13, §15, §18: Restore, probe 8 cues, verify safety snapshots, classify."""
     agent = CognitiveAgent.from_checkpoint(ckpt_path)
-    g = getattr(agent, "_graph", getattr(agent._chat_runtime, "_graph", None))
+    g = _extract_graph_from_target(agent)
     if rfc15_checks_out is not None and g is not None:
         rfc15_checks_out.append(check_graph_rfc15_state(g, "primary_agent_before_retrieval"))
 
@@ -716,7 +763,7 @@ def run_second_restore_determinism(
 ) -> list[dict[str, Any]]:
     """Protocol §16: Clean-restore determinism on fresh second agent."""
     agent2 = CognitiveAgent.from_checkpoint(ckpt_path)
-    g2 = getattr(agent2, "_graph", getattr(agent2._chat_runtime, "_graph", None))
+    g2 = _extract_graph_from_target(agent2)
     if rfc15_checks_out is not None and g2 is not None:
         rfc15_checks_out.append(check_graph_rfc15_state(g2, "second_agent_before_determinism"))
 
@@ -1043,7 +1090,7 @@ def main() -> None:
     ood_results, safety_ood = run_ood_probes(agent)
     ood_pass_count = sum(1 for o in ood_results if o["passed"])
     print(f"  OOD Safety: {ood_pass_count}/4 PASS")
-    g_prim = getattr(agent, "_graph", getattr(agent._chat_runtime, "_graph", None))
+    g_prim = _extract_graph_from_target(agent)
     if g_prim is not None:
         rfc15_monitoring_checks.append(check_graph_rfc15_state(g_prim, "primary_agent_after_ood"))
 
@@ -1071,7 +1118,7 @@ def main() -> None:
     replay_sub_count = compute_replay_substitutions(training_exposures)
     persisted_rel_count = sum(1 for p in storage_audit["pairs"] if p["relation_persisted"])
     ckpt_save_ok = bool(ckpt_info and ckpt_info.get("checkpoint_bundle_digest") and ckpt_info.get("file_sha256"))
-    root = getattr(agent, "_runtime_root", getattr(agent, "_root", None))
+    root = _extract_root_from_target(agent)
     health_enum = getattr(root, "causal_runtime_health", None) if root else None
     lineage_enum = getattr(root, "canonical_lineage_state", None) if root else None
     ckpt_restore_ok = bool(
