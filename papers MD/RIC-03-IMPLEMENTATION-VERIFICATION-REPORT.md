@@ -27,14 +27,21 @@ Host operation serialization guarantees mutual exclusion between `IDLE`, `CHATTI
 | :--- | :--- | :--- |
 | **Authoritative Starting Baseline** | `cd05769dc09471592b92a9b07f720660bd5d57eb` | Frozen RIC-02 baseline. Clean working tree. |
 | **RIC03_SPEC_COMMIT** | `4af93aa26eacae2869f65f7e83882080db5d8162` | Phase A formal specification committed in isolation. Zero `dgca/**` changes. |
-| **RIC03_IMPLEMENTATION_COMMIT** | `01e964377df80b9b42760f80ebd34f4e941a206a` | Implementation of `dgca/learning_runtime.py`, `dgca/system_runtime.py`, test suite, and this verification report. |
+| **RIC03_IMPLEMENTATION_COMMIT** | `529ecf6e018996d0358380ab66f627b81acd09bd` | Implementation of `dgca/learning_runtime.py`, `dgca/system_runtime.py`, test suite, and this verification report. |
+
+> [!NOTE]
+> **PROVENANCE ERRATUM (RIC-03-C01 / C01-G04):**  
+> An earlier transient working commit recorded an unresolvable pre-amend commit SHA:  
+> - **Incorrect recorded SHA:** `01e964377df80b9b42760f80ebd34f4e941a206a`  
+> - **Authoritative implementation SHA:** `529ecf6e018996d0358380ab66f627b81acd09bd`  
+> The table above and repository history reflect the authoritative commit `529ecf6e018996d0358380ab66f627b81acd09bd`.
 
 ---
 
 ## 3. Production Code Delta (`dgca/**`)
 
 Against baseline `cd05769dc09471592b92a9b07f720660bd5d57eb`:
-- **Added:** `dgca/learning_runtime.py` (230 lines)
+- **Added:** `dgca/learning_runtime.py` (260 lines in `529ecf6`)
   - Protocol constants: `RIC03_LEARNING_PROTOCOL_VERSION`, `LEARNING_BOUNDARY_NAMESPACE`, `LEARNING_SOURCE_EVENT_KEY`, `LEARNING_INGRESS_BOUNDARY`.
   - Semantics registry: `RIC03_LEARNING_SEMANTICS_REGISTRY`, `compute_ric03_learning_semantics_digest()`, `RIC03_LEARNING_SEMANTICS_DIGEST`.
   - `LearningResult` immutable dataclass.

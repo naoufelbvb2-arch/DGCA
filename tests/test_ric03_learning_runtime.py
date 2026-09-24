@@ -1,9 +1,10 @@
 """
-DGCA — RIC-03
-Canonical Learning Runtime & Authority Separation Strict Verification Suite
+DGCA — RIC-03 & RIC-03-C01
+Canonical Learning Runtime, Authority Separation & Concurrency Hardening Strict Verification Suite
 
 Authoritative Specifications:
 papers MD/RIC-03-Canonical-Learning-Runtime-and-Authority-Separation-v1.0-FROZEN.md
+papers MD/RIC-03-C01-Authority-Surface-AUTO-Identity-and-Concurrency-Hardening-v1.0-FROZEN.md
 papers MD/RIC-03-IMPLEMENTATION-VERIFICATION-REPORT.md
 Status: FROZEN / ADOPTED
 """
@@ -14,6 +15,7 @@ import dataclasses
 import json
 import subprocess
 import tempfile
+import threading
 from pathlib import Path
 from typing import Any
 from unittest.mock import patch
@@ -177,7 +179,7 @@ def test_ric03_t08_cognitive_agent_cannot_access_learning_authority() -> None:
 def test_ric03_t09_learning_runtime_bridge_bound_to_same_r1_root() -> None:
     """RIC03-T09: LearningRuntime bridge is created from exact same R1 root."""
     sr = CanonicalSystemRuntime.fresh()
-    lr = sr.learning_runtime
+    lr = sr._learning_runtime
     assert isinstance(lr, CanonicalLearningRuntime)
     assert lr.runtime_root is sr.runtime_root
     assert lr._bridge._runtime is sr.runtime_root
@@ -203,14 +205,14 @@ def test_ric03_t11_learn_invokes_r2_exactly_once() -> None:
     """RIC03-T11: learn invokes R2 exactly once."""
     sr = CanonicalSystemRuntime.fresh()
     call_count = 0
-    orig_observe_text = sr.learning_runtime._bridge.observe_text
+    orig_observe_text = sr._learning_runtime._bridge.observe_text
 
     def spy_observe_text(*args: Any, **kwargs: Any) -> Any:
         nonlocal call_count
         call_count += 1
         return orig_observe_text(*args, **kwargs)
 
-    with patch.object(sr.learning_runtime._bridge, "observe_text", side_effect=spy_observe_text):
+    with patch.object(sr._learning_runtime._bridge, "observe_text", side_effect=spy_observe_text):
         sr.learn("A dog is a canine.")
     assert call_count == 1
 
@@ -219,14 +221,14 @@ def test_ric03_t12_mode_is_exactly_authorized_persistent() -> None:
     """RIC03-T12: mode is exactly AUTHORIZED_PERSISTENT."""
     sr = CanonicalSystemRuntime.fresh()
     observed_mode: Any = None
-    orig_observe_text = sr.learning_runtime._bridge.observe_text
+    orig_observe_text = sr._learning_runtime._bridge.observe_text
 
     def spy_observe_text(*args: Any, **kwargs: Any) -> Any:
         nonlocal observed_mode
         observed_mode = kwargs.get("mode")
         return orig_observe_text(*args, **kwargs)
 
-    with patch.object(sr.learning_runtime._bridge, "observe_text", side_effect=spy_observe_text):
+    with patch.object(sr._learning_runtime._bridge, "observe_text", side_effect=spy_observe_text):
         sr.learn("A dog is a canine.")
     assert observed_mode == ExecutionMode.AUTHORIZED_PERSISTENT
 
@@ -359,7 +361,7 @@ def test_ric03_t25_failed_auto_operation_index_is_never_reused() -> None:
 
     # Force downstream failure after index allocation
     with (
-        patch.object(sr.learning_runtime._bridge, "observe_text", side_effect=RuntimeError("simulated error")),
+        patch.object(sr._learning_runtime._bridge, "observe_text", side_effect=RuntimeError("simulated error")),
         pytest.raises(RuntimeError, match="simulated error"),
     ):
         sr.learn("Another text")
@@ -404,14 +406,14 @@ def test_ric03_t29_r2_observation_result_representations_closed_after_success() 
     """RIC03-T29: R2 observation result representations are closed after successful learning."""
     sr = CanonicalSystemRuntime.fresh()
     captured_result: Any = None
-    orig_observe_text = sr.learning_runtime._bridge.observe_text
+    orig_observe_text = sr._learning_runtime._bridge.observe_text
 
     def spy_observe_text(*args: Any, **kwargs: Any) -> Any:
         nonlocal captured_result
         captured_result = orig_observe_text(*args, **kwargs)
         return captured_result
 
-    with patch.object(sr.learning_runtime._bridge, "observe_text", side_effect=spy_observe_text):
+    with patch.object(sr._learning_runtime._bridge, "observe_text", side_effect=spy_observe_text):
         sr.learn("A dog is a canine.")
 
     assert captured_result is not None
@@ -422,7 +424,7 @@ def test_ric03_t30_transient_representations_closed_after_failure() -> None:
     """RIC03-T30: transient representations are closed after failure."""
     sr = CanonicalSystemRuntime.fresh()
     with pytest.raises(TypeError):
-        sr.learning_runtime.learn_text(12345)  # type: ignore[arg-type]
+        sr._learning_runtime.learn_text(12345)  # type: ignore[arg-type]
 
 
 # ─────────────────────────────────────────────────────────── GROUP E: PERSISTENCE
@@ -488,14 +490,14 @@ def test_ric03_t34_learning_ledger_transaction_survives_restore() -> None:
 def test_ric03_t35_capability_does_not_survive_restore() -> None:
     """RIC03-T35: capability does NOT survive restore."""
     sr = CanonicalSystemRuntime.fresh()
-    orig_cap = sr.learning_runtime._capability
+    orig_cap = sr._learning_runtime._capability
 
     with tempfile.TemporaryDirectory() as tmpdir:
         ckpt_path = Path(tmpdir) / "test.dgca"
         sr.save_checkpoint(ckpt_path)
 
         sr_restored = CanonicalSystemRuntime.from_checkpoint(ckpt_path)
-        restored_cap = sr_restored.learning_runtime._capability
+        restored_cap = sr_restored._learning_runtime._capability
         assert restored_cap is not orig_cap
 
 
@@ -529,7 +531,7 @@ def test_ric03_t37_checkpoint_contains_no_learning_capability_or_operation_state
         raw_str = json.dumps(data)
         assert "capability" not in raw_str
         assert "operation_state" not in raw_str
-        assert sr.learning_runtime.session_nonce not in raw_str
+        assert sr._learning_runtime.session_nonce not in raw_str
 
 
 # ─────────────────────────────────────────────────────────── GROUP F: CHAT SEPARATION
@@ -618,14 +620,14 @@ def test_ric03_t45_learn_runs_under_learning() -> None:
     """RIC03-T45: learn runs under LEARNING."""
     sr = CanonicalSystemRuntime.fresh()
     observed_state: Any = None
-    orig_learn_text = sr.learning_runtime.learn_text
+    orig_learn_text = sr._learning_runtime.learn_text
 
     def spy_learn(text: str, **kwargs: Any) -> Any:
         nonlocal observed_state
         observed_state = sr.operation_state
         return orig_learn_text(text, **kwargs)
 
-    with patch.object(sr.learning_runtime, "learn_text", side_effect=spy_learn):
+    with patch.object(sr._learning_runtime, "learn_text", side_effect=spy_learn):
         sr.learn("A dog is a canine.")
 
     assert observed_state == SystemOperationState.LEARNING
@@ -676,14 +678,14 @@ def test_ric03_t47_learn_during_chat_fails_closed() -> None:
 def test_ric03_t48_chat_during_learn_fails_closed() -> None:
     """RIC03-T48: chat during learn fails closed."""
     sr = CanonicalSystemRuntime.fresh()
-    orig_learn = sr.learning_runtime.learn_text
+    orig_learn = sr._learning_runtime.learn_text
 
     def nested_chat_learn(text: str, **kwargs: Any) -> Any:
         sr.chat("nested chat attempt")
         return orig_learn(text, **kwargs)
 
     with (
-        patch.object(sr.learning_runtime, "learn_text", side_effect=nested_chat_learn),
+        patch.object(sr._learning_runtime, "learn_text", side_effect=nested_chat_learn),
         pytest.raises(RuntimeError, match="Cannot begin operation 'CHATTING': runtime is currently in state 'LEARNING'"),
     ):
         sr.learn("A dog is a canine.")
@@ -694,14 +696,14 @@ def test_ric03_t48_chat_during_learn_fails_closed() -> None:
 def test_ric03_t49_save_during_learn_fails_closed() -> None:
     """RIC03-T49: save during learn fails closed."""
     sr = CanonicalSystemRuntime.fresh()
-    orig_learn = sr.learning_runtime.learn_text
+    orig_learn = sr._learning_runtime.learn_text
 
     def nested_save_learn(text: str, **kwargs: Any) -> Any:
         sr.save_checkpoint("dummy.dgca")
         return orig_learn(text, **kwargs)
 
     with (
-        patch.object(sr.learning_runtime, "learn_text", side_effect=nested_save_learn),
+        patch.object(sr._learning_runtime, "learn_text", side_effect=nested_save_learn),
         pytest.raises(RuntimeError, match="Cannot begin operation 'CHECKPOINTING': runtime is currently in state 'LEARNING'"),
     ):
         sr.learn("A dog is a canine.")
@@ -797,6 +799,302 @@ def test_ric03_t55_repeated_explicit_replay_does_not_reinforce_twice() -> None:
     assert res2.persistent_executed is False
     assert res2.replayed is True
     assert digest1 == digest2
+
+
+# ─────────────────────────────────────────────────────────── GROUP C01: HARDENING (C01-T01 .. C01-T18)
+def test_c01_t01_fresh_runtime_auto_nonce_differs() -> None:
+    """C01-T01: fresh runtime AUTO nonce differs from independently fresh runtime nonce."""
+    sr1 = CanonicalSystemRuntime.fresh()
+    sr2 = CanonicalSystemRuntime.fresh()
+    assert sr1._learning_runtime.session_nonce != sr2._learning_runtime.session_nonce
+
+
+def test_c01_t02_restore_generates_new_learning_session_nonce() -> None:
+    """C01-T02: restore generates new learning session nonce."""
+    sr = CanonicalSystemRuntime.fresh()
+    orig_nonce = sr._learning_runtime.session_nonce
+    with tempfile.TemporaryDirectory() as tmpdir:
+        ckpt_path = Path(tmpdir) / "test.dgca"
+        sr.save_checkpoint(ckpt_path)
+        sr_restored = CanonicalSystemRuntime.from_checkpoint(ckpt_path)
+        assert sr_restored._learning_runtime.session_nonce != orig_nonce
+
+
+def test_c01_t03_auto_learn_before_save_and_after_restore_is_new_exposure() -> None:
+    """C01-T03: AUTO learn before save + AUTO same text after restore executes as NEW PERSISTENT_EXECUTED exposure."""
+    sr = CanonicalSystemRuntime.fresh()
+    res1 = sr.learn("A dog is a canine.")
+    assert res1.status == "PERSISTENT_EXECUTED"
+    assert res1.persistent_executed is True
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+        ckpt_path = Path(tmpdir) / "test.dgca"
+        sr.save_checkpoint(ckpt_path)
+        sr_restored = CanonicalSystemRuntime.from_checkpoint(ckpt_path)
+        res2 = sr_restored.learn("A dog is a canine.")
+        assert res2.status == "PERSISTENT_EXECUTED"
+        assert res2.persistent_executed is True
+        assert res2.replayed is False
+
+
+def test_c01_t04_auto_source_occurrence_key_before_after_restore_differs() -> None:
+    """C01-T04: AUTO source occurrence key before/after restore differs."""
+    sr = CanonicalSystemRuntime.fresh()
+    res1 = sr.learn("A dog is a canine.")
+    with tempfile.TemporaryDirectory() as tmpdir:
+        ckpt_path = Path(tmpdir) / "test.dgca"
+        sr.save_checkpoint(ckpt_path)
+        sr_restored = CanonicalSystemRuntime.from_checkpoint(ckpt_path)
+        res2 = sr_restored.learn("A dog is a canine.")
+        assert res1.source_occurrence_key != res2.source_occurrence_key
+
+
+def test_c01_t05_auto_persistent_txid_before_after_restore_differs() -> None:
+    """C01-T05: AUTO persistent TxID before/after restore differs."""
+    sr = CanonicalSystemRuntime.fresh()
+    res1 = sr.learn("A dog is a canine.")
+    with tempfile.TemporaryDirectory() as tmpdir:
+        ckpt_path = Path(tmpdir) / "test.dgca"
+        sr.save_checkpoint(ckpt_path)
+        sr_restored = CanonicalSystemRuntime.from_checkpoint(ckpt_path)
+        res2 = sr_restored.learn("A dog is a canine.")
+        assert res1.persistent_transaction_id != res2.persistent_transaction_id
+
+
+def test_c01_t06_explicit_occurrence_replay_across_restore_remains_replay() -> None:
+    """C01-T06: explicit occurrence replay across restore remains PERSISTENT_REPLAY."""
+    sr = CanonicalSystemRuntime.fresh()
+    res1 = sr.learn("A dog is a canine.", occurrence_key="FACT:REPLAY:C01")
+    assert res1.status == "PERSISTENT_EXECUTED"
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+        ckpt_path = Path(tmpdir) / "test.dgca"
+        sr.save_checkpoint(ckpt_path)
+        sr_restored = CanonicalSystemRuntime.from_checkpoint(ckpt_path)
+        res2 = sr_restored.learn("A dog is a canine.", occurrence_key="FACT:REPLAY:C01")
+        assert res2.status == "PERSISTENT_REPLAY"
+        assert res2.replayed is True
+        assert res2.persistent_executed is False
+
+
+def test_c01_t07_thread_learn_active_concurrent_chat_rejected() -> None:
+    """C01-T07: real thread: learn active, concurrent chat rejected."""
+    sr = CanonicalSystemRuntime.fresh()
+    in_op = threading.Event()
+    allow_finish = threading.Event()
+    orig_observe = sr._learning_runtime._bridge.observe_text
+
+    def blocking_observe(*args: Any, **kwargs: Any) -> Any:
+        in_op.set()
+        if not allow_finish.wait(timeout=5.0):
+            raise TimeoutError("timed out waiting for finish")
+        return orig_observe(*args, **kwargs)
+
+    with patch.object(sr._learning_runtime._bridge, "observe_text", side_effect=blocking_observe):
+        t1 = threading.Thread(target=lambda: sr.learn("A dog is a canine."))
+        t1.start()
+        assert in_op.wait(timeout=5.0)
+
+        with pytest.raises(RuntimeError, match="Cannot begin operation 'CHATTING': runtime is currently in state 'LEARNING'"):
+            sr.chat("hello")
+
+        allow_finish.set()
+        t1.join(timeout=5.0)
+        assert not t1.is_alive()
+        assert not sr._lock.locked()
+        assert sr.operation_state == SystemOperationState.IDLE
+
+
+def test_c01_t08_thread_chat_active_concurrent_learn_rejected() -> None:
+    """C01-T08: real thread: chat active, concurrent learn rejected."""
+    sr = CanonicalSystemRuntime.fresh()
+    in_op = threading.Event()
+    allow_finish = threading.Event()
+    orig_chat = sr._chat_runtime.chat
+
+    def blocking_chat(text: str) -> str:
+        in_op.set()
+        if not allow_finish.wait(timeout=5.0):
+            raise TimeoutError("timed out waiting for finish")
+        return orig_chat(text)
+
+    with patch.object(sr._chat_runtime, "chat", side_effect=blocking_chat):
+        t1 = threading.Thread(target=lambda: sr.chat("hello"))
+        t1.start()
+        assert in_op.wait(timeout=5.0)
+
+        with pytest.raises(RuntimeError, match="Cannot begin operation 'LEARNING': runtime is currently in state 'CHATTING'"):
+            sr.learn("A dog is a canine.")
+
+        allow_finish.set()
+        t1.join(timeout=5.0)
+        assert not t1.is_alive()
+        assert not sr._lock.locked()
+        assert sr.operation_state == SystemOperationState.IDLE
+
+
+def test_c01_t09_thread_learn_active_concurrent_save_rejected() -> None:
+    """C01-T09: real thread: learn active, concurrent save rejected."""
+    sr = CanonicalSystemRuntime.fresh()
+    in_op = threading.Event()
+    allow_finish = threading.Event()
+    orig_observe = sr._learning_runtime._bridge.observe_text
+
+    def blocking_observe(*args: Any, **kwargs: Any) -> Any:
+        in_op.set()
+        if not allow_finish.wait(timeout=5.0):
+            raise TimeoutError("timed out waiting for finish")
+        return orig_observe(*args, **kwargs)
+
+    with patch.object(sr._learning_runtime._bridge, "observe_text", side_effect=blocking_observe):
+        t1 = threading.Thread(target=lambda: sr.learn("A dog is a canine."))
+        t1.start()
+        assert in_op.wait(timeout=5.0)
+
+        with pytest.raises(RuntimeError, match="Cannot begin operation 'CHECKPOINTING': runtime is currently in state 'LEARNING'"):
+            sr.save_checkpoint("dummy.dgca")
+
+        allow_finish.set()
+        t1.join(timeout=5.0)
+        assert not t1.is_alive()
+        assert not sr._lock.locked()
+        assert sr.operation_state == SystemOperationState.IDLE
+
+
+def test_c01_t10_thread_save_active_concurrent_learn_rejected() -> None:
+    """C01-T10: real thread: save active, concurrent learn rejected."""
+    sr = CanonicalSystemRuntime.fresh()
+    in_op = threading.Event()
+    allow_finish = threading.Event()
+
+    def blocking_save(*args: Any, **kwargs: Any) -> str:
+        in_op.set()
+        if not allow_finish.wait(timeout=5.0):
+            raise TimeoutError("timed out waiting for finish")
+        return "mock_digest"
+
+    with patch("dgca.system_runtime.save_canonical_r1_checkpoint", side_effect=blocking_save):
+        t1 = threading.Thread(target=lambda: sr.save_checkpoint("dummy.dgca"))
+        t1.start()
+        assert in_op.wait(timeout=5.0)
+
+        with pytest.raises(RuntimeError, match="Cannot begin operation 'LEARNING': runtime is currently in state 'CHECKPOINTING'"):
+            sr.learn("A dog is a canine.")
+
+        allow_finish.set()
+        t1.join(timeout=5.0)
+        assert not t1.is_alive()
+        assert not sr._lock.locked()
+        assert sr.operation_state == SystemOperationState.IDLE
+
+
+def test_c01_t11_two_simultaneous_learn_calls_one_admitted_one_fails_closed() -> None:
+    """C01-T11: two simultaneous learn calls: exactly one admitted while first is held; second fails closed."""
+    sr = CanonicalSystemRuntime.fresh()
+    in_op = threading.Event()
+    allow_finish = threading.Event()
+    orig_observe = sr._learning_runtime._bridge.observe_text
+
+    def blocking_observe(*args: Any, **kwargs: Any) -> Any:
+        in_op.set()
+        if not allow_finish.wait(timeout=5.0):
+            raise TimeoutError("timed out waiting for finish")
+        return orig_observe(*args, **kwargs)
+
+    with patch.object(sr._learning_runtime._bridge, "observe_text", side_effect=blocking_observe):
+        t1 = threading.Thread(target=lambda: sr.learn("First"))
+        t1.start()
+        assert in_op.wait(timeout=5.0)
+
+        with pytest.raises(RuntimeError, match="Cannot begin operation 'LEARNING': runtime is currently in state 'LEARNING'"):
+            sr.learn("Second")
+
+        allow_finish.set()
+        t1.join(timeout=5.0)
+        assert not t1.is_alive()
+        assert not sr._lock.locked()
+        assert sr.operation_state == SystemOperationState.IDLE
+
+
+def test_c01_t12_operation_lock_released_after_success() -> None:
+    """C01-T12: operation lock released after successful operation."""
+    sr = CanonicalSystemRuntime.fresh()
+    sr.chat("hello")
+    assert not sr._lock.locked()
+    assert sr.operation_state == SystemOperationState.IDLE
+    sr.learn("A dog is a canine.")
+    assert not sr._lock.locked()
+    assert sr.operation_state == SystemOperationState.IDLE
+
+
+def test_c01_t13_operation_lock_released_after_exception() -> None:
+    """C01-T13: operation lock released after exception."""
+    sr = CanonicalSystemRuntime.fresh()
+    with pytest.raises(ValueError):
+        sr.learn("")
+    assert not sr._lock.locked()
+    assert sr.operation_state == SystemOperationState.IDLE
+
+
+def test_c01_t14_no_deadlock_threads_terminate_under_bounded_timeout() -> None:
+    """C01-T14: no deadlock; threads terminate under bounded join timeout."""
+    sr = CanonicalSystemRuntime.fresh()
+    results: list[bool] = []
+
+    def worker(idx: int) -> None:
+        try:
+            sr.learn(f"Thread text {idx}")
+            results.append(True)
+        except RuntimeError:
+            results.append(False)
+
+    threads = [threading.Thread(target=worker, args=(i,)) for i in range(4)]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join(timeout=5.0)
+        assert not t.is_alive()
+
+    assert not sr._lock.locked()
+    assert sr.operation_state == SystemOperationState.IDLE
+
+
+def test_c01_t15_system_runtime_no_learning_runtime_property() -> None:
+    """C01-T15: not hasattr(CanonicalSystemRuntime, 'learning_runtime')."""
+    assert not hasattr(CanonicalSystemRuntime, "learning_runtime")
+    sr = CanonicalSystemRuntime.fresh()
+    assert not hasattr(sr, "learning_runtime")
+
+
+def test_c01_t16_system_runtime_public_surface_no_authority_properties() -> None:
+    """C01-T16: normal SystemRuntime public surface exposes no capability, authorizer, learning_runtime."""
+    sr = CanonicalSystemRuntime.fresh()
+    assert not hasattr(sr, "capability")
+    assert not hasattr(sr, "authorizer")
+    assert not hasattr(sr, "learning_authorizer")
+    assert not hasattr(sr, "learning_runtime")
+    assert not hasattr(CanonicalLearningRuntime, "authorizer")
+    assert not hasattr(sr._learning_runtime, "authorizer")
+
+
+def test_c01_t17_learning_result_exposes_no_authority_object() -> None:
+    """C01-T17: LearningResult exposes no authority object."""
+    sr = CanonicalSystemRuntime.fresh()
+    res = sr.learn("A dog is a canine.")
+    assert not hasattr(res, "capability")
+    assert not hasattr(res, "_capability")
+    assert not hasattr(res, "authorizer")
+    assert not hasattr(res, "_authorizer")
+
+
+def test_c01_t18_cognitive_agent_exposes_no_learning_surface() -> None:
+    """C01-T18: CognitiveAgent still exposes no learning surface."""
+    agent = CognitiveAgent()
+    assert not hasattr(agent, "learn")
+    assert not hasattr(agent, "learn_text")
+    assert not hasattr(agent, "learning_runtime")
+    assert not hasattr(agent, "capability")
+    assert not hasattr(agent, "authorizer")
 
 
 # ─────────────────────────────────────────────────────────── SEMANTICS REGISTRY & GATES

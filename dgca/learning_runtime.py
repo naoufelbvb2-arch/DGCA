@@ -193,10 +193,6 @@ class CanonicalLearningRuntime:
     def runtime_root(self) -> CanonicalR1RuntimeRoot:
         return self._runtime_root
 
-    @property
-    def authorizer(self) -> CanonicalLearningAuthorizer:
-        return self._authorizer
-
     def learn_text(
         self,
         text: str,
