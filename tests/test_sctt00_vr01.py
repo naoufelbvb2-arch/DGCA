@@ -498,7 +498,7 @@ def test_c01_t08_rfc15_recurrent_engine_remains_unmaterialized():
     from dgca.system_runtime import CanonicalSystemRuntime
     from experiments.sctt00 import check_graph_rfc15_state
     agent = CanonicalSystemRuntime.fresh()
-    g = agent._graph
+    g = agent.runtime_root._graph
     state = check_graph_rfc15_state(g, "test_agent")
     assert state["recurrent_engine_is_none"] is True
     assert state["materialized"] is False

@@ -68,14 +68,14 @@ def test_ric02_t03_observation_protocol_version():
 def test_ric02_t04_prediction_disabled_on_fresh_graph():
     """RIC02-T04: Prediction disabled on fresh graph."""
     runtime = CanonicalSystemRuntime.fresh()
-    assert runtime._graph.enable_prediction is False
+    assert runtime.runtime_root._graph.enable_prediction is False
 
 
 def test_ric02_t05_owns_exactly_one_canonical_r1_root():
     """RIC02-T05: CanonicalSystemRuntime owns exactly one canonical R1 root."""
     runtime = CanonicalSystemRuntime.fresh()
     assert isinstance(runtime.runtime_root, CanonicalR1RuntimeRoot)
-    assert runtime.runtime_root is runtime._root
+    assert not hasattr(runtime, "_root")
 
 
 def test_ric02_t06_owns_one_chat_runtime_bound_to_same_r1_root():
@@ -171,7 +171,7 @@ def test_ric02_t13_cognitive_agent_from_checkpoint_delegates_to_runtime(tmp_path
 def test_ric02_t14_fresh_bootstrap_persistent_state_identical_to_baseline():
     """RIC02-T14: Fresh bootstrap persistent state is behaviorally identical to pre-RIC02 baseline."""
     runtime = CanonicalSystemRuntime.fresh()
-    payload = extract_canonical_persistent_payload(runtime._graph)
+    payload = extract_canonical_persistent_payload(runtime.runtime_root._graph)
     digest = compute_checkpoint_state_digest(payload)
     expected_fresh_digest = "975d6953a4dd34d39f6fa678fb37fe1289118b1b579ddc6576b4cb892f76ac32"
     assert digest == expected_fresh_digest
@@ -180,7 +180,7 @@ def test_ric02_t14_fresh_bootstrap_persistent_state_identical_to_baseline():
 def test_ric02_t15_checkpoint_restored_graph_state_digest_identical():
     """RIC02-T15: Checkpoint restored graph state digest is identical to baseline."""
     runtime = CanonicalSystemRuntime.from_checkpoint(SCTT00_CHECKPOINT)
-    payload = extract_canonical_persistent_payload(runtime._graph)
+    payload = extract_canonical_persistent_payload(runtime.runtime_root._graph)
     digest = compute_checkpoint_state_digest(payload)
     expected_ckpt_digest = "548e6fee4b450ba841857ec209df9d0ffb467de62a8639d32fe290eb1b681c3a"
     assert digest == expected_ckpt_digest
@@ -196,8 +196,8 @@ def test_ric02_t16_checkpoint_bundle_integrity_remains_unchanged(tmp_path: Path)
     restored = CanonicalSystemRuntime.from_checkpoint(test_ckpt)
     assert restored.runtime_root.causal_runtime_health == CausalRuntimeHealth.HEALTHY
 
-    p1 = extract_canonical_persistent_payload(runtime._graph)
-    p2 = extract_canonical_persistent_payload(restored._graph)
+    p1 = extract_canonical_persistent_payload(runtime.runtime_root._graph)
+    p2 = extract_canonical_persistent_payload(restored.runtime_root._graph)
     assert compute_checkpoint_state_digest(p1) == compute_checkpoint_state_digest(p2)
 
 
@@ -230,12 +230,26 @@ def test_ric02_t18_all_8_sctt_learned_probes_retain_exact_outputs():
 
 
 def test_ric02_t19_ood_behavior_remains_unchanged():
-    """RIC02-T19: OOD behavior remains unchanged."""
+    """RIC02-T19: SCTT frozen OOD behavior and extra probes remain unchanged."""
     agent = CognitiveAgent.from_checkpoint(SCTT00_CHECKPOINT)
     targets = {"canine", "feline", "bird", "flower", "fruit", "vehicle", "solid", "liquid"}
-    ood_cues = ["pizza", "computer", "chair", "ocean"]
 
-    for cue in ood_cues:
+    # Frozen SCTT OOD cues: exact echoes, 0 target contamination
+    sctt_ood = [
+        ("stone", "stone"),
+        ("horse", "horse"),
+        ("train", "train"),
+        ("banana", "banana"),
+    ]
+    for cue, expected_reply in sctt_ood:
+        reply = agent.chat(cue)
+        assert reply == expected_reply, f"SCTT OOD mismatch: expected '{expected_reply}', got '{reply}'"
+        tokens = set(reply.split())
+        assert len(tokens & targets) == 0
+
+    # Additional RIC-02 extra probes
+    extra_cues = ["pizza", "computer", "chair", "ocean"]
+    for cue in extra_cues:
         reply = agent.chat(cue)
         lt = agent.last_turn
         assert lt is not None
@@ -247,7 +261,7 @@ def test_ric02_t19_ood_behavior_remains_unchanged():
 def test_ric02_t20_ordinary_chat_persistent_delta_remains_zero():
     """RIC02-T20: Ordinary chat persistent delta remains zero."""
     agent = CognitiveAgent.from_checkpoint(SCTT00_CHECKPOINT)
-    g = agent._runtime._graph
+    g = agent._runtime.runtime_root._graph
     d_before = compute_checkpoint_state_digest(extract_canonical_persistent_payload(g))
 
     agent.chat("dog")
@@ -261,16 +275,16 @@ def test_ric02_t20_ordinary_chat_persistent_delta_remains_zero():
 def test_ric02_t21_rfc15_remains_unmaterialized():
     """RIC02-T21: RFC15 remains unmaterialized."""
     runtime = CanonicalSystemRuntime.fresh()
-    assert runtime._graph._recurrent_engine is None
+    assert runtime.runtime_root._graph._recurrent_engine is None
 
     agent = CognitiveAgent.from_checkpoint(SCTT00_CHECKPOINT)
-    assert agent._runtime._graph._recurrent_engine is None
+    assert agent._runtime.runtime_root._graph._recurrent_engine is None
 
 
 def test_ric02_t22_rfc16_full_loop_remains_unused():
     """RIC02-T22: RFC16 full loop remains unused."""
     runtime = CanonicalSystemRuntime.fresh()
-    assert getattr(runtime._graph, "_loop_engine", None) is None
+    assert getattr(runtime.runtime_root._graph, "_loop_engine", None) is None
 
 
 def test_ric02_t23_r3_min_runtime_semantics_digest_unchanged():
@@ -449,3 +463,172 @@ def test_ric02_adv_agent_slots_prevent_arbitrary_attribute_binding():
     with pytest.raises(AttributeError):
         agent._chat_runtime = "fake_chat"
     assert not hasattr(agent, "__dict__")
+
+
+# =============================================================================
+# C01 Tests: C01-T01 through C01-T16
+# =============================================================================
+
+def test_c01_t01_post_sctt_unauthorized_dgca_change_detected():
+    """C01-T01: Post-SCTT unauthorized dgca/** change detected by preflight."""
+    from experiments.sctt00 import measure_git_provenance, run_preflight
+    fake_prov = measure_git_provenance()
+    fake_prov = dict(fake_prov)
+    fake_prov["production_files_changed_anchor_to_execution"] = ["dgca/unauthorized_change.py"]
+    fake_prov["production_drift_after_repair_anchor"] = ["dgca/unauthorized_change.py"]
+    fake_prov["lineage_valid"] = False
+
+    with (
+        patch("experiments.sctt00.measure_git_provenance", return_value=fake_prov),
+        pytest.raises(RuntimeError, match="Unauthorized dgca/\\*\\* production drift"),
+    ):
+        run_preflight(require_clean=False)
+
+
+def test_c01_t02_post_sctt_dirty_dgca_working_tree_detected():
+    """C01-T02: Post-SCTT dirty dgca/** working tree detected by preflight."""
+    from experiments.sctt00 import measure_git_provenance, run_preflight
+    fake_prov = measure_git_provenance()
+    fake_prov = dict(fake_prov)
+    fake_prov["working_tree_clean_at_start"] = False
+    fake_prov["working_tree_dirty_entries"] = [" M dgca/dirty_file.py"]
+
+    with (
+        patch("experiments.sctt00.measure_git_provenance", return_value=fake_prov),
+        pytest.raises(RuntimeError, match="Dirty working tree detected at trial start"),
+    ):
+        run_preflight(require_clean=True)
+
+
+def test_c01_t03_historical_artifact_verification_remains_valid():
+    """C01-T03: Historical artifact verification remains valid without re-execution."""
+    import json
+    results_json = REPO_ROOT / "experiments" / "results" / "sctt00-results.json"
+    assert results_json.is_file()
+    data = json.loads(results_json.read_text(encoding="utf-8"))
+    assert data["meta"]["verdict"] in ("SCTT00_PASS", "SCTT00_REPAIR_RERUN_PASS")
+    assert len(data["training_exposures"]) == 40
+    assert len(data["primary_retrieval"]) == 8
+    assert len(data["ood_safety_controls"]) == 4
+
+
+def test_c01_t04_current_head_sctt_preflight_blocks_without_silent_whitelist():
+    """C01-T04: Current HEAD SCTT preflight blocks without silent whitelist/bypass."""
+    from experiments.sctt00 import run_preflight
+    with pytest.raises(RuntimeError, match="Unauthorized dgca/\\*\\* production drift"):
+        run_preflight(require_clean=False)
+
+
+def test_c01_t05_canonical_system_runtime_matching_pair_accepted():
+    """C01-T05: CanonicalSystemRuntime accepts matching runtime_root and chat_runtime."""
+    runtime = CanonicalSystemRuntime.fresh()
+    r = runtime.runtime_root
+    c = runtime.chat_runtime
+    coherent = CanonicalSystemRuntime(runtime_root=r, chat_runtime=c)
+    assert coherent.runtime_root is r
+    assert coherent.chat_runtime is c
+
+
+def test_c01_t06_mismatched_root_chat_pair_rejected():
+    """C01-T06: Mismatched root / chat pair rejected with ValueError."""
+    runtime1 = CanonicalSystemRuntime.fresh()
+    runtime2 = CanonicalSystemRuntime.fresh()
+    with pytest.raises(ValueError, match="chat_runtime._runtime_root is not runtime_root"):
+        CanonicalSystemRuntime(
+            runtime_root=runtime1.runtime_root,
+            chat_runtime=runtime2.chat_runtime,
+        )
+
+
+def test_c01_t07_mismatched_graph_binding_rejected():
+    """C01-T07: Mismatched graph binding rejected with ValueError."""
+    runtime = CanonicalSystemRuntime.fresh()
+    r = runtime.runtime_root
+    c = runtime.chat_runtime
+    other_graph = CognitiveGraph(enable_prediction=False)
+    with (
+        patch.object(c, "_graph", other_graph),
+        pytest.raises(ValueError, match="chat_runtime._graph is not runtime_root._graph"),
+    ):
+        CanonicalSystemRuntime(runtime_root=r, chat_runtime=c)
+
+
+def test_c01_t08_fresh_produces_coherent_pair():
+    """C01-T08: fresh() produces coherent runtime_root and chat_runtime pair."""
+    runtime = CanonicalSystemRuntime.fresh()
+    assert isinstance(runtime.runtime_root, CanonicalR1RuntimeRoot)
+    assert isinstance(runtime.chat_runtime, CanonicalChatRuntime)
+    assert runtime.chat_runtime._runtime_root is runtime.runtime_root
+    assert runtime.chat_runtime._graph is runtime.runtime_root._graph
+
+
+def test_c01_t09_from_checkpoint_produces_coherent_pair():
+    """C01-T09: from_checkpoint() produces coherent runtime_root and chat_runtime pair."""
+    runtime = CanonicalSystemRuntime.from_checkpoint(SCTT00_CHECKPOINT)
+    assert isinstance(runtime.runtime_root, CanonicalR1RuntimeRoot)
+    assert isinstance(runtime.chat_runtime, CanonicalChatRuntime)
+    assert runtime.chat_runtime._runtime_root is runtime.runtime_root
+    assert runtime.chat_runtime._graph is runtime.runtime_root._graph
+
+
+def test_c01_t10_canonical_system_runtime_has_no_root_alias():
+    """C01-T10: CanonicalSystemRuntime has no _root alias."""
+    runtime = CanonicalSystemRuntime.fresh()
+    assert not hasattr(runtime, "_root")
+
+
+def test_c01_t11_canonical_system_runtime_has_no_graph_alias():
+    """C01-T11: CanonicalSystemRuntime has no _graph alias."""
+    runtime = CanonicalSystemRuntime.fresh()
+    assert not hasattr(runtime, "_graph")
+
+
+def test_c01_t12_canonical_system_runtime_has_no_ledger_alias():
+    """C01-T12: CanonicalSystemRuntime has no _ledger alias."""
+    runtime = CanonicalSystemRuntime.fresh()
+    assert not hasattr(runtime, "_ledger")
+
+
+def test_c01_t13_cognitive_agent_remains_thin_with_only_runtime_slot():
+    """C01-T13: CognitiveAgent remains thin with only _runtime slot."""
+    assert CognitiveAgent.__slots__ == ("_runtime",)
+    agent = CognitiveAgent()
+    assert hasattr(agent, "_runtime")
+    assert isinstance(agent._runtime, CanonicalSystemRuntime)
+    with pytest.raises(AttributeError):
+        agent._graph = "bad"
+
+
+def test_c01_t14_frozen_sctt_ood_exact_outputs():
+    """C01-T14: Frozen SCTT OOD cues produce exact outputs."""
+    agent = CognitiveAgent.from_checkpoint(SCTT00_CHECKPOINT)
+    sctt_ood = [
+        ("stone", "stone"),
+        ("horse", "horse"),
+        ("train", "train"),
+        ("banana", "banana"),
+    ]
+    for cue, expected_reply in sctt_ood:
+        reply = agent.chat(cue)
+        assert reply == expected_reply
+
+
+def test_c01_t15_all_four_sctt_ood_probes_contain_zero_learned_targets():
+    """C01-T15: All four SCTT OOD probes contain zero learned targets."""
+    agent = CognitiveAgent.from_checkpoint(SCTT00_CHECKPOINT)
+    targets = {"canine", "feline", "bird", "flower", "fruit", "vehicle", "solid", "liquid"}
+    for cue in ["stone", "horse", "train", "banana"]:
+        reply = agent.chat(cue)
+        tokens = set(reply.split())
+        assert len(tokens & targets) == 0
+
+
+def test_c01_t16_optional_ric02_extra_ood_probes_classified_as_additional():
+    """C01-T16: Optional RIC-02 extra probes are classified as additional probes."""
+    agent = CognitiveAgent.from_checkpoint(SCTT00_CHECKPOINT)
+    targets = {"canine", "feline", "bird", "flower", "fruit", "vehicle", "solid", "liquid"}
+    extra_cues = ["pizza", "computer", "chair", "ocean"]
+    for cue in extra_cues:
+        reply = agent.chat(cue)
+        tokens = set(reply.split())
+        assert len(tokens & targets) == 0

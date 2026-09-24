@@ -16,6 +16,7 @@ from .causal_identity import (
     CausalCommitLedger,
     create_native_r1_provenance_epoch,
 )
+from .chat_runtime import CanonicalChatRuntime
 from .graph import CognitiveGraph
 from .numbers import init_quantity_backbone
 from .persistence import (
@@ -27,7 +28,7 @@ from .persistence import (
 )
 
 if TYPE_CHECKING:
-    from .chat_runtime import CanonicalChatRuntime, R3TurnResult
+    from .chat_runtime import R3TurnResult
 
 
 class CanonicalSystemRuntime:
@@ -46,6 +47,22 @@ class CanonicalSystemRuntime:
         runtime_root: CanonicalR1RuntimeRoot,
         chat_runtime: CanonicalChatRuntime,
     ) -> None:
+        if not isinstance(runtime_root, CanonicalR1RuntimeRoot):
+            raise TypeError(
+                f"runtime_root must be an instance of CanonicalR1RuntimeRoot, got {type(runtime_root).__name__}"
+            )
+        if not isinstance(chat_runtime, CanonicalChatRuntime):
+            raise TypeError(
+                f"chat_runtime must be an instance of CanonicalChatRuntime, got {type(chat_runtime).__name__}"
+            )
+        if chat_runtime._runtime_root is not runtime_root:
+            raise ValueError(
+                "Runtime coherence error: chat_runtime._runtime_root is not runtime_root"
+            )
+        if chat_runtime._graph is not runtime_root._graph:
+            raise ValueError(
+                "Runtime coherence error: chat_runtime._graph is not runtime_root._graph"
+            )
         self._runtime_root: CanonicalR1RuntimeRoot = runtime_root
         self._chat_runtime: CanonicalChatRuntime = chat_runtime
 
@@ -164,18 +181,3 @@ class CanonicalSystemRuntime:
     def chat_runtime(self) -> CanonicalChatRuntime:
         """Canonical chat runtime owned by this system runtime."""
         return self._chat_runtime
-
-    @property
-    def _root(self) -> CanonicalR1RuntimeRoot:
-        """Internal alias for runtime_root used by migrated test harnesses."""
-        return self._runtime_root
-
-    @property
-    def _graph(self) -> CognitiveGraph:
-        """Internal alias for graph access used by migrated test harnesses."""
-        return self._runtime_root._graph
-
-    @property
-    def _ledger(self) -> CausalCommitLedger:
-        """Internal alias for ledger access used by migrated test harnesses."""
-        return self._runtime_root._ledger

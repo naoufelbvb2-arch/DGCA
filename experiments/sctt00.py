@@ -46,6 +46,7 @@ from dgca.persistence import (
     extract_canonical_persistent_payload,
     save_canonical_r1_checkpoint,
 )
+from dgca.system_runtime import CanonicalSystemRuntime
 
 # ─────────────────────────────────────────────────────────── Frozen Fact Bank
 FACTS = (
@@ -70,7 +71,6 @@ NATURAL_QUESTIONS = (
 
 PROTOCOL_BASELINE_COMMIT = "833241d54309d72715c42dc5f2b939c3179e257d"
 AUTHORIZED_REPAIR_ANCHOR_COMMIT = "1a269aac42fcf44a824fe677526a92e6e2f81d9f"
-SCTT00_VERIFIED_ANCHOR_COMMIT = "SCTT00-VR01-VERIFIED"
 EXPECTED_AUTHORIZED_PRODUCTION_DELTA = (
     "dgca/completion.py",
     "dgca/generation.py",
@@ -98,15 +98,17 @@ class TrialAuthorizer:
         )
 
 
-def compute_safety_snapshot(target: Any) -> dict[str, Any]:
-    """Computes a strict snapshot of all persistent and ledger state from the agent or runtime."""
-    runtime = getattr(target, "_runtime", target)
-    r = getattr(runtime, "runtime_root", getattr(runtime, "_runtime_root", None))
-    if r is None and hasattr(runtime, "_chat_runtime"):
-        r = getattr(runtime._chat_runtime, "_runtime_root", None)
-    g = getattr(runtime, "_graph", getattr(r, "_graph", None))
-    if g is None and hasattr(runtime, "_chat_runtime"):
-        g = getattr(runtime._chat_runtime, "_graph", None)
+def compute_safety_snapshot(target: CanonicalSystemRuntime | CanonicalR1RuntimeRoot) -> dict[str, Any]:
+    """Computes a strict snapshot of all persistent and ledger state from runtime or root."""
+    if isinstance(target, CanonicalSystemRuntime):
+        r = target.runtime_root
+    elif isinstance(target, CanonicalR1RuntimeRoot):
+        r = target
+    else:
+        raise TypeError(
+            f"Target must be CanonicalSystemRuntime or CanonicalR1RuntimeRoot, got {type(target).__name__}"
+        )
+    g = r._graph
     payload = extract_canonical_persistent_payload(g)
     digest = compute_checkpoint_state_digest(payload)
     return {
@@ -116,22 +118,6 @@ def compute_safety_snapshot(target: Any) -> dict[str, Any]:
         "pending_evidence": payload["pending_structural_evidence"],
         "n_total": {n["nid"]: n["N_total"] for n in payload["nodes"]},
     }
-
-
-def _extract_graph_from_target(target: Any) -> Any:
-    runtime = getattr(target, "_runtime", target)
-    g = getattr(runtime, "_graph", None)
-    if g is None and hasattr(runtime, "_chat_runtime"):
-        g = getattr(runtime._chat_runtime, "_graph", None)
-    return g
-
-
-def _extract_root_from_target(target: Any) -> Any:
-    runtime = getattr(target, "_runtime", target)
-    r = getattr(runtime, "runtime_root", getattr(runtime, "_runtime_root", getattr(runtime, "_root", None)))
-    if r is None and hasattr(runtime, "_chat_runtime"):
-        r = getattr(runtime._chat_runtime, "_runtime_root", None)
-    return r
 
 
 def measure_git_provenance(repo_root: Path = REPO_ROOT) -> dict[str, Any]:
@@ -225,12 +211,7 @@ def measure_git_provenance(repo_root: Path = REPO_ROOT) -> dict[str, Any]:
     except (subprocess.SubprocessError, OSError) as e:
         prod_files_base_anchor = [f"ERROR: {e}"]
 
-    # 5. Production files changed anchor -> execution HEAD (or SCTT00 verified anchor if on descendant)
-    target_exec = (
-        SCTT00_VERIFIED_ANCHOR_COMMIT
-        if is_ancestor(SCTT00_VERIFIED_ANCHOR_COMMIT, execution_source_commit)
-        else execution_source_commit
-    )
+    # 5. Production files changed anchor -> execution HEAD
     try:
         proc_diff_exec = subprocess.run(
             [
@@ -238,7 +219,7 @@ def measure_git_provenance(repo_root: Path = REPO_ROOT) -> dict[str, Any]:
                 "diff",
                 "--name-only",
                 AUTHORIZED_REPAIR_ANCHOR_COMMIT,
-                target_exec,
+                execution_source_commit,
                 "--",
                 "dgca/",
             ],
@@ -256,31 +237,28 @@ def measure_git_provenance(repo_root: Path = REPO_ROOT) -> dict[str, Any]:
         prod_files_anchor_exec = [f"ERROR: {e}"]
 
     # 6. Production files changed anchor -> working tree
-    is_post_sctt00 = is_ancestor(SCTT00_VERIFIED_ANCHOR_COMMIT, execution_source_commit)
-    prod_files_anchor_wt = []
-    if not is_post_sctt00:
-        try:
-            proc_diff_wt = subprocess.run(
-                [
-                    "git",
-                    "diff",
-                    "--name-only",
-                    AUTHORIZED_REPAIR_ANCHOR_COMMIT,
-                    "--",
-                    "dgca/",
-                ],
-                cwd=str(repo_root),
-                capture_output=True,
-                text=True,
-                check=False,
-            )
-            prod_files_anchor_wt = [
-                f.replace("\\", "/").strip()
-                for f in proc_diff_wt.stdout.splitlines()
-                if f.strip()
-            ]
-        except (subprocess.SubprocessError, OSError) as e:
-            prod_files_anchor_wt = [f"ERROR: {e}"]
+    try:
+        proc_diff_wt = subprocess.run(
+            [
+                "git",
+                "diff",
+                "--name-only",
+                AUTHORIZED_REPAIR_ANCHOR_COMMIT,
+                "--",
+                "dgca/",
+            ],
+            cwd=str(repo_root),
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        prod_files_anchor_wt = [
+            f.replace("\\", "/").strip()
+            for f in proc_diff_wt.stdout.splitlines()
+            if f.strip()
+        ]
+    except (subprocess.SubprocessError, OSError) as e:
+        prod_files_anchor_wt = [f"ERROR: {e}"]
 
     production_drift = sorted(set(prod_files_anchor_exec + prod_files_anchor_wt))
 
@@ -349,7 +327,7 @@ def run_preflight(require_clean: bool = True, repo_root: Path = REPO_ROOT) -> di
     # 5. Anchor -> Execution production delta is empty
     if len(prov.get("production_files_changed_anchor_to_execution", [])) > 0:
         raise RuntimeError(
-            f"SCTT00_REPAIR_RERUN_BLOCKED: Unauthorized dgca/** production files changed anchor to execution: "
+            f"SCTT00_REPAIR_RERUN_BLOCKED: Unauthorized dgca/** production drift (anchor to execution): "
             f"{prov['production_files_changed_anchor_to_execution']}"
         )
 
@@ -369,6 +347,7 @@ def run_preflight(require_clean: bool = True, repo_root: Path = REPO_ROOT) -> di
     assert hasattr(CanonicalR1RuntimeRoot, "create_observation_bridge")
     assert hasattr(ExecutionMode, "AUTHORIZED_PERSISTENT")
     assert callable(save_canonical_r1_checkpoint)
+    assert hasattr(CanonicalSystemRuntime, "from_checkpoint")
     assert hasattr(CognitiveAgent, "from_checkpoint")
 
     # Encoder Preflight (Protocol §3)
@@ -447,19 +426,19 @@ def compute_rfc15_materializations(records: list[dict[str, Any]]) -> int:
 
 
 def run_baseline_probes(
-    agent: CognitiveAgent | None = None,
+    runtime: CanonicalSystemRuntime | None = None,
     rfc15_checks_out: list[dict[str, Any]] | None = None,
 ) -> list[dict[str, Any]]:
-    """Protocol §6: Probe 8 subject cues on fresh un-trained CognitiveAgent."""
-    if agent is None:
-        agent = CognitiveAgent()
-    g = _extract_graph_from_target(agent)
+    """Protocol §6: Probe 8 subject cues on fresh un-trained CanonicalSystemRuntime."""
+    if runtime is None:
+        runtime = CanonicalSystemRuntime.fresh()
+    g = runtime.runtime_root._graph
     if rfc15_checks_out is not None and g is not None:
         rfc15_checks_out.append(check_graph_rfc15_state(g, "baseline_agent_before_probes"))
 
     records = []
     for fid, sentence, subj, tgt in FACTS:
-        reply = agent.chat(subj)
+        reply = runtime.chat(subj)
         tokens = reply.split()
         target_in_reply = tgt in tokens
         if target_in_reply:
@@ -636,20 +615,20 @@ def save_checkpoint(runtime_root: CanonicalR1RuntimeRoot, ckpt_path: Path) -> di
 def run_primary_retrieval(
     ckpt_path: Path,
     rfc15_checks_out: list[dict[str, Any]] | None = None,
-) -> tuple[CognitiveAgent, list[dict[str, Any]], list[dict[str, Any]]]:
+) -> tuple[CanonicalSystemRuntime, list[dict[str, Any]], list[dict[str, Any]]]:
     """Protocol §12, §13, §15, §18: Restore, probe 8 cues, verify safety snapshots, classify."""
-    agent = CognitiveAgent.from_checkpoint(ckpt_path)
-    g = _extract_graph_from_target(agent)
+    runtime = CanonicalSystemRuntime.from_checkpoint(ckpt_path)
+    g = runtime.runtime_root._graph
     if rfc15_checks_out is not None and g is not None:
-        rfc15_checks_out.append(check_graph_rfc15_state(g, "primary_agent_before_retrieval"))
+        rfc15_checks_out.append(check_graph_rfc15_state(g, "primary_runtime_before_retrieval"))
 
     probes: list[dict[str, Any]] = []
     safety_records: list[dict[str, Any]] = []
 
     for fid, sentence, subj, tgt in FACTS:
-        s_before = compute_safety_snapshot(agent)
-        reply = agent.chat(subj)
-        s_after = compute_safety_snapshot(agent)
+        s_before = compute_safety_snapshot(runtime)
+        reply = runtime.chat(subj)
+        s_after = compute_safety_snapshot(runtime)
 
         # Safety conservation check (Protocol §15)
         digest_match = s_before["state_digest"] == s_after["state_digest"]
@@ -681,7 +660,7 @@ def run_primary_retrieval(
         recalled = target_in_tokens and cue_absent_target and len(competing_targets) == 0
 
         # Diagnosis of failure stage (Protocol §18)
-        last_turn = agent.last_turn
+        last_turn = runtime.last_turn
         failure_stage = None
         if not recalled:
             failure_stage = "E2_RETRIEVAL"
@@ -710,22 +689,22 @@ def run_primary_retrieval(
         })
 
     if rfc15_checks_out is not None and g is not None:
-        rfc15_checks_out.append(check_graph_rfc15_state(g, "primary_agent_after_retrieval"))
+        rfc15_checks_out.append(check_graph_rfc15_state(g, "primary_runtime_after_retrieval"))
 
-    return agent, probes, safety_records
+    return runtime, probes, safety_records
 
 
 def run_ood_probes(
-    agent: CognitiveAgent,
+    runtime: CanonicalSystemRuntime,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     """Protocol §14 & §15: OOD Probes and safety checks."""
     ood_results = []
     safety_records = []
 
     for cue in OOD_CUES:
-        s_before = compute_safety_snapshot(agent)
-        reply = agent.chat(cue)
-        s_after = compute_safety_snapshot(agent)
+        s_before = compute_safety_snapshot(runtime)
+        reply = runtime.chat(cue)
+        s_after = compute_safety_snapshot(runtime)
 
         is_safe = (
             s_before["state_digest"] == s_after["state_digest"]
@@ -761,18 +740,18 @@ def run_second_restore_determinism(
     primary_probes: list[dict[str, Any]],
     rfc15_checks_out: list[dict[str, Any]] | None = None,
 ) -> list[dict[str, Any]]:
-    """Protocol §16: Clean-restore determinism on fresh second agent."""
-    agent2 = CognitiveAgent.from_checkpoint(ckpt_path)
-    g2 = _extract_graph_from_target(agent2)
+    """Protocol §16: Clean-restore determinism on fresh second runtime."""
+    runtime2 = CanonicalSystemRuntime.from_checkpoint(ckpt_path)
+    g2 = runtime2.runtime_root._graph
     if rfc15_checks_out is not None and g2 is not None:
-        rfc15_checks_out.append(check_graph_rfc15_state(g2, "second_agent_before_determinism"))
+        rfc15_checks_out.append(check_graph_rfc15_state(g2, "second_runtime_before_determinism"))
 
     determinism_records = []
 
     for idx, (fid, sentence, subj, tgt) in enumerate(FACTS):
         primary_rec = primary_probes[idx]
-        reply2 = agent2.chat(subj)
-        lt2 = agent2.last_turn
+        reply2 = runtime2.chat(subj)
+        lt2 = runtime2.last_turn
 
         primary_comp = tuple(primary_rec["last_turn"]["completion_closure_reasons"])
         agent2_comp = tuple(lt2.completion_closure_reasons) if lt2 else ()
@@ -799,17 +778,17 @@ def run_second_restore_determinism(
         })
 
     if rfc15_checks_out is not None and g2 is not None:
-        rfc15_checks_out.append(check_graph_rfc15_state(g2, "second_agent_after_determinism"))
+        rfc15_checks_out.append(check_graph_rfc15_state(g2, "second_runtime_after_determinism"))
 
     return determinism_records
 
 
-def run_natural_questions(agent: CognitiveAgent) -> list[dict[str, Any]]:
+def run_natural_questions(runtime: CanonicalSystemRuntime) -> list[dict[str, Any]]:
     """Protocol §17: Exploratory Natural Questions (Diagnostic Only)."""
     records = []
     for q in NATURAL_QUESTIONS:
-        reply = agent.chat(q)
-        lt = agent.last_turn
+        reply = runtime.chat(q)
+        lt = runtime.last_turn
         records.append({
             "question": q,
             "reply": reply,
@@ -1077,8 +1056,8 @@ def main() -> None:
     del runtime_root
 
     # 5. Restore & Primary Retrieval
-    print("\n[5/7] Cold Restoring via CognitiveAgent.from_checkpoint & Scoring Retrieval...")
-    agent, primary_probes, safety_primary = run_primary_retrieval(ckpt_path, rfc15_checks_out=rfc15_monitoring_checks)
+    print("\n[5/7] Cold Restoring via CanonicalSystemRuntime.from_checkpoint & Scoring Retrieval...")
+    runtime, primary_probes, safety_primary = run_primary_retrieval(ckpt_path, rfc15_checks_out=rfc15_monitoring_checks)
     recalled_count = sum(1 for p in primary_probes if p["recalled"])
     print(f"  Primary Learned Recall: {recalled_count}/8 PASS")
     for p in primary_probes:
@@ -1087,12 +1066,12 @@ def main() -> None:
 
     # 6. OOD, Safety, Determinism, Natural Questions
     print("\n[6/7] Running OOD Safety Controls, Second Restore Determinism, & Diagnostics...")
-    ood_results, safety_ood = run_ood_probes(agent)
+    ood_results, safety_ood = run_ood_probes(runtime)
     ood_pass_count = sum(1 for o in ood_results if o["passed"])
     print(f"  OOD Safety: {ood_pass_count}/4 PASS")
-    g_prim = _extract_graph_from_target(agent)
+    g_prim = runtime.runtime_root._graph
     if g_prim is not None:
-        rfc15_monitoring_checks.append(check_graph_rfc15_state(g_prim, "primary_agent_after_ood"))
+        rfc15_monitoring_checks.append(check_graph_rfc15_state(g_prim, "primary_runtime_after_ood"))
 
     determinism_records = run_second_restore_determinism(
         ckpt_path, primary_probes, rfc15_checks_out=rfc15_monitoring_checks
@@ -1100,10 +1079,10 @@ def main() -> None:
     det_count = sum(1 for d in determinism_records if d["deterministic"])
     print(f"  Second Restore Determinism: {det_count}/8 PASS")
 
-    nat_qs = run_natural_questions(agent)
+    nat_qs = run_natural_questions(runtime)
     print(f"  Exploratory Natural Questions: {len(nat_qs)} completed.")
     if g_prim is not None:
-        rfc15_monitoring_checks.append(check_graph_rfc15_state(g_prim, "primary_agent_after_natural_questions"))
+        rfc15_monitoring_checks.append(check_graph_rfc15_state(g_prim, "primary_runtime_after_natural_questions"))
 
     # 7. Evaluate Success Gates & Build Reports
     print("\n[7/7] Mechanically Evaluating Success Gates & Emitting Reports...")
@@ -1118,11 +1097,11 @@ def main() -> None:
     replay_sub_count = compute_replay_substitutions(training_exposures)
     persisted_rel_count = sum(1 for p in storage_audit["pairs"] if p["relation_persisted"])
     ckpt_save_ok = bool(ckpt_info and ckpt_info.get("checkpoint_bundle_digest") and ckpt_info.get("file_sha256"))
-    root = _extract_root_from_target(agent)
+    root = runtime.runtime_root
     health_enum = getattr(root, "causal_runtime_health", None) if root else None
     lineage_enum = getattr(root, "canonical_lineage_state", None) if root else None
     ckpt_restore_ok = bool(
-        agent
+        runtime
         and health_enum == CausalRuntimeHealth.HEALTHY
         and lineage_enum == CanonicalLineageState.VALID
     )
