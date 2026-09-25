@@ -115,7 +115,7 @@ In `papers MD/RIC-03-IMPLEMENTATION-VERIFICATION-REPORT.md`, the implementation 
 - Removed `@property def authorizer(self) -> CanonicalLearningAuthorizer` from `CanonicalLearningRuntime`.
 
 ### 6.2 Public API Maintained
-- `CanonicalSystemRuntime.learn(text, *, occurrence_key=None, metadata=None) -> LearningResult` remains the sole host learning endpoint.
+- `CanonicalSystemRuntime.learn(text, *, context: str | None = None, occurrence_key: str | None = None) -> LearningResult` remains the sole host learning endpoint.
 - Internal objects `_learning_runtime`, `_authorizer`, and `_capability` remain strictly encapsulated.
 - `LearningResult` exposes no capability, authorizer, graph, or ledger references.
 - `CognitiveAgent` exposes zero learning methods or attributes.
